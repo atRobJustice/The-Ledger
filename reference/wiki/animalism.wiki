@@ -1,0 +1,425 @@
+{{:Animalism/Lang}}
+{{Discipline
+| header=Animalism
+| symbol=Animalism_symbol.png
+| nicknames=Doolittling, Taming, Bestiae Sermo
+| affinity= {{icon|gangrel}} [[Gangrel]] {{icon|nosferatu}} [[Nosferatu]] {{icon|ravnos}} [[Ravnos]]<br> 
+{{icon|tzimisce}} [[Tzimisce]]
+| type=Mental
+| threat=Low to Medium
+| resonance=Animal Blood
+}}__TOC__
+
+==Overview==
+Animalism allows Kindred to communicate with, control, or feed more efficiently on animals. It also lets them act on the inner Beast of other vampires. Although stereotypically used by those who are social outcasts, struggling to fit into mortal society (or simply lacking the interest to), it's not a rule - example being [[Lettow Kaminsky]], [[Gangrel]] Prince of Tucson, Arizona. Their ability to control animals lets them gather information in secret or unleash devastating attacks with their minions. Animalism only works on vertebrates unless the user has [[Animalism#Unliving Hive|Unliving Hive]], which extends the power to swarms of insects. The power is most effective on predators, and in cases where it's being used on herbivores increases the Difficulty of skills rolls by one. <ref>[[Vampire: The Masquerade Corebook]], page 244-245</ref>  
+
+As example uses, Clan [[Gangrel]] may employ an animal companion using [[Animalism#Bond Famulus|Bond Famulus]], some of which they use for spying on others or attacking victims. Other Gangrel may even turn the pets on their owners using powers such as [[Animalism#Feral Whispers|Feral Whispers]] or [[Animalism#Atavism|Atavism]].<ref>[[Vampire: The Masquerade Corebook]], page 72</ref> To the [[Nosferatu]] Animalism is an incredibly useful tool that allows them to extend their influence in both information gathering and sharing. It also allows them to approach combat in a different way than other Disciplines as they swarm their opponents with hordes of creatures.<ref>[[Vampire: The Masquerade Corebook]], page 84</ref> With the occasional companion at their side, the [[Ravnos]], are less alone as they travel. They may also utilize animals as spies or distractions when needed.<ref>[[Vampire: The Masquerade Companion ]], page 8</ref> [[Tzimisce]] may use animals to flex their power over their domain.<ref>[[Vampire: The Masquerade Companion]], page 18</ref>   
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" | Cost
+! width="8%" |Prerequisite
+! width="8%" | Amalgam
+! width="10%" | Duration
+! width="10%" | Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable"| Additional Notes
+! width="10%" |Source
+
+|- id="Bond Famulus"
+|'''Bond Famulus'''
+|Create an enhanced animal companion.
+| data-sort-value="1" | Feed the animal a Rouse Check of the vampire's blood on three different nights, if this is purchased at character creation it is considered already done and the player may select an animal to be the famulus.
+|None
+|No
+|Only death releases the famulus.
+|
+*Charisma +
+*Animal Ken
+|
+*N/A
+|Vampires may only have one famulus but you can make animal ghouls without this.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 245
+
+|- id="Sense the Beast"
+|'''Sense the Beast'''
+| Sense hostility and supernatural traits.
+| data-sort-value="2" |Free
+|None
+|No
+|Passive
+|
+*Resolve +
+*Animalism
+|
+*Composure +
+*Subterfuge
+|This power can also be used actively.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 245
+|}
+
+===Level 2 ===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" | Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="Animal Messenger"
+|'''Animal Messenger'''
+|Use a Famulus to send a message to someone.
+|One Rouse Check per night
+|None
+|[[Auspex]] ●
+|One or more nights based on how long it takes to search
+|None
+|None
+|The Famulus must test Resolve + Streetwise/Survival if target’s location is unknown against a diff 2 or Intelligence + Streetwise/Survival if the target is actively hiding.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 69
+|- id="Atavism"
+|'''Atavism'''
+|Revert animals to their base and primal instincts.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|Number of rounds equal to margin +1 or entire scene if it's a Critical win
+| 
+*Composure +
+*Animalism
+|
+*N/A
+|The target must be able to sense the user for this power to work.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3
+
+|- id="Feral Whispers"
+|'''Feral Whispers'''
+| Two-way communication with animals or summoning.
+| data-sort-value="2" |One Rouse Check per type of animal
+|None
+|No
+|One scene
+|
+*Manipulation/Charisma +
+* Animalism
+| 
+*N/A
+|The cost is free if used on their Famulus.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 246
+|}
+
+===Level 3===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable"|Additional Notes
+! width="10%" |Source
+|- id="Messengers Command"
+|'''Messenger's Command'''
+|Use [[Dominate#Compel|Compel]] or [[Dominate#Mesmerize|Mesmerize]] through a Famulus.
+|None
+|[[Animalism#Animal Messenger|Animal Messenger]]  and Compel or Mesmerize
+|[[Dominate]] ●
+|See Animal Messenger
+|See Compel or Mesmerize
+|See Compel or Mesmerize
+|Dominate rating cannot exceed the Animalism rating.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 69
+|- id="Animal Succulence"
+|'''Animal Succulence'''
+|Slake additional hunger from animals and counts Blood Potency as 2 levels lower in regards to slaking penalties.
+| data-sort-value="1" | Free
+|None
+| No
+|Passive
+|
+*N/A
+|
+* N/A
+|This will never let the character slake to 0.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 246
+|- id="Plague of Beasts"
+|'''Plague of Beasts'''
+|Mark an individual as a target of animal attention.
+|One Rouse Check
+|None
+|No
+|One Night
+|
+*Manipulation +
+* Animalism
+|
+*Composure +
+* Animal Ken
+|The target takes the margin of the win as a penalty against Skill pools except Physical, this also makes them easier to track down.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 69
+|- id="Quell the Beast"
+|'''Quell the Beast'''
+|Force a vampire's beast to slumber or make a mortal lethargic.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One scene
+|
+*Charisma +
+* Animalism
+|
+*Stamina +
+*Resolve
+|Against Vampires this lasts several turns equal to test margin +1.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+* [[Vampire: The Masquerade Corebook|Corebook]], page 246
+|-
+
+|- id="Scent of Prey"
+|'''Scent of Prey'''
+|Track a mortal down who has witnessed a masquerade breach.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene
+|
+*Resolve +
+*Animalism
+|
+*N/A
+|It lasts one night if Critical Win.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 47
+|-
+
+|- id="Unliving Hive"
+|'''Unliving Hive'''
+|Extends Animalism influence to swarms of insects.
+|None
+|None
+|[[Obfuscate]] ●●
+|Passive
+| 
+*N/A
+| 
+*N/A
+|Swarms are treated as single creatures.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 246
+|}
+
+===Level 4===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" | Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable"|Additional Notes
+! width="10%" |Source
+
+|- id="Subsume the Spirit"
+|'''Subsume the Spirit'''
+|Possess the body of an animal.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One scene / Indefinitely
+|
+*Manipulation +
+*Animalism
+|
+*N/A
+|The cost is free if used on their Famulus.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 247
+|- id="Sway the Flock"
+|'''Sway the Flock'''
+|Influence animals within an area to behave a certain way.
+|One or more Rouse Checks
+|None
+|No
+|One night
+|
+*Composure +
+*Animalism
+|N/A
+|The amount of successes determine how influenced the animals are, the Discipline’s range can be increased per Rouse Check.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 69
+|}
+
+===Level 5===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" | Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable"|Additional Notes
+! width="10%" |Source
+
+|- id="Animal Dominion"
+|'''Animal Dominion'''
+|Command flocks or packs of animals.
+| data-sort-value="1" | Two Rouse Checks
+|None
+|No
+|One scene or when the directive is fulfilled
+|
+*Charisma +
+*Animalism
+|
+*N/A
+|This power does not summon animals, instead utilizing those already present.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 247
+|- id="Coax the Bestial Temper"
+|'''Coax the Bestial Temper'''
+|Either increase or decrease the Difficulty to resist Frenzy for vampires nearby.
+|One Rouse Check
+|None
+|No
+|As long as the user keeps humming
+|
+*Manipulation +
+*Animalism
+|N/A
+|Each success of margin increases or decreases the difficulty
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 70
+|- id="Drawing Out the Beast"
+|'''Drawing Out the Beast'''
+| Transfer their terror or fury frenzy to a nearby victim.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|Frenzy Duration
+| 
+*Wits +
+*Animalism
+|
+*Composure +
+*Resolve
+|This power cannot transfer Hunger Frenzy.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+* [[Vampire: The Masquerade Corebook|Corebook]], page 247
+|-
+|'''Spirit Walk'''
+|Extends Subsume the Spirit to transfer the vampire's consciousness from one animal to another without retreating to their own body.
+|None
+|Subsume the Spirit
+|No
+|Indefinite
+|N/A
+|N/A
+|The duration is as though a critical success was rolled.
+|Gehenna War, page 46
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Animalism;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Animalism Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" | Dice pool
+! width="12%" |Source
+
+|- id="Enduring Beasts"
+|[[File: Fortitude symbol.png|42px]]||[[Fortitude#Enduring Beasts|'''Enduring Beasts''']]
+|[[Fortitude]] ●●
+| data-sort-value="1" |●
+|Share the vampire's toughness with animals
+|One Rouse Check, Free if Famulus
+|
+*Stamina +
+*Animalism (If not Famulus)
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 259
+
+|- id="Ghost's Passing"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Ghost's Passing|'''Ghost's Passing''']]
+|[[Obfuscate]] ●●
+| data-sort-value="2" |●
+|Aid animals in hiding their steps against mundane tracking
+|One Rouse Check
+|
+*N/A
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 18
+
+|- id="Eyes of Beasts"
+|[[File: Auspex symbol.png|42px]]||[[Auspex#Eyes of Beasts|'''Eyes of Beasts''']]
+|[[Auspex]] ●●●
+| data-sort-value="3" | ●●
+| Share the senses of animals
+|One Rouse Check
+|
+*N/A
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 148
+
+|- id="One with the Land"
+|[[File: Protean symbol.png|42px]]
+|[[Protean#One with the Land|'''One with the Land''']]
+|[[Protean]] ●●●●●
+| data-sort-value="4" |●●
+|Sink into the earth of their Domain
+|Two Rouse Checks
+|
+*N/A
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 28
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 83
+|}
+
+==Gallery==
+<gallery>
+File:Animalism example.png|Animalism being used to control the dog and have them attack their owner. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #3
+File:Animalism example 2.png|Animalism being used to control rats to attack vampire hunters in the sewers. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #9
+File:Animalism example 3.png|Using birds to gather information on the surface. Source: [[World of Darkness: Crimson Thaw]], Issue #3
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

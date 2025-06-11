@@ -1,0 +1,461 @@
+{{Discipline
+| header=Dominate
+| symbol=Dominate_symbol.png
+| nicknames=Snake Charming, Mesmerism, Mentis Imperium
+| affinity= {{icon|lasombra}} [[Lasombra]] {{icon|malkavian}} [[Malkavian]] {{icon|salubri}} [[Salubri]]<br> 
+{{icon|tremere}} [[Tremere]] {{icon|tzimisce}} [[Tzimisce]] {{icon|ventrue}} [[Ventrue]]
+| type=Mental
+| threat=Low
+| resonance=Phlegmatic
+}}
+
+__TOC__
+
+==Overview==
+Dominate gives Kindred the ability to control the actions of others, alter their memories and force others to act not of their own volition. From erasing the memories of a recent feed to enslaving mortals for the vampire to do with them as they please. Dominate gives the feeling of power, although wiser Kindred know this is only a guise from the Blood. At most levels, it requires eye contact with a single victim unless otherwise stated. At the base levels, it can wipe superficial memories or command small immediate actions of their victims and in turn, higher levels allow for more sophisticated uses. The victim needs to understand the Kindred and the Kindred needs to speak their commands. Exceptions exist with [[Presence#Irresistible Voice|Irresistible Voice]] and [[Auspex#Telepathy|Telepathy]], the former allows commands without eye contact, and the latter without spoken words. While Dominated, victims are mindless puppets who cannot be interrogated and can only do things they could do on demand. Commands that cause social backlash or cause minor injury are always contested with the victim. The victim cannot be commanded to directly cause serious injury or death to themselves without [[Dominate#Terminal Decree|Terminal Decree]]. When used against other vampires they must contest this and those with a lower generation may use Willpower to shirk off the attempt. Once Dominate has totally failed against a target, the user will not be able to use it against them for the rest of the story. <ref>[[Vampire: The Masquerade Corebook]], page 255</ref>
+
+The [[Lasombra]] are shameless in their use of Dominate, enjoying crushing wills and commanding obedience callously.<ref>[[Vampire: The Masquerade Chicago by Night]], page 291</ref> Some [[Malkavian|Malkavians]] use Dominate to lift victims' minds from distraction or hide a messy feed, but the clan is infamous for [[Dominate#Dementation|Dementation]], used to shatter mortal and kindred minds alike.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 79</ref> The [[Salubri]] use Dominate to soothe others by removing troubling memories or fortify another kindred against their darker nature.<ref>[[Vampire: The Masquerade Companion]], page 14</ref> Rumor has it the [[Tremere]] use Dominate to hide their ruthless pursuits of knowledge.<ref>[[Vampire: The Masquerade Corebook]], page 97</ref> In contrast, [[Tzimisce]] uses Dominate to acquire their possession, but also conditions servitors to never question their will. <ref>[[Vampire: The Masquerade Companion]], page 18</ref> [[Ventrue]] consider their mastery of Dominate to be absolute; bending victims, enemies, and followers to will as well as maintaining the [[Masquerade]].<ref>[[Vampire: The Masquerade Corebook]], page 102</ref>
+==List of available powers==
+===Level 1 ===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" | Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Cloud Memory"
+|'''Cloud Memory'''
+|Make someone forget the current moment.
+| data-sort-value="1" |Free
+|None
+|No
+|Indefinitely
+|Charisma +
+Dominate
+|Wits +
+Resolve
+|No rolls are needed when the target is an unprepared mortal.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 256
+|- id="Compel"
+|'''Compel'''
+|Issue a single command.
+| data-sort-value="2" |Free
+|None
+|No
+|No more than one scene
+|Charisma +
+Dominate
+|Intelligence + 
+Resolve
+|No rolls are needed when the target is an unprepared mortal. However, mortals who have been Dominated in this scene already or this goes against their nature may roll to resist.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 256
+|-id="Slavish Devotion"
+|'''Slavish Devotion'''
+|Those already underneath Dominate find it easier to resist other kindred's Dominate.
+|Free
+|None
+|[[Fortitude]] ● {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Amalgam was changed to Fortitude}}
+|Passive
+|N/A
+|N/A
+|Attempts by a third party take a dice penalty equal to the other vampire’s [[Fortitude]] rating.{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change, was also changed from a level 2 power to a level 1}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 104
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 73
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" | Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Mesmerize"
+|'''Mesmerize'''
+|Issue complex commands.
+| data-sort-value="1" |One Rouse Check
+|None
+|None
+|Until command is carried out or the scene ends
+|Manipulation +
+Dominate
+|Intelligence + 
+Resolve
+|No rolls are needed when the target is an unprepared mortal. However, if this goes against their nature they may roll to resist.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 256
+|- id="Dementation"
+|'''Dementation'''
+|Drive others insane.
+| data-sort-value="2" |One Rouse Check per target per Scene
+|None
+|[[Obfuscate]] ●●
+|One scene
+|Manipulation +
+Dominate
+|Composure +
+Intelligence
+| To use this power, the user must have had a conversation with them.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 256
+|- id="Domitor's Favor"
+|'''Domitor's Favor'''
+|Make defiance while under a Blood Bond more difficult.
+| data-sort-value="3" |One Rouse Check
+|None
+|None
+|One month
+|N/A
+|N/A
+|Total fail on defiance rolls means the bond does not weaken that month.
+|{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 25
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|}
+
+=== Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Forgetful Mind"
+|'''Forgetful Mind'''
+| Rewrite someone's memory.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|Indefinitely
+| Manipulation +
+Dominate
+| Intelligence + 
+Resolve
+|Each point of margin on the test allows one additional memory to be altered.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 257
+|- id="Submerged Directive"
+|'''Submerged Directive'''
+|Implant Dominate orders as suggestions for victims.
+| data-sort-value="2" |Free
+|[[Dominate#Mesmerize|Mesmerize]]
+|No
+|Passive
+|N/A
+|N/A
+|These orders never expire until completed and targets can only have one at a time.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 257
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" | Duration
+! width="10%" | Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Ancestral Dominion"
+|'''Ancestral Dominion'''
+|Urge a descendant to act even if against their own opinion. 
+| data-sort-value="1" |One Rouse Check
+|[[Dominate#Mesmerize|Mesmerize]] {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mesmerize added as pre-req}}
+|[[Blood Sorcery]] ●● {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Amalgam reduced to Blood Sorcery 2}}
+|Until the command is carried out or the scene ends
+|Manipulation +
+Dominate
+|Intelligence + 
+Resolve
+| For each generation separating them, the target gains an additional die to resist. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 104
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|-id="Implant Suggestion"
+|'''Implant Suggestion'''
+|Change another’s personality or opinion temporarily.
+|One Rouse Check
+|None
+|[[Presence]] ●
+|One scene
+|Manipulation +
+Dominate
+|Composure +
+Resolve
+|No test required for unprepared mortals unless it’s a change that opposes their core beliefs.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|- id="Rationalize"
+|'''Rationalize'''
+|Convince victims of Dominate it was their idea the entire time.
+| data-sort-value="2" |Free
+|None
+|No
+|Indefinitely
+|N/A
+|N/A
+|If pressed on their actions the victim can make a test and if successful they question their actions.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 257
+|- id="Tabula Rasa"
+|'''Tabula Rasa'''
+| Erase the victim's memory to the point they don't know who they are.
+| data-sort-value="3" |Two Rouse Checks
+|None
+|No
+|Permanent
+|Resolve +
+Dominate
+|Composure +
+Resolve
+|Following this power's use is generally a string of lies and Path Indoctrination.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 47
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" | Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Lethe's Call'''
+|Erase weeks' worth of memory.
+|One Rouse Check
+|Cloud Memory or Forgetful Mind
+|No
+|Indefinitely
+|Manipulation + Dominate
+|Intelligence + Resolve
+|Unprepared mortals cannot test to resist the power. With a verbal command only memories surrounding the spoken subject will be erased.
+|Gehenna War, page 46
+|- id="Mass Manipulation"
+|'''Mass Manipulation'''
+|Extend effects of Dominate to multiple targets.
+| data-sort-value="1" |One Rouse Check in addition to power it's added to
+|None
+|No
+|As per power amplified
+|N/A
+|N/A
+|The victims need to see the eyes of the user. The user makes the roll against the strongest of the group.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 257
+|- id="Terminal Decree"
+|'''Terminal Decree'''
+|Bolster effects of Dominate to be able to circumvent victims' self-preservation.
+| data-sort-value="2" |Free but will give Stains
+|None
+|No
+|Passive
+|N/A
+|N/A
+|Terminal commands are always resisted instead of auto failing.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 257
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Dominate;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Dominate Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+|-id="Messenger's Command"
+|[[File: Animalism symbol.png|42px]]
+|'''[[Animalism#Messengers Command|Messenger's Command]]'''
+|[[Animalism]] ●
+|●
+|Use a Famulus to send a message to someone.
+|One Rouse Check per night
+|None
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 69
+|- id="Irresistible Voice"
+|[[File: Presence symbol.png|42px]]||[[Presence#Irresistible Voice|'''Irresistible Voice''']]
+|[[Presence]] ●●●●
+| data-sort-value="1" |●
+|The user's voice alone is enough to use Dominate on a target.
+|None
+|N/A
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 268
+
+|- id="Mask of Isolation"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Mask of Isolation|'''Mask of Isolation''']]
+|[[Obfuscate]] ●●●
+| data-sort-value="2" |●
+|Force the effect of Mask of a Thousand Faces onto a victim
+|One Rouse Check
+|Manipulation +
+Obfuscate
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 48
+
+|- id="Mental Maze"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Mental Maze|'''Mental Maze''']]
+|[[Obfuscate]] ●●●
+| data-sort-value="3" |●
+|Remove all sense of direction and location from a victim in a location
+|One or Three Rouse Checks
+|Charisma +
+Obfuscate
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+
+|- id="Unerring Pursuit"
+|[[File: Auspex symbol.png|42px]]||[[Auspex#Unerring Pursuit|'''Unerring Pursuit''']]
+|[[Auspex]] ●●
+| data-sort-value="4" |●
+|Tracking a victim
+|One Rouse Check
+|Resolve +
+Auspex
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 46
+|-id="Mind Masque"
+|[[File: Obfuscate symbol.png|42px]]
+|'''[[Obfuscate#Mind Masque|Mind Masque]]'''
+|[[Obfuscate]] ●●●
+|●●
+|Hide and replace emotions and thoughts against those who wish to read them, be it through mundane or supernatural means.
+|One Rouse Check
+|Intelligence +
+Obfuscate
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 78
+|- id="Vicissitude"
+|[[File: Protean symbol.png|42px]]||[[Protean#Vicissitude|'''Vicissitude''']]
+|[[Protean]] ●●
+| data-sort-value="7" |●●
+|Sculpt the flesh of bodies
+|One Rouse Check
+|Resolve +
+Protean
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 27
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 81
+|- id="Fleshcrafting"
+|[[File: Protean symbol.png|42px]]||[[Protean#Fleshcrafting|'''Fleshcrafting''']]
+|[[Protean]] ●●●
+| data-sort-value="5" |●●
+|Extends the mastery over the flesh
+|One Rouse Check
+|Resolve +
+Protean
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 27
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 82
+
+|- id="Horrid Form"
+|[[File: Protean symbol.png|42px]]||[[Protean#Horrid Form|'''Horrid Form''']]
+|[[Protean]] ●●●●
+| data-sort-value="6" |●●
+|Take on a monstrous shape
+| One Rouse Check
+|N/A
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 28
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 83
+
+|- id="Clear the Field"
+|[[File: Presence symbol.png|42px]]||[[Presence#Clear the Field|'''Clear the Field''']]
+|[[Presence]] ●●●
+| data-sort-value="8" |●●●
+| Force others to leave the area in a calm and orderly manner
+|One Rouse Check
+|Composure +
+Presence
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 177
+
+|- id="Possession"
+|[[File: Auspex symbol.png|42px]]||[[Auspex#Possession|'''Possession''']]
+|[[Auspex]] ●●●●●
+| data-sort-value="9" |●●●
+|Possess a mortal body
+|Two Rouse Checks
+|Resolve +
+Auspex
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 251
+
+|- id="Unburdening the Bestial Soul"
+|[[File: Auspex symbol.png|42px]]||[[Auspex#Unburdening the Bestial Soul|'''Unburdening the Bestial Soul''']]
+|[[Auspex]] ●●●●●
+| data-sort-value="10" |●●●
+|Stain removal or protection from Stains
+|Two Rouse Checks, 1 Stain
+|Composure +
+Auspex
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 24
+|}
+
+==Gallery==
+<gallery>
+File:Dominate example.png|Dominate being used to make another kindred burn themselves. Source: Vampire: The Masquerade Winter's Teeth Issue #3
+File:Terminal Decree BL2.jpg|Terminal Decree being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+File:Mass Manipulation BL2.jpg|Mass Manipulation being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+File:Cloud Memory BL2.jpg|Cloud Memory being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+</gallery>
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

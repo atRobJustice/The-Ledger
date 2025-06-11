@@ -1,0 +1,395 @@
+{{:Presence/Lang}}
+{{Discipline
+| header=Presence
+| symbol=Presence_symbol.png
+| nicknames=Superstardom, Enthrallment, Sublimitas
+| affinity= {{icon|brujah}} [[Brujah]] {{icon|ravnos}} [[Ravnos]] {{icon|toreador}} [[Toreador]]<br> 
+{{icon|ministry}} [[The Ministry]] {{icon|ventrue}} [[Ventrue]]
+| type=Mental
+| threat=Low to Medium
+| resonance=Sanguine
+}}
+__TOC__
+
+==Overview==
+The Kindred ability to dominate a social scene as flawlessly as their hunting ground is embodied by Presence. Skilled Kindred cause others to feel irresistible allure or unfettered dread within mere moments. Presence is a potent emotional manipulation to score easy victims, coerce devotion, and sail through social settings. 
+
+While Dominate is a handy tool to bend others to one’s will, it is not as subtle as presence. Presence isn’t direct control, but influence leaves victims with their ability to think; making those affected more useful for manipulation, but unpredictable. To use this discipline, the victim needs to be physically present or within earshot of the Kindred. Without [[Presence#Star Magnetism|Star Magnetism]] the power cannot transmit over electronics. While Presence is a subtle Discipline without overt uses or obvious clues, [[Auspex]] such as [[Auspex#Sense the Unseen|Sense the Unseen]] can detect its use at the moment, and [[Fortitude#Unswayable Mind|Unswayable Mind]] can be used when contesting the supernatural influence. Presence powers do not stack and only [[Presence#Dread Gaze|Dread Gaze]] and [[Presence#Majesty|Majesty]] can be used on violent enemies, as their minds can’t be charmed when they have decided to hurt the Kindred.
+
+To sway the crowd either towards violence or towards their own goals, the [[Brujah]] find use in this power. The intellectual types in the clan use this power to convince their victims to give up blood voluntarily while others use it to terrify their prey before they feed.<ref>[[Vampire: The Masquerade Corebook]], page 67</ref> [[Ravnos]] use this when their natural charm isn't enough. Few Ravnos exist without some skill in this power and make frequent use of it to find a victim in a short amount of time, it also plays its part in their illusion magics in [[Obfuscate]]. <ref>[[Vampire: The Masquerade Companion]], page 8</ref> [[Toreador]] are thought to be masters of this discipline, spurring the audience to cheer a performer, lure victims, or to make unnaturally devoted thralls. They are known to use it alongside Auspex to manipulate others such as crystallizing their presence in creations with [[Presence#Magnus Opus|Magnus Opus]].<ref>[[Vampire: The Masquerade Corebook]], page 90</ref> Within [[The Ministry]] the ability to influence emotions is vital, used with subtle tactics they rally their congregations and pierce their heart strings or target someone looking for their next fix. Mixed with their mastery of [[Protean]] they contain the ability to use [[Presence#Eyes of the Serpent|Eyes of the Serpent]] to control those who retaliate against them.<ref name=":03">[[Vampire: The Masquerade Anarch]], page 184</ref> Building love and admiration in their courts [[Ventrue]] find this a useful tool at their disposal. With their natural affinity within [[Dominate]], the use of [[Presence#Clear the Field|Clear the Field]] and [[Presence#Irresistible Voice|Irresistible Voice]] aids them when things are going south. With the clan valuing time and resources, Presence allows them to make hunting nothing more than a quick stop and be efficient.<ref>[[Vampire: The Masquerade Corebook]], page 102</ref>
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Awe"
+|'''Awe'''
+|Add Presence rating to any Skill roll involving Persuasion, Performance, or Charisma related rolls as per ST discretion.
+| data-sort-value="1" |Free
+| class="hidem" |None
+| class="hidem" |No
+|One scene or until ended by the user
+|N/A
+|N/A
+|Once the power wears off the victim reverts to their original opinions.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 267
+|- id="Daunt"
+|'''Daunt'''
+|Add Presence rating to any intimidation rolls.
+| data-sort-value="2" |Free
+| class="hidem" |None
+| class="hidem" |No
+|One scene or until ended by the user
+|N/A
+|N/A
+|Awe and Daunt cannot be used at the same time.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 267
+|- id="Eyes of the Serpent"
+|'''Eyes of the Serpent'''
+|Immobilize a victim by making eye contact.
+| data-sort-value="3" |Free
+| class="hidem" |None
+| class="hidem" |[[Protean]] ●
+|Until eye contact is broken or the scene ends
+| Charisma +
+Presence
+|Wits +
+Composure
+|A vampire victim can break this by spending Willpower any turn after the first.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Anarch|Anarch]], page 185
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Lingering Kiss"
+|'''Lingering Kiss'''
+|Usable during feedings, the victim gains a bonus to Social attribute for one night.
+| data-sort-value="1" |Free
+| class="hidem" |None
+| class="hidem" |No
+|Number of nights equal to the user's Presence rating
+|N/A
+|N/A
+|A withdrawal follows where the victim takes a penalty equal to the original bonus when not actively working towards the next fix. It cannot be used on those under a Blood Bond. Unbondable cannot take this discipline power. {{Errata|source=Vampire: The Masquerade Companion Guide|date=Dec 2020|summary=Rewritten}}
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 267
+*{{icon|v5 wod}}
+* [[Vampire: The Masquerade Companion|Companion]] page 62
+|-id="Melpominee"
+|'''Melpominee'''
+|Use Presence without seeing the target, only having them within earshot.
+|Free
+|None
+|No
+|N/A
+|N/A
+|N/A
+|This works with Awe, Daunt, Dread Gaze, Entrance, and Majesty.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Clear the Field"
+|'''Clear the Field'''
+|Clear a space in a calm and orderly manner.
+| data-sort-value="1" | One Rouse Check
+| class="hidem" |None
+| class="hidem" |[[Dominate]] ●●●
+|N/A
+|Composure +
+Presence
+|Wits +
+Composure
+| They can exempt a number of people equal to their Composure. {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 31{{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, originally page 177}}
+|- id="Dread Gaze"
+|'''Dread Gaze'''
+|Instill fear into a target to make them flee.
+| data-sort-value="2" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One turn
+|Charisma +
+Presence
+|Composure +
+Resolve
+|A critical win against a vampire victim means the victim makes a terror Frenzy at difficulty 3.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 267
+|- id="Entrancement"
+|'''Entrancement'''
+|Influence someone into a star-struck or beguiled state of mind where they do their best to keep the user happy. Adding their Presence rating in dice to any social rolls against the victim.
+| data-sort-value="3" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One hour plus one per point of margin
+|Charisma +
+Presence
+| Composure +
+Wits
+|If the request is harmful to the victim or their loved ones, or opposes their tenets the test must be made again or Entrancement fails.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 268
+|-id="Thrown Voice"
+|'''Thrown Voice'''
+|Throw their voice from any point within sight and leave the voice there.
+|One Rouse Check
+|None
+|[[Auspex]] ●
+|One scene
+|N/A
+|N/A
+|A roll is only needed if being used in combination with Irresistible Voice, Melpominee or similar powers.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|-
+
+|- id="True Love's Face"
+|'''True Love's Face'''
+|The victim will perceive the user as a mortal they have strong emotional ties with, be it hatred or love.
+| data-sort-value="4" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |[[Obfuscate]] ●●●
+|One scene
+|Manipulation +
+Presence
+|Composure +
+Wits
+|Can net stains for the victim if the perceived target is their touchstone.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Irresistible Voice"
+|'''Irresistible Voice'''
+| The user's voice alone is enough to use Dominate on a target.
+| data-sort-value="1" |No additional cost
+| class="hidem" |None
+| class="hidem" |[[Dominate]] ●
+|Passive
+|N/A
+|N/A
+|Does not work through technology.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 268
+|- id="Magnum Opus"
+|'''Magnum Opus'''
+|Infusing Presence into artwork.
+| data-sort-value="2" |One or more Rouse Checks
+| class="hidem" |None
+| class="hidem" |[[Auspex]] ●●●
+|N/A
+|Charisma/Manipulation +
+Craft
+|N/A
+|Audiences must roll Composure + Resolve to resist its effects.
+| class="hidem" |[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3
+|-id="Suffuse the Edifice"
+|'''Suffuse the Edifice'''
+|Extend Presence onto a building.
+|N/A
+|None
+|No
+|As power transmitted
+|As power transmitted
+|As power transmitted
+|If the vampire is present they become the focus instead of the building.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|- id="Summon"
+|'''Summon'''
+|Call someone to them who has had certain Presence powers used on them or tasted the user's vitae.
+| data-sort-value="3" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One night
+|Manipulation +
+Presence
+|Composure +
+Intelligence
+|The victim will not physically or financially harm themselves to reach the user.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 268
+|-id="Wingman"
+|'''Wingman'''
+|Extend Presence onto another character to use.
+|One Rouse Check plus additional powers
+|None
+|No
+|As power used.
+|N/A
+|N/A
+|The same Presence power used by both does not double the bonus.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 152
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" | Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Majesty"
+|'''Majesty'''
+|Everyone who looks at the user is dumbstruck unable to act in any way other than self-preservation.
+| data-sort-value="1" |Two Rouse Checks
+| class="hidem" |None
+| class="hidem" |No
+|One scene
+|Charisma +
+Presence
+|Composure +
+
+Resolve
+|A win on the contested roll allows one turn plus one per margin of freedom.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 268
+|- id="Star Magnetism"
+|'''Star Magnetism'''
+|Allows the use of presence through live-feed technology, does not work on recorded content.
+| data-sort-value="2" | One additional Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|As power used
+|N/A
+|N/A
+|If using [[Presence#Entrancement|Entrancement]] the user must speak the targets name clearly.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 269
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Presence;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Presence Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" class="hidem" |Source
+
+|- id="Chimestry"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Chimestry|'''Chimestry''']]
+|[[Obfuscate]] ●●
+| data-sort-value="1" |●
+|Create brief but realistic hallucinations
+|One Rouse Check
+|Manipulation +
+Obfuscate
+| class="hidem" |
+
+* {{icon|v5 wod}}
+* [[Vampire: The Masquerade Companion|Companion]], page 25
+
+*
+|-
+|[[File: Dominate symbol.png|42px]]
+|'''[[Dominate#Implant Suggestion|Implant Suggestion]]'''
+|[[Dominate]] ●●●●
+|●
+|Change another’s personality or opinion temporarily.
+|One Rouse Check
+|Manipulation +
+Dominate
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|- id="Fata Morgana"
+|[[File: Obfuscate symbol.png|42px]]||'''[[Obfuscate#Fata Morgana|Fata Morgana]]'''
+|[[Obfuscate]] ●●●
+| data-sort-value="3" |●●
+|Elaborate hallucinations
+|One Rouse Check
+|Manipulation +
+Obfuscate
+| class="hidem" |
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 26
+
+|- id="Spark of Rage"
+|[[File: Potence symbol.png|42px]]
+|'''[[Potence#Spark of Rage|Spark of Rage]]'''
+|[[Potence]] ●●●
+| data-sort-value="4" |●●●
+|Incite anger or frenzy onto onlookers
+|One Rouse Check
+|Manipulation +
+Potence
+| class="hidem" |
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 265
+|}
+==Gallery==
+<gallery>
+File:Eyes of the Serpent example.png|Eyes of the Serpent being used on Cecily to stop her rampage. Source: World of Darkness: Crimson Thaw, Issue #2.
+File:Presence Swansong example.png|Example of Presence being used. Source: Vampire: The Masquerade Swansong
+File:Presence Swansong example 2.png|Example of Presence being used. Source: Vampire: The Masquerade Swansong
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]

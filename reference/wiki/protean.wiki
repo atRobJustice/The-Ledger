@@ -1,0 +1,362 @@
+{{:Protean/Lang}}
+{{Discipline
+| header=Protean
+| symbol=Protean_symbol.png
+| nicknames=Morphing, Shapeshifting, Mutatio
+| affinity= {{icon|gangrel}} [[Gangrel]] {{icon|ministry}} [[The Ministry]] {{icon|tzimisce}} [[Tzimisce]]
+| type=Physical
+| threat=High
+| resonance=Animal Blood
+}}
+__TOC__
+
+==Overview==
+Protean is a power that shapes and mutates the form of the user. This power is employed for its utility above all else, allowing the user to become a beast, turn their limbs into weapons or touch the more animalistic side of their Beast. Small items on the user are affected by this power, however, backpacks and other large items are not. <ref>[[Vampire: The Masquerade Corebook]], page 269</ref> 
+
+The [[Gangrel]] are perhaps the most mastered with this Discipline, as few possess the gifts. They use their abilities to [[Protean#Shapechange|Shapechange]] in many ways and notably consider feeding this way the best of kills. <ref>[[Vampire: The Masquerade Corebook]], page 72</ref>[[The Ministry|Ministers]] use this power to extend their monstrous fangs or to take the shape of animals, generally taking the form of a snake over a wolf. However, they still use [[Protean#Earth Meld|Earth Meld]] as the Gangrel do to avoid the sun.<ref name=":03">[[Vampire: The Masquerade Anarch]], page 184</ref> [[Tzimisce]] are masters of their form, controlling their shape and appearance at will. With their combined mastery of [[Dominate]], they can manipulate their flesh and that of others with powers such as [[Protean#Fleshcrafting|Fleshcrafting]] and [[Protean#Vicissitude|Vicissitude]]. They also use Protean to shape themselves into other forms such as a bat or wolf.<ref>[[Vampire: The Masquerade Companion]], page 18</ref>
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Eyes of the Beast"
+|'''Eyes of the Beast'''
+|Allows the user to see in total darkness.
+| data-sort-value="1" |Free
+| class="hidem" |None
+| class="hidem" |No
+|As long as desired
+|N/A
+|N/A
+| +2 bonus dice to intimidation against mortals when active.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 269
+|- id="Weight of the Feather"
+|'''Weight of the Feather'''
+|The user can make themselves almost weightless.
+| data-sort-value="2" |Free
+| class="hidem" |None
+| class="hidem" |No
+|As long as desired
+|Wits +
+Survival
+|N/A
+|Wits + Survival is only used when activated as a reaction.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 269
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Feral Weapons"
+|'''Feral Weapons'''
+|Elongate the user's nails into claws, gaining a +2 modifier to damage or elongate their fangs and not suffer a called shot penalty. 
+| data-sort-value="1" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One scene
+|N/A
+|N/A
+|Superficial damage inflicted by the user is not halved while active.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 270
+|- id="Vicissitude"
+|'''Vicissitude'''
+|Sculpt the flesh of bodies allowing changes to their own bodies.
+| data-sort-value="2" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |[[Dominate]] ●●
+|Permanent
+|Resolve +
+Protean
+|N/A
+| Each success on the roll allows a single change to be made.
+| class="hidem" |
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 27
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 81
+|-id="Serpent's Kiss"
+|'''Serpent's Kiss'''
+|When biting someone, inject their own vitae into them.
+|One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|This can also be used to transport powers like Scorpion's Touch.
+|{{icon|v5 renegade}}
+
+[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 153
+|-id="The False Sip"
+|'''The False Sip'''
+|Prevent any blood or Blood from entering their system.
+|One Rouse Check
+|None
+|[[Fortitude]] ●
+|One scene or more
+|N/A
+|N/A
+|They must vomit it back up within the scene or extend to an additional scene by making another Rouse Check.
+|{{icon|v5 renegade}}
+
+[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 153
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Earth Meld"
+|'''Earth Meld'''
+|Sink into the earth and become one with the soil.
+| data-sort-value="1" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One day or more, or until disturbed
+|N/A
+|N/A
+|This power only works on natural surfaces and not artificial such as concrete.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 270
+|- id="Fleshcrafting"
+|'''Fleshcrafting'''
+|Extends the mastery over the flesh to be used on others.
+| data-sort-value="2" |One Rouse Check
+| class="hidem" |[[Protean#Vicissitude|Vicissitude]]
+| class="hidem" |[[Dominate]] ●●
+|Permanent
+|Resolve +
+Protean
+|Stamina +
+Resolve
+|An unwilling subject may resist with the margin of the user's role counting as the number of changes able to be made.
+| class="hidem" |
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 27
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 82
+|-
+
+|- id="Shapechange"
+|'''Shapechange'''
+|Change into an animal with a similar body mass.
+| data-sort-value="3" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |No
+|One scene unless voluntarily ended
+|N/A
+|N/A
+|Users gain the Physical Attributes and other traits of the animal they've changed into.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 270
+|-
+
+|- id="Visceral Absorption"
+|'''Visceral Absorption'''
+|Draw in the remains of blood and body to the vampire to clean a scene.
+| data-sort-value="4" |One Rouse Check
+| class="hidem" |None
+| class="hidem" |[[Blood Sorcery]] ●●
+|One turn per body
+|Strength +
+Protean
+|N/A
+|Hunger can be reduced by one per body, up to the level of their Blood Sorcery rating but cannot reduce to 0.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 49
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+
+|- id="Horrid Form"
+|'''Horrid Form'''
+| Take on a monstrous shape.
+| data-sort-value="1" |One Rouse Check
+| class="hidem" |[[Protean#Vicissitude|Vicissitude]]
+| class="hidem" |[[Dominate]] ●●
+|One scene unless voluntarily ended
+|N/A
+|N/A
+|Grants several changes equal to the user's Protean rating. Any critical scores are counted as messy criticals and Frenzy checks are made with +2 Difficulty.
+| class="hidem" |
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 28
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 83
+|- id="Metamorphosis"
+|'''Metamorphosis'''
+|Extends shape change to be able to change into a larger animal than the vampire's mass.
+| data-sort-value="2" |One Rouse Check
+| class="hidem" |[[Protean#Shapechange|Shapechange]]
+| class="hidem" |No
+|One scene unless voluntarily ended
+|N/A
+|N/A
+|Same rules as [[Protean#Shapechange|Shapechange]].
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 271
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" | Cost
+! width="8%" class="hidem" |Prerequisite
+! width="8%" class="hidem" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" class="hidem" |Source
+|-
+|'''Blood Form'''
+|Turn into an amorphous mass of blood.
+|One Rouse Check
+|None
+|[[Blood Sorcery]] ●●
+|One scene, or until the effect is voluntarily ended.
+|N/A
+|N/A
+|Can be consumed, creating blood bonds as normal.
+|Gehenna War, page 47
+|- id="The Heart of Darkness"
+|'''The Heart of Darkness'''
+| Allows a vampire to remove their own heart and store it outside of their body.
+| data-sort-value="1" |Free
+| class="hidem" |None
+| class="hidem" |[[Fortitude]] ●●
+|Permanent or until the heart is destroyed or returned to the host's body
+|N/A
+|N/A
+|If the heart is dealt aggravated damage equal to or greater than the user's health tracker, they fall into torpor. It can only be destroyed through fire or sunlight.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+|-
+|'''Master of Forms'''
+|Allows the vampire to take on any animal shape, rather than just one.
+|None, but rouse for Shapechange as normal.
+|Shapechange
+|No
+|As Shapechange or Metamorphosis
+|N/A
+|N/A
+|All other limitations of Shapechange and Metamorphosis apply.
+|Gehenna War, page 48
+|- id="Mist Form"
+|'''Mist Form'''
+|Turn into a cloud of mist.
+| data-sort-value="2" |One to three Rouse Checks
+| class="hidem" |None
+| class="hidem" |No
+|One scene unless voluntarily ended
+|N/A
+|N/A
+|This power takes three turns to use and may be sped up with additional Rouse Checks on a one-for-one trade.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 271
+|- id="One with the Land"
+|'''One with the Land'''
+|Sink into the earth of their Domain.
+| data-sort-value="3" |Two Rouse Checks
+| class="hidem" |[[Protean#Earth Meld|Earth Meld]]
+| class="hidem" |[[Animalism]] ●●
+|One day or more, or until physically disturbed
+|N/A
+|N/A
+|Same system as [[Protean#Earth Meld|Earth Meld]] however they are not limited by the material.
+| class="hidem" |
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 28
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 83
+|- id="The Unfettered Heart"
+|'''The Unfettered Heart'''
+|The heart of the vampire can move freely within the chest, making staking more difficult.
+| data-sort-value="4" |Free
+| class="hidem" |None
+| class="hidem" |No
+|Passive
+|N/A
+|N/A
+|Only upon a critical win does the stake penetrate when in melee combat.
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 271
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Protean;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Protean Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" class="hidem" |Source
+
+|- id="Enduring Beasts"
+|[[File: Presence symbol.png|42px]]||'''[[Presence#Eyes of the Serpent|Eyes of the Serpent]]'''
+|[[Presence]] ●
+| data-sort-value="1" |●
+|Immobilize a victim by making eye contact
+|Free
+|Charisma +
+Presence
+| class="hidem" |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Anarch|Anarch]], page 185
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|}
+==Gallery==
+<gallery>
+File:Shapechange example.png|Shapechange being used to change into a large dog. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #2
+File:Shapechange example 2.png|Shapechange and possible Metamorphosis being used to change into a tiger. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #9
+File:Shapechange example 3.png|Mitch transforming from a wolf to a man. Source: [[World of Darkness: Crimson Thaw]], Issue #1
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]

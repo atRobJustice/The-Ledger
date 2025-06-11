@@ -1,0 +1,282 @@
+{{Discipline
+| header=Celerity
+| symbol=Celerity_symbol.png
+| nicknames=Bolting, Slipping, Velocitas
+| affinity= {{icon|banu haqim}} [[Banu Haqim]] {{icon|brujah}} [[Brujah]] {{icon|toreador}} [[Toreador]]
+| type=Physical
+| threat=Medium to High
+| resonance=Choleric
+}}
+
+__TOC__
+
+==Overview==
+Celerity allows the kindred to defy the constraints of the human body. Dodging, running and general movements outside of the natural ability come easily when using these powers. With this, kindred become even stronger predators or strategists, able to make moves or think faster than most can.<ref>[[Vampire: The Masquerade Corebook]], page 252</ref>   
+
+To the [[Banu Haqim]] this is sometimes the Discipline they learn first. The ability to remove hesitation keeps them alive in their nights and Celerity allows the movement they need. It also enhances their abilities to feed, being able to dart from their favored vessel and to safety without being spotted.<ref>[[Vampire: The Masquerade Camarilla]], page 167</ref> [[Brujah]], in a similar fashion, use this power to strike fast and escape conflicts they've started as well as bolster their ability to snatch and feed aggressively from lone mortals.<ref>[[Vampire: The Masquerade Corebook]], page 67</ref> While the [[Toreador]] may not claim to be fighters, they use Celerity to cut their opponents into ribbons before they have a chance to fight back with deadly accuracy using [[Presence#Unerring Aim|Unerring Aim]]. They also use this power to enhance their artistic and performative pursuits as well as expedite their feeding.<ref>[[Vampire: The Masquerade Corebook]], page 90</ref> 
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Cat's Grace"
+|'''Cat’s Grace'''
+|Automatically pass balance tests.
+| data-sort-value="1" |Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+|Does not work on objects that cannot support their weight.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 252
+|-
+|'''Fluent Swiftness'''
+|Reroll Blood Surge on a Dexterity or Celerity test.
+|Free
+|None
+|No
+|Once
+|N/A
+|N/A
+|N/A
+|Gehenna War, page 46
+|- id="Rapid Reflexes"
+|'''Rapid Reflexes'''
+|Faster reactions and minor actions.
+| data-sort-value="2" |Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+|This power also prevents them from taking a penalty when they have no cover during a firefight.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 253
+|}
+
+===Level 2===
+
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Fleetness"
+|'''Fleetness'''
+| Add Celerity rating for non-combat Dexterity test or defending.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|
+*N/A
+|This may be used once per turn when defending with associated pools.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 253
+|-id="Rush Job"
+|'''Rush Job'''
+|Perform a Skill-related task that would take a long time in mere seconds.
+|One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|This power does not speed up attacks or defenses.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 72
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" | Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" | Source
+
+|- id="Blink"
+|'''Blink'''
+|Closes the distance as if teleporting.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One turn
+|Dexterity +
+Athletics
+|N/A
+|The user moves in a straight line and may need to make checks against difficult terrain.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 253
+|- id="Traversal"
+|'''Traversal'''
+|Move fast enough to move up vertical surfaces or liquid surfaces.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One turn
+|Dexterity +
+Athletics
+|N/A
+|The Storyteller should inform the user beforehand if the target is too far away
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 253
+|-id="Weaving"
+|'''Weaving'''
+|Remove the penalty from dodging multiple ranged opponents.
+|One Rouse Check
+|Rapid Reflexes
+|No
+|One scene
+|N/A
+|N/A
+|The user can all add their Celerity rating to ranged dodging attempts.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 72
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" | Additional Notes
+! width="10%" |Source
+|-id="Blurred Momentum"
+|'''Blurred Momentum'''
+|Attacks against the user with fewer successes than their Celerity rating miss.
+|One Rouse Check per turn
+|None
+|No
+|Until the user lets it lapse
+|N/A
+|N/A
+|This works against powers that do not allow defense tests.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 72
+|- id="Draught of Elegance"
+|'''Draught of Elegance'''
+|Turn their vitae into a Celerity boost for others
+| data-sort-value="1" | One Rouse Check
+|None
+|No
+|One Night; for drinkers until the vampire's next feeding or Hunger 5
+|N/A
+|N/A
+|Each drinker must take one Rouse Checks worth.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 254
+|- id="Unerring Aim"
+|'''Unerring Aim'''
+|The world slows down to a crawl
+| data-sort-value="2" |One Rouse Check
+|None
+|[[Auspex]] ●●
+|A single attack
+| N/A
+|N/A
+|Those with Celerity 5 may nullify this power with a Rouse Check and defend.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 254
+|-id="Unseen Strike"
+|'''Unseen Strike'''
+|Disappear then reappear to surprise attack an enemy.
+|Two Rouse Checks
+|Blink
+|[[Obfuscate]] ●●●●
+|One turn
+|Dexterity +
+Celerity
+|Wits +
+Awareness
+|If the test is won, the attack is treated as a surprise attack. Else it follows the same attack/movement rules as Blink.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 73
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Lightning Strike"
+|'''Lightning Strike'''
+|Attack with lightning speed
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|A single attack
+|N/A
+|N/A
+|Those with Celerity 5 may nullify this power with a Rouse Check and defend.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 254
+|- id="Split Second"
+|'''Split Second'''
+|Alter the events given by Storyteller in a current scene within reason
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One action, as determined by ST
+|N/A
+|N/A
+|The action should be reasonable and accomplished within a few seconds in real-time.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 254
+|}
+
+==Gallery==
+<gallery>
+File:Celerity example.png|Celerity in use. Source: Vampire: The Masquerade Winter's Teeth Issue #3
+File:Fleetness example.png|Fleetness being used to dodge gunfire. Celerity in use. Source: Vampire: The Masquerade Winter's Teeth Issue #9
+File:SplitSecond BL2.jpg|Split Second being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

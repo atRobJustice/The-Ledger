@@ -1,0 +1,434 @@
+{{Discipline
+| header=Auspex
+| symbol=Auspex_symbol.png
+| nicknames=Voyeurism, Scrying, Anima Visus
+| affinity= {{icon|hecata}} [[Hecata]] {{icon|malkavian}} [[Malkavian]] {{icon|Salubri}} [[Salubri]]<br> 
+{{icon|toreador}} [[Toreador]] {{icon|tremere}} [[Tremere]]
+| type=Mental
+| threat=Low
+| resonance=Phlegmatic
+}}
+
+__TOC__
+
+== Overview==
+Considered a potent double sword, Auspex allows Kindred to sift out the truth from lies and read the minds around them, able to feel emotions from others beyond mortal skill and receive horrifying flashes of the future. Reality can be perceived differently by the Auspex user, giving them information that they may wish to never know and, in turn, opens the gateway to paranoia. Those able to master this volatile Discipline make excellent spies, detectives, and seers in courts and factions. Certain Auspex powers can be used to foil supernatural stealth such as [[Auspex#Sense the Unseen|Sense the Unseen]] or to determine those under supernatural manipulation with abilities like [[Auspex#Scry the Soul|Scry the Soul]]. Higher levels of this power can be used to survey and invade minds. Visions are potent but unreliable seeing flashes of the past, future, or imminent death. <ref>[[Vampire: The Masquerade Corebook]], page 248-249</ref>
+
+The [[Hecata]] have used Auspex to see spirits remaining in this realm and to power their necromancy. They love to see fate's grand design to plan grand schemes and meddle with fate's design as seen with [[Auspex#Fatal Precognition|Fatal Precognition]].<ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 202</ref> [[Malkavian|Malkavians]] are known for their potent foresight and supernatural senses to determine what makes mortals tick and deep dive into their psyche.<ref>[[Vampire: The Masquerade Corebook]], page 79</ref> The [[Salubri]] uses Auspex to see the hidden truth of the world and to see the often overlooked. Auspex is important when it comes to their ability to aid or hinder another kindred as displayed with [[Auspex#Obeah|Panacea]] and [[Auspex#Unburdening the Bestial Soul|Unburdening the Bestial Soul]].<ref>[[Vampire: The Masquerade Companion]], page 14</ref> [[Toreador]] typically use Auspex to find susceptible victims and experience new sensations from mortals. They also manipulate kindred with their discovered secrets and desires.<ref>[[Vampire: The Masquerade Corebook]], page 90</ref> Practical [[Tremere]] use Auspex to see deeper into the unseen, mystical information gathering, and find pliable mortals to manipulate.<ref>[[Vampire: The Masquerade Corebook]], page 97</ref>   
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Heightened Senses"
+|'''Heightened Senses'''
+|Enhance vampiric senses and add Auspex rating to all perception rolls.
+| data-sort-value="1" |Free
+|None
+|No
+| Until Deactivated
+|Wits + 
+Resolve
+| N/A
+|Having the power activated for long periods might require the use of Willpower.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+[[Vampire: The Masquerade Corebook|Corebook]], page 249
+|- id="Sense the Unseen"
+|'''Sense the Unseen'''
+|Sense supernatural activity.
+| data-sort-value="2" |Free
+| None
+| No
+|Passive
+|Wits/Resolve +
+Auspex
+|N/A
+ |If the target is using [[Obfuscate]] they oppose using Wits + Obfuscate vs the user's Wits + Auspex, normal searches use Resolve.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+[[Vampire: The Masquerade Corebook|Corebook]], page 249
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" | Source
+
+|- id="Panacea"
+|'''Panacea''' {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Name changed from Obeah to Panacea}}
+|Heals Willpower and calms nerves.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Fortitude]] ●
+|N/A
+|Composure + 
+Auspex
+|N/A
+| If the user uses this on more than one subject on the same night, the cost increases to spend Willpower equal to half the number of successes in the margin per additional target.
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 24 <br />{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 70
+|- id="Premonition"
+|'''Premonition'''
+|Visions of the future.
+| data-sort-value="2" |Free / One Rouse Check
+|None
+|No
+|Passive
+|Resolve +
+Auspex
+|N/A
+|The Storyteller may activate this power passively with no cost, when used actively the user must make a Rouse Check and roll Resolve + Auspex.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 249
+|- id="Reveal Temperament"
+|'''Reveal Temperament'''
+| Smell the [[Resonance]] of a target and/or if Dyscrasia is present.
+|One Rouse Check
+|None
+|No
+|One scene
+|Intelligence +
+Auspex
+|Composure +
+Subterfuge
+|When used on Kindred this reveals information about their last feed.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 71
+|- id="Unerring Pursuit"
+|'''Unerring Pursuit'''
+|Tracking a victim.
+| data-sort-value="3" |One Rouse Check
+|None
+|[[Dominate]] ●
+|One night plus one for each success
+|Resolve +
+Auspex
+|N/A
+| The victim can roll Wits + Awareness to catch a glimpse of the user once under its effects.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 46
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! class="unsortable" width="14%" |Effect
+! class="unsortable" width="10%" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! class="unsortable" width="10%" |Additional Notes
+! width="10%" |Source
+
+|- id="Vermin Vision"
+|'''Vermin Vision'''{{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Name changed from Eyes of Beasts to Vermin Vision}}
+|Share the senses with animals.
+| data-sort-value="1" | One Rouse Check
+|None
+|[[Animalism]] ●●
+| One scene {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+| Resolve +
+Animalism {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+|N/A
+|This power works through groups of animals.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 30 {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, originally pg 148}}
+|- id="Fatal Flaw"
+|'''Fatal Flaw'''
+|Find the weakness of a target
+|One Rouse Check
+|None
+|[[Oblivion]] ●
+| One scene 
+|Intelligence +
+Auspex
+|Composure/Stamina +
+Subterfuge
+| It can be defended against with Composure for mental weaknesses or with Stamina for physical.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 71
+|- id="Scry the Soul"
+|'''Scry the Soul'''
+|Perceives information about the target. 
+| data-sort-value="2" |One Rouse Check
+|None
+|No 
+|One turn
+|Intelligence +
+Auspex
+|Composure +
+Subterfuge
+|This can either be used on a single target or a crowd.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 250
+|- id="Share the Senses"
+|'''Share the Senses'''
+|Tapping into other's senses.
+| data-sort-value="3" |One Rouse Check
+| None
+|No
+|One scene
+| Resolve + 
+Auspex
+|N/A
+|[[Auspex#Sense the Unseen|Sense the Unseen]] can allow the user to be noticed by the victim.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 250
+|}
+
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! class="unsortable" width="14%" |Effect 
+! class="unsortable" width="10%" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! class="unsortable" width="10%" | Additional Notes
+! width="10%" |Source
+
+|- id="Spirit's Touch"
+|'''Spirit's Touch'''
+|Gathering emotional residue from an object or location
+| data-sort-value="1" |One Rouse Check
+| None
+|No
+|One turn
+|Intelligence +
+Auspex
+|N/A
+|What information they gleam works from the most recent backward.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 250
+|}
+
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! class="unsortable" width="14%" |Effect
+! class="unsortable" width="10%" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool 
+! class="unsortable" width="10%" |Additional Notes
+! width="10%" |Source
+
+|- id="Clairvoyance"
+|'''Clairvoyance'''
+|Information gathering from surroundings
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|Few minutes up to one night
+|Intelligence +
+Auspex
+| N/A
+|This power can be used to monitor events in progress.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 251
+|- id="Possession"
+|'''Possession'''
+|Possess a mortal body
+| data-sort-value="2" |Two Rouse Checks
+|None
+|[[Dominate]] ●●●
+| Until ended 
+|Resolve +
+Auspex
+|Resolve +
+Intelligence
+|This power does not give the ability to read the target's mind, use their skills or impersonate them.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 251
+|- id="Telepathy"
+|'''Telepathy'''
+|Read minds and project thoughts
+| data-sort-value="3" |One Rouse (one Willpower on non-consenting vampires)
+| None
+|No
+|One minute per rouse or full scene on consenting subject
+| Resolve +
+Auspex
+|Wits +
+Subterfuge
+|The user doesn't need to roll to project their thoughts onto others.
+| 
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 252
+|- id="Unburdening the Bestial Soul"
+|'''Unburdening the Bestial Soul'''
+|Stain removal or protection from Stains
+| data-sort-value="4" |Two Rouse checks, 1 Stain
+|Panacea {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Name changed from Obeah to Panacea}}
+|[[Dominate]] ●●●
+|One session
+|Composure +
+Auspex
+|N/A
+|This power only works on vampires with a lower [[Humanity]] rating.
+|
+*{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 24 <br />{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 71
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Auspex;
+{| class="mildtable sortable plainlist" width="100%"
+! class="unsortable" width="1%" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Auspex Level Required
+! class="unsortable" width="20%" |Effect
+! class="unsortable" width="12%" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+|- id="Invigorating Vitae"
+|[[File: Fortitude symbol.png|42px]]
+|'''[[Fortitude#Invigorating Vitae|Invigorating Vitae]]'''
+|[[Fortitude]] ●●
+|● 
+|Heal mortals faster with the Blood.
+|None other than the Rouse Checks to give Blood 
+|N/A
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 75
+|- id="Valeren"
+|[[File: Fortitude symbol.png|42px]]||[[Fortitude#Valeren|'''Valeren''']]
+|[[Fortitude]] ●●●
+| data-sort-value="1" |●
+|Mend an injured vampire
+|One Rouse Check
+|Intelligence +
+Fortitude
+|{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 25
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 75
+|- id="Thrown Voice"
+|[[File: Presence symbol.png|42px]]
+|'''[[Presence#Thrown Voice|Thrown Voice]]'''
+|[[Presence]] ●●●
+|●
+|Throw their voice from any point within sight and leave the voice there.
+|One Rouse Check
+|N/A
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 80
+|- id="Fatal Prediction"
+|[[File: Oblivion symbol.png|42px]]
+|'''[[Oblivion#Fatal Prediction|Fatal Prediction]]'''
+|[[Oblivion]] ●●
+|●●
+|Increase the chances of a mortal being harmed by exterior forces.
+|One Rouse Check
+|Resolve +
+Oblivion
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 87
+|- id="Fatal Precognition"
+|[[File: Oblivion symbol.png|42px]]||[[Oblivion#Fatal Precognition|'''Fatal Precognition''']]
+|[[Oblivion]] ●●
+| data-sort-value="2" |●●
+|Vision of a non-vampires death
+|One Rouse Check 
+|Resolve +
+Oblivion
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 204
+
+|- id="Ventriloquism"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Ventriloquism|'''Ventriloquism''']]
+|[[Obfuscate]] ●●
+| data-sort-value="3" |●● 
+|Throwing one's voice
+|One Rouse Check
+|Wits +
+Obfuscate
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 148
+
+|- id="Unerring Aim"
+|[[File: Celerity symbol.png|42px]]||[[Celerity#Unerring Aim|'''Unerring Aim''']]
+|[[Celerity]] ●●●●
+| data-sort-value="4" |●●
+|Slow the world down to attack
+|One Rouse Check
+|N/A
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 254
+|- id="Conceal"
+|[[File: Obfuscate symbol.png|42px]]||[[Obfuscate#Conceal|'''Conceal''']]
+|[[Obfuscate]] ●●●●
+| data-sort-value="5" |●●●
+|Cloak an inanimate object
+|One Rouse Check
+|Intelligence +
+Obfuscate
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 262
+|- id="Magnum Opus"
+|[[File: Presence symbol.png|42px]]||[[Presence#Magnum Opus|'''Magnum Opus''']]
+|[[Presence]] ●●●●
+| data-sort-value="6" |●●●
+|Infusing Presence into artwork
+|One or more Rouse Check
+|Charisma/Manipulation +
+Craft
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3
+|}
+
+==Gallery==
+<gallery>
+File:Scry the Soul example.png|Scry the Soul being used and showing the black veins of Diablerie. Source: [[World of Darkness: Crimson Thaw]], Issue #3.
+File:Possession BL2.jpg|Possession being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

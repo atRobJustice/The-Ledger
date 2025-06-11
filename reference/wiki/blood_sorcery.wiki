@@ -1,0 +1,367 @@
+{{Discipline
+| header=Blood Sorcery
+| symbol=Blood_Sorcery_symbol.png
+| nicknames=A Kind of Magic, Thaumaturgy, Quietus
+| affinity= {{icon|tremere}} [[Tremere]] {{icon|banu haqim}} [[Banu Haqim]]
+| type=Sorcery
+| threat=Low to High
+| resonance=Sanguine
+}}
+
+__TOC__
+
+==Overview==
+Unlike other Disciplines, Blood Sorcery is a power that does not develop organically, instead, it is developed by being taught or through research of old tomes. It also functions slightly differently in that not only does it give powers per level but it also opens access to [[Blood Sorcery Rituals]] equal or lesser to the user's current Blood Sorcery level. However, ghouls of sorcerers or Thin-Bloods with temporary Disciplines from [[Resonance|Resonances]] do not receive access to these rituals. At creation, if the character has Blood Sorcery they receive one ritual for free, further rituals cost both experience and time. Rituals generally take at least the square of their rating in weeks to learn. The powers on a surface level may appear weaker, but where it shines is in the versatility of the rituals and flexibility as Sorcerers can learn as many rituals as they desire. <ref>[[Vampire: The Masquerade Corebook]], page 272</ref>  
+
+This power is unique to the [[Tremere]] and [[Banu Haqim]], one which they argue who created it first. "Thaumaturgy", as the Tremere call it, maintains that it was theirs. Whereas the Banu Haqim are dead set on their version, "Quietus", was the origin long before the Tremere were ever a clan. Both approach the learning style differently, with the Tremere originally relying on the Pyramid and its structure to ensure neonates were taught before its collapse, now they seek information on this power through scraps of its remains. Whereas the Banu Haqim stressed the Sire Childe relationship to teach them, however, these nights many Banu Haqim ends up in different places than their sire. The Tremere use their magics to inflict powerful attacks on their opponent's body with powers like [[Blood Sorcery#Scorpion's Touch|Scorpion's Touch]]. Some may even use Thaumaturgy to ease their feeding by drawing their blood into their mouth without touching them by utilizing [[Blood Sorcery#Theft of Vitae|Theft of Vitae]].<ref>[[Vampire: The Masquerade Corebook]], page 97</ref>  In a similar fashion the Banu Haqim use their blood sorcery to turn vitae into poison and use it as a weapon. Harnessing the power for killing is not the only use they have as the viziers delve into rituals to learn secrets from others' blood. <ref>[[Vampire: The Masquerade Camarilla]], page 167</ref>
+
+The Old Clan's Sorcerers point out the Tremere and Banu Haqim are the only innate blood sorcerers, while in the shadows the Setites of [[the Ministry]] practice a form of sorcery they called Akhu.<ref>[[Vampire: The Masquerade Blood Sigils]], page 94</ref> The [[Tzimisce]] sorcerers call themselves koldun, or kolduny when there's a group of them, and consider themselves the oldest and best blood sorcerers that founded the [[Sabbat|Sabbat’s]] vaulderie practice among other things. These rare few practice a form of Blood Sorcery that enthralls air, water, fire, or earth to them similar in effect to a [[Blood Bond]] during an initiation ritual performed by another Koldun.<ref>[[Vampire: The Masquerade Blood Sigils|Vampire: the Masquerade Blood Sigils]], page 95</ref> This mystical practice of theirs is unique in Blood Sorcery in that it behaves similarly to Oblivion ceremonies requiring Koldunic Sorcery as a prerequisite in order for its connected rituals to work.
+
+Recent events have made blood sorcery more available in modern nights. The [[Second Inquisition]], [[Gehenna|Gehenna War]], [[Anarch|Second Anarch Rebellion]], Fall of the Pyramid, and Fall of Alamut have all played a role in the growth of the black market called the [[blood craft scene]]. Other clans like the [[Toreador]], [[Hecata]], and [[Brujah]] have shown interest in acquiring blood sorcery where in the past only a handful of their members might have had access to its secrets.<ref>[[Vampire: The Masquerade Blood Sigils|Vampire: the Masquerade Blood Sigils]], page 9</ref> While Blood sorcery has gotten much less guarded than it was in the past it is still a long and dangerous path as the remnants of the Pyramid in House Tremere, the Praepositors of the [[Praesidium]], older Banu Haqim, and other threats exist to stamp out the red workers for good.<ref>[[Vampire: The Masquerade Blood Sigils|Vampire: the Masquerade Blood Sigils]], page 93</ref>
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Corrosive Vitae"
+|'''Corrosive Vitae'''
+|Turn vitae corrosive.
+| data-sort-value="1" |One or more Rouse Check
+|None
+|No
+|N/A
+|N/A
+|N/A
+|Does not work against unliving flesh, such as other vampires.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 272
+|- id="Shape the Sanguine Sacrament"
+|'''Shape the Sanguine Sacrament'''
+|Shape blood into a shape or image. {{Errata|date=January 19th, 2024|source=Vampire: The Masquerade Book of Nod Apocrypha|summary=Mechanical changes}}
+| data-sort-value="2" |Free
+| None
+|No
+|One Scene unless deactivated
+|Manipulation +
+Blood Sorcery
+|N/A
+|If the user uses their vitae, it costs one Rouse Check.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3 / [[Vampire: The Masquerade Book of Nod Apocrypha|Book of Nod Apocrypha]], page 33 {{icon|v5 renegade}}
+|- id="A Taste for Blood"
+|'''A Taste for Blood'''
+|Discover traits of another through their blood.
+| data-sort-value="3" |Free
+|None
+|No
+|N/A
+|Resolve +
+Blood Sorcery
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 272
+|-
+|'''Koldunic Sorcery'''
+|Attune with and sense through an element, e.g. Water
+|One Rouse Check and Aggravated Health Damage
+|Tzimisce
+|No
+|One Scene, Can be renewed
+|Resolve + Blood Sorcery
+|Wits or Resolve + Obfuscate
+|Can be taken multiple times to attune to other elements
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 61
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Blood's Curse'''
+|Temporary increase another vampire's Bane Severity.
+|One Rouse Check
+|None
+|No
+|Until dawn
+|Intelligence +
+Blood Sorcery
+|Stamina +
+Occult / Fortitude
+|If the target is a ghoul, thinblood, or Caitiff they get a clan bane.
+|Gehenna War, page 48
+|- id="Extinguish Vitae"
+|'''Extinguish Vitae'''
+|In use, this increases another Kindred’s Hunger.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|N/A
+|Intelligence +
+Blood Sorcery
+|Stamina +
+Composure
+|The victim can determine who used this power against them if they can see them and win an Intelligence + Occult vs Wits + Subterfuge roll.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 272
+|- id="Scour Secrets"
+|'''Scour Secrets'''
+|Pore through a large amount of content within minutes. {{Errata|date=January 19th, 2024|source=Vampire: The Masquerade Book of Nod Apocrypha|summary=Mechanical changes}}
+| One Rouse Check
+|None
+|No
+|One night or till the information is found or there’s a dead-end 
+|Intelligence +
+Blood Sorcery
+|N/A
+|This power does not allow the user to parse things written in a language they cannot understand.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 98 / [[Vampire: The Masquerade Book of Nod Apocrypha|Book of Nod Apocrypha]], page 34 {{icon|v5 renegade}}
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" | Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" | Additional Notes
+! width="10%" |Source
+
+|- id="Blood of Potency"
+|'''Blood of Potency'''
+|Increase Blood Potency temporarily.
+| data-sort-value="1" |One Rouse Check 
+|None
+|No 
+|One Scene or Night
+|Resolve +
+Blood Sorcery
+| 
+*N/A
+|This power can allow a Kindred to bypass the [[Blood Potency]] limit set by their generation.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 273
+|- id="Scorpion's Touch"
+|'''Scorpion’s Touch'''
+|Change own vitae into paralyzing poison.
+| data-sort-value="2" |One or more Rouse Check 
+|None
+|No
+|One Scene
+|Strength +
+Blood Sorcery
+|Stamina +
+Occult/Fortitude
+|A mortal who takes any damage from this will go unconscious.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 273
+|
+|- id="Transitive Bond"
+|'''Transitive Bond'''
+|Extend the properties of Blood Bonding in vitae.
+| data-sort-value="3" | One Rouse Check
+|None
+|No
+|N/A
+|N/A 
+|N/A
+|This power was developed originally by the Tremere to combat their bane to only resurface within the Sabbat.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 49
+|- id="Ripples of the Heart"
+|'''Ripples of the Heart'''
+| Manipulate the blood or Blood of others.
+|One Rouse Check
+|None
+| No
+|N/A
+|N/A
+|N/A
+| This power can inflict Compulsions on others who feed from the infected or alter the Resonance of a mortal.
+|{{icon|v5 renegade}}
+
+[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 153
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" | Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Theft of Vitae"
+|'''Theft of Vitae'''
+|Manipulate blood from a victim through the air to feed.
+| data-sort-value="1" |One Rouse Check
+|None
+| No
+|One feeding
+|Wits +
+Blood Sorcery
+|Wits +
+Occult
+|When in use the victim is under the same influence as a standard Kiss.
+|
+{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 274
+|- id="Blood Aegis"
+|'''Blood Aegis'''
+|Form a protective Blood barrier.
+|One or more Rouse Checks
+|None
+|No
+|One scene or until damage is spent
+| N/A
+|N/A
+|For each Rouse Check, the user can reduce the damage taken by five points.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 98
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" | Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Baal's Caress"
+|'''Baal’s Caress'''
+|Change the user's own Vitae into an aggressive and lethal poison.
+| data-sort-value="1" |One or more Rouse Checks
+| None 
+|No
+|One Scene
+|Strength +
+Blood Sorcery
+|Stamina +
+Occult/Fortitude
+|If a mortal takes one point of damage they die instantly.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 251
+|- id="Cauldron of Blood"
+|'''Cauldron of Blood'''
+|Boil the victim's blood in their body.
+| data-sort-value="2" |One Rouse Check, Stains
+| None 
+|No
+|One turn
+|Resolve +
+Blood Sorcery
+|Composure +
+Occult/Fortitude
+|If a mortal takes one point of damage they die screaming.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 251
+|- id="Reclamation of Vitae"
+|'''Reclamation of Vitae'''
+|Reclaim the Blood given to create ghouls over distance. 
+| data-sort-value="3" |One or more Stains
+| None
+|No 
+|N/A
+|N/A
+|N/A
+|Those outside of the Sabbat take stains upon use.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}} 
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 50
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Blood Sorcery;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" | Name
+! width="15%" |Power Level
+! width="10%" |Blood Sorcery Level Required
+! width="20%" class="unsortable" |Effect 
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+
+|- id="Ancestral Dominion"
+|[[File: Dominate symbol.png|42px]]||[[Dominate#Ancestral Dominion|'''Ancestral Dominion''']]
+|[[Dominate]] ●●●●
+| data-sort-value="2" |●● {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Amalgam reduced to Blood Sorcery 2}}
+| Urge a descendant to act even if against their own opinion. 
+|One Rouse Check 
+| Manipulation +
+Dominate
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 104
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|-
+|[[File: Protean symbol.png|42px]]
+|Blood Form
+|[[Protean]] ●●●●●
+|●●
+|Turn into an amorphous mass of blood.
+|One Rouse Check
+|N/A
+|Gehenna War, page 47
+|- id="Visceral Absorption"
+|[[File: Protean symbol.png|42px]]||[[Protean#Visceral Absorption|'''Visceral Absorption''']]
+|[[Protean]] ●●●
+| data-sort-value="1" |●●
+|Draw in the remains of blood and body to the vampire to clean a scene
+|One Rouse Check
+|Strength +
+Protean
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 49
+|}
+
+==Gallery ==
+<gallery>
+File:ShapeTheSanguineSacrement example.png|Shape the Sanguine Sacrament. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #1
+File:Corrosive Vitae example.png|Corrosive Vitae being used to burn open a cell. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #9
+File:Cauldron of Blood example.png|Cauldron of Blood being used to kill a vampire hunter. Source: [[Vampire: The Masquerade Winter's Teeth]] Issue #9
+File:Cauldron of Blood BL2.jpg|Cauldron of Blood being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

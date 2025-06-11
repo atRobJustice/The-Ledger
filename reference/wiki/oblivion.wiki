@@ -1,0 +1,442 @@
+{{Discipline
+| header=Oblivion
+| symbol=Oblivion_symbol.png
+| nicknames=Obtenebration, Necromancy, Shadow-boxing, Abyssal Mastery, Tenebrae Imperium, Mortis, the Dark Arts, Black Magic, Entropy
+| affinity= {{icon|hecata}} [[Hecata]] {{icon|lasombra}} [[Lasombra]]
+| type=Mental
+| threat=Medium to High
+| resonance="Empty"
+}}
+
+__TOC__
+
+== Overview ==
+Oblivion is a power rarely used by those outside of the [[Hecata]] and [[Lasombra]]. The power itself extends into two different styles, one focusing on the more ceremonial and necromancy side as seen with the Hecata and the other reaching into the darkness to utilize shadows as seen with the Lasombra. The power itself originates from a plane of death and nothingness, letting its users reach into it and touch something more supernatural than not.<ref name=":0">[[Vampire: The Masquerade Chicago by Night]], page 292-293 and [[Vampire: The Masquerade Cults of the Blood Gods]], page 203-204</ref>  
+
+Similar to [[Blood Sorcery]], the possession of Oblivion gives access to [[Oblivion Ceremonies]]. Ceremonies all require pre-requisite powers from the Oblivion branch which alters it from Blood Sorcery. Still, ghouls of Necromancers or Thin-bloods gaining temporary access through Resonance do not have access to Ceremonies and only to Oblivion powers. At creation a character may take 1 Oblivion Ceremony should they have at least one dot of Oblivion and the pre-requisite power. Characters can later obtain more Ceremonies at the cost of experience and time. Ceremonies generally take at least the square rating in weeks to learn as well as a teacher who already knows the Ceremony. <ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 208</ref> 
+
+Oblivion projects a two-dimensional shadow against the three-dimensional world in which we live, making most attacks against them futile as bullets ricochet off the surface rather than the shadow itself. These projections and spirits take damage from bright, direct lights and may be damaged by blessed weapons depending on various factors. A well-lit room is a danger to any shadow wielder looking to rely solely on the Discipline as rooms without shadows are limiting. When Oblivion is used, if a 1 or a 10 is a result of the Rouse Check the user takes one stain in addition to any Hunger gained, and in cases where their [[Blood Potency]] allows for a reroll, they can pick either of the two results. <ref name=":0" />  
+
+For the Lasombra Oblivion is a power wielded in a way to allow them to manipulate the darkness, controlling the shadows at their will either as a weapon or a tool. It has its uses as a method to attack a target with tendrils as seen with [[Oblivion#Arms of Ahriman|Arms of Ahriman]], as well as to bolster their intimidation techniques as they emerge from the shadows with [[Oblivion#Shadow Cloak|Shadow Cloak]]. The uses even extend into changing their form with [[Oblivion#Tenebrous Avatar|Tenebrous Avatar]] or stepping out from where they were not once standing with [[Oblivion#Shadow Step|Shadow Step]].<ref>[[Vampire: The Masquerade Chicago by Night]], page 291</ref> As for the Hecata, the power takes a different path towards the undead and Necromancy. With the ability to locate and speak to the dead as seen with [[Oblivion#Binding Fetter|Binding Fetter]] and [[Oblivion#Oblivion Sight|Oblivion Sight]], or by manipulating and controlling the energies of death itself as displayed with [[Oblivion#Aura of Decay|Aura of Decay]]. Through these uses, the Hecata may set a spirit to attack their targets or rot everything around them in a show of power or simply to horrify meddling mortals. <ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 202</ref> 
+
+==List of available powers==
+=== Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Ashes to Ashes"
+|'''Ashes to Ashes'''
+|Destroy a corpse by dissolving it.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|Variable
+|Stamina +
+Oblivion
+|Stamina +
+Medicine/Fortitude
+|If the body is not animated it will dissolve throughout three turns with no test needed.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 204
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 85
+|- id="Binding Fetter"
+|'''Binding Fetter'''
+|Allow users to be able to identify a fetter by use of their senses.
+| data-sort-value="2" |Free
+|None
+|No
+|One scene
+|Wits +
+Oblivion {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Pool added}}
+|N/A
+|During its use the user receives a -2 penalty to all Awareness, Wits, and Resolve rolls.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 204
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 85
+|- id="Oblivion Sight"
+|'''Oblivion Sight'''
+|See in darkness clearly and see ghosts present.
+| data-sort-value="3" |Free
+|None
+|No
+|One scene
+|N/A
+|N/A
+|While in use there is a two-dice penalty to social interactions with mortals.{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 293
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 85
+|- id="Shadow Cloak"
+|'''Shadow Cloak'''
+| +2 bonus to stealth rolls and intimidation against mortals.
+| data-sort-value="4" |Free
+|None
+|No
+|Passive
+| N/A
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 293
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 85 
+{{icon|v5 renegade}}[[Vampire: The Masquerade Fall of London|Fall of London]], page 264
+|}
+
+===Level 2===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Arms of Ahriman"
+|'''Arms of Ahriman'''
+|Conjures shadow appendages that the user can control but the user is unable to do anything else.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Potence]] ●●
+|One scene or until ended or destroyed
+|Wits +
+Oblivion
+|N/A
+|Arms do not have a health tracker and do not require Composure + Resolve to escape. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical changes}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 294
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 86
+|-id="Fatal Prediction"
+|'''Fatal Prediction'''
+|Increase the chances of a mortal being harmed by exterior forces.
+|One Rouse Check
+|None
+|[[Auspex]] ●●
+|24 hours
+|Resolve +
+Oblivion
+|Wits +
+Occult
+|For every success over margin the victim takes 1 Aggravated damage throughout the duration. The vampire cannot interact with the victim directly or indirectly. This is an updated version of Fatal Precognition.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 87
+|- id="Fatal Precognition"
+|'''Fatal Precognition'''
+|Vision of a non-vampires death.
+| data-sort-value="2" |One Rouse Check
+|None
+|[[Auspex]] ●●
+|Until fulfilled, avoided or the story ends
+| Resolve +
+Oblivion
+|N/A
+|The vampire must be able to see or hear the target during the power's use.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 204
+|- id="Shadow Cast"
+|'''Shadow Cast'''
+| Conjure shadows from the user's body.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+| N/A
+|The shadow can be extended up to twice the user's Oblivion rating in yards/meters. Those standing in the shadow take more Willpower damage from social conflict
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 293
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 87
+|- id="Where the Veil Thins"
+|'''Where the Veil Thins'''{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Where the Shroud Thins}}
+|Determine the density of the Shroud in their area.
+| data-sort-value="4" |One Rouse Check
+|None
+|No
+|One turn {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Changed from one scene to one turn}}
+|Intelligence +
+Oblivion {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Changed from Wits to Intelligence}}
+|N/A
+|The book lists a chart stating the possible different densities and causes, as well as their effects.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 205
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 87
+|}
+
+===Level 3===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Aura of Decay"
+|'''Aura of Decay'''
+|Harnessing their connection to Oblivion can make plants wilt, animals and humans sick, and food spoil.
+| data-sort-value="1" | One Rouse Check
+|None
+|No
+|One scene
+|Stamina +
+Oblivion
+|Stamina +
+Medicine/Fortitude
+|All social rolls the vampire makes when this power is active takes a two dice penalty. Any contaminated food eaten gives two Superficial Damage.{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 205
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 88
+|- id="Passion Feast"
+|'''Passion Feast'''
+|Allows a vampire to slake Hunger on the passion of wraiths.
+| data-sort-value="2" |Free
+|None
+|[[Fortitude]] ●●
+|Passive
+|Resolve +
+Oblivion
+|Resolve +
+Composure
+|The hunger consumed does not return the following night. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 206
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 89
+|-
+
+|- id="Shadow Perspective"
+|'''Shadow Perspective'''
+|Projects their senses into a shadow within line of sight.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|Up to one scene
+|N/A
+|N/A
+|The use of this power is undetectable in the shadow other than by supernatural means such as [[Auspex#Sense the Unseen|Sense the Unseen]].
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 294
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 89
+|-
+|'''Shadow Servant'''
+|Use a shadow to spy on or scare others.
+|One Rouse Check
+|None
+|[[Auspex]] ●
+|One scene
+|N/A
+|N/A
+|The servant has no mind of its own and cannot endure bright lights able to be destroyed by them.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 89
+|-
+
+|- id="Touch of Oblivion"
+|'''Touch of Oblivion'''
+|Withers a body part on touch.
+| data-sort-value="4" |One Rouse Check
+|None
+|No
+|One turn
+|N/A
+|N/A
+|Inflicting such damage may warrant Stains up to Storyteller discretion. The user must grip the target. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 294
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 89
+|}
+
+===Level 4===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Necrotic Plague"
+|'''Necrotic Plague'''
+|Manifest illness in victims.
+| data-sort-value="1" |One Rouse Check{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Cost Stains removed}}
+|None
+|No
+|One turn to activate, variable length of the condition
+|Intelligence +
+Oblivion
+|Stamina +
+Medicine/Fortitude
+|This illness cannot be treated in a medical setting as it's supernaturally inflicted, instead only healed by drinking vitae. There is no outcome on Total Failures. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 206
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 89
+|- id="Stygian Shroud"
+|'''Stygian Shroud'''
+|Darkness spews out of a nearby shadow and covers the area.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|The shadow can be extended up to twice the user's Oblivion rating in yards/meters.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 295
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 90
+|- id="Umbrous Clutch"
+|'''Umbrous Clutch'''
+|Using the victim's shadow they create a portal, dropping them into the user's arms.
+| data-sort-value="3" |One Rouse Check, One Stain
+|None
+|No
+|Instant
+|Wits +
+Oblivion
+|Dexterity +
+Wits
+|An unprepared mortal will be terrified while a vampire must test for fury or fear Frenzy test at a Difficulty 4.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 49
+|}
+
+===Level 5===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Shadow Step"
+|'''Shadow Step'''
+|The user can step into one shadow and appear in another within their sight.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One turn
+|N/A
+|N/A
+|A willing person may be taken through the Shadow Step but should the user stain, so does the passenger.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 295
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 90
+|- id="Skuld Fulfilled"
+|'''Skuld Fulfilled'''
+|Reintroduce illnesses someone has recovered from.
+| data-sort-value="2" |Two Rouse Checks
+|None
+|No
+|Variable, depending on if the condition is treatable
+|Stamina +
+Oblivion
+|Stamina +
+Stamina/Fortitude{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|If the victim is a ghoul their immunity to aging is removed and eliminates any vitae in their system.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 207
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 91
+|- id="Tenebrous Avatar"
+|'''Tenebrous Avatar'''
+|Changes their body into a shadow able to move over any surface or through small spaces.
+| data-sort-value="3" |Two Rouse Checks
+|None
+|No
+|One scene or until ended
+|N/A
+|N/A
+|The user takes no damage except sunlight and fire while in this form.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 295
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 91
+|- id="Withering Spirit"
+|'''Withering Spirit'''
+|Erode a victim's spirit till they are a husk.
+| data-sort-value="4" |Two Rouse Checks, Stains
+|None
+|No
+|One turn
+|Resolve +
+Oblivion
+|Resolve +
+Occult/Fortitude
+|If the target is Impaired, they will not return as a wraith.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 208
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Oblivion;
+{| class="mildtable sortable plainlist" width="100%"
+! class="unsortable" width="1%" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" | Oblivion Level Required
+! class="unsortable" width="20%" |Effect
+! class="unsortable" width="12%" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+|- id="Valeren"
+| ||[[Auspex#Fatal Flaw|'''Fatal Flaw''']]
+|[[Auspex]] ●●●
+| data-sort-value="1" |●
+|Find the weakness of a target
+|One Rouse Check
+|Intelligence +
+Auspex
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 71
+|}
+
+==Gallery==
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

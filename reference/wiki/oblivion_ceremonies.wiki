@@ -1,0 +1,317 @@
+==Oblivion Ceremonies==
+Unless otherwise marked all ceremonies cost one rouse check, five minutes per level to cast and winning an Resolve + Oblivion Difficulty (Ceremony Level + 1). Ceremonies that benefit the recipient can only be cast onto the user themselves unless otherwise stated. They also usually require additional components in order to cast.<ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 208</ref> 
+
+===Level 1===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Pre-requisite
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="Gift of False Life"
+|'''Gift of False Life'''
+|Raise either a single corpse or a group to perform simple single or repetitive tasks.
+|One Rouse Check
+|[[Oblivion#Ashes to Ashes|Ashes to Ashes]]
+|Resolve +
+Oblivion
+|Corpses are mindless creatures and do not defend themselves from attacks, decaying as normal for the duration of the ceremony.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 208
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 92
+|- id="Knowing Stone"
+|'''Knowing Stone'''
+|Identify the locations and existences of specific ghosts.
+|One Rouse Check
+|[[Oblivion#Ashes to Ashes|Ashes to Ashes]], [[Oblivion#Binding Fetter|Binding Fetter]] {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+|Resolve +
+Oblivion
+|They must know the ghost's name.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 264 {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, originally pg 259}}
+|- id="Summon Spirit"
+|'''Summon Spirit'''
+|Summon a spirit from the underworld.
+|One Rouse Check
+|[[Oblivion#Binding Fetter|Binding Fetter]]
+|Resolve +
+Oblivion
+|The wraith will disappear at the end of the scene unless a ceremony is used to keep them there such as [[Oblivion Ceremonies#Compel Spirit|Compel Spirit]].
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 209
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 92
+|- id="Traveler's Call"
+|'''Traveler's Call'''
+|Summon another Shalimite.
+|One Rouse Check
+|[[Oblivion#Oblivion Sight|Oblivion Sight]]
+|Resolve +
+Oblivion
+|The victim can choose to ignore it, taking -2 to all pools in relation to concentration for one scene. This ceremony is connected to the Cult of Shalim.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 93
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Pre-requisite
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Ashen Relic'''
+|Preservation of a Kindred's body.
+|One Rouse Check
+|[[Oblivion#Ashes to Ashes|Ashes to Ashes]] or [[Oblivion#Oblivion's Sight|Oblivion's Sight]]
+|Resolve +
+Oblivion
+|Three successes in the margin preserves more.
+|[[Vampire: The Masquerade Book of Nod Apocrypha|Book of Nod Apocrypha]], page 35 {{icon|v5 renegade}}
+|- id="Awaken the Homuncular Servant"
+|'''Awaken the Homuncular Servant'''
+|Create spies and stalkers out of body parts or small animals.
+|One Rouse Check
+|[[Oblivion#Where the Shroud Thins|Where the Shroud Thins]]
+|Resolve +
+Oblivion
+|The servant can scale or hop walls and hide, but it cannot speak. It is only able to telepathically communicate single images to its creator.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 209
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 93
+|- id="Blinding the Allow Eye"
+|'''Blinding the Alloy Eye'''
+|Cameras cannot perceive the user clearly.
+|One Rouse Check
+|[[Oblivion#Shadow Cast|Shadow Cast]]
+|Resolve +
+Oblivion
+|Do not make the ritual roll until the effect is active. This ceremony is connected to the [[Sabbat]].
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 52
+|- id="Compel Spirit"
+|'''Compel Spirit'''
+|Bend a wraith to a vampire's will.
+|One Rouse Check
+|[[Oblivion#Where the Shroud Thins|Where the Shroud Thins]]
+|Resolve +
+Oblivion
+|The ritual roll is made against the wraith's Resolve + Composure or Willpower.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 210
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 94
+|-id="Maw of Ahriman"
+|'''Maw of Ahriman'''
+|Open a portal to the abyss, usually within their mouth.
+|One Rouse Check
+|N/A
+|Resolve +
+Oblivion
+|The user cannot speak till it is either cancelled or the next sunrise.
+|
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 152
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Pre-requisite
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="Fortezza Sindonica"
+|'''Fortezza Sindonica'''
+|Create a barrier that harms wraiths.
+|Three Rouse Checks
+|[[Oblivion#Where the Shroud Thins|Where the Shroud Thins]]
+|Resolve +
+Oblivion
+|Do not make the Ritual Roll until a wraith attempts to pass. This ceremony is connected to the [[Hecata]].
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Trails of Ash and Bone|Trails of Ash and Bone]], page 173
+|- id="Harrowhaunt"
+|'''Harrowhaunt'''
+|Keep unwanted visitors from their haven.
+|One Rouse Check, possible Stains
+|[[Oblivion#Aura of Decay|Aura of Decay]]
+|Resolve +
+Oblivion
+|Vampires are able to enter making a fear Frenzy check each turn while inside. This ceremony is connected to the [[Sabbat]].
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 51
+|- id="Host Spirit"
+|'''Host Spirit'''
+|Allows the user to open their body to a ghost for possession.
+|One Rouse Check
+|[[Oblivion#Aura of Decay|Aura of Decay]]
+|Resolve +
+Oblivion
+|Alongside the bonus of +2 to Physical Attribute rolls and +2 health, the wraiths Skills can be substituted for the vampire’s own at Storyteller discretion. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical changes}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 211
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 94
+|- id="Knit the Veil"
+|'''Knit the Veil'''
+|Turn a shroud impenetrable.
+|One Rouse Check
+|[[Oblivion#Where the Shroud Thins|Where the Shroud Thins]]
+|Resolve +
+Oblivion
+|When not disturbed this effect does not change for as many nights as the user's Oblivion rating.
+|{{icon|v5 dtrpg}}
+*Trails of Ash and Bone, page 174
+|- id="Name of the Father"
+|'''Name of the Father'''
+|Strike a victim's mind with the empty void of Oblivion, leaving them paralyzed.
+|One Rouse Check
+|[[Oblivion#Shadow Perspective|Shadow Perspective]]
+|Resolve +
+Oblivion
+|The victim can spend willpower equal to the number of turns they would remain paralyzed to free themselves. This ceremony is connected to the [[Cult of Shalim|Cult of Shalim.]]
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 94
+|-
+|'''Shallow Slumber'''
+|Reduces time spent in torpor.
+|One Rouse Check
+|Passion Feast or Touch of Oblivion
+|Resolve +
+Oblivion
+|
+|Gehenna War, page 50
+|- id="Shambling Hordes"
+|'''Shambling Hordes'''
+|Raise a group of aggressive walking dead.
+|One Rouse Check, possible Stains
+|[[Oblivion#Aura of Decay|Aura of Decay]]
+|Resolve +
+Oblivion
+|If left without commands, they attack anyone around them other than their master.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 212
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 95
+|-
+|'''Wisdom of the Dead'''
+|Gain information from a corpse skull or head.
+|One Rouse Check
+|[[Oblivion#Where the Shroud Thins|Where the Shroud Thins]] or [[Oblivion#Oblivion's Sight|Oblivion's Sight]]
+|Resolve +
+Oblivion
+|Add two dice to their dice pool if they are still carrying the skull/head for the rest of the night.
+|[[Vampire: The Masquerade Book of Nod Apocrypha|Book of Nod Apocrypha]], page 35 {{icon|v5 renegade}}
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Pre-requisite
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="Befoul Vessel"
+|'''Befoul Vessel'''
+|Turn a mortal's blood into poison for other vampires.
+|One Rouse Check
+|[[Oblivion#Necrotic Plague|Necrotic Plague]]
+|Resolve +
+Oblivion
+|This power leaves no trace other than the mortal dying the next night with the smell of mildew and sweat. This ceremony is connected to the [[Sabbat|Sabbat.]]
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 52
+|- id="Bind the Spirit"
+|'''Bind the Spirit'''
+|Bind a wraith to a specific location or person.
+|One Rouse Check, possible Stains
+|[[Oblivion#Necrotic Plague|Necrotic Plague]]
+|Resolve +
+Oblivion
+|Bound wraiths have the same powers as spectres.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 212
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 96
+|- id="Death Rattle"
+|'''Death Rattle'''
+|Inflict the sensory experience of a wraith's death onto a target.
+|One Rouse Check
+|[[Oblivion#Fatal Precognition|Fatal Precognition]]
+|Resolve +
+Oblivion
+|The victim contests the ritual roll with Composure + Resolve.
+|{{icon|v5 dtrpg}}
+*Trails of Ash and Bone, page 174
+|- id="Split the Veil"
+|'''Split the Veil''' {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Split the Shroud}}
+|Create a tear into a shroud to allow wraiths to enter.
+|One Rouse Check, possible Stains
+|[[Oblivion#Necrotic Plague|Necrotic Plague]]
+|Resolve +
+Oblivion
+|This Ceremony reduces the density of the veil and can reduce it to absent, allowing wraiths to come through. The veil increased to frayed after the session ends, stopping any more wraiths.{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Small rewrite}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 213
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 96
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Pre-requisite
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="Ex Nihilo"
+|'''Ex Nihilo'''
+|Enter the Shadowlands
+|Three Rouse Checks and one Willpower point
+|[[Oblivion#Withering Spirit|Withering Spirit]]
+|Resolve +
+Oblivion
+|The Shadowlands have several rules that do not exist in the world of the living.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 213
+|- id="Lazarene Blessing"
+|'''Lazarene Blessing'''
+|Bring a fresh corpse back to life
+|One Rouse Check, possible Stains
+|[[Oblivion#Skuld Fulfilled|Skuld Fulfilled]]
+|Resolve +
+Oblivion
+|This lasts until the body dies again or the wraith is exorcised from the host.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 214
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 96
+|- id="Pit of Contemplation"
+|'''Pit of Contemplation'''
+|Cast an enemy into Oblivion itself.
+|One Rouse Check, possible Stains
+|[[Oblivion#Tenebrous Avatar|Tenebrous Avatar]]
+|Resolve +
+Oblivion
+|Mortals sucked in are instantly killed. This ceremony is connected to the [[Cult of Shalim|Cult of Shalim.]]
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 94
+|}
+
+==Gallery==
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

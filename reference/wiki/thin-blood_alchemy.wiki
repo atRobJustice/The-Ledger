@@ -1,0 +1,838 @@
+{{Discipline
+| header=Thin-blood Alchemy
+| symbol=Alchemy_symbol.png
+| nicknames=Cooking, Home Brew, the Craft, Mashup
+| affinity= {{icon|thin blood}} [[Thin-blood]]
+| type=Varied
+| threat=Varied
+| resonance=Varied
+}}
+
+__TOC__
+
+==Overview==
+ 
+
+
+Thin-blood Alchemy is a unique Discipline for Thin-bloods, created through ingredients composed of random items, Resonances, and their own vitae. Alchemy is a young Discipline, thought to be born through the street drug scene or of alchemists of the past. Certain thin-bloods have managed to utilize their weak blood to awaken powers unique to them and even create counterfeit versions of the other Disciplines. Rumors spread through kindred about these powers, speculation spreading as much truth as it does misinformation. However, the alchemists do their best to stay out of the way when plenty of elders view this new Discipline as nothing but watered-down diablerie.
+
+All formulae require a cost to distill and then a separate cost to activate which is the same as using other Disciplines (Free or additional Rouse Checks). The cost when creating represents the vitae of the Alchemist being used. Once the power is activated they then roll their distillation pool, defined by which method they use to determine how effective their alchemy is. Some powers might require additional rolls to use, and in cases where a power calls for a Discipline rating, they use their Alchemy Rating instead. Learning further formulae has the Alchemist's pouring through old libraries or going on tasting expeditions to learn more. A character receives one formulae for free for each dot in Thin-Blood Alchemy and more can be purchased with experience and experimentation. <ref>[[Vampire: The Masquerade Corebook]], page 282-283</ref>
+
+Distillation methods vary from Alchemist to Alchemist, when they first begin they select which style they'd like. To learn additional styles, later on, means treating it as a separate Discipline where each formula needs to be learned or relearned in order to be used in the new style. The three styles are '''Athanor Corporis''', '''Calcinatio''' and '''Fixatio'''. 
+
+* '''Athanor Corporis''' is the name for alchemy created through their own body by consuming the ingredients they make a distillation roll of Stamina + Alchemy together with a Rouse Check. Only one power can be activated at a time and a new power must be distilled before being activated. Distillation takes around three turns of concentrations where the Alchemist can do nothing else. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 284</ref>
+
+* '''Calcinatio''' is the method where a human body is used to host the alchemy by introductions of incantations and their own blood. The alchemist feeds their vitae to the mortal and makes a Rouse Check,  then a distillation roll of Manipulation + Alchemy. The entire host distills the formula and the blood of the mortal can be drunk to use the power, where the hunger slaked is equal to the power level minus 1. However, they can only distill one power per victim and the current power remains as long as they are kept in the same emotional state. Each power takes as long to activate as it takes to slake the amount of blood required. <ref name=":0" />
+
+* '''Fixatio''' is the final method, in a style similar to what most think of when they think of Alchemy. In a kiln, a meth lab, or a repurposed propane tank, the alchemist uses a conventional athanor to brew. They pour their vitae with a Rouse Check into the system with the other ingredients, then makes the distillation roll with Intelligence + Alchemy (Make the distillation roll upon use rather than upon production). The resulting formula is then able to be carried with the amount carried equal to their Wits or Dexterity. They can store a number of formulae equal to Alchemy rating * 2 plus the haven rating. Creating their alchemy requires a lab and without one they at best can only create a level 3 or less formula, and using unsuitable equipment reduces their distillation dice pool by 2. They can activate one power per turn. <ref name=":0" />
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Origin
+! width="8%" |Resonance
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Body Paint'''
+|Create tattoos with personal touches beyond regular tattoos
+|One Rouse Check
+|None
+|Choleric
+|Permanent, unless erased by skin coloured Body Paint
+|Dexterity +
+Craft
+|None
+|After a week, the roll to alter the tattoo is Stamina + Resolve
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 73
+|-
+|'''Checkout Time'''
+|Enter a deep torpor where there is no difference between you or a corpse
+|One Rouse Check
+|None
+|Phlegmatic
+|A number of nights written during creation. This cannot exceed 9 nights
+|N/A
+|N/A
+|Coming out of this Torpor does not require a Rouse Check. In this state, they have no aura, require no rouse checks and take no damage from sunlight or other banes
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 74
+|-
+|'''Elevate'''
+|Get high regardless of Humanity or Blush of Life. Temporarily enhances Dexterity if well made
+|One Rouse Check
+|None
+|Sanguine
+|One Scene
+|Stamina + Alchemy
+|N/A
+|Badly made Elevate still feels great but degrades Dexterity
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 74
+|- id="Far Reach"
+|'''Far Reach'''
+|Push, pull, hold or grab objects or people with their mind.
+| data-sort-value="1" | One Rouse Check
+|None
+|Choleric
+|One turn unless held
+|Resolve + 
+Alchemy
+|Strength +
+Athletics
+|Keeping something held in the air requires a check each turn of Resolve + Alchemy Difficulty 3.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 284
+|-
+|'''Food Stain'''
+|Mark someone so anyone who drinks from them becomes obvious to the alchemist when they encounter them
+|One Rouse Check
+|None
+|Melancholic
+|Persists until consumed or applied
+|N/A
+|N/A
+|If the alchemist has Auspex 2, they become aware as soon as the feeding occurs
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 74
+|- id="Gaoler's Bane"
+|'''Gaoler's Bane'''
+|Receive a 2-dice bonus when freeing themselves from physical restraints or grapples.
+| data-sort-value="2" |One Rouse Check
+|None
+|Sanguine
+|One Scene or until ended voluntarily
+|N/A
+|N/A
+|N/A
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]], Page 10
+|- id="Haze"
+|'''Haze'''
+|Create a mist that follows the user, making it harder to shoot them or identify them.
+|One Rouse Check
+|None
+|Phlegmatic
+|One Scene or until ended voluntarily
+|N/A
+|N/A
+| This can be extended to encompass up to five people with an additional Rouse Check.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 285
+|- id="Mercurian Tongue"
+|'''Mercurian Tongue'''
+|Speak other languages than their own.
+|One Rouse Check
+|None
+|N/A
+|One night or till they feed from someone with the same native language as themselves.
+|N/A
+|N/A
+|The alchemist can spend Willpower and feed from another person to swap the language the alchemist currently knows.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 103
+|- id="Plug-In"
+|'''Plug-In'''
+|Produce low-level electrical current from their body.
+|One Rouse Check
+|None
+|Sanguine
+|One scene if lighting one room, till half battery if charging a device.
+|Resolve + 
+Alchemy
+|N/A
+|It powers through touch and will stop if the connection is lost.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 103
+|- id="Portable Shade"
+|'''Portable Shade'''
+|Withstand the effects of Sunlight and walk in the sun.
+|One Rouse Check
+|[[Sabbat]]
+|Sanguine
+|Hours active are equal to the Stamina + Alchemy test or the next sunset, whichever is first
+|Stamina +
+Alchemy
+|N/A
+|This formula was developed by the Path of the Sun Thin-bloods.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 53
+|-
+|'''Speak From the Heart'''
+|Place a message into someone's blood. The next vampire to drink from them gets the message
+|One Rouse Check
+|None
+|Melancholic
+|Messages take 1 minute. Lasts until death or blood is drunk
+|N/A
+|N/A
+|Different drinks used in the creation affect the message
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 75
+|}
+
+===Level 2===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Origin
+! width="8%" |Resonance
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" | Source
+|-
+|'''Advanced Torpor'''
+|Immediately cause Torpor
+|One Rouse Check
+|None
+|Choleric,
+Phlegmatic
+|Until target awakens from Torpor
+|N/A
+|N/A
+|Always heal as a vampire, regardless of flaws. Unlike regular torpor, the vampire always has a Rouse Check re-roll
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 75
+|-
+|'''Blacklight Surprise'''
+|Makes UV light damage vampires
+|One Rouse Check
+|None
+|Sanguine,
+Choleric
+|At least one hour. Light source breaking ends the effect
+|N/A
+|N/A
+|Kindred who already take damage from UV light, take an extra point
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 75
+|- id="Blood of Mandagloire"
+|'''Blood of Mandagloire'''
+|Infect the blood of a herd to cause those who feed from it to fall into a dreamless sleep.
+| data-sort-value="1" |One Rouse Check
+|[[Second Inquisition]]
+|Melancholic
+|Remains active in the herd's blood for three nights
+|N/A
+|N/A
+|Thin-bloods develop this formula within the Second Inquisition.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Second Inquisition|Second Inquisition]], 46
+|-
+|'''Blue State'''
+|Forces a target to contemplate obsessively over an ally's failure
+|One Rouse Check
+|None
+|Melancholic,
+Phlegmatic
+|The Stain remains until the people involved, at least, have an uncomfortable talk
+|N/A
+|N/A
+|Kindred gain stains if an ally violates their convictions. Mortals just hold a grudge
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 76
+|- id="Envelop"
+|'''Envelop'''
+|Create a mist that clings to a victim.
+| data-sort-value="2" |One Rouse Check
+|None
+|Melancholic, Phlegmatic
+|One scene or until ended voluntarily
+|Wits +
+Alchemy
+|Stamina +
+Survival
+|This can only be employed on single targets one at a time.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 285
+|- id="Friends List"
+|'''Friends List'''
+|See connections between Kindred and mortals
+|One Rouse Check
+|None
+|Phlegmatic
+|One scene
+|Intelligence +
+Alchemy
+|N/A
+|Stronger connections require fewer and fewer successes.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 104
+|- id="Mirror of Trust"
+|'''Mirror of Trust'''
+|Gain 3 extra dice to persuade or intimidate someone into being honest.
+| One Rouse Check
+|[[Second Inquisition]]
+|Sanguine
+|One Hour
+|N/A
+|N/A
+|Thin-bloods develop this formula within the Second Inquisition.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Second Inquisition|Second Inquisition]], page 46
+|- id="Red's Flaming Hot Sauce"
+|'''Red's Flaming Hot Sauce'''
+|Create a supernatural molotov cocktail
+|N/A
+|None
+|Choleric
+|Until used, the fire lasts one scene or longer based on the surroundings
+|N/A
+|N/A
+|Fire spreading from it can be extinguished, but the supernatural source cannot.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]], Page 10
+|-
+|'''Whiff-Its'''
+|Smell and track the Kindred with the highest Blood Potency
+|One Rouse Check
+|None
+|Phlegmatic or Sanguine
+|Until Dawn
+|Resolve + Awareness
+|N/A
+|If multiple Kindred have the same BP, a test allows the user to distinguish between them
+|Gehenna War, Page 50
+|- id="Counterfeit Discipline 1"
+|'''Counterfeit Discipline'''
+|Counterfeit a one-dot Discipline
+|The same as the power channeled
+|None
+|N/A
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 285
+|}
+
+===Level 3===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Origin
+! width="8%" |Resonance
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Chemically-Induced Flashback"
+|'''Chemically-Induced Flashback'''
+|Imbue and experience a Memorium of another vampire.
+| data-sort-value="1" |One Rouse Check in addition to the use of Ashe
+|[[Ashfinders]]
+|N/A
+|N/A
+|N/A
+|N/A
+|Must use the Fixatio method. The Thin-bloods develop this formula within the Ashfinders. [[Thin-Blood Alchemy#Thin-Blood Alchemy#Concoct Ashe|Concoct Ashe]] is a pre-requisite.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 45
+
+|- id="Concoct Ashe"
+|'''Concoct Ashe'''
+| Create Ashe from the remains of a vampire.
+| data-sort-value="2" |Free
+|[[Ashfinders]]
+|N/A
+|N/A
+|Intelligence +
+Alchemy
+|N/A
+|Must use the Fixatio method. The Thin-bloods develop this formula within the Ashfinders.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+* [[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 45
+|-
+|'''Diamond Skin'''
+|Reduces physical damage to the alchemist, turning Aggravated to Superficial
+|One Rouse Check
+|None
+|Melancholic
+|Until margin of Distillation roll is used up
+|N/A
+|N/A
+|Does not affect fire, acid, sunlight or sorcery
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 76
+|- id="Defractionate"
+|'''Defractionate'''
+|Turn preserved blood into something palatable by any kindred.
+| data-sort-value="3" |Free
+|None
+|Melancholic, Sanguine
+|N/A
+|N/A
+|N/A
+|Each Distillation style has a unique method of tapping for this elixir.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 286
+|- id="Fang-Stinger"
+|'''Fang-Stinger'''
+|Introduce blood into a mortal that causes no harm to them but harms vampire's that feed from them.
+| data-sort-value="4" | One Rouse Check
+|[[Second Inquisition]]
+|Choleric
+|One day
+|Resolve +
+Alchemy
+|Stamina +
+Resolve
+| Thin-bloods develop this formula within the Second Inquisition.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Second Inquisition|Second Inquisition]], page 47
+|-
+|'''Fireskin'''
+|Superheat your body
+|One Rouse Check
+|None
+|N/A
+|One Scene
+|N/A
+|N/A
+|They gain +1 additional fire damage with strikes with their body. They are immune to fire but cold hurts more
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 76
+|- id="Freezer Fluid"
+|'''Freezer Fluid'''
+|Freeze a vampire's body.
+|One Rouse Check
+|[[Second Inquisition]]
+|Melancholic, Phlegmatic
+|One scene
+|Resolve +
+Alchemy
+|Stamina +
+Resolve
+|Thin-bloods develop this formula within the Second Inquisition.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Second Inquisition|Second Inquisition]], page 47
+|-
+|'''Hospital Chains'''
+|Prevent someone from healing
+|One Rouse Check
+|None
+|Phlegmatic
+|2 days per point of margin
+|Distillation roll vs
+Stamina
+|N/A
+|Critical wins last 2 days per success
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 76
+|- id="Mandagloire"
+|'''Mandagloire'''
+|Emit a gas that causes rigid paralysis in mortals and supernatural creatures.
+|One Rouse Check
+|None
+|Phlegmatic
+|Three turns
+|Stamina +
+Alchemy
+|Stamina +
+Resolve
+|For Fixatio alchemists this can be slipped into a drink or burned.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 104
+|-
+|'''Martian Purity'''
+|Expel blood-borne illnesses through ignited gases
+|One Rouse Check
+|None
+|Choleric
+|Two rounds
+|N/A
+|N/A
+|Deals 2 Aggravated Health damage
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 77
+|-
+|'''Mask Off'''
+|Creates an explosion of gas that causes no damage but negates the Blush of Life
+|One Rouse Check
+|None
+|Choleric,
+Melancholic
+|One scene
+|N/A
+|Stamina +
+Resolve
+|Those affected cannot use Blush of Life for rest of the night. The opposing pool is rolled against the Distillation pool
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 77
+|- id="On-Demand Sunburn"
+|'''On-Demand Sunburn'''
+|Become a sun battery and harm vampires they touch.
+|One Rouse Check
+|[[Sabbat]]
+|Choleric
+|Until unleashed or next sunset, whichever is first
+| N/A
+| N/A
+|This formula was developed by the Path of the Sun Thin-bloods.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 53
+|- id="Profane Hieros Gamos"
+|'''Profane Hieros Gamos'''
+|Change their form into their ideal human shape.
+|One Rouse Check or One point of Aggravated Damage for mortals
+|None
+|Melancholic, Phlegmatic
+|Permanent.
+|Stamina + 
+Resolve
+|N/A
+|This cannot spare the Nosferatu from their bane. {{Errata|source=Sept 2019 Errata|date=Sept 2019|summary=Rewritten and changed from a level 1 power}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 286
+|- id="Rumor"
+|'''Rumor'''
+|Make a statement and convince one person to agree.
+|One Rouse Check
+|None
+|Phlegmatic
+|One scene
+|Manipulation +
+Alchemy
+|Wits +
+Awareness
+|It lingers till something contradicts the target’s agreement.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 105
+|- id="Stay the Falling Sand"
+|'''Stay the Falling Sand'''
+|Slow time
+|One Rouse Check
+|None
+|Melancholic
+|One round or more if maintained, expires after one use
+|Resolve +
+Alchemy
+|N/A
+|Cannot be used on living creatures or kindred.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]], Page 10
+|- id="Tank"
+|'''Tank'''
+|Strengthen their resistance to damage
+|One Rouse Check
+|None
+|Choleric
+|Until they take damage or the scene ends
+|N/A
+|N/A
+|The first damage they take is reduced by five.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 105
+|-
+|'''TLC'''
+|Enhances the blood of animals so it slakes the same as mortal blood
+|One Rouse Check
+|None
+|Animal,
+Choleric
+|Permanent
+|N/A
+|N/A
+|Killing an animal cannot slake Hunger to zero
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 77
+|-
+|'''Troll the Pious'''
+|Cause negatives effects to the religious
+|One Rouse Check
+|None
+|Melancholic
+|Changes based on what it is smeared on
+|N/A
+|N/A
+|Gives one-dice penalty to most dice pools. Those with True Faith take a two-dice penalty instead and suffer hallucinations
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 78
+|- id="Counterfeit Discipline 2"
+|'''Counterfeit Discipline'''
+|Counterfeit a two-dot Discipline
+|The same as the power channeled
+|None
+|N/A
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 287
+|}
+
+===Level 4===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Origin
+! width="8%" |Resonance
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Airborne Momentum"
+|'''Airborne Momentum'''
+|Achieve flight
+| data-sort-value="1" | One Rouse Check
+|None
+|Choleric, Sanguine
+|One scene
+|Strength +
+Alchemy
+|Strength +
+Athletics (if resisted)
+|Can move at running speed and carrying a human-sized mass slows to walking speed. This can only be used by the alchemist.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 287
+|-
+|'''Copycat'''
+|Turn into an approximate copy of someone
+|One Rouse Check
+|None
+|Choleric,
+Phlegmatic
+|Twenty minutes, possibly up to a scene
+|N/A
+|Intelligence +
+Awareness
+|Those who know the person whose appearance is borrowed can recognise the difference by rolling the Opposing pool against the Distillation roll
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 78
+|- id="Discipline Channeling"
+|'''Discipline Channeling'''
+|Imbue Ashe with Disciplines
+|The same as the power channeled
+|[[Ashfinders]]
+|N/A
+|N/A
+|N/A
+|N/A
+|Must use the Fixatio method. The Thin-bloods develop this formula within the Ashfinders. [[Thin-Blood Alchemy#Thin-Blood Alchemy#Concoct Ashe|Concoct Ashe]] is a prerequisite.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 46
+|-
+|'''Half-Living Conductor'''
+|Be immune to, and redirect electrical currents
+|One Rouse Check
+|None
+|Choleric,
+Sanguine
+|One scene, or voluntarily ended
+|Stamina +
+Alchemy
+|N/A
+|Using electricity to attack requires Dexterity + Alchemy. Deals 2 damage, Aggravated to mortals, Superficial to vampires
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 79
+|- id="Hollow Leg"
+|'''Hollow Leg'''
+|Poison another Kindred so that they are unable to slake hunger.
+|Free
+|None
+|Non-Resonant Human Blood
+|One night or until the victim suffers a hunger Frenzy
+|Intelligence +
+Alchemy
+|Stamina +
+Composure
+|The victim must be tricked, coerced or forced into drinking this.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]], Page 10
+|-
+|'''Juice Box'''
+|Alters a Formula to be used by any vampire
+|One Rouse Check
+|None
+|As target Formula
+|As target Formula
+|As target Formula
+|As target Formula
+|Requires Methuselah Blood
+|Gehenna War, Page 51
+|-
+|'''Red State'''
+|Erases memories of someone's misdeeds
+|One Rouse Check
+|None
+|Sanguine,
+Phlegmatic
+|Permanent, until target imbibes a choleric Dyscrasia
+|N/A
+|N/A
+|Being told of the crime makes no sense to the target
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 79
+|- id="Short Circuit"
+|'''Short Circuit'''
+|Overload the batteries in electronics or electrical equipment.
+|One Rouse Check
+|None
+|Melancholic
+|N/A
+|N/A
+|N/A
+|This allows for alchemists to touch either the object itself or metal connected and short it out.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 105
+|- id="Toxic Personality"
+|'''Toxic Personality'''
+|Secrete caustic bile from their pores and orifices.
+|One Rouse Check
+|None
+|Choleric
+|One scene
+|Strength/Dexterity +
+Alchemy
+|Dexterity +
+Alchemy
+|The alchemist may touch this without being harmed. It can either be used as a physical attack or by making another Rouse Check, spit as a ranged attack.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 105
+|-
+|'''Vitae MSG'''
+|Make it hard for vampires to resist feeding off someone.
+|One Rouse Check
+|None
+|Sanguine
+|Once applied to someone, it lasts until dawn, if they survive
+|N/A
+|N/A
+|Ventrue feeding off someone appointed with this require 1 less Willpower if they aren't in their preferred category.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 79
+|- id="Counterfeit Discipline 3"
+|'''Counterfeit Discipline'''
+|Counterfeit a three-dot Discipline
+|The same as the power channeled
+|None
+|N/A
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+| Requires a drop of vitae from a vampire of a matching clan or who possesses the Discipline.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 287
+|}
+
+=== Level 5===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Origin
+! width="8%" |Resonance
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" | Additional Notes
+! width="10%" |Source
+
+|- id="Awaken the Sleeper"
+|'''Awaken the Sleeper'''
+|Awaken a vampire from torpor
+| data-sort-value="1" |One Rouse Check
+| None
+|Choleric or Sanguine
+|N/A
+| N/A
+|N/A
+|Each Distillation style has a unique method of tapping for this elixir.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 287
+|-
+|'''Beast Mode'''
+|Gain the use of 1 Level 5 [[Potence]], [[Celerity]] or [[Fortitude]] power
+|One Rouse Check
+|None
+|Choleric or Sanguine
+|One Scene
+|N/A
+|N/A
+|The alchemist must succeed on a Willpower test to avoid Frenzy when consuming this
+|Gehenna War, Page 51
+|- id="Flowering Amaranth"
+|'''Flowering Amaranth'''
+|Share diablerie with other thin-bloods.
+|One Rouse Check made by each participant
+|None
+|N/A
+|Used for the Diablerie
+|Resolve +
+Alchemy
+|Willpower +
+Blood Potency
+|Upon a win they gain a Discipline as if a full-blooded though they cannot level it, they do no gain generation and still lose 1 Humanity. They also gain the black-veined aura of Diablerie.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 106
+|- id="Moment of Clarity"
+|'''Moment of Clarity'''
+|Harness the power of the Beast to support them.
+|One Rouse Check
+|None
+|Phlegmatic
+|One scene
+|N/A
+|N/A
+|Add four dice to Mental Skill pools, Discipline Skill pools, and to Mental resistance checks when Disciplines are used on them. Immune to Messy Criticals and Frenzy.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 106
+|-
+|'''Saturn's Flux'''
+|Break Blood-bonds
+|One Rouse Check
+|None
+|Phlegmatic
+|Effect kicks in one day after ingestion
+|N/A
+|N/A
+|Removing the Blood-bond is painful but Mortals take no damage. Kindred have to take Aggravated damage to expel.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 80
+|- id="Counterfeit Discipline 4"
+|'''Counterfeit Discipline'''
+| Counterfeit a four-dot Discipline
+| data-sort-value="2" |The same as the power channeled
+|None
+|N/A
+|The same as the power channeled
+|The same as the power channeled
+|The same as the power channeled
+| Requires a drop of vitae from a vampire of a matching clan or who possesses the Discipline.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 287
+|}
+
+==Gallery==
+<gallery>
+File:Stay the Falling Sand example.png|Stay the Falling Sand being used on accident. Source: Vampire: The Masquerade Winter's Teeth Issue #7
+File:Stay the Falling Sand example 2.png|Stay the Falling Sand being used in order to slow down an explosion. Source: Vampire: The Masquerade Winter's Teeth #10
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

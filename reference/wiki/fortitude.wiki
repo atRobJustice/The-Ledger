@@ -1,0 +1,371 @@
+{{Discipline
+| header=Fortitude
+| symbol=Fortitude_symbol.png
+| nicknames=Bricking Up, Stone Flesh, Resistentia
+| affinity= {{icon|gangrel}} [[Gangrel]] {{icon|hecata}} [[Hecata]] {{icon|salubri}} [[Salubri]]<br> 
+{{icon|ventrue}} [[Ventrue]]
+| type=Physical
+| threat=Medium
+| resonance=Melancholic
+}}
+
+__TOC__
+
+==Overview==
+Fortitude allows vampires to resist both physical and mental attacks. The hardiness it creates helps many kindred survive and is a trait most immortal would seek out to survive the violence, fire, and supernatural coercion they experience during their nights.<ref>[[Vampire: The Masquerade Corebook]], page 258</ref> 
+
+The [[Gangrel]] who develop their strengths in this Discipline expect harm to come their way, serving as bodyguards or soldiers for other kindred. This also allows them to track and hunt prey in harsh environments. Their innate prowess with [[Animalism]] links them to their animals even more with [[Fortitude#Enduring Beasts|Enduring Beasts]].<ref>[[Vampire: The Masquerade Corebook]], page 72</ref>  [[Ventrue]] use this power to uphold their thrones even when armies amass against them, feeding in adverse situations. They never run short of vitae and always take their fill.<ref>[[Vampire: The Masquerade Corebook]], page 102</ref>  While the [[Hecata]] are closer to death than any other clan, they use this power to keep above it. As attacks reign down upon them, they shrug them off and throwback with their Necromancy.<ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 202</ref>  The [[Salubri]] avoid elimination through the use of these powers, but also enhance it in their own way to aid others through the use of [[Fortitude#Valeren|Valeren]].<ref>[[Vampire: The Masquerade Companion]], page 14</ref> 
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Fluent Endurance'''
+|Reroll the Blood Surge rouse check on a Stamina or Fortitude test.
+|Free
+|None
+|No
+|Once
+|N/A
+|N/A
+|N/A
+|Gehenna War, page 46
+|- id="Resilience"
+|'''Resilience'''
+|Add their Fortitude rating to the health track.
+| data-sort-value="1" |Free
+|None
+|No
+|Passive
+| N/A
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 258
+|- id="Compel"
+|'''Unswayable Mind'''
+|Add Fortitude rating to rolls to resist methods to sway the character's mind against their will including supernatural.
+| data-sort-value="2" |Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 258
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" | Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-id="Earth's Perseverance"
+|'''Earth’s Perseverance'''
+|Become impossible to move from that spot
+|One Rouse Check
+|None
+|No
+|One scene or until let go by user
+|N/A
+|N/A
+|While they cannot be moved, they can still be harmed and so can the floor beneath them.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 74
+|- id="Enduring Beasts"
+|'''Enduring Beasts'''
+|Share the vampire's toughness with animals.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Animalism]] ●
+|One scene
+| Stamina +
+Animalism
+|N/A
+|If used on their Famulus, it is free and automatic without a roll required.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 258
+|-id="Invigorating Vitae"
+|'''Invigorating Vitae'''
+|Heal mortals faster with the Blood.
+|None other than the Rouse Checks to give Blood
+|None
+|[[Auspex|Auspex ●]]
+|Passive
+|N/A
+|N/A
+|The risk of ghouling or blood bonding remains present.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 75
+|- id="Obdurate"
+|'''Obdurate'''
+|Maintain footing when hit with a massive force.
+| data-sort-value="2" | One Rouse Check
+|None
+|[[Potence]] ●●
+|One scene
+|Wits +
+Survival
+|N/A
+|Any superficial damage from falling or being hit is reduced by the Fortitude score, before being halved.
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3
+|- id="Toughness"
+|'''Toughness'''
+|Subtract the Fortitude rating from all superficial damage taken before halving, it cannot be rounded down below one.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+| This occurs before halving the damage but cannot reduce it below one.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 258
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Defy Bane"
+|'''Defy Bane'''
+|Convert Aggravated Damage to Superficial Damage.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One scene or until expired
+|Wits +
+Survival
+|N/A
+|They may not heal the superficial damage for the rest of the scene.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 259
+|- id="Fortify the Inner Façade"
+|'''Fortify the Inner Façade'''
+|Increasing the Difficulty of mental powers to read or pierce the mind by half of the Fortitude Rating.
+| data-sort-value="2" | Free
+|None
+| No
+|One scene
+|N/A
+|N/A
+| If the rules allow them to resist, they add their Fortitude rating to their pool instead.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 259
+|- id="Seal the Beast's Maw"
+|'''Seal the Beast's Maw'''
+|A vampire can ignore the effects of hunger if they do not increase hunger from the two Rouse Checks, but reduce their dice pools.
+| data-sort-value="3" |Two Rouse Checks
+|None
+|No
+|One scene
+|N/A
+|N/A
+|If a dice pool reduces to 0, a Fury Frenzy test is made.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 44
+|- id="Valeren"
+|'''Valeren'''
+|Mend an injured vampire.
+|One Rouse Check
+|None
+|[[Auspex|Auspex ●]]
+|N/A
+|Intelligence +
+Fortitude
+|N/A
+|A subject can be affected by the power only once a night.
+|{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 25
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 75
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Draught of Endurance"
+|'''Draught of Endurance'''
+|Turn their vitae into a Fortitude boost for others.
+| data-sort-value="1" |One Rouse Check + Drinkers
+|None
+|No
+|One night
+|N/A
+|N/A
+|Each drinker must take one Rouse Checks worth.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 259
+|-id="Gorgons Scales"
+|'''Gorgon’s Scales'''
+|[[Resonance|Resonances]] give the Kindred different bonuses.
+|One Rouse Check
+|None
+|No
+|One scene or until the Resonance is lost
+|N/A
+|N/A
+|Choleric frees vampires from being staked, Melancholy reduces fire damage, Phlegmatic strengthens against [[Auspex]] and, Sanguine reduces damage from sunlight.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 75
+|- id="Shatter"
+|'''Shatter'''
+|The opponent takes the damage which Toughness subtracts.
+| data-sort-value="2" |One Rouse Check
+|[[Fortitude#Toughness|Toughness]]
+|No
+|One scene or until hit
+|N/A
+|N/A
+|Weapons will break if their modifier is met in damage received.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 104
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Flesh of Marble"
+|'''Flesh of Marble'''
+|Ignore the first source of physical damage each turn unless sunlight.
+| data-sort-value="1" |Two Rouse Checks
+|None
+|No
+| One scene
+|N/A
+|
+*N/A
+|A critical win on an attack bypasses this power.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 259
+|- id="Prowess from Pain"
+|'''Prowess from Pain'''
+|No longer suffers penalty from Health damage and can increase one Attribute per level of damage on their tracker.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|The Attributes may not exceed their Blood Surge value + 6.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 260
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Fortitude;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Fortitude Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+
+|- id="Obeah"
+|[[File: Auspex symbol.png|42px]]||[[Auspex#Obeah|'''Panacea''']] {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Obeah}}
+|[[Auspex]] ●●
+| data-sort-value="1" |●
+|Heals Willpower calms nerves.
+|Free
+|Composure +
+Auspex
+| 
+*{{icon|v5 wod}}
+* [[Vampire: The Masquerade Companion|Companion]], page 24,
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 70
+|-
+|[[File: Dominate symbol.png|42px]]
+|[[Dominate#Slavish Devotion|'''Slavish Devotion''']]
+|[[Dominate]] ● {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Changed to a level 1 power}}
+|● {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Amalgam was changed to Fortitude}}
+|Those already underneath Dominate find it easier to resist other Kindred's Dominate
+|Free
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 104
+{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 73
+|- id="Heart of Darkness"
+|[[File: Protean symbol.png|42px]]||[[Protean#Heart of Darkness|'''Heart of Darkness''']]
+|[[Protean]] ●●●●●
+| data-sort-value="2" |●●
+|Allows a vampire to remove their own heart and store it outside of their body.
+|Free
+|N/A
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+
+|- id="Passion Feast"
+|[[File: Oblivion symbol.png|42px]]||[[Oblivion#Passion Feast|'''Passion Feast''']]
+|[[Oblivion]] ●●●
+| data-sort-value="3" |●●
+|Allows a vampire to slake hunger on the passion of wraiths.
+|Free
+|Resolve +
+Oblivion
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 206
+|}
+
+==Example usage in products==
+==Example usage in actual plays==
+==Gallery==
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]

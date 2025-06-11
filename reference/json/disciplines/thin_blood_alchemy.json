@@ -1,0 +1,162 @@
+{
+  "name": "Thin-blood Alchemy",
+  "nicknames": ["Cooking", "Home Brew", "the Craft", "Mashup"],
+  "affinity": ["Thin-blood"],
+  "type": "Varied",
+  "threat_level": "Varied",
+  "resonance": "Varied",
+  "overview": "Thin-blood Alchemy is a unique Discipline for Thin-bloods, created through ingredients composed of random items, Resonances, and their own vitae. Alchemy is a young Discipline, thought to be born through the street drug scene or of alchemists of the past. Certain thin-bloods have managed to utilize their weak blood to awaken powers unique to them and even create counterfeit versions of the other Disciplines.",
+  "distillation_methods": {
+    "Athanor Corporis": {
+      "description": "Alchemy created through their own body by consuming the ingredients",
+      "distillation_roll": "Stamina + Alchemy",
+      "cost": "Rouse Check",
+      "limitations": [
+        "Only one power can be activated at a time",
+        "New power must be distilled before being activated",
+        "Distillation takes around three turns of concentration"
+      ]
+    },
+    "Calcinatio": {
+      "description": "Uses a human body to host the alchemy by introductions of incantations and their own blood",
+      "distillation_roll": "Manipulation + Alchemy",
+      "cost": "Rouse Check",
+      "limitations": [
+        "Can only distill one power per victim",
+        "Current power remains as long as they are kept in the same emotional state",
+        "Each power takes as long to activate as it takes to slake the amount of blood required"
+      ]
+    },
+    "Fixatio": {
+      "description": "Uses a conventional athanor to brew in a kiln, meth lab, or repurposed propane tank",
+      "distillation_roll": "Intelligence + Alchemy",
+      "cost": "Rouse Check",
+      "limitations": [
+        "Requires a lab for best results",
+        "Without a lab, can only create level 3 or less formula",
+        "Using unsuitable equipment reduces distillation dice pool by 2",
+        "Can activate one power per turn"
+      ]
+    }
+  },
+  "powers": {
+    "level_1": [
+      {
+        "name": "Body Paint",
+        "effect": "Create tattoos with personal touches beyond regular tattoos",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": "Choleric",
+        "duration": "Permanent, unless erased by skin coloured Body Paint",
+        "dice_pool": "Dexterity + Craft",
+        "opposing_pool": "None",
+        "additional_notes": "After a week, the roll to alter the tattoo is Stamina + Resolve",
+        "source": "Blood Sigils, page 73"
+      },
+      {
+        "name": "Checkout Time",
+        "effect": "Enter a deep torpor where there is no difference between you or a corpse",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": "Phlegmatic",
+        "duration": "A number of nights written during creation. This cannot exceed 9 nights",
+        "dice_pool": "N/A",
+        "opposing_pool": "N/A",
+        "additional_notes": "Coming out of this Torpor does not require a Rouse Check. In this state, they have no aura, require no rouse checks and take no damage from sunlight or other banes",
+        "source": "Blood Sigils, page 74"
+      }
+    ],
+    "level_2": [
+      {
+        "name": "Advanced Torpor",
+        "effect": "Immediately cause Torpor",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": ["Choleric", "Phlegmatic"],
+        "duration": "Until target awakens from Torpor",
+        "dice_pool": "N/A",
+        "opposing_pool": "N/A",
+        "additional_notes": "Always heal as a vampire, regardless of flaws. Unlike regular torpor, the vampire always has a Rouse Check re-roll",
+        "source": "Blood Sigils, page 75"
+      }
+    ],
+    "level_3": [
+      {
+        "name": "Diamond Skin",
+        "effect": "Reduces physical damage to the alchemist, turning Aggravated to Superficial",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": "Melancholic",
+        "duration": "Until margin of Distillation roll is used up",
+        "dice_pool": "N/A",
+        "opposing_pool": "N/A",
+        "additional_notes": "Does not affect fire, acid, sunlight or sorcery",
+        "source": "Blood Sigils, page 76"
+      }
+    ],
+    "level_4": [
+      {
+        "name": "Airborne Momentum",
+        "effect": "Achieve flight",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": ["Choleric", "Sanguine"],
+        "duration": "One scene",
+        "dice_pool": "Strength + Alchemy",
+        "opposing_pool": "Strength + Athletics (if resisted)",
+        "additional_notes": "Can move at running speed and carrying a human-sized mass slows to walking speed. This can only be used by the alchemist.",
+        "source": "Corebook, page 287"
+      }
+    ],
+    "level_5": [
+      {
+        "name": "Awaken the Sleeper",
+        "effect": "Awaken a vampire from torpor",
+        "cost": "One Rouse Check",
+        "origin": "None",
+        "resonance": ["Choleric", "Sanguine"],
+        "duration": "N/A",
+        "dice_pool": "N/A",
+        "opposing_pool": "N/A",
+        "additional_notes": "Each Distillation style has a unique method of tapping for this elixir.",
+        "source": "Corebook, page 287"
+      }
+    ]
+  },
+  "counterfeit_disciplines": {
+    "level_1": {
+      "effect": "Counterfeit a one-dot Discipline",
+      "cost": "The same as the power channeled",
+      "duration": "The same as the power channeled",
+      "dice_pool": "The same as the power channeled",
+      "opposing_pool": "The same as the power channeled",
+      "source": "Corebook, page 285"
+    },
+    "level_2": {
+      "effect": "Counterfeit a two-dot Discipline",
+      "cost": "The same as the power channeled",
+      "duration": "The same as the power channeled",
+      "dice_pool": "The same as the power channeled",
+      "opposing_pool": "The same as the power channeled",
+      "source": "Corebook, page 287"
+    },
+    "level_3": {
+      "effect": "Counterfeit a three-dot Discipline",
+      "cost": "The same as the power channeled",
+      "duration": "The same as the power channeled",
+      "dice_pool": "The same as the power channeled",
+      "opposing_pool": "The same as the power channeled",
+      "additional_notes": "Requires a drop of vitae from a vampire of a matching clan or who possesses the Discipline.",
+      "source": "Corebook, page 287"
+    },
+    "level_4": {
+      "effect": "Counterfeit a four-dot Discipline",
+      "cost": "The same as the power channeled",
+      "duration": "The same as the power channeled",
+      "dice_pool": "The same as the power channeled",
+      "opposing_pool": "The same as the power channeled",
+      "additional_notes": "Requires a drop of vitae from a vampire of a matching clan or who possesses the Discipline.",
+      "source": "Corebook, page 287"
+    }
+  }
+} 

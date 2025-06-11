@@ -1,0 +1,320 @@
+{{Discipline
+| header=Potence
+| symbol=Potence_symbol.png
+| nicknames=Hulking, Blood’s Might, Percutio
+| affinity= {{icon|brujah}} [[Brujah]] {{icon|nosferatu}} [[Nosferatu]] {{icon|lasombra}} [[Lasombra]]
+| type=Physical
+| threat=Medium to High
+| resonance=Choleric
+}}
+
+__TOC__
+
+==Overview==
+Potence fuels the strength behind a hit, enhancing their strikes to a deceptive degree as a frail kindred decapitates a target with one hit. This vitae-fueled power up goes beyond simply being useful in a fight, as it also enables the user to force their body into actions impossible for most to replicate without it. <ref>[[Vampire: The Masquerade Corebook]], page 263-264</ref> 
+
+The [[Brujah]] use this power as a lethal weapon to cut short any confrontation they don't want to deal with and crack any skulls in their way. They also utilize their strengths with [[Presence]] to sway the crowds through [[Potence#Spark of Rage|Spark of Rage]]. While they may still feel a deeper connection to Humanity, in their hands this power is a devastating force. <ref>[[Vampire: The Masquerade Corebook]], page 67</ref>Many [[Nosferatu]] hesitate to use this power in front of mortals as it will break their deceptive nature. However, when given no choice they understand better than most clans the need to hit and run. <ref>[[Vampire: The Masquerade Corebook]], page 85</ref> Few [[Lasombra]] use this power to feed, instead favoring it for the eradication of an enemy with their hands or ripping through a door to command fear and respect.<ref>[[Vampire: The Masquerade Chicago by Night]], page 291</ref> 
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Fluent Strength'''
+|Reroll Blood Surge rouse checks on Strength or Potence rolls.
+|Free
+|None
+|No
+|Once
+|N/A
+|N/A
+|N/A
+|Gehenna War, page 47
+|- id="Lethal Body"
+|'''Lethal Body'''
+|Unarmed attacks do Aggravated Health damage to mortals when used and ignore one level of armor per Potence rating of user.
+| data-sort-value="1" |Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+ |N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 264
+|- id="Soaring Leap"
+|'''Soaring Leap'''
+|Leap higher and further than usual.
+| data-sort-value="2" |Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+|They can move as many meters as three times their Potence rating.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 264
+|}
+
+===Level 2===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" | Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Prowess"
+|'''Prowess'''
+|Add Potence rating to their unarmed damage and to feats of Strength, add half their Potence rating (Rounded up) to Melee damage.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 264
+|-id="Relentless Grasp"
+|'''Relentless Grasp'''
+|Gain supernatural grip strength.
+|One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|Does not benefit the initial grapple test.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 79
+|}
+
+===Level 3===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" | Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Brutal Feed"
+|'''Brutal Feed'''
+|Turn feeding into a violent and messy affair that only lasts seconds to Slake the user's Hunger.
+| data-sort-value="1" |Free
+|None
+|No
+|One feeding
+| N/A
+| N/A
+|Against vampires the number of feeding actions is halved (rounded down).
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 264
+|- id="Spark of Rage"
+|'''Spark of Rage'''
+|The user can add their Potence rating to rile or incite a person or crowd to violent actions.
+| data-sort-value="2" |One Rouse Check
+|None
+|[[Presence|Presence ●●●]]
+|One scene
+|N/A
+|N/A
+|Against vampires, the user will roll Manipulation + Potence vs Intelligence + Composure.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 265
+|-
+
+|- id="Uncanny Grip"
+|'''Uncanny Grip'''
+|Strengthens their grip on most surfaces, allowing them to climb or hang unsupported. 
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|The use of this power leaves obvious traces from the damage caused.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 265
+|-id="Wrecker"
+|'''Wrecker'''
+|Double Potence rating when used for feats of strength
+|Free
+|[[Potence#Prowess|Prowess]]
+|No
+|Refer [[Potence#Prowess|Prowess]]
+|N/A
+|N/A
+|It cannot be used against living targets.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 79
+|-
+|}
+
+=== Level 4===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Draught of Might"
+|'''Draught of Might'''
+|Turn their vitae into a Potence boost for others.
+| data-sort-value="1" |One Rouse Check
+|None
+|No
+|One night
+|N/A
+|N/A
+|Each drinker must take one Rouse Checks worth.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 265
+|-id="Crash Down"
+|'''Crash Down'''
+|Deal damage to a small area when using Soaring Leap.
+|One Rouse Check
+|[[Potence#Soaring Leap|Soaring Leap]]
+|No
+|N/A
+|Strength +
+Potence
+|Dexterity +
+Athletics
+|If opponents total fail or take 3 or more levels of damage they are knocked down.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 79
+|}
+
+===Level 5===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" | Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" | Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Earth Shock"
+|'''Earth Shock'''
+|Create a shockwave to throw opponents prone.
+| data-sort-value="1" |Two Rouse Checks
+|None
+|No
+|One use
+|N/A
+|N/A
+|This can only be used once per scene.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 265
+|- id="Fist of Caine"
+|'''Fist of Caine'''
+|Inflict Aggravated Health damage to mortals and supernatural creatures alike.
+| data-sort-value="2" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|N/A
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 266
+|-id="Subtle Hammer"
+|'''Subtle Hammer'''
+|Project the vampire’s power in a specific body part.
+|Free
+|None
+|No
+|Passive
+|N/A
+|N/A
+|You cannot make another attack in the same move, but body parts that have limited movement receive a four-dice bonus or more.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 79
+|}
+
+==Other Amalgams==
+Below are the amalgams from other Discipline trees that require Potence;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" | Potence Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" |Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+
+|- id="Arms of Ahriman"
+|[[File: Oblivion symbol.png|42px]]||[[Oblivion#Arms of Ahriman|'''Arms of Ahriman''']]
+|[[Oblivion]] ●●
+| data-sort-value="1" |●●
+|Conjures shadow appendages which the user can control
+|One Rouse Check
+|Wits +
+Oblivion
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago by Night|Chicago by Night]], page 294
+
+|- id="Obdurate"
+|[[File: Fortitude symbol.png|42px]]||[[Fortitude#Obdurate|'''Obdurate''']]
+|[[Fortitude]] ●●
+| data-sort-value="2" |●●
+|Maintain footing when hit with a massive force
+|One Rouse Check
+|Wits +
+Survival
+|[[Vampire: The Masquerade Winter's Teeth|Winter's Teeth]] #3
+|}
+
+==Gallery==
+<gallery>
+File:Potence example.png|Potence in combat. Source: Vampire: The Masquerade Winter's Teeth Issue #3
+File:Potence example 2.png|Potence being used to quickly wipe out a team of hunters. Source: Vampire: The Masquerade Winter's Teeth Issue #9
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]

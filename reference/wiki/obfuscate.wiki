@@ -1,0 +1,416 @@
+{{:Obfuscate/Lang}}
+{{Discipline
+| header=Obfuscate
+| symbol=Obfuscate_symbol.png
+| nicknames=Stealth Mode, Cloaking, Veiling, Occulto
+| affinity= {{icon|banu haqim}} [[Banu Haqim]] {{icon|malkavian}} [[Malkavian]]<br>  
+{{icon|ministry}} [[The Ministry]] {{icon|nosferatu}} [[Nosferatu]] {{icon|ravnos}} [[Ravnos]]
+| type=Mental
+| threat=Low
+| resonance=Melancholic
+}}
+
+__TOC__
+
+==Overview==
+Obfuscate is a power that allows the Kindred to hide easily, move without being noticed, and cast illusions. It gives users the ability to get close to victims or disguise themselves as well as give them an out when a situation gets too complicated. The power itself is not invisibility, instead, it works through mental magic, tricking the mind of others to ignore the kindred presence or see a mundane face instead.     
+
+Unless otherwise stated Obfuscate affects all five senses and coaxes victims to step out of the way to the point of rationalizing to themselves about why they are avoiding that particular corner. However, there are limitations to this power. The power will fail if the victim cannot ignore the user such as being backed into a corner or being blocked from a doorway they wish to walk through. As well as violent actions, loud noises or failed rolls to tamper with items. Without [[Obfuscate#Ghost in the Machine|Ghost in the Machine]], the kindred is easily recognized by machine surveillance. Users of [[Auspex#Sense the Unseen|Sense the Unseen]], are able to roll against these powers, as well as those about to be struck by a sneak attack. Without the use of [[Obfuscate#Vanish|Vanish]], users are unable to use Obfuscate while under observation from others. <ref>[[Vampire: The Masquerade Corebook]], page 260-261</ref>
+
+The [[Banu Haqim]] stalk prey from the shadows and deliver cloaked judgment to those they feel need it.<ref>[[Vampire: The Masquerade Camarilla]], page 167</ref> Many forget that the [[Malkavian|Malkavians]] possess this ability and use it in a variety of ways, most notably in conjunction with [[Dominate]] to mentally torture their opponents.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 79</ref> Meanwhile, [[The Ministry|Ministers]] use this skill to discover vice or lure victims to a secluded spot and use that information against them. [[Church of Set|Setites]] use obfuscate to mentally tear down opponents known as [[Obfuscate#Mental Maze|Mental Maze]] and [[Presence#True Love's Face|True Love's Face]].<ref name=":03">[[Vampire: The Masquerade Anarch]], page 184</ref> The [[Nosferatu]] are most known for mastering this Discipline to remain hidden or disguised while collecting information on others, later to be used against them or sold to others as boons.<ref>[[Vampire: The Masquerade Corebook]], page 84</ref> Members of the [[Ravnos]] clan are known to utilize this power to conjure illusions called [[Obfuscate#Chimestry|Chimestry]] to shape reality or strike fear into others.<ref>[[Vampire: The Masquerade Companion]], page 8</ref>  
+
+==List of available powers==
+===Level 1===
+{| class="mildtable sortable plainlist" width="calc(100%-330px)"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Cloak of Shadows"
+|'''Cloak of Shadows'''
+|As long as the user stands still they blend into their surroundings.
+| data-sort-value="1" |Free
+| |None
+| |No
+|One scene
+|N/A
+|N/A
+|Follows the general rules for Obfuscate.
+| |{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 261
+|-
+|'''Ensconce'''
+|Make others ignore small objects that are held on the vampire's body.
+|Free
+|None
+|No
+|One scene
+|N/A
+|N/A
+|Sense Unseen can pierce this power.
+|Gehenna War, page 46
+|- id="Silence of Death"
+|'''Silence of Death'''
+|Nullifies the sounds a user makes.
+| data-sort-value="2" |Free
+| None
+| No
+|One scene
+|N/A
+|N/A
+|This power does not eliminate powers made outside of the user's personal space.
+|*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 261
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Cache'''
+|Hide objects that are not held by the vampire.
+|One Rouse Check
+|Ensconce
+|No
+|One scene or until dawn
+|N/A
+|N/A
+|This can be extended for the duration of the night with an extra rouse check.
+|Gehenna War, page 47
+|- id="Chimestry"
+|'''Chimerstry'''
+|Create brief but realistic hallucinations.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Presence]] ●
+|One turn
+| Manipulation +
+Obfuscate
+|Composure +
+Wits
+|This can be used in combat but can only affect targets once per conflict. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Clarified use in combat}}
+|{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 25
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 76
+|- id="Ghost's Passing"
+|'''Ghost's Passing'''
+|The user can bestow Obfuscate onto an animal's tracks.
+| data-sort-value="2" |One Rouse Check
+|None
+|[[Animalism]] ●
+|One session
+|N/A
+|N/A
+|[[Auspex#Sense the Unseen|Sense the Unseen]] can discern signs as per general Obfuscate rules
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 18
+|- id="Unseen Passage"
+|'''Unseen Passage'''
+|The user can now move while remaining hidden.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene or until detection
+|N/A
+|N/A
+|This power will fail if the user is being actively watched when activated.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 261
+|- id="Ventriloquism"
+|'''Ventriloquism'''
+|Throw their voice so only the intended recipient can hear it.
+| data-sort-value="4" |One Rouse Check
+|None
+|[[Auspex]] ●●
+|One scene {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in release}}
+|Wits +
+Obfuscate
+|Resolve +
+Composure
+|Can be used on anyone in line of sight.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 31 {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, page 148}}
+|-id="Doubletalk"
+|'''Doubletalk'''
+|Say one thing but convey something else in secret.
+|One Rouse Check
+|None
+|[[Auspex]] ●
+|One utterance
+|Composure + Obfuscate
+|Wits + Auspex
+|Others present can contest.
+|{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 152
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" | Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Fata Morgana"
+|'''Fata Morgana'''
+|Elaborate hallucinations.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Presence]] ●●
+|One scene, unless let to lapse
+|Manipulation +
+Obfuscate
+|N/A
+|If the hallucination can trigger Frenzy, give the test at 1 diff lower than the real thing. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Clarified use as Frenzy trigger}}
+|{{icon|v5 wod}}
+*[[Vampire: The Masquerade Companion|Companion]], page 26
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 77
+|- id="Ghost in the Machine"
+|'''Ghost in the Machine'''
+|Allows the effects of Obfuscate to be transmitted through technology when viewed on a live screen.
+| data-sort-value="2" | Free
+|None
+|No
+|As power used
+|N/A
+|N/A
+|If viewed later the image seems blurred, making identification harder.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 262
+|- id="Mask of a Thousand Faces"
+|'''Mask of a Thousand Faces'''
+|Make themselves appear as a mundane face rather than disappear allowing interaction and communication.
+| data-sort-value="3" |One Rouse Check
+|None
+|No
+|One scene
+|N/A
+|N/A
+|This power allows them to interact and speak to others around them.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 262
+|- id="Mask of Isolation"
+|'''Mask of Isolation'''
+|Force Mask of a Thousand Faces onto a victim.
+| data-sort-value="4" |One Rouse Check
+|[[Obfuscate#Mask of a Thousand Faces|Mask of a Thousand Faces]]
+|[[Dominate]] ●
+|One night plus one additional night per margin of success
+|Manipulation +
+Obfuscate
+|Charisma +
+Insight
+|Should the user be made aware of the power being used on them the effects end.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 48
+|- id="Mental Maze"
+|'''Mental Maze'''
+|Remove all sense of direction and location from a victim in a location.
+| data-sort-value="5" |One or Three Rouse Checks
+|None
+|[[Dominate]] ●
+|One night
+|Charisma +
+Obfuscate
+|Wits +
+Resolve
+|Eye contact is required to active the power. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Changed from a verbal command}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 77
+|-id="Mind Masque"
+|'''Mind Masque'''
+|Hide and replace emotions and thoughts against those who wish to read them through supernatural means.
+|One Rouse Check
+|None
+|[[Dominate]] ●●
+|One scene
+|Intelligence +
+Obfuscate
+|N/A
+|The difficulty to mask their emotion depends on how complicated they want the ruse to be.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 78
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" | Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" | Additional Notes
+! width="10%" |Source
+
+|- id="Conceal"
+|'''Conceal'''
+|Cloak an inanimate object.
+| data-sort-value="1" |One Rouse Check
+|None
+|[[Auspex]] ●●●
+|One night plus one additional night per margin of success
+|Intelligence +
+Obfuscate
+|N/A
+| This power cannot affect anything larger than a two-story house or anything moving on it's own.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 262
+|- id="Vanish"
+|'''Vanish'''
+|Activate Cloak of Shadows or Unseen Passage while being observed.
+| data-sort-value="2" |As per power augmented
+|[[Obfuscate#Cloak of Shadows|Cloak of Shadows]]
+|No
+|As per power augmented
+|Wits +
+Obfuscate
+|Wits +
+Awareness
+|This power makes the memory of the Kindred foggy and indistinct, but it will not affect the memories of vampires.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 262
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="10%" |Name
+! width="14%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="8%" |Prerequisite
+! width="8%" |Amalgam
+! width="10%" |Duration
+! width="10%" |Dice pool
+! width="10%" |Opposing pool
+! width="10%" class="unsortable" |Additional Notes
+! width="10%" |Source
+
+|- id="Cloak the Gathering"
+|'''Cloak the Gathering'''
+| Shelter companions under Obfuscate.
+| data-sort-value="1" |One Rouse Check in additional to the cost of the power extended
+|None
+|No
+|As per power extended
+|N/A
+|N/A
+|This power extends to a number of people equal to the user's Wits, plus additional Rouse Checks.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 263
+|- id="Impostor's Guise"
+|'''Impostor's Guise'''
+|Appear as someone else.
+| data-sort-value="2" | One Rouse Check
+|[[Obfuscate#Mask of a Thousand Faces|Mask of a Thousand Faces]]
+|No
+|One scene
+|Wits +
+Obfuscate
+|Manipulation +
+Performance
+|The face they wish to copy must be studied for at least five minutes from multiple angles.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 263
+|}
+
+==Other Amalgams ==
+Below are the amalgams from other Discipline trees that require Obfuscate;
+{| class="mildtable sortable plainlist" width="100%"
+! width="1%" class="unsortable" |
+! width="15%" |Name
+! width="15%" |Power Level
+! width="10%" |Obfuscate Level Required
+! width="20%" class="unsortable" |Effect
+! width="12%" class="unsortable" | Cost
+! width="15%" |Dice pool
+! width="12%" |Source
+
+|- id="Dementation"
+|[[File: Dominate symbol.png|42px]]||[[Dominate#Dementation|'''Dementation''']]
+|[[Dominate]] ●●
+| data-sort-value="1" |●●
+|Drive others insane
+|One Rouse Check per scene
+|Manipulation +
+Dominate
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 255
+
+|- id="Unliving Hive"
+|[[File: Animalism symbol.png|42px]]||[[Animalism#Unliving Hive|'''Unliving Hive''']]
+|[[Animalism]] ●●●
+| data-sort-value="2" |●●
+|Extend animal influence to swarms of insects
+|Free
+|N/A
+| 
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 246
+
+|- id="True Love's Face"
+|[[File: Presence symbol.png|42px]]||[[Presence#True Love's Face|'''True Love's Face''']]
+|[[Presence]] ●●●
+| data-sort-value="3" |●●●
+|The victim will perceive the user as a mortal they have strong emotional ties with, be it hatred or love.
+|One Rouse Check
+|Manipulation +
+Presence
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 85
+|
+
+|- id="Unseen Strike"
+|[[File: Celerity symbol.png|42px]]||[[Celerity#Unseen Strike|'''Unseen Strike''']]
+|[[Celerity]] ●●●●
+| data-sort-value="1" |●●●●
+|Vanish, blink forwards, and surprise attack an enemy.
+|Two Rouse Checks
+|Dexterity +
+Celerity
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 73
+|}
+
+==Example usage in products==
+==Example usage in actual plays==
+==Gallery==
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />

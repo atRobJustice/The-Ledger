@@ -1,0 +1,1082 @@
+==Blood Sorcery Rituals==
+Unless otherwise marked all Rituals cost one Rouse Check, five minutes per level to cast, and winning an Intelligence + Blood Sorcery Difficulty (Ritual Level + 1). Rituals that benefit the recipient can only be cast onto the sorcerer themselves unless otherwise stated. Many call for necessary ingredients, but may only require blood and concentration.<ref>[[Vampire: The Masquerade Corebook]], page 275</ref> Learning new rituals in play take time and experience. Learning  new ritual is at least the square of the its level in weeks.<ref>[[Vampire: The Masquerade Corebook|Vampire: the Masquerade Corebook]], page 272</ref>
+
+In the past the best knowledge was out of reach of many in chantries owned by the [[Tremere]] or strong holds connected to [[Banu Haqim|Banu Haqim's]] Alamut. Both clans have faced upheavals, and the arcane secrets are up for grabs. A whole [[Blood craft scene|redworking scene]] has sprung up with desperate kindred of the aforementioned clans looking to find ingredients or knowledge, while other Kindred see an opportunity to learn or profit off this new market. 
+
+Good teacher or a good [[Blood_craft_scene#Tomes_and_Grimoires|grimoire]] may lessen the time needed to learn a ritual. It is possible to create new rituals through an extended test that may take in game months to complete.<ref>[[Vampire: The Masquerade Blood Sigils|Vampire: the Masquerade Blood Sigils]], page 59</ref> 
+
+===Level 1===
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Origin
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|-
+|'''Astromancy'''
+|Learn information such as Skills, Desires and Convictions about someone
+|One Rouse Check
+|None
+|Intelligence + 
+Blood Sorcery
+|If you know the correct Birth or Embrace date, you can add 1 die to the Ritual pool. This does not stack if you know both.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 59
+|- id="Beelzebeatit"
+|'''Beelzebeatit'''
+|Animals avoid the area.
+|One Rouse Check
+|[[Sabbat]]
+|Intelligence +
+Blood Sorcery
+|Nothing prevents directed or controlled creatures from entering.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 50
+|-
+|'''Bind the Accusing Tongue'''
+|Prevent someone from communicating something negative about the caster
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Victim can break free by rolling Composure + Resolve.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 60
+|-
+|'''Blood Apocrypha'''
+|Embed messages into Blood or vessels.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The first person receives the message if they are the intended recipient or if they have A Taste For Blood.
+|[[Vampire: The Masquerade Book of Nod Apocrypha|Book of Nod Apocrypha]], page 34 {{icon|v5 renegade}}
+|- id="Blood Walk"
+|'''Blood Walk'''
+|Learn characters generation, name, and sire.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Requires one Rouse Check from the subject to be performed.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 276
+|- id="Bloody Message"
+|'''Bloody Message'''
+|Make a message appear to a specific type of person then disappear once read.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Make the Ritual Roll when enchanting the surface.
+| {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Let the Streets Run Red|Let the Streets Run Red]], page 77
+|-
+|'''Blood to Water'''
+|Turn blood into water.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Removes all traces of blood.
+|Gehenna War, page 48
+|- id="Clinging of the Insect"
+|'''Clinging of the Insect'''
+|Cling to walls like an insect.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|The user must cling with both their hands and feet.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 276
+|- id="Coax the Garden"
+|'''Coax the Garden'''
+|Use plant life to defend.
+|One Rouse Check
+| [[Bahari]]
+|Intelligence +
+Blood Sorcery
+|The plants will target anyone who isn't the caster.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 55
+|- id="Craft Bloodstone"
+|'''Craft Bloodstone'''
+|Craft a tracking stone.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|A caster may have up to as many stones as they have Resolve.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 276
+|- id="Dampen the Fear"
+|'''Douse the Fear''' {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Dampen the Fear}}
+|Remove their fear of fire temporarily.
+|One Rouse Check
+| [[Church of Caine]]
+|Intelligence +
+Blood Sorcery
+|The power wears off once the scene ends.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 67
+*{{icon|v5 renegade}}[[Vampire: The Masquerade Players Guide|Players Guide]], page 99
+|- id="Enrich the Blood"
+|'''Enrich the Blood'''
+|Make a mortal more nourishing.
+|One Rouse Check
+|
+|Intelligence +
+Blood Sorcery
+|This does not work on Kindred vitae.
+| {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 76
+|- id="Herd Ward (Minor)"
+|'''Herd Ward (Minor)'''
+|Ward a single kine of a herd to prevent unauthorized feeding.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Make the Ritual Roll when someone else feeds off the herd.
+| {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Let the Streets Run Red|Let the Streets Run Red]], page 77
+|- id="Letter Ward"
+|'''Letter Ward'''
+|Place a ward on a letter
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Make the Ritual Roll if anyone other than the intended recipient opens it.
+| {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Let the Streets Run Red|Let the Streets Run Red]], page 77
+|-
+|'''Revealing the Crimson Trail'''
+|Reveal traces of spilled blood.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Very old traces require a Resolve + Awareness test.
+|Gehenna War, page 48
+|-
+|'''Seal the Brand'''
+|Make a tattoo permanent on a vampire
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The process inflicts 1 Superficial damage
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 99
+|-
+|'''Shared Memory'''
+|Observe another's Memoriam.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Participants observe the events and can offer advice but cannot directly influence the events.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade In Memoriam|In Memoriam]], page 145
+|- id="Wake with Evening's Freshness"
+|'''Wake with Evening’s Freshness'''
+|Awakens the caster at any signs of danger during day sleep.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Do not make the Ritual roll until true danger appears.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 276
+|- id="Ward Against Ghouls"
+|'''Ward Against Ghouls'''
+|Protect themselves against Ghouls.
+|One Rouse Check
+| None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+| {{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|}
+
+===Level 2===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" class="unsortable" |Effect
+! width="10%" class="unsortable" |Cost
+! width="10%" |Origin
+! width="10%" |Ritual Roll
+! width="20%" class="unsortable" |Additional Notes
+! width="10%" |Source
+|- id="As Fog on Water"
+|'''As Fog on Water'''
+|Walk on water silently.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|This can be ended early or kept to allow them to walk on water for the rest of the night.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 100
+|- id="Calling the Aura's Remnants"
+|'''Calling the Aura’s Remnants'''
+|Speak with the residual aura of someone who has died.
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+|The aura only has memories up to the time of death.
+|
+*{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 171
+|-id="Calix Secretus"
+|'''Calix Secretus'''
+|Store vitae for a later use.
+|One Rouse Check plus additional to be stored
+|None
+|Intelligence +
+Blood Sorcery
+|Two Rouse Checks stored will slake one Hunger.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 100
+|- id="Communicate with Kindred Sire"
+|'''Communicate with Kindred Sire'''
+|Creates a long-distance telepathic link between Sire and Childe
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Major disturbance on either side breaks the connection.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|-
+|'''Craftmaster'''
+|Temporarily gain dots and speciality in certain skills (Academics, Craft, Performance or Science)
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Dots replace any skill that caster already has but gain an extra die if they already have the speciality. On a total failure, caster takes Aggravated Damage.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 62
+|-
+|'''Depths of Nightmare'''
+|Curse someone with nightmares that cause Willpower Damage, which can't be healed during the Ritual's duration.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|On a total failure, the victim has pleasant dreams and is pointed towards the caster.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 62
+|-
+|'''Elemental Grasp'''
+|Command your chosen element to interfere with a target
+|One Rouse Check
+|[[Blood Sorcery#Koldunic Sorcery|Koldunic Sorcery]]
+|Intelligence +
+Blood Sorcery
+|Target takes Superficial Health Damage and must make an appropriate roll to continue. Caster gains one die to their Ritual pool if the element is already active, like water during a flood.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 62
+|- id="Enchanted Dyscrasia"
+|'''Enhance Dyscrasia'''
+|Allow multiple Kindred to feed from one Dyscrasia without destroying it.
+|One Rouse Check
+|[[Penny Dinning Club]]
+|Intelligence +
+Blood Sorcery
+|Usually, they will use [[Blood Sorcery Rituals#Enrich the Blood|Enrich the Blood]] first.
+|
+*{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 77
+|- id="Eyes of Babel"
+|'''Eyes of Babel'''
+| By consuming the eyes and tongue of another, they gain the ability to read and speak any language known by the victim.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+| This Ritual may incur Stains.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|- id="Illuminate Trail of Prey"
+|'''Illuminate Trail of Prey'''
+|Allows the caster to follow the trail of a specific person.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The victim's face must be known by the caster.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|-
+|'''Le Sang de l'Amour'''
+|Create a connection between two people, providing they desire each other at the time the Ritual is cast
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Both participants can use Resolve + Awareness to get an estimation of where the other is. On a total failure of the initial Ritual, this roll disorients them and their Composure is temporarily reduced by one.
+|{{icon|v5 renegade}} [[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 63
+{{icon|v5 renegade}}[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 153
+|- id="Soporific Touch"
+|'''Soporific Touch'''{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Ishtar's Touch}}
+|Convert a dose of vitae to weaken their victim against mundane manipulations or mind-altering Disciplines.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The Ritual Roll is made after the victim makes contact and is contested against with Stamina + Resolve.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Camarilla|Camarilla]], page 168
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 100
+|-
+|'''Silentia Mortis'''
+|Replicates Silence of Death (Obfuscate ●), which creates a radius of silence
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|If intended for someone other than the caster, they will also have to make their own Rouse Check.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 64
+|- id="Shroud of Silence"
+|'''Shroud of Silence'''
+|Prevent sounds from escaping a room.
+|One Rouse Check
+|[[Shepherds of Ur-Shulgi|The Shepherds of Ur-Shulgi]]
+|Intelligence +
+Blood Sorcery
+|Requires vitae from a Kindred who possesses Obfuscate
+|
+*{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 23
+|-
+|'''Stolen Memory'''
+|Access sire's memories.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Can access memories of grandsire or beyond with Difficulty increase of 2 per generation past their sire.
+|
+*{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade In Memoriam|In Memoriam]], page 145
+|-
+|'''Tiamat Glistens'''
+|Attune yourself to a place of power, like a Furcus
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Caster gains bonuses to Rituals they cast. Only one caster can be attuned to a place of power. If someone else performs the Ritual, the original caster loses their bonus immediately.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 64
+|- id="Truth of Blood"
+|'''Truth of Blood'''
+|The caster can discern truth from lies.
+|One Rouse Check
+| None
+|Resolve +
+Blood Sorcery
+|The target rolls Composure+Occult to resist. This Ritual cannot get past memory wiping Disciplines.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|- id="Unseen Underground"
+|'''Unseen Underground'''
+|Become invisible underground.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Immediately ends if they go above ground, or they take hostile actions, otherwise it only lasts for one hour. {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 31 {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, originally page 128}}
+|-
+|'''Viscera Garden'''
+|Grow Blood-addicted plants that can consume corpses
+|One Rouse Check, additional Rouse Check of blood per month
+|None
+|Intelligence +
+Blood Sorcery
+|Can be eaten by Kindred, they do not slake hunger but they stay down. Mortals who ingest a plant are more susceptible to Disciplines.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 65
+|- id="Ward Against Spirits"
+|'''Ward against Spirits'''
+|Protect themselves against spirits.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 277
+|- id="Warding Circle Against Ghouls"
+|'''Warding Circle against Ghouls'''
+|Protect themselves against Ghouls.
+|Three Rouse Checks
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 278
+|- id="Web of Hunger"
+|'''Web of Hunger'''
+|Avoid the pull of the [[Beckoning]]. {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Without the dagger, this ritual would be 4th level. With the dagger it can be treated as level 2. {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release}}
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 31 {{Errata|source=Vampire: The Masquerade Fall of London|date=August 2023|summary=Power revised in re-release, originally pg. 137}}
+|}
+
+===Level 3===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! class="unsortable" width="20%" |Effect
+! class="unsortable" width="10%" |Cost
+! width="10%" |Origin
+! width="10%" |Ritual Roll
+! class="unsortable" width="20%" |Additional Notes
+! width="10%" |Source
+|- id="Bladed Hands"
+|'''Bladed Hands'''
+|Sharpens the user's hands into a weapon.
+|Two Rouse Checks
+|[[Milwaukee]]
+|Intelligence +
+Blood Sorcery
+|Treated as a light piercing Brawl weapon with a +2 modifier.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 174
+|- id="Bloodless Feast"
+|'''Bloodless Feast'''
+|Purify blood, creating a clear blood-like substance.
+|One Rouse Check, possible Stains
+|[[The Bloodless Pilgrims]]
+|Intelligence +
+Blood Sorcery
+| Those who consume the clear vitae enough are weaker to diablerie.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Forbidden Religions|Forbidden Religions]], page 67
+|-
+|'''Blood Sigil'''
+|Create a tattoo on a Kindred which also contains a message
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Can read the message with a Resolve + Occult roll or by Sense the Unseen (Auspex ●). Caster can remove the Blood Sigil by spending Willpower and touching the tattoo.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 66
+|- id="Communal Vigor"
+|'''Communal Vigor'''
+|A Pack Priest shares their Blood Potency with their pack.
+|One Rouse Check
+|[[Sabbat]]
+|Intelligence +
+Blood Sorcery
+|The Priest gains three bonus dice on Dominate and Presence tests against packmates.
+|
+*{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 50
+|- id="Dagon's Call"
+|'''Dagon’s Call'''
+|The caster can rupture the blood vessels of a victim from afar.
+|One Rouse Check
+| None
+|Resolve +
+Blood Sorcery
+|The caster can use this up to two additional times, each costing an additional Rouse Check. The opposing roll is Stamina + Resolve.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 278
+|- id="Deflection of Wooden Doom"
+|'''Deflection of Wooden Doom'''
+|This ritual protects them from being staked.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Do not roll the Ritual Roll until staked.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 278
+|-
+|'''Elemental Shelter'''
+|Meld with your chosen element, similar to Earth Meld (Protean ●●●)
+|One Rouse Check
+|[[Blood Sorcery#Koldunic Sorcery|Koldunic Sorcery]]
+|Intelligence +
+Blood Sorcery
+|Fire Kolduns must resist terror frenzy before casting this ritual. Koldun's form can be seen with a Wits + Awareness roll or by Sense the Unseen (Auspex ●). If bonded element is removed, such as the fire going out, the Koldun enters torpor.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 66
+|- id="Essence of Air"
+|'''Essence of Air'''
+|Allows for flight.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The Camarilla frowns upon this Ritual due to its Masquerade dangers.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 278
+|- id="Eyes of the Past"
+|'''Eyes of the Past'''
+|See what happened at their current location in the past.
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+| It only holds events within the last five years.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 172
+|- id="Fire in the Blood"
+|'''Fire in the Blood'''
+|Create anguish of fire in one's blood to incapacitate
+|One Rouse Check
+|[[Church of Caine]]
+|Intelligence +
+Blood Sorcery
+|A victim can only be affected by this Ritual once per night. {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Mechanical change}}
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 67
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 100
+|- id="Firewalker"
+|'''Firewalker'''
+|Allow themselves and their comrades to become resistant to fire.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|This ritual can be performed on others, but the fingertip removal must all come from the caster.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 279
+|- id="Galvanic Ruination"
+|'''Galvanic Ruination'''
+| Short out electronics and wiring nearby.
+|One Rouse Check
+|[[Sabbat]]
+|Intelligence +
+Blood Sorcery
+|Generally, it only affects the range of a warehouse or three-story building, but can be extended by adding 1 Difficulty per additional building.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 51
+|- id="Gentle Mind"
+|'''Gentle Mind'''
+| Protect the mind of a target against Frenzy.
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+| The caster must share blood with another and cannot cast it upon themselves.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 172
+|- id="Haunted House"
+|'''Haunted House'''
+|Make a haven appear as if it's haunted.
+|Three Rouse Checks
+|[[Milwaukee]]
+|Intelligence +
+Blood Sorcery
+|The effects last for 10 years.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 175
+|- id="Herd Ward (Major)"
+|'''Herd Ward (Major)'''
+|Ward a herd against unauthorized feeding by warding the door to protect multiple people within.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+| Make the Ritual Roll when someone else feeds off the herd.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Let the Streets Run Red|Let the Streets Run Red]], page 77
+|- id="Illusion of Peaceful Death"
+|'''Illusion of Peaceful Death'''
+|Make a corpse appear as if it'd died a natural death.
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+| The body must have at least half of the body's blood to succeed.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 172
+|- id="Illusion of Perfection"
+|'''Illusion of Perfection'''
+|Become a nondescript person to blend into crowds.
+|One Rouse Check
+|[[Milwaukee]]
+|Intelligence +
+Blood Sorcery
+|Similar to the ability [[Obfuscate#Mask of a Thousand Faces|Mask of a Thousand Faces]].
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 174
+|-
+|'''Nepenthe'''
+|Create a draught that can remove Stains, but prolonged use of it can make those Stains permanent
+|One Rouse check
+|None
+|Intelligence +
+Blood Sorcery
+|Using Nepenthe two sessions in a row causes one Stain to become permanent. This is cumulative, e.g. four sessions gives two permanent Stains.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 66
+|- id="One with the Blade"
+|'''One with the Blade'''
+|Claim ownership of a weapon and protect it from damage.
+|One or more Rouse Checks, enough to submerge the weapon.
+|None
+|Intelligence +
+Blood Sorcery
+|Only one weapon can hold this ritual at a time.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Camarilla|Camarilla]], page 168
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 101
+|- id="Sanguine Watcher"
+|'''Sanguine Watcher'''
+|Create a small rat out of vitae.
+|One Rouse Check
+|[[Milwaukee]]
+|Intelligence +
+Blood Sorcery
+|The caster can send the rat to go where they instruct to observe or steal, but the instructions must be very explicit.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 174
+|-
+|'''Seeing with the Sky's Eyes'''
+|Observe a target from above
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Player can ask one question about location and surrounding per success roll. Critical Wins give 3 extra questions and can gain information about Ambitions, Desires, Convictions and Humanity.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 67
+|-
+|'''Seeking Tiamat'''
+|Find veins of the Earth
+|One Rouse Check and Aggravated Health damage
+|None
+|Intelligence +
+Blood Sorcery
+|Critical wins discover the closest vein and points towards 2 Furcae on that vein
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 68
+|- id="Sleep of Judas"
+|'''Sleep of Judas'''
+|Incapacitate a vampire by drugging them.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Make the Ritual Roll when the target is drugged.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Let the Streets Run Red|Let the Streets Run Red]], page 77
+|-
+|'''Soul of the Hemonculus'''
+|Create a Hemonculus, a shrivelled, smaller and weaker version of the caster, who must obey your every command
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Immune to the sun but cannot be Embraced, made into a ghoul or have a Blood Bond. Vampires slake no Hunger if they drink from it.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 68
+|-
+|'''Stone of the True Form'''
+|Dispel illusions and creatures altered via Disciplines and Rituals
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Must throw the stone with Dexterity + Athletics. The target resists the Ritual with Resolve + Occult. On a win, illusions are dispelled, shapeshifters are painfully returned to their original form and beings made through Disciplines, like a Vozhd, are separated to their original components.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 68
+|- id="The Unseen Change"
+|'''The Unseen Change'''
+|Lupines entering the area are forced into Wolf Form.
+|Three Rouse Checks
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+|If they do not succeed on the Ritual Roll against a contested Willpower test, they enter in Lupus Form.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 172
+|-
+|'''Trespass'''
+|Allows the caster to easily sneak around a building, such as by flowing through crevices that blood can fit through
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Unlike Incorporeal Passage, the caster can be attacked providing they are able to notice the caster.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 69
+|-
+|'''Viral Haruspex'''
+|Gather information from everyone in an area suffering from a certain disease
+|One Rouse Check
+|[[Plague Oracles]]
+|Intelligence +
+Blood Sorcery
+|Caster must drink from someone with the disease within 24 hours before casting this Ritual.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 69
+|- id="Ward Against Lupines"
+|'''Ward against Lupines'''
+|Protects themselves against Werewolves.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 279
+|- id="Warding Circle against Spirits"
+|'''Warding Circle against Spirits'''
+|Protect themselves against spirits.
+|Three Rouse Checks
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 279
+|}
+
+===Level 4===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! class="unsortable" width="20%" |Effect
+! class="unsortable" width="10%" |Cost
+! width="10%" |Origin
+! width="10%" |Ritual Roll
+! class="unsortable" width="20%" |Additional Notes
+! width="10%" | Source
+|-
+|'''Compel the Inanimate'''
+|Give a simple command to an inanimate object which it follows a few minutes later
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The caster must remain in the same general area as the object. Sense the Unseen (Auspex ●) can detect the caster with a Wits + Auspex vs. caster's Composure + Blood Sorcery roll.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 69
+|- id="Defense of the Sacred Haven"
+|'''Defense of the Sacred Haven'''
+|Protect a haven with mystical darkness from the sun.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The Ritual roll is made once the sun rises.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 279
+|-
+|'''Egregore Consultation'''
+|By hosting an illness, the caster is able to enhance Skills by access the experiences of everyone with that illness in the area
+|One Rouse Check
+|[[Plague Oracles]]
+|Intelligence + Blood Sorcery
+|If a Skill is very common in an area, like Finance in New York, the caster can get extra die to their roll, at a maximum of two.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 70
+|- id="Eyes of the Nighthawk"
+|'''Eyes of the Nighthawk'''
+|Take control of a carnivorous bird and act through them.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+| The user can use most non-physical Disciplines through the bird.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 279
+|-id="Feast of Ashes"
+|'''Feast of Ashes'''
+|Stop another Kindred from drinking blood for one night.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The ritual roll is made against the victim’s Resolve + Willpower. The victim can eat the ashes to slake hunger but only down to 3.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 101
+|-id="Guided Memory"
+|'''Guided Memory'''
+|With the Blood of another vampire, experience their memories guided by them.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|This can be used to unlock Discipline powers, Merits and other gifts.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 101
+|- id="Incorporeal Passage"
+|'''Incorporeal Passage'''
+|The caster's form becomes ghost-like.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|They may only interact through speech and sight.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 280
+|- id="Innocence of the Child's Heart"
+|'''Innocence of the Child’s Heart'''
+|Put up a blockade against [[Auspex#Scry the Soul|Scry the Soul]] to hide diablerie and other vampiric traits.
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+|There's no record of Nicolai sharing this ritual with his fellow Tremere and is only learned by capturing his notes or by ST discretion.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 172
+|-
+|'''Innocence's Veil'''
+|Temporarily make traces of Diablerie undetectable.
+|
+|None
+|
+|Cannot be detected by A Taste for Blood or Scry The Soul
+|Gehenna War, page 48
+|-id="Invisible Chains of Binding"
+|'''Invisible Chains of Binding'''
+|Confine a victim to a single spot
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The victim is unable to move from that spot for one hour per success in the margin unless the chain is destroyed or removed.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 102
+|-
+|'''Land's Sustenance'''
+|Feed from a place of power, turning it into a place of suffering where injuries become more severe.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Lasts until end of the Story before needing to be renewed. Once per Session, they can automatically pass a number of Rouse Checks equal to their margin on the Ritual roll.
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 70
+|- id="Rending the Sweet Earth"
+|'''Rending the Sweet Earth'''
+|Pull a vampire from the earth who is using [[Protean#Earth Meld|Earth Meld]].
+|One Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+|The ritual automatically awakens the other vampire unless they are in torpor or the Ritual Roll is a Critical Win.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 173
+|-
+|'''Riding the Earth's Vein'''
+|Travel from one furcus to another random one.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|The caster has no control over where they end up. This Ritual is one way and only activates where it was first cast
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 71
+|- id="Protean Curse"
+|'''Protean Curse'''
+|Transform a target into a bat similar to [[Protean#Metamorphosis|Metamorphosis]].
+|Two Rouse Check
+|[[Chicago]]
+|Intelligence +
+Blood Sorcery
+|This cannot be used on the caster.
+|{{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Chicago Folios|Chicago Folios]], page 173
+|- id="Ward against Cainites"
+|'''Ward against Cainites'''
+|Protects themselves against Kindred.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards. A vampire examining this ward may read the name of the caster with an Intelligence + Auspex vs Intelligence + Blood Sorcery roll.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 280
+|- id="Warding Circle against Lupines"
+|'''Warding Circle against Lupines'''
+|Protects themselves against Werewolves.
+|Three Rouse Checks
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 280
+|}
+
+===Level 5===
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! class="unsortable" width="20%" |Effect
+! class="unsortable" width="10%" |Cost
+! width="10%" |Origin
+! width="10%" |Ritual Roll
+! class="unsortable" width="20%" |Additional Notes
+! width="10%" | Source
+|- id="Antebrachia Ignium"
+|'''Antebrachia Ignium {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Renamed from Creatio Ignis}}
+|Set their arms on fire
+|One Rouse Check
+|[[Church of Caine]]
+|Intelligence +
+Blood Sorcery
+|The user is only resistant to fire on their arms.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 67
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 102
+|-
+|'''Atrocity's Release'''
+|Reverses the effects of Diablerie
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Can be resisted with a Resolve + Blood Sorcery test.
+|Gehenna War, page 49
+|-id="Dominion"
+|'''Dominion'''
+|Stop the use of Animalism, Auspex, Dominate, and Presence within a building.
+|One Rouse Check or more
+|None
+|Intelligence +
+Blood Sorcery
+| The area of effect is determined by the amount of Rouse Checks.
+|
+*{{icon|v5 renegade}}
+*[[Vampire: The Masquerade Players Guide|Players Guide]], page 103
+|- id="Eden's Bounty"
+|'''Eden’s Bounty'''
+|Drain blood from nearby creatures
+|One Rouse Check, possible Stains
+|[[Bahari]]
+|Intelligence +
+Blood Sorcery
+|For the remainder of the chapter, mortals suffer 1 die penalty to Physical rolls and take 1 Aggravated health damage.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], page 56
+|-
+|'''Elemental Attack'''
+|The Koldun commands their chosen element to attack a foe. This can be a Chain Ritual
+|One Rouse Check
+|[[Blood Sorcery|Koldunic Sorcery]]
+|Intelligence +
+Blood Sorcery
+|If their element is already active, like Air during a storm, they get an extra die to their Ritual pool. If Chained with Elemental Grasp and Tiamat Glistens, the Ritual becomes a natural disaster, e.g. Tornado, Magma Flow or Tsunami
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 71
+|- id="Escape to True Sanctuary"
+|'''Escape to True Sanctuary'''
+|Create a one-way portal.
+|In total this ritual requires twelve Rouse Checks.
+|None
+|Intelligence +
+Blood Sorcery
+|A caster may only have one set of these circles active at a time.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 280
+|-
+|'''Fisher King'''
+|Makes the caster one with their land, giving them access to it's secrets. This can be a Chain Ritual
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|Can make a Wits + Streetwise or Survival roll to ask questions about the land. The caster can ask one extra question per session. This Ritual lasts until the end of the story. If Chained with Land's Sustenance and Compel the Inanimate, the casters gain complete control over the land and the casters can heal a total of 5 Aggravated damage each night
+|[[Vampire: The Masquerade Blood Sigils|Blood Sigils]], page 72
+|- id="Heart of Stone"
+|'''Heart of Stone'''
+|Turns their heart to stone preventing staking. The Caster also suffers from emotional detachment, taking penalties to Remorse or active Social-related rolls.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery
+|They are unable to use [[Presence]] during this ritual's use but gain a bonus when resisting its use on them.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 281
+|-
+|'''Reawakened Vigor'''
+|Regain blood potency faster after extended torpor.
+|
+|
+|
+|Inflicts aggravated damage to anyone other than the caster.
+|Gehenna War, page 49
+|- id="Shaft of Belated Dissolution"
+|'''Shaft of Belated Dissolution'''
+|A stake that will seek out another vampire's heart and will cause final death if it finds it.
+|Two Rouse Checks
+|None
+|Intelligence +
+Blood Sorcery
+|Even if an attack with this stake fails to hit the heart, if it hits, a splinter will break and move towards the heart to eradicate the victim.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 281
+|- id="Simulacrum Gate"
+|'''Simulacrum Gate'''
+|Create a gate to teleport multiple vampires.
+|One Rouse Check, possible Stains
+|[[Sabbat]]
+|Intelligence +
+Blood Sorcery
+|There is only one of these known to exist currently.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Sabbat: The Black Hand|Sabbat]], page 51
+|- id="Transferring the Soul"
+|'''Transferring the Soul'''
+| Take over a body from diablerie.
+|One Rouse Check
+|None
+|Intelligence +
+Blood Sorcery and
+
+Intelligence +
+
+Oblivion
+|This ritual requires another Kindred who knows Oblivion ●●●●●. It is possible to be done by one Kindred who possess level 5 in both powers.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Fall of London|Fall of London]], page 11-13
+|- id="Warding Circle against Cainites"
+|'''Warding Circle against Cainites'''
+|Protects themselves against Kindred.
+|Three Rouse Checks
+|None
+|Intelligence +
+Blood Sorcery
+|Uses standard rules for Wards.
+|{{icon|v5 renegade}} / {{icon|v5 dtrpg}}
+*[[Vampire: The Masquerade Corebook|Corebook]], page 282
+|}
+
+==Gallery==
+<gallery>
+File:Ward against Lupines example.png|A Ward Against Lupines being placed by a Tremere. Source: World of Darkness: Crimson Thaw, Issue #2
+File:Ward against Lupines active example.png|A Ward Against Lupines affecting werewolves. Source: World of Darkness: Crimson Thaw, Issue #2
+File:BladedHand BL2.jpg|Bladed Hand being used by Phyre. Source: [[Vampire: The Masquerade Bloodlines 2]].
+</gallery>{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+[[Category:Disciplines]]
+
+<references />
