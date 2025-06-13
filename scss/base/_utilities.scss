@@ -1,0 +1,41 @@
+@use '../globals' as *;
+
+// Utility classes
+.full-width-header {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.column {
+    @include flex-column;
+    gap: $spacing-md;
+}
+
+.stat {
+    border-bottom: 1px dashed $color-border-light;
+    padding: $spacing-xs 0;
+}
+
+// Alert styles
+.alert-info {
+    background-color: rgba($color-info, 0.1);
+    border-color: rgba($color-info, 0.3);
+    color: $color-info;
+}
+
+// Badge styles
+.badge {
+    &.bg-warning {
+        background-color: $color-warning !important;
+        color: #000 !important;
+    }
+}
+
+// Source attribution
+.predator-info-source, 
+.clan-info-source {
+    font-size: 0.9em;
+    color: #888;
+    border-top: 1px dotted #444;
+    padding-top: $spacing-sm;
+} 

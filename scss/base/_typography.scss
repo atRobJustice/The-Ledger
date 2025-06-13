@@ -1,0 +1,50 @@
+@use '../globals' as *;
+
+// Base typography styles
+body {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color-text;
+    background: linear-gradient($color-background, $color-background-light);
+}
+
+h1, h2, h3 {
+    font-family: $font-headers;
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+}
+
+.dropcap::first-letter {
+    font-size: 200%;
+    font-weight: bold;
+    color: $color-primary;
+    float: left;
+    line-height: 1;
+    padding-right: 0.1em;
+}
+
+.stat-label {
+    font-variant: small-caps;
+    padding-right: $spacing-md;
+}
+
+.predator-info-description {
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.power-details {
+    line-height: 1.4;
+}
+
+.merit-description, 
+.flaw-description, 
+.background-description, 
+.backgroundFlaw-description, 
+.coterieMerit-description, 
+.coterieFlaw-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #aaa;
+} 

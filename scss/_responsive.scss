@@ -1,0 +1,93 @@
+@use 'globals' as *;
+
+// Responsive styles
+@include media-breakpoint-down(md) {
+    // Character sheet
+    .character-sheet {
+        padding: $spacing-sm;
+    }
+
+    // Disciplines
+    .discipline-item {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: $spacing-sm;
+    }
+
+    .discipline-controls {
+        align-self: stretch;
+        justify-content: space-between;
+    }
+
+    .discipline-selector {
+        .d-flex {
+            flex-direction: column;
+            gap: $spacing-sm;
+        }
+
+        .btn {
+            align-self: stretch;
+        }
+    }
+
+    // Powers
+    .power-option {
+        .d-flex {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: $spacing-sm;
+        }
+
+        .select-power-btn {
+            align-self: stretch;
+            margin-left: 0 !important;
+        }
+    }
+
+    .selected-power {
+        .d-flex {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: $spacing-sm;
+        }
+
+        .remove-power-btn {
+            align-self: stretch;
+        }
+    }
+
+    // Modals
+    .modal-dialog {
+        margin: $spacing-sm;
+    }
+
+    .modal-content {
+        padding: $spacing-sm;
+    }
+
+    // Tooltips
+    .tooltip-inner {
+        max-width: 250px;
+    }
+
+    // Tracks
+    .track-container {
+        width: 100%;
+    }
+
+    .track-boxes {
+        justify-content: flex-start;
+    }
+}
+
+// Animation
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+} 

@@ -1,0 +1,88 @@
+@use '../globals' as *;
+
+// Form control styles
+.form-control {
+    &.bg-dark {
+        @include form-control-dark;
+    }
+}
+
+// Dropdown styles
+.discipline-dropdown, 
+.predator-dropdown, 
+.clan-dropdown, 
+.generation-dropdown,
+.merit-category-dropdown, 
+.merit-dropdown, 
+.merit-or-select, 
+.flaw-category-dropdown, 
+.flaw-dropdown, 
+.flaw-or-select, 
+.background-category-dropdown, 
+.background-dropdown, 
+.background-flaw-category-dropdown, 
+.background-flaw-dropdown, 
+.coterie-merit-category-dropdown, 
+.coterie-merit-dropdown, 
+.coterie-flaw-category-dropdown, 
+.coterie-flaw-dropdown, 
+.loresheet-category-dropdown, 
+.loresheet-dropdown {
+    @include form-control-dark;
+}
+
+// Dropdown options
+.discipline-dropdown option, 
+.predator-dropdown option, 
+.clan-dropdown option, 
+.generation-dropdown option,
+.merit-category-dropdown option, 
+.merit-dropdown option, 
+.merit-or-select option, 
+.flaw-category-dropdown option, 
+.flaw-dropdown option, 
+.flaw-or-select option, 
+.background-category-dropdown option, 
+.background-dropdown option, 
+.background-flaw-category-dropdown option, 
+.background-flaw-dropdown option, 
+.coterie-merit-category-dropdown option, 
+.coterie-merit-dropdown option,
+.coterie-flaw-category-dropdown option,  
+.coterie-flaw-dropdown option,
+.loresheet-category-dropdown option, 
+.loresheet-dropdown option {
+    outline: none;
+    background-color: $color-background;
+    color: $color-text;
+}
+
+// Disabled state
+.discipline-dropdown:disabled, 
+.predator-dropdown:disabled, 
+.clan-dropdown:disabled, 
+.generation-dropdown:disabled,
+.merit-category-dropdown:disabled, 
+.merit-dropdown:disabled, 
+.merit-or-select:disabled, 
+.flaw-category-dropdown:disabled, 
+.flaw-dropdown:disabled, 
+.flaw-or-select:disabled, 
+.background-category-dropdown:disabled, 
+.background-dropdown:disabled, 
+.background-flaw-category-dropdown:disabled, 
+.background-flaw-dropdown:disabled, 
+.coterie-merit-category-dropdown:disabled, 
+.coterie-merit-dropdown:disabled,
+.coterie-flaw-category-dropdown:disabled,  
+.coterie-flaw-dropdown:disabled,
+.loresheet-category-dropdown:disabled, 
+.loresheet-dropdown:disabled {
+    outline: none;
+    background-color: $color-border-light;
+    cursor: not-allowed;
+    transform: none;
+    color: $color-border-light;
+    border-color: $color-border-light;
+    background-color: transparent;
+} 

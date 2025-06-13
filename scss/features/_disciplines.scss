@@ -1,0 +1,101 @@
+@use '../globals' as *;
+@use "sass:color";
+
+// Discipline item styles
+.discipline-item {
+    border: $border-width $border-style $color-border;
+    border-radius: $border-radius;
+    padding: $spacing-md;
+    background-color: rgba($color-background, 0.5);
+}
+
+.discipline-header {
+    border-bottom: $border-width $border-style $color-border-light;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-sm;
+}
+
+.discipline-powers {
+    margin-top: $spacing-md;
+}
+
+.power-level {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: $border-radius;
+    padding: 0.75rem;
+    border-left: 3px solid $color-primary;
+}
+
+.selected-power {
+    background-color: rgba($color-primary, 0.1) !important;
+    border: $border-width $border-style rgba($color-primary, 0.3);
+}
+
+.power-name {
+    color: $color-primary;
+    font-weight: bold;
+}
+
+.power-option {
+    background-color: rgba($color-background, 0.8);
+    border-color: $color-border-light !important;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+        border-color: $color-primary !important;
+        background-color: rgba($color-primary, 0.1);
+    }
+
+    .badge {
+        font-size: 0.7em;
+    }
+}
+
+// Discipline controls
+.discipline-controls {
+    flex-shrink: 0;
+}
+
+// Discipline info
+.discipline-info {
+    small {
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+    }
+}
+
+// Discipline dots
+.disciplines-container {
+    .dots {
+        display: flex;
+        gap: $spacing-xs;
+        align-items: center;
+    }
+
+    .dot {
+        width: 16px;
+        height: 16px;
+        border: 2px solid $color-border-light;
+        border-radius: 50%;
+        background-color: transparent;
+        cursor: pointer;
+        transition: $transition-base;
+        position: relative;
+
+        &:hover {
+            border-color: $color-primary;
+            transform: scale(1.1);
+        }
+
+        &.filled {
+            background-color: $color-primary;
+            border-color: $color-primary;
+
+            &:hover {
+                background-color: color.adjust($color-primary, $lightness: 10%);
+                border-color: color.adjust($color-primary, $lightness: 10%);
+            }
+        }
+    }
+} 

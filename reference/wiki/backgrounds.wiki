@@ -1,0 +1,327 @@
+==Backgrounds and Flaws==
+Backgrounds help lay the foundation of who the vampire was in their mortal life before the game begins. They show what they were willing to leave behind after entering eternal unlife and what they wanted to maintain. When it comes to the more mundane problems Kindred might face, these are often the tools they use to counteract them. Sometimes these are not bought with the Coterie's pool but are still shared amongst the group and sometimes they are kept only to the Kindred themselves, they pick when and who they will share it with. These Flaws can also be taken independently of the Merit, for example, a player is not required to have dots in Haven in order to take the Haven Flaw: Creepy. It could manifest as an unsafe rundown house they know about and through the sessions remove the Flaw by converting it into a Merit and spending Experience Points.<ref>[[Vampire: The Masquerade Players Guide]], page 109</ref>
+
+===Allies===
+Groups of mortals who are willing to give aid to a vampire or mortals who have a vendetta. <ref name=":1" /> 
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Allies" |'''Allies'''
+|'''•• - ••••••'''
+|A group of mortals who will support or aid the vampire. Family, friends, or an organization that has loyalty to the vampire. Build them between (• - ••••) Effectiveness and (•-•••) Reliability, the maximum amount of total points is 6. Effectiveness defines how proficient they are at a task. Reliability determines how dependable they are.
+| id="Enemy" |'''Enemy'''
+|'''(• +)''' 
+|The opposite to Allies, and are rated two dots less than their effectiveness.
+|}
+
+===Contacts ===
+A way to obtain items otherwise much more difficult to obtain on one's own. <ref>[[Vampire: The Masquerade Corebook]], page 185</ref>
+{| class="mw-collapsible mildtable" style="width:50%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" | Description
+|-
+| id="Contacts" |'''Contacts'''
+|'''• - •••'''
+| These are mortals who can get the character information, items or other things of value.
+|}
+
+=== Fame===
+The public notoriety of a character, for good or bad. <ref>[[Vampire: The Masquerade Corebook]], page 186</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Fame" |'''Fame'''
+|'''• - •••••'''
+|Mortal fame is a dangerous game, the character might have once been a pop singer, actress, or other celebrity. The level of fame can subtract from tests against fans or hunting. There is a downside as people may remember the character as their face is plastered on a nearby billboard. Fame can be bought to apply in Vampire society as well.
+| id="Dark Secret" |'''Dark Secret'''
+|'''(• +)'''
+|What they've done is still a secret, except to one or two very motivated enemies.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Infamy" |'''Infamy'''
+|'''(• +)'''
+|They've done something atrocious and others know.
+|}
+
+===Influence===
+The ability they have to influence how other groups react or act. <ref>[[Vampire: The Masquerade Corebook]], page 187</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" | Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Influence" |'''Influence'''
+|'''• - •••••''' 
+|They have sway in mortal communities, be they political, through financial status and prestige, or manipulation. By default, this merit only applies to a specific group or region of the city.
+| id="Disliked" |'''Disliked'''
+|'''(•)''' 
+| Subtract one die from Social tests involving groups outside of the character's loyal followers.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Despised" |'''Despised'''
+|'''(••)''' 
+|One group/region of the city goes out of its way to destroy the character's plans.
+|}
+
+===Haven===
+The place where a vampire resides during the day. Havens have additional addon merits that can change the function of the location, aid in certain actions or even hinder certain interactions. <ref>[[Vampire: The Masquerade Corebook]], page 188</ref> Some Kindred turn their Havens into sacred grounds, as seen with the Holy Ground and Shrine Merits.<ref>[[Vampire: The Masquerade Children of the Blood]], page 99</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+|-
+| id="Haven" |'''Haven'''
+|'''• - •••''' 
+|A vampire without Haven dots is able to find a safe place for the night. However, Haven dots make it that much more secure and private per dot.
+| id="No Haven" |'''No Haven'''
+|'''(•)'''
+| The character must make a basic test to find a secure resting place.
+|-
+| id="Haven: Hidden Armory" |'''Hidden Armory'''
+|'''• +''' 
+|Each dot adds one pistol and one firearm inside the haven, safely concealed.
+| id="Creepy" |'''Creepy'''
+|'''(•)'''
+|Take a two-dice penalty on Social pools in the haven with mortals.
+|-
+| id="Haven: Cell" |'''Cell'''
+|'''• +''' 
+|Allows two prisoners to be stored inside. Each additional dot either allows the character to store twice as many prisoners or adds +1 to the attempts to escape. Not available in one dot havens.
+| id="Haunted" |'''Haunted'''
+|'''(• +)'''
+| There is a supernatural manifestation taking hold over the haven.
+|-
+| id="Haven: Watchmen" |'''Watchmen'''
+|'''• +''' 
+|Each dot supplies 4 Average Mortals and one Gifted Mortal to watch over the haven.
+| id="Compromised" |'''Compromised'''
+|'''(••)'''
+|This haven is on a watchlist and may have been raided at some point.
+|-
+| id="Haven: Laboratory" |'''Laboratory'''
+|'''• +''' 
+|Each dot of this merit contributes to dice rolls related to one Science or Technology specialty or for Alchemy pools when using Fixatio. Not available in one dot havens.
+| id="Shared" |'''Shared'''
+|'''(•) or (••)''' 
+|The haven is not entirely owned by the character, instead being shared with other Kindred or having a Kindred landlord. This does not need to be taken by Coteries, as that only has as many problems as they make mutually in play.<ref name=":11">[[Vampire: The Masquerade Players Guide]], page 113</ref>
+|-
+| id="Haven: Library" |'''Library'''
+|'''• +''' 
+|Each dot of this merit contributes to dice rolls for one Academics, Investigation or Occult specialty. Small havens are limited to one dot.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Location" |'''Location'''
+|'''•''' 
+|The place in which this haven resides gives a +2 dice bonus (or +2 enemies Difficulty) on relevant rolls from either Chasse or base Haven rating. If this does not work, with the Storyteller the player can craft a custom bonus. ''Example, living in the heart of downtown allows the character to have a +2 bonus to etiquette rolls to pick up local rumors.''
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Luxury" |'''Luxury'''
+|'''•''' 
+|Rich and full of value, the haven is well decorated with high-end décor and items. +2 dice bonus to Social tests when mortals are inside the haven. Without at least 3 dots in Resources, these items are stolen or illegally obtained.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Postern" |'''Postern'''
+|'''• +''' 
+|The haven has some kind of secret exit that allows them a safe passage out. For each dot of this merit add one die to pools of evasion or escaping surveillance near the haven.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Security System" |'''Security System'''
+|'''• +''' 
+|For each dot of this merit, add one die to pools to resist unwelcome guests into the haven.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Surgery" |'''Surgery'''
+|'''•''' 
+|Add two die to relevant pools for relevant tests performed in havens.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Haven: Warding" |'''Warding'''
+|'''• +''' 
+|This haven possesses some type of magic warding that repels supernatural entities. Each dot of this merit adds one die to pools to resist supernatural scrying and whatever else the Storyteller allows.
+|-
+| id="Haven: Holy Ground" |'''Holy Ground'''
+|'''•''' 
+|The haven has significance to the character's cult, granting them the ability to call upon a large group of cultists to protect their haven once per story.<ref name=":6">[[Vampire: The Masquerade Children of the Blood]], page 99</ref>
+|-
+| id="Haven: Shrine" |'''Shrine'''
+|'''• - •••''' 
+|A shrine is present in the haven, adding a bonus equivalent to the dots in searching, preparing or otherwise obtaining Ritual or Ceremony ingredients.<ref name=":6" />
+|- id="Business Establishment"
+|'''Business Establishment'''
+|'''•• - •••'''
+|The haven is rented out to a business or is run as a business by the Kindred themselves. This gives both benefits and drawbacks, such as a ready stream of income but also being very much on the grid and local enforcement being aware of the location. This reduces the Haven’s base dots by one for pools involving the Haven’s privacy and defenses against either (pick one) financial or criminal intrusions. Dots in this merit roughly equal Resources but do not stack onto existing Resources for the character.<ref name=":12">[[Vampire: The Masquerade Players Guide]], page 112</ref>
+|- id="Furcus"
+|'''Furcus'''
+|'''• - •••''' 
+|The haven is located on [[Blood_craft_scene#Furcus|veins of the earth]] or a frayed spot in the Veil. Each dot in this merit adds one die to Rituals or Ceremony dice pools used at the furcus.<ref name=":12" />
+|- id="Machine Shop"
+|'''Machine Shop'''
+|'''• +''' 
+|Each dot of this merit adds one dice to the pool for Craft rolls. It also adds this to other tests related to building, repairing, or disassembling machinery or equipment.<ref name=":11" />
+|}
+
+=== Herd===
+Merits and flaws pertaining to the vampire's ability to have free access to mortal blood through forming a group of willing vessels. <ref>[[Vampire: The Masquerade Corebook]], page 189</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Herd" |'''Herd'''
+|'''• - •••••'''
+|A group of vessels that the character may feed from without concern, though they are less loyal than retainers. They can slake Hunger worth the dot value of the Herd each week freely and no roll is required.
+| id="Obvious Predator" |'''Obvious Predator'''
+|'''(••)'''
+| A predatory vibe removes two dice from any hunting pool except Physical stalking, chasing, and killing. Lose on die from any Social test intended to calm humans. Cannot maintain a Herd.
+|}
+
+===Mask===
+The status of the kindred's identification. <ref>[[Vampire: The Masquerade Corebook]], page 190</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- id="Mask" 
+|'''Mask'''
+|'''• - ••''' 
+|A fake identity that allows the vampire to keep their true selves away from mortal's prying eyes, including getting bank accounts, a birth certificate and everything else a vampire might need to masquerade as a human.
+| id="Known Corpse" |'''Known Corpse'''
+|'''(•)'''
+|People know the vampire died recently and react in turn if they see them.
+|- id="Zeroed"
+|'''Zeroed'''
+|'''•''' 
+|All of the character's past self has been purged from all systems as if they never existed. The character must have a 2-dot mask in order to take this.
+| id="Known Blankbody" |'''Known Blankbody'''
+|'''(••)'''
+|The character's name, history, associates, and more are all in several agency databases. Inquisition can recognize them as a vampire.
+|- id="Cobbler" 
+|'''Cobbler'''
+|'''•''' 
+|The ability to create or source out masks. Making a mask takes 3 days per dot. The character must have a 2-dot mask in order to take this.
+|}
+
+=== Mawla===
+Their relationship with another kindred. <ref>[[Vampire: The Masquerade Corebook]], page 192</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Mawla" |'''Mawla'''
+|'''• - •••••'''
+|Another kindred who has taken them under their wing to mentor them.
+| id="Adversary" |'''Adversary'''
+|'''(• +)'''
+|Another kindred who perhaps liked the character, but now goes out of their way to ruin their lives in any way they can. Rated two levels higher than the Mawla value.
+|-
+|
+|
+|
+|'''Secret Master'''
+|'''•'''
+|Your Mawla gives you tasks that must be completed quietly. The character must have a Mawla to take this
+|}
+
+===Resources===
+The cashflow of the kindred. <ref>[[Vampire: The Masquerade Corebook]], page 193</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Resources" |'''Resources'''
+|'''• - •••••'''
+|Cash flow, be it from stock trading or inheritance to working as a barista at night.
+| id="Destitute" |'''Destitute'''
+|'''(•)'''
+|No money, no home, and no monetary value beyond themselves.
+|}
+
+===Retainers===
+The relationship with mortals who follow the character. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 194</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" | Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Retainers" |'''Retainers'''
+|'''• - •••'''
+|Loyal followers who will do the character's bidding, sometimes Ghouls and/or Blood Bonded.
+| id="Stalkers" |'''Stalkers'''
+|'''(•)'''
+|Something about the character tends to attract others who get a little bit too attached and just won't let go. Be it a former retainer or a past lover, should they get rid of them, another soon appears.
+|}
+
+===Status===
+The kindred's name in the faction and how it affects them. <ref name=":2" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Status" |'''Status'''
+|'''• - •••••''' 
+|The character has built a name for themselves in their Faction.
+| id="Suspect" |'''Suspect'''
+|'''(•)'''
+|Breaking the rules or weaseling out of something owed has netted this character the ire of this Sect. Stay out of sight and mind and nothing will happen until they prove their worth again but until then take a 2 dice penalty to Social tests with the offended Factions.
+|- id="City Secrets"
+|'''City Secrets'''
+|'''• - •••''' 
+|This grants knowledge about the city’s Kindred power structure. If this secret is about mortal business it’s only a way to explain Influence. This information can be sold at a high price, but its value lies in protection as the people involved may not want this information sold off and will do their best to keep you happy, for a time anyway. This can only be taken at a maximum of three times with each being a different secret.<ref name=":7" />
+| id="Shunned" |'''Shunned'''
+|'''(••)'''
+|Despised by a Sect, a line was crossed that never should have been, and now members of this group actively work against them at any opportunity.
+|}

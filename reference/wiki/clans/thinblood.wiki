@@ -1,0 +1,60 @@
+{{Clan
+| header=thin-blood
+| symbol=Thinblood Symbol.png
+| logo=Thinblood Logo.png
+| nicknames=Duskborn, Mercurians, The Young Ones, Run-Off, Chameleons, Abortions
+| disciplines= {{icon|thin blood alchemy}} [[Thin-Blood Alchemy]]
+| bane=
+| compulsion=
+| source=[[Vampire: The Masquerade Corebook| VTM: Corebook]]
+}}__TOC__
+
+==General==
+'''Thin-bloods''' are neither entirely vampire nor mortal, the ever changing nature of the Duskborn evokes pity, jealousy, and fear in equal measure. Considered little more than trash by most vampires, the thin-bloods are banding together, leveraging their resistance to sunlight and the strange, mercurial adaptability of their powers against their oppressors.<ref>[https://www.worldofdarkness.com/vampire-the-masquerade-clans Vampire: The Masquerade Clans section], World of Darkness Website</ref>
+
+They are clanless and not considered a clan by most Kindred, as they are the result of [[Embrace|embraces]] too far from the progenitor, Caine. Created by the arrogant Kindred who believed to be closer to the potentiator than they were, a victim of a murder and the guilt forced the hand of a Kindred to embrace or just an experiment of a Tremere gone wrong. The thin-bloods are a high-generation group, often cast out and shunned by Kindred society. Viewed as a threat to the [[Masquerade]], many will destroy them if given the opportunity. Thin-bloods can be of any mortal origin and are not affected by their sire's bloodline.
+
+In 2009 the Inner Circle of the [[Camarilla]] issued an edict that all Thin-bloods must be branded. A task accomplished by a [[Tremere]] tattoo artist or even scorched into their skin using the sun. Even [[Anarch]] and [[Autarkis]] will think twice before mingling with a branded thin-blood. <ref>[[Vampire: The Masquerade Corebook]], page 109-110</ref>
+
+Through rumors and stories, there are tales of thin-bloods finding a way out. Even if they do not age, eventually they must decide to remain within the night or adapt to their new lifestyle and remain in the sun. [[Diablerie]] is the first choice, upon taking the soul of another vampire they join their clan and inch closer to Caine. Removing all Thin-blood traits and characteristics as they become a fully-fledged vampire. Sometimes this is rewarded as a prize to those who show themselves capable to the tower and sometimes this is a spur-of-the-moment decision against a Kindred who has been left vulnerable by others. The other choice is that of a way out, stories of those who have returned to the sun and become mortal once more. The stories usually entail thin-bloods clinging to their humanity and ending their sire. But then again, any mortal who knows about Kindred is a threat to the Masquerade and must be taken care of. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 113</ref>
+
+== Characteristics ==
+Resting in the Generations from 14th to 16th, they lack the [[Character creation#Blood Potency|Blood Potency]] to use most vampiric powers and instead must use their ways to survive. Their human-like traits allow them to take less damage from the sun and some may even walk in it without harm. Their distance from Caine has prevented them from succumbing to frenzies and they remain almost lifelike compared to most vampires. However, the negatives outweigh the cost. This distance also removes their ability to learn and master Disciplines, instead only able to utilize them if their Blood flows with the proper [[Resonance]] from their last feed. They are also weaker than the average Kindred and take damage as if they were still mortal. Due to their Blood Potency of 0, they cannot create [[Blood Bond|Blood Bonds]] nor Embrace with any certainty, only able to ghoul a mortal for the duration of one night with enough Blood. <ref>[[Vampire: The Masquerade Corebook]], page 111-113</ref> 
+
+Thin-Bloods, unlike the rest of the clans they do hold a unique trait. Known as Thin-blood Merits and Flaws, they can be curated by the player to pick and choose different advantages and weaknesses unique to only them and create the perfect almost vampire. See [[Merits and Flaws#Thin-Blood|Merits and Flaws]].   
+
+==Disciplines==
+Thin-bloods created the art of thin-blood alchemy, granting them the potential to create new and replicate existing Disciplines from vitae and other sources. The Merit [[Merits and Flaws#Thin-blood Alchemist|Thin-blood Alchemist]] can be taken at Character Creation to begin with level 1 in the Discipline and one formulae, however, if it is not taken they can still traverse Alchemy at the in-clan experience rate. <ref>[[Vampire: The Masquerade Players Guide]]. page 103</ref>
+
+Whenever they feed from a Resonance, they are granted one dot and one power in a Discipline tree associated with the Resonance. If the Resonance is Intense or stronger, they gain an additional dot in conjunction with a second power. This, however, is only temporary as the rating cannot be increased with experience points and is lost upon hitting Hunger 5 or the next feeding. With the thin-blood Merit [[Merits and Flaws#Discipline Affinity|Discipline Affinity]], they are able to select one Discipline and traverse the tree as if a True Kindred.<ref name=":0" />
+*'''Thin-blood Alchemy''' is created from the thin vitae only thin-bloods possess.
+
+==Bane ==
+<section begin=bane/>Thin-bloods do not suffer from a Bane unless the [[Merits and Flaws#Thin-blood|thin-blood Flaw Clan Curse]] is taken.<section end=bane/>
+
+==Compulsion==
+<section begin=compulsion/>Thin-bloods do not suffer from a clan Compulsion.<section end=compulsion/>
+
+== Example archetypes==
+*'''Live One:''' Due to their closer resemblance to mortals, they are still deeply ingrained in the mortal world. Maintaining a family and, attempting to keep a job, this thin-blood strives to pay the bills rather than deal with a Primogen they've only heard of in passing.
+*'''Alchemist:''' Some thin-bloods embrace their abilities rather than hide in the dark, this one does as much. Perfecting their art in private they strive to accomplish things no other alchemist let alone Kindred has done.
+*'''Redemption Seeker:''' Stripped of their previous life, they seek a way to return to their human life. Through seeds of Golconda and rumors about those who have done it in the past; they seek out the legends detailing the steps to leave vampiric life behind.
+*'''Abandoned:''' Being groomed for the Kindred life was something they experienced with their sire, or at least until that fateful night. The embrace went south quickly and their sire quickly did as well. Leaving them to take the information they had and survive.
+
+==Notable characters==
+'''Kirin Taunk''' - An alchemist who has met Final Death. She is one of the celebrated alchemist of the 1990s, whose work pioneered techniques used in formulas to this day
+
+== Exclusive Loresheets ==
+Thin-blood characters have special access to the following loresheets:
+
+• [[Loresheets#The Ashfinders|The Ashfinders]]
+
+• [[Loresheets#Student of Kirin Taunk|Student of Kirin Taunk]]
+
+==Gallery==
+
+[[Category:Clans]]
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+<references />

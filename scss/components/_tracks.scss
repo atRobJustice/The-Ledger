@@ -1,0 +1,168 @@
+@use '../globals' as *;
+@use "sass:color";
+
+// Track container styles
+.track-container {
+    @include flex-column;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+    width: 75%;
+
+    &[data-type="humanity"] {
+        .track-box {
+            background-color: transparent;
+
+            &.filled {
+                background-color: $color-primary;
+            }
+
+            &.stained {
+                background-color: transparent;
+                border-color: $color-primary;
+
+                &::before {
+                    content: '/';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: $color-primary;
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+}
+
+.track-header {
+    @include flex-between;
+    font-variant: small-caps;
+    color: $color-primary;
+}
+
+.track-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+}
+
+.track-box {
+    width: 20px;
+    height: 20px;
+    border: $border-width $border-style $color-primary;
+    cursor: pointer;
+    transition: $transition-base;
+    position: relative;
+    background-color: transparent;
+
+    &:hover {
+        border-color: color.adjust($color-primary, $lightness: 20%);
+    }
+
+    &.superficial {
+        background-color: $color-primary;
+
+        &::before {
+            content: '/';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $color-background;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1;
+        }
+    }
+
+    &.aggravated {
+        background-color: $color-primary;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 2px;
+            background-color: $color-background;
+            transform: translate(-50%, -50%);
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:hover {
+            background-color: color.adjust($color-primary, $lightness: 20%);
+
+            &::before,
+            &::after {
+                background-color: $color-background;
+            }
+        }
+    }
+}
+
+// Dots styling
+.dots {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+
+    &[data-trait-type-class="fixed"] {
+        .dot {
+            cursor: not-allowed;
+
+            &.filled {
+                border-color: #666;
+            }
+        }
+    }
+
+    &[data-trait-type-class="or"] {
+        .dot {
+            border-style: dashed;
+
+            &:hover {
+                border-style: solid;
+            }
+        }
+    }
+
+    &[data-trait-type-class="repeat"] {
+        .dot {
+            border-width: 3px;
+        }
+    }
+
+    &[data-trait-type-class="varies"] {
+        .dot {
+            border-style: dotted;
+        }
+    }
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: $border-width $border-style $color-primary;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &.filled {
+        background-color: $color-primary;
+    }
+
+    &:hover {
+        border-color: color.adjust($color-primary, $lightness: 20%);
+    }
+} 

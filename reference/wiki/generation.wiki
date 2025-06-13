@@ -1,0 +1,127 @@
+==Overview==
+Generation is the distance between a kindred and the first vampire, following their [[Embrace]] a newly formed vampire is one number higher than their sire. The only act which can lower this is known as [[diablerie]]. Generation, however, does not dictate the age of a vampire, as a 10th Generation vampire could have been embraced hundreds of years ago and in reverse, a low Generation vampire could have embraced a fledgling in the last year.
+
+===Sea of Time===
+Players and storytellers may decide the coterie’s age range during [[character creation]]. The default age range is childer, but they group may agree to play an older coterie. The Generation helps decide the starting [[Blood Potency]].<ref>[[Vampire: The Masquerade Corebook]], page 137</ref><ref>[[Vampire: The Masquerade Players Guide]], page 65</ref> 
+{| class="wikitable"
+|+
+!Age Group
+!Generation Range
+!Time of Embrace
+!Starting Blood Potency 
+|-
+|Childer (thin-bloods) 
+|14th-16th
+|Within last 15 years
+|0
+|-
+|Childer
+|12th-13th
+|Within last 15 years 
+|1
+|-
+|Neonate
+|12th-13th
+|between 1940 and a decade ago 
+|1
+|-
+|Ancilla
+|10th-11th 
+|between 1780 and 1940
+|2
+|}
+
+===Sea of Time for older SPCs===
+If a storyteller wishes to have older SPCs these are the general guidelines.<ref>[[Vampire: The Masquerade Gehenna War|Vampire: the Masquerade Gehenna War]], Page 97</ref>
+{| class="wikitable"
+!Age Group 
+!Generation Range
+!Time of Embrace 
+!Blood Potency Range
+|-
+|Elder
+|6th-9th
+|200–1000 years
+|2–8
+|-
+|Methuselah
+|4th-5th
+|older than 1,000 years
+|4–10
+|}
+
+===Caine and the Second Generation===
+[[Caine]] and perhaps [[Lilith]] for those who believe in these myths were perhaps the first vampires. However, anything could have happened on those first nights.
+
+===3rd Generation===
+Also known as the Antediluvians, they are the founders of the 13 clans and are thought to either be dead or asleep for the past thousand years. However, the [[Sabbat]] have declared war against them declaring war and beginning the [[Gehenna]] which has roused the long-lost vampires and caused the [[Beckoning]].
+
+===4th and 5th Generations===
+Also known as the Methuselahs and are nearly as powerful as the Antediluvians, however, they retreated from [[The Jyhad]] and most remain asleep beneath human cities.
+
+===6th through 9th Generations===
+The elders were mostly Embraced before the modern age and held [[Domain|Domains]] within the [[Camarilla]] and [[Anarch]] Movement for generations. However, most are called to the Beckoning these nights and only a few hold out against this calling.
+
+===10th and 11th Generations===
+These are the ancillae and are the lowest generation for player characters.
+
+===12th and 13th Generations===
+The neonates are a generation between the ancilla and fledglings with little experience with the curses of vampirism, but however, understand the technology and societal changes better than those older than them. Sometimes they are blamed for the recent explosion of uprisings within the Anarch Movement. This generation also contains the fledglings of the modern night, those new to the vampiric life.
+
+===14th through 16th Generations===
+[[Thin-blood|Thin-bloods]] are the furthest from the progenitors, thought to be the bringers of Gehenna by those who believe in The Book of Nod.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 214-215</ref>
+
+==Effects of Generation in Play==
+
+*Vampires with lower generation can spend a [[willpower]] point to completely negate [[Dominate]] from a higher (weaker) generation vampire.<ref>[[Vampire: The Masquerade Corebook|Vampire: the Masquerade Corebook]], page 256</ref>
+*If a higher generation vampire diablerizes a lower generation vampire, then the attacker’s generation lowers by one.
+*After diablerie, the black veins stay in the attackers aura for each generation difference in years if the diablerist had a higher generation.<ref>[[Vampire: The Masquerade Corebook|Vampire: the Masquerade Corebook]], page 234</ref>
+*Generation affects the Blood Potency's ceiling and base level.<ref name=":0" />
+
+{| class="wikitable"
+|+Generation and Blood Potency Levels
+!Generation
+!Lowest BP
+!Highest BP
+|-
+|4th
+|5
+|10
+|-
+|5th
+|4
+|9
+|-
+|6th
+|3
+|8
+|-
+|7th
+|3
+|7
+|-
+|8th
+|2
+|6
+|-
+|9th
+|2
+|5
+|-
+|10th-11th
+|1
+|4
+|-
+|12th-13th
+|1
+|3
+|-
+|14th-16th
+|0
+|0
+|}
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+==References==
+
+<references />

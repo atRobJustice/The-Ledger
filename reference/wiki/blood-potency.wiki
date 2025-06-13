@@ -1,0 +1,57 @@
+==Overview==
+As time passes the kindred's blood thickens from age within the boundaries of their [[Generation]]'s limit. While the stronger they become with age, there is a downside that it will take more blood to satisfy the vampire. Kindred generally raise Blood Potency by 1 every 100 years while active but even intense or dangerous experiences can expedite the process. On the reverse side, Kindred in [[Torpor|torpor]] loses one point for every 50 years inactive. It can never rise nor lower beyond the cap determined by their Generation. 
+
+==Blood Potency 0==
+Those with this Blood Potency are [[Thin-blood|Thin-bloods]]. Thin-bloods can never increase their Blood Potency past 0 unless they rise above Generation 14 using [[Diablerie]]. 
+
+* Add one dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend 1 Superficial [[Health|damage]] per [[Rouse Check]].
+* Unable to create [[Blood Bond|Blood Bonds]], [[Embrace]] with certainty, or create [[Mortals and ghouls|ghouls]].
+* [[Frenzy]] only occurs with supernatural forces causing it.
+* Take 1 point of Superficial damage per turn in sunlight.
+* Bane Severity (if applicable) is 1.
+
+==Blood Potency 1==
+* Add two dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend one Superficial damage per Rouse Check.
+* When making a Rouse Check for a level one [[Disciplines|Discipline]], they can reroll once if they fail.
+* [[Bane#Bane severity|Bane Severity]] is 2.
+
+==Blood Potency 2==
+* Add two dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend two Superficial damage per Rouse Check.
+* When making a Rouse Check for a level one [[Disciplines|Discipline]], they can reroll once if they fail.
+* Animal and bagged blood slake half as less.
+* Gain a one-die bonus when using Disciplines
+* Bane Severity is 2.
+
+==Blood Potency 3==
+* Add three dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend two Superficial damage per Rouse Check.
+* When making a Rouse Check for a level two or below Discipline, they can reroll once if they fail.
+* Animal and bagged blood slake nothing.
+* Gain a one-die bonus when using Disciplines
+* Bane Severity is 3.
+
+==Blood Potency 4==
+* Add three dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend 3 Superficial damage per Rouse Check.
+* When making a Rouse Check for a level two or below Discipline, they can reroll once if they fail.
+* Animal and bagged blood slake nothing. Human blood slakes less.
+* Gain a two-dice bonus when using Disciplines
+* Bane Severity is 3.
+
+==Blood Potency 5==
+* Add four dice to your dice pool when utilizing [[Blood Surge]].
+* Able to mend three Superficial damage per Rouse Check.
+* When making a Rouse Check for a level three or below Discipline, they can reroll once if they fail.
+* Animal and bagged blood slake nothing. Human blood slakes less and must drain a human to go below [[Hunger system|Hunger]] 2.
+* Gain a two-dice bonus when using Disciplines
+* Bane Severity is 4.
+
+==Blood Potency 6 and higher==
+The [[Beckoning]] is pulling the elders away, making these levels of potency much rarer than they once were. Vampires with this level of potency are alien in both mind and body and are not intended for player characters. Still, their potency information is included for the [[Storyteller]] to utilize in chronicles.<ref>[[Vampire: The Masquerade Corebook]], page 215-217 and [[Vampire: The Masquerade Companion]], page 63</ref>
+{{Template:GameConceptsNavbox}}
+== References ==
+<references />
+[[Category:Index]]

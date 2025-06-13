@@ -1,0 +1,827 @@
+For other Advantages see [[Loresheets]] or [[Coterie Backgrounds and Merits]].
+
+==Merits and Flaws==
+===Linguistics===
+Merits covering language and ability to communicate/understand spoken or written language. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 179</ref>
+
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-id="Linguistics"
+|'''Linguistics'''
+|'''• +'''
+|Each dot of Linguistics allows the character to read, write and speak fluently in another language outside of the default two they already know, which is their native language and the language of the Domain.
+|id="Illiterate"|'''Illiterate'''
+|'''(••)'''
+|The Character cannot read nor write and their Science and Academics Skills may not go beyond 1 dot.
+|}
+
+===Looks===
+Related to the appearance, supernaturally influenced or not, of the character. <ref name=":0" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- id="Beautiful"
+|'''Beautiful'''
+|'''••'''
+|Add one die to related Social pools
+|id="Ugly"|'''Ugly'''
+|'''(•)'''
+|Lose one die from related Social pools
+|- id="Stunning"
+|'''Stunning'''
+|'''••••'''
+|Add two dice to related Social pools
+|id="Repulsive"|'''Repulsive'''
+|'''(••)'''
+|Lose two dice from related Social pools
+|-
+|id="Semblance of the Methuselah"|'''Semblance of the Methuselah'''
+|'''• - ••'''
+|With an appearance strikingly similar to a methuselah, gain one die on rolls to impress, intimidate or attract the attention who recognize your face. As well as gain other bonuses such as status or additional die when meeting the methuselah they resemble.<ref>[[Vampire: The Masquerade Forbidden Religions]], page 85</ref>
+|id="Stench"|'''Stench'''
+|'''(•)'''
+|Their breath and body odor are supernaturally foul. Lose one die from seduction and similar Social pools, and lose two from Stealth pools unless they are upwind.
+|-id="Famous Face"
+|'''Famous Face'''
+|'''•'''
+|Appear as someone famous and gain two dice in social tests where this works to their benefit. Take a two-dice penalty whenever they attempt to hide in a crowd or avoid recognition.<ref name=":7">[[Vampire: The Masquerade Players Guide]], page 118</ref>
+|id="Transparent"|'''Transparent'''
+|'''(•)'''
+|Unable to lie due to a terrible poker face or a strong urge to be truthful. Lose one die in any pools requiring Subterfuge, they cannot take any dots in Subterfuge either.
+|-id="Ingénue"
+|'''Ingénue'''
+|'''•'''
+|They appear innocent and blameless, add two dice to any rolls related to avoiding suspicion or deflecting blame at the Storytellers’ discretion.<ref name=":7" />
+| style="border:none;" |'''Unblinking Visage'''
+| style="border:none;" |'''••'''
+| style="border:none;" |Treat Humanity as two lower (Min 0) when using Blush of Life, eating, drinking, or sexual intercourse.
+|-id="Remarkable Feature"
+|'''Remarkable Feature'''
+|'''•'''
+|Possessing a rare, memorable feature such as eye color or unusual complexion. Add two-dice to social interactions with strangers and take a one-die penalty to disguise yourself.<ref name=":7" />
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|- id="Up All Night"
+|'''Up All Night'''
+|•• or ••••
+|Treat Humanity as one higher (Max 10), or two dots higher if taken at four dots when using Blush of Life, eating, drinking, or sexual intercourse.<ref name=":15">[[Vampire: The Masquerade Blood Stained Love|Blood Stained Love]], page 151</ref>
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+===Substance Use===
+Vampires seek out prey with a specific drug in their system, as defined in Character Creation. The effects of specific substances still apply. <ref name=":0" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- 
+| id="High Functioning Addict" |'''High Functioning Addict'''
+|'''•'''
+|Add one die to either Physical, Social, or Mental pool when the last feeding had the drug of their desire.
+| id="Addiction" |'''Addiction'''
+|'''(•)'''
+|Unless the action is to immediately gain their drug, lose one die to all pools if the last feeding was not on the drug of their choice.
+|-
+| style="border:0;" |
+| style="border:0;" |
+| style="border:0;" |
+| id="Hopeless Addiction" |'''Hopeless Addiction'''
+|'''(••)'''
+|Unless the action is to immediately gain their drug, lose two dice to all pools if the last feeding was not on the drug of their choice.
+|}
+
+
+===Archaic Flaws===
+May only be taken by Ancilla or older vampires. <ref name=":3" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- 
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Living in the Past" |'''Living in the Past'''
+|'''•'''
+|Unable to grasp modern society's mindset, one or more of the character's convictions reflect outdated views.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Archaic" |'''Archaic'''
+|'''••'''
+|Cannot use computers, cellphones, and the character's Technology rating is always 0.
+|}
+
+===Bonding===
+These can be used together to change how the Blood Bond works. <ref name=":3">[[Vampire: The Masquerade Corebook]], page 180</ref> Some were introduced in Gehenna War
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- 
+| id="Bond Resistance" |'''Bond Resistance'''
+|'''• - •••'''
+| Add one die to resist Blood Bonds per level of this merit.
+| id="Bond Junkie" |'''Bond Junkie'''
+|'''(•)'''
+|The bond is sweeter to the character, they lose one die when acting against Blood Bonds.
+|- 
+| id="Short Bond" |'''Short Bond'''
+|'''••'''
+|Bonds decrease by two levels each month if not reinforced.
+| id="Long Bond" |'''Long Bond'''
+|'''(•)'''
+|Bonds fade slower, decreasing by one level every 3 months without reinforcement.
+|-
+| id="Unbondable" |'''Unbondable'''
+|'''•••••'''
+|Unable to be bonded.
+| id="Bondslave" |'''Bondslave'''
+|'''(••)'''
+|Bond instantly to another kindred with just one drink, not three.
+|-
+|'''Bonds of Fealty'''
+|'''•••'''
+|Your Dominate powers do not require eye contacts on those bound to you. The character must have Dominate in order to take this.
+|
+|
+|
+|-
+|'''Enduring Bond'''
+|'''•'''
+|The bonds you create last longer, only weakening every other month
+|
+|
+|
+|}
+
+=== Supernatural ===
+Introduced in Blood Stained Love.<ref name=":15" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|- 
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Two Masters" |'''Two Masters'''
+|'''(•)'''
+|Be Blood Bound to two individuals at the same time.<ref name=":15" />
+|}
+
+===Feeding===
+Related to the act of feeding, taking one does not mean the character must take the others. <ref>[[Vampire: The Masquerade Corebook]], page 181</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Bloodhound" |'''Bloodhound'''
+|'''•'''
+|Able to sniff out resonances without tasting them.
+| id="Prey Exclusion" |'''Prey Exclusion'''
+|'''(•)'''
+|Unable to feed from a certain group and take Stains as if breaking a Chronicle Tenet when they do.
+|-
+| id="Iron Gullet" |'''Iron Gullet'''
+|'''•••'''
+|Able to consume rancid, defractionated, or otherwise unedible blood to other vampires.
+| id="Methuselah's Thirst" |'''Methuselah's Thirst'''
+|'''(•)'''
+|Hunger can only be slaked to 0 by Supernatural blood.
+|- id="Vessel Recognition"
+|'''Vessel Recognition'''
+|'''•'''
+| With a Resolve + Awareness test at Difficulty 2 they can tell if a mortal has been fed on recently. A critical win lets them sense if the feed is recurring, meaning there is a chance it’s a herd member.<ref name=":7" />
+| id="Farmer" |'''Farmer'''
+|'''(••)'''
+|Must spend 2 Willpower Points to feed on human blood. Ventrue may not take this.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Organovore" |'''Organovore'''
+|'''(••)'''
+|Slake only by consuming human flesh and organs.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Vein Tapper" |'''Vein Tapper'''
+|'''(•)'''
+|Finding the act of feeding to be personal, they go out of their way to feed from the unaware, drugged or unconscious victims.<ref name=":8">[[Vampire: The Masquerade Players Guide]], page 120</ref>
+|}
+
+===Mythic===
+Related to vampire mythos. <ref>[[Vampire: The Masquerade Corebook]], page 182</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+|-
+| id="Eat Food" |'''Eat Food'''
+|'''••'''
+|Can consume food but still with no nourishment.
+| id="Folkloric Bane" |'''Folkloric Bane'''
+|'''(•)'''
+|Take Aggravated Damage when touching a specific object rooted in vampire mythos of what harms them, ''example Silver.''
+|-
+| id="Cold Dead Hunger" |'''Cold Dead Hunger'''
+|'''•••''' 
+|Add two dice to resist Hunger frenzy.<ref name=":5">[[Vampire: The Masquerade Forbidden Religions]], page 87</ref>
+| id="Folkloric Block" |'''Folkloric Block'''
+|'''(•)'''
+|Must spend Willpower or move away from a specific object vampires are known to fear in Vampire Mythos, ''example Holy Symbols.''
+|-
+| id="Pack Diablerie" |'''Pack Diablerie'''
+|'''••'''
+|The character will always be the one to take the soul unless they otherwise choose during Diablerie. Additionally, if they help another consume the soul, they gain 5 experience points to spend in the same manner as if they'd committed the Diablerie themselves.<ref name=":5" />
+| id="Stigmata" |'''Stigmata'''
+|'''(•)'''
+|Bleed from wounds on the hands, feet, and forehead when at Hunger 4.
+|-
+| id="Luck of the Devil" |'''Luck of the Devil'''
+|'''••••''' 
+|Once per session when misfortune occurs it can be redirected towards someone close to them for the victim to take the fall.<ref name=":9">[[Vampire: The Masquerade Players Guide]], page 119</ref>
+| id="Stake Bait" |'''Stake Bait'''
+|'''(••)'''
+|When staked they meet Final Death.
+|- id="Nuit Mode"
+|'''Nuit Mode'''
+|'''••'''
+|The Kindred’s body does not revert to it’s death-state each night, enabling them to keep new haircuts and body modifications. They can mend these changes anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1.<ref name=":9" />
+| id="Starving Decay" |'''Starving Decay'''
+|'''(••)'''
+|When their Hunger is 3 or higher their body shrivels and decays. Take a two-dice penalty to Physical tests, and social interactions with mortals, this Flaw can risk the Masquerade.<ref name=":8" />
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Twice Cursed" |'''Twice Cursed'''
+|'''(••)'''
+|Take the Clan’s variant Bane in addition to the regular Bane. The Storyteller can prohibit this flaw if the second Bane wouldn’t mesh with the chronicle.<ref name=":10">[[Vampire: The Masquerade Players Guide]], page 121</ref>
+|}
+
+===Psychological===
+Some of these merits are related to cults or other beliefs.<ref>[[Vampire: The Masquerade Forbidden Religions]], page 86</ref> Some were introduced in Blood Stained Love.
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" | Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Unholy Will" |'''Unholy Will'''
+|'''••''' or '''••••'''
+|With two dots, add one die to any pool when resisting or contesting against an individual with True Faith when related to their faith. The character also suffers one less point of damage from holy sources. At four dots, add two dice and suffer two fewer points of damage.
+| id="Beacon of Profanity" |'''Beacon of Profanity'''
+|'''(•)'''
+|Mortals with any amount of True Faith can sense your presence, regardless of True Faith level.
+|-
+| id="Zealotry" |'''Zealotry'''
+|'''• - •••'''
+|For each dot in this merit, once per session when succeeding with a normal roll that relates or aligns to the character's Conviction, turn it into a messy critical.
+| id="Crisis of Faith" |'''Crisis of Faith'''
+|'''(•)'''
+|Whenever there is a bestial failure, take one point of superficial Willpower damage in addition to other outcomes.
+|-
+| id="Penitence" |'''Penitence'''
+|'''• - •••••'''
+|Once per session, take one point of self-inflicted Superficial Health Damage in exchange for one point of Superficial Willpower damage.
+| id="Horrible Scars of Penitence" |'''Horrible Scars of Penitence'''
+|'''(•)'''
+|This flaw is equivalent to [[Merits and Flaws#Repulsive|Repulsive]] when around those not within the cult.
+|-id="Soothed Beast"
+|'''Soothed Beast'''
+| •
+| With a SPC as an obsession, once per session they can ignore one Bestial or Messy Critical. Gain three Stains if they die.<ref name=":15" />
+| id="Groveling Worm" |'''Groveling Worm'''
+|'''(••)'''
+|The character must find the time to scourge their own flesh once per session for two points of Superficial Health damage or they suffer one point of Aggravated Willpower damage at the next session. Cannot be taken with Penitence Merit.
+|-id="False Love"two ma
+|'''False Love'''
+|•
+|With a SPC as an obsession, when in their presence treat the character's treat Humanity as one higher (Max 10) for purposes of using Blush of Life, eating, drinking, or sexual intercourse. Gain three Stains if they die.<ref name=":15" />
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+===Contagion===
+Related to blood-borne illnesses.<ref>[[Vampire: The Masquerade Forbidden Religions]], page 86</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Disease Vector" |'''Disease Vector'''
+|'''(•)'''
+|When feeding from a sick mortal, the illness is always contracted and will be passed onto the next vessel.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Plaguebringer" |'''Plaguebringer'''
+|'''(• - ••)'''
+|The Kindred carries a disease that cannot be removed from their vitae. At one dot the disease is minor with visible traces, at two dots the disease can be potentially fatal if not treated. It is passed through the bite.
+|}
+
+===Blood Ties===
+Related to your vampiric lineage. For these Advantages, Caitiff and Duskborn have ancestors and descendants, but they are not true clans: their weakened bloodlines do not form a cohesive group for the purposes of these Advantages.
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+|-
+|'''Consanguineous Sense'''
+|'''••'''
+|You can detect whether another Kindred is in your direct bloodline. This does not tell you their Generation.
+|
+|
+|
+|-
+|'''Consanguineous Influence'''
+|'''••'''
+|You gain a bonus die when using Mental Disciplines on a vampire of your own Clan, or a direct descendant or ancestor. You gain 2 bonus dice instead on those within 2 generations of you such as your grandsire.
+|
+|
+|
+|-
+|'''Sins of the Father'''
+|'''••''' or '''•••'''
+|You show no signs if you commit diablerie on a direct descendant or ancestor. This extends to all members of your clan if taken at three dots.
+|
+|
+|
+|}
+
+===Diablerie===
+Related to the sin of Diablerie. Unless otherwise noted, they can only be taken if the character has committed Diablerie at least once
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+|-
+|
+|
+|
+|'''Blatant Diablerist'''
+|'''•'''
+|Powers and Merits capable of sensing Diablerie will always reveal evidence of Diablerie even if the test would otherwise fail to show any information.
+|-
+|
+|
+|
+|'''Inherited Bane'''
+|'''••'''
+|You gain another Clan's Bane in addition to your own. Tremere can use this Flaw to gain the Salubri's Bane without commiting Diablerie.
+|}
+
+===Other ===
+Miscellaneous Merits uncategorized.<ref name=":9" />
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Check the Trunk" |'''Check the Trunk'''
+|'''•'''
+|Easy access to an armory or cache of tools, none of these items can exceed the value of something a Resources 2 character could access. Add two dice to Preperation Rolls.
+| id="Knowledge Hungry" |'''Knowledge Hungry'''
+|'''(•)'''
+|At character creation pick a topic that your character desires to study. When they come across the methods to learn these things, they must make a Willpower roll at Difficulty 3 to resist.<ref name=":10" />
+|-
+| id="Side Hustler" |'''Side Hustler'''
+|'''••'''
+|Once per session they can get their hands on an item, information, or access to an event as if they had two dots in the related Resources, Contacts, or Influence.
+| id="Prestation Debts" |'''Prestation Debts'''
+|'''(•)'''
+|They owe other Kindred boons, even if these boons are paid off the Kindred lords over them. The Boon-owning Kindred keeps a one-die bonus in Social combat against the one who owes it.<ref name=":10" />
+|-
+| id="Tempered Will" |'''Tempered Will'''
+|'''•••'''
+|They are always aware when someone is attempting to use Dominate or Presence against them. They may add two additional dice to resistance pools once per session, which can only be taken by those with no dots in Dominate or Presence.
+| id="Risk-Taker" |'''Risk-Taker''' {{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Name changed from Living on the Edge}}
+|'''(•)'''
+|When confronted with a risky temptation that the character hasn't done before, they suffer a two-dice penalty for all actions till they participate or the scene ends.
+|- id="Untouchable"
+|'''Untouchable'''
+|'''•••••'''
+|Once per story they are able to escape all official punishment for a crime that would otherwise see them destroyed.
+| id="Weak-Willed" |'''Weak-Willed'''
+|'''(••)'''
+|Even when they are aware that someone is attempting to sway they may not use the active resistance systems to avoid the attempts.
+|}
+
+===Caitiff===
+Only available to Caitiff. <ref>[[Vampire: The Masquerade Players Guide]], page 126</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Favored Blood" |'''Favored Blood'''
+|'''••••'''
+| Be able to purchase any Discipline even if they've never tasted the vitae of another vampire who has it. Cannot be taken with the Muddled Blood Flaw.
+| id="Befouling Vitae" |'''Befouling Vitae'''
+|'''(••)'''
+|Any mortal they Embrace or kill by feeding returns as a wight within a few nights.
+|-
+| id="Mark of Caine" |'''Mark of Caine'''
+|'''••'''
+|Gain two bonus dice on any attempt to intimidate or bully other vampires who believe in the myth of Caine. Anyone who attempts diablerie on the Caitiff cannot add their Blood Potency to the roll and failure results in a Bestial fail.
+| id="Clan Curse" |'''Clan Curse'''
+|'''(••)'''
+|They suffer a Clan Bane of their choice, likely from their sire, with its severity halved and rounded down. (Minimum of 1)
+|- id="Mockingbird"
+|'''Mockingbird'''
+|'''•••'''
+| For one night, if they've drank the Blood from another vampire, the Caitiff may utilize one of the Disciplines the vampire possesses. It cannot be a level higher than the Caitiff's own highest Discipline, it is rolled like a normal power except in powers that require a roll the Caitiff uses the donor's Discipline level and Caitiff's attributes. During this time the Caitiff suffers the donor vampire's Bane at the same Bane Severity and only one power can be used this way per night.
+| id="Debt Peon" |'''Debt Peon'''
+|'''(••)'''
+| They owe boons to a high-status vampire, even when paid off they will find new ways to have leverage over the Caitiff. The vampire owed the boons gains a two-dice bonus to Social combat against the Caitiff when in front of other Kindred. Refusing to pay this debt adds the Shunned (••) Flaw and could possibly result in a Blood Hunt against them.
+|- id="Sun-Scarred"
+|'''Sun-Scarred'''
+|'''•••••'''
+|The first turn of being exposed to sunlight take no Health damage, take 1 Aggravated Willpower damage, and automatically succeed on terror Frenzy. For the remainder of the scene, all damage from the sun is converted into Superficial damage.
+| id="Liquidator" |'''Liquidator'''
+|'''(•)'''
+|Take a two-dice penalty to all your Social skill dice pools against thin-bloods except for Intimidation rolls. Cannot be taken with the Uncle Fangs Merit.
+|- id="Uncle Fangs"
+|'''Uncle Fangs'''
+|'''•••'''
+|They have easy access to a local coterie of three to five thin-bloods, and treat this group as Allies even though they are undead. Cannot be taken with Liquidator.
+| id="Muddled Blood" |'''Muddled Blood'''
+|'''(•)'''
+|Even if they possess the Discipline, they must drink the Blood of someone who possesses it in order to buy dots. Cannot be taken with the Favored Blood Merit.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Walking Omen" |'''Walking Omen'''
+|'''(••)'''
+|Scrying, premonition, and other forms of future telling point to the Caitiff as the source of misfortune, how this Flaw functions in play is ultimately up to the Storyteller.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Word-Scarred" |'''Word-Scarred'''
+|'''(•)'''
+|The Caitiff body is covered to some degree with ancient vampiric lore text. The extent of what this Flaw does in play is up to the player(s) and Storyteller.
+|}
+
+===Thin-blood===
+Only Thin-Bloods may take these merits and flaws. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 184</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 40%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 40%;" |Description
+|-
+| id="Anarch Comrades" |'''Anarch Comrades'''
+|Befriended an Anarch group, and act as a one-dot Anarch Mawla.
+| id="Shunned by the Anarchs" |'''Shunned by the Anarchs'''
+|They've done something and the Anarch shun them, more likely to throw them to the Camarilla than help. Cannot take Anarch Comrades with this Flaw.
+|-
+| id="Camarilla Contact" |'''Camarilla Contact'''
+|Caught the attention of someone within the Camarilla, acts as a one-dot Camarilla Mawla.
+| id="Branded by the Camarilla" |'''Branded by the Camarilla'''
+|An unhealable and painful brand given by the Camarilla to know what they are. Can take Camarilla Contact with this Flaw.
+|-
+| id="Catenating Blood" |'''Catenating Blood'''
+|Can create Blood Bonds and embrace other thin-bloods.
+| id="Bestial Temper" |'''Bestial Temper'''
+|Frenzy test as normal vampire rules
+|-
+| id="Day Drinker" |'''Day Drinker'''
+|Able to walk in the sun. Sunlight halves their Health Tracker (rounded up) and removes all vampiric abilities.
+| id="Clan Curse" |'''Clan Curse'''
+|Cursed by the bane of a clan. Bane Severity becomes 1. Can only take Banu Haqim, Gangrel, or Brujah Bane if they have Bestial Temper and the Tremere Bane if they have Catenating Blood
+|-
+| id="Discipline Affinity" |'''Discipline Affinity'''
+| Natural ability for one Discipline. Gain one dot and can retain additional levels at the experience cost of out-of-clan. Consuming matching resonance does not reward them with extra temporary dots.
+| id="Vitae Dependency" |'''Vitae Dependency'''
+|Must slake one hunger of vampire vitae each week else they'll lose access to ''all'' their vampiric powers.
+|-
+| id="Lifelike" |'''Lifelike'''
+|Has a heartbeat, can eat food, and enjoy sexual activities. Most medical checks reveal nothing, as long as it's during the night.
+| id="Dead Flesh" |'''Dead Flesh'''
+|Medical inspections will report them as deceased and take a one-die penalty to face-to-face Social tests with a mortal. Cannot take Lifelike with this Flaw.
+|-
+| id="Thin-blood Alchemist" |'''Thin-blood Alchemist'''
+|Gain one dot and one formula of Thin-blood Alchemy.
+| id="Baby Teeth" |'''Baby Teeth'''
+|Never developed fangs, or grew ones that were not sharp enough to break the skin.
+|-
+| id="Vampiric Resilience" |'''Vampiric Resilience'''
+|Take damage like a regular vampire.
+| id="Mortal Frailty" |'''Mortal Frailty'''
+|Mend like a mortal, unable to rouse the blood. Cannot take Vampiric Resilience with this Flaw.
+|- id="Abhorrent Blood"
+|'''Abhorrent Blood'''
+|With Blood so disgusting any vampire who attempts to drink from them must spend two points of Willpower each turn. Mortals and Thin-blood Alchemy are not affected by this.<ref name=":13">[[Vampire: The Masquerade Players Guide]], page 135</ref>
+| id="Heliophobia" |'''Heliophobia'''
+|Fear sunlight as if a full vampire, terror Frenzy from sunlight. <ref name=":13" />
+|- id="Faith-Proof"
+|'''Faith-Proof'''
+|They are too close to mortality for True Faith to affect them.<ref name=":14">[[Vampire: The Masquerade Players Guide]], page 136</ref>
+| id="Night Terrors" |'''Night Terrors'''
+| Once per session suffer from night terrors and receive a one-die penalty for all actions for the rest of the scene.<ref name=":13" />
+|- id="Low Appetite"
+|'''Low Appetite'''
+|When waking up at sunset with Hunger 0 or 1, roll two dice on the Rouse Check and take the highest between the two.<ref name=":14" />
+| id="Plague Bearers" |'''Plague Bearers'''
+|Still susceptible to mortal illnesses, whenever they feed they have a chance to catch a sickness by rolling a die and it lands on "1". Mortal medicine does not heal you, only slaking from a healthy immune system to Hunger 0 does.<ref name=":13" />
+|- id="Lucid Dreamer"
+|'''Lucid Dreamer'''
+|Once per session, they can receive a clue from the previous night's memories or a hint about the story.<ref name=":14" />
+| id="Sloppy Drinker" |'''Sloppy Drinker'''
+|When feeding make a Dex + Medicine test against a Difficulty equal to the amount of Hunger slaked. On a failure, the wound is too ragged to close and the victim may bleed out from the Masquerade-threatening wound. <ref name=":13" />
+|- id="Mortality's Mien"
+|'''Mortality's Mien'''
+|Appearing more mortal than most vampires their vampiric nature cannot be detected through auras. In addition, receive two dice in any attempt to make yourself appear mortal in other methods such as makeup.<ref name=":14" />
+| id="Sun-Faded" |'''Sun-Faded'''
+|Alchemy and Disciplines are unusable in the sunlight, but can be used inside at a two-dice penalty during the day so long as they are away from any sunlight.<ref name=":13" />
+|- id="Swift Feeder"
+|'''Swift Feeder'''
+|Able to slake one Hunger in one turn as well as lick the wound closed. This can only be used once per scene.<ref name=":14" />
+| id="Supernatural Tell" |'''Supernatural Tell'''
+|Something about them makes them easy to spot for supernatural creatures. Lose two dice from Stealth pools and similar against other supernatural creatures.<ref name=":13" />
+|-
+| style="border:none" ; |
+| style="border:none" ; |
+| id="Twilight Presence" |'''Twilight Presence'''
+|Mortals don't want to be around them and even other Kindred find them more unpleasant than other thin-bloods. Lose one die from Social pools involving others except for other thin-bloods who can adjust to their strange demeanor.<ref name=":13" />
+|-
+| style="border:none" ; |
+| style="border:none" ; |
+| id="Unending Hunger" |'''Unending Hunger'''
+|When feeding in a scene, slake one Hunger less, this only applies once per scene.<ref name=":13" />
+|}
+
+=== Ghouls===
+Only ghouls make take these merits and flaws. It is up to the Storyteller if the merits are lost from major events such as becoming a ghoul or being embraced. In general, if these are lost, the player should be able to purchase new Advantages for the now invalidated Merits.<ref name=":4">[[Vampire: The Masquerade Companion]], page 59</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Blood Empathy" |'''Blood Empathy'''
+|'''••'''
+|The ghoul can feel if their regnant is in danger or otherwise, needs them immediately, this does not allow for telepathic communication.
+| id="Baneful Blood" |'''Baneful Blood'''
+|'''(• - ••)'''{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Dot amount reduced}}
+|The character experiences the bane of their first domitor, this does not change if they get a new domitor. The domitor must be of Clan [[Lasombra]], [[Malkavian]], [[The Ministry|Ministry]], [[Nosferatu]], [[Ravnos]], [[Salubri]], or  [[Toreador]].
+|-
+| id="Unseemly Aura" |'''Unseemly Aura'''
+|'''••'''
+|Their aura has become indistinguishable from a Kindred.
+| id="Crone's Curse" |'''Crone's Curse'''
+|'''(••)'''{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Dot amount reduced}}
+|The character appears at least a decade older than they actually are which reduces their health tracker by one. 
+|-
+| style="border:none" ; |
+| style="border:none;" |
+| style="border:none" ; |
+| id="Distressing Fangs" |'''Distressing Fangs'''
+|'''(•)'''{{Errata|source=Vampire: The Masquerade Players Guide|date=April 2023|summary=Dot amount reduced}}
+|Having developed fangs like kindred, the character suffers one die on Social pools with mortals.
+|}
+
+===Cults===
+Some Merits and Flaws below are listed under their associated cult, however, these can be adapted to fit as the Storyteller and players see fit within their chronicle.<ref>[[Vampire: The Masquerade Children of the Blood]], page 95</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Apocryphal Texts" |  '''Apocryphal Texts'''
+|'''•'''
+| The character possesses writings from one of the church's leaders or prominent figures. On applicable rolls gain two dice Intelligence rolls. As a 1 dot optional flaw that can come with this merit the [[Willpower]] damage modifier for social combat is increased by 1.
+| id="Excommunicated" |'''Excommunicated'''
+|'''(• - ••)'''
+|They've done something to be cast out. At one dot, subtract two dice from all rolls dealing with the cult. At two dots, the cult actively seeks to destroy you in any way possible.
+|-
+| id="Inspired Artist" |'''Inspired Artist'''
+|'''••'''
+|When using the cult's symbols or message in art, add a 1-die penalty to onlookers to resist Social rolls from cult members.
+| id="Faithless" |'''Faithless'''
+|'''(••)'''
+|Being a member for the benefits instead of being a true believer. Lose two dice on rolls pertaining to the Cult from Resolve and Composure rolls. Cannot learn any [[Blood Sorcery Rituals|Rituals]], [[Oblivion Ceremonies|Ceremonies]], and [[Loresheets]] higher than level 2.
+|-
+| id="Traveling Preacher" |'''Traveling Preacher'''
+|'''••'''
+|Having spread the cult's message where they go, reduce the difficulty on rolls to avoid the [[Second Inquisition]] by 1.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+====Ashfinders====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Memories of the Fallen (Thin-bloods)" |'''Memories of the Fallen (Thin-bloods)'''
+|'''••'''
+|On Blood Alchemy rolls related to Ashe, one rolled 10 counts as two 10s. Two rolled 10s still count as four.
+| id="Ashe Addiction" |'''Ashe Addiction'''
+|'''(••)'''
+|In addition to the Ashe rules in [[Vampire: The Masquerade Cults of the Blood Gods|Cults of the Blood Gods]], after a failed Blood Alchemy roll, take a two dice penalty for all actions till the session ends
+|-
+| id="Streamer" |'''Streamer'''
+|'''••'''
+|Once per story, the character can call upon their fanbase to perform something simple and nonviolent for them.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+====Bahari ====
+{| class="mw-collapsible mildtable" style="width:50%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Gardener" |'''Gardener'''
+|'''• - •••••'''
+|Being selected members from the faith, this merit is equivalent to Herd for the Bahari religion.
+|-
+| id="Dark Mother's Song" |'''Dark Mother's Song'''
+|'''••'''
+|Add three dice in Manipulation rolls when convincing others to worship Lilith.
+|}
+
+====Church of Caine ====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Fire Resistant" |'''Fire Resistant'''
+|'''•'''
+|Convert Aggravated Health damage from fire to Superficial Health damage equal to their Blood Potency for one Rouse Check instead of three during daysleep.
+| id="Schism (Lasombra)" |'''Schism (Lasombra)'''
+|'''(•)'''
+|Suffer a two-dice penalty on Social rolls with members of your cult.
+|}
+
+====Church of Set====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Vigilant" |'''Vigilant'''
+|'''••'''
+|The character knows when they are being watched unless it's through supernatural means, they still must roll to know who and where from.
+| id="False Alarm" |'''False Alarm'''
+|'''(•)'''
+|Every failed Awareness roll counts as a total failure.
+|-
+| id="Fixer" |'''Fixer'''
+|'''••'''
+|Once per story, call in a favor or threaten a former client.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Go to Ground" |'''Go to Ground'''
+|'''•'''
+|Add two dice on rolls when evading pursuit.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+====Cult of Shalim====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+|-
+| id="Insidious Whispers" |'''Insidious Whispers'''
+|'''••'''
+|When making a Social roll to undermine a Conviction, one rolled 10 counts as two 10s. Two rolled 10s still count as four.
+| id="Empty" |'''Empty'''
+|'''(•)'''
+|People attempt to remove themselves from the character's unnerving presence. Subtract two dice from Social rolls
+|-
+| id="Gematria" |'''Gematria'''
+|'''•'''
+|The ability to understand a coded cipher allowing both encrypting and decrypting messages.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+====Mithraic Mysteries====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" | Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Bull-Slayer" |'''Bull-Slayer'''
+|'''•••'''
+|During Extended Tests, The character can reroll up to three regular dice without spending Willpower once per scene.
+| id="Failed Initiate" |'''Failed Initiate'''
+|'''(•)'''
+| The character faltered during the process of becoming a member, being assigned a guide who will interrupt plans, offer instruction, or demand the character prove themselves at any time.
+|-
+| id="Bargainer" |'''Bargainer'''
+|'''•'''
+| Reduce the Difficulty to assess a transaction by 1.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|}
+
+====Nephilim====
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Archangel's Grace" |'''Archangel's Grace'''
+|'''•••'''
+|Replace the Athletics Skill with the Performance Skill or vice versa when doing something akin to heavy cardio.
+| id="Yearning" |'''Yearning'''
+|'''(•)'''
+|Missing their master, they must spend two Willpower to work against their master's wishes.
+|}

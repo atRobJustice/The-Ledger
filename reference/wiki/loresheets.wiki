@@ -1,0 +1,1093 @@
+<section begin=summary/>Loresheets are specific advantages tied to a character's background either through their lineage or their history. When looking at loresheets the players should consider how to tie them into their character's background and the plausibility of their implications together with their storyteller. Some loresheets require the character to be of a specific clan, especially Descendant loresheets, and others require certain cults. Players are able to take a Bloodline Loresheet in addition to a non-lineage Loresheet at Character Creation. Additionally, Storytellers may decide that Descendant loresheets are able to count as Bloodlines.<ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 219</ref><ref>[[Vampire: The Masquerade Players Guide]], page 114</ref><section end=summary/>
+
+All loresheets contain a dot value from 1 to 5. Each level of a loresheet must be bought separately, meaning that having level 3 in a loresheet does not mean the character also has levels 1 and 2.<ref>[[Vampire: The Masquerade Corebook]], page 190</ref>
+
+==Corebook Loresheets==
+
+: ''Main article: [[Vampire: The Masquerade Corebook]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="The Bahari"
+|'''The Bahari'''
+| N/A
+|Connected to the cult of the [[Bahari]]. Different levels grant bonuses based on their beliefs and ideology when embracing it.
+|
+* Page 382
+|- id="Theo Bell"
+|'''Theo Bell'''
+|N/A
+|Connected to the [[Anarch|Anarchs]] and [[Brujah#Notable characters|Theo Bell]]. Different levels grant bonuses related to commanding a group, gaining information on Anarch defectors, or contacting Theo himself.
+|
+*
+*Page 383
+|- id="Cainite Heresy"
+|'''Cainite Heresy'''
+|N/A
+|Connected to the [[Church of Caine]]. Different levels grant bonuses related to finding other Church of Caine, representing the character's role within the city's diaconate, sensing True Faith, inducing the Red Pentecost, or the possession of a rare testimony.
+|
+*Page 384
+|- id="Carna"
+|'''Carna'''
+|N/A
+|Connected to the [[Tremere#Houses|House of Carna]] and Carna herself. Different levels grant bonuses related to other members of the House, strengthening pools against Blood Bonds, aids in Rituals, creating a Blood Bond, or owning a copy of a rare book.
+|
+*Page 385
+|- id="The Circulatory System"
+|'''The Circulatory System'''
+|N/A
+|Connected to the [[Circulatory System]] and their mortal trafficking. Different levels grant vessels to feed from, it aids in learning alchemy, securing safe travel for kindred, or learning the resonance properties of blood.
+|
+*Page 386
+|- id="Convention of Thorns"
+|'''Convention of Thorns'''
+|N/A
+|Connected to the [[Anarch#Convention of Thorns|Convention of Thorn]]. Different levels grant the character information surrounding the events which they can use for their gains.
+|
+*Page 387
+|- id="The First Inquisition"
+|'''The First Inquisition'''
+|N/A
+|Connected to the Inquisition and its history. Different levels grant knowledge about the original hunters and in turn about the [[Second Inquisition]].
+|
+*Page 388
+|- id="Golconda"
+|'''Golconda'''
+|N/A
+|Connected to the Golconda and its enlightenment. Different levels grant knowledge of it, copies of its information to learn it, the ability to utilize some of the beliefs from [[Salubri#Notable characters|Saulot]] to stave off hunger, or the ability to walk in the sunlight without harm.
+|
+*Page 389
+|- id="Descendant of Hardestat"
+|'''Descendant of Hardestadt'''
+|data-sort-value="7"|[[Ventrue]] only
+|Connected to the [[Ventrue#Notable characters|Hardestadt]] and his descendants. Different levels grant the ability to speak over any noise, strengthen the pools when sending others into danger, grant status due to lineage, contact one of the Camarilla's founders, or take on the name of Hardestadt and be his successor.
+|
+*Page 390
+|- id="Descendant of Helena"
+|'''Descendant of Helena'''
+|data-sort-value="5"|[[Toreador]] only
+|Connected to [[Toreador#Notable characters|Helena]] and her descendants. Different levels grant the ability to alter the character's status by uttering her name, decrease the experience cost of specific talents, aid pools when making rolls to avoid blame, or open a Succubus Club in the character's domain.
+|
+*Page 391
+|- id="Sect War Veteran"
+|'''Sect War Veteran'''
+|N/A
+|Connected to the war between the [[Camarilla]] and the [[Sabbat]]. Different levels grant the ability to gain information about the wars in the character's domain, gain status for the character's bravery during the war, claim trophy kills, aid in setting up ambushes or attacks, or know how to ignite sect wars.
+|
+*Page 392
+|- id="The Trinity"
+|'''The Trinity'''
+|N/A
+|Connected to the Golden Age of [[Constantinople]] and the vampire utopia it once was. Different levels grant the knowledge of Constantinople's past, calming a violent court, inspiring others, allowing the character to find and contact Dracon, or rebuilding the Trinity with two others.
+|
+*Page 393
+|- id="Jeanette/Therese Voerman"
+|'''Jeanette/Therese Voerman'''
+|N/A
+|Connected to the [[Malkavian#Notable characters|Voerman Sisters]]. Different levels grant the character varying levels of connections with the sisters up to ownership of an Asylum club within the character's domain.
+| 
+*Page 394
+|- id="The Week of Nightmares"
+|'''The Week of Nightmares'''
+|N/A
+|Connected to the Week of Nightmares. Different levels grant the character varying levels of knowledge about the event that spanned across years, giving contact to the surviving Ravnos, granting status as a survivor, owning the Red Star or a vial of blood from the Ravnos Antediluvian.
+| 
+*Page 395
+|- id="Rudi"
+|'''Rudi'''
+|N/A
+|Connected to [[Gangrel#Notable characters|Rudi]]. Different levels grant the character varying abilities when working against oppressive powers to organize groups towards a specific goal.
+|
+*Page 396
+|- id="Descendant of Tyler"
+|'''Descendant of Tyler'''
+|data-sort-value="1"| [[Brujah]] only
+|Connected to [[Brujah#Notable characters|Tyler]]. Different levels grant the character varying abilities to channel the ambition of Tyler in their blood when persuading others, the skill to redirect a frenzy into a compulsion, having contact with the Furores, or the back-history of taking down a sect figurehead.
+|
+*Page 397 or [[Vampire: The Masquerade Anarch|Anarch]], page 195
+|- id="Descendant of Zelios"
+|'''Descendant of Zelios'''
+|data-sort-value="4"|[[Nosferatu]] only
+|Connected to [[Nosferatu#Notable characters|Zelios]]. Different levels grant the character varying abilities to secure their havens, demolish buildings, construct a labyrinth, or discover ley lines.
+|
+*Page 398
+|- id="Descendant of Vasantasena"
+|'''Descendant of Vasantasena'''
+|data-sort-value="3"|[[Malkavian]] only
+|Connected to [[Malkavian#Notable characters|Vasantasena]]. Different levels grant the character the ability to survive through dangerous or chaotic situations, recognize bonds, destroy bonds or help deprogram another vampire.
+|
+*Page 399
+|- id="High Clan"
+|'''High Clan'''
+|data-sort-value="8"|Must be a member of the High Clans. [[Lasombra]], [[Toreador]], [[Tzimisce]], and [[Ventrue]] are historically high. [[Brujah]] and some [[Hecata]] are also considered high. Occasionally [[Banu Haqim]], [[The Ministry]], and very rarely [[Tremere]] are also high depending on the Domain.
+|Connected to the clans regarded as high in the hierarchy. Different levels grant the character the ability to command others, gain an advantage over both Low and High Clan Kindred, or ignore the burden of the clan bane.
+|
+*Page 400
+|- id="Low Clan"
+|'''Low Clan'''
+|data-sort-value="9"|Must be a member of the Low Clans which is defined by their geographical region. [[Gangrel]], [[Malkavian]], and [[Nosferatu]] are almost always low. Occasionally [[Brujah]] and [[Tremere]] are also low depending on the Domain.
+|Connected to the clans regarded as low in the hierarchy. Different levels grant the character the ability to shrug off provocations, use their bane to their advantage, work with other Low Clans, learn another Low Clan's Discipline, or bring down a High Clan Kindred in a coup.
+|
+*Page 401
+|- id="Ambrus Maropis"
+|'''Ambrus Maropis'''
+|N/A
+|Connected to [[Nosferatu#Notable characters|Ambrus Maropis]]. Different levels grant the character information regarding security, a connection directly to Ambrus, gain additional dice to related tests, or well-protected fake identities.
+|
+*Page 402
+|- id="Carmelita Neillson"
+|'''Carmelita Neillson'''
+| N/A
+|Connected to [[Toreador#Notable characters|Carmelita Neillson]]. Different levels grant the character varying abilities of storytelling, meditating on an object for benefits, the allowance to run one of her libraries, secrets from her interviews, or the privilege to guard one of the character's ancestors.
+|
+*Page 403
+|- id="Fiorenza Savona"
+|'''Fiorenza Savona'''
+| N/A
+|Connected to [[Ventrue#Notable characters|Fiorenza Savona]]. Different levels grant the character varying levels of relationship with Fiorenza and gain benefits from her, be it a ghoul or other benefits.
+|
+*Page 404
+|- id="Descendant of Karl Schrekt"
+|'''Descendant of Karl Schrekt'''
+|data-sort-value="6"|[[Tremere]] only
+|Connected to [[Tremere#Notable characters|Karl Schrekt]]. Different levels grant the character information regarding House Tremere, bonuses for working towards Schrekt's goals, reduce the effort needed for a ritual, find aid in an unlikely ally, or gain information on those same allies.
+|
+*Page 405
+|- id="Descendant of Xavier"
+|'''Descendant of Xaviar'''
+|data-sort-value="2"|[[Gangrel]] only
+|Connected to [[Gangrel#Notable characters|Xaviar]]. Different levels grant the character respect from other Gangrel, detect other vampires in the ground, gain benefits with the Camarilla, turn into a man-sized bat, or have experience with the Antediluvian.
+|
+*Page 406 or [[Vampire: The Masquerade Anarch|Anarch]], page 194
+|}
+
+== Anarch Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Anarch]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Salvador Garcia"
+|'''Salvador Garcia'''
+| N/A
+|Connected to [[Brujah#Notable characters|Salvador Garcia]]. Different levels grant the character bonuses when using [[Anarch]] principles, gain a Mawla to aid them, turn information gathering against them difficult, become known across Anarch territories, or have the skill to rile up the local Anarchs.
+|
+*Page 190
+|- id="Agata Starek"
+|'''Agata Starek'''
+|N/A
+|Connected to Agata Starek. Different levels grant the character bonuses when threatening someone of greater means than themselves, exposing the weakness of enemies, being given hard-to-obtain blood, turning an enemy's minion to the character's side, or suffering less loss from Diablerie.
+|
+*Page 191
+|- id="Hesha Ruhadze"
+|'''Hesha Ruhadze'''
+|data-sort-value="3"|(••••) and (•••••) are [[The Ministry|Ministry]] characters only.
+|Connected to [[The Ministry#Notable characters|Hesha Ruhadze]]. Different levels grant the character ownership of one of Hesha's treatises, knowledge about what Hesha is seeking or ownership of it already, the rare privilege of membership to one of the Ministry's museums, having been taught by Hesha himself, or hearing the voice of Sutekh for guidance and aid.
+|
+*Page 192
+|- id="The Church of Set"
+|'''The Church of Set'''
+|data-sort-value="4"|[[Church of Set]] members
+|Connected to the Church of Set. Different levels grant the character a congregation of mortals to feed from, bonuses to tell when someone is lying, bonuses against other clans [[Dominate]] or [[Presence]] attempts, help others indulge in corruption to only come out clean, or ownership of Set's skeleton, sarcophagus or burial robes.
+|
+*Page 193
+|- id="Descendant of Xavier"
+|'''Descendant of Xaviar'''
+|data-sort-value="2"|[[Gangrel]] only
+|Connected to [[Gangrel#Notable characters|Xaviar]]. Different levels grant the character respect from other Gangrel, detect other vampires in the ground, gain benefits with the Camarilla, turn into a man-sized bat, or have experience with the Antediluvian.
+|
+*Page 194 or [[Vampire: The Masquerade Corebook|Corebook]], page 406
+|- id="Descendant of Tyler"
+|'''Descendant of Tyler'''
+|data-sort-value="1"|[[Brujah]] only
+|Connected to [[Brujah#Notable characters|Tyler]]. Different levels grant the character varying abilities to channel the ambition of Tyler in their blood when persuading others, the skill to redirect a frenzy into a compulsion, having contact with the Furores, or the back-history of taking down a sect figurehead.
+|
+*Page 195 or [[Vampire: The Masquerade Corebook|Corebook]], page 397
+|- id="Ruins of Carthage"
+|'''Ruins of Carthage'''
+|N/A
+|Connected to [[Carthage]]. Different levels grant the character knowledge of what happened to Carthage, Carthaginian ancestry to boast about, forming a link to them for bonuses in combat, control over the Beast, bonuses over servants, or breach the [[Masquerade]] and get away with it.
+|
+*Page 196
+|- id="Blood Plagued"
+|'''Blood Plagued'''
+|N/A
+|Connected to the Blood plague, which unlike the majority of diseases does affect other vampires. Different levels grant the character the ability to detect the Blood plague, understand how to track down active victims, locate infected bodies in the ground in torpor, create a cure for this illness, or carry the Blood plague themselves to infect or aid others as they see fit.
+|
+*Page 197
+|- id="Anarch Revolt"
+|'''Anarch Revolt'''
+|N/A
+|Connected to the Anarch Revolts and other related events such as the fall of tyrannical Princes and the rise of new Barons. Different levels grant the character ancestral ties to one of the sides during these uprisings or gain bonuses or merits in regards to other Anarchs or the Anarch cause.
+|
+*Page 198
+|}
+
+== Camarilla Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Camarilla]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Carmelita Neillson"
+|'''Carmelita Neillson'''
+| N/A
+|Connected to [[Toreador#Notable characters|Carmelita Neillson]]. Different levels grant the character varying abilities of storytelling, meditating on an object for benefits, the allowance to run one of her libraries, secrets from her interviews, or the privilege to guard one of the character's ancestors.
+|
+*Page 184 or [[Vampire: The Masquerade Corebook|Corebook]], page 403
+|- id="Fatima Al-Faqadi"
+|'''Fatima Al-Faqadi'''
+|N/A
+|Connected to [[Banu Haqim#Notable characters|Fatima al-Faqadi]]. Different levels grant the character access to a weapons locker, connection to the Extended Web, survive a hit by Fatima, the ability to execute a kindred without retaliation from the Camarilla, or a relationship with Fatima in such she'll eliminate an enemy for the character.
+|
+*Page 185
+|- id="Fiorenza Savona"
+|'''Fiorenza Savona'''
+|N/A
+|Connected to [[Ventrue#Notable characters|Fiorenza Savona]]. Different levels grant the character varying levels of relationship with Fiorenza and gain benefits from her, be it a ghoul or other benefits.
+|
+*Page 186 or [[Vampire: The Masquerade Corebook|Corebook]], page 404
+|- id="Pure Ventrue Lineage"
+|'''Pure Ventrue Lineage'''
+|data-sort-value="1"|[[Ventrue]] only
+|Connected to the lineage of the Ventrue and the importance they find in their history. Different levels grant the character different lineages, either as a nobility or Prince or clear to Methusulah's as well as later levels giving the option to select between three different lines.
+|
+*Page 187
+|- id="The Cult of Mithras"
+|'''The Cult of Mithras'''
+|N/A
+|Connected to the cult of [[Mithraic Mysteries|Mithras]]. Different levels grant the character varying levels of relationship and knowledge of the cult and its functions with bonuses related.
+|
+*Page 188
+|- id="The Pyramid"
+|'''The Pyramid'''
+|[[Tremere]] only
+|Connected to the [[Tremere]]'s Pyramid and its inner workings. Different levels grant the character varying levels of relationships and ranks as they progress through the rebuild of a chantry in this loresheet and garner them bonuses.
+|
+*Page 189
+|- id="Victoria Ash"
+|'''Victoria Ash'''
+|N/A
+|Connected to [[Toreador#Notable characters|Victoria Ash]]. Different levels grant the character varying levels of relationship with Victoria, being a guest at the wedding, learning her abilities to read people, easing the transportation between two domains, or being protected by Victoria herself.
+|
+*Page 190
+|}
+
+== Chicago by Night Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Chicago by Night]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Annabelle"
+|'''Annabelle'''
+| N/A
+|Connected to [[Toreador#Notable characters|Annabelle]]. Different levels grant the character varying levels of relationship with Annabelle with her ability to pull strings for specific requests or aid them in other ways.
+|
+*Page 262
+|- id="Ballard Industries"
+|'''Ballard Industries'''
+|N/A
+|Connected to Ballard Industries which is one of the pillars of Chicago's economy. Different levels grant the character membership and access to the share of wealth, connections to Ballard's name and fake names, influence with the police, claim debt over another, or their own company.
+|
+*Page 263
+|- id="Blacksite 24"
+|'''Blacksite 24'''
+|N/A
+|Connected to Blacksite 24, military and medical installation currently controlled by [[Second Inquisition|FIRSTLIGHT]]. Different levels grant the character knowledge of this site's existence, through knowing others who have been taken or being taken themselves, or granting information about the hunters.
+|
+*Pages 264-265
+|- id="The Blue Velvet"
+|'''The Blue Velvet'''
+|N/A
+|Connected to Blue Velvet, a hotspot for kindred nightlife. Different levels grant the character connections to the nightclub, through being there since the beginning, knowing who visits the club, being a regular musician there, or different levels of influence in the club.
+|
+*Page 266
+|- id="The Book of Nod"
+|'''The Book of Nod'''
+|N/A
+|Connected to the Book of Nod, which contains oral histories, text fragments, and other forms of media detailing the history of Caine and his childer. Different levels grant the character knowledge about the contents of the Book of Nod up to possession of pieces of the book.
+|
+*Page 267
+|- id="Capone Gang"
+|'''Capone Gang'''
+|N/A
+|Connected to the Capone Gang. Different levels grant the character varying levels of aid from the gang, be it making someone disappear, or aiding in a heist to becoming a fully-fledged member of the gang and even the prodigal child of the leader, Eddie Wu.
+|
+*Pages 268-269
+|- id="The Cobweb"
+|'''The Cobweb'''
+|data-sort-value="2"|[[Malkavian]] only
+|Connected to the Cobweb, a mystical force that connects all Malkavians. Different levels grant the character varying abilities to tap into this mystical source, such as the ability to hear the shattered words, tapping into other's senses, or using the Cobweb to guide them.
+|
+*Page 270
+|- id="Cultivar"
+|'''Cultivar'''
+|data-sort-value="6"|[[Cultivar]] member
+|Connected to the Cultivars, who are similar to the [[Bahari]]. Different levels grant the character varying progression through the cult with related perks from their joining with the dark mother.
+|
+*Page 271
+|- id="Cult of Shalim"
+|'''Cult of Shalim'''
+|data-sort-value="5"|[[Cult of Shalim]] member
+|Connected to the Shalimites. Different levels grant the character varying progression through the cult with related perks as they explore further into the group.
+|
+*Page 272
+|- id="Descendant of Lodin"
+|'''Descendant of Lodin'''
+|data-sort-value="4"|[[Ventrue]] only
+|Connected to [[Ventrue#Notable characters|Lodin]]. Different levels grant the character varying connections in lineage to Lodin and the benefits from such a title.
+|
+*Page 273
+|- id="Descendant of Montano"
+|'''Descendant of Montano'''
+|data-sort-value="1"|[[Lasombra]] only
+|Connected to [[Lasombra#Notable characters|Montano]]. Different levels grant the character varying levels of relationship with Montano to learn from him or status within the Lasombra as a whole regardless of sect.
+|
+*Page 274
+|- id="Fires and Floods and the Devil's Night"
+|'''Fires and Floods and the Devil's Night'''
+|N/A
+|Connected to disasters that occurred within Chicago such as the Great Fire of 1871 or the Chicago Flood in 1992. Different levels grant the character knowledge about the disasters that happened within the city, locations lost to time, survival of these events, a history of offering aid after the disasters struck, or being an orchestrator of one of these events.
+|
+*Page 275
+|- id="Firstlight"
+|'''Firstlight'''
+|N/A
+|Connected to [[Second Inquisition|FIRSTLIGHT]]. Different levels grant the character varying skills in evasion of hunters, information about them, the ability to erase the character's records from the group, or a connection on the inside.
+|
+*Page 276
+|- id="Kevin Jackson"
+|'''Kevin Jackson'''
+|N/A
+|Connected to [[Ventrue#Notable characters|Kevin Jackson]]. Different levels grant the character connections to the Prince, either as a new arrival as part of his service, as a student from one of his schools, or up to being the right-hand man.
+|
+*Page 277
+|- id="Kindred Iconography"
+|'''Kindred Iconography'''
+|N/A
+|Connected to iconography used by Kindred to communicate secretly. Different levels grant the character knowledge of these symbols to help decipher them, know how to utilize clothing in kindred social circles, or even have enough skill to be able to dress Princes and Primogens. 
+|
+*Page 278
+|- id="The Labyrinth"
+|'''The Labyrinth'''
+|N/A
+|Connected to a series of abandoned tunnels beneath Chicago. Different levels grant the character the ability to traverse through the tunnels safely, understand the culture that's been built beneath the city, and participate even, connect with a [[Tremere]] named Lydia who lives there or hide out safely and without being caught.
+|
+*Page 279
+|- id="Lupine Expert"
+|'''Lupine Expert'''
+|N/A
+|Connected to a background where the character has encountered the Lupines and lived to tell the tale. Different levels grant the character different skills needed to track these creatures down and destroy them, the history of having taken one down, or even the level of expertise needed to effectively help maintain a peaceful balance between Kindred and Lupines.
+|
+*Page 280
+|- id="Nathaniel Bordruff"
+|'''Nathaniel Bordruff'''
+|N/A
+|Connected to [[Nosferatu#Notable characters|Nathaniel Bordruff]]. Different levels of this loresheet grants you access to Nathaniel’s expansive influence in the city. Though the more the character benefits from his association the more they learn of the Nosferatu’s mad grand plan.
+|
+*Page 281
+|- id="The Painted Lady"
+|'''The Painted Lady'''
+|N/A
+|Connected to the Painted Lady; offering tattoos, piercings, and BDSM experiences.  Different levels of the loresheets allows the character to have differing levels of access to services. The higher the ranking the more of a dedicated member the character is as well as boosts to the characters social standing and body modification.
+|
+*Page 282
+|- id="Revenant Family: Ducheski"
+|'''Revenant Family: Ducheski'''
+|data-sort-value="3"|[[Tremere]] only
+|This lore sheet allows a Tremere character to access a rare [[Mortals and ghouls|revenant]] retainer of the Ducheski family. Each level of this lore sheet allows for more use and exploitation of their retainer. The Duscheki are keen assistants in the ways of academics and the occult able to help kindred in either area or impress their master with their creation.
+|
+*Page 283
+|- id="The Society of St. Leopold"
+|'''The Society of St. Leopold'''
+|N/A
+|This loresheet gives the character knowledge of how the [[Second Inquisition|Society of St. Leopold]] be that current knowledge or past organizational knowledge. This may even be for former religious associations. Each increased level gives the character more knowledge of the diocese and the double edged sword of having deeper connection to a pious old life. 
+|
+*Pages 284-285
+|- id="Talley"
+|'''Talley'''
+|N/A
+|This connects the character with [[Lasombra#Notable characters|Talley]]. The different levels confer different benefits with lower levels merely having the player emulate cunning tactics the Shadow has used to survive for centuries. Higher levels the loresheet allows more direct interaction with Talley himself and access to his skills in combat and politics.
+|
+*Page 286
+|- id="Wauneka"
+|'''Wauneka'''
+|N/A
+|This loresheet connects to [[Nosferatu#Notable characters|Wauneka]], an information broker and protector of the downtrodden and vulnerable. The character develops more connections with the outcasts and invisibles of the city allowing the character to use Wauneka’s network. The more the character gains trust of Wauneka and his street family the more secrets the character has an opportunity to learn.
+|
+*Page 287
+|}
+
+== Chicago Folios Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Chicago Folios]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Archons"
+|'''Archons'''
+| N/A
+|This Loresheet connects the character to the [[Camarilla|Archons]] as an agent or potential recruit of the elite Camarilla guard. The levels of this loresheet gives benefits to any on going investigations one would have in their nights. Higher levels of the loresheet allows the player to have more pull in the sect, communication with reigning [[Camarilla|justicars]], and even an official appointment. 
+|
+*Page 158
+|- id="The Convention of Chicago"
+|'''The Convention of Chicago'''
+|N/A
+|This loresheets has the Character be an attendee to the Convention of Chicago either as a Chicago native or a far traveled diplomat. At this major gathering of Camarilla figures, the character was able to gather information regardless of their sect. The levels of the loresheet lets you be a party crasher, or proper attendee and gain clout from actions at different levels. Higher levels yield more benefits as the character’s role in the affair becomes more invested. 
+|
+*Page 159
+|- id="Descendant of Menele"
+|'''Descendant of Menele'''
+|[[Brujah]] only
+|Places [[Brujah|Menele]] as the character's ancient vampiric ancestor. The sheet confers many of the skills and the traits the methuselah possessed in unlife to the character. Levels of the loresheet aid the character in their skills of knowledge seeking and connecting to the old ways of clan Brujah. 
+|
+*Page 160
+|- id="Goblin Roads"
+|'''Goblin Roads'''
+|N/A
+|The loresheet relates to the supernatural route between Milwaukee and Chicago known as the Goblin Road. The levels confer the ease with traveling this route and connections to [[Gangrel]] and their allies who know of the route’s nature. Higher levels allow the character to interact with the oddity of the road. 
+|
+*Page 161
+|- id="Justicar Lucinde"
+|'''Justicar Lucinde'''
+|N/A
+|Gives the character some form of past association with Justicar [[Ventrue|Lucinde]]. Low levels gives the character some skills in investigation like the renowned justicar. Higher levels give the character benefits from working under Lucinde on her various missions. 
+|
+*Page 162
+|- id="Khalid Al-Rashid"
+|'''Khalid Al-Rashid'''
+|N/A
+|Connects the player character to [[Nosferatu|Khalid Al-Rashid]] by blood or through mundane association. Low levels of the nosferatu sheet will allow skills in areas of the former primogen’s expertise. The higher levels of this loresheets begins to give the character clues in the nosferatu extensive notes about the city and powerful beings. 
+|
+*Page 163
+|- id="Kindred Dueling"
+|'''Kindred Dueling'''
+|N/A
+|This concerns the ancient practice of dueling with a kindred twist. This loresheets provides a variety of benefits, be it better fighting skills to go fang to fang with another kindred or the supplies to form a character’s own secret fight club. 
+|
+*Page 164
+|- id="Malkavian Family"
+|'''Malkavian Family'''
+|[[Malkavian]] only
+|The Malkavians of Chicago have a family and communal structure sharing resources, havens, and secrets. Lower levels benefit the Malk with insight and merits with other members of the clan. Higher levels however give benefits in squeaking out some privacy in such a crowded setting. 
+|
+*Page 165
+|- id="Occult Artifacts"
+|'''Occult Artifacts'''
+|[[Banu Haqim]] or [[Tremere]] only
+|This loresheets allows certain characters access to different magic items either left behind in a chantry, discovered by chance, or entrusted to the character. The artifacts details comes from the likes of the Banu Haqim and Tremere. They can be items of assassination or used to confound gifts of the blood. 
+|
+*Page 166
+|- id="The Pony Express"
+|'''The Pony Express'''
+|N/A
+|Connects a character to the network of couriers that carry out communication deliveries, be it letters, or packages.  The lowest level gives the character access to send and receive information. Higher levels allow the character to be part of the network themselves or be special clients of the service. 
+|
+*Page 167
+|- id="Sheriff Damien"
+|'''Sheriff Damien'''
+|N/A
+|Connects to the Brujah [[Camarilla|Sheriff]] of Chicago and famous musician, [[Brujah|Damien]]. The character can be connected to Damien’s band as an admirer or be the muscles that he sees as reliable. Higher levels of the loresheet bring the character closer to Sheriff and offer more benefits. 
+|
+*Page 168
+|- id="The Wolf Pack"
+|'''The Wolf Pack'''
+|N/A
+|Forges a connection between the character and the Camarilla’s legendary Wolf Pack. Association with the group gives the character better abilities at handling life on the road. Higher levels aid the character in using their sway over the biking community for different forms of aid. 
+|
+*Page 169
+|}
+
+== Let the Streets Run Red Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Let the Streets Run Red]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="The Anubi"
+|'''The Anubi'''
+| N/A
+|This loresheets allows a character to have experience in Lupine hunting and connection to other such Kindred organizations. This loresheets offers support for efforts against werewolves be it weapons, information, diplomacy, or precautionary measures. 
+|
+*Page 224
+|- id="Eletria"
+|'''Eletria'''
+| N/A
+|This loresheets the character former association with [[Toreador#Notable characters|Eletria]] in the character’s backstory. How the character knew the Toreador depends on the level. Lower levels allude to connection from artist to artist and high levels allude to a deeper connection that has left a lasting impact.
+|
+*Page 225
+|- id="Kindred Social Media Influencer"
+|'''Kindred Social Media Influencer'''
+| N/A
+|A loresheet that allows a character to be a savvy social media influencer. At lower levels it gives benefit to small time influencers with their close community providing many benefits. The high levels allows for a kindred to harvest the fruits of their internet presence, though it poses a danger of course.
+|
+*Page 226
+|- id="Juggler"
+|'''Juggler'''
+| N/A
+|A loresheet that connects the kindred to both [[Brujah#Notable characters|Juggler]] and the domain of Gary, Indiana. The levels of this lore sheet allows a character to gain an edge over Camarilla loyalists, gain benefits from former association with Juggler, and companion to aid the character’s actions for the Movement.
+|
+*Page 227
+|- id="Lost Secrets of the Milwaukee Chantry"
+|'''Lost Secrets of the Milwaukee Chantry'''
+| N/A
+|Secrets of the Null Zone and work of the former chantry [[Tremere|Carna]] used to belong to are detailed in this Loresheet. Characters with this loresheet can benefit can find the files of long gone Tremere for various merits, [[Blood Sorcery|blood sorcery]] knowledge, or hidden magical knowledge. Higher levels give more occult secrets at a price.
+|
+*Page 228
+|- id="Mark Decker"
+|'''Mark Decker'''
+| (•••••) is [[Gangrel]] only
+|This loresheet forges a connection between the character and [[Gangrel#Notable characters|Mark Decker]]. The character get the benefits of allying with the paranoid Prince from favor to leniency in his tyrannical rule. Higher levels allows you deeper connection with the Prince.
+|
+*Page 229
+|- id="Maxwell"
+|'''Maxwell'''
+| N/A
+|This loresheets yields a connection to [[Brujah#Notable characters|Maxwell]]. This loresheets gives you access to the former Prince's hidden power base or some of his skills he used to outsmart his enemies. Higher levels of this loresheet allows a closer connection and more direct help from Maxwell.
+|
+*Page 230
+|- id="The Milwaukee Null Zone"
+|'''The Milwaukee "Null Zone"'''
+| N/A
+|This loresheet gives insight on the Null Zone and the odd effects. Low levels gives you knowledge of the history and the ability to study the area. Higher levels of the loresheet allows the characters to gain knowledge of benefits of this zone’s secrets. Many other parties, magical and non-magical will oppose the character.
+|
+*Pages 231-32
+|- id="Modius"
+|'''Modius'''
+| N/A
+|A loresheet that connects the kindred to both [[Toreador#Notable characters|Modius]] and the domain, Gary, Indiana. Low levels award the character for their support of Modius’ political aspirations. Higher levels of the lore sheet allude to a stronger connection and more benefits over the city and the Toreador’s support in the character’s one endeavors.
+|
+*Page 233
+|}
+
+== Cults of the Blood Gods Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Cults of the Blood Gods]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Bankers of Dunsirn"
+|'''Bankers of Dunsirn'''
+|data-sort-value="1"| [[Hecata]] only
+|Connected to the Dunsirn bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as access to money and making it.
+|
+*Page 220
+|- id="Children of Tenochtitlan"
+|'''Children of Tenochtitlan'''
+|data-sort-value="2"|[[Hecata]] only
+|Connected to the Pisanob bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as Necromancy with [[Oblivion]] and surviving.
+|
+*Page 221
+|- id="Descendants of the Baron"
+|'''The Nation of Blood''' {{Errata|date=2022|source=Vampire: The Masquerade Cults of the Blood Gods|summary=Rewritten and renamed from Descendants of the Baron}}
+|data-sort-value="3"|[[Hecata]] only
+|Connected to the Samedi bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as working with corpses and surpassing physical impairment.
+|
+*Page 222
+|- id="Flesh-Eaters"
+|'''Flesh-Eaters'''
+|data-sort-value="4"|[[Hecata]] only
+|Connected to the Nagaraja bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as their extended fangs and ability to eat corpses.
+|
+*Page 223
+|- id="Harbingers of Ashur"
+|'''Harbingers of Ashur'''
+|data-sort-value="5"|[[Hecata]] only
+|Connected to the Harbinger bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as their masks that denote their strengths and standing.
+|
+*Page 224
+|- id="La Famiglia Giovanni"
+|'''La Famiglia Giovanni'''
+|data-sort-value="6"|[[Hecata]] only
+|Connected to the Giovanni bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as nepotism to access certain information and generational wealth being accessible.
+|
+*Page 225
+|- id="The Criminal Puttanesca"
+|'''The Criminal Puttanesca'''
+|data-sort-value="7"|[[Hecata]] only
+|Connected to the Puttanesca bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as ties to the criminal underworld and the allies it contains.
+|
+*Page 226
+|- id="The Gorgons"
+|'''The Gorgons'''
+|data-sort-value="8"|[[Hecata]] only
+|Connected to the Lamia bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as diseases and [[Resonance]]<nowiki/>s.
+|
+*Page 227
+|- id="Calling the Family Reunion"
+|'''Calling the Family Reunion'''
+|data-sort-value="9"|[[Hecata]] only
+|Connected to the Family Reunion, an event where elders of the bloodlines were removed and the bloodlines were reunited. Different levels grant the character varying connections to the details of that night each giving bonuses related to the actions taken such as bonus dice against other Hecata, the ability to call upon favors, a mawla, or bonuses against antagonistic ghosts in ceremonies.
+|
+*Page 228
+|- id="Children of the Angel Michael"
+|'''Child of the Angel Michael'''
+|data-sort-value="10"|[[Nosferatu]] cannot take this
+|Connected to a cult dedicated to bringing the idea of Constantinople to reality once more. Different levels grant the character merits to represent their followers, beauty beyond compare, bonuses towards vices, or remove stains from another kindred.
+|
+*Page 229
+|- id="Servitor of Irad"
+|'''Servitor of Irad'''
+|N/A
+|Connected to a cult dedicated to the belief that the Antediluvians want the elders of Kindred society to be weak and divided. Different levels grant the character the ability to hide within kindred society, be it through lying, changing their convictions when joining a new group, ignoring their bane, dealing additional damage to enemy kindred, or gaining bonuses when working towards their cult's plans.
+|
+*Page 230
+|- id="The Promise of 1528"
+|'''The Promise of 1528'''
+|N/A
+|Connected to the agreement between the Camarilla and the Hecata, set to last only 500 years. Different levels grant the character varying levels of information about what the promises contained and the ability to use that knowledge to their advantage.
+|
+*Page 231
+|}
+
+== Children of the Blood Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Children of the Blood]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Little Siblings"
+|'''Little Siblings'''
+|data-sort-value="1"| [[Hecata]] only
+|Connected to the Rossellini bloodline. Different levels grant the character experience with commanding wraiths and other dealings with them, or [[Oblivion Ceremonies]] benefits.
+|
+*Page 101
+|- id="Grudge Masters"
+|'''Grudge Masters'''
+|data-sort-value="2"|[[Hecata]] only
+|Connected to the Milliner bloodline. Different levels grant the characters status from the lineage, money from the family, bonuses for projects, declare debts owed, or connections within law enforcement.
+|
+*Page 102
+|- id="The Ashfinders"
+|'''The Ashfinders'''
+|data-sort-value="5"|[[Thin-blood]] only
+|Connected to the [[Ashfinders]] cults. Different levels grant the character different bonuses as they progress through the cult and the skills that are honed during the process.
+|
+*Page 103
+|- id="Amaranthan"
+|'''Amaranthan'''
+|N/A
+|Connected to the [[Amaranthans]]. Different levels grant the character additional bonuses related to interrogating diablerists, sway over a diablerist, humanity benefits, status from their actions, or buff Diablerie attempts.
+|
+*Page 104
+|- id="Cleopatras"
+|'''Cleopatras'''
+|data-sort-value="4"|[[Nosferatu]] only
+|Connected to the [[Cleopatrans]]. Different levels grant the character bonuses against discovering another's most profound flaws, the ability to reroll Social failures or resist fury frenzy, make the bane disappear during daysleep, a title position in the domain, or negate the clan bane.
+|
+*Page 105
+|- id="Meneleans"
+|'''Meneleans'''
+|N/A
+|Connected to the [[Meneleans]]. Different levels grant the character bonuses on rerolling against mortals, gain bonuses when resolving things through diplomacy, bonuses when chastising or humiliating someone of higher stature than the character, blend into mortal society easily, or become unbondable.
+|
+*Page 106
+|- id="The One True Way"
+|'''The One True Way'''
+|N/A
+|Connected to [[Golconda]]. Different levels grant the character bonuses when attempting to gain truth from another kindred, gain bonuses from using those secrets, communicate with the beast, or take more control over it and the character's humanity.
+|
+*Page 107
+|- id="Starfall Ranch"
+|'''Starfall Ranch'''
+|data-sort-value="3"|[[Malkavian]] only
+|Connected to Starfall Ranch in the Northeastern United States owed by Malkavian Starr. Different levels grant the character connections to this place and those who were once there, gain bonuses for projects, gain Dr. Starr as a Mawla, or cheat death itself.
+|
+*Page 108
+|}
+
+== Forbidden Religions Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Forbidden Religions]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="1444 Chamber"
+|'''1444 Chamber'''
+|data-sort-value="1"| [[Hecata]] only
+|Connected to the 1444 Chamber. The once advisor to Augustus Giovanni who is now in the modern age leading the Hecata. Different levels grant the character connection to the chamber to carry out their will, granting bonuses of status, arranging the services of the Hecata to help outsiders, and access to money, or other aid from the Necromancers.
+|
+*Page 88
+|- id="Blood Asceticism"
+|'''Blood Asceticism'''
+|N/A
+|Connected to the rejection of blood addiction and the path that kindred may attempt to take to reduce the amount of blood needed to satisfy them. Different levels grant the character strengths from not consuming blood, the ability to reroll Rouse Checks, animal blood satiating more than it normally would, status as those who see the character's choices and compare them to a godlike figure, or a reduction in the hunger frenzy difficulty.
+|
+*Page 89
+|- id="Gehenna Cults"
+|'''Gehenna Cults'''
+|N/A
+|Connected to the Gehenna Cults and the investigation into these groups. Different levels grant the character knowledge about these cults' lore, bonuses when tracking a new cult, or respect as an expert in these groups.
+|
+*Page 90
+|- id="Plagues of Gehenna"
+|'''Plagues of Gehenna'''
+|N/A
+|Connected to diseases and illnesses spread through vampires who are given the name ''blisters''. Different levels grant the character knowledge about these blisters and the illness they spread, access to a clean herd, knowledge of when a victim of the character is infected, influence in handling outbreaks, or ownership of tainted blood.
+|
+*Page 91
+|- id="Praepositor"
+|'''Praepositor'''
+|data-sort-value="2"|[[Tremere]] only
+|Connected to the [[Praesidium]] and the devotion to restoring the clan to its old power. Different levels grant the character bonuses against other Tremere who stand against the cult's will, draw on favors or debts, strengthen the character when protecting the clan's members or secrets, grant a temporary safehouse when needed, or create a contract officialized by a blood bond.
+|
+*Page 92
+|- id="Spear of Orthia"
+|'''Spear of Orthia'''
+|data-sort-value="3"|[[Ventrue]] only
+|Connected to Artemis Orthia, the first childe of Ventrue. Different levels grant the character membership to the [[Shattered Spear]] granting them benefits as they develop their relationship and skills within the cult up to owning a splinter of the spear itself.
+|
+*Page 93
+|}
+
+== Trails of Ash and Bone Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Trails of Ash and Bone]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="The Rubt Throat"
+|'''The Ruby Throat'''
+| N/A
+|Connected to the Ruby Throat, a gambling den for powerful players who wager more than just money. Different levels grant the character bonuses related to experiences at this place such as gathering information or intimidating others, gaining human vessels to feed from, a string of luck that's garnered attention, or being invited to play at an important table.
+|
+*Page 170
+|- id="Descendant of Roger de Camden"
+|'''Descendant of Roger de Camden'''
+|[[Hecata]] only
+|Connected to Roger De Camden, the current prince of Edinburgh. Different levels grant the character connections to him as part of his lineage and bonuses from being a part of his bloodline.
+|
+*Page 171
+|- id="Relics of the Veil"
+|'''Relics of the Veil'''
+|N/A
+|Connected to objects of supernatural properties. Different levels grant the character different items each with their own properties such as bonuses to [[Oblivion]], healing at faster than usual rates, bonuses against wraiths, a dangerous stake, or a sacred book of coded passages to unlock powerful secrets of the dead.
+|
+*Page 172
+|}
+
+== Boston by Night Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Boston by Night]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="The Hartford Chantry"
+|'''The Hartford Chantry'''
+| N/A
+|Connected to the [[Tremere]] Chantry in [[Boston, Massachusetts|Boston]]. Different levels grant the character bonuses for revealing the properties of an object, revealing if someone is a member of a secret society, gaining a strong ally, access to the chantry as a haven and library, or becoming a factional authority.
+|
+Pages 80-83
+|- id="The Boston Camarilla"
+|'''The Boston Camarilla'''
+|N/A
+|Connected to the [[Camarilla]] in Boston. Different levels grant the character bonuses when with their coterie, call for a sit-down with high-ranking members of other domains, gain a conviction in order to better protect their neighborhood, or obtain a retainer from the domain's political backroom.
+|
+Pages 84-87
+|}
+
+== Fall of London Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Fall of London]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Agent of Justicar Parr"
+|'''Agent of Justicar Parr'''
+| N/A
+|Connected to the current Malkavian Justicar, Juliette Parr. Different levels grant the character connections to Parr either for information, aid in tasks, or being an Archon underneath her.
+|
+*Page 231
+|- id="Court of Shadows"
+|'''Court of Shadows'''
+|N/A
+|Connected to The King of Shadows and the mysterious figure they are within [[London, UK|London]]'s secret vampire society. Different levels grant the character access to this network for nourishment, information, or other forms of aid for the character's goals.
+|
+*Page 232
+|- id="Hunt Club"
+|'''Hunt Club'''
+|N/A
+|Connected to the Hunt Club, a covert organization operating since the end of WW2 dedicated to the pursuit of hunting kindred for sport. Different levels grant the character varying levels of membership within the club or renown within to be able to have access to items or other benefits to aid with the capturing or destruction of other vampires.
+|
+*Page 233
+|- id="London under London"
+|'''London under London'''
+|data-sort-value="1"|[[Nosferatu]] only
+|Connected to the underground tunnels beneath London. Different levels grant the character knowledge and experience beneath the city allowing them to navigate, find safety beneath the earth, or find animals that dwell down there.
+|
+*Page 234
+|- id="Operation Antigen"
+|'''Operation Antigen'''
+|N/A
+|Connected to Operation Antigen, a coalition formed of the police, military, and other intelligence that work to purge the city of vampire influence. Different levels grant an insider within the group to help gain information about what the organization is up to and/or other benefits related to classified information.
+|
+*Page 235
+|- id="Oskar Anasov"
+|'''Oskar Anasov'''
+|N/A
+|Connected to the [[Nosferatu]] Oskar Anasov, a once [[Anarch]] was forced to serve the [[Camarilla]] or be executed. Different levels of this loresheet grant the character access to his services, be it reliable and safe message delivery, arrangement of meetings with other kindred, smuggling bodies through the city, or being able to join the Kindred Landlords of London meetings.
+|
+*Page 236
+|}
+
+== Winter's Teeth Loresheets ==
+
+: ''Main article: [[Vampire: The Masquerade Winter's Teeth]]''
+
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Agent of Justicar Parr"
+|'''Wolves in Sheep's Clothing'''
+| N/A
+|Forsaken ghouls aren't a novel concept among the dead. What is new, and what makes some vampires weary, is the growing populace of a group which calls themselves Wolves in Sheeps Clothing. These hungry ghouls found a way to harness power of the dead, using unknown forms of magic, and won't stop, for the hunger grows.
+|Issue 3, page 32-33
+|-
+|'''The Nictuku'''
+|data-sort-value="1"|[[Nosferatu]] only
+|In the darkness of their warren, Nosferatu tell gruesome tales about their mad with fury offspring, the Nictuku. Some of the Nosferatu clan would later decide that these stories are just that. But others know that what they saw deep below the city was not just a rat. It was a warning.
+|Issue 3, page 34
+|-
+|'''Minneapolis'''
+|N/A
+|Younger, but bigger and louder of the Twin Cities, Minneapolis used to be the Domain of local Anarchs, standing in opposition to Prince Merrain's court, on the other side of river Mississippi. Nowadays, the [[Anarch]] population lays low, wondering if what was achieved in Berlin, could be replicated on their turf.
+|Issue 2, page 32
+|-
+|'''St. Paul'''
+|N/A
+|Older, although less famous of the Twin Cities, St. Paul is the heart of the local [[Camarilla]]. Its artistic soul being the main reason for Prince Samantha Merrain of clan [[Toreador]] to make the older sibling her preferred domain.
+|Issue 2, page 33
+|-
+|'''The Mortician's Army'''
+|N/A
+|A pathologist working for the Medical Examiner's office in downtown Minneapolis, Rafael DeLuna's personal mission of revenge against vampires eventually gave rise to a well equipped and connected network of hunters popular with local law enforcements and prepper communities, who all carry a mortician's hammer as a signature weapon and as an insignia.
+|Issue 9, page 32
+|}
+
+== Blood Sigils Loresheets ==
+''Main article: [[Vampire: The Masquerade Blood Sigils]]''
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Agent of Justicar Parr"
+|'''Descendant of Al-Ashrad'''
+| [[Banu Haqim]] only
+|Connected to [[Banu Haqim#Notable characters|Al-Ashrad]]. Different levels provide bonuses to Leadership, access or improvement to Sense the Unseen (Auspex ●), easier time using Blood Sorcery to harm Kindred, the ability to harm incorporeal creatures, or become next in line for being the most respected sorcerer
+|page 177
+|-
+|'''Student of Kirin Taunk'''
+| data-sort-value="1" |Thin-Blood Alchemists only
+|Connected to the legacy of [[Thin-blood#Notable characters|Kirin Taunk]]. Different levels provide quicker creation of formulas, the ability to use your alchemical skill in social situations, easier access and bonus to a formula, Status among both the Anarchs and the Camarilla, and a Mawla of one of her patrons.
+|page 178
+|-
+|'''Veins of the Earth'''
+|N/A
+|This Loresheets helps with understanding of Furcae and the Veins of the Earth. Different levels provide the ability to declare somewhere a Furcus, a Herd of people interested in learning more about the ''Venae Terrae,'' the ability to find Kindred and where they're travelling, a bonus to using Disciplines, and addional successes on tests providing you give a sacrifice
+|page 179
+|-
+|'''Vienna Zero'''
+|Blood Sorcery Users only
+|Connected to Vienna and what remains from the destruction of the Prime Chantry. Different levels provide knowledge about blood craft or the Tremere, A contact who can get you stuff from the area, access to an occult artifact, access to the last copy of a grimoire, and being a member of the excavation process
+|page 180
+|}
+
+== Book of Nod Apocrypha Loresheets ==
+''Main article: [[Vampire: The Masquerade Book of Nod Apocrypha]]''
+Some Loresheets were reprinted in this book: Book of Nod, Gehenna Cults, and Servitors of Irad.
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Machinations of Saulot"
+|'''Machinations of Saulot'''
+| Salubri or Tremere
+|This Loresheet gives bonuses and drawbacks shared between the Salubri and Tremere.
+|page 39
+|}
+
+== Gehenna War Loresheets ==
+''Main article: [[Vampire: The Masquerade Gehenna War]]''
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Agent of Justicar Parr"
+|'''Beckett'''
+| N/A
+|Connected to the Gangrel archaeologist, Cuthbert Beckett. Different levels provide benefits to tracking, questioning and resisting Elders
+|Page 157
+|-
+|'''The Eternal Arena'''
+|N/A
+|Connected to The Eternal Arena, a famous violent Kindred tournament. Different levels provided benefits to intimidating those who know of your reputation, benefits in combat and the ability to avoid Final Death from violent conflict
+|Page 158
+|-
+|'''Tegyrius the Vizier'''
+|(••••) is [[Banu Haqim]] only
+|Connected to Tegyrius, the Banu Haqim Vizier.
+|Page 159
+|}
+
+==In Memoriam Loresheets==
+''Main article: [[Vampire: The Masquerade In Memoriam]]''
+{| class="mildtable sortable plainlist" width="100%"
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Birth of the Anarch Free States"
+|'''Birth of the Anarch Free States'''
+|N/A
+|Connected to the [[Anarchs]]. Different levels grant the ability to rouse Anarchs to action and general status benefits.
+|Page 149
+|- id="Childe of the Revolution"
+|'''Childe of the Revolution'''
+|N/A
+|Connected to the French Revolution. Different levels grant the ability to engage or withstand a chaotic revolution.
+|Page 150
+|- id="Descendant of Dracula"
+|'''Descendant of Dracula'''
+|[[Tzimisce]] only
+|Connected to [[Dracula]]. Different levels grant abilities relating to Dracula.
+|Page 151
+|- id="The Order of Repentants"
+|'''The Order of Repentants'''
+|N/A
+|Connected to the [[Repentants]]. Different levels grant abilities to resist and handle Frenzy, Remorse and anything relating to the Beast.
+|Page 152
+|- id="The Red Lady"
+|'''The Red Lady'''
+|N/A
+|Connected to [[the Red Lady]]. Different levels grant bonuses to parties, charisma, status and at its highest level, removal of evidence of diablerie.
+|Page 153
+|- id="The Vanderbilt Ventrue"
+|'''The Vanderbilt Ventrue'''
+|[[Ventrue]] only
+|Connected to the [[Venderbilt family]]. Different levels grant mostly financial boons and charismatic bonuses towards aristocratic and rich characters.
+|Page 154
+|}
+
+==Miscellaneous Loresheets==
+{| class="mildtable sortable plainlist" width="100%"
+
+! width="20%" |Name
+! width="20%" |Restrictions
+! width="40%" class="unsortable" |Description
+! width="20%" class="unsortable" |Source
+
+|- id="Road Courier"
+|'''Road Courier'''
+|N/A
+|To avoid the Second Inquisition the Camarilla has recently turned to over-the-road physical couriers. You are one of these couriers and know how to travel between cities before the sun rises.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|- id="Amanda Chastain"
+|'''Amanda Chastain'''
+|N/A
+|Amanda Chastain is a powerful Camarilla Toreador based out of the small city of Jericho Heights.  Cryptocurrencies, the [[Circulatory System]], and podcasts are just a small sample of her areas of influence.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|- id="Sheriff Qui"
+|'''Sheriff Qui'''
+|N/A
+|Although the Nosferatu Sheriff of Ottawa, Canada, Qui is an accomplished investigator, fixer, and veteran of the Sect War, his most notable feature is the distinct lack of the Nosferatu bane save for a pulsating scar down the back of his neck.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|- id="The Parthenon Troupe"
+|'''The Parthenon Troupe'''
+|N/A
+|A troupe of ghoul actors created and sustained by Prince Peisistratos of Athens, the Parthenon Troupe must be the best to both possibly become kindred themselves and to avoid the harsh punishments of the Prince himself.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|- id="Stories of the Daughters"
+|'''Stories of the Daughters'''
+|N/A
+|Although once thought to be a bloodline, the Daughters of Cacophony are now known to be kindred of any clan as long as they have the power to sway and hurt others using only their voice.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|- id="Temple of Boom Contract"
+|'''Temple of Boom Contract'''
+|N/A
+|Baron of Los Angeles, [[Victor Temple]], maintains a presence throughout his domains through various nightclubs.  The best way to curry favor with the powerful Anarch is through his music label, the Temple of Boom.
+|Free download on [https://www.worldofdarkness.com/account World of Darkness]{{icon|v5 wod}}
+|}
+
+
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+[[Category:Character creation]]
+
+==References==
+
+<references />

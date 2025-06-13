@@ -1,0 +1,83 @@
+@use '../globals' as *;
+
+// Power management styles
+.power-meta {
+    div {
+        margin-bottom: $spacing-xs;
+    }
+}
+
+// Power selection styles
+.power-option {
+    .d-flex {
+        @include media-breakpoint-down(md) {
+            @include flex-column;
+            align-items: flex-start !important;
+            gap: $spacing-sm;
+        }
+    }
+
+    .select-power-btn {
+        @include media-breakpoint-down(md) {
+            align-self: stretch;
+            margin-left: 0 !important;
+        }
+    }
+}
+
+.selected-power {
+    .d-flex {
+        @include media-breakpoint-down(md) {
+            @include flex-column;
+            align-items: flex-start !important;
+            gap: $spacing-sm;
+        }
+    }
+
+    .remove-power-btn {
+        @include media-breakpoint-down(md) {
+            align-self: stretch;
+        }
+    }
+}
+
+// Power level indicators
+.power-level-indicator {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: $spacing-xs;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $color-primary;
+    }
+}
+
+// Power requirements
+.power-requirements {
+    font-size: 0.9em;
+    color: $color-text;
+    margin-top: $spacing-xs;
+
+    .requirement {
+        display: inline-block;
+        margin-right: $spacing-sm;
+        
+        &.met {
+            color: $color-success;
+        }
+        
+        &.unmet {
+            color: $color-danger;
+        }
+    }
+} 

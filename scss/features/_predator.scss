@@ -1,0 +1,89 @@
+@use '../globals' as *;
+
+// Predator type styles
+.predator-type {
+    @include card-style;
+    margin-bottom: $spacing-md;
+    padding: $spacing-md;
+}
+
+.predator-type-header {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+}
+
+.predator-type-title {
+    color: $color-primary;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin: 0;
+}
+
+.predator-type-description {
+    color: $color-text;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: $spacing-sm;
+}
+
+.predator-type-requirements {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-top: $spacing-xs;
+}
+
+// Predator type selection
+.predator-type-option {
+    @include hover-transition;
+    cursor: pointer;
+    padding: $spacing-sm;
+    border: $border-width $border-style $color-border;
+    border-radius: $border-radius;
+    margin-bottom: $spacing-sm;
+
+    &:hover {
+        background-color: rgba($color-primary, 0.1);
+    }
+
+    &.selected {
+        background-color: rgba($color-primary, 0.2);
+        border-color: $color-primary;
+    }
+}
+
+// Predator type details
+.predator-type-details {
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px dashed $color-border-light;
+}
+
+.predator-type-benefits {
+    margin-bottom: $spacing-md;
+
+    h6 {
+        color: $color-primary;
+        font-variant: small-caps;
+        margin-bottom: $spacing-xs;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+        li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: $spacing-xs;
+
+            &:before {
+                content: "•";
+                color: $color-primary;
+                position: absolute;
+                left: 0;
+                font-size: 1.2em;
+            }
+        }
+    }
+} 

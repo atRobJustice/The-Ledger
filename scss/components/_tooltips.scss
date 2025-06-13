@@ -1,0 +1,101 @@
+@use '../globals' as *;
+
+// Tooltip styles
+.tooltip-inner {
+    max-width: 300px;
+    background-color: $color-background;
+    color: $color-text;
+    text-align: left;
+    border: $border-width $border-style $color-border;
+    border-left: 3px solid $color-primary;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    transition: opacity 0.15s;
+}
+
+.tooltip-title {
+    color: $color-primary;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed $color-border-light;
+    padding-bottom: 3px;
+}
+
+.tooltip-description {
+    margin-bottom: 5px;
+}
+
+.tooltip-value {
+    font-style: italic;
+    margin-top: 8px;
+    border-top: 1px dotted #444;
+    padding-top: 5px;
+
+    strong {
+        color: $color-primary;
+        font-style: normal;
+    }
+}
+
+// Tooltip arrow
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before, 
+.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: $color-background;
+}
+
+// Tooltip trigger styles
+.stat-label[data-bs-toggle="tooltip"] {
+    text-decoration: underline dotted $color-border-light;
+    text-underline-offset: 3px;
+    position: relative;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+// Tooltip fade effect
+.tooltip.fade {
+    transition: opacity 0.15s linear;
+}
+
+.tooltip:hover {
+    opacity: 1 !important;
+}
+
+// Predator preview tooltip
+.predator-preview-tooltip {
+    position: absolute;
+    z-index: $z-index-tooltip;
+    width: 300px;
+    background-color: $color-background;
+    border: $border-width $border-style $color-border;
+    border-left: 3px solid $color-primary;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    border-radius: 3px;
+    pointer-events: none;
+    animation: fadeIn 0.2s ease-in-out;
+
+    h5 {
+        color: $color-primary;
+        font-variant: small-caps;
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+
+    p {
+        margin-bottom: 5px;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    small {
+        display: block;
+        font-style: italic;
+        color: #888;
+        font-size: 0.8em;
+        text-align: right;
+    }
+} 

@@ -1,0 +1,69 @@
+@use '../globals' as *;
+
+// Button base styles
+.btn {
+    &.btn-sm {
+        padding: $spacing-xs $spacing-sm;
+        font-size: 0.875rem;
+        border-radius: 0.2rem;
+    }
+}
+
+// Success button
+.btn-success {
+    @include button-variant($color-success);
+}
+
+// Danger button
+.btn-danger {
+    @include button-variant($color-danger);
+}
+
+// Outline buttons
+.btn-outline-success {
+    color: $color-success;
+    border-color: $color-success;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $color-success;
+        border-color: $color-success;
+        color: white;
+    }
+
+    &:disabled {
+        color: $color-border-light;
+        border-color: $color-border-light;
+        background-color: transparent;
+    }
+}
+
+.btn-outline-danger {
+    color: $color-danger;
+    border-color: $color-danger;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $color-danger;
+        border-color: $color-danger;
+        color: white;
+    }
+}
+
+// Toast notifications
+.toast {
+    font-family: $font-primary;
+
+    &.bg-warning {
+        background-color: $color-warning !important;
+        color: #000 !important;
+
+        .btn-close {
+            filter: invert(1);
+        }
+    }
+}
+
+.toast-container {
+    z-index: $z-index-toast;
+} 

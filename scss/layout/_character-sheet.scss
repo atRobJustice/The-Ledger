@@ -1,0 +1,86 @@
+@use '../globals' as *;
+
+// Character sheet layout
+.character-sheet {
+    margin: 0 auto;
+}
+
+.ledger {
+    @include card-style;
+}
+
+// Grid layout
+.character-grid {
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+// Section layouts
+.character-section {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.section-header {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px dashed $color-border-light;
+}
+
+.section-title {
+    color: $color-primary;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin: 0;
+}
+
+// Item layouts
+.character-item {
+    padding: $spacing-sm 0;
+    border-bottom: 1px dashed $color-border-light;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.item-header {
+    @include flex-between;
+    margin-bottom: $spacing-xs;
+}
+
+.item-title {
+    color: $color-primary;
+    font-variant: small-caps;
+    margin: 0;
+}
+
+.item-content {
+    color: $color-text;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+// Responsive adjustments
+@include media-breakpoint-down(md) {
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-xs;
+    }
+
+    .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-xs;
+    }
+} 

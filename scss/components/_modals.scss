@@ -1,0 +1,98 @@
+@use '../globals' as *;
+
+// Modal styles
+.modal-content {
+    background-color: $color-background;
+    border: $border-width $border-style $color-border;
+    border-left: 6px solid $color-primary;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    color: $color-text;
+
+    &.bg-dark {
+        background-color: $color-background !important;
+    }
+}
+
+.modal-header {
+    border-bottom: 1px dashed $color-border-light;
+    padding-bottom: 0.75rem;
+}
+
+.modal-footer {
+    border-top: 1px dashed $color-border-light;
+    padding-top: 0.75rem;
+}
+
+.modal-title {
+    color: $color-primary;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+// Predator info modal styles
+#predator-info-content {
+    h5 {
+        color: $color-primary;
+        font-variant: small-caps;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+.predator-info-list {
+    list-style-type: none;
+    padding-left: 0.5rem;
+    margin-bottom: 0.75rem;
+
+    li {
+        position: relative;
+        padding-left: 1.25rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+
+        &:before {
+            content: "•";
+            color: $color-primary;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+    }
+}
+
+// Modal buttons
+.predator-info-button, 
+.clan-info-button, 
+.generation-info-button, 
+.blood-potency-info-button {
+    color: $color-text;
+    border-color: $color-border-light;
+    background: transparent;
+    transition: $transition-base;
+
+    &:hover {
+        color: #fff;
+        border-color: $color-primary;
+        background-color: rgba($color-primary, 0.2);
+    }
+}
+
+.modal-footer {
+    .btn-secondary {
+        background-color: transparent;
+        color: $color-text;
+        border-color: $color-border-light;
+        transition: $transition-base;
+
+        &:hover {
+            background-color: rgba($color-primary, 0.8);
+            border-color: $color-primary;
+            color: #fff;
+        }
+    }
+} 

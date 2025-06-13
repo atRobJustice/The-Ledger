@@ -1,0 +1,762 @@
+// Enhanced Discipline Manager with Powers
+import { disciplines } from './disciplines.js';
+import { TraitManagerUtils } from './manager-utils.js';
+
+class DisciplineManager {
+    constructor() {
+        this.selectedDisciplines = new Map(); // disciplineKey -> { level: number, powers: Set<string> }
+        this.availableDisciplines = Object.keys(disciplines.types);
+        this.init();
+    }
+
+    init() {
+        this.renderDisciplineManager();
+        this.bindEvents();
+    }
+
+    renderDisciplineManager() {
+        const disciplineContainer = $('.disciplines-container');
+        if (disciplineContainer.length === 0) {
+            console.error('Disciplines container not found');
+            return;
+        }
+
+        disciplineContainer.empty();
+
+        // Add discipline selector
+        this.renderDisciplineSelector(disciplineContainer);
+        
+        // Add selected disciplines list
+        this.renderSelectedDisciplines(disciplineContainer);
+    }
+
+    renderDisciplineSelector(container) {
+        const selectorHtml = `
+            <div class="discipline-selector mb-3">
+                <div class="d-flex align-items-center gap-2">
+                    <select class="form-select discipline-dropdown" id="disciplineSelect">
+                        <option value="">Select a Discipline to Add</option>
+                        ${this.getAvailableDisciplineOptions()}
+                    </select>
+                    <button class="btn btn-success btn-sm" id="addDisciplineBtn" disabled>
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        container.append(selectorHtml);
+    }
+
+    renderSelectedDisciplines(container) {
+        const selectedHtml = `
+            <div class="selected-disciplines">
+                <div id="disciplinesList" class="disciplines-list">
+                    ${this.selectedDisciplines.size === 0 ? 
+                        '<div class="fst-italic">No disciplines selected</div>' : 
+                        this.getSelectedDisciplinesHtml()
+                    }
+                </div>
+            </div>
+        `;
+        container.append(selectedHtml);
+    }
+
+    getAvailableDisciplineOptions() {
+        return this.availableDisciplines
+            .filter(disciplineKey => !this.selectedDisciplines.has(disciplineKey))
+            .map(disciplineKey => {
+                const discipline = disciplines.types[disciplineKey];
+                const displayName = discipline.name || TraitManagerUtils.capitalizeFirst(disciplineKey);
+                return `<option value="${disciplineKey}">${displayName}</option>`;
+            })
+            .join('');
+    }
+
+    getSelectedDisciplinesHtml() {
+        return Array.from(this.selectedDisciplines.entries())
+            .map(([disciplineKey, disciplineData]) => {
+                const discipline = disciplines.types[disciplineKey];
+                const displayName = discipline.name || TraitManagerUtils.capitalizeFirst(disciplineKey);
+                return `
+                    <div class="discipline-item mb-3" data-discipline="${disciplineKey}">
+                        <div class="discipline-header d-flex justify-content-between align-items-center stat">
+                            <div class="discipline-info">
+                                <span class="stat-label">${displayName}</span>
+                            </div>
+                            <div class="discipline-controls d-flex align-items-center gap-2">
+                                <div class="dots" data-value="${disciplineData.level}" data-discipline="${disciplineKey}">
+                                    ${TraitManagerUtils.createDots(disciplineData.level)}
+                                </div>
+                                <button class="btn btn-danger btn-sm remove-discipline-btn" data-discipline="${disciplineKey}">
+                                    <i class="bi bi-dash-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        ${disciplineData.level > 0 ? this.renderDisciplinePowers(disciplineKey, disciplineData) : ''}
+                    </div>
+                `;
+            })
+            .join('');
+    }
+
+    renderDisciplinePowers(disciplineKey, disciplineData) {
+        const discipline = disciplines.types[disciplineKey];
+        const powers = disciplineData.powers;
+        
+        let powersHtml = '<div class="discipline-powers mt-2">';
+        
+        // Show powers by level
+        for (let level = 1; level <= disciplineData.level; level++) {
+            const levelKey = `level${level}`;
+            const availablePowers = discipline.powers[levelKey] || [];
+            const selectedPowersAtLevel = Array.from(powers).filter(powerName => 
+                availablePowers.some(p => p.name === powerName)
+            );
+
+            if (availablePowers.length > 0) {
+                powersHtml += `
+                    <div class="power-level mb-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="fw-bold">Level ${level} Powers</small>
+                            ${level === disciplineData.level ? `
+                                <button class="btn btn-outline-success btn-sm add-power-btn" 
+                                        data-discipline="${disciplineKey}" 
+                                        data-level="${disciplineData.level}"
+                                        ${this.getAvailablePowersUpToLevel(disciplineKey, disciplineData.level).length === 0 ? 'disabled' : ''}>
+                                    <i class="bi bi-plus"></i> Add Power
+                                </button>
+                            ` : ''}
+                        </div>
+                        <div class="selected-powers mt-1">
+                            ${selectedPowersAtLevel.length === 0 ? 
+                                '<div class="fst-italic small">No powers selected</div>' :
+                                selectedPowersAtLevel.map(powerName => this.renderSelectedPower(disciplineKey, powerName)).join('')
+                            }
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        powersHtml += '</div>';
+        return powersHtml;
+    }
+
+    renderSelectedPower(disciplineKey, powerName) {
+        const discipline = disciplines.types[disciplineKey];
+        const power = this.findPowerByName(discipline, powerName);
+        
+        if (!power) return '';
+
+        return `
+            <div class="selected-power d-flex justify-content-between align-items-center py-1 px-2 mb-1 bg-dark rounded">
+                <div class="power-info">
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="power-name small fw-bold">${power.name}</span>
+                        ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? 
+                            `<span class="badge bg-warning text-dark" style="font-size: 0.6em;">Amalgam</span>` : ''}
+                    </div>
+                    <div class="power-details small">
+                        ${power.effect}
+                        ${power.prerequisite && power.prerequisite !== 'None' ? `<br><em>Prerequisite: ${power.prerequisite}</em>` : ''}
+                        ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? `<br><em>Amalgam: ${power.amalgam}</em>` : ''}
+                    </div>
+                </div>
+                <button class="btn btn-outline-danger btn-sm remove-power-btn" 
+                        data-discipline="${disciplineKey}" 
+                        data-power="${powerName}">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+        `;
+    }
+
+
+
+    bindEvents() {
+        // Bind add discipline events
+        $(document).on('change', '#disciplineSelect', (e) => {
+            const addBtn = $('#addDisciplineBtn');
+            addBtn.prop('disabled', !e.target.value);
+        });
+
+        $(document).on('click', '#addDisciplineBtn', (e) => {
+            e.preventDefault();
+            const select = $('#disciplineSelect');
+            const disciplineKey = select.val();
+            
+            if (disciplineKey && !this.selectedDisciplines.has(disciplineKey)) {
+                this.addDiscipline(disciplineKey);
+            }
+        });
+
+        // Bind remove discipline events
+        $(document).on('click', '.remove-discipline-btn', (e) => {
+            e.preventDefault();
+            const disciplineKey = $(e.currentTarget).data('discipline');
+            this.removeDiscipline(disciplineKey);
+        });
+
+        // Bind dot click events for discipline levels
+        $(document).on('click', '.disciplines-container .dot', (e) => {
+            e.preventDefault();
+            this.handleDotClick($(e.currentTarget));
+        });
+
+        // Bind power management events
+        $(document).on('click', '.add-power-btn', (e) => {
+            e.preventDefault();
+            const disciplineKey = $(e.currentTarget).data('discipline');
+            const level = $(e.currentTarget).data('level');
+            this.showPowerSelectionModal(disciplineKey, level);
+        });
+
+        $(document).on('click', '.remove-power-btn', (e) => {
+            e.preventDefault();
+            const disciplineKey = $(e.currentTarget).data('discipline');
+            const powerName = $(e.currentTarget).data('power');
+            this.removePower(disciplineKey, powerName);
+        });
+    }
+
+    addDiscipline(disciplineKey) {
+        if (this.selectedDisciplines.has(disciplineKey)) {
+            return;
+        }
+
+        this.selectedDisciplines.set(disciplineKey, {
+            level: 0,
+            powers: new Set()
+        });
+        
+        this.updateDisplay();
+        
+        // Show success feedback
+        TraitManagerUtils.showFeedback(`Added ${this.getDisciplineName(disciplineKey)}`, 'success');
+    }
+
+    removeDiscipline(disciplineKey) {
+        if (!this.selectedDisciplines.has(disciplineKey)) {
+            return;
+        }
+
+        this.selectedDisciplines.delete(disciplineKey);
+        this.updateDisplay();
+        
+        // Show success feedback
+        TraitManagerUtils.showFeedback(`Removed ${this.getDisciplineName(disciplineKey)}`, 'info');
+    }
+
+    handleDotClick($dot) {
+        const $dotsContainer = $dot.parent();
+        const currentValue = parseInt($dotsContainer.data('value') || '0');
+        const clickedValue = parseInt($dot.data('value'));
+        const disciplineKey = $dotsContainer.data('discipline');
+
+        let newValue;
+        
+        // If clicking the last filled dot, decrease by 1
+        if (clickedValue === currentValue) {
+            newValue = clickedValue - 1;
+        }
+        // If clicking an empty dot
+        else if (clickedValue > currentValue) {
+            // Restrict increases to only one level at a time
+            if (clickedValue === currentValue + 1) {
+                newValue = clickedValue;
+            } else {
+                // Show feedback that they can only increase by one level
+                const disciplineName = this.getDisciplineName(disciplineKey);
+                TraitManagerUtils.showFeedback(`You can only increase ${disciplineName} by one level at a time. Current level: ${currentValue}`, 'warning');
+                return; // Don't change the level
+            }
+        }
+        // If clicking a filled dot (decreasing), allow any decrease
+        else {
+            newValue = clickedValue;
+        }
+
+        // Handle level changes
+        this.changeDisciplineLevel(disciplineKey, currentValue, newValue);
+    }
+
+    async changeDisciplineLevel(disciplineKey, oldLevel, newLevel) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        if (!disciplineData) return;
+
+        // If increasing level, prompt for new power
+        if (newLevel > oldLevel) {
+            disciplineData.level = newLevel;
+            this.updateDisciplineDisplay(disciplineKey);
+            
+            // Show power selection for the new level
+            if (newLevel > 0) {
+                this.showPowerSelectionModal(disciplineKey, newLevel);
+            }
+        }
+        // If decreasing level, handle power removal
+        else if (newLevel < oldLevel) {
+            const powersToRemove = this.getPowersAboveLevel(disciplineKey, newLevel);
+            
+            if (powersToRemove.length > 0) {
+                const shouldRemove = await this.confirmPowerRemoval(disciplineKey, powersToRemove, oldLevel, newLevel);
+                if (shouldRemove) {
+                    // Remove powers above the new level
+                    powersToRemove.forEach(powerName => {
+                        disciplineData.powers.delete(powerName);
+                    });
+                    
+                    disciplineData.level = newLevel;
+                    this.updateDisciplineDisplay(disciplineKey);
+                    
+                    TraitManagerUtils.showFeedback(`${this.getDisciplineName(disciplineKey)} level reduced to ${newLevel}. Removed ${powersToRemove.length} power(s).`, 'warning');
+                } else {
+                    // Revert the level change
+                    this.updateDisciplineDisplay(disciplineKey);
+                    return;
+                }
+            } else {
+                disciplineData.level = newLevel;
+                this.updateDisciplineDisplay(disciplineKey);
+            }
+        }
+
+        const disciplineName = this.getDisciplineName(disciplineKey);
+        TraitManagerUtils.showFeedback(`${disciplineName} level set to ${newLevel}`, 'info');
+    }
+
+    updateDisciplineDisplay(disciplineKey) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        if (!disciplineData) return;
+
+        // Update dots
+        const $dots = $(`.dots[data-discipline="${disciplineKey}"]`);
+        $dots.find('.dot').each(function(index) {
+            $(this).toggleClass('filled', index < disciplineData.level);
+        });
+        $dots.data('value', disciplineData.level);
+        $dots.attr('data-value', disciplineData.level);
+
+        // Update the entire discipline display
+        this.updateDisplay();
+    }
+
+    getPowersAboveLevel(disciplineKey, level) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        const discipline = disciplines.types[disciplineKey];
+        
+        if (!disciplineData || !discipline) return [];
+
+        const powersToRemove = [];
+        
+        for (const powerName of disciplineData.powers) {
+            const powerLevel = this.getPowerLevel(discipline, powerName);
+            if (powerLevel > level) {
+                powersToRemove.push(powerName);
+            }
+        }
+        
+        return powersToRemove;
+    }
+
+    async confirmPowerRemoval(disciplineKey, powersToRemove, oldLevel, newLevel) {
+        const disciplineName = this.getDisciplineName(disciplineKey);
+        
+        return new Promise((resolve) => {
+            const modalHtml = `
+                <div class="modal fade" id="confirmPowerRemovalModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark text-light">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Level Reduction</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Reducing <strong>${disciplineName}</strong> from level ${oldLevel} to ${newLevel} will remove the following powers:</p>
+                                <ul>
+                                    ${powersToRemove.map(power => `<li>${power}</li>`).join('')}
+                                </ul>
+                                <p>Do you want to continue?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelRemoval">Cancel</button>
+                                <button type="button" class="btn btn-danger" id="confirmRemoval">Remove Powers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            $('body').append(modalHtml);
+            const modal = new bootstrap.Modal(document.getElementById('confirmPowerRemovalModal'));
+            
+            $('#confirmRemoval').on('click', () => {
+                modal.hide();
+                resolve(true);
+            });
+            
+            $('#cancelRemoval, .btn-close').on('click', () => {
+                modal.hide();
+                resolve(false);
+            });
+            
+            $('#confirmPowerRemovalModal').on('hidden.bs.modal', function() {
+                $(this).remove();
+            });
+            
+            modal.show();
+        });
+    }
+
+    showPowerSelectionModal(disciplineKey, level) {
+        const availablePowers = this.getAvailablePowersUpToLevel(disciplineKey, level);
+        const disciplineName = this.getDisciplineName(disciplineKey);
+        
+        if (availablePowers.length === 0) {
+            TraitManagerUtils.showFeedback(`No available powers up to level ${level} for ${disciplineName}`, 'warning');
+            return;
+        }
+
+        const modalHtml = `
+            <div class="modal fade" id="powerSelectionModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content bg-dark text-light">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Select Power - ${disciplineName} (Levels 1-${level})</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-info">
+                                <small>You can select any power from level 1 up to your current level (${level}).</small>
+                            </div>
+                            <div class="power-selection">
+                                ${availablePowers.map(power => `
+                                    <div class="power-option mb-3 p-3 border rounded" data-power="${power.name}">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div class="power-details flex-grow-1">
+                                                <div class="d-flex align-items-center gap-2 mb-2">
+                                                    <h6 class="power-name mb-0">${power.name}</h6>
+                                                    <span class="badge bg-secondary">Level ${power.level}</span>
+                                                    ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? 
+                                                        `<span class="badge bg-warning text-dark">Amalgam</span>` : ''}
+                                                </div>
+                                                <p class="power-effect mb-2">${power.effect}</p>
+                                                <div class="power-meta small">
+                                                    ${power.cost ? `<div><strong>Cost:</strong> ${power.cost}</div>` : ''}
+                                                    ${power.prerequisite && power.prerequisite !== 'None' ? `<div><strong>Prerequisite:</strong> ${power.prerequisite}</div>` : ''}
+                                                    ${power.amalgam && power.amalgam !== 'No' ? `<div><strong>Amalgam:</strong> ${power.amalgam}</div>` : ''}
+                                                    ${power.duration ? `<div><strong>Duration:</strong> ${power.duration}</div>` : ''}
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-success btn-sm select-power-btn ms-3" data-power="${power.name}">
+                                                Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        $('body').append(modalHtml);
+        const modal = new bootstrap.Modal(document.getElementById('powerSelectionModal'));
+        
+        $('.select-power-btn').on('click', (e) => {
+            const powerName = $(e.currentTarget).data('power');
+            this.addPower(disciplineKey, powerName);
+            modal.hide();
+        });
+        
+        $('#powerSelectionModal').on('hidden.bs.modal', function() {
+            $(this).remove();
+        });
+        
+        modal.show();
+    }
+
+    getAvailablePowersAtLevel(disciplineKey, level) {
+        const discipline = disciplines.types[disciplineKey];
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        
+        if (!discipline || !disciplineData) return [];
+
+        const levelKey = `level${level}`;
+        const allPowersAtLevel = discipline.powers[levelKey] || [];
+        
+        // Filter out already selected powers and check prerequisites
+        return allPowersAtLevel.filter(power => {
+            // Skip if already selected
+            if (disciplineData.powers.has(power.name)) return false;
+            
+            // Check prerequisites
+            if (power.prerequisite && power.prerequisite !== 'None') {
+                if (!this.checkPrerequisites(disciplineKey, power.prerequisite)) return false;
+            }
+            
+            // Check amalgam requirements
+            if (power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None') {
+                if (!this.checkAmalgamRequirements(power.amalgam)) return false;
+            }
+            
+            return true;
+        });
+    }
+
+    getAvailablePowersUpToLevel(disciplineKey, maxLevel) {
+        const discipline = disciplines.types[disciplineKey];
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        
+        if (!discipline || !disciplineData) return [];
+
+        const availablePowers = [];
+        
+        // Get powers from all levels up to and including maxLevel
+        for (let level = 1; level <= maxLevel; level++) {
+            const levelKey = `level${level}`;
+            const powersAtLevel = discipline.powers[levelKey] || [];
+            
+            powersAtLevel.forEach(power => {
+                // Skip if already selected
+                if (disciplineData.powers.has(power.name)) return;
+                
+                // Check prerequisites
+                if (power.prerequisite && power.prerequisite !== 'None') {
+                    if (!this.checkPrerequisites(disciplineKey, power.prerequisite)) return;
+                }
+                
+                // Check amalgam requirements
+                if (power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None') {
+                    if (!this.checkAmalgamRequirements(power.amalgam)) return;
+                }
+                
+                // Add level information to the power object for display
+                availablePowers.push({
+                    ...power,
+                    level: level
+                });
+            });
+        }
+        
+        // Sort by level, then by name
+        return availablePowers.sort((a, b) => {
+            if (a.level !== b.level) {
+                return a.level - b.level;
+            }
+            return a.name.localeCompare(b.name);
+        });
+    }
+
+    checkPrerequisites(disciplineKey, prerequisiteString) {
+        // This is a simplified prerequisite check
+        // In a full implementation, you'd need to parse more complex prerequisite strings
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        if (!disciplineData) return false;
+
+        // Check if the prerequisite power is already selected
+        return disciplineData.powers.has(prerequisiteString);
+    }
+
+    checkAmalgamRequirements(amalgamString) {
+        if (!amalgamString || amalgamString === 'No' || amalgamString === 'None') {
+            return true; // No amalgam requirement
+        }
+
+        // Parse amalgam string like "Obfuscate ●●" or "Blood Sorcery ●●"
+        const amalgamMatch = amalgamString.match(/^(.+?)\s+(●+)$/);
+        if (!amalgamMatch) {
+            console.warn('Could not parse amalgam requirement:', amalgamString);
+            return false;
+        }
+
+        const [, disciplineName, dots] = amalgamMatch;
+        const requiredLevel = dots.length;
+
+        // Convert discipline name to key format
+        const disciplineKey = this.disciplineNameToKey(disciplineName);
+        
+        // Check if character has the required discipline at the required level
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        return disciplineData && disciplineData.level >= requiredLevel;
+    }
+
+    disciplineNameToKey(disciplineName) {
+        // Convert display names to internal keys
+        const nameMap = {
+            'Animalism': 'animalism',
+            'Auspex': 'auspex',
+            'Blood Sorcery': 'bloodSorcery',
+            'Celerity': 'celerity',
+            'Dominate': 'dominate',
+            'Fortitude': 'fortitude',
+            'Obfuscate': 'obfuscate',
+            'Oblivion': 'oblivion',
+            'Potence': 'potence',
+            'Presence': 'presence',
+            'Protean': 'protean',
+            'Thin-Blood Alchemy': 'thinBloodAlchemy'
+        };
+
+        return nameMap[disciplineName] || disciplineName.toLowerCase().replace(/[^a-z]/g, '');
+    }
+
+    addPower(disciplineKey, powerName) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        if (!disciplineData) return;
+
+        disciplineData.powers.add(powerName);
+        this.updateDisplay();
+        
+        this.showFeedback(`Added power: ${powerName}`, 'success');
+    }
+
+    removePower(disciplineKey, powerName) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        if (!disciplineData) return;
+
+        disciplineData.powers.delete(powerName);
+        this.updateDisplay();
+        
+        this.showFeedback(`Removed power: ${powerName}`, 'info');
+    }
+
+    findPowerByName(discipline, powerName) {
+        for (const levelKey in discipline.powers) {
+            const powers = discipline.powers[levelKey];
+            const power = powers.find(p => p.name === powerName);
+            if (power) return power;
+        }
+        return null;
+    }
+
+    getPowerLevel(discipline, powerName) {
+        for (const levelKey in discipline.powers) {
+            const powers = discipline.powers[levelKey];
+            if (powers.some(p => p.name === powerName)) {
+                return parseInt(levelKey.replace('level', ''));
+            }
+        }
+        return 0;
+    }
+
+    updateDisplay() {
+        // Update the dropdown options
+        $('#disciplineSelect').html(`
+            <option value="">Select a Discipline to Add</option>
+            ${this.getAvailableDisciplineOptions()}
+        `).val('');
+        
+        // Disable add button
+        $('#addDisciplineBtn').prop('disabled', true);
+        
+        // Update the selected disciplines list
+        $('#disciplinesList').html(
+            this.selectedDisciplines.size === 0 ? 
+                '<div class="fst-italic">No disciplines selected</div>' : 
+                this.getSelectedDisciplinesHtml()
+        );
+    }
+
+    getDisciplineName(disciplineKey) {
+        const discipline = disciplines.types[disciplineKey];
+        return discipline?.name || this.capitalizeFirst(disciplineKey);
+    }
+
+    capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    showFeedback(message, type = 'info') {
+        // Create a temporary toast notification
+        const toastHtml = `
+            <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : type === 'info' ? 'info' : type === 'warning' ? 'warning' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `;
+        
+        // Add toast container if it doesn't exist
+        if ($('#toastContainer').length === 0) {
+            $('body').append('<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>');
+        }
+        
+        const $toast = $(toastHtml);
+        $('#toastContainer').append($toast);
+        
+        // Initialize and show the toast
+        const toast = new bootstrap.Toast($toast[0], {
+            autohide: true,
+            delay: 3000
+        });
+        toast.show();
+        
+        // Remove the toast element after it's hidden
+        $toast.on('hidden.bs.toast', function() {
+            $(this).remove();
+        });
+    }
+
+    // Public methods for external access
+    getSelectedDisciplines() {
+        const result = {};
+        this.selectedDisciplines.forEach((data, key) => {
+            result[key] = {
+                level: data.level,
+                powers: Array.from(data.powers)
+            };
+        });
+        return result;
+    }
+
+    getDisciplineLevel(disciplineKey) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        return disciplineData ? disciplineData.level : 0;
+    }
+
+    getDisciplinePowers(disciplineKey) {
+        const disciplineData = this.selectedDisciplines.get(disciplineKey);
+        return disciplineData ? Array.from(disciplineData.powers) : [];
+    }
+
+    // Load disciplines from data (for character loading)
+    loadDisciplines(disciplineData) {
+        this.selectedDisciplines.clear();
+        
+        if (disciplineData && typeof disciplineData === 'object') {
+            Object.entries(disciplineData).forEach(([disciplineKey, data]) => {
+                if (this.availableDisciplines.includes(disciplineKey)) {
+                    this.selectedDisciplines.set(disciplineKey, {
+                        level: data.level || 0,
+                        powers: new Set(data.powers || [])
+                    });
+                }
+            });
+            
+            this.updateDisplay();
+        }
+    }
+
+    // Export disciplines data (for character saving)
+    exportDisciplines() {
+        return this.getSelectedDisciplines();
+    }
+}
+
+// Initialize the discipline manager when the DOM is ready
+$(document).ready(function() {
+    // Only initialize if the disciplines container exists
+    if ($('.disciplines-container').length > 0) {
+        window.disciplineManager = new DisciplineManager();
+    }
+});
+
+export { DisciplineManager };
