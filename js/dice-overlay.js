@@ -6,6 +6,10 @@
 
 import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "./discord-integration.js";
 import { initControlBar } from "./control-bar.js";
+import { bloodPotency as bpData } from "./references/blood_potency.js";
+
+// New flag: track whether the most recent roll used Blood Surge
+let lastRollHadBloodSurge = false;
 
 (function () {
   "use strict";
@@ -64,6 +68,11 @@ import { initControlBar } from "./control-bar.js";
             </div>
             <div class="modal-body">
               <form id="diceRollForm">
+                <!-- Blood Surge toggle -->
+                <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
+                  <input class="form-check-input" type="checkbox" id="bloodSurgeToggle">
+                  <label class="form-check-label" for="bloodSurgeToggle">Blood Surge</label>
+                </div>
                 <!-- Specialty selection (hidden if not applicable) -->
                 <div class="mb-3 d-none" id="specialtySection">
                   <label for="specialtySelect" class="form-label">Specialty (optional)</label>
@@ -672,6 +681,8 @@ import { initControlBar } from "./control-bar.js";
 
   // Determine if a Willpower reroll is currently allowed based on aggravated damage
   function isWPRerollAllowed() {
+    // Disallow rerolling entirely if the last roll used Blood Surge
+    if (lastRollHadBloodSurge) return false;
     const wpContainer = document.querySelector('.track-container[data-type="willpower"]');
     if (!wpContainer) return true; // if WP track not yet present, allow by default
     const total = wpContainer.querySelectorAll('.track-box').length;
@@ -684,6 +695,7 @@ import { initControlBar } from "./control-bar.js";
     await ensureDiceEngineLoaded();
     const canvasContainer = createOverlay(); // createOverlay removes any existing overlay automatically
     rollVtmDice(canvasContainer, pools, () => {});
+    lastRollHadBloodSurge = false;
     // Allow Control Bar to refresh WP button if it exposed one
     if (typeof window.refreshWPRerollButton === 'function') {
       window.refreshWPRerollButton();
@@ -1127,55 +1139,6 @@ import { initControlBar } from "./control-bar.js";
       btnWPReroll.disabled = !isWPRerollAllowed();
     }
 
-    async function quickRoll(pools) {
-      await ensureDiceEngineLoaded();
-      // Always start with a fresh overlay
-      const canvasContainer = createOverlay(); // createOverlay removes existing overlay automatically
-      rollVtmDice(canvasContainer, pools, () => {});
-      refreshWPRerollButton();
-    }
-
-    // Spend 1 Willpower: return true on success, false if no WP left to spend
-    function spendWillpower() {
-      const wpContainer = document.querySelector('.track-container[data-type="willpower"]');
-      if (!wpContainer) return false;
-
-      const boxes = Array.from(wpContainer.querySelectorAll('.track-box'));
-      const total = boxes.length;
-      const aggravated = boxes.filter(b => b.classList.contains('aggravated')).length;
-      const superficial = boxes.filter(b => b.classList.contains('superficial')).length;
-      const undamaged = total - aggravated - superficial;
-
-      // If all boxes aggravated – cannot spend WP
-      if (aggravated >= total) {
-        alert('All Willpower is aggravated – you can no longer reroll.');
-        return false;
-      }
-
-      if (undamaged > 0) {
-        // Apply superficial to first undamaged box
-        const target = boxes.find(b => !b.classList.contains('superficial') && !b.classList.contains('aggravated'));
-        if (target) target.classList.add('superficial');
-      } else if (superficial > 0) {
-        // No undamaged left; convert first superficial to aggravated
-        const target = boxes.find(b => b.classList.contains('superficial'));
-        if (target) {
-          target.classList.remove('superficial');
-          target.classList.add('aggravated');
-        }
-      }
-
-      // Refresh remaining WP count (total minus damaged boxes)
-      const damagedNow = wpContainer.querySelectorAll('.superficial, .aggravated').length;
-      const newVal = total - damagedNow;
-      wpContainer.setAttribute('data-value', newVal);
-      const header = wpContainer.querySelector('.track-header span:first-child');
-      if (header) header.textContent = `Current: ${newVal}`;
-
-      refreshWPRerollButton();
-      return true;
-    }
-
     btnRouse.addEventListener('click', () => {
       quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
     });
@@ -1219,6 +1182,21 @@ import { initControlBar } from "./control-bar.js";
             frenzy: parseInt(modalEl.querySelector("#frenzyInput").value) || 0,
           };
 
+          // ----------------------------------------------------
+          //  Blood Surge – adds dice & a mandatory Rouse check
+          // ----------------------------------------------------
+          const bloodSurgeToggle = modalEl.querySelector("#bloodSurgeToggle");
+          const bloodSurgeOn = bloodSurgeToggle && bloodSurgeToggle.checked;
+          if (bloodSurgeOn && pools.remorse === 0 && pools.frenzy === 0) {
+            const bpVal = getStatValueByName("Blood Potency");
+            const surgeBonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
+            pools.standard += surgeBonus;
+            pools.rouse += 1;
+            lastRollHadBloodSurge = true;
+          } else {
+            lastRollHadBloodSurge = false;
+          }
+
           bootstrapModal.hide();
 
           // Ensure libs loaded
@@ -1227,6 +1205,8 @@ import { initControlBar } from "./control-bar.js";
           // Create overlay & roll
           const canvasContainer = createOverlay();
           rollVtmDice(canvasContainer, pools, () => {});
+          // Update WP reroll availability after roll
+          refreshWPRerollButton();
         });
       }
 
@@ -1241,6 +1221,21 @@ import { initControlBar } from "./control-bar.js";
       }
 
       updateSpecialtySection(modalEl);
+
+      // Enable or disable Blood Surge toggle based on current Hunger (must be <5)
+      const hungerScore = getStatValueByName("Hunger");
+      const surgeWrapper = modalEl.querySelector("#bloodSurgeToggleWrapper");
+      const surgeInput = modalEl.querySelector("#bloodSurgeToggle");
+      if (surgeWrapper && surgeInput) {
+        if (hungerScore >= 5) {
+          surgeInput.checked = false;
+          surgeInput.disabled = true;
+          surgeWrapper.classList.add('text-muted');
+        } else {
+          surgeInput.disabled = false;
+          surgeWrapper.classList.remove('text-muted');
+        }
+      }
 
       bootstrapModal.show();
     });
