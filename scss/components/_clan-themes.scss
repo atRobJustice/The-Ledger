@@ -1,0 +1,128 @@
+/* Color overrides for each Clan theme
+   Each palette entry (1–5) is mapped as follows:
+   1) background dark start
+   2) primary accent (headings / ledger border-left)
+   3) secondary accent (ledger border / buttons)
+   4) background light / ledger background
+   5) neutral border / misc text
+*/
+
+// ----- Banu Haqim ----------------------------------------------------
+body[data-theme='banu'] {
+  background: linear-gradient(#23101B, #72171A);
+  color: #FBF7F4;
+  h1, h2, h3 { color: #B29D34; border-color: #B29D34; }
+  .ledger { background: #FBF7F4; color: #23101B; border-color: #424242; border-left-color: #B29D34; }
+  .btn-success { background-color: #B29D34; }
+  .btn-danger { background-color: #72171A; }
+}
+
+// ----- Brujah --------------------------------------------------------
+body[data-theme='brujah'] {
+  background: linear-gradient(#A90015, #333333);
+  color: #FFB53D;
+  h1, h2, h3 { color: #FF7214; border-color: #FF7214; }
+  .ledger { background: #333333; color: #FFB53D; border-color: #C30011; border-left-color: #FF7214; }
+  .btn-success { background-color: #FF7214; }
+  .btn-danger { background-color: #C30011; }
+}
+
+// ----- Gangrel -------------------------------------------------------
+body[data-theme='gangrel'] {
+  background: linear-gradient(#2E2F04, #442604);
+  color: #7E846B;
+  h1, h2, h3 { color: #795D15; border-color: #795D15; }
+  .ledger { background: #594E36; color: #EDEBDD; border-color: #2E2F04; border-left-color: #795D15; }
+  .btn-success { background-color: #2E2F04; }
+  .btn-danger { background-color: #795D15; }
+}
+
+// ----- Hecata --------------------------------------------------------
+body[data-theme='hecata'] {
+  background: linear-gradient(#3D2C2E, #424C55);
+  color: #F5EDF0;
+  h1, h2, h3 { color: #D1CDDC; border-color: #D1CDDC; }
+  .ledger { background: #F5EDF0; color: #3D2C2E; border-color: #886F68; border-left-color: #D1CDDC; }
+  .btn-success { background-color: #886F68; }
+  .btn-danger { background-color: #424C55; }
+}
+
+// ----- Lasombra ------------------------------------------------------
+body[data-theme='lasombra'] {
+  background: radial-gradient(circle at top center, #0C080B 0%, #222222 100%);
+  color: #292B36;
+  h1, h2, h3 { color: #201A28; border-color: #201A28; }
+  .ledger { background: #19272A; color: #F0F0F0; border-color: #201A28; border-left-color: #292B36; }
+}
+
+// ----- Malkavian -----------------------------------------------------
+body[data-theme='malkavian'] {
+  background: linear-gradient(#445E93, #7EB2DD);
+  color: #F1AB13;
+  h1, h2, h3 { color: #F93943; border-color: #F93943; }
+  .ledger { background: #FCB0B3; color: #333; border-color: #7EB2DD; border-left-color: #F93943; }
+}
+
+// ----- Ministry ------------------------------------------------------
+body[data-theme='ministry'] {
+  background: linear-gradient(#1C0118, #370926);
+  color: #6BD425;
+  h1, h2, h3 { color: #6BD425; border-color: #6BD425; }
+  .ledger { background: #61452E; color: #F0F0F0; border-color: #618B25; border-left-color: #6BD425; }
+}
+
+// ----- Nosferatu -----------------------------------------------------
+body[data-theme='nosferatu'] {
+  background: linear-gradient(#272826, #363D38);
+  color: #A19F74;
+  h1, h2, h3 { color: #A19F74; border-color: #A19F74; }
+  .ledger { background: #404E51; color: #F0F0F0; border-color: #4D2B1E; border-left-color: #A19F74; }
+}
+
+// ----- Ravnos --------------------------------------------------------
+body[data-theme='ravnos'] {
+  background: linear-gradient(#5C251F, #946E46);
+  color: #F1A63C;
+  h1, h2, h3 { color: #E15656; border-color: #E15656; }
+  .ledger { background: #C78F44; color: #1B1B1B; border-color: #5C251F; border-left-color: #E15656; }
+}
+
+// ----- Salubri -------------------------------------------------------
+body[data-theme='salubri'] {
+  background: linear-gradient(#5A5766, #96A1CA);
+  color: #E1FBFE;
+  h1, h2, h3 { color: #A93F55; border-color: #A93F55; }
+  .ledger { background: #F0EEF1; color: #333333; border-color: #5A5766; border-left-color: #A93F55; }
+}
+
+// ----- Toreador ------------------------------------------------------
+body[data-theme='toreador'] {
+  background: linear-gradient(#4A001F, #9C0321);
+  color: #F3AFB6;
+  h1, h2, h3 { color: #DD2C68; border-color: #DD2C68; }
+  .ledger { background: #9F5D77; color: #F3F3F3; border-color: #4A001F; border-left-color: #DD2C68; }
+}
+
+// ----- Tremere -------------------------------------------------------
+body[data-theme='tremere'] {
+  background: linear-gradient(#201D1D, #501E5C);
+  color: #CCB2DC;
+  h1, h2, h3 { color: #941414; border-color: #941414; }
+  .ledger { background: #937EA5; color: #F5F5F5; border-color: #501E5C; border-left-color: #941414; }
+}
+
+// ----- Tzimisce ------------------------------------------------------
+body[data-theme='tzimisce'] {
+  background: linear-gradient(#333333, #5A4D2B);
+  color: #86A59C;
+  h1, h2, h3 { color: #643173; border-color: #643173; }
+  .ledger { background: #B8C4BB; color: #1B1B1B; border-color: #333333; border-left-color: #643173; }
+}
+
+// ----- Ventrue -------------------------------------------------------
+body[data-theme='ventrue'] {
+  background: linear-gradient(#0F0D4F, #222862);
+  color: #F5F2EF;
+  h1, h2, h3 { color: #B09E4F; border-color: #B09E4F; }
+  .ledger { background: #7E6D5D; color: #F0F0F0; border-color: #0F0D4F; border-left-color: #B09E4F; }
+} 

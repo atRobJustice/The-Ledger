@@ -1,0 +1,26 @@
+/* Theme override styles (applied via body[data-theme]) */
+
+// Ivory Tower: light parchment look
+body[data-theme='ivory'] {
+  background: linear-gradient(#ece8dd, #d8d4ca);
+  color: #2c1b1b;
+
+  h1, h2, h3 {
+    color: #8b0000;
+    border-color: #8b0000;
+  }
+
+  .ledger {
+    background: #fbf7f2;
+    border-color: #cbbfae;
+    border-left-color: #8b0000;
+  }
+
+  .btn-success {
+    background-color: #567d5e;
+  }
+
+  .btn-danger {
+    background-color: #8b2d2d;
+  }
+}

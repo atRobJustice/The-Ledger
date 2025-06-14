@@ -132,6 +132,10 @@
         const webhook = localStorage.getItem('ledger-discord-webhook');
         if(webhook) data.discordWebhook = webhook;
 
+        // Persist current theme
+        const activeTheme = document.body.getAttribute('data-theme') || 'default';
+        data.theme = activeTheme;
+
         return data;
     }
 
@@ -199,6 +203,17 @@
             } else {
                 localStorage.removeItem('ledger-discord-webhook');
             }
+        }
+
+        // Restore theme
+        if(Object.prototype.hasOwnProperty.call(data,'theme')){
+            const t = data.theme || 'default';
+            if(t === 'default'){
+                document.body.removeAttribute('data-theme');
+            } else {
+                document.body.setAttribute('data-theme', t);
+            }
+            localStorage.setItem('ledger-theme', t);
         }
 
         // Recalculate and apply impairment classes based on imported track states

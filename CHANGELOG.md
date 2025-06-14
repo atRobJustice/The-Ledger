@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Added
 - Roll modal now shows an informational breakdown banner listing attributes, specialties, bonuses, and penalties applied to the dice pool so players understand how their roll is calculated.
+- New Theme system: Control-bar button opens a palette selector (Blood & Roses dark, Ivory Tower light, plus 14 clan-specific schemes).
 
 ### Fixed
 - Roll modal now correctly displays the bonus die notice when Intense\Accute Temperament is used with an associated Discipline.
