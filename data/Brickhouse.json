@@ -17,8 +17,8 @@
   },
   "blood_potency": 1,
   "willpower": {
-    "max": 4,
-    "current": 3,
+    "max": 3,
+    "current": 2,
     "superficial": 1,
     "aggravated": 0,
     "type": "willpower"
@@ -33,15 +33,15 @@
   },
   "resonance": "phlegmatic",
   "temperament": "intense",
-  "strength": 3,
+  "strength": 2,
   "dexterity": 2,
   "stamina": 2,
   "charisma": 4,
   "manipulation": 3,
-  "composure": 3,
-  "intelligence": 2,
-  "wits": 2,
-  "resolve": 1,
+  "composure": 1,
+  "intelligence": 3,
+  "wits": 3,
+  "resolve": 2,
   "athletics": 1,
   "brawl": 1,
   "craft": 0,
@@ -50,17 +50,17 @@
   "larceny": 2,
   "melee": 1,
   "melee_specialties": [
-    "Knives"
+    "knives"
   ],
-  "stealth": 0,
+  "stealth": 2,
   "survival": 0,
   "animal_ken": 0,
-  "etiquette": 1,
+  "etiquette": 0,
   "insight": 2,
-  "intimidation": 2,
+  "intimidation": 3,
   "leadership": 1,
-  "performance": 1,
-  "persuasion": 3,
+  "performance": 0,
+  "persuasion": 1,
   "persuasion_specialties": [
     "Marketing"
   ],
@@ -70,7 +70,7 @@
   "awareness": 2,
   "finance": 1,
   "investigation": 2,
-  "medicine": 0,
+  "medicine": 1,
   "occult": 1,
   "politics": 0,
   "science": 0,
@@ -189,6 +189,6 @@
   "coterieMerits": {},
   "coterieFlaws": {},
   "loresheets": [],
-  "discordWebhook": "https://discordapp.com/api/webhooks/1383219136162693151/Oe18WbP6v21S3i4A__okSF6VJHj7pbxfVXayxIe10VPf4H5HqUAtsMwzlI7dXRTkFpPL",
+  "discordWebhook": "https://discordapp.com/api/webhooks/1380297149840883792/PjfMlcF-MUDrxycno2WYByeFXiFFxb9EYtzIvffEq6QwTF-rnxp__GCkif67uPrK3hX3",
   "theme": "tremere"
 }

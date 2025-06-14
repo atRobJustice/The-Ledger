@@ -216,17 +216,17 @@ export function initControlBar(deps) {
     "quickRemorse",
     "Remorse",
     "#19305B",
-    "Remorse Test – Roll dice to resist Humanity loss."
+    "Remorse Check – Roll dice to resist Humanity loss."
   );
   const btnFrenzy = createQuickBtn(
     "quickFrenzy",
     "Frenzy",
     "#B83B1A",
-    "Frenzy Test – Roll dice to resist Frenzy."
+    "Frenzy Check – Roll dice to resist Frenzy."
   );
   const btnWPReroll = createQuickBtn(
     "quickWPReroll",
-    "WP Reroll",
+    "Reroll",
     "#0d6efd",
     "Willpower Reroll – Take 1 Superficial Willpower damange to reroll up to 3 dice."
   );
@@ -242,8 +242,6 @@ export function initControlBar(deps) {
     "#198754",
     "Mend – Heal superficial Health based on Blood Potency with a Rouse check."
   );
-  // Shrink Mend button
-  btnMend.classList.add("btn-sm");
 
   // --- Export / Import buttons --------------------------------------
   const btnImport = document.createElement("button");
@@ -561,8 +559,9 @@ export function initControlBar(deps) {
   // Theme button
   const btnTheme = document.createElement("button");
   btnTheme.id = "openThemeModal";
-  btnTheme.className = "btn btn-outline-light btn-sm p-0 d-flex align-items-center justify-content-center";
+  btnTheme.className = "btn btn-sm p-0 d-flex align-items-center justify-content-center";
   btnTheme.style.width = "32px";
+  btnTheme.style.maxWidth = "64px";
   btnTheme.style.height = "32px";
   btnTheme.innerHTML = "🎨";
   btnTheme.setAttribute("title", "Choose color theme");
@@ -711,15 +710,16 @@ export function initControlBar(deps) {
   }
 
   // Move existing buttons into fresh groups (DOM nodes are re-parented automatically)
-  const groupQuick = makeGroup(btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear);
-  const groupUtility = makeGroup(btnMend);
+  const groupQuick = makeGroup(btnRouse, btnRemorse, btnFrenzy);
+  const groupUtility = makeGroup(btnWPReroll, btnMend, btnClear);
   const groupData = makeGroup(btnImport, btnExport);
   const groupIntegrations = makeGroup(btnProgeny, btnDiscord);
+  const groupAppearance = makeGroup(btnTheme, toggleWrapper);
   groupIntegrations.style.justifySelf = "center";
 
   // Clear current order and rebuild layout
   // (File input stays, it's invisible and doesn't affect layout)
-  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, btnProgeny, btnDiscord, toggleWrapper, btnTheme, btnRoll].forEach(el => {
+  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, btnTheme, btnProgeny, btnDiscord, toggleWrapper, btnRoll].forEach(el => {
     // They are already in the bar – remove so we can control order
     if (el.parentElement === bar) bar.removeChild(el);
   });
@@ -735,9 +735,7 @@ export function initControlBar(deps) {
   bar.appendChild(makeDivider());
   bar.appendChild(groupIntegrations);
   bar.appendChild(makeDivider());
-  bar.appendChild(btnTheme);
-  bar.appendChild(makeDivider());
-  bar.appendChild(toggleWrapper);
+  bar.appendChild(groupAppearance);
 
   // Activate Bootstrap tooltips on all elements that declared them
   if (window.bootstrap && bootstrap.Tooltip) {
