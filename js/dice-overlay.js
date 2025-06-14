@@ -1222,6 +1222,136 @@ let bonusMsg = null;
     bar.appendChild(btnClear);
     bar.appendChild(btnMend);
 
+    // Theme button
+    const btnTheme = document.createElement('button');
+    btnTheme.id = 'openThemeModal';
+    btnTheme.className = 'btn btn-outline-light';
+    btnTheme.textContent = 'Theme';
+    bar.appendChild(btnTheme);
+
+    // Theme modal support ---------------------------------------------
+    let themeModalEl;
+    let themeModalInstance;
+
+    function ensureThemeModal() {
+      if (themeModalEl) return;
+      const modalHtml = `
+        <div class="modal fade" id="themeModal" tabindex="-1" aria-labelledby="themeModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h5 class="modal-title" id="themeModalLabel">Color Scheme</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body vstack gap-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default">
+                  <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory">
+                  <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu">
+                  <label class="form-check-label" for="schemeBanu">Banu Haqim</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah">
+                  <label class="form-check-label" for="schemeBrujah">Brujah</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel">
+                  <label class="form-check-label" for="schemeGangrel">Gangrel</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata">
+                  <label class="form-check-label" for="schemeHecata">Hecata</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra">
+                  <label class="form-check-label" for="schemeLasombra">Lasombra</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian">
+                  <label class="form-check-label" for="schemeMalkavian">Malkavian</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry">
+                  <label class="form-check-label" for="schemeMinistry">The Ministry</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu">
+                  <label class="form-check-label" for="schemeNosferatu">Nosferatu</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos">
+                  <label class="form-check-label" for="schemeRavnos">Ravnos</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri">
+                  <label class="form-check-label" for="schemeSalubri">Salubri</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador">
+                  <label class="form-check-label" for="schemeToreador">Toreador</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere">
+                  <label class="form-check-label" for="schemeTremere">Tremere</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce">
+                  <label class="form-check-label" for="schemeTzimisce">Tzimisce</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue">
+                  <label class="form-check-label" for="schemeVentrue">Ventrue</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveThemeChoice">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+      themeModalEl = document.getElementById('themeModal');
+      themeModalInstance = bootstrap.Modal.getOrCreateInstance(themeModalEl);
+
+      themeModalEl.querySelector('#saveThemeChoice').addEventListener('click', () => {
+        const selected = themeModalEl.querySelector("input[name='schemeRadios']:checked");
+        if (selected) {
+          applyTheme(selected.value);
+          themeModalInstance.hide();
+        }
+      });
+    }
+
+    function applyTheme(themeKey) {
+      if (themeKey === 'default') {
+        document.body.removeAttribute('data-theme');
+      } else {
+        document.body.setAttribute('data-theme', themeKey);
+      }
+      localStorage.setItem('ledger-theme', themeKey);
+    }
+
+    // Load theme on startup
+    const savedTheme = localStorage.getItem('ledger-theme');
+    if (savedTheme && savedTheme !== 'default') {
+      document.body.setAttribute('data-theme', savedTheme);
+    }
+
+    btnTheme.addEventListener('click', () => {
+      ensureThemeModal();
+      const current = document.body.getAttribute('data-theme') || 'default';
+      const radioId = current === 'default' ? 'schemeMasquerade' : `scheme${current.charAt(0).toUpperCase()}${current.slice(1)}`;
+      const toCheck = themeModalEl.querySelector(`#${radioId}`);
+      if (toCheck) toCheck.checked = true;
+      themeModalInstance.show();
+    });
+
     // Helper to enable/disable WP reroll based on aggravated damage
     function refreshWPRerollButton() {
       btnWPReroll.disabled = !isWPRerollAllowed();

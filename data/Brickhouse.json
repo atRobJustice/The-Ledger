@@ -23,7 +23,7 @@
     "aggravated": 0,
     "type": "willpower"
   },
-  "hunger": 2,
+  "hunger": 1,
   "humanity": {
     "max": 10,
     "current": 7,
@@ -31,8 +31,8 @@
     "aggravated": 0,
     "type": "humanity"
   },
-  "resonance": "",
-  "temperament": "",
+  "resonance": "phlegmatic",
+  "temperament": "intense",
   "strength": 2,
   "dexterity": 2,
   "stamina": 2,
@@ -50,7 +50,7 @@
   "larceny": 2,
   "melee": 1,
   "melee_specialties": [
-    "knives"
+    "Knives"
   ],
   "stealth": 2,
   "survival": 0,
