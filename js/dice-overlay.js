@@ -892,7 +892,9 @@ let bonusMsg = null;
     //  Use the shared Control Bar from control-bar.js
     // -------------------------------------------------------------
 
-    // Helper exposed to the bar so it can clear dice results
+    /**
+     * Removes the dice overlay from the page and clears the current roll context.
+     */
     function clearOverlay() {
       const ov = document.getElementById("dice-overlay");
       if (ov) ov.remove();
@@ -918,7 +920,12 @@ let bonusMsg = null;
       return;
     }
 
-    // Bridge to the bar's helper so the rest of the overlay logic can stay unchanged
+    /**
+     * Refreshes the Willpower reroll button by invoking the global refresh function if available.
+     *
+     * @remark
+     * This function acts as a bridge to the control bar's refresh logic, ensuring compatibility with the overlay's internal state.
+     */
     function refreshWPRerollButton() {
       if (typeof window.refreshWPRerollButton === "function") {
         window.refreshWPRerollButton();
@@ -926,7 +933,14 @@ let bonusMsg = null;
     }
 
     // Helper used by computeDicePools further below (kept here because the overlay
-    // still owns the dice-pool logic).
+    /**
+     * Converts a discipline name to its normalized key form.
+     *
+     * Handles special cases for "Blood Sorcery" and "Thin-blood Alchemy", returning their camelCase keys. For other names, returns a lowercase string with non-letter characters removed.
+     *
+     * @param {string} [name=""] - The discipline name to normalize.
+     * @returns {string} The normalized discipline key.
+     */
     function disciplineNameToKey(name = "") {
       const lower = name.toLowerCase();
       const special = {
