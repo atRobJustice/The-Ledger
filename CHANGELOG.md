@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Refactored SCSS to remove remaining hard-coded colours.  Introduced additional design-token variables (`$color-white`, `$color-black`, grayscale palette, etc.) and CSS custom properties (`--accent`, `--panel-*`, `--form-*`) so that every component inherits the active theme automatically.
 - All tracked components (tracks, dots, buttons, form controls, selects, modals, Discipline & Power cards) now pull palette values from the new Theme system.
 - Updated hover/focus states and disabled styles to respect the new variables.
+- Control Bar redesign: now a fixed footer that never blocks content. Buttons are grouped (Quick Dice, Mend, Data, Integrations, Theme, Info) with dividers, secondary actions use compact icons, detailed tooltips added, WP Reroll pulses when usable, and Progeny/Discord icons are center-aligned. Collapse handle removed.
 
 ### Fixed
 - Modal and form text colours now adapt to light themes (Ivory Tower) restoring readability.

@@ -35,9 +35,41 @@ export function initControlBar(deps) {
   const bar = document.createElement("div");
   bar.id = "ledger-control-bar";
   bar.className =
-    "position-fixed bottom-0 start-0 m-3 p-2 bg-dark bg-opacity-75 rounded d-flex align-items-center gap-3 flex-wrap";
+    "position-fixed bottom-0 start-0 w-100 p-2 bg-dark bg-opacity-75 d-grid align-items-center";
+  bar.style.borderTop = "2px solid rgba(255,255,255,.2)";
   bar.style.zIndex = "2100";
   document.body.appendChild(bar);
+
+  // Full-width anchored bar that uses CSS Grid instead of flexbox
+  // Replace rounded corners because the bar now spans the full width
+  // Add custom styling (grid, animation, collapsed state, etc.) once per page
+  if (!document.getElementById("ledger-control-bar-style")) {
+    const style = document.createElement("style");
+    style.id = "ledger-control-bar-style";
+    style.textContent = `
+      #ledger-control-bar {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        gap: .25rem .5rem;
+      }
+      /* Simple vertical divider */
+      #ledger-control-bar .vr {
+        width: 1px;
+        background: rgba(255,255,255,.25);
+        align-self: stretch;
+      }
+      /* Attention pulse when WP-reroll becomes available */
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
+        100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
+      }
+      .pulse-once {
+        animation: pulse 1s ease-out 0s 2;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
   // 1) Info-mode toggle ------------------------------------------------
   const toggleWrapper = document.createElement("div");
@@ -67,10 +99,12 @@ export function initControlBar(deps) {
   // 2) Discord webhook configuration ----------------------------------
   const btnDiscord = document.createElement("button");
   btnDiscord.id = "discordWebhookBtn";
-  btnDiscord.className = "btn btn-secondary p-1 d-flex align-items-center";
+  btnDiscord.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnDiscord.setAttribute("title", "Configure Discord Webhook");
+  btnDiscord.setAttribute("data-bs-toggle", "tooltip");
   btnDiscord.style.backgroundColor = "transparent";
   btnDiscord.style.border = 0;
-  btnDiscord.innerHTML = `<img src="assets/Discord-Symbol-Blurple.png" alt="Discord" style="width:34px;height:24px;">`;
+  btnDiscord.innerHTML = `<img src="assets/Discord-Symbol-Blurple.png" alt="Discord" style="height:24px;width:auto;">`;
   bar.appendChild(btnDiscord);
 
   let webhookModalEl;
@@ -111,10 +145,12 @@ export function initControlBar(deps) {
   // 2b) Progeny import button ----------------------------------
   const btnProgeny = document.createElement("button");
   btnProgeny.id = "importProgenyBtn";
-  btnProgeny.className = "btn btn-secondary p-1 d-flex align-items-center";
+  btnProgeny.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnProgeny.setAttribute("title", "Import Progeny JSON");
+  btnProgeny.setAttribute("data-bs-toggle", "tooltip");
   btnProgeny.style.backgroundColor = "transparent";
   btnProgeny.style.border = 0;
-  btnProgeny.innerHTML = `<img src="assets/progeny-icon.svg" alt="Progeny" style="width:28px;height:32px;">`;
+  btnProgeny.innerHTML = `<img src="assets/progeny-icon.svg" alt="Progeny" style="width:24px;height:24px;">`;
   bar.appendChild(btnProgeny);
 
   const progenyFileInput = document.createElement("input");
@@ -151,38 +187,78 @@ export function initControlBar(deps) {
   const btnRoll = document.createElement("button");
   btnRoll.id = "openDiceRoll";
   btnRoll.className = "btn btn-danger";
+  btnRoll.setAttribute("title", "Open detailed roll dialog");
+  btnRoll.setAttribute("data-bs-toggle", "tooltip");
   btnRoll.textContent = "Roll";
   bar.appendChild(btnRoll);
   // (Actual click handler lives in dice-overlay.js)
 
   // 4) Utility for creating small quick-action buttons -----------------
-  function createQuickBtn(id, text, hexColor) {
+  function createQuickBtn(id, text, hexColor, tooltip = text) {
     const b = document.createElement("button");
     b.id = id;
     b.className = "btn";
     b.textContent = text;
     b.style.backgroundColor = hexColor;
     b.style.color = "#fff";
+    b.setAttribute("title", tooltip);
+    b.setAttribute("data-bs-toggle", "tooltip");
     return b;
   }
 
-  const btnRouse = createQuickBtn("quickRouse", "Rouse", "#331D43");
-  const btnRemorse = createQuickBtn("quickRemorse", "Remorse", "#19305B");
-  const btnFrenzy = createQuickBtn("quickFrenzy", "Frenzy", "#B83B1A");
-  const btnWPReroll = createQuickBtn("quickWPReroll", "WP Reroll", "#0d6efd");
-  const btnClear = createQuickBtn("clearOverlay", "Wipe", "#6c757d");
-  const btnMend = createQuickBtn("quickMend", "Mend", "#198754");
+  const btnRouse = createQuickBtn(
+    "quickRouse",
+    "Rouse",
+    "#331D43",
+    "Rouse Check – Roll 1 die. Failure increases Hunger by 1."
+  );
+  const btnRemorse = createQuickBtn(
+    "quickRemorse",
+    "Remorse",
+    "#19305B",
+    "Remorse Test – Roll dice to resist Humanity loss."
+  );
+  const btnFrenzy = createQuickBtn(
+    "quickFrenzy",
+    "Frenzy",
+    "#B83B1A",
+    "Frenzy Test – Roll dice to resist Frenzy."
+  );
+  const btnWPReroll = createQuickBtn(
+    "quickWPReroll",
+    "WP Reroll",
+    "#0d6efd",
+    "Willpower Reroll – Take 1 Superficial Willpower damange to reroll up to 3 dice."
+  );
+  const btnClear = createQuickBtn(
+    "clearOverlay",
+    "Wipe",
+    "#6c757d",
+    "Clear Overlay – Remove the dice result overlay."
+  );
+  const btnMend = createQuickBtn(
+    "quickMend",
+    "Mend",
+    "#198754",
+    "Mend – Heal superficial Health based on Blood Potency with a Rouse check."
+  );
+  // Shrink Mend button
+  btnMend.classList.add("btn-sm");
 
   // --- Export / Import buttons --------------------------------------
-  const btnExport = document.createElement("button");
-  btnExport.id = "exportJsonBtn";
-  btnExport.className = "btn btn-outline-light";
-  btnExport.textContent = "Export";
-
   const btnImport = document.createElement("button");
   btnImport.id = "importJsonBtn";
-  btnImport.className = "btn btn-outline-light";
-  btnImport.textContent = "Import";
+  btnImport.className = "btn btn-outline-light p-1";
+  btnImport.innerHTML = "⇲";
+  btnImport.setAttribute("title", "Import character from JSON");
+  btnImport.setAttribute("data-bs-toggle", "tooltip");
+
+  const btnExport = document.createElement("button");
+  btnExport.id = "exportJsonBtn";
+  btnExport.className = "btn btn-outline-light p-1";
+  btnExport.innerHTML = "⇱";
+  btnExport.setAttribute("title", "Export character to JSON");
+  btnExport.setAttribute("data-bs-toggle", "tooltip");
 
   const fileInput = document.createElement("input");
   fileInput.type = "file";
@@ -195,8 +271,8 @@ export function initControlBar(deps) {
   bar.appendChild(btnWPReroll);
   bar.appendChild(btnClear);
   bar.appendChild(btnMend);
-  bar.appendChild(btnExport);
   bar.appendChild(btnImport);
+  bar.appendChild(btnExport);
   bar.appendChild(fileInput);
 
   // ------------------------------------------------------------------
@@ -245,8 +321,16 @@ export function initControlBar(deps) {
   // 6) WP Reroll button ----------------------------------------------
   btnWPReroll.addEventListener("click", handleWPRerollClick);
 
+  // Track previous state so we can animate when the button becomes enabled
+  let wasWPRerollDisabled = true;
   function refreshWPRerollButton() {
-    btnWPReroll.disabled = !isWPRerollAllowed();
+    const nowDisabled = !isWPRerollAllowed();
+    btnWPReroll.disabled = nowDisabled;
+    if (wasWPRerollDisabled && !nowDisabled) {
+      btnWPReroll.classList.add("pulse-once");
+      setTimeout(() => btnWPReroll.classList.remove("pulse-once"), 1500);
+    }
+    wasWPRerollDisabled = nowDisabled;
   }
 
   // Expose so dice-overlay.js can invoke it after rolls
@@ -477,8 +561,12 @@ export function initControlBar(deps) {
   // Theme button
   const btnTheme = document.createElement("button");
   btnTheme.id = "openThemeModal";
-  btnTheme.className = "btn btn-outline-light";
-  btnTheme.textContent = "Theme";
+  btnTheme.className = "btn btn-outline-light btn-sm p-0 d-flex align-items-center justify-content-center";
+  btnTheme.style.width = "32px";
+  btnTheme.style.height = "32px";
+  btnTheme.innerHTML = "🎨";
+  btnTheme.setAttribute("title", "Choose color theme");
+  btnTheme.setAttribute("data-bs-toggle", "tooltip");
   bar.appendChild(btnTheme);
 
   // Theme modal elements
@@ -604,6 +692,65 @@ export function initControlBar(deps) {
     if (toCheck) toCheck.checked = true;
     themeModalInstance.show();
   });
+
+  // ------------------------------------------------------------------
+  //  Re-arrange buttons into logical groups & add separators
+  // ------------------------------------------------------------------
+
+  function makeGroup(...els) {
+    const g = document.createElement("div");
+    g.className = "btn-group";
+    els.forEach(el => g.appendChild(el));
+    return g;
+  }
+
+  function makeDivider() {
+    const d = document.createElement("div");
+    d.className = "vr";
+    return d;
+  }
+
+  // Move existing buttons into fresh groups (DOM nodes are re-parented automatically)
+  const groupQuick = makeGroup(btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear);
+  const groupUtility = makeGroup(btnMend);
+  const groupData = makeGroup(btnImport, btnExport);
+  const groupIntegrations = makeGroup(btnProgeny, btnDiscord);
+  groupIntegrations.style.justifySelf = "center";
+
+  // Clear current order and rebuild layout
+  // (File input stays, it's invisible and doesn't affect layout)
+  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, btnProgeny, btnDiscord, toggleWrapper, btnTheme, btnRoll].forEach(el => {
+    // They are already in the bar – remove so we can control order
+    if (el.parentElement === bar) bar.removeChild(el);
+  });
+
+  // Re-append in the desired structured order
+  bar.appendChild(btnRoll);
+  bar.appendChild(makeDivider());
+  bar.appendChild(groupQuick);
+  bar.appendChild(makeDivider());
+  bar.appendChild(groupUtility);
+  bar.appendChild(makeDivider());
+  bar.appendChild(groupData);
+  bar.appendChild(makeDivider());
+  bar.appendChild(groupIntegrations);
+  bar.appendChild(makeDivider());
+  bar.appendChild(btnTheme);
+  bar.appendChild(makeDivider());
+  bar.appendChild(toggleWrapper);
+
+  // Activate Bootstrap tooltips on all elements that declared them
+  if (window.bootstrap && bootstrap.Tooltip) {
+    Array.from(bar.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(el =>
+      bootstrap.Tooltip.getOrCreateInstance(el));
+  }
+
+  // Reserve space so main content never hides behind the fixed footer
+  function adjustBodyPadding() {
+    document.body.style.paddingBottom = bar.offsetHeight + "px";
+  }
+  adjustBodyPadding();
+  window.addEventListener("resize", adjustBodyPadding);
 
   return bar;
 } 
