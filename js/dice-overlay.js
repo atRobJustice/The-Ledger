@@ -1362,13 +1362,29 @@ let latestImpairmentMessage = null;
       const SOCIAL   = ["charisma", "manipulation", "composure"];
       const MENTAL   = ["intelligence", "wits", "resolve"];
 
-      const attr = firstStatName.toLowerCase();
+      const attr1 = firstStatName.toLowerCase();
+      const attr2 = secondStatName ? secondStatName.toLowerCase() : '';
       let penalty = 0;
-      if (document.body.classList.contains('health-impaired') && PHYSICAL.includes(attr)) {
+      const causes = [];
+      if (document.body.classList.contains('health-impaired') && (PHYSICAL.includes(attr1) || PHYSICAL.includes(attr2))) {
         penalty += 2;
+        if(document.body.classList.contains('health-torpor')){
+          causes.push('Torpor');
+        } else {
+          causes.push('Physical Impairment');
+        }
       }
-      if (document.body.classList.contains('willpower-impaired') && (SOCIAL.concat(MENTAL)).includes(attr)) {
+      if (document.body.classList.contains('willpower-impaired') && ((SOCIAL.concat(MENTAL)).includes(attr1) || (SOCIAL.concat(MENTAL)).includes(attr2))) {
         penalty += 2;
+        if(document.body.classList.contains('willpower-pariah')){
+          causes.push('Pariah');
+        } else {
+          causes.push('Willpower Impairment');
+        }
+      }
+      if (document.body.classList.contains('humanity-impaired')) {
+        penalty += 2;
+        causes.push('Humanity Impairment');
       }
       if (penalty > 0) {
         total = Math.max(0, total - penalty);
@@ -1381,13 +1397,7 @@ let latestImpairmentMessage = null;
 
       let note = null;
       if (penalty > 0) {
-        let cause = '';
-        if (document.body.classList.contains('health-impaired') && PHYSICAL.includes(attr)) {
-          cause = 'Physical impairment';
-        } else if (document.body.classList.contains('willpower-impaired') && (SOCIAL.concat(MENTAL)).includes(attr)) {
-          cause = 'Willpower impairment';
-        }
-        note = `${cause}: -${penalty} dice applied`;
+        note = `${causes.join(' + ')}: -${penalty} dice applied`;
       }
       latestImpairmentMessage = note;
 

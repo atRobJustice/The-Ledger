@@ -4,6 +4,12 @@
     style.textContent = `
     .track-container.impaired { outline: 2px solid #dc3545; border-radius: 4px; }
     .track-container.impaired .track-header::after { content: " IMPAIRED"; color:#dc3545; font-weight:bold; margin-left:0.5rem; }
+    .track-container.torpor { outline: 2px solid #787878; border-radius: 4px; }
+    .track-container.torpor .track-header::after { content: " TORPOR"; color:#0d6efd; font-weight:bold; margin-left:0.5rem; }
+    .track-container.pariah { outline: 2px solid #787878; border-radius: 4px; }
+    .track-container.pariah .track-header::after { content: " PARIAH"; color:#6f42c1; font-weight:bold; margin-left:0.5rem; }
+    .track-container.regret { outline: 2px solid #787878; border-radius: 4px; }
+    .track-container.regret .track-header::after { content: " REGRET"; color:#ffc107; font-weight:bold; margin-left:0.5rem; }
     `;
     document.head.appendChild(style);
 })();
@@ -381,20 +387,63 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
     updateCurrentValue($trackBoxes[0]);
 }
 function evaluateImpairmentStatus() {
-    // Determine whether the character is impaired due to Health or Willpower
+    function assessTrack($track) {
+        if(!$track.length) return 'healthy';
+        const total = $track.find('.track-box').length;
+        const sup = $track.find('.track-box.superficial').length;
+        const agg = $track.find('.track-box.aggravated').length;
+        if (sup + agg < total) return 'healthy';
+        // Track full
+        if (agg === total) return 'aggravatedFull';
+        return 'superficialFull';
+    }
+
     const $health = $('.track-container[data-type="health"]');
     const $willpower = $('.track-container[data-type="willpower"]');
 
-    const healthImpaired = $health.length && parseInt($health.data('value') || '0', 10) === 0;
-    const willpowerImpaired = $willpower.length && parseInt($willpower.data('value') || '0', 10) === 0;
+    const healthStatus = assessTrack($health);
+    const willpowerStatus = assessTrack($willpower);
 
-    // Store flags on <body> for easy querying from other modules
-    $('body').toggleClass('health-impaired', !!healthImpaired);
-    $('body').toggleClass('willpower-impaired', !!willpowerImpaired);
+    // Reset classes
+    $health.removeClass('impaired torpor');
+    $willpower.removeClass('impaired pariah');
+    $('body').removeClass('health-impaired health-torpor willpower-impaired willpower-pariah');
 
-    // Toggle visual indicator on the relevant track containers
-    $health.toggleClass('impaired', !!healthImpaired);
-    $willpower.toggleClass('impaired', !!willpowerImpaired);
+    // Apply according to status
+    if (healthStatus === 'superficialFull') {
+        $health.addClass('impaired');
+        $('body').addClass('health-impaired');
+    } else if (healthStatus === 'aggravatedFull') {
+        $health.addClass('torpor impaired');
+        $('body').addClass('health-impaired health-torpor');
+    }
+
+    if (willpowerStatus === 'superficialFull') {
+        $willpower.addClass('impaired');
+        $('body').addClass('willpower-impaired');
+    } else if (willpowerStatus === 'aggravatedFull') {
+        $willpower.addClass('pariah impaired');
+        $('body').addClass('willpower-impaired willpower-pariah');
+    }
+
+    const $humanity = $('.track-container[data-type="humanity"]');
+
+    const humanityStatus = (function(){
+        if(!$humanity.length) return 'healthy';
+        const total = $humanity.find('.track-box').length;
+        const filled = $humanity.find('.track-box.filled').length;
+        const stained = $humanity.find('.track-box.stained').length;
+        return (stained > 0 && (filled + stained === total)) ? 'regret' : 'healthy';
+    })();
+
+    // Reset classes for humanity
+    $humanity.removeClass('impaired regret');
+    $('body').removeClass('humanity-impaired');
+
+    if(humanityStatus === 'regret'){
+        $humanity.addClass('regret impaired');
+        $('body').addClass('humanity-impaired');
+    }
 }
 function updateCurrentValue(trackBoxes) {
     const $trackBoxes = $(trackBoxes);
