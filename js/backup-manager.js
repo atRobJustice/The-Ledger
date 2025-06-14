@@ -200,6 +200,15 @@
                 localStorage.removeItem('ledger-discord-webhook');
             }
         }
+
+        // Recalculate and apply impairment classes based on imported track states
+        if(typeof evaluateImpairmentStatus === 'function') {
+            try {
+                evaluateImpairmentStatus();
+            } catch(err) {
+                console.warn('Failed to evaluate impairment status after import', err);
+            }
+        }
     }
 
     function applyTrackState($track, state){

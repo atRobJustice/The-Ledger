@@ -445,6 +445,12 @@ function evaluateImpairmentStatus() {
         $('body').addClass('humanity-impaired');
     }
 }
+
+// Expose impairment evaluation for external modules (e.g., backup-manager)
+if (typeof window !== 'undefined') {
+    window.evaluateImpairmentStatus = evaluateImpairmentStatus;
+}
+
 function updateCurrentValue(trackBoxes) {
     const $trackBoxes = $(trackBoxes);
     const $header = $trackBoxes.find('.track-header');

@@ -7,6 +7,7 @@
 import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "./discord-integration.js";
 import { initControlBar } from "./control-bar.js";
 import { bloodPotency as bpData } from "./references/blood_potency.js";
+import { disciplines } from "./disciplines.js";
 
 // New flag: track whether the most recent roll used Blood Surge
 let lastRollHadBloodSurge = false;
@@ -165,6 +166,9 @@ let latestImpairmentMessage = null;
   let firstStatName = null;   // must be attribute
   let secondStatName = null;  // attribute, skill, or skill/discipline
   var selectedSpecialty = null; // globally accessible; will hold {skill, name} or null
+  // Currently selected Discipline power (if any)
+  //  Structure: { element, disciplineKey, powerName, rouseDice }
+  let activePower = null;
 
   // Simple visual outline to show selections
   (function injectSelectionStyles() {
@@ -189,6 +193,13 @@ let latestImpairmentMessage = null;
       }
     `;
     document.head.appendChild(style2);
+  })();
+
+  // Inject style for selected power highlight
+  (function injectPowerSelectionStyles(){
+    const style = document.createElement('style');
+    style.textContent = `.selected-power.dice-power-selected{ outline: 2px solid var(--bs-primary); }`;
+    document.head.appendChild(style);
   })();
 
   // Helper: return the effective dot/value for a stat row given its label text
@@ -1344,6 +1355,87 @@ let latestImpairmentMessage = null;
       }
     });
 
+    // ------------------------------------------------------
+    //  Discipline Power selection (for automatic Rouse dice)
+    // ------------------------------------------------------
+
+    // Helper: parse number of required Rouse checks from cost string
+    function parseRouseChecks(costStr = "") {
+      if (!costStr || !/rouse/i.test(costStr)) return 0;
+
+      // First, look for explicit digit e.g. "2 Rouse Checks"
+      const numMatch = costStr.match(/(\d+)\s+rouse/i);
+      if (numMatch) return parseInt(numMatch[1]);
+
+      // Fallback: word numbers (one, two, three ...)
+      const wordMap = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+      const wordMatch = costStr.match(/(one|two|three|four|five|six)\s+rouse/i);
+      if (wordMatch) return wordMap[wordMatch[1].toLowerCase()] || 0;
+
+      // Default to 1 if "Rouse" mentioned but no number
+      return 1;
+    }
+
+    // Helper: locate power object in discipline data
+    function findPowerObject(disciplineKey, powerName) {
+      const disc = disciplines?.types?.[disciplineKey];
+      if (!disc) return null;
+
+      // Search regular level powers
+      if (disc.powers && typeof disc.powers === 'object') {
+        for (const lvl of Object.values(disc.powers)) {
+          const match = lvl.find((p) => p.name === powerName);
+          if (match) return match;
+        }
+      }
+
+      // Search amalgams if any
+      if (Array.isArray(disc.amalgams)) {
+        const match = disc.amalgams.find((p) => p.name === powerName);
+        if (match) return match;
+      }
+      return null;
+    }
+
+    // Click handler for selecting a discipline power row
+    document.addEventListener('click', (ev) => {
+      const powerEl = ev.target.closest('.selected-power');
+      if (!powerEl) return;
+
+      // Determine discipline key from closest discipline-item container
+      const discItem = powerEl.closest('.discipline-item');
+      if (!discItem) return;
+      const disciplineKey = discItem.dataset.discipline;
+
+      const powerNameEl = powerEl.querySelector('.power-name');
+      if (!powerNameEl) return;
+      const powerName = powerNameEl.textContent.trim();
+
+      // Toggle selection
+      const alreadySelected = powerEl.classList.contains('dice-power-selected');
+
+      // Clear previous selection highlight
+      document.querySelectorAll('.selected-power.dice-power-selected').forEach(el => el.classList.remove('dice-power-selected'));
+      activePower = null;
+
+      if (!alreadySelected) {
+        powerEl.classList.add('dice-power-selected');
+
+        // Find power object
+        const powerObj = findPowerObject(disciplineKey, powerName);
+
+        // --- Rouse dice based on cost ----------------------------------
+        const costStr = powerObj?.cost || '';
+        const rouseDice = parseRouseChecks(costStr);
+        activePower = { element: powerEl, disciplineKey, powerName, rouseDice };
+
+        // --- Auto-select stats based on Dice Pool ----------------------
+        if (powerObj?.dicePool && typeof powerObj.dicePool === 'string') {
+          autoSelectStatsFromDicePool(powerObj.dicePool, disciplineKey);
+        }
+      }
+    });
+
     // Helper: compute VtM dice pools based on currently selected stats & hunger
     function computeDicePools() {
       if (!firstStatName || !secondStatName) {
@@ -1395,6 +1487,19 @@ let latestImpairmentMessage = null;
       const hungerDice = Math.min(5, Math.min(hungerScore, total));
       const standardDice = total - hungerDice;
 
+      // ----------------------------------------------
+      //  Discipline Power Cost → Rouse dice
+      // ----------------------------------------------
+      let rouseDice = 0;
+      if (activePower && activePower.rouseDice > 0) {
+        // Only apply if the selected power belongs to the chosen discipline row (secondStatName)
+        const discKey = activePower.disciplineKey;
+        const discName = (disciplines?.types?.[discKey]?.name || discKey || '').toLowerCase();
+        if (secondStatName && secondStatName.toLowerCase() === discName) {
+          rouseDice = activePower.rouseDice;
+        }
+      }
+
       let note = null;
       if (penalty > 0) {
         note = `${causes.join(' + ')}: -${penalty} dice applied`;
@@ -1404,10 +1509,88 @@ let latestImpairmentMessage = null;
       return {
         standard: standardDice,
         hunger: hungerDice,
-        rouse: 0,
+        rouse: rouseDice,
         remorse: 0,
         frenzy: 0,
       };
+    }
+
+    // Helper: clear any existing stat selections (visual + state)
+    function clearStatSelections() {
+      document.querySelectorAll('.stat.dice-first-stat').forEach(el=>el.classList.remove('dice-first-stat'));
+      document.querySelectorAll('.stat.dice-second-stat').forEach(el=>el.classList.remove('dice-second-stat'));
+      firstStatName = null;
+      secondStatName = null;
+      // Clear specialties selection as well
+      if(selectedSpecialty){
+        document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty'));
+        selectedSpecialty = null;
+      }
+    }
+
+    // Parse dicePool string and auto-select relevant stats
+    function autoSelectStatsFromDicePool(dicePoolStr, disciplineKey){
+      // Expected formats like "Wits + Auspex", "Wits/Resolve + Auspex", etc.
+      const parts = dicePoolStr.split('+').map(p=>p.trim()).filter(Boolean);
+      if(parts.length===0) return;
+
+      let attrCandidate = null;
+      let secondCandidate = null;
+
+      // First part may contain attribute(s)
+      const firstPart = parts[0];
+      const firstAlternatives = firstPart.split('/').map(p=>p.trim());
+      attrCandidate = firstAlternatives.find(alt => ATTRIBUTE_NAMES.includes(alt.toLowerCase()));
+
+      // If attribute not found yet and we have a second part, check there
+      if(!attrCandidate && parts.length>1){
+        const secondFirstAlt = parts[1].split('/').map(p=>p.trim());
+        attrCandidate = secondFirstAlt.find(alt => ATTRIBUTE_NAMES.includes(alt.toLowerCase()));
+      }
+
+      // Decide second stat: typically the part after '+'
+      if(parts.length > 1){
+        secondCandidate = parts[1];
+      } else {
+        // If only one part, and it included attribute and something else separated by space? Unlikely
+        secondCandidate = firstAlternatives.find(alt => alt !== attrCandidate);
+      }
+
+      // Fallback: if secondCandidate equals disciplineKey? ensure proper capitalization later.
+      // Clean secondCandidate (if contains alternatives, choose first)
+      if(secondCandidate){
+        secondCandidate = secondCandidate.split('/')[0].trim();
+      }
+
+      // Map discipline key to display name to match stat labels.
+      if(secondCandidate && secondCandidate.toLowerCase() === disciplineKey.toLowerCase()){
+        // Use configured discipline display name if any
+        const discName = disciplines?.types?.[disciplineKey]?.name || disciplineKey;
+        secondCandidate = discName;
+      }
+
+      // Now perform selection
+      if(attrCandidate){
+        clearStatSelections();
+
+        // First stat (attribute)
+        const attrRow = findStatRow(attrCandidate);
+        if(attrRow){
+          attrRow.classList.add('dice-first-stat');
+          firstStatName = attrCandidate;
+        }
+
+        // Second stat
+        if(secondCandidate){
+          const secRow = findStatRow(secondCandidate);
+          if(secRow){
+            secRow.classList.add('dice-second-stat');
+            secondStatName = secondCandidate;
+          } else {
+            // Could not find row; leave secondStatName unset
+          }
+        }
+      }
     }
   });
 })(); 
