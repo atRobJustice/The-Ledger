@@ -1061,7 +1061,9 @@ h1, h2, h3 {
 .coterie-flaw-category-dropdown,
 .coterie-flaw-dropdown,
 .loresheet-category-dropdown,
-.loresheet-dropdown {
+.loresheet-dropdown,
+.resonance-dropdown,
+.temperament-dropdown {
   background-color: #1a1a1a;
   border: 1px solid #333;
   color: #dcd0c0;
@@ -1087,7 +1089,9 @@ h1, h2, h3 {
 .coterie-flaw-category-dropdown:focus,
 .coterie-flaw-dropdown:focus,
 .loresheet-category-dropdown:focus,
-.loresheet-dropdown:focus {
+.loresheet-dropdown:focus,
+.resonance-dropdown:focus,
+.temperament-dropdown:focus {
   outline: none;
   border-color: #a40000;
   box-shadow: none;
@@ -1112,7 +1116,9 @@ h1, h2, h3 {
 .coterie-flaw-category-dropdown option,
 .coterie-flaw-dropdown option,
 .loresheet-category-dropdown option,
-.loresheet-dropdown option {
+.loresheet-dropdown option,
+.resonance-dropdown option,
+.temperament-dropdown option {
   outline: none;
   background-color: #1a1a1a;
   color: #dcd0c0;
@@ -1137,7 +1143,9 @@ h1, h2, h3 {
 .coterie-flaw-category-dropdown:disabled,
 .coterie-flaw-dropdown:disabled,
 .loresheet-category-dropdown:disabled,
-.loresheet-dropdown:disabled {
+.loresheet-dropdown:disabled,
+.resonance-dropdown:disabled,
+.temperament-dropdown:disabled {
   outline: none;
   background-color: #555;
   cursor: not-allowed;

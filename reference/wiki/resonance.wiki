@@ -1,0 +1,72 @@
+Mortal blood powers the vampire's corpse, allowing them to remain active during the nights and tap into their powers. Kindred know that it's more than the breakdown of the blood in scientific terms and instead linked to some unknown essence in the blood. When Kindred find the right victim or when they drink deep enough they find something more known as Resonance. This is a tool crucial to all vampires and not just the alchemists or blood mages who can utilize these emotions in their work. Resonances strengthen the Kindred's powers as determined by their [[Blood Potency]] and sometimes with the right amount of kick to it, can give other benefits known as '''Dyscrasia'''.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 226-227</ref>
+
+== The Resonances ==
+The Resonances can be broken down into four main types known as <i>Choleric, Melancholic, Phlegmatic, and Sanguine</i>. There are an additional two types, known as "Empty" and Animal Blood.
+
+=== Choleric ===
+The humor of passion and anger but also one of jealousy and violence. This Resonance can, but not exclusively, be found in vessels that have the will to fight back against whatever problems they face.<ref name=":0" /> 
+
+* Emotions: Angry, violent, bullying, passionate or envious.
+* Disciplines: [[Celerity]] and [[Potence]].
+
+=== Melancholy ===
+The humor of sadness and the downtrodden but also those who seek enlightenment. This Resonance can, but not exclusively, be found in vessels who have lost the will to fight or those who are seized by the gain of knowledge.<ref name=":0" /> 
+
+* Emotions: Sad, scared, depressed, intellectual, or grounded.
+* Disciplines: [[Fortitude]] and [[Obfuscate]].
+
+=== Phlegmatic ===
+The humor of those who are calm and relaxed or those who are lost in their own reminiscing. This Resonance can, but not exclusively, be found in vessels who are at peace or can't find a reason to care at the moment.<ref name=":0" /> 
+
+* Emotions: Lazy, apathetic, calm, controlling, and sentimental.
+* Disciplines: [[Auspex]] and [[Dominate]].
+
+=== Sanguine ===
+The humor of sex and passion but also of happiness and liveliness. This Resonance can, but not exclusively, be found in vessels who have a sexual interest in the vampire or are simply enjoying life itself.<ref name=":0" /> 
+
+* Emotions: Horny, happy, enthusiastic, addicted, active, and flighty.
+* Disciplines: [[Blood Sorcery]] and [[Presence]].
+
+=== "Empty" ===
+This Resonance represents those who lack general emotions.<ref>[[Vampire: The Masquerade Cults of the Blood Gods]], page 204 or [[Vampire: The Masquerade Chicago by Night]], page 293</ref>
+
+* Emotions: That of sociopaths or the emotionally detached.
+* Disciplines: [[Oblivion]].
+
+=== Animal Blood ===
+While not a Resonance, it does serve a purpose to vampires. Giving them access to the last two Disciplines. The Storyteller is free to correlate animal blood to the main four Resonances, should they find it important to their chronicle. <ref name=":0" />
+
+* Emotions: None. Not tied to any emotion, simply animal blood.
+* Disciplines: [[Animalism]] and [[Protean]].
+
+== Temperament and Dyscrasia ==
+When a Resonance is found, it comes in three different temperaments. These are known as: <i>fleeting, intense, and acute.</i>
+
+As a guide, given an average population:
+{| class="wikitable"
+!Temperament!!%
+|-
+|None/Negligible||50
+|-
+|Fleeting||30
+|-
+|Intense||16
+|-
+|Acute||4
+|}
+
+===Fleeting===
+Fleeting temperament is something that occurs in that moment, something from outside stimuli has influenced this Resonance and humans with basic emotional equilibrium experience this often. This temperament isn't strong enough to give them a bonus, however it is enough to justify the character purchasing dots in the Resonance's associated Discipline.
+
+===Intense===
+Intense temperament indicates that the mortal has a strong tendency towards a Resonance, perhaps it's due to past traumas or from a very rewarding lifestyle that gives them a constant dopamine hit. With the strength of this Resonance, characters who consume it receive a bonus of one die towards the pools of the Resonance's associated Disciplines which lasts until their next drink of blood or until their [[Hunger system|Hunger]] hits 5.
+
+===Acute===
+The acute Resonance is so intense that it contains a self-sustaining reaction, which provides the same bonus as intense, however it also can be taken further.
+
+====Dyscrasia====
+From acute Resonance a Kindred can find something called a Dyscrasia. This is only able to be tapped, unless otherwise stated, through the killing and draining of the vessel or from feeding from them over a course of three nights. Some of these Dyscrasia effects can only be tapped once and others can linger and be tapped on later occasion. The effects of Dyscrasia generally only last till the next feeding or till they reach Hunger 5.<ref>[[Vampire: The Masquerade Corebook]], page 227-228</ref>
+{{Template:GameConceptsNavbox}}
+[[Category:Index]]
+
+== References ==

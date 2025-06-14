@@ -113,18 +113,12 @@ function createClanDropdown(value) {
 
 // Function to create a dropdown for generation
 function createGenerationDropdown(value) {
-    const $select = $('<select>', {
-        'class': 'form-select generation-dropdown',
-        'aria-label': 'Select generation'
-    });
-
-    // Add empty option
-    $select.append($('<option>', {
-        'value': '',
-        'text': 'Select Generation'
-    }));
-
-    return $select[0];
+    const dropdown = $('<select>', { 'class': 'form-select form-select-sm generation-dropdown' });
+    dropdown.append($('<option>', { 'value': '', 'text': 'Select Generation' }));
+    if (value && value.trim() !== '') {
+        dropdown.val(value.trim());
+    }
+    return dropdown;
 }
 
 // Function to create a dropdown for blood potency
@@ -489,7 +483,7 @@ $(document).ready(function() {
             // Fields that should be text inputs
             const textFields = [
                 'name', 'concept', 'chronicle', 'ambition', 'desire', 
-                'sire', 'resonance'
+                'sire'
             ];
             
             // Fields that should have track boxes
@@ -618,6 +612,14 @@ $(document).ready(function() {
                     statLabel
                 );
                 $valueSpan.replaceWith(trackBoxes);
+            } else if (statLabel === 'resonance') {
+                const dropdown = createResonanceDropdown(value);
+                $valueSpan.replaceWith(dropdown);
+                populateResonanceDropdown(dropdown);
+            } else if (statLabel === 'temperament') {
+                const dropdown = createTemperamentDropdown(value);
+                $valueSpan.replaceWith(dropdown);
+                populateTemperamentDropdown(dropdown);
             } else {
                 // Default to 5 dots for attributes and skills
                 const dotsContainer = createDots(parseInt(value) || 0, 5);
@@ -1292,6 +1294,164 @@ $(document).ready(function() {
                 'value': 'error',
                 'text': 'Error loading blood potency'
             }));
+        }
+    }
+
+    // Create dropdown for Resonance
+    function createResonanceDropdown(value) {
+        const dropdown = $('<select>', { 'class': 'form-select form-select-sm resonance-dropdown' });
+        dropdown.append($('<option>', { 'value': '', 'text': 'Select Resonance' }));
+        if (value && value.trim() !== '') {
+            dropdown.val(value.trim());
+        }
+        return dropdown;
+    }
+
+    // Create dropdown for Temperament
+    function createTemperamentDropdown(value) {
+        const dropdown = $('<select>', { 'class': 'form-select form-select-sm temperament-dropdown' });
+        dropdown.append($('<option>', { 'value': '', 'text': 'Select Temperament' }));
+        if (value && value.trim() !== '') {
+            dropdown.val(value.trim());
+        }
+        return dropdown;
+    }
+
+    // Populate Resonance dropdown from references/resonances.js
+    async function populateResonanceDropdown(dropdown) {
+        try {
+            const module = await import('./references/resonances.js');
+            const resonanceData = module.resonances;
+            const entries = Object.entries(resonanceData.types);
+            // Sort alphabetically by name
+            entries.sort((a, b) => a[1].name.localeCompare(b[1].name));
+            entries.forEach(([key, data]) => {
+                $(dropdown).append($('<option>', {
+                    'value': key,
+                    'text': data.name,
+                    'title': data.description
+                }));
+            });
+
+            // Ensure info modal exists
+            let $modal = $('#resonance-info-modal');
+            if ($modal.length === 0) {
+                $modal = $(
+                    `<div class="modal fade" id="resonance-info-modal" tabindex="-1" aria-labelledby="resonanceModalLabel" role="dialog" aria-modal="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="resonanceModalLabel">Resonance</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="resonance-info-content"><!-- Content inserted dynamically --></div>
+                                <div class="modal-footer"></div>
+                            </div>
+                        </div>
+                    </div>`
+                );
+                $('body').append($modal);
+            }
+
+            // Add info button next to dropdown
+            const $infoButton = $('<button>', {
+                'class': 'btn btn-sm btn-outline-secondary ms-2 resonance-info-button',
+                'html': '<i class="bi bi-info-circle"></i>',
+                'aria-label': 'Show resonance information',
+                'data-bs-toggle': 'tooltip',
+                'data-bs-placement': 'top',
+                'title': 'Show detailed information about this resonance'
+            });
+
+            $infoButton.on('click', function(e) {
+                e.preventDefault();
+                const selectedValue = $(dropdown).val();
+                if (selectedValue && resonanceData.types[selectedValue]) {
+                    const res = resonanceData.types[selectedValue];
+                    $('#resonanceModalLabel').text(res.name);
+                    let content = `<p>${res.description}</p>`;
+                    if (res.emotions && res.emotions.length) {
+                        content += `<p><strong>Emotions:</strong> ${res.emotions.join(', ')}</p>`;
+                    }
+                    if (res.disciplines && res.disciplines.length) {
+                        content += `<p><strong>Associated Disciplines:</strong> ${res.disciplines.join(', ')}</p>`;
+                    }
+                    $('#resonance-info-content').html(content);
+                    const modalElem = document.getElementById('resonance-info-modal');
+                    bootstrap.Modal.getOrCreateInstance(modalElem).show();
+                }
+            });
+
+            $(dropdown).after($infoButton);
+            new bootstrap.Tooltip($infoButton[0]);
+        } catch (err) {
+            console.error('Error loading resonances:', err);
+        }
+    }
+
+    // Populate Temperament dropdown from references/resonances.js
+    async function populateTemperamentDropdown(dropdown) {
+        try {
+            const module = await import('./references/resonances.js');
+            const temperamentData = module.resonances.temperaments;
+            const entries = Object.entries(temperamentData);
+            // Keep order: fleeting, intense, acute
+            const order = ['fleeting', 'intense', 'acute'];
+            entries.sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+            entries.forEach(([key, data]) => {
+                $(dropdown).append($('<option>', {
+                    'value': key,
+                    'text': data.name,
+                    'title': data.description
+                }));
+            });
+
+            // Ensure modal exists
+            let $modal = $('#temperament-info-modal');
+            if ($modal.length === 0) {
+                $modal = $(
+                    `<div class="modal fade" id="temperament-info-modal" tabindex="-1" aria-labelledby="temperamentModalLabel" role="dialog" aria-modal="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="temperamentModalLabel">Temperament</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="temperament-info-content"></div>
+                                <div class="modal-footer"></div>
+                            </div>
+                        </div>
+                    </div>`
+                );
+                $('body').append($modal);
+            }
+
+            const $infoButton = $('<button>', {
+                'class': 'btn btn-sm btn-outline-secondary ms-2 temperament-info-button',
+                'html': '<i class="bi bi-info-circle"></i>',
+                'aria-label': 'Show temperament information',
+                'data-bs-toggle': 'tooltip',
+                'data-bs-placement': 'top',
+                'title': 'Show detailed information about this temperament'
+            });
+
+            $infoButton.on('click', function(e) {
+                e.preventDefault();
+                const selectedValue = $(dropdown).val();
+                if (selectedValue && temperamentData[selectedValue]) {
+                    const temp = temperamentData[selectedValue];
+                    $('#temperamentModalLabel').text(temp.name);
+                    let content = `<p>${temp.description}</p>`;
+                    $('#temperament-info-content').html(content);
+                    const modalElem = document.getElementById('temperament-info-modal');
+                    bootstrap.Modal.getOrCreateInstance(modalElem).show();
+                }
+            });
+
+            $(dropdown).after($infoButton);
+            new bootstrap.Tooltip($infoButton[0]);
+        } catch (err) {
+            console.error('Error loading temperaments:', err);
         }
     }
 

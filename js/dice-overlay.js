@@ -15,6 +15,9 @@ let lastRollHadBloodSurge = false;
 // Tracks the latest impairment message to display on overlay
 let latestImpairmentMessage = null;
 
+// declare at top of IIFE maybe near other globals
+let bonusMsg = null;
+
 (function () {
   "use strict";
 
@@ -1278,6 +1281,13 @@ let latestImpairmentMessage = null;
             banner.textContent = latestImpairmentMessage;
             canvasContainer.appendChild(banner);
           }
+          if (window.latestResonanceBonusMessage) {
+            const banner = document.createElement('div');
+            banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-success bg-opacity-75 text-white fw-bold py-1 px-3 rounded mt-4';
+            banner.style.zIndex = '2009';
+            banner.textContent = window.latestResonanceBonusMessage;
+            canvasContainer.appendChild(banner);
+          }
           rollVtmDice(canvasContainer, pools, () => {});
           // Update WP reroll availability after roll
           refreshWPRerollButton();
@@ -1482,29 +1492,55 @@ let latestImpairmentMessage = null;
         total = Math.max(0, total - penalty);
       }
 
+      // ----------------------------------------------
+      //  Resonance Temperament Bonus (+1 die)
+      // ----------------------------------------------
+      let totalBonusApplied = false;
+      try {
+        const resonanceKey = document.querySelector('.resonance-dropdown')?.value || '';
+        const temperamentKey = document.querySelector('.temperament-dropdown')?.value || '';
+        const intenseBonus = (temperamentKey === 'intense' || temperamentKey === 'acute');
+        const resData = window.__resonancesData;
+        if (intenseBonus && resonanceKey && resData && resData.types?.[resonanceKey]) {
+          const assocDisciplines = resData.types[resonanceKey].disciplines.map(d=>d.toLowerCase());
+          if (secondStatName && assocDisciplines.includes(secondStatName.toLowerCase())) {
+            total += 1; // add bonus die
+            totalBonusApplied = true;
+          }
+        }
+      } catch (e) {
+        console.error('Error applying resonance temperament bonus:', e);
+      }
+
+      // Store bonus message
+      let bonusMsg = null;
+      if (totalBonusApplied) {
+        bonusMsg = '+1 die: Resonance bonus (Intense/Acute)';
+      }
+
       // Hunger dice – cap to 5 and cannot exceed total pool
       const hungerScore = getStatValueByName("Hunger");
       const hungerDice = Math.min(5, Math.min(hungerScore, total));
       const standardDice = total - hungerDice;
-
-      // ----------------------------------------------
-      //  Discipline Power Cost → Rouse dice
-      // ----------------------------------------------
-      let rouseDice = 0;
-      if (activePower && activePower.rouseDice > 0) {
-        // Only apply if the selected power belongs to the chosen discipline row (secondStatName)
-        const discKey = activePower.disciplineKey;
-        const discName = (disciplines?.types?.[discKey]?.name || discKey || '').toLowerCase();
-        if (secondStatName && secondStatName.toLowerCase() === discName) {
-          rouseDice = activePower.rouseDice;
-        }
-      }
 
       let note = null;
       if (penalty > 0) {
         note = `${causes.join(' + ')}: -${penalty} dice applied`;
       }
       latestImpairmentMessage = note;
+      window.latestResonanceBonusMessage = bonusMsg;
+
+      // ----------------------------------------------
+      //  Discipline Power Cost → Rouse dice
+      // ----------------------------------------------
+      let rouseDice = 0;
+      if (activePower && activePower.rouseDice > 0) {
+        const discKey = activePower.disciplineKey;
+        const discName = (disciplines?.types?.[discKey]?.name || discKey || '').toLowerCase();
+        if (secondStatName && secondStatName.toLowerCase() === discName) {
+          rouseDice = activePower.rouseDice;
+        }
+      }
 
       return {
         standard: standardDice,
@@ -1592,5 +1628,18 @@ let latestImpairmentMessage = null;
         }
       }
     }
+
+    // -------------------------------------------------------------
+    //  Resonance data loading
+    // -------------------------------------------------------------
+    (async () => {
+      try {
+        const module = await import('./references/resonances.js');
+        window.__resonancesData = module.resonances;
+      } catch (err) {
+        console.error('Failed to load resonance data:', err);
+        window.__resonancesData = null;
+      }
+    })();
   });
 })(); 
