@@ -4,11 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-06-14
+
+### Added
+- New Theme system: Control-bar button opens a palette selector (Blood & Roses dark, Ivory Tower light, plus 14 clan-specific schemes).
+
+### Changed
+- Control Bar deduplication: `dice-overlay.js` now relies on `control-bar.js`, eliminating duplicate UI/button logic and making the bar the single source of truth.
+- Refactored SCSS to remove remaining hard-coded colours.  Introduced additional design-token variables (`$color-white`, `$color-black`, grayscale palette, etc.) and CSS custom properties (`--accent`, `--panel-*`, `--form-*`) so that every component inherits the active theme automatically.
+- All tracked components (tracks, dots, buttons, form controls, selects, modals, Discipline & Power cards) now pull palette values from the new Theme system.
+- Updated hover/focus states and disabled styles to respect the new variables.
+
+### Fixed
+- Modal and form text colours now adapt to light themes (Ivory Tower) restoring readability.
+- Deleted / remove buttons, checkbox labels, and other previously red/white elements now match the clan accent colour.
+
 ## [1.0.2] - 2025-06-14
 
 ### Added
 - Roll modal now shows an informational breakdown banner listing attributes, specialties, bonuses, and penalties applied to the dice pool so players understand how their roll is calculated.
-- New Theme system: Control-bar button opens a palette selector (Blood & Roses dark, Ivory Tower light, plus 14 clan-specific schemes).
 
 ### Fixed
 - Roll modal now correctly displays the bonus die notice when Intense\Accute Temperament is used with an associated Discipline.

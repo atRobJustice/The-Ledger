@@ -15,6 +15,15 @@ body[data-theme='banu'] {
   .ledger { background: #FBF7F4; color: #23101B; border-color: #424242; border-left-color: #B29D34; }
   .btn-success { background-color: #B29D34; }
   .btn-danger { background-color: #72171A; }
+  /* Accent variable for shared component overrides */
+  --accent: #B29D34;
+  --form-bg: #FBF7F4;
+  --form-border: #424242;
+  --form-text: #23101B;
+  --panel-bg: #FBF7F4;
+  --panel-border: #424242;
+  --panel-border-light: #424242;
+  --panel-text: #23101B;
 }
 
 // ----- Brujah --------------------------------------------------------
@@ -25,6 +34,15 @@ body[data-theme='brujah'] {
   .ledger { background: #333333; color: #FFB53D; border-color: #C30011; border-left-color: #FF7214; }
   .btn-success { background-color: #FF7214; }
   .btn-danger { background-color: #C30011; }
+  /* Accent variable */
+  --accent: #FF7214;
+  --form-bg: #333333;
+  --form-border: #C30011;
+  --form-text: #FFB53D;
+  --panel-bg: #333333;
+  --panel-border: #C30011;
+  --panel-border-light: #C30011;
+  --panel-text: #FFB53D;
 }
 
 // ----- Gangrel -------------------------------------------------------
@@ -35,6 +53,14 @@ body[data-theme='gangrel'] {
   .ledger { background: #594E36; color: #EDEBDD; border-color: #2E2F04; border-left-color: #795D15; }
   .btn-success { background-color: #2E2F04; }
   .btn-danger { background-color: #795D15; }
+  --accent: #795D15;
+  --form-bg: #594E36;
+  --form-border: #2E2F04;
+  --form-text: #EDEBDD;
+  --panel-bg: #594E36;
+  --panel-border: #2E2F04;
+  --panel-border-light: #2E2F04;
+  --panel-text: #EDEBDD;
 }
 
 // ----- Hecata --------------------------------------------------------
@@ -45,6 +71,14 @@ body[data-theme='hecata'] {
   .ledger { background: #F5EDF0; color: #3D2C2E; border-color: #886F68; border-left-color: #D1CDDC; }
   .btn-success { background-color: #886F68; }
   .btn-danger { background-color: #424C55; }
+  --accent: #D1CDDC;
+  --form-bg: #F5EDF0;
+  --form-border: #886F68;
+  --form-text: #3D2C2E;
+  --panel-bg: #F5EDF0;
+  --panel-border: #886F68;
+  --panel-border-light: #886F68;
+  --panel-text: #3D2C2E;
 }
 
 // ----- Lasombra ------------------------------------------------------
@@ -53,6 +87,14 @@ body[data-theme='lasombra'] {
   color: #292B36;
   h1, h2, h3 { color: #201A28; border-color: #201A28; }
   .ledger { background: #19272A; color: #F0F0F0; border-color: #201A28; border-left-color: #292B36; }
+  --accent: #201A28;
+  --form-bg: #19272A;
+  --form-border: #201A28;
+  --form-text: #F0F0F0;
+  --panel-bg: #19272A;
+  --panel-border: #201A28;
+  --panel-border-light: #201A28;
+  --panel-text: #F0F0F0;
 }
 
 // ----- Malkavian -----------------------------------------------------
@@ -61,6 +103,14 @@ body[data-theme='malkavian'] {
   color: #F1AB13;
   h1, h2, h3 { color: #F93943; border-color: #F93943; }
   .ledger { background: #FCB0B3; color: #333; border-color: #7EB2DD; border-left-color: #F93943; }
+  --accent: #F93943;
+  --form-bg: #FCB0B3;
+  --form-border: #7EB2DD;
+  --form-text: #333;
+  --panel-bg: #FCB0B3;
+  --panel-border: #7EB2DD;
+  --panel-border-light: #7EB2DD;
+  --panel-text: #333;
 }
 
 // ----- Ministry ------------------------------------------------------
@@ -69,6 +119,14 @@ body[data-theme='ministry'] {
   color: #6BD425;
   h1, h2, h3 { color: #6BD425; border-color: #6BD425; }
   .ledger { background: #61452E; color: #F0F0F0; border-color: #618B25; border-left-color: #6BD425; }
+  --accent: #6BD425;
+  --form-bg: #61452E;
+  --form-border: #618B25;
+  --form-text: #F0F0F0;
+  --panel-bg: #61452E;
+  --panel-border: #618B25;
+  --panel-border-light: #618B25;
+  --panel-text: #F0F0F0;
 }
 
 // ----- Nosferatu -----------------------------------------------------
@@ -77,6 +135,14 @@ body[data-theme='nosferatu'] {
   color: #A19F74;
   h1, h2, h3 { color: #A19F74; border-color: #A19F74; }
   .ledger { background: #404E51; color: #F0F0F0; border-color: #4D2B1E; border-left-color: #A19F74; }
+  --accent: #A19F74;
+  --form-bg: #404E51;
+  --form-border: #4D2B1E;
+  --form-text: #F0F0F0;
+  --panel-bg: #404E51;
+  --panel-border: #4D2B1E;
+  --panel-border-light: #4D2B1E;
+  --panel-text: #F0F0F0;
 }
 
 // ----- Ravnos --------------------------------------------------------
@@ -85,6 +151,14 @@ body[data-theme='ravnos'] {
   color: #F1A63C;
   h1, h2, h3 { color: #E15656; border-color: #E15656; }
   .ledger { background: #C78F44; color: #1B1B1B; border-color: #5C251F; border-left-color: #E15656; }
+  --accent: #E15656;
+  --form-bg: #C78F44;
+  --form-border: #5C251F;
+  --form-text: #1B1B1B;
+  --panel-bg: #C78F44;
+  --panel-border: #5C251F;
+  --panel-border-light: #5C251F;
+  --panel-text: #1B1B1B;
 }
 
 // ----- Salubri -------------------------------------------------------
@@ -93,6 +167,14 @@ body[data-theme='salubri'] {
   color: #E1FBFE;
   h1, h2, h3 { color: #A93F55; border-color: #A93F55; }
   .ledger { background: #F0EEF1; color: #333333; border-color: #5A5766; border-left-color: #A93F55; }
+  --accent: #A93F55;
+  --form-bg: #F0EEF1;
+  --form-border: #5A5766;
+  --form-text: #333333;
+  --panel-bg: #F0EEF1;
+  --panel-border: #5A5766;
+  --panel-border-light: #5A5766;
+  --panel-text: #333333;
 }
 
 // ----- Toreador ------------------------------------------------------
@@ -101,6 +183,14 @@ body[data-theme='toreador'] {
   color: #F3AFB6;
   h1, h2, h3 { color: #DD2C68; border-color: #DD2C68; }
   .ledger { background: #9F5D77; color: #F3F3F3; border-color: #4A001F; border-left-color: #DD2C68; }
+  --accent: #DD2C68;
+  --form-bg: #9F5D77;
+  --form-border: #4A001F;
+  --form-text: #F3F3F3;
+  --panel-bg: #9F5D77;
+  --panel-border: #4A001F;
+  --panel-border-light: #4A001F;
+  --panel-text: #F3F3F3;
 }
 
 // ----- Tremere -------------------------------------------------------
@@ -109,6 +199,14 @@ body[data-theme='tremere'] {
   color: #CCB2DC;
   h1, h2, h3 { color: #941414; border-color: #941414; }
   .ledger { background: #937EA5; color: #F5F5F5; border-color: #501E5C; border-left-color: #941414; }
+  --accent: #941414;
+  --form-bg: #937EA5;
+  --form-border: #501E5C;
+  --form-text: #F5F5F5;
+  --panel-bg: #937EA5;
+  --panel-border: #501E5C;
+  --panel-border-light: #501E5C;
+  --panel-text: #F5F5F5;
 }
 
 // ----- Tzimisce ------------------------------------------------------
@@ -117,6 +215,14 @@ body[data-theme='tzimisce'] {
   color: #86A59C;
   h1, h2, h3 { color: #643173; border-color: #643173; }
   .ledger { background: #B8C4BB; color: #1B1B1B; border-color: #333333; border-left-color: #643173; }
+  --accent: #643173;
+  --form-bg: #B8C4BB;
+  --form-border: #333333;
+  --form-text: #1B1B1B;
+  --panel-bg: #B8C4BB;
+  --panel-border: #333333;
+  --panel-border-light: #333333;
+  --panel-text: #1B1B1B;
 }
 
 // ----- Ventrue -------------------------------------------------------
@@ -125,4 +231,37 @@ body[data-theme='ventrue'] {
   color: #F5F2EF;
   h1, h2, h3 { color: #B09E4F; border-color: #B09E4F; }
   .ledger { background: #7E6D5D; color: #F0F0F0; border-color: #0F0D4F; border-left-color: #B09E4F; }
+  --accent: #B09E4F;
+  --form-bg: #7E6D5D;
+  --form-border: #0F0D4F;
+  --form-text: #F0F0F0;
+  --panel-bg: #7E6D5D;
+  --panel-border: #0F0D4F;
+  --panel-border-light: #0F0D4F;
+  --panel-text: #F0F0F0;
+}
+
+/* ---------------------------------------------------------------
+  Generic track / dot overrides using the --accent variable
+----------------------------------------------------------------*/
+body[data-theme] {
+  .track-header {
+    color: var(--accent);
+  }
+
+  .track-box,
+  .dot {
+    border-color: var(--accent);
+  }
+
+  .track-box.filled,
+  .track-box.superficial,
+  .track-box.aggravated,
+  .dot.filled {
+    background-color: var(--accent);
+  }
+
+  .track-box.stained {
+    border-color: var(--accent);
+  }
 } 

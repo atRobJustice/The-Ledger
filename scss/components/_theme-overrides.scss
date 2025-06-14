@@ -23,4 +23,14 @@ body[data-theme='ivory'] {
   .btn-danger {
     background-color: #8b2d2d;
   }
+
+  /* Accent variable for shared component overrides */
+  --accent: #8b0000;
+  --form-bg: #fbf7f2;
+  --form-border: #cbbfae;
+  --form-text: #2c1b1b;
+  --panel-bg: #fbf7f2;
+  --panel-border: #cbbfae;
+  --panel-border-light: #cbbfae;
+  --panel-text: #2c1b1b;
 }

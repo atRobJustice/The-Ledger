@@ -3,14 +3,14 @@
 
 // Discipline item styles
 .discipline-item {
-    border: $border-width $border-style $color-border;
+    border: $border-width $border-style var(--panel-border, $color-border);
     border-radius: $border-radius;
     padding: $spacing-md;
-    background-color: rgba($color-background, 0.5);
+    background-color: var(--panel-bg, rgba($color-background, 0.5));
 }
 
 .discipline-header {
-    border-bottom: $border-width $border-style $color-border-light;
+    border-bottom: $border-width $border-style var(--panel-border-light, $color-border-light);
     padding-bottom: $spacing-sm;
     margin-bottom: $spacing-sm;
 }
@@ -20,31 +20,32 @@
 }
 
 .power-level {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(var(--panel-border-rgb, 0,0,0), 0.3);
     border-radius: $border-radius;
     padding: 0.75rem;
-    border-left: 3px solid $color-primary;
+    border-left: 3px solid var(--accent, $color-primary);
 }
 
 .selected-power {
-    background-color: rgba($color-primary, 0.1) !important;
-    border: $border-width $border-style rgba($color-primary, 0.3);
+    background-color: rgba(var(--accent-rgb, 164,0,0), 0.1) !important;
+    border: $border-width $border-style rgba(var(--accent-rgb, 164,0,0), 0.3);
+    color: var(--panel-text, $color-text);
 }
 
 .power-name {
-    color: $color-primary;
+    color: var(--accent, $color-primary);
     font-weight: bold;
 }
 
 .power-option {
-    background-color: rgba($color-background, 0.8);
-    border-color: $color-border-light !important;
+    background-color: var(--panel-bg, rgba($color-background, 0.8));
+    border-color: var(--panel-border-light, $color-border-light) !important;
     cursor: pointer;
     transition: $transition-base;
 
     &:hover {
-        border-color: $color-primary !important;
-        background-color: rgba($color-primary, 0.1);
+        border-color: var(--accent, $color-primary) !important;
+        background-color: rgba(var(--accent-rgb, 164,0,0), 0.1);
     }
 
     .badge {
@@ -76,7 +77,7 @@
     .dot {
         width: 16px;
         height: 16px;
-        border: 2px solid $color-border-light;
+        border: 2px solid var(--panel-border-light, $color-border-light);
         border-radius: 50%;
         background-color: transparent;
         cursor: pointer;
@@ -84,13 +85,13 @@
         position: relative;
 
         &:hover {
-            border-color: $color-primary;
+            border-color: var(--accent, $color-primary);
             transform: scale(1.1);
         }
 
         &.filled {
-            background-color: $color-primary;
-            border-color: $color-primary;
+            background-color: var(--accent, $color-primary);
+            border-color: var(--accent, $color-primary);
 
             &:hover {
                 background-color: color.adjust($color-primary, $lightness: 10%);
