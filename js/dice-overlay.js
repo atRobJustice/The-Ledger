@@ -15,6 +15,9 @@ let lastRollHadBloodSurge = false;
 // Tracks the latest impairment message to display on overlay
 let latestImpairmentMessage = null;
 
+// Tracks latest Blood Potency discipline bonus banner
+let latestDisciplineBonusMessage = null;
+
 // declare at top of IIFE maybe near other globals
 let bonusMsg = null;
 
@@ -75,6 +78,7 @@ let bonusMsg = null;
             </div>
             <div class="modal-body">
               <div class="alert alert-danger d-none" id="impairmentNote" role="alert"></div>
+              <div class="alert alert-success d-none" id="bonusNote" role="alert"></div>
               <form id="diceRollForm">
                 <!-- Blood Surge toggle -->
                 <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
@@ -172,6 +176,27 @@ let bonusMsg = null;
   // Currently selected Discipline power (if any)
   //  Structure: { element, disciplineKey, powerName, rouseDice }
   let activePower = null;
+
+  // -------------------------------------------------------------
+  //  Helper: given a discipline key and power name, return numeric
+  //  level (1,2,3,...) or null. Declared at top-level so both the
+  //  power-selection handler and roll logic can use it.
+  // -------------------------------------------------------------
+  function findPowerLevelGlobal(disciplineKey, powerName) {
+    const disc = disciplines?.types?.[disciplineKey];
+    if (!disc || !disc.powers || typeof disc.powers !== 'object') return null;
+    for (const [lvlKey, arr] of Object.entries(disc.powers)) {
+      if (!Array.isArray(arr)) continue;
+      if (arr.some(p => p.name === powerName)) {
+        const m = lvlKey.match(/level\s*(\d+)/i) || lvlKey.match(/level(\d+)/i);
+        if (m) {
+          const num = parseInt(m[1]);
+          return isNaN(num) ? null : num;
+        }
+      }
+    }
+    return null;
+  }
 
   // Simple visual outline to show selections
   (function injectSelectionStyles() {
@@ -385,6 +410,7 @@ let bonusMsg = null;
     const boost = (Math.random() + 3) * dist;
     const vectors = box.generate_vectors(notation, vector, boost);
 
+    let rouseRerolled = false;
     box.roll(vectors, undefined, function (result) {
       // Compute main results (standard + hunger only)
       const sLen = notation.set.length;
@@ -406,9 +432,52 @@ let bonusMsg = null;
       const remorseRolls = result.slice(remorseStart, remorseStart + remorseLen);
       const frenzyRolls = result.slice(frenzyStart, frenzyStart + frenzyLen);
 
-      const countSuccesses = (rollArr, threshold = 6) => rollArr.filter((v) => v >= threshold).length;
+      const countSuccesses = (rollArr, threshold = 6) => rollArr.filter((v) => (v === 0 ? 10 : v) >= threshold).length;
 
-      const rouseSuccess = rouseLen > 0 ? countSuccesses(rouseRolls, 5) > 0 : null;
+      let rouseSuccess = rouseLen > 0 ? countSuccesses(rouseRolls, 6) > 0 : null;
+      // Blood Potency feature: single reroll for failed Rouse when using qualifying Discipline
+      let rouseWasRerolled = false;
+      if (!rouseRerolled && rouseLen > 0 && rouseSuccess === false) {
+        try {
+          const bpVal = getStatValueByName("Blood Potency");
+          const rerollCap = (typeof bpData?.getRerollDisciplineLevel === "function") ? bpData.getRerollDisciplineLevel(bpVal) : null;
+          if (rerollCap !== null && activePower) {
+            const powerLevel = findPowerLevelGlobal(activePower.disciplineKey, activePower.powerName);
+            if (powerLevel !== null && powerLevel <= rerollCap) {
+              // perform a simple reroll (no visual dice) – generate new random results
+              const newResults = Array.from({ length: rouseLen }, () => Math.floor(Math.random() * 10) + 1);
+              const newSuccess = countSuccesses(newResults, 6) > 0;
+              // Remove existing Rouse dice meshes
+              const start = rouseStart;
+              const end = rouseStart + rouseLen; // exclusive
+              box.dices.forEach((d) => {
+                const idx = d.userData.rollIndex;
+                if (idx>=start && idx<end) {
+                  box.scene.remove(d);
+                  if(d.body) box.world.remove(d.body);
+                }
+              });
+              box.dices = box.dices.filter(d=> !(d.userData.rollIndex>=start && d.userData.rollIndex<end));
+
+              // Add new Rouse dice visually
+              const beforeCount = box.dices.length;
+              addRouseDiceToBox(box, rouseLen);
+              // assign rollIndex sequentially for newly added dice
+              const afterDice = box.dices.slice(beforeCount);
+              let idxCounter = start;
+              afterDice.forEach(d=>{ d.userData.rollIndex = idxCounter++; });
+
+              if (newSuccess) {
+                rouseSuccess = true;
+              }
+              rouseWasRerolled = true;
+              rouseRerolled = true;
+            }
+          }
+        } catch (e) {
+          console.error('Error applying Blood Potency Rouse reroll:', e);
+        }
+      }
       const remorseSuccess = remorseLen > 0 ? countSuccesses(remorseRolls) > 0 : null;
       const frenzySuccess = frenzyLen > 0 ? countSuccesses(frenzyRolls) > 0 : null;
 
@@ -419,7 +488,11 @@ let bonusMsg = null;
       }
 
       if (rouseLen > 0) {
-        html += `${html ? '<br>' : ''}Rouse: ${rouseSuccess ? 'Success' : '<span class="failure">Fail</span>'}`;
+        let rTxt = rouseSuccess ? 'Success' : '<span class="failure">Fail</span>';
+        if (rouseWasRerolled) {
+          rTxt = 'Rerolled – check dice';
+        }
+        html += `${html ? '<br>' : ''}Rouse: ${rTxt}`;
       }
 
       if (remorseLen > 0) {
@@ -466,7 +539,7 @@ let bonusMsg = null;
       }
 
       // Apply mechanical consequences
-      if (rouseLen > 0 && !rouseSuccess) {
+      if (rouseLen > 0 && !rouseSuccess && !rouseWasRerolled) {
         increaseHungerBy(1);
       }
 
@@ -648,50 +721,31 @@ let bonusMsg = null;
     return Math.max(1, frenzyDice);
   }
 
-  // Helper: add N standard dice into an existing dice_box and restart animation
-  function addStandardDiceToBox(box, count) {
+  // Helper: add N dice of specified type into dice_box
+  function addDiceToBox(box, count, dieType='Standard') {
     if (!box || count <= 0) return;
-
-    // Local random helpers copied from dice.js
     const rnd = () => Math.random() * 2 - 1;
-
     for (let i = 0; i < count; i++) {
-      // Random direction vector
       let vec = { x: rnd(), y: rnd(), z: rnd() };
-      const len = Math.sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-      vec.x /= len; vec.y /= len; vec.z /= len;
-
-      // Spawn position near the edges (similar to generate_vectors)
+      const len = Math.sqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
+      vec.x/=len; vec.y/=len; vec.z/=len;
       const pos = {
-        x: box.w * (vec.x > 0 ? -1 : 1) * 0.9,
-        y: box.h * (vec.y > 0 ? -1 : 1) * 0.9,
-        z: Math.random() * 200 + 200,
+        x: box.w * (vec.x>0? -1:1)*0.9,
+        y: box.h * (vec.y>0? -1:1)*0.9,
+        z: Math.random()*200+200
       };
-
-      // Initial velocity
-      const velvec = { x: rnd(), y: rnd(), z: rnd() };
-      const velocity = { x: velvec.x * 200, y: velvec.y * 200, z: -10 };
-
-      // Rotation
-      const angle = {
-        x: -(rnd() * vec.y * 5),
-        y: rnd() * vec.x * 5,
-        z: 0,
-      };
-
-      const axis = { x: rnd(), y: rnd(), z: rnd(), a: Math.random() };
-
-      // Actually create the die (standard)
-      box.create_dice('d10', pos, velocity, angle, axis, 'Standard');
+      const velvec={x:rnd(),y:rnd(),z:rnd()};
+      const velocity={x:velvec.x*200,y:velvec.y*200,z:-10};
+      const angle={x:-(rnd()*vec.y*5),y:rnd()*vec.x*5,z:0};
+      const axis={x:rnd(),y:rnd(),z:rnd(),a:Math.random()};
+      const mesh = box.create_dice('d10',pos,velocity,angle,axis,dieType);
+      if(mesh) mesh.userData.dieType = dieType;
     }
-
-    // Restart animation loop so new dice fall/roll
-    if (!box.running) {
-      box.running = Date.now();
-      box.last_time = 0;
-      box.__animate(box.running);
-    }
+    if (!box.running) { box.running = Date.now(); box.last_time=0; box.__animate(box.running);} 
   }
+
+  function addStandardDiceToBox(box,count){addDiceToBox(box,count,'Standard');}
+  function addRouseDiceToBox(box,count){addDiceToBox(box,count,'Rouse');}
 
   // --------------------------------------------------
   //  Helper functions used by Control Bar (moved out)
@@ -1281,13 +1335,6 @@ let bonusMsg = null;
             banner.textContent = latestImpairmentMessage;
             canvasContainer.appendChild(banner);
           }
-          if (window.latestResonanceBonusMessage) {
-            const banner = document.createElement('div');
-            banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-success bg-opacity-75 text-white fw-bold py-1 px-3 rounded mt-4';
-            banner.style.zIndex = '2009';
-            banner.textContent = window.latestResonanceBonusMessage;
-            canvasContainer.appendChild(banner);
-          }
           rollVtmDice(canvasContainer, pools, () => {});
           // Update WP reroll availability after roll
           refreshWPRerollButton();
@@ -1312,6 +1359,20 @@ let bonusMsg = null;
           noteBox.classList.remove('d-none');
         } else {
           noteBox.classList.add('d-none');
+        }
+      }
+
+      // Update bonus note visibility (resonance & blood potency)
+      const bonusBox = modalEl.querySelector('#bonusNote');
+      const bonusMessages = [];
+      if (window.latestResonanceBonusMessage) bonusMessages.push(window.latestResonanceBonusMessage);
+      if (window.latestDisciplineBonusMessage) bonusMessages.push(window.latestDisciplineBonusMessage);
+      if (bonusBox) {
+        if (bonusMessages.length) {
+          bonusBox.innerHTML = bonusMessages.join('<br>');
+          bonusBox.classList.remove('d-none');
+        } else {
+          bonusBox.classList.add('d-none');
         }
       }
 
@@ -1437,7 +1498,8 @@ let bonusMsg = null;
         // --- Rouse dice based on cost ----------------------------------
         const costStr = powerObj?.cost || '';
         const rouseDice = parseRouseChecks(costStr);
-        activePower = { element: powerEl, disciplineKey, powerName, rouseDice };
+        const pLevel = findPowerLevelGlobal(disciplineKey, powerName);
+        activePower = { element: powerEl, disciplineKey, powerName, rouseDice, powerLevel:pLevel };
 
         // --- Auto-select stats based on Dice Pool ----------------------
         if (powerObj?.dicePool && typeof powerObj.dicePool === 'string') {
@@ -1518,28 +1580,41 @@ let bonusMsg = null;
         bonusMsg = '+1 die: Resonance bonus (Intense/Acute)';
       }
 
-      // Hunger dice – cap to 5 and cannot exceed total pool
-      const hungerScore = getStatValueByName("Hunger");
-      const hungerDice = Math.min(5, Math.min(hungerScore, total));
-      const standardDice = total - hungerDice;
+      // --------------------------------------------------------------
+      //  (Temp) defer hunger/standard calculation until after all
+      //  bonuses have been applied (including Blood Potency below)
+      // --------------------------------------------------------------
+      let hungerDice; let standardDice; // will compute later
 
-      let note = null;
-      if (penalty > 0) {
-        note = `${causes.join(' + ')}: -${penalty} dice applied`;
+      // ----------------------------------------------
+      //  Blood Potency Discipline Bonus (+1 or +2)
+      // ----------------------------------------------
+      let discBonusMsg = null;
+      try {
+        const bpVal = getStatValueByName("Blood Potency");
+        const bpDiscBonus = (typeof bpData?.getDisciplineBonus === "function") ? (bpData.getDisciplineBonus(bpVal) || 0) : 0;
+        if (bpDiscBonus > 0 && secondStatName) {
+          const discKey = disciplineNameToKey(secondStatName);
+          if (disciplines?.types?.[discKey]) {
+            total += bpDiscBonus;
+            discBonusMsg = `+${bpDiscBonus} die${bpDiscBonus > 1 ? 's' : ''}: Blood Potency bonus`;
+          }
+        }
+      } catch (e) {
+        console.error('Error applying Blood Potency discipline bonus:', e);
       }
-      latestImpairmentMessage = note;
-      window.latestResonanceBonusMessage = bonusMsg;
 
-      // ----------------------------------------------
-      //  Discipline Power Cost → Rouse dice
-      // ----------------------------------------------
+      window.latestDisciplineBonusMessage = discBonusMsg;
+
+      // Now that all bonuses are applied, compute dice counts
+      const hungerScore = getStatValueByName("Hunger");
+      hungerDice = Math.min(5, Math.min(hungerScore, total));
+      standardDice = total - hungerDice;
+
+      // Discipline Power Cost → Rouse dice (unchanged)
       let rouseDice = 0;
       if (activePower && activePower.rouseDice > 0) {
-        const discKey = activePower.disciplineKey;
-        const discName = (disciplines?.types?.[discKey]?.name || discKey || '').toLowerCase();
-        if (secondStatName && secondStatName.toLowerCase() === discName) {
-          rouseDice = activePower.rouseDice;
-        }
+        rouseDice = activePower.rouseDice;
       }
 
       return {

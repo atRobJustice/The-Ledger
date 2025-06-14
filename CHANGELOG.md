@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - "Mend" quick-action button and updated Discipline displays.
 - Impairment status tracking including UI indicators.
 - New Vitals fields for Resonance and Temperament.
+- Blood Potency bonus dice and Rouse rerolls added
+- Safeguards against infinite dice and mis-reported results.
 
 ## [1.0.0] - 2025-06-13
 
