@@ -6,6 +6,18 @@ class DisciplineManager {
     constructor() {
         this.selectedDisciplines = new Map(); // disciplineKey -> { level: number, powers: Set<string> }
         this.availableDisciplines = Object.keys(disciplines.types);
+
+        // Ensure all discipline data exposes a common `powers` container, even for Rituals or Ceremonies
+        Object.values(disciplines.types).forEach((d) => {
+            if (!d.powers) {
+                if (d.rituals) {
+                    d.powers = d.rituals;
+                } else if (d.ceremonies) {
+                    d.powers = d.ceremonies;
+                }
+            }
+        });
+
         this.init();
     }
 
@@ -597,16 +609,18 @@ class DisciplineManager {
         const nameMap = {
             'Animalism': 'animalism',
             'Auspex': 'auspex',
-            'Blood Sorcery': 'bloodSorcery',
+            'Blood Sorcery': 'blood_sorcery',
+            'Blood Sorcery Rituals': 'blood_sorcery_rituals',
             'Celerity': 'celerity',
             'Dominate': 'dominate',
             'Fortitude': 'fortitude',
             'Obfuscate': 'obfuscate',
             'Oblivion': 'oblivion',
+            'Oblivion Ceremonies': 'oblivion_ceremonies',
             'Potence': 'potence',
             'Presence': 'presence',
             'Protean': 'protean',
-            'Thin-Blood Alchemy': 'thinBloodAlchemy'
+            'Thin-Blood Alchemy': 'thin_blood_alchemy'
         };
 
         return nameMap[disciplineName] || disciplineName.toLowerCase().replace(/[^a-z]/g, '');

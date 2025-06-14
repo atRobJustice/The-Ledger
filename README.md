@@ -42,6 +42,8 @@ Clone the repository and open `index.html`, or visit the live preview (coming so
 - 💾 100 % client-side – nothing is sent to a server; your secrets stay yours.
 - 📥 Export / import character data as JSON for quick backups or version control.
 - 📚 Comprehensive V5 reference data automatically pulled from the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
+- 📤 Discord integration – share dice rolls to your server via a webhook.
+- 🧬 Import existing character JSON from the **Progeny** VTM character creator.
 - 🎨 Built with vanilla HTML, SCSS (compiled via `sass`), and a sprinkle of Bootstrap 5 for layout.
 
 ---

@@ -48,6 +48,7 @@ Key design goals:
 │   ├── character-sheet.js    # Core sheet initialisation & orchestration
 │   ├── manager-utils.js      # Shared helpers for manager modules
 │   ├── discipline-manager.js # Manages Disciplines UI & state
+│   ├── disciplines.js        # Static Discipline definitions (ES module)
 │   ├── background-manager.js # Backgrounds, Advantages & Flaws
 │   ├── merit-flaw-manager.js # Merits & Flaws (prints inside Backgrounds)
 │   ├── specialty-manager.js  # Skill Specialities
@@ -58,13 +59,14 @@ Key design goals:
 │   ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
 │   ├── backup-manager.js     # JSON import / export / localStorage sync
 │   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
+│   ├── tooltips.js           # Bootstrap-powered Attribute/Skill tooltips
 │   ├── discord-integration.js# Rich-presence hooks (optional)
 │   ├── accessibility-fix.js  # Misc ARIA / keyboard tweaks
 │   ├── lib/                  # Vendored libs (three.js, cannon.js, teal.js…)
 │   └── references/           # Auto-generated JSON data (clans, skills, …)
 ├── assets/                   # Images, icons, fonts
 ├── data/                     # **↯   Rules data sourced from Progeny & VTM Wiki**
-├── docs/                     # <— You are here
+├── DOCUMENTATION.md          # Technical docs (this file)
 └── package.json              # npm scripts & dev-deps
 ```
 
@@ -139,6 +141,9 @@ Also exposes `downloadJSON()` and `loadFromFile()` helpers.
 
 ### `dice-overlay.js`
 Creates a full-window transparent canvas, initialises `dice.js`, and exposes `rollDice(config)` given a dice notation (`5v/2h` = 5 normal, 2 hunger).  Listens for `Ctrl + R` keyboard shortcut.
+
+### `tooltips.js`
+Provides context-sensitive Bootstrap tooltips for Attributes and Skills. Listens for value-change events from `character-sheet.js` (and direct dot clicks) to keep the tooltip data in sync without forcing the tooltip to reopen.
 
 ---
 
