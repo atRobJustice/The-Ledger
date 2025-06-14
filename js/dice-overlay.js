@@ -18,6 +18,12 @@ let latestImpairmentMessage = null;
 // Tracks latest Blood Potency discipline bonus banner
 let latestDisciplineBonusMessage = null;
 
+// NEW: Tracks latest Resonance temperament bonus banner
+let latestResonanceBonusMessage = null;
+
+// NEW: Tracks latest Specialty bonus banner
+let latestSpecialtyBonusMessage = null;
+
 // declare at top of IIFE maybe near other globals
 let bonusMsg = null;
 
@@ -79,6 +85,7 @@ let bonusMsg = null;
             <div class="modal-body">
               <div class="alert alert-danger d-none" id="impairmentNote" role="alert"></div>
               <div class="alert alert-success d-none" id="bonusNote" role="alert"></div>
+              <div class="alert alert-info d-none" id="breakdownNote" role="alert"></div>
               <form id="diceRollForm">
                 <!-- Blood Surge toggle -->
                 <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
@@ -1367,12 +1374,24 @@ let bonusMsg = null;
       const bonusMessages = [];
       if (window.latestResonanceBonusMessage) bonusMessages.push(window.latestResonanceBonusMessage);
       if (window.latestDisciplineBonusMessage) bonusMessages.push(window.latestDisciplineBonusMessage);
+      if (window.latestSpecialtyBonusMessage) bonusMessages.push(window.latestSpecialtyBonusMessage);
       if (bonusBox) {
         if (bonusMessages.length) {
           bonusBox.innerHTML = bonusMessages.join('<br>');
           bonusBox.classList.remove('d-none');
         } else {
           bonusBox.classList.add('d-none');
+        }
+      }
+
+      // New: Update breakdown note
+      const breakdownBox = modalEl.querySelector('#breakdownNote');
+      if (breakdownBox) {
+        if (window.latestDiceBreakdown) {
+          breakdownBox.innerHTML = window.latestDiceBreakdown;
+          breakdownBox.classList.remove('d-none');
+        } else {
+          breakdownBox.classList.add('d-none');
         }
       }
 
@@ -1573,13 +1592,6 @@ let bonusMsg = null;
       } catch (e) {
         console.error('Error applying resonance temperament bonus:', e);
       }
-
-      // Store bonus message
-      let bonusMsg = null;
-      if (totalBonusApplied) {
-        bonusMsg = '+1 die: Resonance bonus (Intense/Acute)';
-      }
-
       // --------------------------------------------------------------
       //  (Temp) defer hunger/standard calculation until after all
       //  bonuses have been applied (including Blood Potency below)
@@ -1616,6 +1628,18 @@ let bonusMsg = null;
       if (activePower && activePower.rouseDice > 0) {
         rouseDice = activePower.rouseDice;
       }
+
+      // Collect breakdown details for UI
+      const breakdownLines = [];
+      if(firstStatName) breakdownLines.push(`${firstStatName}: ${val1}`);
+      if(secondStatName) breakdownLines.push(`${secondStatName}: ${val2}`);
+      if(extra>0) breakdownLines.push(`Specialty: +${extra}`);
+      if(totalBonusApplied) breakdownLines.push('Resonance bonus: +1');
+      if(discBonusMsg) breakdownLines.push(discBonusMsg);
+      if(penalty>0) breakdownLines.push(`Penalties: -${penalty} (${causes.join(', ')})`);
+
+      // Store globally for modal display
+      window.latestDiceBreakdown = breakdownLines.join('<br>');
 
       return {
         standard: standardDice,
