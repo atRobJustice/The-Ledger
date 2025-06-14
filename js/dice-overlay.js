@@ -91,6 +91,7 @@ let bonusMsg = null;
                 <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
                   <input class="form-check-input" type="checkbox" id="bloodSurgeToggle">
                   <label class="form-check-label" for="bloodSurgeToggle">Blood Surge</label>
+                  <span class="badge" style="background-color: var(--accent); color: white;" id="bloodSurgeBonus">+0</span>
                 </div>
                 <!-- Specialty selection (hidden if not applicable) -->
                 <div class="mb-3 d-none" id="specialtySection">
@@ -110,7 +111,7 @@ let bonusMsg = null;
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="rollDiceConfirm">Roll</button>
+              <button type="button" class="btn btn-danger" id="rollDiceConfirm">Roll</button>
             </div>
           </div>
         </div>
@@ -176,9 +177,17 @@ let bonusMsg = null;
     "resolve",
   ];
 
+  // List of Skill names (case-insensitive)
+  const SKILL_NAMES = [
+    'athletics','brawl','craft','drive','firearms','larceny','melee','stealth','survival',
+    'animal ken','etiquette','insight','intimidation','leadership','performance','persuasion','streetwise','subterfuge',
+    'academics','awareness','finance','investigation','medicine','occult','politics','science','technology'
+  ];
+
   // Currently selected stats
   let firstStatName = null;   // must be attribute
   let secondStatName = null;  // attribute, skill, or skill/discipline
+  let thirdStatName = null;   // skill or discipline (only if second stat is skill/discipline)
   var selectedSpecialty = null; // globally accessible; will hold {skill, name} or null
   // Currently selected Discipline power (if any)
   //  Structure: { element, disciplineKey, powerName, rouseDice }
@@ -205,14 +214,38 @@ let bonusMsg = null;
     return null;
   }
 
+  // Helper: Check if a stat name is a valid second stat (attribute, skill, or discipline)
+  function isValidSecondStat(statName) {
+    const name = statName.toLowerCase();
+    return ATTRIBUTE_NAMES.includes(name) || 
+           SKILL_NAMES.includes(name) || 
+           Object.keys(disciplines?.types || {}).includes(name);
+  }
+
+  // Helper: Check if a stat name is a valid third stat (skill or discipline)
+  function isValidThirdStat(statName) {
+    const name = statName.toLowerCase();
+    return SKILL_NAMES.includes(name) || 
+           Object.keys(disciplines?.types || {}).includes(name);
+  }
+
+  // Helper: Check if a stat is a skill
+  function isSkill(statName) {
+    return SKILL_NAMES.includes(statName.toLowerCase());
+  }
+
+  // Helper: Check if a stat is a discipline
+  function isDiscipline(statName) {
+    return Object.keys(disciplines?.types || {}).includes(statName.toLowerCase());
+  }
+
   // Simple visual outline to show selections
   (function injectSelectionStyles() {
     const style = document.createElement("style");
     style.innerHTML = `
       .stat.dice-first-stat  { outline: 2px solid var(--bs-success); }
       .stat.dice-second-stat { outline: 2px solid var(--bs-primary); }
-      .stat-label { cursor: pointer; }
-      body.info-mode .stat-label { cursor: help; }
+      .stat.dice-third-stat  { outline: 2px solid var(--bs-warning); }
     `;
     document.head.appendChild(style);
 
@@ -277,7 +310,7 @@ let bonusMsg = null;
     if(section) section.classList.add('d-none'); // hide feature; Specialty handled via badge click
   }
 
-  // Click handler allowing users to select their first/second stats directly from the sheet
+  // Click handler allowing users to select their first/second/third stats directly from the sheet
   document.addEventListener("click", (evt) => {
     const labelEl = evt.target.closest(".stat-label");
     if (!labelEl) return;
@@ -307,11 +340,26 @@ let bonusMsg = null;
       // Toggle off first stat
       firstStatName = null;
       statRow.classList.remove("dice-first-stat");
+      // Clear second and third stats if they exist
+      if (secondStatName) {
+        const secondEl = document.querySelector(".stat.dice-second-stat");
+        if (secondEl) secondEl.classList.remove("dice-second-stat");
+        secondStatName = null;
+      }
+      if (thirdStatName) {
+        const thirdEl = document.querySelector(".stat.dice-third-stat");
+        if (thirdEl) thirdEl.classList.remove("dice-third-stat");
+        thirdStatName = null;
+      }
       return;
     }
 
     // Handle second stat selection
     if (!secondStatName) {
+      if (!isValidSecondStat(name)) {
+        // Must pick a valid second stat (attribute, skill, or discipline)
+        return;
+      }
       secondStatName = name;
       statRow.classList.add("dice-second-stat");
       // Clear any selected specialty (new skill may differ)
@@ -326,6 +374,12 @@ let bonusMsg = null;
       // Toggle off second stat
       secondStatName = null;
       statRow.classList.remove("dice-second-stat");
+      // Clear third stat if it exists
+      if (thirdStatName) {
+        const thirdEl = document.querySelector(".stat.dice-third-stat");
+        if (thirdEl) thirdEl.classList.remove("dice-third-stat");
+        thirdStatName = null;
+      }
       if(selectedSpecialty){
         document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty'));
         selectedSpecialty = null;
@@ -333,11 +387,48 @@ let bonusMsg = null;
       return;
     }
 
+    // Handle third stat selection
+    if (!thirdStatName) {
+      // Only allow third stat if second stat is a skill or discipline
+      if (!isSkill(secondStatName) && !isDiscipline(secondStatName)) {
+        return;
+      }
+      // Third stat must be a skill or discipline
+      if (!isValidThirdStat(name)) {
+        return;
+      }
+      // If second stat is a skill, third stat must be a discipline and vice versa
+      if ((isSkill(secondStatName) && !isDiscipline(name)) || 
+          (isDiscipline(secondStatName) && !isSkill(name))) {
+        return;
+      }
+      thirdStatName = name;
+      statRow.classList.add("dice-third-stat");
+      return;
+    }
+
+    if (thirdStatName === name) {
+      // Toggle off third stat
+      thirdStatName = null;
+      statRow.classList.remove("dice-third-stat");
+      return;
+    }
+
     // Replace existing second stat with new selection
+    if (!isValidSecondStat(name)) {
+      // Must pick a valid second stat (attribute, skill, or discipline)
+      return;
+    }
     const prevSecondEl = document.querySelector(".stat.dice-second-stat");
     if (prevSecondEl) prevSecondEl.classList.remove("dice-second-stat");
     secondStatName = name;
     statRow.classList.add("dice-second-stat");
+    // Clear third stat if it exists
+    if (thirdStatName) {
+      const thirdEl = document.querySelector(".stat.dice-third-stat");
+      if (thirdEl) thirdEl.classList.remove("dice-third-stat");
+      thirdStatName = null;
+    }
     if(selectedSpecialty){
       document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty'));
       selectedSpecialty = null;
@@ -1043,12 +1134,18 @@ let bonusMsg = null;
       const hungerScore = getStatValueByName("Hunger");
       const surgeWrapper = modalEl.querySelector("#bloodSurgeToggleWrapper");
       const surgeInput = modalEl.querySelector("#bloodSurgeToggle");
+      const surgeBonus = modalEl.querySelector("#bloodSurgeBonus");
       if (surgeWrapper && surgeInput) {
         if (hungerScore >= 5) {
           surgeInput.checked = false;
           surgeInput.disabled = true;
+          if (surgeBonus) surgeBonus.textContent = "+0 Standard, +0 Rouse";
         } else {
           surgeInput.disabled = false;
+          // Update bonus display based on Blood Potency
+          const bpVal = getStatValueByName("Blood Potency");
+          const bonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
+          if (surgeBonus) surgeBonus.textContent = `+${bonus} Standard, +1 Rouse`;
         }
       }
 
@@ -1065,7 +1162,10 @@ let bonusMsg = null;
 
     (function injectSpecialtyStyles(){
       const style = document.createElement('style');
-      style.textContent = `.specialty-badge.selected-specialty{background-color: var(--bs-primary)!important;}`;
+      style.textContent = `
+        .specialty-badge.selected-specialty.second-stat { background-color: var(--bs-primary) !important; }
+        .specialty-badge.selected-specialty.third-stat { background-color: var(--bs-warning) !important; }
+      `;
       document.head.appendChild(style);
     })();
 
@@ -1075,14 +1175,16 @@ let bonusMsg = null;
       const row = badge.closest('.specialties-row');
       if(!row) return;
       const skill = row.dataset.skill;
-      if(skill !== secondStatName) return; // only apply to chosen skill
+      if(skill !== secondStatName && skill !== thirdStatName) return; // apply to either chosen skill
 
       if(selectedSpecialty && selectedSpecialty.skill===skill && selectedSpecialty.name===badge.textContent){
-        badge.classList.remove('selected-specialty');
+        badge.classList.remove('selected-specialty', 'second-stat', 'third-stat');
         selectedSpecialty = null;
       } else {
-        document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty'));
+        document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty', 'second-stat', 'third-stat'));
         badge.classList.add('selected-specialty');
+        // Add appropriate class based on whether this is second or third stat
+        badge.classList.add(skill === secondStatName ? 'second-stat' : 'third-stat');
         selectedSpecialty = {skill, name: badge.textContent};
       }
     });
@@ -1177,8 +1279,9 @@ let bonusMsg = null;
 
       const val1 = getStatValueByName(firstStatName);
       const val2 = getStatValueByName(secondStatName);
+      const val3 = thirdStatName ? getStatValueByName(thirdStatName) : 0;
       const extra = selectedSpecialty ? 1 : 0;
-      let total = val1 + val2 + extra;
+      let total = val1 + val2 + val3 + extra;
 
       // ----------------------------------------------
       //  Impairment penalties (-2 dice)
@@ -1189,9 +1292,11 @@ let bonusMsg = null;
 
       const attr1 = firstStatName.toLowerCase();
       const attr2 = secondStatName ? secondStatName.toLowerCase() : '';
+      const attr3 = thirdStatName ? thirdStatName.toLowerCase() : '';
       let penalty = 0;
       const causes = [];
-      if (document.body.classList.contains('health-impaired') && (PHYSICAL.includes(attr1) || PHYSICAL.includes(attr2))) {
+      if (document.body.classList.contains('health-impaired') && 
+          (PHYSICAL.includes(attr1) || PHYSICAL.includes(attr2) || PHYSICAL.includes(attr3))) {
         penalty += 2;
         if(document.body.classList.contains('health-torpor')){
           causes.push('Torpor');
@@ -1199,7 +1304,10 @@ let bonusMsg = null;
           causes.push('Physical Impairment');
         }
       }
-      if (document.body.classList.contains('willpower-impaired') && ((SOCIAL.concat(MENTAL)).includes(attr1) || (SOCIAL.concat(MENTAL)).includes(attr2))) {
+      if (document.body.classList.contains('willpower-impaired') && 
+          ((SOCIAL.concat(MENTAL)).includes(attr1) || 
+           (SOCIAL.concat(MENTAL)).includes(attr2) || 
+           (SOCIAL.concat(MENTAL)).includes(attr3))) {
         penalty += 2;
         if(document.body.classList.contains('willpower-pariah')){
           causes.push('Pariah');
@@ -1226,7 +1334,8 @@ let bonusMsg = null;
         const resData = window.__resonancesData;
         if (intenseBonus && resonanceKey && resData && resData.types?.[resonanceKey]) {
           const assocDisciplines = resData.types[resonanceKey].disciplines.map(d=>d.toLowerCase());
-          if (secondStatName && assocDisciplines.includes(secondStatName.toLowerCase())) {
+          if ((secondStatName && assocDisciplines.includes(secondStatName.toLowerCase())) ||
+              (thirdStatName && assocDisciplines.includes(thirdStatName.toLowerCase()))) {
             total += 1; // add bonus die
             totalBonusApplied = true;
           }
@@ -1247,9 +1356,10 @@ let bonusMsg = null;
       try {
         const bpVal = getStatValueByName("Blood Potency");
         const bpDiscBonus = (typeof bpData?.getDisciplineBonus === "function") ? (bpData.getDisciplineBonus(bpVal) || 0) : 0;
-        if (bpDiscBonus > 0 && secondStatName) {
-          const discKey = disciplineNameToKey(secondStatName);
-          if (disciplines?.types?.[discKey]) {
+        if (bpDiscBonus > 0) {
+          const discKey2 = disciplineNameToKey(secondStatName);
+          const discKey3 = thirdStatName ? disciplineNameToKey(thirdStatName) : null;
+          if (disciplines?.types?.[discKey2] || (discKey3 && disciplines?.types?.[discKey3])) {
             total += bpDiscBonus;
             discBonusMsg = `+${bpDiscBonus} die${bpDiscBonus > 1 ? 's' : ''}: Blood Potency bonus`;
           }
@@ -1275,6 +1385,7 @@ let bonusMsg = null;
       const breakdownLines = [];
       if(firstStatName) breakdownLines.push(`${firstStatName}: ${val1}`);
       if(secondStatName) breakdownLines.push(`${secondStatName}: ${val2}`);
+      if(thirdStatName) breakdownLines.push(`${thirdStatName}: ${val3}`);
       if(extra>0) breakdownLines.push(`Specialty: +${extra}`);
       if(totalBonusApplied) breakdownLines.push('Resonance bonus: +1');
       if(discBonusMsg) breakdownLines.push(discBonusMsg);

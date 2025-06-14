@@ -47,7 +47,7 @@ class DisciplineManager {
             <div class="discipline-selector mb-3">
                 <div class="d-flex align-items-center gap-2">
                     <select class="form-select discipline-dropdown" id="disciplineSelect">
-                        <option value="">Select a Discipline to Add</option>
+                        <option value="">Select a Discipline</option>
                         ${this.getAvailableDisciplineOptions()}
                     </select>
                     <button class="btn btn-success btn-sm" id="addDisciplineBtn" disabled>
@@ -668,7 +668,7 @@ class DisciplineManager {
     updateDisplay() {
         // Update the dropdown options
         $('#disciplineSelect').html(`
-            <option value="">Select a Discipline to Add</option>
+            <option value="">Select a Discipline</option>
             ${this.getAvailableDisciplineOptions()}
         `).val('');
         

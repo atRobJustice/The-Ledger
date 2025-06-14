@@ -45,7 +45,7 @@ class LoresheetManager {
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <select class="form-select loresheet-dropdown" id="loresheetSelect" disabled>
-                        <option value="">Select a Loresheet to Add</option>
+                        <option value="">Select a Loresheet</option>
                     </select>
                     <button class="btn btn-success btn-sm" id="addLoresheetBtn" disabled>
                         <i class="bi bi-plus-circle"></i>
@@ -192,13 +192,13 @@ class LoresheetManager {
         const $addBtn = $('#addLoresheetBtn');
         
         if (!categoryKey) {
-            $select.prop('disabled', true).html('<option value="">Select a Loresheet to Add</option>');
-            $addBtn.prop('disabled', true);
+            $select.prop('disabled', true).html('<option value="">Select a Loresheet</option>');
             return;
         }
 
-        const options = this.getLoresheetOptions(categoryKey);
-        $select.prop('disabled', false).html(options);
+        // Ensure the placeholder option is always present
+        const options = `<option value="">Select a Loresheet</option>${this.getLoresheetOptions(categoryKey)}`;
+        $select.prop('disabled', false).html(options).val('');
         $addBtn.prop('disabled', true);
     }
 
