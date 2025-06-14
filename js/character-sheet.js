@@ -1,3 +1,13 @@
+// Inject styles for visual impairment indication
+(function(){
+    const style = document.createElement('style');
+    style.textContent = `
+    .track-container.impaired { outline: 2px solid #dc3545; border-radius: 4px; }
+    .track-container.impaired .track-header::after { content: " IMPAIRED"; color:#dc3545; font-weight:bold; margin-left:0.5rem; }
+    `;
+    document.head.appendChild(style);
+})();
+
 function createDots(value, maxDots = 5) {
     const $dotsContainer = $('<div>', { 
         'class': 'dots',
@@ -370,6 +380,22 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
     
     updateCurrentValue($trackBoxes[0]);
 }
+function evaluateImpairmentStatus() {
+    // Determine whether the character is impaired due to Health or Willpower
+    const $health = $('.track-container[data-type="health"]');
+    const $willpower = $('.track-container[data-type="willpower"]');
+
+    const healthImpaired = $health.length && parseInt($health.data('value') || '0', 10) === 0;
+    const willpowerImpaired = $willpower.length && parseInt($willpower.data('value') || '0', 10) === 0;
+
+    // Store flags on <body> for easy querying from other modules
+    $('body').toggleClass('health-impaired', !!healthImpaired);
+    $('body').toggleClass('willpower-impaired', !!willpowerImpaired);
+
+    // Toggle visual indicator on the relevant track containers
+    $health.toggleClass('impaired', !!healthImpaired);
+    $willpower.toggleClass('impaired', !!willpowerImpaired);
+}
 function updateCurrentValue(trackBoxes) {
     const $trackBoxes = $(trackBoxes);
     const $header = $trackBoxes.find('.track-header');
@@ -394,6 +420,7 @@ function updateCurrentValue(trackBoxes) {
         $trackBoxes.data('value', currentValue);
         $boxes.data('value', currentValue);
     }
+    evaluateImpairmentStatus();
 }
 $(document).ready(function() {
     $('.stat').each(function() {
@@ -1212,6 +1239,9 @@ $(document).ready(function() {
             }));
         }
     }
+
+    // Evaluate initial impairment state once the sheet is built
+    evaluateImpairmentStatus();
 });
 
 // Function to populate the clan dropdown with data from clans.js

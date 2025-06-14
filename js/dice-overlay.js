@@ -11,6 +11,9 @@ import { bloodPotency as bpData } from "./references/blood_potency.js";
 // New flag: track whether the most recent roll used Blood Surge
 let lastRollHadBloodSurge = false;
 
+// Tracks the latest impairment message to display on overlay
+let latestImpairmentMessage = null;
+
 (function () {
   "use strict";
 
@@ -67,6 +70,7 @@ let lastRollHadBloodSurge = false;
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <div class="alert alert-danger d-none" id="impairmentNote" role="alert"></div>
               <form id="diceRollForm">
                 <!-- Blood Surge toggle -->
                 <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
@@ -694,6 +698,13 @@ let lastRollHadBloodSurge = false;
   async function quickRoll(pools) {
     await ensureDiceEngineLoaded();
     const canvasContainer = createOverlay(); // createOverlay removes any existing overlay automatically
+    if (latestImpairmentMessage) {
+      const banner = document.createElement('div');
+      banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
+      banner.style.zIndex = '2010';
+      banner.textContent = latestImpairmentMessage;
+      canvasContainer.appendChild(banner);
+    }
     rollVtmDice(canvasContainer, pools, () => {});
     lastRollHadBloodSurge = false;
     // Allow Control Bar to refresh WP button if it exposed one
@@ -1249,6 +1260,13 @@ let lastRollHadBloodSurge = false;
 
           // Create overlay & roll
           const canvasContainer = createOverlay();
+          if (latestImpairmentMessage) {
+            const banner = document.createElement('div');
+            banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
+            banner.style.zIndex = '2010';
+            banner.textContent = latestImpairmentMessage;
+            canvasContainer.appendChild(banner);
+          }
           rollVtmDice(canvasContainer, pools, () => {});
           // Update WP reroll availability after roll
           refreshWPRerollButton();
@@ -1263,6 +1281,17 @@ let lastRollHadBloodSurge = false;
         modalEl.querySelector("#rouseInput").value = computed.rouse;
         modalEl.querySelector("#remorseInput").value = computed.remorse;
         modalEl.querySelector("#frenzyInput").value = computed.frenzy;
+      }
+
+      // Update impairment note visibility
+      const noteBox = modalEl.querySelector('#impairmentNote');
+      if (noteBox) {
+        if (latestImpairmentMessage) {
+          noteBox.textContent = latestImpairmentMessage;
+          noteBox.classList.remove('d-none');
+        } else {
+          noteBox.classList.add('d-none');
+        }
       }
 
       updateSpecialtySection(modalEl);
@@ -1324,12 +1353,43 @@ let lastRollHadBloodSurge = false;
       const val1 = getStatValueByName(firstStatName);
       const val2 = getStatValueByName(secondStatName);
       const extra = selectedSpecialty ? 1 : 0;
-      const total = val1 + val2 + extra;
+      let total = val1 + val2 + extra;
+
+      // ----------------------------------------------
+      //  Impairment penalties (-2 dice)
+      // ----------------------------------------------
+      const PHYSICAL = ["strength", "dexterity", "stamina"];
+      const SOCIAL   = ["charisma", "manipulation", "composure"];
+      const MENTAL   = ["intelligence", "wits", "resolve"];
+
+      const attr = firstStatName.toLowerCase();
+      let penalty = 0;
+      if (document.body.classList.contains('health-impaired') && PHYSICAL.includes(attr)) {
+        penalty += 2;
+      }
+      if (document.body.classList.contains('willpower-impaired') && (SOCIAL.concat(MENTAL)).includes(attr)) {
+        penalty += 2;
+      }
+      if (penalty > 0) {
+        total = Math.max(0, total - penalty);
+      }
 
       // Hunger dice – cap to 5 and cannot exceed total pool
       const hungerScore = getStatValueByName("Hunger");
       const hungerDice = Math.min(5, Math.min(hungerScore, total));
       const standardDice = total - hungerDice;
+
+      let note = null;
+      if (penalty > 0) {
+        let cause = '';
+        if (document.body.classList.contains('health-impaired') && PHYSICAL.includes(attr)) {
+          cause = 'Physical impairment';
+        } else if (document.body.classList.contains('willpower-impaired') && (SOCIAL.concat(MENTAL)).includes(attr)) {
+          cause = 'Willpower impairment';
+        }
+        note = `${cause}: -${penalty} dice applied`;
+      }
+      latestImpairmentMessage = note;
 
       return {
         standard: standardDice,
