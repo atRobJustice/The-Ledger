@@ -472,6 +472,13 @@ export function initControlBar(deps) {
     const container = document.querySelector('.track-container[data-type="health"]');
     if (container) {
       const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+      
+      // Check if there's any damage to heal
+      if (superficialBoxes.length === 0) {
+        showToast('No superficial damage to mend', 'warning');
+        return;
+      }
+
       const toHeal = Math.min(healAmt, superficialBoxes.length);
       // Heal starting from the rightmost (last) superficial box
       superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
