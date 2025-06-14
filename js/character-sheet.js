@@ -92,6 +92,12 @@ function createPredatorDropdown(value) {
     return $select[0];
 }
 
+// Simple utility to capitalize first letter of string
+function capitalizeFirst(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Function to create a dropdown for clans
 function createClanDropdown(value) {
     const $select = $('<select>', {
@@ -113,7 +119,7 @@ function createClanDropdown(value) {
 
 // Function to create a dropdown for generation
 function createGenerationDropdown(value) {
-    const dropdown = $('<select>', { 'class': 'form-select form-select-sm generation-dropdown' });
+    const dropdown = $('<select>', { 'class': 'form-select generation-dropdown' });
     dropdown.append($('<option>', { 'value': '', 'text': 'Select Generation' }));
     if (value && value.trim() !== '') {
         dropdown.val(value.trim());
@@ -137,6 +143,27 @@ function createBloodPotencyDropdown(value) {
     $select.append($('<option>', {
         'value': '',
         'text': 'Select Blood Potency'
+    }));
+
+    return $select[0];
+}
+
+// Function to create a dropdown for compulsion
+function createCompulsionDropdown(value) {
+    const $select = $('<select>', {
+        'class': 'form-select compulsion-dropdown',
+        'aria-label': 'Select compulsion'
+    });
+
+    // Store initial value for preselect
+    if (value !== undefined && value !== null && value !== '') {
+        $select.attr('data-value', value);
+    }
+
+    // Add empty option
+    $select.append($('<option>', {
+        'value': '',
+        'text': 'Select Compulsion'
     }));
 
     return $select[0];
@@ -273,7 +300,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
                 $container.data('value', newValue);
             }
             
-            updateCurrentValue($container[0]);
+            updateCurrentValue($trackBoxes[0]);
         });
         
         $boxes.append($box);
@@ -506,100 +533,10 @@ $(document).ready(function() {
                 $valueSpan.replaceWith(dropdown);
                 populateGenerationDropdown(dropdown);
             } else if (statLabel === 'blood potency') {
-                // Represent Blood Potency with dots (0–5) instead of a dropdown and add an info button
-                const maxDots = 6; // BP ranges 0 through 5 (six possible values)
+                // Info buttons now handled centrally by info-buttons.js – legacy code removed.
+                const maxDots = 5; // BP ranges 0 through 5 (six possible values)
                 const dotsContainer = createDots(parseInt(value) || 0, maxDots);
                 $valueSpan.replaceWith(dotsContainer);
-
-                // Create an info button similar to other stats
-                const $infoButton = $('<button>', {
-                    'class': 'btn btn-sm btn-outline-secondary ms-2 blood-potency-info-button',
-                    'html': '<i class="bi bi-info-circle"></i>',
-                    'aria-label': 'Show blood potency information',
-                    'data-bs-toggle': 'tooltip',
-                    'data-bs-placement': 'top',
-                    'title': 'Show detailed information about this blood potency level'
-                });
-
-                // Click handler to display modal with blood potency information
-                $infoButton.on('click', async function(e) {
-                    e.preventDefault();
-                    const potency = parseInt($(dotsContainer).data('value') || '0', 10);
-
-                    try {
-                        const module = await import('./references/blood_potency.js');
-                        const bpData = module.bloodPotency;
-
-                        const levelInfo = bpData.levels[potency] || {};
-                        const effects = bpData.getEffects ? bpData.getEffects(potency) : (levelInfo.effects || []);
-                        const baneSeverity = bpData.getBaneSeverity ? bpData.getBaneSeverity(potency) : null;
-                        const surgeBonus = bpData.getBloodSurgeBonus ? bpData.getBloodSurgeBonus(potency) : null;
-                        const disciplineBonus = bpData.getDisciplineBonus ? bpData.getDisciplineBonus(potency) : null;
-                        const healingAmount = bpData.getHealingAmount ? bpData.getHealingAmount(potency) : null;
-                        const rerollLevel = bpData.getRerollDisciplineLevel ? bpData.getRerollDisciplineLevel(potency) : null;
-
-                        // Ensure modal exists
-                        let $modal = $('#blood-potency-info-modal');
-                        if ($modal.length === 0) {
-                            $modal = $(
-                                `<div class="modal fade" id="blood-potency-info-modal" tabindex="-1" aria-labelledby="bloodPotencyModalLabel" role="dialog" aria-modal="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="bloodPotencyModalLabel">Blood Potency</h5>
-                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body" id="blood-potency-info-content"><!-- Content inserted dynamically --></div>
-                                            <div class="modal-footer"></div>
-                                        </div>
-                                    </div>
-                                </div>`
-                            );
-
-                            $('body').append($modal);
-                        }
-
-                        // Build modal content
-                        let content = '';
-
-                        if (levelInfo.description) {
-                            content += `<p class="blood-potency-description">${levelInfo.description}</p>`;
-                        }
-
-                        if (effects && effects.length) {
-                            content += '<h5>Effects</h5><ul class="blood-potency-effects">';
-                            effects.forEach(effect => {
-                                content += `<li>${effect}</li>`;
-                            });
-                            content += '</ul>';
-                        }
-
-                        // Quick reference section
-                        content += '<h5>Quick Reference</h5><ul class="blood-potency-quick">';
-                        if (surgeBonus !== null) content += `<li><strong>Blood Surge Bonus:</strong> +${surgeBonus} dice</li>`;
-                        if (healingAmount !== null) content += `<li><strong>Mend Damage per Rouse:</strong> ${healingAmount} Superficial</li>`;
-                        if (baneSeverity !== null) content += `<li><strong>Bane Severity:</strong> ${baneSeverity}</li>`;
-                        if (disciplineBonus) content += `<li><strong>Discipline Bonus:</strong> +${disciplineBonus} die</li>`;
-                        if (rerollLevel !== null) content += `<li><strong>Discipline Reroll:</strong> Level ${rerollLevel} or below</li>`;
-                        content += '</ul>';
-
-                        // Update modal content and title
-                        $('#bloodPotencyModalLabel').text(`Blood Potency ${potency}`);
-                        $('#blood-potency-info-content').html(content);
-
-                        const modalElement = document.getElementById('blood-potency-info-modal');
-                        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-                        modalInstance.show();
-                    } catch (err) {
-                        console.error('Error loading blood potency information:', err);
-                    }
-                });
-
-                // Insert the info button directly after the dots container
-                $(dotsContainer).after($infoButton);
-
-                // Initialize Bootstrap tooltip
-                new bootstrap.Tooltip($infoButton[0]);
             } else if (textFields.includes(statLabel)) {
                 const input = createTextInput(value);
                 $valueSpan.replaceWith(input);
@@ -612,6 +549,8 @@ $(document).ready(function() {
                     statLabel
                 );
                 $valueSpan.replaceWith(trackBoxes);
+
+                // Info buttons now handled centrally by info-buttons.js – legacy code removed.
             } else if (statLabel === 'resonance') {
                 const dropdown = createResonanceDropdown(value);
                 $valueSpan.replaceWith(dropdown);
@@ -620,6 +559,10 @@ $(document).ready(function() {
                 const dropdown = createTemperamentDropdown(value);
                 $valueSpan.replaceWith(dropdown);
                 populateTemperamentDropdown(dropdown);
+            } else if (statLabel === 'compulsion') {
+                const dropdown = createCompulsionDropdown(value);
+                $valueSpan.replaceWith(dropdown);
+                populateCompulsionDropdown(dropdown);
             } else {
                 // Default to 5 dots for attributes and skills
                 const dotsContainer = createDots(parseInt(value) || 0, 5);
@@ -631,404 +574,57 @@ $(document).ready(function() {
     // Function to populate the predator dropdown with values from predator_types.js
     async function populatePredatorDropdown(dropdown) {
         try {
-            // Import the predator_types.js module
             const module = await import('./references/predator_types.js');
             const predatorTypes = module.predatorTypes;
-            
-            // Get the predator types and sort them by name
             const $dropdown = $(dropdown);
-            const predatorEntries = Object.entries(predatorTypes.types);
-            
-            // Sort by name
-            predatorEntries.sort((a, b) => a[1].name.localeCompare(b[1].name));
-            
-            // Add each predator type to the dropdown
+            const predatorEntries = Object.entries(predatorTypes.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
             predatorEntries.forEach(([key, type]) => {
                 $dropdown.append($('<option>', {
                     'value': key,
                     'text': type.name,
-                    'title': type.description, // Add tooltip with description
-                    'data-predator-type': key  // Add data attribute for easy reference
+                    'title': type.description,
+                    'data-predator-type': key
                 }));
             });
-            
-            // Create a small preview tooltip that shows when browsing options
-            const $previewTooltip = $('<div>', {
-                'class': 'predator-preview-tooltip d-none',
-                'id': 'predator-preview'
-            });
+            // Quick preview tooltip retained
+            const $previewTooltip = $('<div>', {'class':'predator-preview-tooltip d-none','id':'predator-preview'});
             $('body').append($previewTooltip);
-            
-            // Show preview when focusing on dropdown and moving through options
-            $dropdown.on('focus', function() {
-                // Show preview tooltip when focusing on dropdown
-                $previewTooltip.removeClass('d-none');
-            }).on('blur', function() {
-                // Hide preview tooltip when losing focus
-                $previewTooltip.addClass('d-none');
-            }).on('mouseover', 'option', function() {
+            $dropdown.on('focus',()=> $previewTooltip.removeClass('d-none'))
+                     .on('blur', ()=> $previewTooltip.addClass('d-none'))
+                     .on('mouseover','option', function(){
                 const predatorKey = $(this).data('predator-type');
-                if (predatorKey && predatorTypes.types[predatorKey]) {
+                         if(!predatorKey || !predatorTypes.types[predatorKey]) return;
                     const type = predatorTypes.types[predatorKey];
-                    
-                    // Update preview content
-                    $previewTooltip.html(`
-                        <h5>${type.name}</h5>
-                        <p>${type.description.substring(0, 100)}${type.description.length > 100 ? '...' : ''}</p>
-                        <small>Select for more details</small>
-                    `);
-                    
-                    // Position the preview tooltip
-                    const dropdownPos = $dropdown.offset();
-                    $previewTooltip.css({
-                        top: dropdownPos.top + $dropdown.outerHeight() + 5,
-                        left: dropdownPos.left
-                    });
-                }
-            });
-            
-            // If the dropdown already had a value, try to select it
-            const currentValue = $dropdown.val();
-            if (currentValue) {
-                // Try to find a matching option by name
-                const matchingOption = predatorEntries.find(entry => 
-                    entry[1].name.toLowerCase() === currentValue.toLowerCase()
-                );
-                
-                if (matchingOption) {
-                    $dropdown.val(matchingOption[0]);
-                }
-            }
-            
-            // Create a modal for the predator info if it doesn't exist
-            let $infoModal = $('#predator-info-modal');
-            if ($infoModal.length === 0) {
-                // Create modal structure
-                $infoModal = $(`
-                    <div class="modal fade" id="predator-info-modal" tabindex="-1" aria-labelledby="predatorModalLabel" role="dialog" aria-modal="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="predatorModalLabel">Predator Type</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" id="predator-info-content">
-                                    <!-- Content will be inserted here -->
-                                </div>
-                                <div class="modal-footer">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
-                
-                // Append modal to the body
-                $('body').append($infoModal);
-                
-                // Initialize the Bootstrap modal
-                const modalElement = document.getElementById('predator-info-modal');
-                window.predatorInfoModal = new bootstrap.Modal(modalElement);
-            }
-            
-            // We'll update the modal title and content when the info button is clicked,
-            // not on dropdown change, to avoid showing the modal every time a selection changes
-            
-            // Add a button next to the dropdown to show info for the current selection
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 predator-info-button d-none', // Initially hidden
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show predator type information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this predator type'
-            });
-            
-            // Show/hide info button based on dropdown selection
-            $dropdown.on('change', function() {
-                const selectedValue = $(this).val();
-                if (selectedValue && selectedValue !== '') {
-                    $infoButton.removeClass('d-none');
-                } else {
-                    $infoButton.addClass('d-none');
-                }
-            });
-            
-            // Trigger the change event to set initial visibility
-            $dropdown.trigger('change');
-            
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $dropdown.val();
-                if (selectedValue && predatorTypes.types[selectedValue]) {
-                    const type = predatorTypes.types[selectedValue];
-                    
-                    // Update modal title
-                    $('#predatorModalLabel').text(type.name);
-                    
-                    // Prepare the content for the modal body
-                    let content = `
-                        <p class="predator-info-description">${type.description}</p>
-                    `;
-                    
-                    // Add dice pools if available
-                    if (type.dicePools && type.dicePools.length > 0) {
-                        content += '<h5>Dice Pools</h5><ul class="predator-info-list">';
-                        type.dicePools.forEach(pool => {
-                            content += `<li>${pool}</li>`;
-                        });
-                        content += '</ul>';
-                    }
-                    
-                    // Add benefits if available
-                    if (type.benefits && type.benefits.length > 0) {
-                        content += '<h5>Benefits</h5><ul class="predator-info-list">';
-                        type.benefits.forEach(benefit => {
-                            content += `<li>${benefit}</li>`;
-                        });
-                        content += '</ul>';
-                    }
-                    
-                    // Add drawbacks if available
-                    if (type.drawbacks && type.drawbacks.length > 0) {
-                        content += '<h5>Drawbacks</h5><ul class="predator-info-list">';
-                        type.drawbacks.forEach(drawback => {
-                            content += `<li>${drawback}</li>`;
-                        });
-                        content += '</ul>';
-                    }
-                    
-                    // Add source if available
-                    if (type.source) {
-                        content += `<p class="predator-info-source mt-2"><em>Source: ${type.source}</em></p>`;
-                    }
-                    
-                    // Update the modal body content
-                    $('#predator-info-content').html(content);
-                    
-                    // Get the modal element
-                    const modalElement = document.getElementById('predator-info-modal');
-                    
-                    // Store trigger button using our global accessibility fix
-                    if (window.accessibilityFix && window.accessibilityFix.storeTrigger) {
-                        window.accessibilityFix.storeTrigger(modalElement, this);
-                    } else {
-                        // Fallback if our fix isn't loaded yet
-                        modalElement._lastTrigger = this;
-                        window._lastActiveElement = this;
-                    }
-                    
-                    // Show the modal
-                    const modal = new bootstrap.Modal(modalElement);
-                    modal.show();
-                }
-            });
-            
-            // Add the info button after the dropdown
-            $dropdown.after($infoButton);
-            
-            // Initialize Bootstrap tooltip on the info button
-            new bootstrap.Tooltip($infoButton[0]);
-        } catch (error) {
+                         $previewTooltip.html(`<h5>${type.name}</h5><p>${type.description.substring(0,100)}${type.description.length>100?'...':''}</p><small>Select for more details</small>`);
+                         const pos = $dropdown.offset();
+                         $previewTooltip.css({top: pos.top + $dropdown.outerHeight() + 5, left: pos.left});
+                     });
+            return; // skip legacy modal/button
+        } catch(error){
             console.error('Error loading predator types:', error);
-            $(dropdown).append($('<option>', {
-                'value': 'error',
-                'text': 'Error loading predator types'
-            }));
+            $(dropdown).append($('<option>', {'value':'error','text':'Error loading predator types'}));
         }
     }
 
     // Function to populate an individual clan dropdown with values from clans.js
     async function populateClanDropdown(dropdown) {
         try {
-            // Import the clans.js module
             const module = await import('./references/clans.js');
             const clans = module.clans;
-            
-            // Get the clan types and sort them by name
             const $dropdown = $(dropdown);
-            const clanEntries = Object.entries(clans.types);
-            
-            // Sort by name
-            clanEntries.sort((a, b) => a[1].name.localeCompare(b[1].name));
-            
-            // Add each clan to the dropdown
-            clanEntries.forEach(([key, clan]) => {
+            const clanEntries = Object.entries(clans.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
+            clanEntries.forEach(([key, clan])=> {
                 $dropdown.append($('<option>', {
                     'value': key,
                     'text': clan.name,
-                    'title': clan.background?.description || '', // Add tooltip with description
-                    'data-clan': key  // Add data attribute for easy reference
+                    'title': clan.background?.description || '',
+                    'data-clan': key
                 }));
             });
-            
-            // Add a button next to the dropdown to show info for the current selection
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 clan-info-button d-none', // Initially hidden
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show clan information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this clan'
-            });
-            
-            // Show/hide info button based on dropdown selection
-            $dropdown.on('change', function() {
-                const selectedValue = $(this).val();
-                if (selectedValue && selectedValue !== '') {
-                    $infoButton.removeClass('d-none');
-                } else {
-                    $infoButton.addClass('d-none');
-                }
-            });
-            
-            // Trigger the change event to set initial visibility
-            $dropdown.trigger('change');
-            
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $dropdown.val();
-                if (selectedValue && clans.types[selectedValue]) {
-                    const clan = clans.types[selectedValue];
-                    
-                    // Make sure modal exists first
-                    let modalElement = document.getElementById('clan-info-modal');
-                    if (!modalElement) {
-                        // Create the modal if it doesn't exist
-                        const $infoModal = $(`
-                        <div class="modal fade" id="clan-info-modal" tabindex="-1" aria-labelledby="clanModalLabel" role="dialog" aria-modal="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="clanModalLabel">Clan</h5>
-                                        <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" id="clan-info-content">
-                                        <!-- Content will be inserted here -->
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `);
-                        $('body').append($infoModal);
-                        modalElement = document.getElementById('clan-info-modal');
-                        
-                        // Add custom event handler for the close button
-                        const closeBtn = modalElement.querySelector('.btn-close');
-                        if (closeBtn) {
-                            closeBtn.addEventListener('click', function(e) {
-                                // Prevent default behavior
-                                e.preventDefault();
-                                e.stopPropagation();
-                                
-                                // Immediately blur the button and move focus to body
-                                this.blur();
-                                document.body.focus();
-                                
-                                // Move focus back to the trigger button
-                                if (window._lastActiveElement) {
-                                    window._lastActiveElement.focus();
-                                }
-                                
-                                // Mark the modal with inert to prevent focus
-                                modalElement.setAttribute('inert', '');
-                                
-                                // Get the Bootstrap modal instance and hide it
-                                const modalInstance = bootstrap.Modal.getInstance(modalElement);
-                                if (modalInstance) {
-                                    setTimeout(() => modalInstance.hide(), 10);
-                                }
-                                
-                                return false;
-                            }, true);
-                        }
-                    }
-                    
-                    // Update modal title
-                    $('#clanModalLabel').text(clan.name);
-                    
-                    // Prepare the content for the modal body
-                    let content = '';
-                    
-                    // Add nicknames if available
-                    if (clan.nicknames && clan.nicknames.length > 0) {
-                        content += `<p class="clan-info-nicknames"><strong>Nicknames:</strong> ${clan.nicknames.join(', ')}</p>`;
-                    }
-                    
-                    // Add disciplines if available
-                    if (clan.disciplines && Array.isArray(clan.disciplines)) {
-                        content += `<p class="clan-info-disciplines"><strong>Disciplines:</strong> ${clan.disciplines.join(', ')}</p>`;
-                    }
-                    
-                    // Add background description if available
-                    if (clan.background && clan.background.description) {
-                        content += `<h5>Background</h5><p class="clan-info-background">${clan.background.description}</p>`;
-                    }
-                    
-                    // Add bane if available
-                    if (clan.bane) {
-                        content += `<h5>Clan Bane: ${clan.bane.name}</h5>`;
-                        content += `<p class="clan-info-bane">${clan.bane.description}</p>`;
-                    }
-                    
-                    // Add compulsion if available
-                    if (clan.compulsion) {
-                        content += `<h5>Clan Compulsion: ${clan.compulsion.name}</h5>`;
-                        content += `<p class="clan-info-compulsion">${clan.compulsion.description}</p>`;
-                    }
-                    
-                    // Update modal content
-                    $('#clan-info-content').html(content);
-                    
-                    // Store the current button as the trigger for focus management
-                    window._lastActiveElement = this;
-                    modalElement._lastTrigger = this;
-                    
-                    // Prepare the modal for showing - remove inert attribute
-                    modalElement.removeAttribute('inert');
-                    
-                    // Make sure we have event listeners for this modal
-                    if (!modalElement._eventsAttached) {
-                        // Add event listener for the show event
-                        $(modalElement).on('show.bs.modal', function() {
-                            // Remove inert when showing
-                            this.removeAttribute('inert');
-                        });
-                        
-                        // Add event listener for the hide event
-                        $(modalElement).on('hide.bs.modal', function() {
-                            // Move focus away from any element in modal
-                            if (window._lastActiveElement) {
-                                window._lastActiveElement.focus();
-                            } else {
-                                document.body.focus();
-                            }
-                            
-                            // Apply inert to prevent focus issues
-                            this.setAttribute('inert', '');
-                        });
-                        
-                        modalElement._eventsAttached = true;
-                    }
-                    
-                    // Show the modal
-                    const modal = new bootstrap.Modal(modalElement);
-                    modal.show();
-                }
-            });
-            
-            // Add the info button after the dropdown
-            $dropdown.after($infoButton);
-            
-            // Initialize Bootstrap tooltip on the info button
-            new bootstrap.Tooltip($infoButton[0]);
-        } catch (error) {
+            return; // handled by global utility
+        } catch(error){
             console.error('Error loading clans:', error);
-            $(dropdown).append($('<option>', {
-                'value': 'error',
-                'text': 'Error loading clans'
-            }));
+            $(dropdown).append($('<option>', {'value':'error','text':'Error loading clans'}));
         }
     }
 
@@ -1037,129 +633,21 @@ $(document).ready(function() {
         try {
             const module = await import('./references/generation.js');
             const generationData = module.generation;
-
             const $dropdown = $(dropdown);
-
-            // Collect generations from bloodPotencyLimits keys (numeric)
-            const generations = Object.keys(generationData.bloodPotencyLimits).map(Number).sort((a, b) => a - b);
-
-            // Helper to get ordinal suffix
-            const getOrdinal = (n) => {
-                const s = ["th", "st", "nd", "rd"], v = n % 100;
-                return n + (s[(v - 20) % 10] || s[v] || s[0]);
-            };
-
-            generations.forEach(gen => {
-                const tier = generationData.getGenerationTier ? generationData.getGenerationTier(gen) : null;
-                const displayText = `${getOrdinal(gen)}`;
+            const generations = Object.keys(generationData.bloodPotencyLimits).map(Number).sort((a,b)=>a-b);
+            const getOrdinal = n => {const s=["th","st","nd","rd"], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]);};
+            generations.forEach(gen=>{
+                const tier = generationData.getGenerationTier ? generationData.getGenerationTier(gen):null;
                 $dropdown.append($('<option>', {
                     'value': gen,
-                    'text': displayText,
+                    'text': getOrdinal(gen),
                     'title': tier?.description || ''
                 }));
             });
-
-            // Preselect value if provided
-            const currentValue = $dropdown.data('value') || $dropdown.attr('data-value') || '';
-            if (currentValue) {
-                // Ensure it matches numeric string
-                $dropdown.val(currentValue.toString());
-            }
-
-            // Create an info button similar to clan/predator dropdowns
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 generation-info-button d-none',
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show generation information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this generation'
-            });
-
-            // Show/hide info button based on dropdown selection
-            $dropdown.on('change', function() {
-                const selectedValue = $(this).val();
-                if (selectedValue && selectedValue !== '') {
-                    $infoButton.removeClass('d-none');
-                } else {
-                    $infoButton.addClass('d-none');
-                }
-            });
-
-            // Trigger change to set initial visibility
-            $dropdown.trigger('change');
-
-            // Info button click handler
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $dropdown.val();
-                if (!selectedValue) return;
-
-                const genNum = parseInt(selectedValue, 10);
-                const tierInfo = generationData.getGenerationTier ? generationData.getGenerationTier(genNum) : null;
-                const limits = generationData.getBloodPotencyLimits ? generationData.getBloodPotencyLimits(genNum) : null;
-
-                // Ensure modal exists or create it
-                let $modal = $('#generation-info-modal');
-                if ($modal.length === 0) {
-                    $modal = $(
-                        `<div class="modal fade" id="generation-info-modal" tabindex="-1" aria-labelledby="generationModalLabel" role="dialog" aria-modal="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="generationModalLabel">Generation</h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" id="generation-info-content"><!-- Content inserted dynamically --></div>
-                                    <div class="modal-footer"></div>
-                                </div>
-                            </div>
-                        </div>`
-                    );
-
-                    $('body').append($modal);
-                }
-
-                // Build modal content
-                let content = '';
-                if (tierInfo && tierInfo.description) {
-                    content += `<p class="generation-info-description">${tierInfo.description}</p>`;
-                }
-
-                if (limits) {
-                    content += `<p class="generation-info-bp"><strong>Blood Potency Range:</strong> ${limits.lowest} – ${limits.highest}</p>`;
-                }
-
-                // Add general effects section once (static)
-                if (generationData.effects) {
-                    content += '<h5>Effects</h5><ul class="generation-info-effects">';
-                    for (const [key, val] of Object.entries(generationData.effects)) {
-                        content += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${val}</li>`;
-                    }
-                    content += '</ul>';
-                }
-
-                // Update modal title with ordinal generation
-                $('#generationModalLabel').text(`${getOrdinal(genNum)} Generation`);
-                $('#generation-info-content').html(content);
-
-                // Show modal via Bootstrap
-                const modalElement = document.getElementById('generation-info-modal');
-                const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-                modalInstance.show();
-            });
-
-            // Insert info button after dropdown
-            $dropdown.after($infoButton);
-
-            // Initialize Bootstrap tooltip
-            new bootstrap.Tooltip($infoButton[0]);
-        } catch (error) {
+            return; // global utility handles details
+        } catch(error){
             console.error('Error loading generation data:', error);
-            $(dropdown).append($('<option>', {
-                'value': 'error',
-                'text': 'Error loading generations'
-            }));
+            $(dropdown).append($('<option>', {'value':'error','text':'Error loading generations'}));
         }
     }
 
@@ -1168,138 +656,26 @@ $(document).ready(function() {
         try {
             const module = await import('./references/blood_potency.js');
             const bpData = module.bloodPotency;
-
             const $dropdown = $(dropdown);
-
-            // Collect and sort potency levels
-            const levels = Object.keys(bpData.levels).map(Number).sort((a, b) => a - b);
-
-            levels.forEach(level => {
-                const levelInfo = bpData.levels[level] || {};
-                const displayText = `BP ${level}`;
+            const levels = Object.keys(bpData.levels).map(Number).sort((a,b)=>a-b);
+            levels.forEach(level=>{
+                const info = bpData.levels[level] || {};
                 $dropdown.append($('<option>', {
                     'value': level,
-                    'text': displayText,
-                    'title': levelInfo.description || ''
+                    'text': `BP ${level}`,
+                    'title': info.description || ''
                 }));
             });
-
-            // Preselect value if provided
-            const currentValue = $dropdown.data('value') || $dropdown.attr('data-value') || '';
-            if (currentValue !== '') {
-                $dropdown.val(currentValue.toString());
-            }
-
-            // Create an info button similar to other dropdowns
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 blood-potency-info-button d-none',
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show blood potency information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this blood potency level'
-            });
-
-            // Show/hide info button based on dropdown selection
-            $dropdown.on('change', function() {
-                const selectedValue = $(this).val();
-                if (selectedValue && selectedValue !== '') {
-                    $infoButton.removeClass('d-none');
-                } else {
-                    $infoButton.addClass('d-none');
-                }
-            });
-
-            // Trigger change to set initial visibility
-            $dropdown.trigger('change');
-
-            // Info button click handler
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $dropdown.val();
-                if (!selectedValue) return;
-
-                const potency = parseInt(selectedValue, 10);
-                const levelInfo = bpData.levels[potency] || {};
-                const effects = bpData.getEffects ? bpData.getEffects(potency) : (levelInfo.effects || []);
-                const baneSeverity = bpData.getBaneSeverity ? bpData.getBaneSeverity(potency) : null;
-                const surgeBonus = bpData.getBloodSurgeBonus ? bpData.getBloodSurgeBonus(potency) : null;
-                const disciplineBonus = bpData.getDisciplineBonus ? bpData.getDisciplineBonus(potency) : null;
-                const healingAmount = bpData.getHealingAmount ? bpData.getHealingAmount(potency) : null;
-                const rerollLevel = bpData.getRerollDisciplineLevel ? bpData.getRerollDisciplineLevel(potency) : null;
-
-                // Ensure modal exists or create it
-                let $modal = $('#blood-potency-info-modal');
-                if ($modal.length === 0) {
-                    $modal = $(
-                        `<div class="modal fade" id="blood-potency-info-modal" tabindex="-1" aria-labelledby="bloodPotencyModalLabel" role="dialog" aria-modal="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="bloodPotencyModalLabel">Blood Potency</h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" id="blood-potency-info-content"><!-- Content inserted dynamically --></div>
-                                    <div class="modal-footer"></div>
-                                </div>
-                            </div>
-                        </div>`
-                    );
-
-                    $('body').append($modal);
-                }
-
-                // Build modal content
-                let content = '';
-
-                if (levelInfo.description) {
-                    content += `<p class="blood-potency-description">${levelInfo.description}</p>`;
-                }
-
-                if (effects && effects.length) {
-                    content += '<h5>Effects</h5><ul class="blood-potency-effects">';
-                    effects.forEach(effect => {
-                        content += `<li>${effect}</li>`;
-                    });
-                    content += '</ul>';
-                }
-
-                // Additional quick reference information
-                content += '<h5>Quick Reference</h5><ul class="blood-potency-quick">';
-                if (surgeBonus !== null) content += `<li><strong>Blood Surge Bonus:</strong> +${surgeBonus} dice</li>`;
-                if (healingAmount !== null) content += `<li><strong>Mend Damage per Rouse:</strong> ${healingAmount} Superficial</li>`;
-                if (baneSeverity !== null) content += `<li><strong>Bane Severity:</strong> ${baneSeverity}</li>`;
-                if (disciplineBonus) content += `<li><strong>Discipline Bonus:</strong> +${disciplineBonus} die</li>`;
-                if (rerollLevel !== null) content += `<li><strong>Discipline Reroll:</strong> Level ${rerollLevel} or below</li>`;
-                content += '</ul>';
-
-                // Update modal title and content
-                $('#bloodPotencyModalLabel').text(`Blood Potency ${potency}`);
-                $('#blood-potency-info-content').html(content);
-
-                // Show modal via Bootstrap
-                const modalElement = document.getElementById('blood-potency-info-modal');
-                const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-                modalInstance.show();
-            });
-
-            // Insert info button after dropdown
-            $dropdown.after($infoButton);
-
-            // Initialize Bootstrap tooltip
-            new bootstrap.Tooltip($infoButton[0]);
-        } catch (error) {
-            console.error('Error loading blood potency data:', error);
-            $(dropdown).append($('<option>', {
-                'value': 'error',
-                'text': 'Error loading blood potency'
-            }));
+            return; // skip legacy modal & button setup
+        } catch(error){
+            console.error('Error loading blood potency:', error);
+            $(dropdown).append($('<option>', {'value':'error','text':'Error loading blood potency'}));
         }
     }
 
     // Create dropdown for Resonance
     function createResonanceDropdown(value) {
-        const dropdown = $('<select>', { 'class': 'form-select form-select-sm resonance-dropdown' });
+        const dropdown = $('<select>', { 'class': 'form-select resonance-dropdown' });
         dropdown.append($('<option>', { 'value': '', 'text': 'Select Resonance' }));
         if (value && value.trim() !== '') {
             dropdown.val(value.trim());
@@ -1309,7 +685,7 @@ $(document).ready(function() {
 
     // Create dropdown for Temperament
     function createTemperamentDropdown(value) {
-        const dropdown = $('<select>', { 'class': 'form-select form-select-sm temperament-dropdown' });
+        const dropdown = $('<select>', { 'class': 'form-select temperament-dropdown' });
         dropdown.append($('<option>', { 'value': '', 'text': 'Select Temperament' }));
         if (value && value.trim() !== '') {
             dropdown.val(value.trim());
@@ -1332,58 +708,8 @@ $(document).ready(function() {
                     'title': data.description
                 }));
             });
-
-            // Ensure info modal exists
-            let $modal = $('#resonance-info-modal');
-            if ($modal.length === 0) {
-                $modal = $(
-                    `<div class="modal fade" id="resonance-info-modal" tabindex="-1" aria-labelledby="resonanceModalLabel" role="dialog" aria-modal="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="resonanceModalLabel">Resonance</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" id="resonance-info-content"><!-- Content inserted dynamically --></div>
-                                <div class="modal-footer"></div>
-                            </div>
-                        </div>
-                    </div>`
-                );
-                $('body').append($modal);
-            }
-
-            // Add info button next to dropdown
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 resonance-info-button',
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show resonance information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this resonance'
-            });
-
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $(dropdown).val();
-                if (selectedValue && resonanceData.types[selectedValue]) {
-                    const res = resonanceData.types[selectedValue];
-                    $('#resonanceModalLabel').text(res.name);
-                    let content = `<p>${res.description}</p>`;
-                    if (res.emotions && res.emotions.length) {
-                        content += `<p><strong>Emotions:</strong> ${res.emotions.join(', ')}</p>`;
-                    }
-                    if (res.disciplines && res.disciplines.length) {
-                        content += `<p><strong>Associated Disciplines:</strong> ${res.disciplines.join(', ')}</p>`;
-                    }
-                    $('#resonance-info-content').html(content);
-                    const modalElem = document.getElementById('resonance-info-modal');
-                    bootstrap.Modal.getOrCreateInstance(modalElem).show();
-                }
-            });
-
-            $(dropdown).after($infoButton);
-            new bootstrap.Tooltip($infoButton[0]);
+            // Global info-button utility now handles detailed info.
+            return; // ⬅ Skip legacy modal & button setup
         } catch (err) {
             console.error('Error loading resonances:', err);
         }
@@ -1394,10 +720,9 @@ $(document).ready(function() {
         try {
             const module = await import('./references/resonances.js');
             const temperamentData = module.resonances.temperaments;
-            const entries = Object.entries(temperamentData);
-            // Keep order: fleeting, intense, acute
             const order = ['fleeting', 'intense', 'acute'];
-            entries.sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+            const entries = Object.entries(temperamentData);
+            entries.sort((a,b)=> order.indexOf(a[0]) - order.indexOf(b[0]));
             entries.forEach(([key, data]) => {
                 $(dropdown).append($('<option>', {
                     'value': key,
@@ -1405,55 +730,80 @@ $(document).ready(function() {
                     'title': data.description
                 }));
             });
-
-            // Ensure modal exists
-            let $modal = $('#temperament-info-modal');
-            if ($modal.length === 0) {
-                $modal = $(
-                    `<div class="modal fade" id="temperament-info-modal" tabindex="-1" aria-labelledby="temperamentModalLabel" role="dialog" aria-modal="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="temperamentModalLabel">Temperament</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" id="temperament-info-content"></div>
-                                <div class="modal-footer"></div>
-                            </div>
-                        </div>
-                    </div>`
-                );
-                $('body').append($modal);
-            }
-
-            const $infoButton = $('<button>', {
-                'class': 'btn btn-sm btn-outline-secondary ms-2 temperament-info-button',
-                'html': '<i class="bi bi-info-circle"></i>',
-                'aria-label': 'Show temperament information',
-                'data-bs-toggle': 'tooltip',
-                'data-bs-placement': 'top',
-                'title': 'Show detailed information about this temperament'
-            });
-
-            $infoButton.on('click', function(e) {
-                e.preventDefault();
-                const selectedValue = $(dropdown).val();
-                if (selectedValue && temperamentData[selectedValue]) {
-                    const temp = temperamentData[selectedValue];
-                    $('#temperamentModalLabel').text(temp.name);
-                    let content = `<p>${temp.description}</p>`;
-                    $('#temperament-info-content').html(content);
-                    const modalElem = document.getElementById('temperament-info-modal');
-                    bootstrap.Modal.getOrCreateInstance(modalElem).show();
-                }
-            });
-
-            $(dropdown).after($infoButton);
-            new bootstrap.Tooltip($infoButton[0]);
+            return; // handled by global utility
         } catch (err) {
             console.error('Error loading temperaments:', err);
         }
     }
+
+    // Function to populate the compulsion dropdown with values from compulsions.js
+    async function populateCompulsionDropdown(dropdown) {
+        try {
+            const module = await import('./references/compulsions.js');
+            const compulsionData = module.compulsions;
+
+            const $dropdown = $(dropdown);
+
+            // Remove existing non-placeholder options before repopulating
+            $dropdown.find('option:not(:first)').remove();
+
+            // Add General compulsions first
+            const generalEntries = Object.entries(compulsionData.general || {});
+            generalEntries.forEach(([key, comp]) => {
+                $dropdown.append($('<option>', {
+                    'value': `general.${key}`,
+                    'text': comp.name,
+                    'title': comp.description || '',
+                    'data-compulsion-type': 'general'
+                }));
+            });
+
+            // Add Clan compulsions
+            const selectedClanKey = ($('.clan-dropdown').val() || '');
+            if (selectedClanKey) {
+                let compKey = null;
+                // direct match first
+                if (compulsionData.clanCompulsions[selectedClanKey]) {
+                    compKey = selectedClanKey;
+                } else {
+                    // attempt normalized match
+                    const normalizedSelected = normalizeKey(selectedClanKey);
+                    for (const key in compulsionData.clanCompulsions) {
+                        if (normalizeKey(key) === normalizedSelected) {
+                            compKey = key;
+                            break;
+                        }
+                    }
+                }
+
+                if (compKey) {
+                    const comp = compulsionData.clanCompulsions[compKey];
+                    $dropdown.append($('<option>', {
+                        'value': `clan.${compKey}`,
+                        'text': comp.name,
+                        'title': comp.description || '',
+                        'data-compulsion-type': 'clan',
+                        'data-clan-key': compKey
+                    }));
+                }
+            }
+
+            // Preselect stored value if provided
+            const currentValue = $dropdown.data('value') || $dropdown.attr('data-value') || '';
+            if (currentValue) {
+                $dropdown.val(currentValue);
+            }
+        } catch (error) {
+            console.error('Error loading compulsion data:', error);
+            $(dropdown).append($('<option>', {
+                'value': 'error',
+                'text': 'Error loading compulsions'
+            }));
+        }
+    }
+
+    // Expose to global scope so external listeners can call it
+    window.populateCompulsionDropdown = populateCompulsionDropdown;
 
     // Evaluate initial impairment state once the sheet is built
     evaluateImpairmentStatus();
@@ -1501,81 +851,7 @@ async function populateClanDropdowns() {
                     }
                 }
                 
-                // We'll create the modal on demand when the info button is clicked
-                // This avoids potential timing issues with modal initialization
-                
-                // Add a button next to the dropdown to show info for the current selection
-                const $infoButton = $('<button>', {
-                    'class': 'btn btn-sm btn-outline-secondary ms-2 clan-info-button',
-                    'html': '<i class="bi bi-info-circle"></i>',
-                    'aria-label': 'Show clan information',
-                    'data-bs-toggle': 'tooltip',
-                    'data-bs-placement': 'top',
-                    'title': 'Show detailed information about this clan'
-                });
-                
-                $infoButton.on('click', function(e) {
-                    e.preventDefault();
-                    const selectedValue = $dropdown.val();
-                    if (selectedValue && clans.types[selectedValue]) {
-                        const clan = clans.types[selectedValue];
-                        
-                        // Update modal title
-                        $('#clanModalLabel').text(clan.name);
-                        
-                        // Prepare the content for the modal body
-                        let content = '';
-                        
-                        // Add nicknames if available
-                        if (clan.nicknames && clan.nicknames.length > 0) {
-                            content += `<p class="clan-info-nicknames"><strong>Nicknames:</strong> ${clan.nicknames.join(', ')}</p>`;
-                        }
-                        
-                        // Add disciplines if available
-                        if (clan.disciplines && Array.isArray(clan.disciplines)) {
-                            content += `<p class="clan-info-disciplines"><strong>Disciplines:</strong> ${clan.disciplines.join(', ')}</p>`;
-                        }
-                        
-                        // Add background description if available
-                        if (clan.background && clan.background.description) {
-                            content += `<h5>Background</h5><p class="clan-info-background">${clan.background.description}</p>`;
-                        }
-                        
-                        // Add bane if available
-                        if (clan.bane) {
-                            content += `<h5>Clan Bane: ${clan.bane.name}</h5>`;
-                            content += `<p class="clan-info-bane">${clan.bane.description}</p>`;
-                        }
-                        
-                        // Add compulsion if available
-                        if (clan.compulsion) {
-                            content += `<h5>Clan Compulsion: ${clan.compulsion.name}</h5>`;
-                            content += `<p class="clan-info-compulsion">${clan.compulsion.description}</p>`;
-                        }
-                        
-                        // Add discipline descriptions if available
-                        if (clan.disciplines && typeof clan.disciplines === 'object' && !Array.isArray(clan.disciplines)) {
-                            content += '<h5>Clan Disciplines</h5>';
-                            for (const [disc, description] of Object.entries(clan.disciplines)) {
-                                if (typeof description === 'string') {
-                                    content += `<p><strong>${disc.charAt(0).toUpperCase() + disc.slice(1)}:</strong> ${description}</p>`;
-                                }
-                            }
-                        }
-                        
-                        // Update modal content
-                        $('#clan-info-content').html(content);
-                        
-                        // Show the modal
-                        window.clanInfoModal.show();
-                    }
-                });
-                
-                // Add the info button after the dropdown
-                $dropdown.after($infoButton);
-                
-                // Initialize the tooltip
-                new bootstrap.Tooltip($infoButton[0]);
+                // Info buttons now handled centrally by info-buttons.js – legacy code removed.
             } catch (error) {
                 console.error('Error loading clans:', error);
                 $(dropdown).append($('<option>', {
@@ -1601,3 +877,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Accessibility handling is now in accessibility-fix.js
+
+// helper to normalize keys (remove underscores, lowercase)
+function normalizeKey(str) {
+    return (str || '').toString().replace(/_/g, '').toLowerCase();
+}
+
+$(document).ready(function() {
+    $('.clan-dropdown').on('change', function() {
+        const compDropdownEl = document.querySelector('.compulsion-dropdown');
+        if (compDropdownEl) {
+            populateCompulsionDropdown(compDropdownEl);
+        }
+    });
+});

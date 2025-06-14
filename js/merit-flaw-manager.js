@@ -58,7 +58,7 @@ class MeritFlawManager {
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <select class="form-select ${type}-dropdown" id="${type}Select" disabled>
-                        <option value="">Select a ${title.slice(0, -1)} to Add</option>
+                        <option value="">Select a ${title.slice(0, -1)}</option>
                     </select>
                     <button class="btn btn-success btn-sm" id="add${TraitManagerUtils.capitalizeFirst(type)}Btn" disabled>
                         <i class="bi bi-plus-circle"></i>
@@ -211,7 +211,7 @@ class MeritFlawManager {
         const $addBtn = $(`#add${TraitManagerUtils.capitalizeFirst(type)}Btn`);
         
         if (!categoryKey) {
-            $dropdown.prop('disabled', true).html(`<option value="">Select a ${type} to Add</option>`);
+            $dropdown.prop('disabled', true).html(`<option value="">Select a ${type}</option>`);
             $addBtn.prop('disabled', true);
             return;
         }
@@ -219,7 +219,7 @@ class MeritFlawManager {
         const options = this.getTraitOptions(categoryKey, type);
         if (options) {
             $dropdown.prop('disabled', false).html(`
-                <option value="">Select a ${type} to Add</option>
+                <option value="">Select a ${type}</option>
                 ${options}
             `);
         } else {

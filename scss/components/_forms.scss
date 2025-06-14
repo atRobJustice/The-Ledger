@@ -7,6 +7,57 @@
     }
 }
 
+// Form check input styles
+.form-check-input {
+    background-color: var(--form-bg, transparent);
+    border-color: var(--form-border, $color-border);
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:checked {
+        background-color: var(--accent, $color-primary);
+        border-color: var(--accent, $color-primary);
+    }
+
+    &:focus {
+        border-color: var(--accent, $color-primary);
+        box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb, 164,0,0), 0.25);
+    }
+
+    &:disabled {
+        background-color: $color-border-light;
+        border-color: $color-border-light;
+        cursor: not-allowed;
+    }
+}
+
+// Form switch styles
+.form-switch {
+    .form-check-input {
+        width: 2.5em;
+        height: 1.25em;
+        margin-top: 0.125em;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,0.25)'/%3e%3c/svg%3e");
+        background-position: left center;
+        border-radius: 2em;
+        transition: background-position .15s ease-in-out;
+
+        &:checked {
+            background-position: right center;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+        }
+
+        &:focus {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,0.25)'/%3e%3c/svg%3e");
+        }
+    }
+
+    .form-check-label {
+        color: var(--form-text, $color-text);
+        padding-left: 0.5rem;
+    }
+}
+
 // Dropdown styles
 .discipline-dropdown, 
 .predator-dropdown, 
@@ -29,7 +80,8 @@
 .loresheet-category-dropdown, 
 .loresheet-dropdown,
 .resonance-dropdown,
-.temperament-dropdown {
+.temperament-dropdown,
+.compulsion-dropdown {
     @include form-control-dark;
 }
 
@@ -55,7 +107,8 @@
 .loresheet-category-dropdown option, 
 .loresheet-dropdown option,
 .resonance-dropdown option,
-.temperament-dropdown option {
+.temperament-dropdown option,
+.compulsion-dropdown option {
     outline: none;
     background-color: var(--form-bg, $color-background);
     color: var(--form-text, $color-text);
@@ -83,7 +136,8 @@
 .loresheet-category-dropdown:disabled, 
 .loresheet-dropdown:disabled,
 .resonance-dropdown:disabled,
-.temperament-dropdown:disabled {
+.temperament-dropdown:disabled,
+.compulsion-dropdown:disabled {
     outline: none;
     background-color: $color-border-light;
     cursor: not-allowed;

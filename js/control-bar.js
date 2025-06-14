@@ -67,16 +67,41 @@ export function initControlBar(deps) {
       .pulse-once {
         animation: pulse 1s ease-out 0s 2;
       }
+      /* Responsive layout for smaller screens */
+      @media (max-width: 768px) {
+        #ledger-control-bar {
+          grid-auto-flow: row;
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
+        #ledger-control-bar .btn {
+          width: 100%;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        #ledger-control-bar .form-check {
+          margin-bottom: 0.5rem;
+          grid-column: 1 / -1;
+        }
+        #ledger-control-bar .vr {
+          display: none;
+        }
+      }
     `;
     document.head.appendChild(style);
   }
 
   // 1) Info-mode toggle ------------------------------------------------
   const toggleWrapper = document.createElement("div");
-  toggleWrapper.className = "form-check form-switch d-flex align-items-center text-white";
+  toggleWrapper.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
   toggleWrapper.innerHTML = `
-    <input class="form-check-input" type="checkbox" id="toggleInfoMode">
-    <label class="form-check-label ms-2" for="toggleInfoMode">Info Mode</label>
+    <div class="d-flex justify-content-center align-items-center w-100" style="height: 32px;">
+      <input class="form-check-input mx-auto" type="checkbox" id="toggleInfoMode">
+    </div>
+    <label class="form-check-label text-center w-100 mt-1" for="toggleInfoMode">Info Mode</label>
   `;
   bar.appendChild(toggleWrapper);
 
@@ -557,16 +582,15 @@ export function initControlBar(deps) {
   setInterval(refreshWPRerollButton, 1000);
 
   // Theme button
-  const btnTheme = document.createElement("button");
-  btnTheme.id = "openThemeModal";
-  btnTheme.className = "btn btn-sm p-0 d-flex align-items-center justify-content-center";
-  btnTheme.style.width = "32px";
-  btnTheme.style.maxWidth = "64px";
-  btnTheme.style.height = "32px";
-  btnTheme.innerHTML = "🎨";
-  btnTheme.setAttribute("title", "Choose color theme");
-  btnTheme.setAttribute("data-bs-toggle", "tooltip");
-  bar.appendChild(btnTheme);
+  const themeContainer = document.createElement("div");
+  themeContainer.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
+  themeContainer.innerHTML = `
+    <div class="d-flex justify-content-center w-100" style="height: 32px;">
+      <button class="btn btn-sm p-0 d-flex align-items-center justify-content-center" id="openThemeModal" style="width: 32px; max-width: 64px; height: 32px;" title="Choose color theme" data-bs-toggle="tooltip">🎨</button>
+    </div>
+    <label class="form-check-label text-center w-100 mt-1">Themes</label>
+  `;
+  bar.appendChild(themeContainer);
 
   // Theme modal elements
   let themeModalEl;
@@ -682,14 +706,14 @@ export function initControlBar(deps) {
     document.body.setAttribute("data-theme", savedTheme);
   }
 
-  btnTheme.addEventListener("click", () => {
+  themeContainer.querySelector("#openThemeModal").addEventListener("click", () => {
     ensureThemeModal();
     const current = document.body.getAttribute("data-theme") || "default";
-    // derive radio id
-    const radioId = current === "default" ? "schemeMasquerade" : `scheme${current.charAt(0).toUpperCase()}${current.slice(1)}`;
-    const toCheck = themeModalEl.querySelector(`#${radioId}`);
-    if (toCheck) toCheck.checked = true;
-    themeModalInstance.show();
+    const modal = document.getElementById("themeModal");
+    if (modal) {
+      const bsModal = bootstrap.Modal.getInstance(modal);
+      if (bsModal) bsModal.show();
+    }
   });
 
   // ------------------------------------------------------------------
@@ -705,7 +729,6 @@ export function initControlBar(deps) {
 
   function makeDivider() {
     const d = document.createElement("div");
-    d.className = "vr";
     return d;
   }
 
@@ -714,12 +737,12 @@ export function initControlBar(deps) {
   const groupUtility = makeGroup(btnWPReroll, btnMend, btnClear);
   const groupData = makeGroup(btnImport, btnExport);
   const groupIntegrations = makeGroup(btnProgeny, btnDiscord);
-  const groupAppearance = makeGroup(btnTheme, toggleWrapper);
+  const groupAppearance = makeGroup(themeContainer, toggleWrapper);
   groupIntegrations.style.justifySelf = "center";
 
   // Clear current order and rebuild layout
   // (File input stays, it's invisible and doesn't affect layout)
-  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, btnTheme, btnProgeny, btnDiscord, toggleWrapper, btnRoll].forEach(el => {
+  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, themeContainer, toggleWrapper, btnRoll].forEach(el => {
     // They are already in the bar – remove so we can control order
     if (el.parentElement === bar) bar.removeChild(el);
   });

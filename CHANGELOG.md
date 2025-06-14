@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Added
 - New Theme system: Control-bar button opens a palette selector (Blood & Roses dark, Ivory Tower light, plus 14 clan-specific schemes).
+- Info Mode: New system for displaying detailed information about game mechanics and rules through info buttons on various sections.
+- Comprehensive Humanity reference system with detailed effects and descriptions for each rating level.
+- New reference system for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and Loresheets.
 
 ### Changed
 - Control Bar deduplication: `dice-overlay.js` now relies on `control-bar.js`, eliminating duplicate UI/button logic and making the bar the single source of truth.
@@ -15,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - All tracked components (tracks, dots, buttons, form controls, selects, modals, Discipline & Power cards) now pull palette values from the new Theme system.
 - Updated hover/focus states and disabled styles to respect the new variables.
 - Control Bar redesign: now a fixed footer that never blocks content. Buttons are grouped (Quick Dice, Mend, Data, Integrations, Theme, Info) with dividers, secondary actions use compact icons, detailed tooltips added, WP Reroll pulses when usable, and Progeny/Discord icons are center-aligned. Collapse handle removed.
+- Replaced tooltips.js with a new info-buttons.js system for more comprehensive information display.
 
 ### Fixed
 - Modal and form text colours now adapt to light themes (Ivory Tower) restoring readability.

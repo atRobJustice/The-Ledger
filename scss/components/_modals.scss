@@ -69,7 +69,18 @@
 .predator-info-button, 
 .clan-info-button, 
 .generation-info-button, 
-.blood-potency-info-button {
+.blood-potency-info-button,
+.resonance-info-button,
+.temperament-info-button,
+.humanity-info-button,
+.disciplines-info-button,
+.loresheets-info-button,
+.merits-info-button,
+.flaws-info-button,
+.backgrounds-info-button,
+.background-flaws-info-button,
+.compulsion-info-button,
+.stat-info-button {
     color: var(--panel-text, $color-text);
     border-color: $color-border-light;
     background: transparent;
