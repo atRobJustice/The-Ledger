@@ -315,10 +315,6 @@ let bonusMsg = null;
     const labelEl = evt.target.closest(".stat-label");
     if (!labelEl) return;
 
-    if (isInfoMode()) {
-      return; // let tooltip clicks work normally
-    }
-
     const statRow = labelEl.closest(".stat");
     if (!statRow) return;
 
