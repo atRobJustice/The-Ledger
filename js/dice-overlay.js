@@ -1230,10 +1230,8 @@ let lastRollHadBloodSurge = false;
         if (hungerScore >= 5) {
           surgeInput.checked = false;
           surgeInput.disabled = true;
-          surgeWrapper.classList.add('text-muted');
         } else {
           surgeInput.disabled = false;
-          surgeWrapper.classList.remove('text-muted');
         }
       }
 

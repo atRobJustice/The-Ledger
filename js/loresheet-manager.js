@@ -117,7 +117,7 @@ class LoresheetManager {
                             <div class="loresheet-info">
                                 <span class="stat-label">${loresheet.name}${instances.length > 1 ? ` #${instanceIndex + 1}` : ''}</span>
                                 <small class="d-block">${category.name}</small>
-                                ${loresheet.restrictions !== 'N/A' ? `<small class="d-block text-muted">${loresheet.restrictions}</small>` : ''}
+                                ${loresheet.restrictions !== 'N/A' ? `<small class="d-block">${loresheet.restrictions}</small>` : ''}
                             </div>
                             <div class="loresheet-controls d-flex align-items-center gap-2">
                                 <div class="dots" 
