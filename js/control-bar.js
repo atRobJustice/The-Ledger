@@ -4,6 +4,7 @@
  */
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
+import { bloodPotency as bpData } from "./references/blood_potency.js";
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -170,6 +171,7 @@ export function initControlBar(deps) {
   const btnFrenzy = createQuickBtn("quickFrenzy", "Frenzy", "#B83B1A");
   const btnWPReroll = createQuickBtn("quickWPReroll", "WP Reroll", "#0d6efd");
   const btnClear = createQuickBtn("clearOverlay", "Wipe", "#6c757d");
+  const btnMend = createQuickBtn("quickMend", "Mend", "#198754");
 
   // --- Export / Import buttons --------------------------------------
   const btnExport = document.createElement("button");
@@ -192,6 +194,7 @@ export function initControlBar(deps) {
   bar.appendChild(btnFrenzy);
   bar.appendChild(btnWPReroll);
   bar.appendChild(btnClear);
+  bar.appendChild(btnMend);
   bar.appendChild(btnExport);
   bar.appendChild(btnImport);
   bar.appendChild(fileInput);
@@ -251,6 +254,53 @@ export function initControlBar(deps) {
 
   // 7) Wipe button ----------------------------------------------------
   btnClear.addEventListener("click", clearOverlay);
+
+  // 5b) Mend button handler -------------------------------------------
+  btnMend.addEventListener("click", () => {
+    // Helper to find the Blood Potency value from the sheet (0–5)
+    function getBloodPotency() {
+      const rows = document.querySelectorAll(".stat");
+      for (const row of rows) {
+        const lbl = row.querySelector(".stat-label");
+        if (lbl && lbl.textContent.trim().toLowerCase() === "blood potency") {
+          const dots = row.querySelector(".dots");
+          if (dots && dots.dataset.value !== undefined) {
+            const val = parseInt(dots.dataset.value, 10);
+            return isNaN(val) ? 0 : val;
+          }
+        }
+      }
+      return 0;
+    }
+
+    // Determine how much to heal based on Blood Potency lookup
+    const bpVal = getBloodPotency();
+    const healAmt = bpData.getHealingAmount ? bpData.getHealingAmount(bpVal) : 1;
+
+    // Heal superficial Health damage
+    const container = document.querySelector('.track-container[data-type="health"]');
+    if (container) {
+      const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+      const toHeal = Math.min(healAmt, superficialBoxes.length);
+      // Heal starting from the rightmost (last) superficial box
+      superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
+
+      // Update displayed current health value
+      const total = container.querySelectorAll('.track-box').length;
+      const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
+      const newVal = total - damagedNow;
+      container.setAttribute('data-value', newVal);
+      const header = container.querySelector('.track-header span:first-child');
+      if (header) header.textContent = `Current: ${newVal}`;
+
+      showToast(`Mended ${toHeal} superficial Health damage`, 'success');
+    } else {
+      showToast('Health track not found', 'danger');
+    }
+
+    // Always perform a Rouse check to see if Hunger increases
+    quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
+  });
 
   // 8) Export / Import handlers --------------------------------------
   btnExport.addEventListener("click", () => {

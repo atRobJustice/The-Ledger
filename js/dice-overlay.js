@@ -1127,12 +1127,14 @@ let lastRollHadBloodSurge = false;
     const btnFrenzy = createQuickBtn('quickFrenzy', 'Frenzy', '#B83B1A');
     const btnWPReroll = createQuickBtn('quickWPReroll', 'WP Reroll', '#0d6efd');
     const btnClear = createQuickBtn('clearOverlay', 'Wipe', '#6c757d');
+    const btnMend = createQuickBtn('quickMend', 'Mend', '#198754');
 
     bar.appendChild(btnRouse);
     bar.appendChild(btnRemorse);
     bar.appendChild(btnFrenzy);
     bar.appendChild(btnWPReroll);
     bar.appendChild(btnClear);
+    bar.appendChild(btnMend);
 
     // Helper to enable/disable WP reroll based on aggravated damage
     function refreshWPRerollButton() {
@@ -1162,6 +1164,49 @@ let lastRollHadBloodSurge = false;
     }
 
     btnClear.addEventListener('click', clearOverlay);
+
+    // Mend button logic -------------------------------------------------
+    btnMend.addEventListener('click', () => {
+      // Helper: obtain Blood Potency value (0–5) from sheet dots
+      function getBloodPotency() {
+        const row = Array.from(document.querySelectorAll('.stat')).find(r => {
+          const lbl = r.querySelector('.stat-label');
+          return lbl && lbl.textContent.trim().toLowerCase() === 'blood potency';
+        });
+        if (!row) return 0;
+        const dots = row.querySelector('.dots');
+        if (!dots) return 0;
+        const val = parseInt(dots.dataset.value, 10);
+        return isNaN(val) ? 0 : val;
+      }
+
+      const bpVal = getBloodPotency();
+      const healAmt = (typeof bpData?.getHealingAmount === 'function') ? (bpData.getHealingAmount(bpVal) || 1) : 1;
+
+      // Heal superficial Health
+      const container = document.querySelector('.track-container[data-type="health"]');
+      if (container) {
+        const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+        const toHeal = Math.min(healAmt, superficialBoxes.length);
+        // Heal starting from the rightmost damaged box
+        superficialBoxes.slice(-toHeal).forEach(b => b.classList.remove('superficial'));
+
+        // Update header/current value
+        const total = container.querySelectorAll('.track-box').length;
+        const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
+        const newVal = total - damagedNow;
+        container.setAttribute('data-value', newVal);
+        const header = container.querySelector('.track-header span:first-child');
+        if (header) header.textContent = `Current: ${newVal}`;
+
+        showToast(`Mended ${toHeal} superficial Health damage`, 'success');
+      } else {
+        showToast('Health track not found', 'danger');
+      }
+
+      // Perform a Rouse roll to check hunger increase
+      quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
+    });
 
     // Modal lazy creation
     let modalEl; // will be lazily created

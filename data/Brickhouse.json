@@ -23,7 +23,7 @@
     "aggravated": 0,
     "type": "willpower"
   },
-  "hunger": 1,
+  "hunger": 2,
   "humanity": {
     "max": 10,
     "current": 7,

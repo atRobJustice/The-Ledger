@@ -444,13 +444,16 @@ class DisciplineManager {
                                                     ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? 
                                                         `<span class="badge bg-warning text-dark">Amalgam</span>` : ''}
                                                 </div>
-                                                <p class="power-effect mb-2">${power.effect}</p>
                                                 <div class="power-meta small">
-                                                    ${power.cost ? `<div><strong>Cost:</strong> ${power.cost}</div>` : ''}
-                                                    ${power.prerequisite && power.prerequisite !== 'None' ? `<div><strong>Prerequisite:</strong> ${power.prerequisite}</div>` : ''}
-                                                    ${power.amalgam && power.amalgam !== 'No' ? `<div><strong>Amalgam:</strong> ${power.amalgam}</div>` : ''}
-                                                    ${power.duration ? `<div><strong>Duration:</strong> ${power.duration}</div>` : ''}
-                                                </div>
+                                                    ${power.effect}
+                                                    ${power.cost && power.cost !== 'None' && power.cost !== 'N/A' ? `<br><strong>Cost:</strong> ${power.cost}` : ''}
+                                                    ${power.duration && power.duration !== 'None' && power.duration !== 'N/A' ? `<br><strong>Duration:</strong> ${power.duration}` : ''}
+                                                    ${power.dicePool && power.dicePool !== 'None' && power.dicePool !== 'N/A' ? `<br><strong>Dice Pool:</strong> ${power.dicePool}` : ''}
+                                                    ${power.opposingPool && power.opposingPool !== 'None' && power.opposingPool !== 'N/A' ? `<br><strong>Opposing Pool:</strong> ${power.opposingPool}` : ''}
+                                                    ${power.notes && power.notes !== 'None' && power.notes !== 'N/A' ? `<br><em>${power.notes}</em>` : ''}
+                                                    ${power.prerequisite && power.prerequisite !== 'None' ? `<br><em>Prerequisite: ${power.prerequisite}</em>` : ''}
+                                                    ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? `<br><em>Amalgam: ${power.amalgam}</em>` : ''}
+                                                    ${power.source ? `<br><span class="fst-italic" style="font-size: 0.8em;">Source: ${power.source}</span>` : ''}                                                </div>
                                             </div>
                                             <button class="btn btn-success btn-sm select-power-btn ms-3" data-power="${power.name}">
                                                 Select
