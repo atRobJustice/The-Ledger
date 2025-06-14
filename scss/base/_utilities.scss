@@ -27,7 +27,7 @@
 .badge {
     &.bg-warning {
         background-color: $color-warning !important;
-        color: #000 !important;
+        color: $color-black !important;
     }
 }
 
@@ -35,7 +35,7 @@
 .predator-info-source, 
 .clan-info-source {
     font-size: 0.9em;
-    color: #888;
-    border-top: 1px dotted #444;
+    color: $color-gray-light;
+    border-top: 1px dotted $color-gray-dark;
     padding-top: $spacing-sm;
 } 

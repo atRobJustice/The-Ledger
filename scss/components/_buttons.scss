@@ -16,7 +16,7 @@
 
 // Danger button
 .btn-danger {
-    @include button-variant($color-danger);
+    @include button-variant(var(--accent, $color-danger));
 }
 
 // Outline buttons
@@ -39,14 +39,20 @@
 }
 
 .btn-outline-danger {
-    color: $color-danger;
-    border-color: $color-danger;
+    color: var(--accent, $color-danger);
+    border-color: var(--accent, $color-danger);
     background-color: transparent;
 
     &:hover {
-        background-color: $color-danger;
-        border-color: $color-danger;
+        background-color: var(--accent, $color-danger);
+        border-color: var(--accent, $color-danger);
         color: white;
+    }
+
+    &:disabled {
+        color: $color-border-light;
+        border-color: $color-border-light;
+        background-color: transparent;
     }
 }
 
@@ -56,7 +62,7 @@
 
     &.bg-warning {
         background-color: $color-warning !important;
-        color: #000 !important;
+        color: $color-black !important;
 
         .btn-close {
             filter: invert(1);

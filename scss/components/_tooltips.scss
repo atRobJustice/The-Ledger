@@ -29,7 +29,7 @@
 .tooltip-value {
     font-style: italic;
     margin-top: 8px;
-    border-top: 1px dotted #444;
+    border-top: 1px dotted $color-gray-dark;
     padding-top: 5px;
 
     strong {
@@ -94,7 +94,7 @@
     small {
         display: block;
         font-style: italic;
-        color: #888;
+        color: $color-gray-light;
         font-size: 0.8em;
         text-align: right;
     }

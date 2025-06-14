@@ -9,6 +9,11 @@
 
 // Power selection styles
 .power-option {
+    background-color: var(--panel-bg, rgba($color-background, 0.8));
+    border: $border-width $border-style var(--panel-border-light, $color-border-light);
+    border-radius: $border-radius;
+    transition: $transition-base;
+
     .d-flex {
         @include media-breakpoint-down(md) {
             @include flex-column;
@@ -23,9 +28,18 @@
             margin-left: 0 !important;
         }
     }
+
+    &:hover {
+        border-color: var(--accent, $color-primary);
+        background-color: rgba(var(--accent-rgb, 164,0,0), 0.1);
+    }
 }
 
 .selected-power {
+    background-color: rgba(var(--accent-rgb, 164,0,0), 0.1) !important;
+    border: $border-width $border-style rgba(var(--accent-rgb, 164,0,0), 0.3);
+    color: var(--panel-text, $color-text);
+
     .d-flex {
         @include media-breakpoint-down(md) {
             @include flex-column;
@@ -58,7 +72,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background-color: $color-primary;
+        background-color: var(--accent, $color-primary);
     }
 }
 

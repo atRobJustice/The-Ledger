@@ -13,12 +13,12 @@
             background-color: transparent;
 
             &.filled {
-                background-color: $color-primary;
+                background-color: var(--accent, $color-primary);
             }
 
             &.stained {
                 background-color: transparent;
-                border-color: $color-primary;
+                border-color: var(--accent, $color-primary);
 
                 &::before {
                     content: '/';
@@ -26,7 +26,7 @@
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    color: $color-primary;
+                    color: var(--accent, $color-primary);
                     font-size: 16px;
                     font-weight: bold;
                     line-height: 1;
@@ -39,7 +39,7 @@
 .track-header {
     @include flex-between;
     font-variant: small-caps;
-    color: $color-primary;
+    color: var(--accent, $color-primary);
 }
 
 .track-boxes {
@@ -51,18 +51,18 @@
 .track-box {
     width: 20px;
     height: 20px;
-    border: $border-width $border-style $color-primary;
+    border: $border-width $border-style var(--accent, $color-primary);
     cursor: pointer;
     transition: $transition-base;
     position: relative;
     background-color: transparent;
 
     &:hover {
-        border-color: color.adjust($color-primary, $lightness: 20%);
+        border-color: var(--accent, $color-primary);
     }
 
     &.superficial {
-        background-color: $color-primary;
+        background-color: var(--accent, $color-primary);
 
         &::before {
             content: '/';
@@ -78,7 +78,7 @@
     }
 
     &.aggravated {
-        background-color: $color-primary;
+        background-color: var(--accent, $color-primary);
 
         &::before,
         &::after {
@@ -101,7 +101,7 @@
         }
 
         &:hover {
-            background-color: color.adjust($color-primary, $lightness: 20%);
+            background-color: var(--accent, $color-primary);
 
             &::before,
             &::after {
@@ -122,7 +122,7 @@
             cursor: not-allowed;
 
             &.filled {
-                border-color: #666;
+                border-color: $color-gray;
             }
         }
     }
@@ -154,15 +154,15 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: $border-width $border-style $color-primary;
+    border: $border-width $border-style var(--accent, $color-primary);
     cursor: pointer;
     transition: $transition-base;
 
     &.filled {
-        background-color: $color-primary;
+        background-color: var(--accent, $color-primary);
     }
 
     &:hover {
-        border-color: color.adjust($color-primary, $lightness: 20%);
+        border-color: var(--accent, $color-primary);
     }
 } 
