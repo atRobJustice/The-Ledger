@@ -67,6 +67,10 @@ export function initControlBar(deps) {
       .pulse-once {
         animation: pulse 1s ease-out 0s 2;
       }
+      /* Ensure ALL tooltips appear above the control bar */
+      .tooltip {
+        z-index: 3000 !important;
+      }
       /* Responsive layout for smaller screens */
       @media (max-width: 768px) {
         #ledger-control-bar {
@@ -99,7 +103,7 @@ export function initControlBar(deps) {
   toggleWrapper.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
   toggleWrapper.innerHTML = `
     <div class="d-flex justify-content-center align-items-center w-100" style="height: 32px;">
-      <input class="form-check-input mx-auto" type="checkbox" id="toggleInfoMode">
+      <input class="form-check-input mx-auto" type="checkbox" id="toggleInfoMode" title="Show info popups for sheet elements" data-bs-toggle="tooltip">
     </div>
     <label class="form-check-label text-center w-100 mt-1" for="toggleInfoMode">Info Mode</label>
   `;
@@ -255,11 +259,11 @@ export function initControlBar(deps) {
     "#0d6efd",
     "Willpower Reroll – Take 1 Superficial Willpower damange to reroll up to 3 dice."
   );
-  const btnClear = createQuickBtn(
+  const btnWipe = createQuickBtn(
     "clearOverlay",
     "Wipe",
     "#6c757d",
-    "Clear Overlay – Remove the dice result overlay."
+    "Wipe Overlay – Remove the dice result overlay."
   );
   const btnMend = createQuickBtn(
     "quickMend",
@@ -283,6 +287,14 @@ export function initControlBar(deps) {
   btnExport.setAttribute("title", "Export character to JSON");
   btnExport.setAttribute("data-bs-toggle", "tooltip");
 
+
+  const btnClear = document.createElement("button");
+  btnClear.id = "exportJsonBtn";
+  btnClear.className = "btn btn-outline-light p-1";
+  btnClear.innerHTML = "🗑️";
+  btnClear.setAttribute("title", "Clear the character sheet");
+  btnClear.setAttribute("data-bs-toggle", "tooltip");
+
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "application/json";
@@ -292,6 +304,7 @@ export function initControlBar(deps) {
   bar.appendChild(btnRemorse);
   bar.appendChild(btnFrenzy);
   bar.appendChild(btnWPReroll);
+  bar.appendChild(btnWipe);
   bar.appendChild(btnClear);
   bar.appendChild(btnMend);
   bar.appendChild(btnImport);
@@ -360,7 +373,78 @@ export function initControlBar(deps) {
   window.refreshWPRerollButton = refreshWPRerollButton;
 
   // 7) Wipe button ----------------------------------------------------
-  btnClear.addEventListener("click", clearOverlay);
+  btnWipe.addEventListener("click", clearOverlay);
+
+  // 7b) Clear Sheet button --------------------------------------------
+  btnClear.addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear the character sheet? This will remove all character data.")) {
+      // Clear all input fields
+      document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+      document.querySelectorAll('select').forEach(select => select.value = '');
+      document.querySelectorAll('.dots').forEach(dots => {
+        dots.setAttribute('data-value', '0');
+        dots.querySelectorAll('.dot').forEach(dot => dot.classList.remove('filled'));
+      });
+      
+      // Reset tracks
+      document.querySelectorAll('.track-container').forEach(track => {
+        const max = track.querySelectorAll('.track-box').length;
+        track.setAttribute('data-value', max);
+        track.querySelectorAll('.track-box').forEach(box => {
+          box.classList.remove('superficial', 'aggravated', 'filled', 'stained');
+        });
+        const header = track.querySelector('.track-header span:first-child');
+        if (header) header.textContent = `Current: ${max}`;
+      });
+
+      // Clear any specialty data
+      document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
+
+      // Clear any manager data if available and reinitialize
+      try {
+        // Clear and reinitialize each manager
+        if (window.disciplineManager) {
+          window.disciplineManager.selectedDisciplines = new Map();
+          window.disciplineManager.renderDisciplineManager();
+        }
+        if (window.meritFlawManager) {
+          window.meritFlawManager.selectedMerits = new Map();
+          window.meritFlawManager.selectedFlaws = new Map();
+          window.meritFlawManager.renderMeritManager();
+          window.meritFlawManager.renderFlawManager();
+        }
+        if (window.backgroundManager) {
+          window.backgroundManager.selectedBackgrounds = new Map();
+          window.backgroundManager.selectedBackgroundFlaws = new Map();
+          window.backgroundManager.renderBackgroundManager();
+          window.backgroundManager.renderBackgroundFlawManager();
+        }
+        if (window.coterieManager) {
+          window.coterieManager.selectedMerits = new Map();
+          window.coterieManager.selectedFlaws = new Map();
+          window.coterieManager.renderCoterieMeritManager();
+          window.coterieManager.renderCoterieFlawManager();
+        }
+        if (window.loresheetManager) {
+          window.loresheetManager.selectedLoresheets = new Map();
+          window.loresheetManager.renderLoresheetManager();
+        }
+
+        // Force reinitialize managers if they exist
+        if (typeof window.initManagers === 'function') {
+          window.initManagers();
+        }
+
+        // Clear the file input
+        fileInput.value = '';
+      } catch (err) {
+        console.error('Error clearing managers:', err);
+        showToast("Error clearing some data. Please refresh the page.", "danger");
+      }
+
+      showToast("Character sheet cleared", "success");
+    }
+  });
 
   // 5b) Mend button handler -------------------------------------------
   btnMend.addEventListener("click", () => {
@@ -453,6 +537,8 @@ export function initControlBar(deps) {
         console.error(err);
         showToast("Failed to import character: invalid JSON", "danger");
       }
+      // Clear the file input so it can be reused
+      evt.target.value = '';
     };
     reader.readAsText(file);
   });
@@ -734,15 +820,15 @@ export function initControlBar(deps) {
 
   // Move existing buttons into fresh groups (DOM nodes are re-parented automatically)
   const groupQuick = makeGroup(btnRouse, btnRemorse, btnFrenzy);
-  const groupUtility = makeGroup(btnWPReroll, btnMend, btnClear);
-  const groupData = makeGroup(btnImport, btnExport);
+  const groupUtility = makeGroup(btnWPReroll, btnMend, btnWipe);
+  const groupData = makeGroup(btnImport, btnExport, btnClear);
   const groupIntegrations = makeGroup(btnProgeny, btnDiscord);
   const groupAppearance = makeGroup(themeContainer, toggleWrapper);
   groupIntegrations.style.justifySelf = "center";
 
   // Clear current order and rebuild layout
   // (File input stays, it's invisible and doesn't affect layout)
-  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnClear, btnMend, btnExport, btnImport, themeContainer, toggleWrapper, btnRoll].forEach(el => {
+  [btnRouse, btnRemorse, btnFrenzy, btnWPReroll, btnWipe, btnClear, btnMend, btnExport, btnImport, themeContainer, toggleWrapper, btnRoll].forEach(el => {
     // They are already in the bar – remove so we can control order
     if (el.parentElement === bar) bar.removeChild(el);
   });

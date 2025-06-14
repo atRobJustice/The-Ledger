@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Info Mode: New system for displaying detailed information about game mechanics and rules through info buttons on various sections.
 - Comprehensive Humanity reference system with detailed effects and descriptions for each rating level.
 - New reference system for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and Loresheets.
+- Enhanced backup system with improved JSON import/export functionality.
 
 ### Changed
 - Control Bar deduplication: `dice-overlay.js` now relies on `control-bar.js`, eliminating duplicate UI/button logic and making the bar the single source of truth.
@@ -23,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Fixed
 - Modal and form text colours now adapt to light themes (Ivory Tower) restoring readability.
 - Deleted / remove buttons, checkbox labels, and other previously red/white elements now match the clan accent colour.
+- Improved character data import/export reliability with better error handling.
+- Improved responsive design for mobile devices with better control bar layout and button sizing.
 
 ## [1.0.2] - 2025-06-14
 

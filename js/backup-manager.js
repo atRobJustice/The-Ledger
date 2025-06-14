@@ -76,6 +76,10 @@
                 value = $input.val();
             } else if($select.length){
                 value = $select.val();
+                // Special handling for compulsion to ensure it's properly exported
+                if(label === 'compulsion') {
+                    value = $select.val() || '';
+                }
             } else if($dots.length){
                 value = parseInt($dots.data('value') || 0, 10);
             } else if($track.length){
@@ -186,6 +190,12 @@
                 }
             } else if($track.length && typeof val === 'object'){
                 applyTrackState($track, val);
+            } else if(label === 'compulsion') {
+                // Special handling for compulsion
+                const $compulsionSelect = $stat.find('select');
+                if($compulsionSelect.length) {
+                    setSelectValueWithRetry($compulsionSelect, val);
+                }
             }
         });
 

@@ -1,13 +1,16 @@
 {
   "name": "Brickhouse",
-  "concept": "Twins bound by a single Beast",
   "chronicle": "Blood in the Bay",
+  "resonance": "phlegmatic",
+  "temperament": "intense",
+  "concept": "Twins bound by a single Beast",
   "ambition": "Claim Baltimore",
   "desire": "Build Their Crew",
   "predator": "trapdoor",
+  "sire": "Mallory LaCroix",
   "clan": "tremere",
   "generation": "13",
-  "sire": "Mallory LaCroix",
+  "compulsion": "",
   "health": {
     "max": 5,
     "current": 5,
@@ -31,8 +34,6 @@
     "aggravated": 0,
     "type": "humanity"
   },
-  "resonance": "phlegmatic",
-  "temperament": "intense",
   "strength": 2,
   "dexterity": 2,
   "stamina": 2,
@@ -190,5 +191,5 @@
   "coterieFlaws": {},
   "loresheets": [],
   "discordWebhook": "https://discordapp.com/api/webhooks/1380297149840883792/PjfMlcF-MUDrxycno2WYByeFXiFFxb9EYtzIvffEq6QwTF-rnxp__GCkif67uPrK3hX3",
-  "theme": "tremere"
+  "theme": "default"
 }
