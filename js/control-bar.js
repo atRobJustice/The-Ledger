@@ -276,14 +276,14 @@ export function initControlBar(deps) {
   const btnImport = document.createElement("button");
   btnImport.id = "importJsonBtn";
   btnImport.className = "btn btn-outline-light p-1";
-  btnImport.innerHTML = "⇲";
+  btnImport.innerHTML = "📂";
   btnImport.setAttribute("title", "Import character from JSON");
   btnImport.setAttribute("data-bs-toggle", "tooltip");
 
   const btnExport = document.createElement("button");
   btnExport.id = "exportJsonBtn";
   btnExport.className = "btn btn-outline-light p-1";
-  btnExport.innerHTML = "⇱";
+  btnExport.innerHTML = "💾";
   btnExport.setAttribute("title", "Export character to JSON");
   btnExport.setAttribute("data-bs-toggle", "tooltip");
 

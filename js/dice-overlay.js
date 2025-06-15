@@ -922,7 +922,7 @@ let bonusMsg = null;
 
     const selCount = currentRollCtx.selected.size;
     if (selCount === 0) {
-      alert('Select up to 3 non-Hunger dice to reroll (click them)');
+      alert('Select up to 3 Standard dice to reroll (click them)');
       return;
     }
 
