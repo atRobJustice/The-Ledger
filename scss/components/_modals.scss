@@ -80,7 +80,9 @@
 .backgrounds-info-button,
 .background-flaws-info-button,
 .compulsion-info-button,
-.stat-info-button {
+.stat-info-button,
+.attributes-info-button,
+.skills-info-button {
     color: var(--panel-text, $color-text);
     border-color: $color-border-light;
     background: transparent;

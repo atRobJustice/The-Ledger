@@ -5,7 +5,7 @@ body[data-theme='ivory'] {
   background: linear-gradient(#ece8dd, #d8d4ca);
   color: #2c1b1b;
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
     color: #8b0000;
     border-color: #8b0000;
   }
@@ -40,7 +40,7 @@ body[data-theme='daltonic'] {
   background: linear-gradient(#f5f6fa, #e3e6f3);
   color: #1a1a1a;
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
     color: #005fa3;
     border-color: #005fa3;
   }
@@ -74,4 +74,75 @@ body[data-theme='daltonic'] {
   --text-primary: #1a1a1a;
   --text-muted: #5a5a5a;
   --border-default: #ff9900;
+}
+
+body[data-theme='hc-dark'] {
+  background: #000;
+  color: #fff;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffd700;
+    border-color: #ffd700;
+  }
+
+  .ledger {
+    background: #101010;
+    border-color: #ffd700;
+    border-left-color: #00cfff;
+  }
+
+  .btn-success   { background-color: #00cfff; }
+  .btn-danger    { background-color: #ff2b2b; }
+
+  --accent: #ffd700;
+  --form-bg: #101010;
+  --form-border: #ffd700;
+  --form-text: #fff;
+  --panel-bg: #101010;
+  --panel-border: #ffd700;
+  --panel-text: #fff;
+}
+
+body[data-theme='hc-light'] {
+  background: #fff;
+  color: #000;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #0053d6;
+    border-color: #0053d6;
+  }
+
+  .ledger {
+    background: #f7f7f7;
+    border-color: #000;
+    border-left-color: #0053d6;
+  }
+
+  .btn-success { background-color: #0053d6; color: #fff; }
+  .btn-danger  { background-color: #b40000; color: #fff; }
+
+  --accent: #0053d6;
+  --form-bg: #f7f7f7;
+  --form-border: #000;
+  --form-text: #000;
+  --panel-bg: #f7f7f7;
+  --panel-border: #000;
+  --panel-text: #000;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+body[data-theme='dyslexia'] {
+  font-family: 'OpenDyslexic', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;              // extra leading
+
+  // Spread the OpenDyslexic font to all typical UI elements (not just body text)
+  h1, h2, h3, h4, h5, h6,
+  .btn, input, select, textarea, .form-control, .modal-content {
+    font-family: 'OpenDyslexic', 'Helvetica Neue', Arial, sans-serif;
+  }
 }

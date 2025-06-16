@@ -375,7 +375,7 @@ function initInfoButtons() {
   mappings.forEach(async mapping => {
     const dataKey = mapping.dataKey || mapping.key;
     // find heading element by exact text match
-    const headingEl = Array.from(document.querySelectorAll('h3')).find(h => h.textContent.trim() === mapping.heading);
+    const headingEl = Array.from(document.querySelectorAll('h5')).find(h => h.textContent.trim() === mapping.heading);
     if (!headingEl) return;
 
     const button = createInfoButton(mapping.heading);
