@@ -1,8 +1,9 @@
+@use 'variables' as *;
 // Global variables and mixins
 @use 'globals' as *;
 
 // Base styles
-@use 'base/typography';
+@use 'base/_typography';
 @use 'base/utilities';
 
 // Layout
@@ -17,6 +18,7 @@
 @use 'components/buttons';
 @use 'components/theme-overrides';
 @use 'components/clan-themes';
+@use 'components/sticky-header';
 
 // Features
 @use 'features/disciplines';

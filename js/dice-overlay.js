@@ -1032,6 +1032,14 @@ let bonusMsg = null;
         modalEl = createModal();
         bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
+        // Add keyboard event listener for Enter key
+        modalEl.querySelector("#diceRollForm").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            modalEl.querySelector("#rollDiceConfirm").click();
+          }
+        });
+
         // Attach confirm handler only once
         modalEl.querySelector("#rollDiceConfirm").addEventListener("click", async () => {
           const pools = {

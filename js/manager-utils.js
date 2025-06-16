@@ -41,7 +41,7 @@ export class TraitManagerUtils {
      */
     static showFeedback(message, type = 'info') {
         const toastHtml = `
-            <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : type === 'info' ? 'info' : type === 'warning' ? 'warning' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : type === 'info' ? 'info' : type === 'warning' ? 'warning' : 'danger'} border-0" role="status" aria-live="polite" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body">
                         ${message}

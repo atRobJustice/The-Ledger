@@ -34,3 +34,44 @@ body[data-theme='ivory'] {
   --panel-border-light: #cbbfae;
   --panel-text: #2c1b1b;
 }
+
+// Daltonic: color-blind friendly blue/orange palette
+body[data-theme='daltonic'] {
+  background: linear-gradient(#f5f6fa, #e3e6f3);
+  color: #1a1a1a;
+
+  h1, h2, h3 {
+    color: #005fa3;
+    border-color: #005fa3;
+  }
+
+  .ledger {
+    background: #fafdff;
+    border-color: #ff9900;
+    border-left-color: #005fa3;
+    color: #1a1a1a;
+  }
+
+  .btn-success {
+    background-color: #ff9900;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background-color: #005fa3;
+    color: #fff;
+  }
+
+  // Accent and component variables
+  --accent: #005fa3;
+  --form-bg: #fafdff;
+  --form-border: #ff9900;
+  --form-text: #1a1a1a;
+  --panel-bg: #fafdff;
+  --panel-border: #ff9900;
+  --panel-border-light: #ffb84d;
+  --panel-text: #1a1a1a;
+  --text-primary: #1a1a1a;
+  --text-muted: #5a5a5a;
+  --border-default: #ff9900;
+}
