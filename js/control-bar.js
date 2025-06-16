@@ -289,7 +289,7 @@ export function initControlBar(deps) {
 
 
   const btnClear = document.createElement("button");
-  btnClear.id = "exportJsonBtn";
+  btnClear.id = "clearBtn";
   btnClear.className = "btn btn-outline-light p-1";
   btnClear.innerHTML = "🗑️";
   btnClear.setAttribute("title", "Clear the character sheet");
@@ -378,8 +378,15 @@ export function initControlBar(deps) {
   // 7b) Clear Sheet button --------------------------------------------
   btnClear.addEventListener("click", () => {
     if (confirm("Are you sure you want to clear the character sheet? This will remove all character data.")) {
-      // Clear all input fields
-      document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+      // Clear all input fields and textareas
+      document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+        input.value = '';
+        // Trigger input event for textareas to reset their height
+        if (input.tagName.toLowerCase() === 'textarea') {
+          input.style.height = 'auto';
+          input.style.height = (input.scrollHeight) + 'px';
+        }
+      });
       document.querySelectorAll('select').forEach(select => select.value = '');
       document.querySelectorAll('.dots').forEach(dots => {
         dots.setAttribute('data-value', '0');
@@ -399,6 +406,12 @@ export function initControlBar(deps) {
 
       // Clear any specialty data
       document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
+
+      // Clear convictions
+      if (window.convictionManager) {
+        window.convictionManager.convictions = [];
+        $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
+      }
 
       // Clear any manager data if available and reinitialize
       try {

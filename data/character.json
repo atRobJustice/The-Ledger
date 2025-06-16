@@ -31,6 +31,18 @@
     "aggravated": 0,
     "type": "humanity"
   },
+  "convictions": [
+    {
+      "description": "",
+      "category": "",
+      "touchstone": {
+        "name": "",
+        "relationship": "",
+        "summary": "",
+        "status": "Alive"
+      }
+    }
+  ],
   "resonance": "",
   "strength": 1,
   "dexterity": 1,

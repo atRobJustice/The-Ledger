@@ -5,6 +5,17 @@
     &.bg-dark {
         @include form-control-dark;
     }
+    
+    // Textarea styles
+    &[type="textarea"],
+    textarea.form-control {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-height: 38px; // Bootstrap's default input height
+        resize: none;
+        overflow: hidden;
+    }
 }
 
 // Form check input styles
