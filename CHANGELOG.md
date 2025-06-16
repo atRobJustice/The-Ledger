@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Comprehensive Humanity reference system with detailed effects and descriptions for each rating level.
 - New reference system for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and Loresheets.
 - Enhanced backup system with improved JSON import/export functionality.
+- Sticky header component for improved navigation and accessibility.
+- Enhanced typography styles with improved readability and visual hierarchy.
 
 ### Changed
 - Control Bar deduplication: `dice-overlay.js` now relies on `control-bar.js`, eliminating duplicate UI/button logic and making the bar the single source of truth.
@@ -20,12 +22,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Updated hover/focus states and disabled styles to respect the new variables.
 - Control Bar redesign: now a fixed footer that never blocks content. Buttons are grouped (Quick Dice, Mend, Data, Integrations, Theme, Info) with dividers, secondary actions use compact icons, detailed tooltips added, WP Reroll pulses when usable, and Progeny/Discord icons are center-aligned. Collapse handle removed.
 - Replaced tooltips.js with a new info-buttons.js system for more comprehensive information display.
+- Improved responsive design for mobile devices with better control bar layout and button sizing.
 
 ### Fixed
 - Modal and form text colours now adapt to light themes (Ivory Tower) restoring readability.
 - Deleted / remove buttons, checkbox labels, and other previously red/white elements now match the clan accent colour.
 - Improved character data import/export reliability with better error handling.
-- Improved responsive design for mobile devices with better control bar layout and button sizing.
 
 ## [1.0.2] - 2025-06-14
 

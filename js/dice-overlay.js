@@ -315,10 +315,6 @@ let bonusMsg = null;
     const labelEl = evt.target.closest(".stat-label");
     if (!labelEl) return;
 
-    if (isInfoMode()) {
-      return; // let tooltip clicks work normally
-    }
-
     const statRow = labelEl.closest(".stat");
     if (!statRow) return;
 
@@ -926,7 +922,7 @@ let bonusMsg = null;
 
     const selCount = currentRollCtx.selected.size;
     if (selCount === 0) {
-      alert('Select up to 3 non-Hunger dice to reroll (click them)');
+      alert('Select up to 3 Standard dice to reroll (click them)');
       return;
     }
 
@@ -1035,6 +1031,14 @@ let bonusMsg = null;
       if (!modalEl) {
         modalEl = createModal();
         bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+        // Add keyboard event listener for Enter key
+        modalEl.querySelector("#diceRollForm").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            modalEl.querySelector("#rollDiceConfirm").click();
+          }
+        });
 
         // Attach confirm handler only once
         modalEl.querySelector("#rollDiceConfirm").addEventListener("click", async () => {

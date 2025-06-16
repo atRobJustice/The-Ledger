@@ -276,14 +276,14 @@ export function initControlBar(deps) {
   const btnImport = document.createElement("button");
   btnImport.id = "importJsonBtn";
   btnImport.className = "btn btn-outline-light p-1";
-  btnImport.innerHTML = "⇲";
+  btnImport.innerHTML = "📂";
   btnImport.setAttribute("title", "Import character from JSON");
   btnImport.setAttribute("data-bs-toggle", "tooltip");
 
   const btnExport = document.createElement("button");
   btnExport.id = "exportJsonBtn";
   btnExport.className = "btn btn-outline-light p-1";
-  btnExport.innerHTML = "⇱";
+  btnExport.innerHTML = "💾";
   btnExport.setAttribute("title", "Export character to JSON");
   btnExport.setAttribute("data-bs-toggle", "tooltip");
 
@@ -472,6 +472,13 @@ export function initControlBar(deps) {
     const container = document.querySelector('.track-container[data-type="health"]');
     if (container) {
       const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+      
+      // Check if there's any damage to heal
+      if (superficialBoxes.length === 0) {
+        showToast('No superficial damage to mend', 'warning');
+        return;
+      }
+
       const toHeal = Math.min(healAmt, superficialBoxes.length);
       // Heal starting from the rightmost (last) superficial box
       superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
@@ -702,6 +709,10 @@ export function initControlBar(deps) {
                 <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
               </div>
               <div class="form-check">
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic">
+                <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
+              </div>
+              <div class="form-check">
                 <input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu">
                 <label class="form-check-label" for="schemeBanu">Banu Haqim</label>
               </div>
@@ -786,6 +797,10 @@ export function initControlBar(deps) {
     localStorage.setItem("ledger-theme", themeKey);
   }
 
+  // Theme auto-detect: if user prefers light mode and has not set a theme, use 'ivory' on first visit
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage['ledger-theme']) {
+    document.body.setAttribute('data-theme', 'ivory');
+  }
   // Load previously saved theme (if any)
   const savedTheme = localStorage.getItem("ledger-theme");
   if (savedTheme && savedTheme !== "default") {

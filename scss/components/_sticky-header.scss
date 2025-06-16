@@ -1,0 +1,76 @@
+@use '../variables' as *;
+@use '../globals' as *;
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--bs-body-bg);
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 0.5rem 1rem;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &.visible {
+        transform: translateY(0);
+    }
+
+    .quick-stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .stat {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        padding: 0;
+    }
+
+    .stat-label {
+        font-weight: bold;
+        color: var(--bs-body-color);
+    }
+
+    .stat-value {
+        font-size: 1.1em;
+        color: var(--bs-primary);
+    }
+}
+
+.vitals-section {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-background);
+    padding-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border);
+
+    // Disable sticky behavior on mobile/tablet where columns stack
+    @media (max-width: $breakpoint-md) {
+        position: relative;
+        top: auto;
+        box-shadow: none;
+        border-bottom: none;
+    }
+}
+
+// Add a placeholder to prevent content jump
+.vitals-placeholder {
+    display: none;
+    height: 0;
+    
+    &.visible {
+        display: block;
+        height: 200px; // Adjust based on your vitals section height
+    }
+} 

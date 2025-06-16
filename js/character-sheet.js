@@ -34,9 +34,12 @@ function createDots(value, maxDots = 5) {
             
             // If clicking the last filled dot, decrease by 1
             if (clickedValue === currentValue) {
-                $this.removeClass('filled');
-                $parent.data('value', clickedValue - 1);
-                $parent.attr('data-value', clickedValue - 1);
+                const newValue = clickedValue - 1;
+                $parent.find('.dot').each(function(index) {
+                    $(this).toggleClass('filled', index < newValue);
+                });
+                $parent.data('value', newValue);
+                $parent.attr('data-value', newValue);
             }
             // If clicking an empty dot, fill up to that value
             else if (clickedValue > currentValue) {

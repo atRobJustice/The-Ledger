@@ -1,3 +1,4 @@
+@use 'sass:color';
 // Colors
 $color-primary: #a40000;
 $color-background: #1a1a1a;
@@ -48,4 +49,19 @@ $z-index-toast: 1055;
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
-$breakpoint-xl: 1200px; 
+$breakpoint-xl: 1200px;
+
+// Text and border variables for accessibility
+$text-primary: $color-text;
+$text-muted: color.mix($color-text, $color-gray-lightest, 60%);
+$border-default: color.mix($color-border, $color-background, 80%);
+
+// Expose variables to :root for JS access
+:root {
+  --text-primary: #{$text-primary};
+  --text-muted: #{$text-muted};
+  --border-default: #{$border-default};
+  --accent: #{$color-primary};
+  --color-background: #{$color-background};
+  --color-border: #{$color-border};
+} 
