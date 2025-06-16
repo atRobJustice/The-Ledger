@@ -79,13 +79,13 @@
   "dominate": 2,
   "auspex": 1,
   "obfuscate": 1,
-  "folkloric_bane": 1,
-  "folkloric_block": 1,
   "haven": 2,
   "watchmen": 1,
   "resources": 2,
   "herd": 3,
   "retainers": 1,
+  "folkloric_bane": 1,
+  "folkloric_block": 1,
   "creepy": 1,
   "disciplines": {
     "dominate": {
@@ -190,6 +190,26 @@
   "coterieMerits": {},
   "coterieFlaws": {},
   "loresheets": [],
+  "convictions": [
+    {
+      "description": "You don't leave your own behind, even if they're dead inside.",
+      "touchstone": {
+        "name": "Cornelius \"Cornbread\" Tate",
+        "relationship": "",
+        "summary": "",
+        "status": "Alive"
+      }
+    },
+    {
+      "description": "There's still something worth fighting for, even if it's not for us.",
+      "touchstone": {
+        "name": "Eden Vale",
+        "relationship": "",
+        "summary": "",
+        "status": "Alive"
+      }
+    }
+  ],
   "discordWebhook": "https://discordapp.com/api/webhooks/1380297149840883792/PjfMlcF-MUDrxycno2WYByeFXiFFxb9EYtzIvffEq6QwTF-rnxp__GCkif67uPrK3hX3",
   "theme": "default"
 }

@@ -68,11 +68,24 @@ function createDots(value, maxDots = 5) {
     return $dotsContainer[0];
 }
 function createTextInput(value) {
-    const $input = $('<input>', {
-        'type': 'text',
+    const $input = $('<textarea>', {
         'value': value,
-        'class': 'form-control bg-dark text-light'
+        'class': 'form-control bg-dark text-light',
+        'rows': '1',
+        'style': 'resize: none; overflow: hidden;'
     });
+    
+    // Auto-resize the textarea based on content
+    $input.on('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+    
+    // Trigger initial resize
+    setTimeout(() => {
+        $input.trigger('input');
+    }, 0);
+    
     return $input[0];
 }
 
@@ -543,6 +556,15 @@ $(document).ready(function() {
             } else if (textFields.includes(statLabel)) {
                 const input = createTextInput(value);
                 $valueSpan.replaceWith(input);
+                // Set up auto-resize for the new textarea
+                $(input).on('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+                // Trigger initial resize
+                setTimeout(() => {
+                    $(input).trigger('input');
+                }, 0);
             } else if (trackFields[statLabel]) {
                 const trackBoxes = createTrackBoxes(
                     trackFields[statLabel].max, 
@@ -552,8 +574,6 @@ $(document).ready(function() {
                     statLabel
                 );
                 $valueSpan.replaceWith(trackBoxes);
-
-                // Info buttons now handled centrally by info-buttons.js – legacy code removed.
             } else if (statLabel === 'resonance') {
                 const dropdown = createResonanceDropdown(value);
                 $valueSpan.replaceWith(dropdown);
@@ -894,3 +914,37 @@ $(document).ready(function() {
         }
     });
 });
+
+// Function to save convictions and touchstones
+function saveConvictionsAndTouchstones() {
+    if (window.convictionManager) {
+        return window.convictionManager.saveConvictions();
+    }
+    return [];
+}
+
+// Function to load convictions and touchstones
+function loadConvictionsAndTouchstones(convictions) {
+    if (window.convictionManager && convictions) {
+        window.convictionManager.loadConvictions(convictions);
+    }
+}
+
+// Modify the existing saveCharacter function to include convictions
+async function saveCharacter() {
+    const character = {
+        // ... existing character properties ...
+        convictions: saveConvictionsAndTouchstones(),
+        // ... rest of existing properties ...
+    };
+    // ... rest of existing save logic ...
+}
+
+// Modify the existing loadCharacter function to include convictions
+async function loadCharacter(characterData) {
+    // ... existing loading logic ...
+    if (characterData.convictions) {
+        loadConvictionsAndTouchstones(characterData.convictions);
+    }
+    // ... rest of existing loading logic ...
+}

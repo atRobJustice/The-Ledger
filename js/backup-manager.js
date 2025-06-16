@@ -64,10 +64,10 @@
         const data = {};
 
         // Gather visible stats
-        $('.stat').each(function(){
+        $('.stat').each(function() {
             const label = $(this).find('.stat-label').text().trim().toLowerCase();
             let value;
-            const $input = $(this).find('input');
+            const $input = $(this).find('input, textarea');
             const $select = $(this).find('select');
             const $dots = $(this).find('.dots');
             const $track = $(this).find('.track-container');
@@ -131,6 +131,7 @@
             data.coterieFlaws = ct.coterieFlaws;
         }
         if(window.loresheetManager) data.loresheets = window.loresheetManager.exportLoresheets();
+        if(window.convictionManager) data.convictions = window.convictionManager.saveConvictions();
 
         // Persist Discord webhook (same key dice-overlay.js uses)
         const webhook = localStorage.getItem('ledger-discord-webhook');
@@ -147,7 +148,7 @@
         // Basic stats
         Object.entries(data).forEach(([key,val]) => {
             // Skip manager keys handled later
-            if(['disciplines','merits','flaws','backgrounds','backgroundFlaws','coterieMerits','coterieFlaws','loresheets'].includes(key)) return;
+            if(['disciplines','merits','flaws','backgrounds','backgroundFlaws','coterieMerits','coterieFlaws','loresheets','convictions'].includes(key)) return;
 
             // First, handle specialties keys so they don't fall through to generic processing
             if(key.endsWith('_specialties')){
@@ -172,13 +173,17 @@
             });
             if(!$stat.length) return;
 
-            const $input = $stat.find('input');
+            const $input = $stat.find('input, textarea');
             const $select = $stat.find('select');
             const $dots = $stat.find('.dots');
             const $track = $stat.find('.track-container');
 
             if($input.length){
                 $input.val(val);
+                // Trigger input event for textareas to handle auto-resize
+                if($input.is('textarea')) {
+                    $input.trigger('input');
+                }
             } else if($select.length){
                 setSelectValueWithRetry($select, val);
             } else if($dots.length && typeof val === 'number'){
@@ -205,6 +210,7 @@
         if(window.backgroundManager) window.backgroundManager.loadBackgroundsAndFlaws(data.backgrounds||{}, data.backgroundFlaws||{});
         if(window.coterieManager) window.coterieManager.loadCoterieMeritsAndFlaws(data.coterieMerits||{}, data.coterieFlaws||{});
         if(window.loresheetManager) window.loresheetManager.loadLoresheets(data.loresheets||[]);
+        if(window.convictionManager) window.convictionManager.loadConvictions(data.convictions||[]);
 
         // Restore Discord webhook
         if(Object.prototype.hasOwnProperty.call(data,'discordWebhook')){

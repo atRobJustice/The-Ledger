@@ -1,8 +1,8 @@
 # Technical Documentation – The Ledger
 
-> Version 1.0.0 – Last updated 13 June 2025
+> Version 1.2.0 – Last updated 15 June 2025
 
-Welcome to the technical documentation for **The Ledger**, an offline-first web app for creating and managing *Vampire: The Masquerade* 5th Edition characters.
+Welcome to the technical documentation for **The Ledger**, an offline-first web app for managing *Vampire: The Masquerade* 5th Edition characters.
 
 This documentation is aimed at developers who want to understand, contribute to, or extend the code-base.  If you are looking for user instructions, see the project's top-level README.md.
 
@@ -21,20 +21,26 @@ This documentation is aimed at developers who want to understand, contribute to,
 9. [Conventions & Coding Style](#conventions--coding-style)
 10. [Extending the App](#extending-the-app)
 11. [FAQ / Troubleshooting](#faq--troubleshooting)
+12. [Development Workflow](#development-workflow)
+13. [Component Architecture](#component-architecture)
+14. [Theme System](#theme-system)
+15. [Accessibility](#accessibility)
 
 ---
 
 ## System Overview
 
-The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser (localStorage) or exported as JSON/PDF at the user's request; there is *no* server component.
+The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser (localStorage) or exported as JSON at the user's request; there is *no* server component.
 
 Key design goals:
 
 * **Offline-first** – must run from a local `index.html` without a network connection.
 * **Minimal build pipeline** – only SCSS compilation is required for development.
-* **Source-of-truth data** – rules data is imported from two open-source projects and the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
+* **Source-of-truth data** – rules data is imported from the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
 * **Modular JS** – each logical sheet section has a dedicated manager module.
 * **Game-accurate dice** – optional 3-D dice overlay using Three.js & Cannon.js.
+* **Theme-aware** – comprehensive theming system with clan-specific color schemes.
+* **Accessible** – ARIA attributes, keyboard navigation, and screen reader support.
 
 ---
 
@@ -44,6 +50,26 @@ Key design goals:
 ├── index.html                # Main HTML entry
 ├── css/                      # Compiled CSS (ignored in VCS)
 ├── scss/                     # Source stylesheets (Sass)
+│   ├── _variables.scss      # Design tokens & theme variables
+│   ├── _mixins.scss         # Reusable SCSS mixins
+│   ├── _globals.scss        # Global styles
+│   ├── _responsive.scss     # Media queries & responsive design
+│   ├── main.scss            # Main entry point
+│   ├── base/                # Base styles
+│   │   ├── _typography.scss # Typography system
+│   │   ├── _utilities.scss  # Utility classes
+│   │   └── typography.scss  # Font imports & setup
+│   ├── components/          # Reusable UI components
+│   │   ├── _forms.scss      # Form controls & inputs
+│   │   ├── _modals.scss     # Modal dialogs
+│   │   ├── _clan-themes.scss# Clan-specific themes
+│   │   ├── _theme-overrides.scss # Theme customization
+│   │   ├── _sticky-header.scss # Sticky header styles
+│   │   ├── _tracks.scss     # Health/Willpower tracks
+│   │   ├── _buttons.scss    # Button variants
+│   │   └── _tooltips.scss   # Info tooltips
+│   ├── layout/              # Layout-specific styles
+│   └── features/            # Feature-specific styles
 ├── js/
 │   ├── character-sheet.js    # Core sheet initialisation & orchestration
 │   ├── manager-utils.js      # Shared helpers for manager modules
@@ -54,20 +80,27 @@ Key design goals:
 │   ├── specialty-manager.js  # Skill Specialities
 │   ├── loresheet-manager.js  # Loresheets section
 │   ├── coterie-manager.js    # Coterie information
+│   ├── conviction-manager.js # Convictions & Touchstones
+│   ├── info-buttons.js       # Info mode & reference system
+│   ├── sticky-header.js      # Sticky header component
 │   ├── dice-overlay.js       # 3-D overlay + UI toolbar
 │   ├── dice.js               # Core dice physics/render (Three.js + Cannon.js)
 │   ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
 │   ├── backup-manager.js     # JSON import / export / localStorage sync
 │   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
-│   ├── tooltips.js           # Bootstrap-powered Attribute/Skill tooltips
 │   ├── discord-integration.js# Rich-presence hooks (optional)
 │   ├── accessibility-fix.js  # Misc ARIA / keyboard tweaks
 │   ├── lib/                  # Vendored libs (three.js, cannon.js, teal.js…)
 │   └── references/           # Auto-generated JSON data (clans, skills, …)
 ├── assets/                   # Images, icons, fonts
 ├── data/                     # **↯   Rules data sourced from Progeny & VTM Wiki**
+├── reference/                # Additional reference materials
+├── .vscode/                  # VS Code workspace settings
 ├── DOCUMENTATION.md          # Technical docs (this file)
-└── package.json              # npm scripts & dev-deps
+├── CHANGELOG.md             # Version history
+├── README.md                # Project overview & user guide
+├── package.json             # npm scripts & dev-deps
+└── .gitignore               # Git ignore rules
 ```
 
 ---
@@ -134,6 +167,9 @@ Common helper functions: value parsing, dot creation, tooltip wiring, REST-like 
 | `specialty-manager.js`  | Skill specialities with validation |
 | `loresheet-manager.js`  | Tiered loresheet picker |
 | `coterie-manager.js`    | Coterie merits, size rules |
+| `conviction-manager.js` | Conviction tracking, Touchstone management |
+| `info-buttons.js`       | Info mode & reference system |
+| `sticky-header.js`      | Sticky header component |
 
 ### `backup-manager.js`
 Serialises/deserialises the current sheet as **Ledger JSON v1** (see Data Layer).
@@ -142,8 +178,8 @@ Also exposes `downloadJSON()` and `loadFromFile()` helpers.
 ### `dice-overlay.js`
 Creates a full-window transparent canvas, initialises `dice.js`, and exposes `rollDice(config)` given a dice notation (`5v/2h` = 5 normal, 2 hunger).  Listens for `Ctrl + R` keyboard shortcut.
 
-### `tooltips.js`
-Provides context-sensitive Bootstrap tooltips for Attributes and Skills. Listens for value-change events from `character-sheet.js` (and direct dot clicks) to keep the tooltip data in sync without forcing the tooltip to reopen.
+### `info-buttons.js`
+Provides context-sensitive information display for game mechanics and rules. Replaces the older tooltip system with a more comprehensive reference system.
 
 ---
 
@@ -152,10 +188,10 @@ Provides context-sensitive Bootstrap tooltips for Attributes and Skills. Listens
 All reference data lives in `js/references/` and `data/`:
 
 * **Source projects:**
-  * [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/) – JSON exports (clans, disciplines, etc.)
-  * [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki) – scraped tables (predator types, generation, blood potency…)
+  * [@prncc/vampire-dice-roller](https://github.com/prncc/vampire-dice-roller)
+  * [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/)
+  * [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki)
 * **Format:** Plain ES Modules exporting arrays/objects or static JSON.
-* **Versioning:** Whenever the upstream wiki changes, bump the **Data Version** inside `data/metadata.json` (if present) and add an entry to CHANGELOG.
 
 ### Ledger JSON v1 (export example)
 
@@ -176,6 +212,17 @@ All reference data lives in `js/references/` and `data/`:
   },
   "skills": { /* … */ },
   "disciplines": [ { "name": "Auspex", "level": 2 } ],
+  "convictions": [
+    {
+      "description": "Never harm the innocent",
+      "touchstone": {
+        "name": "Sarah Chen",
+        "relationship": "Former student",
+        "summary": "Represents my commitment to education",
+        "lost": false
+      }
+    }
+  ],
   "tracks": {
     "health": { "max": 6, "aggravated": 0, "superficial": 0 },
     "willpower": { "max": 5, "aggravated": 1, "superficial": 2 },
@@ -222,18 +269,109 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 * **Linting:** not enforced currently; follow Airbnb JS where reasonable.
 * **Modules:** keep each manager self-contained; expose a default class with `init()`.
 * **DOM selectors:** always query via ids/classes defined in `index.html`; avoid brittle text-based selectors.
-* **Translation:** all display strings live in `/js/references/strings.js` (planned).
 
 ---
 
-## Extending the App
+## Development Workflow
 
-| Task | Steps |
-| ---- | ----- |
-| Add a new Discipline | 1. Append to `js/references/disciplines/*.js` 2. Update `discipline-manager.js` mapping |
-| Add localisation | 1. Add JSON under `data/i18n/` 2. Replace hard-coded strings |
-| Change dice themes | See `dice.js#createMaterials` and add a new `textureBuilder` |
-| Persist to cloud | Replace `localStorage` calls in `backup-manager.js` with API calls |
+1. **Setup**
+   ```bash
+   git clone https://github.com/yourusername/Ledger.git
+   cd Ledger
+   npm install
+   npm run sass
+   ```
+
+2. **Development**
+   - Run `npm run sass` to watch SCSS changes
+   - Open `index.html` directly in browser (no server needed)
+   - Use browser dev tools for debugging
+
+3. **Testing**
+   - Test in multiple browsers (Chrome, Firefox, Safari)
+   - Verify offline functionality
+   - Check accessibility with screen readers
+
+4. **Building**
+   ```bash
+   npm run sass:build
+   ```
+
+---
+
+## Component Architecture
+
+### Form Controls
+- Auto-resizing textareas
+- Theme-aware inputs
+- Custom checkboxes and radio buttons
+- Responsive grid layouts
+
+### Modals
+- Bootstrap-based dialogs
+- Custom animations
+- Theme-aware styling
+- Keyboard navigation
+
+### Tracks
+- Health/Willpower/Humanity
+- Superficial/Aggravated damage
+- Visual feedback
+- Touch-friendly
+
+### Theme System
+- Clan-specific color schemes
+- Dark/Light mode support
+- CSS custom properties
+- Runtime switching
+
+---
+
+## Theme System
+
+The theme system is built on CSS custom properties and SCSS variables:
+
+```scss
+:root {
+  --accent: #{$clan-accent};
+  --panel-bg: #{$panel-bg};
+  --text-color: #{$text-color};
+  // ... more variables
+}
+```
+
+Theme switching is handled by `control-bar.js` and applies to:
+- Form controls
+- Buttons
+- Tracks
+- Modals
+- Text colors
+- Borders and shadows
+
+---
+
+## Accessibility
+
+The app follows WCAG 2.1 guidelines:
+
+* **ARIA Attributes**
+  - Proper roles and labels
+  - Live regions for updates
+  - State management
+
+* **Keyboard Navigation**
+  - Focus management
+  - Shortcuts
+  - Skip links
+
+* **Screen Reader Support**
+  - Semantic HTML
+  - Alt text
+  - ARIA live regions
+
+* **Color Contrast**
+  - Theme-aware contrast ratios
+  - High contrast mode support
 
 ---
 
@@ -247,6 +385,12 @@ A: Run `npm run sass` or grab the latest build artefacts from a release.
 
 **Q: JSON import fails with "format mismatch".**  
 A: The app only supports *Ledger JSON v1*.  Convert legacy files or bump the `meta.format` value in code.
+
+**Q: Theme switching doesn't work.**  
+A: Check browser console for CSS custom property support. The app requires a modern browser.
+
+**Q: Auto-resize textareas not working.**  
+A: Ensure jQuery is loaded and the textarea has the correct class (`form-control`).
 
 ---
 

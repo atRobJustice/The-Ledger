@@ -387,8 +387,32 @@
                     </div>
                 </div>
             </div>
+            <!-- Convictions & Touchstones Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Convictions & Touchstones</h3>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4" id="conviction-column-1">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="conviction-column-2">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="conviction-column-3">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button type="button" id="add-conviction" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-plus-circle"></i> Add Conviction
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-<br/><br/>
+        <br/><br/><br/><br/>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Auto-upgrade elements that only have a title attribute into full Bootstrap tooltips -->
@@ -405,6 +429,7 @@
         <script type="module" src="js/specialty-manager.js"></script>
         <script type="module" src="js/info-buttons.js"></script>
         <script src="js/sticky-header.js"></script>
+        <script type="module" src="js/conviction-manager.js"></script>
         <script>
             const textPrimary = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
         </script>
