@@ -690,6 +690,27 @@ export function initControlBar(deps) {
   let themeModalInstance;
 
   function ensureThemeModal() {
+    // Add CSS once for multi-column layout inside the theme modal
+    if (!document.getElementById("theme-modal-style")) {
+      const s = document.createElement("style");
+      s.id = "theme-modal-style";
+      s.textContent = `
+        /* Multi-column layout for long radio lists */
+        #themeModal .clan-options,
+        #themeModal .access-options {
+          column-count: 2;
+          column-gap: 1rem;
+        }
+        @media (min-width: 768px) {
+          #themeModal .clan-options { column-count: 3; }
+        }
+        #themeModal .clan-options .form-check,
+        #themeModal .access-options .form-check {
+          break-inside: avoid;
+        }
+      `;
+      document.head.appendChild(s);
+    }
     if (themeModalEl) return;
     const modalHtml = `
       <div class="modal fade" id="themeModal" tabindex="-1" aria-labelledby="themeModalLabel" aria-hidden="true">
@@ -700,73 +721,52 @@ export function initControlBar(deps) {
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body vstack gap-2">
+              <h6 class="mt-2">Default Palettes</h6>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default">
                 <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
               </div>
-              <div class="form-check">
+              <div class="form-check mb-2">
                 <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory">
                 <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic">
-                <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
+
+              <h6 class="mt-2">Accessibility Palettes</h6>
+              <div class="access-options">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCDark" value="hc-dark">
+                  <label class="form-check-label" for="schemeHCDark">High Contrast – Dark</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCLight" value="hc-light">
+                  <label class="form-check-label" for="schemeHCLight">High Contrast – Light</label>
+                </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDyslexia" value="dyslexia">
+                <label class="form-check-label" for="schemeDyslexia">Dyslexia-Friendly</label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu">
-                <label class="form-check-label" for="schemeBanu">Banu Haqim</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic">
+                  <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
+                </div>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah">
-                <label class="form-check-label" for="schemeBrujah">Brujah</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel">
-                <label class="form-check-label" for="schemeGangrel">Gangrel</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata">
-                <label class="form-check-label" for="schemeHecata">Hecata</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra">
-                <label class="form-check-label" for="schemeLasombra">Lasombra</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian">
-                <label class="form-check-label" for="schemeMalkavian">Malkavian</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry">
-                <label class="form-check-label" for="schemeMinistry">The Ministry</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu">
-                <label class="form-check-label" for="schemeNosferatu">Nosferatu</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos">
-                <label class="form-check-label" for="schemeRavnos">Ravnos</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri">
-                <label class="form-check-label" for="schemeSalubri">Salubri</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador">
-                <label class="form-check-label" for="schemeToreador">Toreador</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere">
-                <label class="form-check-label" for="schemeTremere">Tremere</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce">
-                <label class="form-check-label" for="schemeTzimisce">Tzimisce</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue">
-                <label class="form-check-label" for="schemeVentrue">Ventrue</label>
+
+              <h6 class="mt-2">Clan Palettes</h6>
+              <div class="clan-options">
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu"><label class="form-check-label" for="schemeBanu">Banu Haqim</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah"><label class="form-check-label" for="schemeBrujah">Brujah</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel"><label class="form-check-label" for="schemeGangrel">Gangrel</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata"><label class="form-check-label" for="schemeHecata">Hecata</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra"><label class="form-check-label" for="schemeLasombra">Lasombra</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian"><label class="form-check-label" for="schemeMalkavian">Malkavian</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry"><label class="form-check-label" for="schemeMinistry">The Ministry</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu"><label class="form-check-label" for="schemeNosferatu">Nosferatu</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos"><label class="form-check-label" for="schemeRavnos">Ravnos</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri"><label class="form-check-label" for="schemeSalubri">Salubri</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador"><label class="form-check-label" for="schemeToreador">Toreador</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere"><label class="form-check-label" for="schemeTremere">Tremere</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce"><label class="form-check-label" for="schemeTzimisce">Tzimisce</label></div>
+                <div class="form-check mb-1"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue"><label class="form-check-label" for="schemeVentrue">Ventrue</label></div>
               </div>
             </div>
             <div class="modal-footer">
