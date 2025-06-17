@@ -112,25 +112,38 @@
             awardXP(amt);
             bootstrap.Modal.getInstance(document.getElementById('xp-award-modal')).hide();
         });
+        // Undo last button (injected if not present)
+        if(!document.getElementById('undo-xp')){
+            const btnUndo=document.createElement('button');
+            btnUndo.id='undo-xp';
+            btnUndo.className='btn btn-warning undo-xp ms-2';
+            btnUndo.innerHTML='<i class="bi bi-arrow-counterclockwise"></i> Undo Last';
+            document.querySelector('.experience-actions').appendChild(btnUndo);
+        }
+
+        document.getElementById('undo-xp').addEventListener('click', ()=>{
+            const ok = undoLast();
+            if(!ok){ showToast('Nothing to undo','info'); }
+        });
     }
 
     // Award XP
-    function awardXP(amount, note = '') {
+    function awardXP(amount, note = '', meta=null) {
         xpData.total += amount;
-        xpData.history.push({type: 'award', amount, date: new Date().toLocaleString(), note});
+        xpData.history.push({type: 'award', amount, date: new Date().toLocaleString(), note, meta});
         saveXPToStorage();
         updateXPUI();
     }
 
     // Spend XP
-    function spendXP(amount, note = '') {
+    function spendXP(amount, note = '', meta=null) {
         // Prevent overspending
         if (amount <= 0 || amount > (xpData.total - xpData.spent)) {
             console.warn('Not enough available XP to spend');
             return false;
         }
         xpData.spent += amount;
-        xpData.history.push({type: 'spend', amount, date: new Date().toLocaleString(), note});
+        xpData.history.push({type: 'spend', amount, date: new Date().toLocaleString(), note, meta});
         saveXPToStorage();
         updateXPUI();
         return true;
@@ -149,10 +162,53 @@
         updateXPUI();
     };
 
+    // Undo last history entry
+    function undoLast(){
+        if(!xpData.history.length) return false;
+        const last = xpData.history.pop();
+        console.debug('[XP] undoLast popped', last);
+        if(last.type==='award'){
+            xpData.total = Math.max(0, xpData.total - last.amount);
+        } else if(last.type==='spend' || last.type==='spent'){
+            xpData.spent = Math.max(0, xpData.spent - last.amount);
+        }
+        console.debug('[XP] after reversal totals', {total: xpData.total, spent: xpData.spent});
+        saveXPToStorage();
+        updateXPUI();
+        console.debug('[XP] dispatch xpUndo');
+        // Emit event so other modules can revert side-effects
+        document.dispatchEvent(new CustomEvent('xpUndo', {detail:last}));
+        return true;
+    }
+
     // Public interface for other modules
     window.xpManager = {
         awardXP,
         spendXP,
-        getAvailableXP
+        getAvailableXP,
+        undoLast
     };
+
+    // Simple toast helper
+    function showToast(message, type='info'){
+        // Ensure container exists
+        let container=document.getElementById('xpToastContainer');
+        if(!container){
+            container=document.createElement('div');
+            container.id='xpToastContainer';
+            container.className='toast-container position-fixed top-0 end-0 p-3';
+            document.body.appendChild(container);
+        }
+        const bgClass = type==='success' ? 'bg-success' : type==='warning' ? 'bg-warning text-dark' : type==='danger'||type==='error' ? 'bg-danger' : 'bg-info';
+        const toast=document.createElement('div');
+        toast.className=`toast align-items-center text-white ${bgClass} border-0`;
+        toast.setAttribute('role','status');
+        toast.setAttribute('aria-live','polite');
+        toast.setAttribute('aria-atomic','true');
+        toast.innerHTML=`<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`;
+        container.appendChild(toast);
+        const bsToast=new bootstrap.Toast(toast,{delay:3000, autohide:true});
+        bsToast.show();
+        toast.addEventListener('hidden.bs.toast',()=>toast.remove());
+    }
 })(); 
