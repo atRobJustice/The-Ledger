@@ -411,6 +411,45 @@
                     </div>
                 </div>
             </div>
+                        <!-- Experience Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Experience Points</h3>
+                    <div class="ledger p-3">
+                        <div class="experience-container">
+                            <div class="experience-status">
+                                <div class="status-item">
+                                    <label>Total XP:</label>
+                                    <span id="total-xp">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <label>Spent XP:</label>
+                                    <span id="spent-xp">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <label>Available XP:</label>
+                                    <span id="available-xp">0</span>
+                                </div>
+                            </div>
+                            <div class="experience-actions">
+                                <button id="award-session-xp" class="btn btn-success award-session-xp">
+                                    <i class="bi bi-plus-circle"></i> Award Session XP
+                                </button>
+                                <button id="award-story-xp" class="btn btn-success award-story-xp">
+                                    <i class="bi bi-star"></i> Award Story XP
+                                </button>
+                                <button id="spend-xp" class="btn btn-danger spend-xp">
+                                    <i class="bi bi-arrow-bar-up"></i> Spend XP
+                                </button>
+                            </div>
+                            <div class="experience-history mt-3">
+                                <h4>Experience History</h4>
+                                <ul id="experience-history" class="list-group"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <br/><br/><br/><br/>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

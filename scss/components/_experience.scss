@@ -1,0 +1,88 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Experience Points Component
+.experience-container {
+  background-color: var(--panel-bg, $color-background);
+  border: $border-width $border-style var(--panel-border, $color-border);
+  border-left: 6px solid var(--accent, $color-primary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  h3 {
+    color: var(--accent, $color-primary);
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+    font-size: 1.25rem;
+  }
+}
+
+.experience-status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  .status-item {
+    background-color: var(--panel-border-light, $color-background-light);
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    text-align: center;
+
+    label {
+      display: block;
+      color: var(--panel-text, $color-gray-light);
+      font-size: 0.9rem;
+      margin-bottom: $spacing-xs;
+    }
+
+    span {
+      color: var(--panel-text, $color-text);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.experience-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.experience-history {
+  margin-top: $spacing-md;
+
+  h4 {
+    color: var(--accent, $color-primary);
+    margin-bottom: $spacing-sm;
+    font-size: 1rem;
+  }
+
+  #experience-history {
+    max-height: 200px;
+    overflow-y: auto;
+
+    .list-group-item {
+      background-color: transparent;
+      border-color: var(--panel-border-light, $color-border);
+      color: var(--panel-text, $color-text);
+      font-size: 0.9rem;
+    }
+
+    // Type color cues
+    .session {
+      background-color: rgba($color-success, 0.1);
+    }
+
+    .story {
+      background-color: rgba($color-info, 0.1);
+    }
+
+    .spent {
+      background-color: rgba($color-danger, 0.1);
+    }
+  }
+} 
