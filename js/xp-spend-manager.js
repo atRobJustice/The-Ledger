@@ -403,9 +403,8 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       }
 
       if(!addingSpecialty) {
-        if(typeof window.xpSpend_applyTraitChange==='function'){
-          await window.xpSpend_applyTraitChange(cat, traitKey, currentLevel, desiredLevel);
-        }
+        console.debug('[XP] invoke applyTraitChange for trait change');
+        await applyTraitChange(cat, traitKey, currentLevel, desiredLevel);
       } else {
         // programmatically add specialty to skill row
         const skillLabel = findLabelByKey('skill', traitKey);
@@ -517,6 +516,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     }
 
     async function applyTraitChange(cat, traitKey, oldLevel, newLevel) {
+      console.debug('[XP] applyTraitChange', {cat, traitKey, oldLevel, newLevel});
       switch (cat) {
         case 'attribute':
         case 'skill': {
@@ -721,12 +721,8 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       console.debug('[XP] removing specialty from', skillLabel);
       removeSpecialtyFromSkill(skillLabel, specialty);
     } else {
-      if(typeof window.xpSpend_applyTraitChange==='function'){
-        console.debug('[XP] reverting trait', cat, traitKey, to,'->',from);
-        await window.xpSpend_applyTraitChange(cat, traitKey, to, from);
-      } else {
-        console.warn('[XP] xpSpend_applyTraitChange not available');
-      }
+      console.debug('[XP] reverting trait', cat, traitKey, to,'->',from);
+      await applyTraitChange(cat, traitKey, to, from);
     }
   }
 
