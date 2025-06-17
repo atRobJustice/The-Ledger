@@ -166,16 +166,13 @@
     function undoLast(){
         if(!xpData.history.length) return false;
         const last = xpData.history.pop();
-        console.debug('[XP] undoLast popped', last);
         if(last.type==='award'){
             xpData.total = Math.max(0, xpData.total - last.amount);
         } else if(last.type==='spend' || last.type==='spent'){
             xpData.spent = Math.max(0, xpData.spent - last.amount);
         }
-        console.debug('[XP] after reversal totals', {total: xpData.total, spent: xpData.spent});
         saveXPToStorage();
         updateXPUI();
-        console.debug('[XP] dispatch xpUndo');
         // Emit event so other modules can revert side-effects
         document.dispatchEvent(new CustomEvent('xpUndo', {detail:last}));
         return true;

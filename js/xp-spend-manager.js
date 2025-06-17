@@ -403,7 +403,6 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       }
 
       if(!addingSpecialty) {
-        console.debug('[XP] invoke applyTraitChange for trait change');
         await applyTraitChange(cat, traitKey, currentLevel, desiredLevel);
       } else {
         // programmatically add specialty to skill row
@@ -516,7 +515,6 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     }
 
     async function applyTraitChange(cat, traitKey, oldLevel, newLevel) {
-      console.debug('[XP] applyTraitChange', {cat, traitKey, oldLevel, newLevel});
       switch (cat) {
         case 'attribute':
         case 'skill': {
@@ -542,7 +540,6 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
           if (!window.disciplineManager) break;
           const current = window.disciplineManager.getDisciplineLevel(traitKey) || 0;
           if (current === 0) {
-            debug('Adding discipline', traitKey);
             window.disciplineManager.addDiscipline(traitKey);
           }
           await window.disciplineManager.changeDisciplineLevel(traitKey, current, newLevel);
@@ -652,16 +649,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       return { pricingCat, pricingOpts: opts };
     }
 
-    // DEBUG helper – remove in production
-    function debug(msg,obj){
-      if(window.localStorage.getItem('ledger-xp-debug')){
-        console.log('[XP]',msg,obj||'');
-      }
-    }
-
     localStorage.setItem('ledger-xp-debug','1');
-
-    console.log(Object.keys(DISC_REF.types));
   }
 
   function addSpecialtyToSkill(skillLabel, spec){
@@ -674,9 +662,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     if(!list.includes(spec)){ list.push(spec); statRow.dataset.specialties=JSON.stringify(list); }
     if(window.specialtyManager?.refreshRow){
         const cap = skillLabel.replace(/\b\w/g, c=>c.toUpperCase());
-        console.debug('[XP] calling specialtyManager.refreshRow for', cap);
         window.specialtyManager.refreshRow(cap);
-        console.debug('[XP] after refreshRow, dataset:', statRow.dataset.specialties);
     }
   }
 
@@ -708,41 +694,31 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
   // ---- Undo handling ----
   document.addEventListener('xpUndo', async (e)=>{
      const entry=e.detail;
-     console.debug('[XP] xpUndo event received', entry);
      if(!entry||entry.type!=='spend'||!entry.meta) return;
      await revertTraitChange(entry.meta);
   });
 
   async function revertTraitChange(meta){
     const {cat, traitKey, from, to, specialty}=meta;
-    console.debug('[XP] revertTraitChange meta', meta, 'findLabelByKey type', typeof findLabelByKey);
     if(specialty){
       const skillLabel = (typeof findLabelByKey==='function') ? findLabelByKey('skill', traitKey) : traitKey;
-      console.debug('[XP] removing specialty from', skillLabel);
       removeSpecialtyFromSkill(skillLabel, specialty);
     } else {
-      console.debug('[XP] reverting trait', cat, traitKey, to,'->',from);
       await applyTraitChange(cat, traitKey, to, from);
     }
   }
 
   function removeSpecialtyFromSkill(skillLabel, spec){
     if(!spec) return;
-    console.debug('[XP] removeSpecialtyFromSkill', {skillLabel, spec});
     const statRow = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===skillLabel.toLowerCase());
-    console.debug('[XP] found statRow?', !!statRow);
     if(!statRow) return;
     let list=[];
     try{ list=JSON.parse(statRow.dataset.specialties||'[]'); }catch(e){ list=[]; }
-    console.debug('[XP] current specialties list', list);
     const idx=list.indexOf(spec);
-    console.debug('[XP] index of spec', idx);
     if(idx>-1){ list.splice(idx,1); statRow.dataset.specialties=JSON.stringify(list); }
     if(window.specialtyManager?.refreshRow){
         const cap = skillLabel.replace(/\b\w/g, c=>c.toUpperCase());
-        console.debug('[XP] calling specialtyManager.refreshRow for', cap);
         window.specialtyManager.refreshRow(cap);
-        console.debug('[XP] after refreshRow, dataset:', statRow.dataset.specialties);
     }
   }
 })(); 
