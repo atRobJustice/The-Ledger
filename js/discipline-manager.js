@@ -85,8 +85,6 @@ class DisciplineManager {
     }
 
     getSelectedDisciplinesHtml() {
-        // Debug log
-        try { if(window.localStorage.getItem('ledger-xp-debug')) console.log('[DiscMgr] render selected', Array.from(this.selectedDisciplines.keys())); } catch(e){}
         return Array.from(this.selectedDisciplines.entries())
             .map(([disciplineKey, disciplineData]) => {
                 const discipline = disciplines.types[disciplineKey];

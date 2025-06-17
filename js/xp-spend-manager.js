@@ -412,6 +412,31 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
 
       // Close modal
       bootstrap.Modal.getInstance(document.getElementById('xp-spend-modal')).hide();
+
+      // After applying changes, trigger autosave if available
+      if(typeof window.gatherCharacterData==='function'){
+        try{
+          const data = window.gatherCharacterData();
+          console.debug('[XP] autosave data', data);
+          localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+        }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
+      } else {
+        // Backup manager not yet loaded – retry shortly
+        let attempts = 0;
+        const retry = () => {
+          if(typeof window.gatherCharacterData==='function'){
+            try{
+              const data = window.gatherCharacterData();
+              console.debug('[XP] autosave data', data);
+              localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+            }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
+          } else if(attempts < 10){
+            attempts++;
+            setTimeout(retry, 300);
+          }
+        };
+        setTimeout(retry, 300);
+      }
     });
 
     function updateCost() {
@@ -515,22 +540,29 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     }
 
     async function applyTraitChange(cat, traitKey, oldLevel, newLevel) {
+      console.debug('[XP] applyTraitChange start', {cat, traitKey, oldLevel, newLevel});
       switch (cat) {
         case 'attribute':
         case 'skill': {
           const label = findLabelByKey(cat, traitKey);
+          console.debug('[XP] attribute/skill label resolved', label);
           const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
+          console.debug('[XP] row found for', label, row);
           if (row) {
+            console.debug('[XP] dotsEl exists?', !!row.querySelector('.dots'));
             const dotsEl = row.querySelector('.dots');
             if (dotsEl) {
+              console.debug('[XP] current dataset value', dotsEl.dataset.value, 'updating to', newLevel);
               // update dots
               dotsEl.dataset.value = newLevel;
               dotsEl.setAttribute('data-value', newLevel);
+              // Sync jQuery data cache so gatherCharacterData reads the correct value
+              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
               const dotEls = dotsEl.querySelectorAll('.dot');
               dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
+              console.debug('[XP] row dataset value set to', row.dataset.value);
             } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) spans[1].textContent = newLevel;
+              console.warn('[XP] applyTraitChange: stat row not found for', label);
             }
             row.dataset.value = newLevel;
           }
@@ -552,6 +584,8 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
             if (dotsEl) {
               dotsEl.dataset.value = newLevel;
               dotsEl.setAttribute('data-value', newLevel);
+              // Sync jQuery data cache so gatherCharacterData reads the correct value
+              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
               const dotEls = dotsEl.querySelectorAll('.dot');
               dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
             } else {
@@ -568,6 +602,8 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
             if (dotsEl) {
               dotsEl.dataset.value = newLevel;
               dotsEl.setAttribute('data-value', newLevel);
+              // Sync jQuery data cache so gatherCharacterData reads the correct value
+              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
               const dotEls = dotsEl.querySelectorAll('.dot');
               dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
             } else {
@@ -600,6 +636,9 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
           break;
         }
       }
+
+      // Expose to outer scope for undo logic
+      window.xpSpend_applyTraitChange = applyTraitChange;
     }
 
     function findLabelByKey(cat, key) {
@@ -639,7 +678,6 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
                 }
               }
               opts.clanMatched = discKeys.includes(snakeKey);
-              debug('Clan pricing check',{clanKey, discKeys, traitKey, opts});
             } else {
               opts.clanMatched = false;
             }
@@ -704,7 +742,19 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       const skillLabel = (typeof findLabelByKey==='function') ? findLabelByKey('skill', traitKey) : traitKey;
       removeSpecialtyFromSkill(skillLabel, specialty);
     } else {
-      await applyTraitChange(cat, traitKey, to, from);
+      if(typeof window.xpSpend_applyTraitChange==='function'){
+        await window.xpSpend_applyTraitChange(cat, traitKey, to, from);
+      } else {
+        console.warn('[XP] xpSpend_applyTraitChange not found – applying minimal revert');
+        minimalTraitRevert(cat, traitKey, to, from);
+      }
+      // trigger autosave after undo
+      if(typeof window.gatherCharacterData==='function'){
+        try{
+          const data = window.gatherCharacterData();
+          localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+        }catch(err){ console.warn('[XP] autosave after undo failed', err); }
+      }
     }
   }
 
@@ -720,6 +770,25 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
         const cap = skillLabel.replace(/\b\w/g, c=>c.toUpperCase());
         window.specialtyManager.refreshRow(cap);
     }
+  }
+
+  // Fallback updater if main function unavailable (handles attr/skill only)
+  function minimalTraitRevert(cat, traitKey, oldLevel, newLevel){
+    if(cat!=='attribute' && cat!=='skill') return;
+    const label = findLabelByKey(cat, traitKey);
+    const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===label.toLowerCase());
+    if(!row) return;
+    const dotsEl = row.querySelector('.dots');
+    if(dotsEl){
+      dotsEl.dataset.value=newLevel;
+      dotsEl.setAttribute('data-value', newLevel);
+      if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
+      dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
+    } else {
+      const spans=row.querySelectorAll('span');
+      if(spans.length>1) spans[1].textContent=newLevel;
+    }
+    row.dataset.value=newLevel;
   }
 })(); 
 
