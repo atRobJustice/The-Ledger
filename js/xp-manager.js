@@ -77,7 +77,8 @@
         xpData.history.slice().reverse().forEach(entry => {
             const li = document.createElement('li');
             li.className = 'list-group-item';
-            li.textContent = `[${entry.date}] Awarded ${entry.amount} XP${entry.note ? ': ' + entry.note : ''}`;
+            const verb = entry.type === 'spend' || entry.type === 'spent' ? 'Spent' : 'Awarded';
+            li.textContent = `[${entry.date}] ${verb} ${entry.amount} XP${entry.note ? ': ' + entry.note : ''}`;
             ul.appendChild(li);
         });
     }
@@ -114,11 +115,30 @@
     }
 
     // Award XP
-    function awardXP(amount) {
+    function awardXP(amount, note = '') {
         xpData.total += amount;
-        xpData.history.push({amount, date: new Date().toLocaleString(), note: ''});
+        xpData.history.push({type: 'award', amount, date: new Date().toLocaleString(), note});
         saveXPToStorage();
         updateXPUI();
+    }
+
+    // Spend XP
+    function spendXP(amount, note = '') {
+        // Prevent overspending
+        if (amount <= 0 || amount > (xpData.total - xpData.spent)) {
+            console.warn('Not enough available XP to spend');
+            return false;
+        }
+        xpData.spent += amount;
+        xpData.history.push({type: 'spend', amount, date: new Date().toLocaleString(), note});
+        saveXPToStorage();
+        updateXPUI();
+        return true;
+    }
+
+    // Helper to get available XP
+    function getAvailableXP() {
+        return xpData.total - xpData.spent;
     }
 
     // Export/import helpers for backup-manager.js
@@ -127,5 +147,12 @@
         xpData = data || {total:0, spent:0, history:[]};
         saveXPToStorage();
         updateXPUI();
+    };
+
+    // Public interface for other modules
+    window.xpManager = {
+        awardXP,
+        spendXP,
+        getAvailableXP
     };
 })(); 
