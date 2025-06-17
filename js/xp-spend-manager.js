@@ -6,12 +6,15 @@
 // Future steps will extend this with pricing and trait updates.
 
 import { getTotalPrice } from './xp-pricing.js';
+import { TraitManagerUtils } from './manager-utils.js';
 
 // Import references for trait lists
 import { attributes as ATTR_REF } from './references/attributes.js';
 import { skills as SKILL_REF } from './references/skills.js';
 import { disciplines as DISC_REF } from './references/disciplines.js';
 import { clans as CLAN_REF } from './references/clans.js';
+import { merits as MERIT_REF } from './references/merits.js';
+import { backgrounds as BG_REF } from './references/backgrounds.js';
 
 (function () {
   // Wait until DOM & Bootstrap ready
@@ -123,7 +126,9 @@ import { clans as CLAN_REF } from './references/clans.js';
       { key: 'attribute', label: 'Attribute' },
       { key: 'skill', label: 'Skill' },
       { key: 'discipline', label: 'Discipline' },
-      { key: 'bloodpotency', label: 'Blood Potency' }
+      { key: 'bloodpotency', label: 'Blood Potency' },
+      { key: 'merit', label: 'Merit' },
+      { key: 'background', label: 'Background' }
     ];
     categories.forEach(c => {
       const opt = document.createElement('option');
@@ -143,6 +148,10 @@ import { clans as CLAN_REF } from './references/clans.js';
         return extractDisciplines();
       case 'bloodpotency':
         return [{ key: 'bloodpotency', label: 'Blood Potency' }];
+      case 'merit':
+        return extractMerits();
+      case 'background':
+        return extractBackgrounds();
       default:
         return [];
     }
@@ -201,6 +210,36 @@ import { clans as CLAN_REF } from './references/clans.js';
     });
   }
 
+  function extractMerits() {
+    const list=[];
+    Object.keys(MERIT_REF).forEach(catKey=>{
+      const cat=MERIT_REF[catKey];
+      const parentLabel = cat?.name || TraitManagerUtils.camelToTitle(catKey);
+      if(cat?.merits){
+        Object.keys(cat.merits).forEach(mk=>{
+          const child = cat.merits[mk];
+          list.push({key: mk,label: `${parentLabel}: ${child.name}`});
+        });
+      }
+    });
+    return list;
+  }
+
+  function extractBackgrounds() {
+    const list=[];
+    Object.keys(BG_REF).forEach(catKey=>{
+      const cat=BG_REF[catKey];
+      const parentLabel = cat?.name || TraitManagerUtils.camelToTitle(catKey);
+      if(cat?.merits){
+        Object.keys(cat.merits).forEach(bk=>{
+          const child = cat.merits[bk];
+          list.push({key: bk,label: `${parentLabel}: ${child.name}`});
+        });
+      }
+    });
+    return list;
+  }
+
   // ----------------------- Event handlers -----------------------
   function attachDynamicHandlers() {
     const catSelect = document.getElementById('xp-category');
@@ -255,14 +294,44 @@ import { clans as CLAN_REF } from './references/clans.js';
       const addingSpecialty = (catSelect.value === 'skill') && document.getElementById('xp-add-specialty').checked;
 
       if(addingSpecialty){
-        levelContainer.style.display = 'none';
+        levelContainer.style.display='none';
       } else {
-        levelContainer.style.display = 'block';
-        const { currentLevel } = getCurrentLevel(catSelect.value, traitSelect.value);
-        const startLevel = Math.min(5, currentLevel + 1);
-        levelRange.min = startLevel; // cannot buy below next dot
-        levelRange.value = startLevel;
-        levelDisplay.textContent = String(startLevel);
+        // Special handling for merits/backgrounds
+        if(catSelect.value==='merit'||catSelect.value==='background'){
+          const meta=getTraitMeta(catSelect.value,traitSelect.value);
+          const info=TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
+          const { currentLevel }=getCurrentLevel(catSelect.value, traitSelect.value);
+          const showSlider = info.canRepeat || info.hasOr || (info.min!==info.max);
+          if(showSlider){
+            levelContainer.style.display='block';
+            let minVal, maxVal, stepVal=1;
+            if(info.hasOr){
+              const sorted=[...info.orValues].sort((a,b)=>a-b);
+              minVal=sorted[0];
+              maxVal=sorted[sorted.length-1];
+              stepVal= sorted.length>1 ? (sorted[1]-sorted[0]) : 1;
+            } else if(info.canRepeat){
+              minVal=currentLevel+info.min;
+              maxVal=minVal+info.min*4; // arbitrary cap
+            } else {
+              minVal=Math.min(info.max, currentLevel+1);
+              maxVal=info.max;
+            }
+            levelRange.min=minVal;
+            levelRange.max=maxVal;
+            levelRange.step=stepVal;
+            const start=Math.min(maxVal, Math.max(minVal, currentLevel+1));
+            levelRange.value=start;
+            levelDisplay.textContent=String(start);
+          } else {
+            levelContainer.style.display='none';
+          }
+        } else {
+          levelContainer.style.display='block';
+          const { currentLevel } = getCurrentLevel(catSelect.value, traitSelect.value);
+          const startLevel=Math.min(5,currentLevel+1);
+          levelRange.min=startLevel; levelRange.value=startLevel; levelDisplay.textContent=String(startLevel);
+        }
       }
       updateCost();
     });
@@ -291,11 +360,23 @@ import { clans as CLAN_REF } from './references/clans.js';
       const addingSpecialty = (cat === 'skill') && document.getElementById('xp-add-specialty').checked;
 
       const { currentLevel } = getCurrentLevel(cat, traitKey);
-      const desiredLevel = addingSpecialty ? currentLevel : parseInt(levelRange.value, 10);
+      let desiredLevel;
+      const metaCat = (cat==='merit'||cat==='background');
+      let meta, info;
+      if(metaCat){
+        meta = getTraitMeta(cat, traitKey);
+        info = TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
+      }
+
+      desiredLevel = addingSpecialty ? currentLevel : (
+        metaCat && info && (info.min===info.max&&!info.canRepeat&&!info.hasOr) ? info.max : parseInt(levelRange.value,10)
+      );
 
       let cost;
       if(addingSpecialty){
         cost = 3;
+      } else if(metaCat){
+        cost = calcMeritBackgroundCost(meta?.dots||'•', currentLevel, desiredLevel);
       } else {
         const { pricingCat, pricingOpts } = buildPricingContext(cat, traitKey);
         cost = getTotalPrice(pricingCat, currentLevel, desiredLevel, pricingOpts);
@@ -338,11 +419,23 @@ import { clans as CLAN_REF } from './references/clans.js';
       const addingSpecialty = (cat === 'skill') && document.getElementById('xp-add-specialty').checked;
 
       const { currentLevel } = getCurrentLevel(cat, traitSelect.value);
-      const desiredLevel = addingSpecialty ? currentLevel : parseInt(levelRange.value, 10);
+      let desiredLevel;
+      const metaCat = (cat==='merit'||cat==='background');
+      let meta, info;
+      if(metaCat){
+        meta = getTraitMeta(cat, traitSelect.value);
+        info = TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
+      }
+
+      desiredLevel = addingSpecialty ? currentLevel : (
+        metaCat && info && (info.min===info.max&&!info.canRepeat&&!info.hasOr) ? info.max : parseInt(levelRange.value,10)
+      );
 
       let cost;
       if(addingSpecialty){
         cost = 3;
+      } else if(metaCat){
+        cost = calcMeritBackgroundCost(meta?.dots||'•', currentLevel, desiredLevel);
       } else {
         const { pricingCat, pricingOpts } = buildPricingContext(cat, traitSelect.value);
         cost = getTotalPrice(pricingCat, currentLevel, desiredLevel, pricingOpts);
@@ -405,6 +498,15 @@ import { clans as CLAN_REF } from './references/clans.js';
             }
           }
           return { currentLevel: isNaN(lvl) ? 0 : lvl, label: 'Specialty' };
+        }
+        case 'background': {
+          const lvl = window.backgroundManager?.getBackgroundLevel ? (window.backgroundManager.getBackgroundLevel(traitKey)||0) : 0;
+          const label = TraitManagerUtils.camelToTitle?.(traitKey) || traitKey;
+          return { currentLevel: lvl, label };
+        }
+        case 'merit': {
+          const lvl = window.meritFlawManager?.getMeritLevel ? (window.meritFlawManager.getMeritLevel(traitKey)||0) : 0;
+          return { currentLevel: lvl, label: traitKey };
         }
         default:
           return { currentLevel: 0, label: traitKey };
@@ -473,6 +575,28 @@ import { clans as CLAN_REF } from './references/clans.js';
               if (spans.length > 1) spans[1].textContent = newLevel;
             }
           }
+          break;
+        }
+        case 'merit': {
+          if(!window.meritFlawManager) break;
+          const mgr = window.meritFlawManager;
+          const lvlNow = mgr.getMeritLevel(traitKey)||0;
+          if(lvlNow===0){
+            const cat = mgr.findTraitCategory ? mgr.findTraitCategory(traitKey,'merit'):null;
+            mgr.addTrait('merit', traitKey, cat||'');
+          }
+          mgr.updateTraitInstanceLevel('merit', traitKey, 0, newLevel);
+          break;
+        }
+        case 'background': {
+          if(!window.backgroundManager) break;
+          const mgr = window.backgroundManager;
+          const lvlNow = mgr.getBackgroundLevel(traitKey)||0;
+          if(lvlNow===0){
+            const cat = mgr.findTraitCategory ? mgr.findTraitCategory(traitKey,'background'):null;
+            mgr.addTrait('background', traitKey, cat||'');
+          }
+          mgr.updateTraitInstanceLevel('background', traitKey, 0, newLevel);
           break;
         }
       }
@@ -547,4 +671,63 @@ import { clans as CLAN_REF } from './references/clans.js';
     if(!list.includes(spec)){ list.push(spec); statRow.dataset.specialties=JSON.stringify(list); }
     if(window.specialtyManager?.refreshRow) window.specialtyManager.refreshRow(skillLabel);
   }
+
+  // ---- helper to fetch trait metadata ----
+  function getTraitMeta(category,key){
+    let item=null;
+    if(category==='merit'){
+      Object.values(MERIT_REF).some(cat=>{
+        if(cat?.merits && key in cat.merits){ item=cat.merits[key]; return true; }
+        return false;
+      });
+    } else if(category==='background'){
+      Object.values(BG_REF).some(cat=>{
+        if(cat?.merits && key in cat.merits){ item=cat.merits[key]; return true; }
+        return false;
+      });
+    }
+    return item;
+  }
+
+  function parseDots(dotsStr){
+    if(!dotsStr) return {variable:false,max:1,fixedLevel:1};
+    const clean=dotsStr.replace(/[()]/g,'');
+    const variable=/[+\-]/.test(clean);
+    const max=(clean.match(/•/g)||[]).length;
+    return {variable,max,fixedLevel:max};
+  }
 })(); 
+
+export function parseDots(dotsString){
+  const clean = dotsString.replace(/[()]/g,'');
+  const variable = /[\+\-]/.test(clean);
+  const max = (clean.match(/•/g)||[]).length;
+  return { variable, max };
+} 
+
+// Helper to calculate Merit/Background XP cost based on dots notation rules
+function calcMeritBackgroundCost(dotsString, currentLevel, desiredLevel){
+  const info = TraitManagerUtils.parseDotsNotation(dotsString||'•');
+  // If repeatable ("+" notation)
+  if(info.canRepeat){
+    const baseDots = info.min || 1; // cost chunk size
+    return (desiredLevel - currentLevel) * baseDots * 3;
+  }
+  // Choice levels ("or" notation)
+  if(info.hasOr){
+    const sorted=[...info.orValues].sort((a,b)=>a-b);
+    let cost=0;
+    for(const lvl of sorted){
+      if(lvl>currentLevel && lvl<=desiredLevel){ cost += lvl*3; }
+    }
+    return cost;
+  }
+  // Range with dash "-" => escalating cost, each level n costs 3*n
+  if(info.min !== info.max){
+    let cost = 0;
+    for(let lvl=currentLevel+1; lvl<=desiredLevel; lvl++) cost += lvl*3;
+    return cost;
+  }
+  // Fixed level
+  return currentLevel>0 ? 0 : info.max*3;
+} 
