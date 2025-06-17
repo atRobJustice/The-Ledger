@@ -108,4 +108,88 @@
             color: $color-white;
         }
     }
+}
+
+// XP Modal custom styles
+.xp-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.xp-modal .xp-input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.xp-modal .xp-minus {
+  border-radius: 0.375rem 0 0 0.375rem;
+  border-right: none;
+  min-width: 40px;
+  font-size: 1.5rem;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.1s;
+  box-shadow: none;
+}
+.xp-modal .xp-plus {
+  border-radius: 0 0.375rem 0.375rem 0;
+  border-left: none;
+  min-width: 40px;
+  font-size: 1.5rem;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.1s;
+  box-shadow: none;
+}
+.xp-modal .xp-input {
+  @include form-control-dark;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 90px;
+  transition: box-shadow 0.1s;
+}
+.xp-modal .xp-minus,
+.xp-modal .xp-plus {
+  background-color: var(--form-bg, transparent);
+  color: var(--form-text, $color-text);
+  border: 1px solid var(--form-border, $color-border);
+}
+.xp-modal .xp-minus:hover,
+.xp-modal .xp-plus:hover,
+.xp-modal .xp-minus:active,
+.xp-modal .xp-plus:active {
+  background-color: var(--accent, $color-primary);
+  color: #fff;
+  border-color: var(--accent, $color-primary);
+}
+.xp-modal .xp-quick-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.xp-modal .quick-xp {
+  min-width: 70px;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--accent, #a40000);
+  background: transparent;
+  color: var(--accent, #a40000);
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.1s;
+}
+.xp-modal .quick-xp:active,
+.xp-modal .quick-xp:focus {
+  box-shadow: 0 0 0 2px var(--accent, #a40000);
+  background: var(--panel-border-light, #333);
+  color: var(--accent, #a40000);
+}
+.xp-modal .quick-xp:hover {
+  background: var(--accent, #a40000);
+  color: #fff;
+  border-color: var(--accent, #a40000);
 } 

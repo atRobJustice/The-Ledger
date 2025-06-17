@@ -133,6 +133,10 @@
         if(window.loresheetManager) data.loresheets = window.loresheetManager.exportLoresheets();
         if(window.convictionManager) data.convictions = window.convictionManager.saveConvictions();
 
+        // --- XP Export ---
+        if(window.getXPData) data.xp = window.getXPData();
+        // --- End XP Export ---
+
         // Persist Discord webhook (same key dice-overlay.js uses)
         const webhook = localStorage.getItem('ledger-discord-webhook');
         if(webhook) data.discordWebhook = webhook;
@@ -147,6 +151,12 @@
     function loadCharacterData(data){
         // Basic stats
         Object.entries(data).forEach(([key,val]) => {
+            // --- XP Import ---
+            if(key === 'xp' && window.setXPData) {
+                window.setXPData(val);
+                return;
+            }
+            // --- End XP Import ---
             // Skip manager keys handled later
             if(['disciplines','merits','flaws','backgrounds','backgroundFlaws','coterieMerits','coterieFlaws','loresheets','convictions'].includes(key)) return;
 
