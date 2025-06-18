@@ -44,6 +44,7 @@
   "wits": 3,
   "resolve": 2,
   "athletics": 1,
+  "athletics_specialties": [],
   "brawl": 1,
   "craft": 0,
   "drive": 1,
@@ -54,6 +55,9 @@
     "knives"
   ],
   "stealth": 2,
+  "stealth_specialties": [
+    "Hiding"
+  ],
   "survival": 0,
   "animal_ken": 0,
   "etiquette": 0,
@@ -197,7 +201,7 @@
         "name": "Cornelius \"Cornbread\" Tate",
         "relationship": "",
         "summary": "",
-        "status": "Alive"
+        "lost": false
       }
     },
     {
@@ -206,10 +210,37 @@
         "name": "Eden Vale",
         "relationship": "",
         "summary": "",
-        "status": "Alive"
+        "lost": false
       }
     }
   ],
+  "xp": {
+    "total": 10,
+    "spent": 3,
+    "history": [
+      {
+        "type": "award",
+        "amount": 10,
+        "date": "6/17/2025, 7:33:51 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "spend",
+        "amount": 3,
+        "date": "6/17/2025, 7:34:05 PM",
+        "note": "Specialty (Hiding) in stealth",
+        "meta": {
+          "cat": "skill",
+          "traitKey": "stealth",
+          "from": 2,
+          "to": 2,
+          "specialty": "Hiding"
+        }
+      }
+    ]
+  },
   "discordWebhook": "https://discordapp.com/api/webhooks/1380297149840883792/PjfMlcF-MUDrxycno2WYByeFXiFFxb9EYtzIvffEq6QwTF-rnxp__GCkif67uPrK3hX3",
+  "locked": true,
   "theme": "default"
 }

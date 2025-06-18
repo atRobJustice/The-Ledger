@@ -1,0 +1,57 @@
+.lockable-dot.disabled {
+  pointer-events: none;
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+[data-lockable="true"]:disabled {
+  background: #222 !important;
+  color: #777 !important;
+  cursor: not-allowed;
+}
+
+body.locked-sheet {
+  .disciplines-container .btn,
+  .merits-container .btn,
+  .flaws-container .btn,
+  .backgrounds-container .btn,
+  .background-flaws-container .btn,
+  .loresheets-container .btn,
+  .specialties-container .btn {
+    display: none !important;
+  }
+
+  .disciplines-container .dot,
+  .merits-container .dot,
+  .flaws-container .dot,
+  .backgrounds-container .dot,
+  .background-flaws-container .dot,
+  .loresheets-container .dot {
+    pointer-events: none !important;
+    opacity: 0.75;
+  }
+
+  .disciplines-container select,
+  .merits-container select,
+  .flaws-container select,
+  .backgrounds-container select,
+  .background-flaws-container select,
+  .loresheets-container select {
+    display: none !important;
+  }
+}
+
+body.locked-sheet .lockable-dot {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+body.locked-sheet .hunger-dots {
+  pointer-events:auto;
+  opacity:1;
+}
+
+body.locked-sheet .specialty-add-btn,
+body.locked-sheet #addSpecialtyBtn {
+  display:none !important;
+} 

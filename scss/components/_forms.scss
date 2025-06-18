@@ -92,7 +92,8 @@
 .loresheet-dropdown,
 .resonance-dropdown,
 .temperament-dropdown,
-.compulsion-dropdown {
+.compulsion-dropdown,
+.xp-dropdown {
     @include form-control-dark;
 }
 
@@ -167,4 +168,9 @@
 // Form-check label (checkbox / radio) color
 .form-check-label {
     color: var(--panel-text, $color-text) !important;
+}
+
+/* control-bar specific */
+#ledger-control-bar .form-check.form-switch {
+    padding-left: 0 !important;  // or padding-inline-start: 0;
 } 

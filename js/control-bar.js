@@ -5,6 +5,7 @@
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
 import { bloodPotency as bpData } from "./references/blood_potency.js";
+import { LockManager } from "./lock-manager.js";
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -375,88 +376,157 @@ export function initControlBar(deps) {
   // 7) Wipe button ----------------------------------------------------
   btnWipe.addEventListener("click", clearOverlay);
 
-  // 7b) Clear Sheet button --------------------------------------------
-  btnClear.addEventListener("click", () => {
-    if (confirm("Are you sure you want to clear the character sheet? This will remove all character data.")) {
-      // Clear all input fields and textareas
-      document.querySelectorAll('input[type="text"], textarea').forEach(input => {
-        input.value = '';
-        // Trigger input event for textareas to reset their height
-        if (input.tagName.toLowerCase() === 'textarea') {
-          input.style.height = 'auto';
-          input.style.height = (input.scrollHeight) + 'px';
-        }
-      });
-      document.querySelectorAll('select').forEach(select => select.value = '');
-      document.querySelectorAll('.dots').forEach(dots => {
-        dots.setAttribute('data-value', '0');
-        dots.querySelectorAll('.dot').forEach(dot => dot.classList.remove('filled'));
-      });
-      
-      // Reset tracks
-      document.querySelectorAll('.track-container').forEach(track => {
-        const max = track.querySelectorAll('.track-box').length;
-        track.setAttribute('data-value', max);
-        track.querySelectorAll('.track-box').forEach(box => {
-          box.classList.remove('superficial', 'aggravated', 'filled', 'stained');
-        });
-        const header = track.querySelector('.track-header span:first-child');
-        if (header) header.textContent = `Current: ${max}`;
-      });
+  // ----------------------------------------------------
+  //  Clear Sheet confirmation modal
+  // ----------------------------------------------------
+  let clearSheetModalInstance;
+  function ensureClearSheetModal() {
+    if (clearSheetModalInstance) return clearSheetModalInstance;
 
-      // Clear any specialty data
-      document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
-
-      // Clear convictions
-      if (window.convictionManager) {
-        window.convictionManager.convictions = [];
-        $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
-      }
-
-      // Clear any manager data if available and reinitialize
-      try {
-        // Clear and reinitialize each manager
-        if (window.disciplineManager) {
-          window.disciplineManager.selectedDisciplines = new Map();
-          window.disciplineManager.renderDisciplineManager();
-        }
-        if (window.meritFlawManager) {
-          window.meritFlawManager.selectedMerits = new Map();
-          window.meritFlawManager.selectedFlaws = new Map();
-          window.meritFlawManager.renderMeritManager();
-          window.meritFlawManager.renderFlawManager();
-        }
-        if (window.backgroundManager) {
-          window.backgroundManager.selectedBackgrounds = new Map();
-          window.backgroundManager.selectedBackgroundFlaws = new Map();
-          window.backgroundManager.renderBackgroundManager();
-          window.backgroundManager.renderBackgroundFlawManager();
-        }
-        if (window.coterieManager) {
-          window.coterieManager.selectedMerits = new Map();
-          window.coterieManager.selectedFlaws = new Map();
-          window.coterieManager.renderCoterieMeritManager();
-          window.coterieManager.renderCoterieFlawManager();
-        }
-        if (window.loresheetManager) {
-          window.loresheetManager.selectedLoresheets = new Map();
-          window.loresheetManager.renderLoresheetManager();
-        }
-
-        // Force reinitialize managers if they exist
-        if (typeof window.initManagers === 'function') {
-          window.initManagers();
-        }
-
-        // Clear the file input
-        fileInput.value = '';
-      } catch (err) {
-        console.error('Error clearing managers:', err);
-        showToast("Error clearing some data. Please refresh the page.", "danger");
-      }
-
-      showToast("Character sheet cleared", "success");
+    // Only inject the markup once
+    if (!document.getElementById('clearSheetModal')) {
+      const modalHtml = `
+        <div class="modal fade" id="clearSheetModal" tabindex="-1" aria-labelledby="clearSheetModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light border-secondary">
+              <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="clearSheetModalLabel">Clear Character Sheet</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to clear the character sheet? This will remove all character data.
+              </div>
+              <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmClearSheet">Yes, Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
     }
+
+    const el = document.getElementById('clearSheetModal');
+    clearSheetModalInstance = bootstrap.Modal.getOrCreateInstance(el);
+
+    // Bind confirm button only once
+    const btnYes = el.querySelector('#confirmClearSheet');
+    if (!btnYes.dataset.bound) {
+      btnYes.addEventListener('click', () => {
+        performClearSheet();
+        clearSheetModalInstance.hide();
+      });
+      btnYes.dataset.bound = '1';
+    }
+    return clearSheetModalInstance;
+  }
+
+  // Actual clearing logic extracted into its own function
+  function performClearSheet() {
+    // Clear all input fields and textareas
+    document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+      input.value = '';
+      // Trigger input event for textareas to reset their height
+      if (input.tagName.toLowerCase() === 'textarea') {
+        input.style.height = 'auto';
+        input.style.height = (input.scrollHeight) + 'px';
+      }
+    });
+    document.querySelectorAll('select').forEach(select => select.value = '');
+    document.querySelectorAll('.dots').forEach(dots => {
+      dots.setAttribute('data-value', '0');
+      dots.querySelectorAll('.dot').forEach(dot => dot.classList.remove('filled'));
+    });
+    
+    // Reset tracks
+    document.querySelectorAll('.track-container').forEach(track => {
+      const max = track.querySelectorAll('.track-box').length;
+      track.setAttribute('data-value', max);
+      track.querySelectorAll('.track-box').forEach(box => {
+        box.classList.remove('superficial', 'aggravated', 'filled', 'stained');
+      });
+      const header = track.querySelector('.track-header span:first-child');
+      if (header) header.textContent = `Current: ${max}`;
+    });
+
+    // Clear any specialty data
+    document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
+
+    // Clear convictions
+    if (window.convictionManager) {
+      window.convictionManager.convictions = [];
+      $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
+    }
+
+    // Clear any manager data if available and reinitialize
+    try {
+      // Clear and reinitialize each manager
+      if (window.disciplineManager) {
+        window.disciplineManager.selectedDisciplines = new Map();
+        window.disciplineManager.renderDisciplineManager();
+      }
+      if (window.meritFlawManager) {
+        window.meritFlawManager.selectedMerits = new Map();
+        window.meritFlawManager.selectedFlaws = new Map();
+        window.meritFlawManager.renderMeritManager();
+        window.meritFlawManager.renderFlawManager();
+      }
+      if (window.backgroundManager) {
+        window.backgroundManager.selectedBackgrounds = new Map();
+        window.backgroundManager.selectedBackgroundFlaws = new Map();
+        window.backgroundManager.renderBackgroundManager();
+        window.backgroundManager.renderBackgroundFlawManager();
+      }
+      if (window.coterieManager) {
+        window.coterieManager.selectedMerits = new Map();
+        window.coterieManager.selectedFlaws = new Map();
+        window.coterieManager.renderCoterieMeritManager();
+        window.coterieManager.renderCoterieFlawManager();
+      }
+      if (window.loresheetManager) {
+        window.loresheetManager.selectedLoresheets = new Map();
+        window.loresheetManager.renderLoresheetManager();
+      }
+
+      // Force reinitialize managers if they exist
+      if (typeof window.initManagers === 'function') {
+        window.initManagers();
+      }
+
+      // Clear the file input
+      fileInput.value = '';
+    } catch (err) {
+      console.error('Error clearing managers:', err);
+      showToast("Error clearing some data. Please refresh the page.", "danger");
+    }
+
+    // Clear Experience / XP data
+    try {
+      if (typeof window.setXPData === 'function') {
+        window.setXPData({ total: 0, spent: 0, history: [] });
+      } else {
+        try {
+          localStorage.removeItem('ledger-xp-data');
+        } catch (e) {
+          console.warn('Failed to remove XP data from storage', e);
+        }
+        ['total-xp', 'spent-xp', 'available-xp'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = '0';
+        });
+        const hist = document.getElementById('experience-history');
+        if (hist) hist.innerHTML = '';
+      }
+    } catch (xpErr) {
+      console.error('Error clearing XP data:', xpErr);
+    }
+
+    showToast("Character sheet cleared", "success");
+  }
+
+  // 7b) Clear Sheet button --------------------------------------------
+  btnClear.addEventListener('click', () => {
+    ensureClearSheetModal().show();
   });
 
   // 5b) Mend button handler -------------------------------------------
@@ -887,5 +957,104 @@ export function initControlBar(deps) {
   adjustBodyPadding();
   window.addEventListener("resize", adjustBodyPadding);
 
+  // 2c) Lock / Unlock button with label ---------------------------------------
+  const lockContainer = document.createElement("div");
+  lockContainer.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
+
+  const lockBtnWrapper = document.createElement("div");
+  lockBtnWrapper.className = "d-flex justify-content-center align-items-center w-100";
+  lockBtnWrapper.style.height = "32px";
+
+  const btnLock = document.createElement("button");
+  btnLock.id = "btn-lock";
+  btnLock.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnLock.style.backgroundColor = "transparent";
+  btnLock.style.border = 0;
+
+  lockBtnWrapper.appendChild(btnLock);
+
+  const lockLabel = document.createElement("label");
+  lockLabel.className = "form-check-label text-center w-100 mt-1";
+  lockLabel.textContent = "Lock";
+
+  lockContainer.appendChild(lockBtnWrapper);
+  lockContainer.appendChild(lockLabel);
+
+  updateLockButtonUI();
+  // Group lock container with Theme + Info
+  groupAppearance.appendChild(lockContainer);
+
+  // React to lock-state changes from elsewhere (e.g., page load)
+  document.addEventListener('ledger-lock-change', () => {
+    updateLockButtonUI();
+  });
+
+  // Ensure Lock confirmation modal exists (added in index.html)
+  const lockModalEl = document.getElementById("lockModal");
+  let lockModalInstance;
+  if (lockModalEl) {
+    lockModalInstance = bootstrap.Modal.getOrCreateInstance(lockModalEl);
+    const confirmBtn = lockModalEl.querySelector("#confirmLockBtn");
+    if (confirmBtn) {
+      confirmBtn.addEventListener("click", () => {
+        LockManager.lock();
+        updateLockButtonUI();
+        lockModalInstance.hide();
+      });
+    }
+  }
+
+  const unlockModalEl = document.getElementById("unlockModal");
+  let unlockModalInstance;
+  if(unlockModalEl){
+    unlockModalInstance = bootstrap.Modal.getOrCreateInstance(unlockModalEl);
+    const confirmUnlock = unlockModalEl.querySelector('#confirmUnlockBtn');
+    if(confirmUnlock){
+      confirmUnlock.addEventListener('click', () => {
+        LockManager.unlock();
+        updateLockButtonUI();
+        unlockModalInstance.hide();
+      });
+    }
+  }
+
+  btnLock.addEventListener("click", () => {
+    // Unlock flow -----------------------------------------------------------
+    if (LockManager.isLocked()) {
+      if (unlockModalInstance) {
+        unlockModalInstance.show();
+      } else if (confirm("Unlock character for editing?")) {
+        LockManager.unlock();
+        updateLockButtonUI();
+      }
+      return;
+    }
+
+    // Lock flow -------------------------------------------------------------
+    if (lockModalInstance) {
+      lockModalInstance.show();
+    } else {
+      // Fallback simple confirm if modal missing
+      if (confirm("Lock character for play mode?")) {
+        LockManager.lock();
+        updateLockButtonUI();
+      }
+    }
+  });
+
+  function updateLockButtonUI() {
+    if (LockManager.isLocked()) {
+      btnLock.innerHTML = `<i class=\"bi bi-unlock\"></i>`;
+      lockLabel.textContent = "Unlock";
+      lockContainer.setAttribute("title", "Lock Character");
+      lockContainer.setAttribute("data-bs-toggle", "tooltip");
+    } else {
+      btnLock.innerHTML = `<i class=\"bi bi-lock\"></i>`;
+      lockLabel.textContent = "Lock";
+      lockContainer.setAttribute("title", "Unlock Character");
+      lockContainer.setAttribute("data-bs-toggle", "tooltip");
+    }
+  }
+ 
   return bar;
 } 
