@@ -455,6 +455,29 @@ export function initControlBar(deps) {
         showToast("Error clearing some data. Please refresh the page.", "danger");
       }
 
+      // Clear Experience / XP data
+      try {
+        // If xp-manager is loaded, use its helper to reset state & UI
+        if (typeof window.setXPData === 'function') {
+          window.setXPData({ total: 0, spent: 0, history: [] });
+        } else {
+          // Fallback: clear localStorage key and zero out UI elements directly
+          try {
+            localStorage.removeItem('ledger-xp-data');
+          } catch (e) {
+            console.warn('Failed to remove XP data from storage', e);
+          }
+          ['total-xp', 'spent-xp', 'available-xp'].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = '0';
+          });
+          const hist = document.getElementById('experience-history');
+          if (hist) hist.innerHTML = '';
+        }
+      } catch (xpErr) {
+        console.error('Error clearing XP data:', xpErr);
+      }
+
       showToast("Character sheet cleared", "success");
     }
   });
