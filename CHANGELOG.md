@@ -12,10 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Added
 - Comprehensive Experience Points (XP) tracking system featuring a dedicated modal interface, and automatic calculation.
 - Undo/redo history for XP transactions with autosave and local-storage persistence.
+- **Clear Sheet** action now uses a themed Bootstrap modal for confirmation rather than the browser's `confirm()` popup.
 
 ### Changed
 - Polished XP modal styling and related CSS for improved responsiveness and theme integration.
 - Enhanced autosave cadence to provide smoother user experience during rapid XP edits.
+- Clearing a sheet now fully resets the Experience Points panel (Total, Spent, Available, history) and wipes any persisted XP data in localStorage.
 
 ### Fixed
 - Info buttons now reliably open the correct help content when Info Mode is active.
