@@ -66,7 +66,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="xp-spend-confirm" disabled>Confirm Purchase</button>
+              <button type="button" class="btn btn-danger spend-xp" id="xp-spend-confirm" disabled>Confirm Purchase</button>
             </div>
           </div>
         </div>
