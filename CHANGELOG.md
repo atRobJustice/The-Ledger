@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [1.2.5] - 2025-01-18
 
+### Added
+- Dice Symbols help modal accessible via help icon in the control bar, providing a quick reference guide for dice symbol meanings including Success, Critical Success, Bestial Failure, and Messy Critical.
+
 ### Changed
 - Dice roller modal layout now displays labels to the left of input fields for improved organization.
 - Number inputs in the dice roller modal now have centered text and dark styling.

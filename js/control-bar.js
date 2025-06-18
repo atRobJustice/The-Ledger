@@ -213,6 +213,66 @@ export function initControlBar(deps) {
     reader.readAsText(file);
   });
 
+  // 2c) Dice Symbols help button ----------------------------------
+  const btnDiceHelp = document.createElement("button");
+  btnDiceHelp.id = "diceSymbolsBtn";
+  btnDiceHelp.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnDiceHelp.setAttribute("title", "Dice Symbols Guide");
+  btnDiceHelp.setAttribute("data-bs-toggle", "tooltip");
+  btnDiceHelp.style.backgroundColor = "transparent";
+  btnDiceHelp.style.border = 0;
+  btnDiceHelp.innerHTML = `<img src="assets/help.png" alt="Help" style="width:24px;height:24px;">`;
+  bar.appendChild(btnDiceHelp);
+
+  let diceSymbolsModalEl;
+  let diceSymbolsModalInstance;
+
+  function ensureDiceSymbolsModal() {
+    if (diceSymbolsModalEl) return;
+    diceSymbolsModalEl = createDiceSymbolsModal();
+    diceSymbolsModalInstance = bootstrap.Modal.getOrCreateInstance(diceSymbolsModalEl);
+  }
+
+  function createDiceSymbolsModal() {
+    const modalHtml = `
+      <div class="modal fade" id="diceSymbolsModal" tabindex="-1" aria-labelledby="diceSymbolsLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="diceSymbolsLabel">Dice Symbols</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="dice-symbols-guide">
+                <div class="mb-3">
+                  <strong>● or ✪</strong> - Success (+1)
+                </div>
+                <div class="mb-3">
+                  <strong>✪ + ✪</strong> - Critical Success (+4)
+                </div>
+                <div class="mb-3">
+                  <strong style="color: #dc3545;">⚠</strong> - Bestial Failure (no successes)
+                </div>
+                <div class="mb-3">
+                  <strong style="color: #dc3545;">✪</strong> <strong>+ ✪ or </strong><strong style="color: #dc3545;">✪</strong> - Messy Critical (+4)
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    return document.getElementById('diceSymbolsModal');
+  }
+
+  btnDiceHelp.addEventListener("click", () => {
+    ensureDiceSymbolsModal();
+    diceSymbolsModalInstance.show();
+  });
+
   // 3) Main Roll button ------------------------------------------------
   const btnRoll = document.createElement("button");
   btnRoll.id = "openDiceRoll";
@@ -920,7 +980,7 @@ export function initControlBar(deps) {
   const groupQuick = makeGroup(btnRouse, btnRemorse, btnFrenzy);
   const groupUtility = makeGroup(btnWPReroll, btnMend, btnWipe);
   const groupData = makeGroup(btnImport, btnExport, btnClear);
-  const groupIntegrations = makeGroup(btnProgeny, btnDiscord);
+  const groupIntegrations = makeGroup(btnProgeny, btnDiscord, btnDiceHelp);
   const groupAppearance = makeGroup(themeContainer, toggleWrapper);
   groupIntegrations.style.justifySelf = "center";
 
