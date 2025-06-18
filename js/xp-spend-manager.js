@@ -37,7 +37,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
             <div class="modal-body">
               <div class="mb-3">
                 <label for="xp-category" class="form-label">Category</label>
-                <select id="xp-category" class="form-select">
+                <select id="xp-category" class="form-select xp-dropdown">
                   <option value="" disabled selected>Select Category</option>
                 </select>
               </div>
@@ -49,11 +49,11 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
               </div>
               <div class="mb-3">
                 <label for="xp-trait" class="form-label">Trait</label>
-                <select id="xp-trait" class="form-select" disabled></select>
+                <select id="xp-trait" class="form-select xp-dropdown" disabled></select>
               </div>
               <div class="mb-3 d-none" id="specialty-name-container">
                 <label for="xp-specialty-name" class="form-label">Specialty Name</label>
-                <input type="text" id="xp-specialty-name" class="form-control"/>
+                <input type="text" id="xp-specialty-name" class="form-control bg-dark text-light"/>
               </div>
               <div class="mb-3" id="xp-level-container" style="display:none">
                 <label for="xp-level" class="form-label">New Level: <span id="xp-level-display">1</span></label>
@@ -126,9 +126,9 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       { key: 'attribute', label: 'Attribute' },
       { key: 'skill', label: 'Skill' },
       { key: 'discipline', label: 'Discipline' },
-      { key: 'bloodpotency', label: 'Blood Potency' },
       { key: 'merit', label: 'Merit' },
-      { key: 'background', label: 'Background' }
+      { key: 'background', label: 'Background' },
+      { key: 'bloodpotency', label: 'Blood Potency' }
     ];
     categories.forEach(c => {
       const opt = document.createElement('option');

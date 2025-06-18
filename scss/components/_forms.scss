@@ -92,7 +92,8 @@
 .loresheet-dropdown,
 .resonance-dropdown,
 .temperament-dropdown,
-.compulsion-dropdown {
+.compulsion-dropdown,
+.xp-dropdown {
     @include form-control-dark;
 }
 
@@ -119,7 +120,8 @@
 .loresheet-dropdown option,
 .resonance-dropdown option,
 .temperament-dropdown option,
-.compulsion-dropdown option {
+.compulsion-dropdown option,
+.xp-dropdown option {
     outline: none;
     background-color: var(--form-bg, $color-background);
     color: var(--form-text, $color-text);
@@ -148,7 +150,8 @@
 .loresheet-dropdown:disabled,
 .resonance-dropdown:disabled,
 .temperament-dropdown:disabled,
-.compulsion-dropdown:disabled {
+.compulsion-dropdown:disabled,
+.xp-dropdown:disabled {
     outline: none;
     background-color: $color-border-light;
     cursor: not-allowed;
