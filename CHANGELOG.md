@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4] - 2025-01-17
+
+### Added
+- Difficulty level input to the dice roller modal allowing Storytellers to set the number of successes required for actions.
+- Automatic validation ensuring Difficulty input never goes below 1.
+- Enhanced Discord message formatting with structured columns for Difficulty, Dice Pool, and Results.
+
+### Changed
+- Discord embed color now uses Difficulty-based success/failure determination when applicable.
+- Roll button now automatically wipes previous overlay before opening the modal.
+
+### Fixed
+- Toast pop-up now correctly displays all roll types including Rouse, Remorse, and Frenzy checks.
+
 ## [1.2.3] - 2025-06-18
 
 ### Added
