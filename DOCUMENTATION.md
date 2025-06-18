@@ -1,6 +1,6 @@
 # Technical Documentation – The Ledger
 
-> Version 1.2.0 – Last updated 15 June 2025
+> Version 1.2.3 – Last updated 18 June 2025
 
 Welcome to the technical documentation for **The Ledger**, an offline-first web app for managing *Vampire: The Masquerade* 5th Edition characters.
 
@@ -87,6 +87,9 @@ Key design goals:
 │   ├── dice.js               # Core dice physics/render (Three.js + Cannon.js)
 │   ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
 │   ├── backup-manager.js     # JSON import / export / localStorage sync
+│   ├── lock-manager.js       # Global Lock / Play mode
+│   ├── xp-manager.js         # Experience Points tracker & history
+│   ├── xp-spend-manager.js   # XP spending modal & trait purchasing
 │   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
 │   ├── discord-integration.js# Rich-presence hooks (optional)
 │   ├── accessibility-fix.js  # Misc ARIA / keyboard tweaks
@@ -170,6 +173,9 @@ Common helper functions: value parsing, dot creation, tooltip wiring, REST-like 
 | `conviction-manager.js` | Conviction tracking, Touchstone management |
 | `info-buttons.js`       | Info mode & reference system |
 | `sticky-header.js`      | Sticky header component |
+| `lock-manager.js`       | Global Lock / Play mode – toggles sheet interactivity |
+| `xp-manager.js`         | Tracks awarded/spent XP, undo/redo history, persistence |
+| `xp-spend-manager.js`   | Modal interface for purchasing trait increases using XP |
 
 ### `backup-manager.js`
 Serialises/deserialises the current sheet as **Ledger JSON v1** (see Data Layer).
@@ -227,7 +233,9 @@ All reference data lives in `js/references/` and `data/`:
     "health": { "max": 6, "aggravated": 0, "superficial": 0 },
     "willpower": { "max": 5, "aggravated": 1, "superficial": 2 },
     "humanity": { "current": 7, "stains": 1 }
-  }
+  },
+  "xp": { "total": 20, "spent": 15, "history": [] },
+  "locked": false
 }
 ```
 

@@ -57,6 +57,19 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - Responsive design
   - Keyboard navigation
 
+- 🔒 **Lock / Play Mode**
+  - One-click toggle to freeze the entire sheet during play and avoid accidental edits
+  - Locked status is persisted in autosave, JSON export/import, and local storage
+
+- 📈 **Experience Points (XP) Tracker**
+  - Dedicated modal for logging earned and spent XP
+  - Automatic calculation of Total, Spent, and Available XP
+  - Full undo/redo history with autosave and local-storage persistence
+
+- 🛈 **Info Mode & Rules Reference**
+  - Contextual info buttons reveal detailed rules text for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and more
+  - Integrated Humanity ladder, Conviction & Touchstone effects, and other reference data
+
 ---
 
 ## Getting Started
