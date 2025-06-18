@@ -789,8 +789,37 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
         if(spans.length>1) spans[1].textContent=newLevel;
       }
       row.dataset.value=newLevel;
+    } else if(cat==='bloodpotency'){
+      const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()==='blood potency');
+      if(!row) return;
+      const dotsEl = row.querySelector('.dots');
+      if(dotsEl){
+        dotsEl.dataset.value=newLevel;
+        dotsEl.setAttribute('data-value', newLevel);
+        if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
+        dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
+      } else {
+        const spans=row.querySelectorAll('span');
+        if(spans.length>1) spans[1].textContent=newLevel;
+      }
+      row.dataset.value=newLevel;
     } else if(cat==='discipline' && window.disciplineManager){
       window.disciplineManager.changeDisciplineLevel(traitKey, oldLevel, newLevel);
+    } else if(cat==='merit' && window.meritFlawManager){
+      const mgr=window.meritFlawManager;
+      if(newLevel===0){
+        // remove trait
+        mgr.removeTrait && mgr.removeTrait('merit', traitKey);
+      } else {
+        mgr.updateTraitInstanceLevel('merit', traitKey, 0, newLevel);
+      }
+    } else if(cat==='background' && window.backgroundManager){
+      const mgr=window.backgroundManager;
+      if(newLevel===0){
+        mgr.removeTrait && mgr.removeTrait('background', traitKey);
+      } else {
+        mgr.updateTraitInstanceLevel('background', traitKey, 0, newLevel);
+      }
     }
   }
 })(); 
