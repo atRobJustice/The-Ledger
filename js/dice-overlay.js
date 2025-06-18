@@ -104,10 +104,12 @@ let bonusMsg = null;
                   <hr/>
                 </div>
                 <!-- Difficulty input -->
-                <div class="mb-3">
-                  <label for="difficultyInput" class="form-label">Difficulty</label>
-                  <input type="number" class="form-control" id="difficultyInput" min="1" value="1">
-                  <div class="fst-italic">Number of successes required to accomplish the action, set by Storyteller. For Rouse, Remorse, and Frenzy, this is ignored.</div>
+                <div class="mb-3 row">
+                  <label for="difficultyInput" class="col-sm-4 col-form-label fw-bold">Difficulty</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control bg-dark text-light text-center" id="difficultyInput" min="1" value="1">
+                  </div>
+                  <div class="fst-italic small">Number of successes set by Storyteller to accomplish the action. Rouse, Remorse, & Frenzy checks ignore Difficulty.</div>
                 </div>
                 ${generateNumberInput("standard", "Standard")}
                 ${generateNumberInput("hunger", "Hunger")}
@@ -128,9 +130,11 @@ let bonusMsg = null;
 
   function generateNumberInput(id, label) {
     return `
-      <div class="mb-3">
-        <label for="${id}Input" class="form-label">${label} dice</label>
-        <input type="number" class="form-control" id="${id}Input" min="0" value="0">
+      <div class="mb-3 row">
+        <label for="${id}Input" class="col-sm-4 col-form-label fw-bold">${label} dice</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control bg-dark text-light text-center" id="${id}Input" min="0" value="0">
+        </div>
       </div>`;
   }
 
@@ -1157,7 +1161,24 @@ let bonusMsg = null;
       const breakdownBox = modalEl.querySelector('#breakdownNote');
       if (breakdownBox) {
         if (window.latestDiceBreakdown) {
-          breakdownBox.innerHTML = window.latestDiceBreakdown;
+          // Split breakdown lines into two columns
+          const lines = window.latestDiceBreakdown.split('<br>');
+          const midpoint = Math.ceil(lines.length / 2);
+          const leftColumn = lines.slice(0, midpoint);
+          const rightColumn = lines.slice(midpoint);
+          
+          const columnHtml = `
+            <div class="row">
+              <div class="col-6">
+                ${leftColumn.join('<br>')}
+              </div>
+              <div class="col-6">
+                ${rightColumn.join('<br>')}
+              </div>
+            </div>
+          `;
+          
+          breakdownBox.innerHTML = columnHtml;
           breakdownBox.classList.remove('d-none');
         } else {
           breakdownBox.classList.add('d-none');

@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.4] - 2025-01-17
+## [1.2.5] - 2025-01-18
+
+### Changed
+- Dice roller modal layout now displays labels to the left of input fields for improved organization.
+- Number inputs in the dice roller modal now have centered text and dark styling.
+- Dice breakdown information is now displayed in two columns for better space utilization.
+
+## [1.2.4] - 2025-01-18
 
 ### Added
 - Difficulty level input to the dice roller modal allowing Storytellers to set the number of successes required for actions.
@@ -18,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Fixed
 - Toast pop-up now correctly displays all roll types including Rouse, Remorse, and Frenzy checks.
 
-## [1.2.3] - 2025-06-18
+## [1.2.3] - 2025-06-17
 
 ### Added
 - Character **Lock / Play** system powered by a new `LockManager` module.
