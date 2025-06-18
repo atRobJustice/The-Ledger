@@ -5,6 +5,7 @@
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
 import { bloodPotency as bpData } from "./references/blood_potency.js";
+import { LockManager } from "./lock-manager.js";
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -956,5 +957,104 @@ export function initControlBar(deps) {
   adjustBodyPadding();
   window.addEventListener("resize", adjustBodyPadding);
 
+  // 2c) Lock / Unlock button with label ---------------------------------------
+  const lockContainer = document.createElement("div");
+  lockContainer.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
+
+  const lockBtnWrapper = document.createElement("div");
+  lockBtnWrapper.className = "d-flex justify-content-center align-items-center w-100";
+  lockBtnWrapper.style.height = "32px";
+
+  const btnLock = document.createElement("button");
+  btnLock.id = "btn-lock";
+  btnLock.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnLock.style.backgroundColor = "transparent";
+  btnLock.style.border = 0;
+
+  lockBtnWrapper.appendChild(btnLock);
+
+  const lockLabel = document.createElement("label");
+  lockLabel.className = "form-check-label text-center w-100 mt-1";
+  lockLabel.textContent = "Lock";
+
+  lockContainer.appendChild(lockBtnWrapper);
+  lockContainer.appendChild(lockLabel);
+
+  updateLockButtonUI();
+  // Group lock container with Theme + Info
+  groupAppearance.appendChild(lockContainer);
+
+  // React to lock-state changes from elsewhere (e.g., page load)
+  document.addEventListener('ledger-lock-change', () => {
+    updateLockButtonUI();
+  });
+
+  // Ensure Lock confirmation modal exists (added in index.html)
+  const lockModalEl = document.getElementById("lockModal");
+  let lockModalInstance;
+  if (lockModalEl) {
+    lockModalInstance = bootstrap.Modal.getOrCreateInstance(lockModalEl);
+    const confirmBtn = lockModalEl.querySelector("#confirmLockBtn");
+    if (confirmBtn) {
+      confirmBtn.addEventListener("click", () => {
+        LockManager.lock();
+        updateLockButtonUI();
+        lockModalInstance.hide();
+      });
+    }
+  }
+
+  const unlockModalEl = document.getElementById("unlockModal");
+  let unlockModalInstance;
+  if(unlockModalEl){
+    unlockModalInstance = bootstrap.Modal.getOrCreateInstance(unlockModalEl);
+    const confirmUnlock = unlockModalEl.querySelector('#confirmUnlockBtn');
+    if(confirmUnlock){
+      confirmUnlock.addEventListener('click', () => {
+        LockManager.unlock();
+        updateLockButtonUI();
+        unlockModalInstance.hide();
+      });
+    }
+  }
+
+  btnLock.addEventListener("click", () => {
+    // Unlock flow -----------------------------------------------------------
+    if (LockManager.isLocked()) {
+      if (unlockModalInstance) {
+        unlockModalInstance.show();
+      } else if (confirm("Unlock character for editing?")) {
+        LockManager.unlock();
+        updateLockButtonUI();
+      }
+      return;
+    }
+
+    // Lock flow -------------------------------------------------------------
+    if (lockModalInstance) {
+      lockModalInstance.show();
+    } else {
+      // Fallback simple confirm if modal missing
+      if (confirm("Lock character for play mode?")) {
+        LockManager.lock();
+        updateLockButtonUI();
+      }
+    }
+  });
+
+  function updateLockButtonUI() {
+    if (LockManager.isLocked()) {
+      btnLock.innerHTML = `<i class=\"bi bi-unlock\"></i>`;
+      lockLabel.textContent = "Unlock";
+      lockContainer.setAttribute("title", "Lock Character");
+      lockContainer.setAttribute("data-bs-toggle", "tooltip");
+    } else {
+      btnLock.innerHTML = `<i class=\"bi bi-lock\"></i>`;
+      lockLabel.textContent = "Lock";
+      lockContainer.setAttribute("title", "Unlock Character");
+      lockContainer.setAttribute("data-bs-toggle", "tooltip");
+    }
+  }
+ 
   return bar;
 } 

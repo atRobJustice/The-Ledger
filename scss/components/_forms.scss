@@ -120,8 +120,7 @@
 .loresheet-dropdown option,
 .resonance-dropdown option,
 .temperament-dropdown option,
-.compulsion-dropdown option,
-.xp-dropdown option {
+.compulsion-dropdown option {
     outline: none;
     background-color: var(--form-bg, $color-background);
     color: var(--form-text, $color-text);
@@ -150,8 +149,7 @@
 .loresheet-dropdown:disabled,
 .resonance-dropdown:disabled,
 .temperament-dropdown:disabled,
-.compulsion-dropdown:disabled,
-.xp-dropdown:disabled {
+.compulsion-dropdown:disabled {
     outline: none;
     background-color: $color-border-light;
     cursor: not-allowed;
@@ -170,4 +168,9 @@
 // Form-check label (checkbox / radio) color
 .form-check-label {
     color: var(--panel-text, $color-text) !important;
+}
+
+/* control-bar specific */
+#ledger-control-bar .form-check.form-switch {
+    padding-left: 0 !important;  // or padding-inline-start: 0;
 } 

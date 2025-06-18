@@ -141,6 +141,9 @@
         const webhook = localStorage.getItem('ledger-discord-webhook');
         if(webhook) data.discordWebhook = webhook;
 
+        // Persist locked state
+        data.locked = (window.LockManager && window.LockManager.isLocked) ? window.LockManager.isLocked() : false;
+
         // Persist current theme
         const activeTheme = document.body.getAttribute('data-theme') || 'default';
         data.theme = activeTheme;
@@ -229,6 +232,11 @@
             } else {
                 localStorage.removeItem('ledger-discord-webhook');
             }
+        }
+
+        // Restore lock state
+        if(Object.prototype.hasOwnProperty.call(data,'locked') && window.LockManager){
+            window.LockManager.init(data.locked ?? false);
         }
 
         // Restore theme

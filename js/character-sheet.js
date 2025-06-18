@@ -1,3 +1,5 @@
+import { LockManager } from './lock-manager.js';
+
 // Inject styles for visual impairment indication
 (function(){
     const style = document.createElement('style');
@@ -16,7 +18,7 @@
 
 function createDots(value, maxDots = 5) {
     const $dotsContainer = $('<div>', { 
-        'class': 'dots',
+        'class': 'dots lockable-dot',
         'data-value': value
     });
     
@@ -27,6 +29,12 @@ function createDots(value, maxDots = 5) {
         });
         
         $dot.on('click', function() {
+            if (LockManager && LockManager.isLocked && LockManager.isLocked()) {
+                // Allow edits for hunger dots even when sheet is locked
+                if (!$(this).closest('.hunger-dots').length) {
+                    return;
+                }
+            }
             const $this = $(this);
             const $parent = $this.parent();
             const currentValue = parseInt($parent.data('value') || '0');
@@ -81,7 +89,7 @@ function createTextInput(value) {
         this.style.height = (this.scrollHeight) + 'px';
     });
     
-    // Trigger initial resize
+    // Not lockable – these info fields should remain editable in play mode.
     setTimeout(() => {
         $input.trigger('input');
     }, 0);
@@ -105,6 +113,7 @@ function createPredatorDropdown(value) {
     // We'll populate this with predator types when the dropdown is created
     // This will be done in a separate function that imports the predator_types.js data
     
+    // Predator type can still change in play mode, so keep editable.
     return $select[0];
 }
 
@@ -130,6 +139,7 @@ function createClanDropdown(value) {
     // We'll populate this with clan data when the dropdown is created
     // This will be done in a separate function that imports the clans.js data
     
+    // Clan selection should likely remain immutable in play mode, keep lockable.
     return $select[0];
 }
 
@@ -140,6 +150,7 @@ function createGenerationDropdown(value) {
     if (value && value.trim() !== '') {
         dropdown.val(value.trim());
     }
+    // Generation may shift but typically remains; allow editing even when locked.
     return dropdown;
 }
 
@@ -154,6 +165,7 @@ function createBloodPotencyDropdown(value) {
     if (value !== undefined && value !== null && value !== '') {
         $select.attr('data-value', value);
     }
+    $select.attr('data-lockable', 'true');
 
     // Add empty option
     $select.append($('<option>', {
@@ -175,7 +187,6 @@ function createCompulsionDropdown(value) {
     if (value !== undefined && value !== null && value !== '') {
         $select.attr('data-value', value);
     }
-
     // Add empty option
     $select.append($('<option>', {
         'value': '',
@@ -553,6 +564,12 @@ $(document).ready(function() {
                 const maxDots = 5; // BP ranges 0 through 5 (six possible values)
                 const dotsContainer = createDots(parseInt(value) || 0, maxDots);
                 $valueSpan.replaceWith(dotsContainer);
+            } else if (statLabel === 'hunger') {
+                const maxDots = 5;
+                const dotsContainer = createDots(parseInt(value) || 0, maxDots);
+                // Allow interaction even when locked
+                $(dotsContainer).removeClass('lockable-dot').addClass('hunger-dots');
+                $valueSpan.replaceWith(dotsContainer);
             } else if (textFields.includes(statLabel)) {
                 const input = createTextInput(value);
                 $valueSpan.replaceWith(input);
@@ -703,6 +720,7 @@ $(document).ready(function() {
         if (value && value.trim() !== '') {
             dropdown.val(value.trim());
         }
+        // Resonance should stay editable; not lockable.
         return dropdown;
     }
 
@@ -713,6 +731,7 @@ $(document).ready(function() {
         if (value && value.trim() !== '') {
             dropdown.val(value.trim());
         }
+        // Temperament editable; not lockable.
         return dropdown;
     }
 
@@ -935,6 +954,7 @@ async function saveCharacter() {
     const character = {
         // ... existing character properties ...
         convictions: saveConvictionsAndTouchstones(),
+        locked: LockManager.isLocked(),
         // ... rest of existing properties ...
     };
     // ... rest of existing save logic ...
@@ -946,5 +966,8 @@ async function loadCharacter(characterData) {
     if (characterData.convictions) {
         loadConvictionsAndTouchstones(characterData.convictions);
     }
+
+    // Initialize lock state after everything is rendered
+    LockManager.init(characterData.locked ?? false);
     // ... rest of existing loading logic ...
 }
