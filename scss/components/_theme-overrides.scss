@@ -146,3 +146,82 @@ body[data-theme='dyslexia'] {
     font-family: 'OpenDyslexic', 'Helvetica Neue', Arial, sans-serif;
   }
 }
+
+// Range slider styling for XP modal
+body[data-theme] input#xp-level.form-range {
+  height: 0.8rem;
+  background: var(--panel-border-light, #6c757d);
+  border-radius: 1rem;
+}
+
+body[data-theme] input#xp-level.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--accent, #0d6efd);
+  border: 2px solid var(--form-border, #fff);
+  cursor: pointer;
+  margin-top: -0.15rem; /* align thumb */
+}
+
+body[data-theme] input#xp-level.form-range::-moz-range-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--accent, #0d6efd);
+  border: 2px solid var(--form-border, #fff);
+  cursor: pointer;
+}
+
+body[data-theme] input#xp-level.form-range::-webkit-slider-runnable-track {
+  height: 0.8rem;
+  background: var(--panel-border-light, #6c757d);
+  border-radius: 1rem;
+}
+
+body[data-theme] input#xp-level.form-range:focus {
+  outline: none;
+}
+
+// Default (Blood & Roses) theme slider (no data-theme attribute)
+body:not([data-theme]) input#xp-level.form-range,
+body[data-theme='default'] input#xp-level.form-range {
+  height: 0.8rem;
+  background: var(--border-default, #333);
+  border-radius: 1rem;
+}
+
+body:not([data-theme]) input#xp-level.form-range::-webkit-slider-thumb,
+body[data-theme='default'] input#xp-level.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--accent, #a40000);
+  border: 2px solid var(--color-border, #fff);
+  cursor: pointer;
+  margin-top: -0.15rem;
+}
+
+body:not([data-theme]) input#xp-level.form-range::-moz-range-thumb,
+body[data-theme='default'] input#xp-level.form-range::-moz-range-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--accent, #a40000);
+  border: 2px solid var(--color-border, #fff);
+  cursor: pointer;
+}
+
+body:not([data-theme]) input#xp-level.form-range::-webkit-slider-runnable-track,
+body[data-theme='default'] input#xp-level.form-range::-webkit-slider-runnable-track {
+  height: 0.8rem;
+  background: var(--border-default, #333);
+  border-radius: 1rem;
+}
+
+body:not([data-theme]) input#xp-level.form-range:focus,
+body[data-theme='default'] input#xp-level.form-range:focus {
+  outline: none;
+}
