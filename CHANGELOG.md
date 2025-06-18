@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2025-06-17
+
+### Removed
+- Initial Experience Points (XP) tracking system with modal UI.
+
+### Added
+- Comprehensive Experience Points (XP) tracking system featuring a dedicated modal interface, and automatic calculation.
+- Undo/redo history for XP transactions with autosave and local-storage persistence.
+
+### Changed
+- Polished XP modal styling and related CSS for improved responsiveness and theme integration.
+- Enhanced autosave cadence to provide smoother user experience during rapid XP edits.
+
+### Fixed
+- Info buttons now reliably open the correct help content when Info Mode is active.
+
+## [1.2.1] - 2025-06-16
+
+### Added
+- Initial Experience Points (XP) tracking system with modal UI.
+
 ## [1.2.0] - 2025-06-15
 
 ### Added
