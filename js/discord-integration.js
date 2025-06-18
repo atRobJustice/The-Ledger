@@ -76,7 +76,12 @@ export function buildRollEmbed(rollData) {
   let rollType;
 
   if ((rollData.regularDice ?? 0) > 0 || (rollData.hungerDice ?? 0) > 0) {
-    embedColor = rollData.successes > 0 ? 0x00ff00 : 0xff0000;
+    // Check for Difficulty and use it for color if present
+    if (rollData.difficulty) {
+      embedColor = rollData.successes >= rollData.difficulty ? 0x00ff00 : 0xff0000;
+    } else {
+      embedColor = rollData.successes > 0 ? 0x00ff00 : 0xff0000;
+    }
     rollType = 'Dice Roll';
   } else if ((rollData.rouseDice ?? 0) > 0) {
     embedColor = parseInt($t.vtm.rouse_dice_color.replace('#', ''), 16);
@@ -92,13 +97,67 @@ export function buildRollEmbed(rollData) {
     rollType = 'Roll';
   }
 
+  // Build fields for Discord embed
+  const fields = [];
+
+  // Difficulty (if present, as column)
+  if (rollData.difficulty) {
+    fields.push({ name: 'Difficulty', value: String(rollData.difficulty), inline: true });
+  }
+
+  // Dice Pool (only show types with >0, as column)
+  let dicePoolLines = [];
+  if (rollData.regularDice > 0) dicePoolLines.push(`${rollData.regularDice} Regular`);
+  if (rollData.hungerDice > 0) dicePoolLines.push(`${rollData.hungerDice} Hunger`);
+  if (rollData.rouseDice > 0) dicePoolLines.push(`${rollData.rouseDice} Rouse`);
+  if (rollData.remorseDice > 0) dicePoolLines.push(`${rollData.remorseDice} Remorse`);
+  if (rollData.frenzyDice > 0) dicePoolLines.push(`${rollData.frenzyDice} Frenzy`);
+  if (dicePoolLines.length > 0) {
+    fields.push({ name: 'Dice Pool', value: dicePoolLines.join('\n'), inline: true });
+  }
+
+  // Results column: combine main result, Rouse, Remorse, Frenzy, and special outcomes
+  let resultsLines = [];
+  if (rollData.difficulty) {
+    resultsLines.push(rollData.successes >= rollData.difficulty ? 'Success' : 'Failure');
+  }
+  if (rollData.regularDice > 0 || rollData.hungerDice > 0) {
+    resultsLines.push(`${rollData.successes} Success${rollData.successes === 1 ? '' : 'es'}`);
+  }
+  // Special outcomes
+  if (/Bestial Failure/i.test(rollData.resultPlain)) {
+    resultsLines.push('Bestial Failure');
+  }
+  if (/Messy Critical/i.test(rollData.resultPlain)) {
+    resultsLines.push('Messy Critical');
+  }
+  if (/Critical/i.test(rollData.resultPlain) && !/Messy Critical/i.test(rollData.resultPlain)) {
+    resultsLines.push('Critical');
+  }
+  // Rouse
+  if (rollData.rouseDice > 0) {
+    const rouseMatch = rollData.resultPlain.match(/Rouse:\s*(Rerolled – check dice|Success|Fail)/i);
+    let rouseResult = rouseMatch ? rouseMatch[1] : (rollData.rouseSuccess !== undefined ? (rollData.rouseSuccess ? 'Success' : 'Failure') : '');
+    resultsLines.push(`Rouse: ${rouseResult}`);
+  }
+  // Remorse
+  if (rollData.remorseDice > 0) {
+    const remorseMatch = rollData.resultPlain.match(/Remorse:\s*(Success|Fail)/i);
+    let remorseResult = remorseMatch ? remorseMatch[1] : (rollData.remorseSuccess !== undefined ? (rollData.remorseSuccess ? 'Success' : 'Failure') : '');
+    resultsLines.push(`Remorse: ${remorseResult}`);
+  }
+  // Frenzy
+  if (rollData.frenzyDice > 0) {
+    const frenzyMatch = rollData.resultPlain.match(/Frenzy:\s*(Success|Fail)/i);
+    let frenzyResult = frenzyMatch ? frenzyMatch[1] : (rollData.frenzySuccess !== undefined ? (rollData.frenzySuccess ? 'Success' : 'Failure') : '');
+    resultsLines.push(`Frenzy: ${frenzyResult}`);
+  }
+  fields.push({ name: 'Results', value: resultsLines.join('\n'), inline: true });
+
   return {
     title: rollData.characterName ? `${rollData.characterName}'s ${rollType}` : `🎲 ${rollType}`,
     color: embedColor,
-    fields: [
-      { name: 'Dice Pool', value: rollData.poolText, inline: true },
-      { name: 'Result',    value: rollData.resultPlain, inline: true }
-    ],
+    fields,
     timestamp: new Date().toISOString()
   };
 }

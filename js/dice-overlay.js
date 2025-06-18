@@ -103,6 +103,12 @@ let bonusMsg = null;
                   </div>
                   <hr/>
                 </div>
+                <!-- Difficulty input -->
+                <div class="mb-3">
+                  <label for="difficultyInput" class="form-label">Difficulty</label>
+                  <input type="number" class="form-control" id="difficultyInput" min="1" value="1">
+                  <div class="fst-italic">Number of successes required to accomplish the action, set by Storyteller. For Rouse, Remorse, and Frenzy, this is ignored.</div>
+                </div>
                 ${generateNumberInput("standard", "Standard")}
                 ${generateNumberInput("hunger", "Hunger")}
                 ${generateNumberInput("rouse", "Rouse")}
@@ -597,6 +603,13 @@ let bonusMsg = null;
         html += `${html ? '<br>' : ''}Frenzy: ${frenzySuccess ? 'Success' : '<span class="failure">Fail</span>'}`;
       }
 
+      // Show Difficulty and pass/fail if present, at the top
+      let showDifficulty = (pools.difficulty && (pools.standard > 0 || pools.hunger > 0));
+      let toastHtml = html;
+      if (showDifficulty) {
+        toastHtml = `<strong>Difficulty:</strong> ${pools.difficulty} - <strong>${res.successes >= pools.difficulty ? 'Success' : 'Fail'}</strong><br>${html}`;
+      }
+
       // -------------------------------------------------------
       //  Discord webhook notification for this roll (embed)
       // -------------------------------------------------------
@@ -607,11 +620,10 @@ let bonusMsg = null;
         if (pools.rouse) poolParts.push(`${pools.rouse} Rouse`);
         if (pools.remorse) poolParts.push(`${pools.remorse} Remorse`);
         if (pools.frenzy) poolParts.push(`${pools.frenzy} Frenzy`);
-
         const poolText = poolParts.join('\n');
 
         // Convert <br> tags to newlines, then strip remaining html tags
-        const resultPlain = html
+        const resultPlain = toastHtml
           .replace(/<br\s*\/?\s*>/gi, '\n')
           .replace(/<[^>]+>/g, '')
           .trim();
@@ -625,7 +637,8 @@ let bonusMsg = null;
           hungerDice: pools.hunger,
           rouseDice: pools.rouse,
           remorseDice: pools.remorse,
-          frenzyDice: pools.frenzy
+          frenzyDice: pools.frenzy,
+          difficulty: showDifficulty ? pools.difficulty : undefined
         };
         sendToDiscord(buildRollEmbed(rollData));
       } catch(e) {
@@ -694,7 +707,7 @@ let bonusMsg = null;
       toast.style.padding = "8px 12px";
       toast.style.borderRadius = "4px";
       toast.style.zIndex = "2100";
-      toast.innerHTML = html;
+      toast.innerHTML = toastHtml;
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 5000);
 
@@ -1028,6 +1041,9 @@ let bonusMsg = null;
     let bootstrapModal;
 
     btn.addEventListener("click", async () => {
+      // Wipe overlay before showing modal
+      if (typeof clearOverlay === "function") clearOverlay();
+
       if (!modalEl) {
         modalEl = createModal();
         bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalEl);
@@ -1040,6 +1056,21 @@ let bonusMsg = null;
           }
         });
 
+        // Ensure Difficulty input never goes below 1
+        const difficultyInput = modalEl.querySelector("#difficultyInput");
+        difficultyInput.addEventListener("input", () => {
+          const value = parseInt(difficultyInput.value);
+          if (isNaN(value) || value < 1) {
+            difficultyInput.value = 1;
+          }
+        });
+        difficultyInput.addEventListener("blur", () => {
+          const value = parseInt(difficultyInput.value);
+          if (isNaN(value) || value < 1) {
+            difficultyInput.value = 1;
+          }
+        });
+
         // Attach confirm handler only once
         modalEl.querySelector("#rollDiceConfirm").addEventListener("click", async () => {
           const pools = {
@@ -1048,6 +1079,7 @@ let bonusMsg = null;
             rouse: parseInt(modalEl.querySelector("#rouseInput").value) || 0,
             remorse: parseInt(modalEl.querySelector("#remorseInput").value) || 0,
             frenzy: parseInt(modalEl.querySelector("#frenzyInput").value) || 0,
+            difficulty: parseInt(modalEl.querySelector("#difficultyInput").value) || 1,
           };
 
           // ----------------------------------------------------
