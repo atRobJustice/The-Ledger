@@ -774,21 +774,24 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
 
   // Fallback updater if main function unavailable (handles attr/skill only)
   function minimalTraitRevert(cat, traitKey, oldLevel, newLevel){
-    if(cat!=='attribute' && cat!=='skill') return;
-    const label = findLabelByKey(cat, traitKey);
-    const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===label.toLowerCase());
-    if(!row) return;
-    const dotsEl = row.querySelector('.dots');
-    if(dotsEl){
-      dotsEl.dataset.value=newLevel;
-      dotsEl.setAttribute('data-value', newLevel);
-      if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-      dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
-    } else {
-      const spans=row.querySelectorAll('span');
-      if(spans.length>1) spans[1].textContent=newLevel;
+    if(cat==='attribute' || cat==='skill'){
+      const label = (typeof findLabelByKey==='function') ? findLabelByKey(cat, traitKey) : traitKey.replace(/(^|_)(\w)/g,(_,p1,p2)=>p2.toUpperCase());
+      const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===label.toLowerCase());
+      if(!row) return;
+      const dotsEl = row.querySelector('.dots');
+      if(dotsEl){
+        dotsEl.dataset.value=newLevel;
+        dotsEl.setAttribute('data-value', newLevel);
+        if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
+        dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
+      } else {
+        const spans=row.querySelectorAll('span');
+        if(spans.length>1) spans[1].textContent=newLevel;
+      }
+      row.dataset.value=newLevel;
+    } else if(cat==='discipline' && window.disciplineManager){
+      window.disciplineManager.changeDisciplineLevel(traitKey, oldLevel, newLevel);
     }
-    row.dataset.value=newLevel;
   }
 })(); 
 
