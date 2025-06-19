@@ -44,11 +44,15 @@ export const LockManager = (() => {
     });
   }
 
-  function persist() {
+  async function persist() {
     try {
-      const char = JSON.parse(localStorage.getItem('characterData') || '{}');
-      char.locked = locked;
-      localStorage.setItem('characterData', JSON.stringify(char));
+      // Use IndexedDB exclusively
+      if (window.databaseManager) {
+        await window.databaseManager.setSetting('locked', locked);
+        return;
+      }
+      
+      throw new Error('No database manager available for lock persistence');
     } catch (e) {
       console.error('LockManager persist error', e);
     }
@@ -70,14 +74,20 @@ export const LockManager = (() => {
   /* --------------------------------------------------
    * Self-initialisation on module load
    * --------------------------------------------------*/
-  (function bootstrap() {
+  (async function bootstrap() {
     try {
-      const saved = JSON.parse(localStorage.getItem('characterData') || '{}');
-      if (typeof saved.locked === 'boolean') {
-        locked = saved.locked;
-        applyDOMState();
-        emit();
+      // Use IndexedDB exclusively
+      if (window.databaseManager) {
+        const saved = await window.databaseManager.getSetting('locked');
+        if (typeof saved === 'boolean') {
+          locked = saved;
+          applyDOMState();
+          emit();
+          return;
+        }
       }
+      
+      console.log('No lock state found in IndexedDB, using default (unlocked)');
     } catch (e) {
       console.warn('LockManager bootstrap failed', e);
     }

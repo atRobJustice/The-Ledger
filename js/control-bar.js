@@ -6,6 +6,7 @@
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
 import { bloodPotency as bpData } from "./references/blood_potency.js";
 import { LockManager } from "./lock-manager.js";
+import { TraitManagerUtils } from './manager-utils.js';
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -201,13 +202,13 @@ export function initControlBar(deps) {
         const ledgerData = convertProgenyToLedger(progenyData);
         if (typeof window.loadCharacterData === "function") {
           window.loadCharacterData(ledgerData);
-          showToast("Progeny character imported", "success");
+          window.toastManager.show("Progeny character imported", "success", 'Control Bar');
         } else {
-          alert("Import logic unavailable");
+          window.toastManager.show('Import logic unavailable', 'danger', 'Control Bar');
         }
       } catch (err) {
         console.error(err);
-        showToast("Failed to import Progeny JSON", "danger");
+        window.toastManager.show("Failed to import Progeny JSON", "danger");
       }
     };
     reader.readAsText(file);
@@ -376,32 +377,6 @@ export function initControlBar(deps) {
   //  Export / Import logic (leverages backup-manager helpers)
   // ------------------------------------------------------------------
 
-  function showToast(message, type = "info") {
-    if (!window.bootstrap) {
-      alert(message);
-      return;
-    }
-    const toastHtml = `
-      <div class="toast align-items-center text-white bg-${type === "success" ? "success" : "danger"} border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body">${message}</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
-      </div>`;
-    let container = document.getElementById("toastContainer");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "toastContainer";
-      container.className = "toast-container position-fixed top-0 end-0 p-3";
-      document.body.appendChild(container);
-    }
-    container.insertAdjacentHTML("beforeend", toastHtml);
-    const toastEl = container.lastElementChild;
-    const toastInst = new bootstrap.Toast(toastEl, { autohide: true, delay: 3000 });
-    toastInst.show();
-    toastEl.addEventListener("hidden.bs.toast", () => toastEl.remove());
-  }
-
   // 5) Quick-roll handlers -------------------------------------------
   btnRouse.addEventListener("click", () => quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 }));
 
@@ -511,8 +486,21 @@ export function initControlBar(deps) {
 
     // Clear any specialty data
     document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
+    
+    // Refresh specialty display for all skills
+    if (window.specialtyManager && typeof window.specialtyManager.refreshRow === 'function') {
+      const SKILL_NAMES = [
+        'athletics','brawl','craft','drive','firearms','larceny','melee','stealth','survival',
+        'animal ken','etiquette','insight','intimidation','leadership','performance','persuasion','streetwise','subterfuge',
+        'academics','awareness','finance','investigation','medicine','occult','politics','science','technology'
+      ];
+      SKILL_NAMES.forEach(skill => {
+        const cap = skill.replace(/\b\w/g, c => c.toUpperCase());
+        window.specialtyManager.refreshRow(cap);
+      });
+    }
 
-    // Clear convictions
+    // Reset convictions
     if (window.convictionManager) {
       window.convictionManager.convictions = [];
       $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
@@ -557,7 +545,7 @@ export function initControlBar(deps) {
       fileInput.value = '';
     } catch (err) {
       console.error('Error clearing managers:', err);
-      showToast("Error clearing some data. Please refresh the page.", "danger");
+     window.toastManager.show("Error clearing some data. Please refresh the page.", "danger");
     }
 
     // Clear Experience / XP data
@@ -566,7 +554,14 @@ export function initControlBar(deps) {
         window.setXPData({ total: 0, spent: 0, history: [] });
       } else {
         try {
-          localStorage.removeItem('ledger-xp-data');
+          // Use IndexedDB exclusively
+          if (window.databaseManager) {
+            window.databaseManager.setSetting('xpData', { total: 0, spent: 0, history: [] }).catch(err => {
+              console.warn('Failed to clear XP data from IndexedDB:', err);
+            });
+          } else {
+            console.error('No database manager available for XP data clearing');
+          }
         } catch (e) {
           console.warn('Failed to remove XP data from storage', e);
         }
@@ -581,8 +576,11 @@ export function initControlBar(deps) {
       console.error('Error clearing XP data:', xpErr);
     }
 
-    showToast("Character sheet cleared", "success");
+    window.toastManager.show("Character sheet cleared", "success");
   }
+
+  // Expose performClearSheet globally
+  window.performClearSheet = performClearSheet;
 
   // 7b) Clear Sheet button --------------------------------------------
   btnClear.addEventListener('click', () => {
@@ -618,7 +616,7 @@ export function initControlBar(deps) {
       
       // Check if there's any damage to heal
       if (superficialBoxes.length === 0) {
-        showToast('No superficial damage to mend', 'warning');
+        window.toastManager.show('No superficial damage to mend', 'warning');
         return;
       }
 
@@ -634,9 +632,9 @@ export function initControlBar(deps) {
       const header = container.querySelector('.track-header span:first-child');
       if (header) header.textContent = `Current: ${newVal}`;
 
-      showToast(`Mended ${toHeal} superficial Health damage`, 'success');
+      window.toastManager.show(`Mended ${toHeal} superficial Health damage`, 'success');
     } else {
-      showToast('Health track not found', 'danger');
+      window.toastManager.show('Health track not found', 'danger');
     }
 
     // Always perform a Rouse check to see if Hunger increases
@@ -647,7 +645,7 @@ export function initControlBar(deps) {
   btnExport.addEventListener("click", () => {
     if (typeof window.gatherCharacterData !== "function") {
       console.error("gatherCharacterData is not available");
-      showToast("Export failed: missing dependency", "danger");
+      window.toastManager.show("Export failed: missing dependency", "danger");
       return;
     }
     try {
@@ -664,7 +662,7 @@ export function initControlBar(deps) {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error(err);
-      showToast("Failed to export character", "danger");
+      window.toastManager.show("Failed to export character", "danger");
     }
   });
 
@@ -679,13 +677,13 @@ export function initControlBar(deps) {
         const data = JSON.parse(e.target.result);
         if (typeof window.loadCharacterData === "function") {
           window.loadCharacterData(data);
-          showToast("Character imported successfully", "success");
+          window.toastManager.show("Character imported successfully", "success");
         } else {
-          alert("Import logic unavailable");
+          window.toastManager.show('Import logic unavailable', 'danger', 'Control Bar');
         }
       } catch (err) {
         console.error(err);
-        showToast("Failed to import character: invalid JSON", "danger");
+        window.toastManager.show("Failed to import character: invalid JSON", "danger");
       }
       // Clear the file input so it can be reused
       evt.target.value = '';
@@ -937,18 +935,57 @@ export function initControlBar(deps) {
     } else {
       document.body.setAttribute("data-theme", themeKey);
     }
-    localStorage.setItem("ledger-theme", themeKey);
+    
+    // Use IndexedDB exclusively
+    if (window.databaseManager) {
+      window.databaseManager.setSetting('theme', themeKey).catch(err => {
+        console.error('Failed to save theme to IndexedDB:', err);
+      });
+    } else {
+      console.error('No database manager available for theme storage');
+    }
   }
 
   // Theme auto-detect: if user prefers light mode and has not set a theme, use 'ivory' on first visit
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage['ledger-theme']) {
-    document.body.setAttribute('data-theme', 'ivory');
+  async function loadTheme() {
+    try {
+      // Use IndexedDB exclusively
+      if (window.databaseManager) {
+        const savedTheme = await window.databaseManager.getSetting('theme');
+        if (savedTheme && savedTheme !== "default") {
+          document.body.setAttribute("data-theme", savedTheme);
+          return;
+        }
+      }
+      
+      console.log('No theme found in IndexedDB, using default');
+    } catch (err) {
+      console.error('Failed to load theme from IndexedDB:', err);
+    }
   }
-  // Load previously saved theme (if any)
-  const savedTheme = localStorage.getItem("ledger-theme");
-  if (savedTheme && savedTheme !== "default") {
-    document.body.setAttribute("data-theme", savedTheme);
+
+  // Check if theme is set (for auto-detect)
+  async function isThemeSet() {
+    try {
+      if (window.databaseManager) {
+        const savedTheme = await window.databaseManager.getSetting('theme');
+        return !!savedTheme;
+      }
+      return false;
+    } catch (err) {
+      console.error('Failed to check theme in IndexedDB:', err);
+      return false;
+    }
   }
+
+  // Initialize theme
+  (async function initTheme() {
+    const themeSet = await isThemeSet();
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches && !themeSet) {
+      document.body.setAttribute('data-theme', 'ivory');
+    }
+    await loadTheme();
+  })();
 
   themeContainer.querySelector("#openThemeModal").addEventListener("click", () => {
     ensureThemeModal();
@@ -1083,7 +1120,7 @@ export function initControlBar(deps) {
     if (LockManager.isLocked()) {
       if (unlockModalInstance) {
         unlockModalInstance.show();
-      } else if (confirm("Unlock character for editing?")) {
+      } else if (TraitManagerUtils.showConfirmModal("Unlock character for editing?")) {
         LockManager.unlock();
         updateLockButtonUI();
       }
@@ -1095,7 +1132,7 @@ export function initControlBar(deps) {
       lockModalInstance.show();
     } else {
       // Fallback simple confirm if modal missing
-      if (confirm("Lock character for play mode?")) {
+      if (TraitManagerUtils.showConfirmModal("Lock character for play mode?")) {
         LockManager.lock();
         updateLockButtonUI();
       }

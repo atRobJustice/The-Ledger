@@ -30,11 +30,13 @@ This documentation is aimed at developers who want to understand, contribute to,
 
 ## System Overview
 
-The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser (localStorage) or exported as JSON at the user's request; there is *no* server component.
+The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser using IndexedDB for robust character management and persistence, with JSON export/import capabilities; there is *no* server component.
 
 Key design goals:
 
 * **Offline-first** – must run from a local `index.html` without a network connection.
+* **Multiple character support** – manage multiple characters with seamless switching.
+* **Robust data persistence** – IndexedDB provides reliable storage with automatic backups.
 * **Minimal build pipeline** – only SCSS compilation is required for development.
 * **Source-of-truth data** – rules data is imported from the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
 * **Modular JS** – each logical sheet section has a dedicated manager module.
@@ -73,6 +75,8 @@ Key design goals:
 ├── js/
 │   ├── character-sheet.js    # Core sheet initialisation & orchestration
 │   ├── manager-utils.js      # Shared helpers for manager modules
+│   ├── database-manager.js   # IndexedDB operations & data persistence
+│   ├── character-manager.js  # Multiple character management & UI
 │   ├── discipline-manager.js # Manages Disciplines UI & state
 │   ├── disciplines.js        # Static Discipline definitions (ES module)
 │   ├── background-manager.js # Backgrounds, Advantages & Flaws
@@ -86,10 +90,11 @@ Key design goals:
 │   ├── dice-overlay.js       # 3-D overlay + UI toolbar
 │   ├── dice.js               # Core dice physics/render (Three.js + Cannon.js)
 │   ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
-│   ├── backup-manager.js     # JSON import / export / localStorage sync
+│   ├── backup-manager.js     # JSON import / export / autosave
 │   ├── lock-manager.js       # Global Lock / Play mode
 │   ├── xp-manager.js         # Experience Points tracker & history
 │   ├── xp-spend-manager.js   # XP spending modal & trait purchasing
+│   ├── xp-pricing.js         # XP cost calculations
 │   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
 │   ├── discord-integration.js# Rich-presence hooks (optional)
 │   ├── accessibility-fix.js  # Misc ARIA / keyboard tweaks
@@ -115,10 +120,10 @@ Key design goals:
 | DOM & events           | Vanilla JS + jQuery 3.x | Simpler cross-browser DOM edits |
 | Layout & components    | Bootstrap 5     | Grid, utilities, basic components |
 | Styling                | SCSS            | Variables & nesting; compiled via `sass` |
+| Data persistence       | IndexedDB       | Robust character storage & settings |
 | 3-D engine             | Three.js r73    | WebGL rendering of dice |
 | Physics                | Cannon.js 0.6.2 | Rigid-body simulation for dice |
 | Dice face generator    | TealDice (fork) | Converts canvas textures into mesh materials |
-| Data persistence       | `localStorage`  | Stores last saved character, settings |
 | Build / tasks          | npm scripts + Sass | No bundler required |
 
 ---
@@ -130,11 +135,18 @@ flowchart TD
     subgraph UI
         indexHTML([index.html]) --> CharacterSheet
         ControlBar -->|buttons| CharacterSheet
+        CharacterManager -->|switches| CharacterSheet
+    end
+
+    subgraph Data
+        DatabaseManager -->|persists| IndexedDB
+        CharacterManager -->|manages| DatabaseManager
     end
 
     CharacterSheet -->|delegates| Managers
     Managers --> BackupManager
     Managers -->|update| DOM
+    BackupManager -->|autosave| DatabaseManager
 
     DiceOverlay -- listens --> ControlBar
     DiceOverlay --> DiceEngine
@@ -144,6 +156,8 @@ flowchart TD
 
 • **index.html** contains semantic markup for every sheet cell.  Manager modules enhance these nodes at runtime (adding dot trackers, dropdowns, etc.).
 • **Control Bar** emits custom events (`save`, `load`, `roll`) caught by the appropriate modules.
+• **Character Manager** handles multiple character support with seamless switching.
+• **Database Manager** provides IndexedDB operations for robust data persistence.
 • **BackupManager** serialises the DOM-derived character model into JSON and vice-versa.
 • **DiceOverlay** is lazily loaded; if disabled, none of the large 3-D libs are downloaded.
 
@@ -157,6 +171,27 @@ Responsible for bootstrapping the sheet: loops over DOM sections, initialises th
 Key exports:
 * `init()` – main entry called on DOM-ready.
 * `registerManager(name, instance)` – dynamic plugin registry.
+
+### `database-manager.js`
+Handles all IndexedDB operations for character data and settings persistence. Provides a clean API for character CRUD operations and settings management.
+
+Key methods:
+* `init()` – initializes the IndexedDB database
+* `saveCharacter(data, id)` – saves or updates character data
+* `getCharacter(id)` – retrieves character by ID
+* `getAllCharacters()` – retrieves all characters
+* `deleteCharacter(id)` – removes a character
+* `getSetting(key)` / `setSetting(key, value)` – settings management
+
+### `character-manager.js`
+Manages multiple character support with UI for character switching, creation, and management.
+
+Key features:
+* Character selector dropdown
+* New character creation
+* Character management modal
+* Seamless character switching
+* Automatic data persistence
 
 ### `manager-utils.js`
 Common helper functions: value parsing, dot creation, tooltip wiring, REST-like fetch of reference JSON.
@@ -176,10 +211,11 @@ Common helper functions: value parsing, dot creation, tooltip wiring, REST-like 
 | `lock-manager.js`       | Global Lock / Play mode – toggles sheet interactivity |
 | `xp-manager.js`         | Tracks awarded/spent XP, undo/redo history, persistence |
 | `xp-spend-manager.js`   | Modal interface for purchasing trait increases using XP |
+| `xp-pricing.js`         | XP cost calculations for different trait types |
 
 ### `backup-manager.js`
 Serialises/deserialises the current sheet as **Ledger JSON v1** (see Data Layer).
-Also exposes `downloadJSON()` and `loadFromFile()` helpers.
+Also exposes `downloadJSON()` and `loadFromFile()` helpers. Now integrates with IndexedDB for automatic character persistence.
 
 ### `dice-overlay.js`
 Creates a full-window transparent canvas, initialises `dice.js`, and exposes `rollDice(config)` given a dice notation (`5v/2h` = 5 normal, 2 hunger).  Listens for `Ctrl + R` keyboard shortcut.
@@ -198,6 +234,15 @@ All reference data lives in `js/references/` and `data/`:
   * [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/)
   * [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki)
 * **Format:** Plain ES Modules exporting arrays/objects or static JSON.
+
+### IndexedDB Schema
+
+The application uses IndexedDB with two object stores:
+
+* **characters** – stores character data with auto-incrementing IDs
+  * Indexes: name, createdAt, updatedAt
+* **settings** – stores application settings (theme, Discord webhook, etc.)
+  * Key: setting name, Value: setting value
 
 ### Ledger JSON v1 (export example)
 
@@ -277,6 +322,7 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 * **Linting:** not enforced currently; follow Airbnb JS where reasonable.
 * **Modules:** keep each manager self-contained; expose a default class with `init()`.
 * **DOM selectors:** always query via ids/classes defined in `index.html`; avoid brittle text-based selectors.
+* **Data persistence:** use IndexedDB exclusively through the database manager.
 
 ---
 
@@ -294,10 +340,13 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
    - Run `npm run sass` to watch SCSS changes
    - Open `index.html` directly in browser (no server needed)
    - Use browser dev tools for debugging
+   - Test multiple character functionality
 
 3. **Testing**
    - Test in multiple browsers (Chrome, Firefox, Safari)
    - Verify offline functionality
+   - Check IndexedDB persistence
+   - Test character switching and management
    - Check accessibility with screen readers
 
 4. **Building**
@@ -308,6 +357,13 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 ---
 
 ## Component Architecture
+
+### Character Management
+- Character selector dropdown
+- New character creation modal
+- Character management interface
+- Seamless character switching
+- Automatic data persistence
 
 ### Form Controls
 - Auto-resizing textareas
@@ -399,6 +455,12 @@ A: Check browser console for CSS custom property support. The app requires a mod
 
 **Q: Auto-resize textareas not working.**  
 A: Ensure jQuery is loaded and the textarea has the correct class (`form-control`).
+
+**Q: Character data not persisting.**  
+A: Check browser console for IndexedDB errors. Ensure the browser supports IndexedDB and has sufficient storage space.
+
+**Q: Multiple characters not working.**  
+A: Verify that the character manager is properly initialized. Check for console errors during startup.
 
 ---
 

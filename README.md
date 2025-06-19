@@ -47,9 +47,9 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 
 - 💾 **Data Management**
   - 100% client-side – nothing is sent to a server
+  - **Multiple character support** with IndexedDB storage
   - JSON export/import for backups
   - Progeny VTM character import
-  - Local storage persistence
 
 - 🎨 **UI/UX Features**
   - Clan-specific themes
@@ -59,16 +59,22 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 
 - 🔒 **Lock / Play Mode**
   - One-click toggle to freeze the entire sheet during play and avoid accidental edits
-  - Locked status is persisted in autosave, JSON export/import, and local storage
+  - Locked status is persisted in autosave, JSON export/import, and IndexedDB storage
 
 - 📈 **Experience Points (XP) Tracker**
   - Dedicated modal for logging earned and spent XP
   - Automatic calculation of Total, Spent, and Available XP
-  - Full undo/redo history with autosave and local-storage persistence
+  - Full undo/redo history with autosave and IndexedDB persistence
 
 - 🛈 **Info Mode & Rules Reference**
   - Contextual info buttons reveal detailed rules text for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and more
   - Integrated Humanity ladder, Conviction & Touchstone effects, and other reference data
+
+- 👥 **Multiple Character Management**
+  - Create and manage multiple characters
+  - Easy character switching with dropdown selector
+  - Character management modal for organizing your roster
+  - Each character maintains separate XP, settings, and data
 
 ---
 
@@ -92,6 +98,14 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 
 4. **Open** `index.html` in your favourite browser – that's it! No build step required.
 
+### Multiple Character Support
+
+The Ledger now supports multiple characters using IndexedDB storage exclusively:
+
+- **Character Selector**: Use the dropdown in the control bar to switch between characters
+- **New Character**: Click the "+" button to create a new character
+- **Character Management**: Click the gear icon to manage your character roster
+
 ---
 
 ## Development
@@ -104,6 +118,17 @@ All styling lives in `scss/` and is compiled to `css/` using [`sass`](https://sa
 | `npm run sass:build` | One-off, minified production build |
 
 For detailed technical documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
+
+### Testing IndexedDB Integration
+
+A test file is included to verify the IndexedDB functionality:
+
+```bash
+# Open the test file in your browser
+open test-indexeddb.html
+```
+
+This will test the database manager, character manager, and migration functionality.
 
 Feel free to raise issues or open pull requests – contributions are welcome!
 
@@ -122,10 +147,13 @@ Ledger/
 │   └── features/ # feature-specific styles
 ├── js/           # JavaScript modules
 │   ├── lib/      # third-party libraries
-│   └── references/ # game data & rules
+│   ├── references/ # game data & rules
+│   ├── database-manager.js    # IndexedDB management
+│   └── character-manager.js   # Multiple character support
 ├── data/         # JSON & YAML rules data
 ├── reference/    # additional reference materials
 ├── index.html    # main entry point
+├── test-indexeddb.html # IndexedDB integration test
 ├── DOCUMENTATION.md # technical documentation
 ├── CHANGELOG.md  # version history
 └── package.json  # npm scripts & dev dependencies

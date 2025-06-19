@@ -390,7 +390,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       let note;
       if(addingSpecialty){
         const specName=document.getElementById('xp-specialty-name').value.trim();
-        if(!specName){ alert('Please enter a Specialty name'); return; }
+        if(!specName){ window.toastManager.show('Please enter a Specialty name', 'warning', 'XP Spend'); return; }
         note = `Specialty (${specName}) in ${traitKey}`;
       } else {
         note = `Raised ${traitKey} ${currentLevel}→${desiredLevel}`;
@@ -398,7 +398,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       const payload = {cat, traitKey, from: currentLevel, to: desiredLevel, specialty: addingSpecialty ? document.getElementById('xp-specialty-name').value.trim() : null};
       const ok = window.xpManager?.spendXP(cost, note, payload);
       if (!ok) {
-        alert('Not enough XP available.');
+        window.toastManager.show('Not enough XP available.', 'warning', 'XP Spend');
         return;
       }
 
@@ -418,17 +418,33 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
         try{
           const data = window.gatherCharacterData();
           console.debug('[XP] autosave data', data);
-          localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+          
+          // Use IndexedDB exclusively
+          if (window.characterManager && window.characterManager.isInitialized) {
+            await window.characterManager.saveCurrentCharacter(data);
+          } else if (window.databaseManager) {
+            await window.databaseManager.saveActiveCharacter(data);
+          } else {
+            throw new Error('No database manager available for autosave');
+          }
         }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
       } else {
         // Backup manager not yet loaded – retry shortly
         let attempts = 0;
-        const retry = () => {
+        const retry = async () => {
           if(typeof window.gatherCharacterData==='function'){
             try{
               const data = window.gatherCharacterData();
               console.debug('[XP] autosave data', data);
-              localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+              
+              // Use IndexedDB exclusively
+              if (window.characterManager && window.characterManager.isInitialized) {
+                await window.characterManager.saveCurrentCharacter(data);
+              } else if (window.databaseManager) {
+                await window.databaseManager.saveActiveCharacter(data);
+              } else {
+                throw new Error('No database manager available for autosave');
+              }
             }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
           } else if(attempts < 10){
             attempts++;
@@ -686,8 +702,6 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       }
       return { pricingCat, pricingOpts: opts };
     }
-
-    localStorage.setItem('ledger-xp-debug','1');
   }
 
   function addSpecialtyToSkill(skillLabel, spec){
@@ -752,7 +766,16 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       if(typeof window.gatherCharacterData==='function'){
         try{
           const data = window.gatherCharacterData();
-          localStorage.setItem('ledger-autosave-data', JSON.stringify(data));
+          console.debug('[XP] autosave data', data);
+          
+          // Use IndexedDB exclusively
+          if (window.characterManager && window.characterManager.isInitialized) {
+            await window.characterManager.saveCurrentCharacter(data);
+          } else if (window.databaseManager) {
+            await window.databaseManager.saveActiveCharacter(data);
+          } else {
+            throw new Error('No database manager available for autosave');
+          }
         }catch(err){ console.warn('[XP] autosave after undo failed', err); }
       }
     }

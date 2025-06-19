@@ -4,20 +4,43 @@
  * These helpers were previously embedded in dice-overlay.js.
  */
 
-// Persist the webhook URL in localStorage so the setting survives page reloads
-const DISCORD_WEBHOOK_STORAGE_KEY = "ledger-discord-webhook";
-
 // Retrieve the currently configured Discord webhook URL (or null if not set)
-export function getDiscordWebhook() {
-  return localStorage.getItem(DISCORD_WEBHOOK_STORAGE_KEY) || null;
+export async function getDiscordWebhook() {
+  try {
+    // Use IndexedDB exclusively
+    if (window.databaseManager) {
+      return await window.databaseManager.getSetting('discordWebhook') || null;
+    }
+    
+    throw new Error('No database manager available for Discord webhook retrieval');
+  } catch (err) {
+    console.error('Failed to get Discord webhook:', err);
+    return null;
+  }
 }
 
 // Save (or clear, if falsy) the Discord webhook URL
-export function setDiscordWebhook(url) {
-  if (url && url.trim()) {
-    localStorage.setItem(DISCORD_WEBHOOK_STORAGE_KEY, url.trim());
-  } else {
-    localStorage.removeItem(DISCORD_WEBHOOK_STORAGE_KEY);
+export async function setDiscordWebhook(url) {
+  try {
+    if (url && url.trim()) {
+      // Use IndexedDB exclusively
+      if (window.databaseManager) {
+        await window.databaseManager.setSetting('discordWebhook', url.trim());
+        return;
+      }
+      
+      throw new Error('No database manager available for Discord webhook storage');
+    } else {
+      // Use IndexedDB exclusively
+      if (window.databaseManager) {
+        await window.databaseManager.deleteSetting('discordWebhook');
+        return;
+      }
+      
+      throw new Error('No database manager available for Discord webhook deletion');
+    }
+  } catch (err) {
+    console.error('Failed to set Discord webhook:', err);
   }
 }
 
@@ -45,7 +68,7 @@ export function getCharacterName() {
 
 // Send either a plain text message or an embed object to Discord via webhook
 export async function sendToDiscord(contentOrEmbed) {
-  const webhook = getDiscordWebhook();
+  const webhook = await getDiscordWebhook();
   if (!webhook) return; // nothing to do
 
   let payload;
