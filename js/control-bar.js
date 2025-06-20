@@ -164,10 +164,11 @@ export function initControlBar(deps) {
       });
   }
 
-  btnDiscord.addEventListener("click", () => {
+  btnDiscord.addEventListener("click", async () => {
     ensureWebhookModal();
-    webhookModalEl.querySelector("#discordWebhookInput").value = getDiscordWebhook() || "";
-    webhookModalEl.querySelector("#deleteDiscordWebhook").style.display = getDiscordWebhook()
+    const webhook = await getDiscordWebhook();
+    webhookModalEl.querySelector("#discordWebhookInput").value = webhook || "";
+    webhookModalEl.querySelector("#deleteDiscordWebhook").style.display = webhook
       ? "inline-block"
       : "none";
     webhookModalInstance.show();
