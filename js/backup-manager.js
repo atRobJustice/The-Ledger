@@ -49,11 +49,11 @@
                 try{
                     const data = JSON.parse(e.target.result);
                     loadCharacterData(data);
-                    bootstrap?.Toast && showToast('Character imported successfully','success');
+                    window.toastManager.show('Character imported successfully','success', 'Backup Manager');
                     autoSave();
                 } catch(err){
                     console.error(err);
-                    bootstrap?.Toast && showToast('Failed to import character: invalid JSON','danger');
+                    window.toastManager.show('Failed to import character: invalid JSON','danger', 'Backup Manager');
                 }
             };
             reader.readAsText(file);
@@ -137,14 +137,16 @@
         if(window.getXPData) data.xp = window.getXPData();
         // --- End XP Export ---
 
-        // Persist Discord webhook (same key dice-overlay.js uses)
-        const webhook = localStorage.getItem('ledger-discord-webhook');
-        if(webhook) data.discordWebhook = webhook;
+        // Persist Discord webhook (now using IndexedDB)
+        if(window.databaseManager) {
+            // This will be handled by the database manager
+            // We don't need to include it in character data anymore
+        }
 
         // Persist locked state
         data.locked = (window.LockManager && window.LockManager.isLocked) ? window.LockManager.isLocked() : false;
 
-        // Persist current theme
+        // Persist current theme (now using IndexedDB)
         const activeTheme = document.body.getAttribute('data-theme') || 'default';
         data.theme = activeTheme;
 
@@ -225,12 +227,12 @@
         if(window.loresheetManager) window.loresheetManager.loadLoresheets(data.loresheets||[]);
         if(window.convictionManager) window.convictionManager.loadConvictions(data.convictions||[]);
 
-        // Restore Discord webhook
-        if(Object.prototype.hasOwnProperty.call(data,'discordWebhook')){
+        // Restore Discord webhook (now using IndexedDB)
+        if(Object.prototype.hasOwnProperty.call(data,'discordWebhook') && window.databaseManager){
             if(data.discordWebhook){
-                localStorage.setItem('ledger-discord-webhook', data.discordWebhook);
+                window.databaseManager.setSetting('discordWebhook', data.discordWebhook);
             } else {
-                localStorage.removeItem('ledger-discord-webhook');
+                window.databaseManager.deleteSetting('discordWebhook');
             }
         }
 
@@ -239,15 +241,15 @@
             window.LockManager.init(data.locked ?? false);
         }
 
-        // Restore theme
-        if(Object.prototype.hasOwnProperty.call(data,'theme')){
+        // Restore theme (now using IndexedDB)
+        if(Object.prototype.hasOwnProperty.call(data,'theme') && window.databaseManager){
             const t = data.theme || 'default';
             if(t === 'default'){
                 document.body.removeAttribute('data-theme');
             } else {
                 document.body.setAttribute('data-theme', t);
             }
-            localStorage.setItem('ledger-theme', t);
+            window.databaseManager.setSetting('theme', t);
         }
 
         // Recalculate and apply impairment classes based on imported track states
@@ -330,27 +332,7 @@
         }
     }
 
-    function showToast(message, type='info'){
-        const toastHtml = `
-            <div class="toast align-items-center text-white bg-${type==='success'?'success':'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body">${message}</div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                </div>
-            </div>`;
-        if($('#toastContainer').length===0){
-            $('body').append('<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>');
-        }
-        const $toast = $(toastHtml);
-        $('#toastContainer').append($toast);
-        const toastInst = new bootstrap.Toast($toast[0], {autohide:true, delay:3000});
-        toastInst.show();
-        $toast.on('hidden.bs.toast', ()=> $toast.remove());
-    }
-
     // --- Autosave Setup ---
-    const AUTOSAVE_STORAGE_KEY = 'ledger-autosave-data';
-
     function debounce(fn, delay = 500) {
         let timer;
         return (...args) => {
@@ -359,10 +341,18 @@
         };
     }
 
-    function autoSave() {
+    async function autoSave() {
         try {
             const data = gatherCharacterData();
-            localStorage.setItem(AUTOSAVE_STORAGE_KEY, JSON.stringify(data));
+            
+            // Use IndexedDB exclusively
+            if (window.characterManager && window.characterManager.isInitialized) {
+                await window.characterManager.saveCurrentCharacter(data);
+            } else if (window.databaseManager) {
+                await window.databaseManager.saveActiveCharacter(data);
+            } else {
+                throw new Error('No database manager available for autosave');
+            }
         } catch (err) {
             console.error('Auto-save failed', err);
         }
@@ -370,16 +360,27 @@
     const debouncedAutoSave = debounce(autoSave, 500);
 
     // Restore any saved data once everything on the page has had a moment to render
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        setTimeout(async () => {
             try {
-                const saved = localStorage.getItem(AUTOSAVE_STORAGE_KEY);
-                if (saved) {
-                    const data = JSON.parse(saved);
-                    loadCharacterData(data);
+                // Load from IndexedDB exclusively
+                if (window.characterManager && window.characterManager.isInitialized) {
+                    const character = await window.characterManager.getCurrentCharacter();
+                    if (character) {
+                        loadCharacterData(character);
+                        return;
+                    }
+                } else if (window.databaseManager) {
+                    const character = await window.databaseManager.getActiveCharacter();
+                    if (character) {
+                        loadCharacterData(character);
+                        return;
+                    }
                 }
+                
+                console.log('No character data found in IndexedDB');
             } catch (err) {
-                console.error('Failed to restore character from autosave', err);
+                console.error('Failed to restore character from IndexedDB', err);
             }
         }, 800); // allow time for other managers to init
     });

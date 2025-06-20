@@ -701,19 +701,11 @@ let bonusMsg = null;
       });
 
       // Show as Bootstrap toast or alert – simple alert for now
-      const toast = document.createElement("div");
-      toast.style.position = "fixed";
-      toast.style.top = "10px";
-      toast.style.left = "50%";
-      toast.style.transform = "translateX(-50%)";
-      toast.style.background = "rgba(0,0,0,0.7)";
-      toast.style.color = "white";
-      toast.style.padding = "8px 12px";
-      toast.style.borderRadius = "4px";
-      toast.style.zIndex = "2100";
-      toast.innerHTML = toastHtml;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 5000);
+      if (window.toastManager) {
+        window.toastManager.show(toastHtml, 'info', 'Dice Overlay');
+      } else {
+        window.toastManager.show(toastHtml.replace(/<[^>]+>/g, ''), 'info', 'Dice Overlay');
+      }
 
       if (typeof onFinished === "function") onFinished(res);
     });
@@ -905,7 +897,7 @@ let bonusMsg = null;
 
     // If all boxes aggravated – cannot spend WP
     if (aggravated >= total) {
-      alert('All Willpower is aggravated – you can no longer reroll.');
+      window.toastManager.show('All Willpower is aggravated – you can no longer reroll.', 'danger', 'Dice Overlay');
       return false;
     }
 
@@ -933,13 +925,13 @@ let bonusMsg = null;
   // Click handler for the WP reroll button (expects currentRollCtx from latest roll)
   function handleWPRerollClick() {
     if (!currentRollCtx) {
-      alert('No previous roll to reroll.');
+      window.toastManager.show('No previous roll to reroll.', 'warning', 'Dice Overlay');
       return;
     }
 
     const selCount = currentRollCtx.selected.size;
     if (selCount === 0) {
-      alert('Select up to 3 Standard dice to reroll (click them)');
+      window.toastManager.show('Select up to 3 Standard dice to reroll (click them)', 'info', 'Dice Overlay');
       return;
     }
 

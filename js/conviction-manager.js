@@ -43,7 +43,7 @@ class ConvictionManager {
     addConviction() {
         const activeConvictions = this.getActiveConvictions();
         if (activeConvictions >= this.maxConvictions) {
-            alert('Maximum number of active convictions reached (3)');
+            window.toastManager.show('Maximum number of active convictions reached (3)', 'warning', 'Conviction Manager');
             return;
         }
 

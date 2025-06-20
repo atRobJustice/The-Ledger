@@ -1,10 +1,12 @@
 // XP Manager for Ledger
 (function(){
-    // Wait for DOM
+    // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', () => {
-        injectXPModal();
-        setupXPHandlers();
-        loadXPFromStorage();
+        setTimeout(() => {
+            injectXPModal();
+            setupXPHandlers();
+            loadXPFromStorage();
+        }, 300);
     });
 
     // Inject modal HTML into body
@@ -47,23 +49,42 @@
         history: [] // {amount, date, note}
     };
 
-    // Storage key
-    const XP_STORAGE_KEY = 'ledger-xp-data';
-
-    // Load XP from localStorage
-    function loadXPFromStorage() {
+    // Load XP from storage (IndexedDB only)
+    async function loadXPFromStorage() {
         try {
-            const saved = localStorage.getItem(XP_STORAGE_KEY);
-            if(saved) {
-                xpData = JSON.parse(saved);
+            // Use IndexedDB exclusively
+            if (window.databaseManager) {
+                const saved = await window.databaseManager.getSetting('xpData');
+                if (saved) {
+                    xpData = saved;
+                    updateXPUI();
+                    return;
+                }
             }
-        } catch(e) { xpData = {total:0, spent:0, history:[]}; }
+            
+            // No XP data found, use defaults
+            xpData = {total:0, spent:0, history:[]};
+        } catch(e) { 
+            console.error('Failed to load XP data from IndexedDB:', e);
+            xpData = {total:0, spent:0, history:[]}; 
+        }
         updateXPUI();
     }
 
-    // Save XP to localStorage
-    function saveXPToStorage() {
-        localStorage.setItem(XP_STORAGE_KEY, JSON.stringify(xpData));
+    // Save XP to storage (IndexedDB only)
+    async function saveXPToStorage() {
+        try {
+            // Use IndexedDB exclusively
+            if (window.databaseManager) {
+                await window.databaseManager.setSetting('xpData', xpData);
+                return;
+            }
+            
+            throw new Error('No database manager available for XP storage');
+        } catch (err) {
+            console.error('Failed to save XP data to IndexedDB:', err);
+            throw err;
+        }
     }
 
     // Update XP UI
@@ -123,20 +144,20 @@
 
         document.getElementById('undo-xp').addEventListener('click', ()=>{
             const ok = undoLast();
-            if(!ok){ showToast('Nothing to undo','info'); }
+            if(!ok){ window.toastManager.show('Nothing to undo','info'); }
         });
     }
 
     // Award XP
-    function awardXP(amount, note = '', meta=null) {
+    async function awardXP(amount, note = '', meta=null) {
         xpData.total += amount;
         xpData.history.push({type: 'award', amount, date: new Date().toLocaleString(), note, meta});
-        saveXPToStorage();
+        await saveXPToStorage();
         updateXPUI();
     }
 
     // Spend XP
-    function spendXP(amount, note = '', meta=null) {
+    async function spendXP(amount, note = '', meta=null) {
         // Prevent overspending
         if (amount <= 0 || amount > (xpData.total - xpData.spent)) {
             console.warn('Not enough available XP to spend');
@@ -144,7 +165,7 @@
         }
         xpData.spent += amount;
         xpData.history.push({type: 'spend', amount, date: new Date().toLocaleString(), note, meta});
-        saveXPToStorage();
+        await saveXPToStorage();
         updateXPUI();
         return true;
     }
@@ -156,14 +177,14 @@
 
     // Export/import helpers for backup-manager.js
     window.getXPData = function() { return xpData; };
-    window.setXPData = function(data) {
+    window.setXPData = async function(data) {
         xpData = data || {total:0, spent:0, history:[]};
-        saveXPToStorage();
+        await saveXPToStorage();
         updateXPUI();
     };
 
     // Undo last history entry
-    function undoLast(){
+    async function undoLast(){
         if(!xpData.history.length) return false;
         const last = xpData.history.pop();
         if(last.type==='award'){
@@ -171,7 +192,7 @@
         } else if(last.type==='spend' || last.type==='spent'){
             xpData.spent = Math.max(0, xpData.spent - last.amount);
         }
-        saveXPToStorage();
+        await saveXPToStorage();
         updateXPUI();
         // Emit event so other modules can revert side-effects
         document.dispatchEvent(new CustomEvent('xpUndo', {detail:last}));
@@ -185,27 +206,4 @@
         getAvailableXP,
         undoLast
     };
-
-    // Simple toast helper
-    function showToast(message, type='info'){
-        // Ensure container exists
-        let container=document.getElementById('xpToastContainer');
-        if(!container){
-            container=document.createElement('div');
-            container.id='xpToastContainer';
-            container.className='toast-container position-fixed top-0 end-0 p-3';
-            document.body.appendChild(container);
-        }
-        const bgClass = type==='success' ? 'bg-success' : type==='warning' ? 'bg-warning text-dark' : type==='danger'||type==='error' ? 'bg-danger' : 'bg-info';
-        const toast=document.createElement('div');
-        toast.className=`toast align-items-center text-white ${bgClass} border-0`;
-        toast.setAttribute('role','status');
-        toast.setAttribute('aria-live','polite');
-        toast.setAttribute('aria-atomic','true');
-        toast.innerHTML=`<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`;
-        container.appendChild(toast);
-        const bsToast=new bootstrap.Toast(toast,{delay:3000, autohide:true});
-        bsToast.show();
-        toast.addEventListener('hidden.bs.toast',()=>toast.remove());
-    }
 })(); 

@@ -693,37 +693,12 @@ class DisciplineManager {
     }
 
     showFeedback(message, type = 'info') {
-        // Create a temporary toast notification
-        const toastHtml = `
-            <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : type === 'info' ? 'info' : type === 'warning' ? 'warning' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
-        `;
-        
-        // Add toast container if it doesn't exist
-        if ($('#toastContainer').length === 0) {
-            $('body').append('<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>');
+        if (window.toastManager) {
+            window.toastManager.show(message, type, 'Discipline Manager');
+        } else {
+            // Fallback to simple alert if toastManager is not available
+            console.log(`${type.toUpperCase()}: ${message}`);
         }
-        
-        const $toast = $(toastHtml);
-        $('#toastContainer').append($toast);
-        
-        // Initialize and show the toast
-        const toast = new bootstrap.Toast($toast[0], {
-            autohide: true,
-            delay: 3000
-        });
-        toast.show();
-        
-        // Remove the toast element after it's hidden
-        $toast.on('hidden.bs.toast', function() {
-            $(this).remove();
-        });
     }
 
     // Public methods for external access

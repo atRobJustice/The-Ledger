@@ -56,17 +56,287 @@
     }
 }
 
-// Toast notifications
+// Toast notifications - Theme-aware styling
 .toast {
     font-family: $font-primary;
-
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    
+    // Default theme (Blood & Roses)
+    &:not([data-theme]) &,
+    body:not([data-theme]) & {
+        background-color: #2a1a1a;
+        color: #d8d0c8;
+        border-left: 4px solid var(--accent, #a40000);
+        
+        .toast-header {
+            background-color: var(--accent, #a40000);
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .toast-body {
+            background-color: #2a1a1a;
+            color: #d8d0c8;
+        }
+    }
+    
+    // Success toasts
+    &.bg-success {
+        background-color: $color-success !important;
+        color: white !important;
+        border-left-color: $color-success;
+        
+        .toast-header {
+            background-color: $color-success !important;
+            color: white !important;
+        }
+        
+        .toast-body {
+            background-color: $color-success !important;
+            color: white !important;
+        }
+    }
+    
+    // Danger/Error toasts
+    &.bg-danger {
+        background-color: var(--accent, $color-danger) !important;
+        color: white !important;
+        border-left-color: var(--accent, $color-danger);
+        
+        .toast-header {
+            background-color: var(--accent, $color-danger) !important;
+            color: white !important;
+        }
+        
+        .toast-body {
+            background-color: var(--accent, $color-danger) !important;
+            color: white !important;
+        }
+    }
+    
+    // Warning toasts
     &.bg-warning {
         background-color: $color-warning !important;
         color: $color-black !important;
-
+        border-left-color: $color-warning;
+        
+        .toast-header {
+            background-color: $color-warning !important;
+            color: $color-black !important;
+        }
+        
+        .toast-body {
+            background-color: $color-warning !important;
+            color: $color-black !important;
+        }
+        
         .btn-close {
             filter: invert(1);
         }
+    }
+    
+    // Info toasts
+    &.bg-info {
+        background-color: $color-info !important;
+        color: white !important;
+        border-left-color: $color-info;
+        
+        .toast-header {
+            background-color: $color-info !important;
+            color: white !important;
+        }
+        
+        .toast-body {
+            background-color: $color-info !important;
+            color: white !important;
+        }
+    }
+}
+
+// Theme-specific toast overrides
+body[data-theme='ivory'] {
+    .toast {
+        background-color: #fbf7f2;
+        color: #2c1b1b;
+        border-left: 4px solid var(--accent, #8b0000);
+        
+        .toast-header {
+            background-color: var(--accent, #8b0000);
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .toast-body {
+            background-color: #fbf7f2;
+            color: #2c1b1b;
+        }
+        
+        // Override type-specific colors for ivory theme
+        &.bg-success {
+            background-color: #567d5e !important;
+            border-left-color: #567d5e;
+            
+            .toast-header { background-color: #567d5e !important; }
+            .toast-body { background-color: #567d5e !important; }
+        }
+        
+        &.bg-danger {
+            background-color: #8b2d2d !important;
+            border-left-color: #8b2d2d;
+            
+            .toast-header { background-color: #8b2d2d !important; }
+            .toast-body { background-color: #8b2d2d !important; }
+        }
+    }
+}
+
+body[data-theme='daltonic'] {
+    .toast {
+        background-color: #fafdff;
+        color: #1a1a1a;
+        border-left: 4px solid var(--accent, #005fa3);
+        
+        .toast-header {
+            background-color: var(--accent, #005fa3);
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .toast-body {
+            background-color: #fafdff;
+            color: #1a1a1a;
+        }
+        
+        // Override type-specific colors for daltonic theme
+        &.bg-success {
+            background-color: #ff9900 !important;
+            color: white !important;
+            border-left-color: #ff9900;
+            
+            .toast-header { background-color: #ff9900 !important; }
+            .toast-body { background-color: #ff9900 !important; }
+        }
+        
+        &.bg-danger {
+            background-color: #005fa3 !important;
+            color: white !important;
+            border-left-color: #005fa3;
+            
+            .toast-header { background-color: #005fa3 !important; }
+            .toast-body { background-color: #005fa3 !important; }
+        }
+        
+        &.bg-warning {
+            background-color: #ffb84d !important;
+            color: #1a1a1a !important;
+            border-left-color: #ffb84d;
+            
+            .toast-header { background-color: #ffb84d !important; }
+            .toast-body { background-color: #ffb84d !important; }
+        }
+    }
+}
+
+body[data-theme='hc-dark'] {
+    .toast {
+        background-color: #101010;
+        color: white;
+        border-left: 4px solid var(--accent, #ffd700);
+        
+        .toast-header {
+            background-color: var(--accent, #ffd700);
+            color: black;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .toast-body {
+            background-color: #101010;
+            color: white;
+        }
+        
+        // Override type-specific colors for hc-dark theme
+        &.bg-success {
+            background-color: #00cfff !important;
+            color: black !important;
+            border-left-color: #00cfff;
+            
+            .toast-header { background-color: #00cfff !important; }
+            .toast-body { background-color: #00cfff !important; }
+        }
+        
+        &.bg-danger {
+            background-color: #ff2b2b !important;
+            color: white !important;
+            border-left-color: #ff2b2b;
+            
+            .toast-header { background-color: #ff2b2b !important; }
+            .toast-body { background-color: #ff2b2b !important; }
+        }
+        
+        &.bg-warning {
+            background-color: #ffd700 !important;
+            color: black !important;
+            border-left-color: #ffd700;
+            
+            .toast-header { background-color: #ffd700 !important; }
+            .toast-body { background-color: #ffd700 !important; }
+        }
+    }
+}
+
+body[data-theme='hc-light'] {
+    .toast {
+        background-color: #f7f7f7;
+        color: black;
+        border-left: 4px solid var(--accent, #0053d6);
+        
+        .toast-header {
+            background-color: var(--accent, #0053d6);
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .toast-body {
+            background-color: #f7f7f7;
+            color: black;
+        }
+        
+        // Override type-specific colors for hc-light theme
+        &.bg-success {
+            background-color: #0053d6 !important;
+            color: white !important;
+            border-left-color: #0053d6;
+            
+            .toast-header { background-color: #0053d6 !important; }
+            .toast-body { background-color: #0053d6 !important; }
+        }
+        
+        &.bg-danger {
+            background-color: #b40000 !important;
+            color: white !important;
+            border-left-color: #b40000;
+            
+            .toast-header { background-color: #b40000 !important; }
+            .toast-body { background-color: #b40000 !important; }
+        }
+        
+        &.bg-warning {
+            background-color: #ff8c00 !important;
+            color: black !important;
+            border-left-color: #ff8c00;
+            
+            .toast-header { background-color: #ff8c00 !important; }
+            .toast-body { background-color: #ff8c00 !important; }
+        }
+    }
+}
+
+// Dyslexia theme inherits from default but with OpenDyslexic font
+body[data-theme='dyslexia'] {
+    .toast {
+        font-family: 'OpenDyslexic', 'Helvetica Neue', Arial, sans-serif;
     }
 }
 
