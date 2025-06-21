@@ -51,10 +51,10 @@ export function getCharacterName() {
   if (!label) return '';
   const parent = label.parentElement;
 
-  // Case 1: transformed into an <input> by character-sheet.js
-  const input = parent.querySelector('input');
-  if (input && input.value && input.value.trim()) {
-    return input.value.trim();
+  // Case 1: transformed into a <textarea> by character-sheet.js
+  const textarea = parent.querySelector('textarea');
+  if (textarea && textarea.value && textarea.value.trim()) {
+    return textarea.value.trim();
   }
 
   // Case 2: still a plain <span>
@@ -178,7 +178,7 @@ export function buildRollEmbed(rollData) {
   fields.push({ name: 'Results', value: resultsLines.join('\n'), inline: true });
 
   return {
-    title: rollData.characterName ? `${rollData.characterName}'s ${rollType}` : `🎲 ${rollType}`,
+    title: getCharacterName() ? `${getCharacterName()}'s ${rollType}` : `🎲 ${rollType}`,
     color: embedColor,
     fields,
     timestamp: new Date().toISOString()
