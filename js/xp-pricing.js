@@ -1,7 +1,6 @@
 // Experience point pricing utilities for Ledger
 // -------------------------------------------------
-// ES module exposing getDotPrice and getTotalPrice.
-// Each cost rule follows VTM5e core book.
+// Traditional script loading - no ES6 modules
 
 // Cost calculator functions keyed by trait type
 const COST_RULES = {
@@ -31,7 +30,7 @@ function normaliseType(type) {
  * @param {object} [opts] - extra flags (clanMatched, caitiff).
  * @returns {number}
  */
-export function getDotPrice(type, newLevel, opts = {}) {
+function getDotPrice(type, newLevel, opts = {}) {
   const key = normaliseType(type);
   const rule = COST_RULES[key];
   if (!rule) throw new Error(`Unknown XP cost type: ${type}`);
@@ -46,7 +45,7 @@ export function getDotPrice(type, newLevel, opts = {}) {
  * @param {object} [opts]
  * @returns {number}
  */
-export function getTotalPrice(type, currentLevel, desiredLevel, opts = {}) {
+function getTotalPrice(type, currentLevel, desiredLevel, opts = {}) {
   if (desiredLevel <= currentLevel) return 0;
   let sum = 0;
   for (let lvl = currentLevel + 1; lvl <= desiredLevel; lvl++) {
@@ -55,5 +54,7 @@ export function getTotalPrice(type, currentLevel, desiredLevel, opts = {}) {
   return sum;
 }
 
-// Optional default export for convenience
-export default { getDotPrice, getTotalPrice }; 
+// Add to window for global access
+window.getDotPrice = getDotPrice;
+window.getTotalPrice = getTotalPrice;
+window.xpPricing = { getDotPrice, getTotalPrice }; 

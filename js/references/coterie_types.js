@@ -1,4 +1,4 @@
-export const coterieTypes = {
+const coterieTypes = {
   name: "Coterie Types",
   description: "Players have the option to create their coterie type from those below or invent their own. Below are examples of possible types with names that serve as a shorthand rather than a universal term amongst Kindred. Yes, some may call their coterie a Nomad, but they do not have to. Build the coterie around what the troupe desires first and rules second. If a coterie type matches well, use it's requirements but if there are things the players would rather have instead, swap it around with different pre-requisites. In a similar vein, coterie types can change in play. Perhaps the Nomad coterie has found a city they wish to settle down in, changing around their advantages will help represent their current storyline.",
   source: ["Vampire: The Masquerade Players Guide"],
@@ -587,4 +587,5 @@ export const coterieTypes = {
       sourcePage: 199
     }
   }
-}; 
+};
+window.coterieTypes = coterieTypes; 

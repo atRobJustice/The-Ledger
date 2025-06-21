@@ -1,4 +1,4 @@
-export const predatorTypes = {
+const predatorTypes = {
   name: "Predator Types",
   description: "Each vampire has their preferred method of hunting, which affects their starting specializations, Disciplines, Merits and Flaws, as their experience hunting blood shapes their skillset.",
   types: {
@@ -286,4 +286,5 @@ export const predatorTypes = {
       source: "Vampire: The Masquerade Players Guide, page 109"
     }
   }
-}; 
+};
+window.predatorTypes = predatorTypes; 

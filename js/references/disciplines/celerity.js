@@ -1,4 +1,5 @@
-export const celerity = {
+// Celerity Discipline Data
+const celerity = {
   name: "Celerity",
   nicknames: ["Bolting", "Slipping", "Velocitas"],
   affinity: ["Banu Haqim", "Brujah", "Toreador"],
@@ -186,4 +187,5 @@ export const celerity = {
       }
     ]
   }
-}; 
+};
+window.celerity = celerity; 

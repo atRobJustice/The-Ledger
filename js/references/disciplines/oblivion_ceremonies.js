@@ -1,4 +1,5 @@
-export const oblivionCeremonies = {
+// Oblivion Ceremonies Data
+const oblivionCeremonies = {
   name: "Oblivion Ceremonies",
   generalRules: {
     baseCost: "One Rouse Check",
@@ -127,4 +128,5 @@ export const oblivionCeremonies = {
       "Fortezza Sindonica"
     ]
   }
-}; 
+};
+window.oblivionCeremonies = oblivionCeremonies; 

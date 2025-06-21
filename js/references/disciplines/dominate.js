@@ -1,4 +1,6 @@
-export const dominate = {
+// Remove ES6 export - use traditional script loading
+// export const dominate = {
+const dominate = {
   name: "Dominate",
   nicknames: ["Snake Charming", "Mesmerism", "Mentis Imperium"],
   affinity: ["Lasombra", "Malkavian", "Salubri", "Tremere", "Tzimisce", "Ventrue"],
@@ -320,4 +322,5 @@ export const dominate = {
       source: "Vampire: The Masquerade Companion, page 24"
     }
   ]
-}; 
+};
+window.dominate = dominate; 

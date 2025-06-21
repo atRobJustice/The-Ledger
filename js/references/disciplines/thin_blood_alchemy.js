@@ -1,4 +1,5 @@
-export const thinBloodAlchemy = {
+// Thin Blood Alchemy Discipline Data
+const thinBloodAlchemy = {
   name: "Thin-blood Alchemy",
   nicknames: ["Cooking", "Home Brew", "the Craft", "Mashup"],
   affinity: ["Thin-blood"],
@@ -159,4 +160,5 @@ export const thinBloodAlchemy = {
       source: "Corebook, page 287"
     }
   }
-}; 
+};
+window.thinBloodAlchemy = thinBloodAlchemy; 

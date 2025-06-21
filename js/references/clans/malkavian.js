@@ -1,4 +1,4 @@
-export const malkavian = {
+const malkavian = {
   name: "Malkavian",
   nicknames: ["The Clan of the Moon", "Lunatics", "Madmen", "Jesters", "Oracles", "Dervishes", "Visionaries", "Children of Malkav"],
   disciplines: ["Auspex", "Dominate", "Obfuscate"],
@@ -102,4 +102,5 @@ export const malkavian = {
     "Malkavian Family",
     "Starfall Ranch"
   ]
-}; 
+};
+window.malkavian = malkavian; 

@@ -1,4 +1,4 @@
-export const coterieBackgrounds = {
+const coterieBackgrounds = {
   name: "Coterie Backgrounds",
   description: "Coteries can purchase certain backgrounds and flaws in common using their pool just as they would during standard character creation. Remember to record major figures on the Relationship Map, just as is done with individual backgrounds. Each member of the coterie can use these backgrounds as if they were their own, however, the backgrounds belong to the coterie and not the individual. Should a character leave the coterie either through mutual splitting up or through ejection in some form, they cannot take backgrounds with them. It is also important to note that Backgrounds do not multiply, a two-dot coterie herd is still the same as an individual's two-dot herd. Regardless of whether being within a coterie's background or not, all backgrounds are subject to in-game risks which means that putting all of it in one place can run a risk should an enemy decide to take action against the characters.",
   source: ["Vampire: The Masquerade Corebook"],
@@ -346,4 +346,5 @@ export const coterieBackgrounds = {
       }
     }
   }
-}; 
+};
+window.coterieBackgrounds = coterieBackgrounds; 

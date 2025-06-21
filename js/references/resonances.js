@@ -1,4 +1,4 @@
-export const resonances = {
+const resonances = {
   overview: {
     description:
       "Resonance represents the emotional quality found in mortal blood. Depending on the resonance, a vampire gains bonuses to specific Disciplines and—at higher intensities—additional benefits called Dyscrasias.",
@@ -95,4 +95,5 @@ export const resonances = {
         "An overwhelming, self-sustaining intensity. Provides the intense bonus and enables Dyscrasia effects when fully drained or fed from over three nights."
     }
   }
-}; 
+};
+window.resonances = resonances; 

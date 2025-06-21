@@ -1,4 +1,5 @@
-export const potence = {
+// Potence Discipline Data
+const potence = {
   name: "Potence",
   nicknames: ["Hulking", "Blood's Might", "Percutio"],
   affinity: ["Brujah", "Nosferatu", "Lasombra"],
@@ -208,4 +209,5 @@ export const potence = {
       source: "Vampire: The Masquerade Winter's Teeth #3"
     }
   ]
-}; 
+};
+window.potence = potence; 

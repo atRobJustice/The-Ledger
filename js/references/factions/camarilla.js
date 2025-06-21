@@ -1,4 +1,4 @@
-export const camarilla = {
+const camarilla = {
   name: "Camarilla",
   nicknames: ["The Tower"],
   predominantClans: [
@@ -169,4 +169,5 @@ export const camarilla = {
     "Prince Francois Villon",
     "Juliet Parr"
   ]
-}; 
+};
+window.camarilla = camarilla; 

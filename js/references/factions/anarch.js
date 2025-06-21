@@ -1,4 +1,4 @@
-export const anarch = {
+const anarch = {
   name: "Anarch",
   nicknames: ["The Movement"],
   predominantClans: [
@@ -109,4 +109,5 @@ export const anarch = {
     "Maldavis",
     "Anita Wainwright"
   ]
-}; 
+};
+window.anarch = anarch; 

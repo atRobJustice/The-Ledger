@@ -1,4 +1,5 @@
-export const presence = {
+// Presence Discipline Data
+const presence = {
   name: "Presence",
   nicknames: ["Superstardom", "Enthrallment", "Sublimitas"],
   affinity: ["Brujah", "Ravnos", "Toreador", "The Ministry", "Ventrue"],
@@ -264,4 +265,5 @@ export const presence = {
       source: "Vampire: The Masquerade Corebook, page 265"
     }
   ]
-}; 
+};
+window.presence = presence; 

@@ -1,4 +1,5 @@
-export const bloodSorceryRituals = {
+// Blood Sorcery Rituals Data
+const bloodSorceryRituals = {
   name: "Blood Sorcery Rituals",
   generalRules: {
     baseCost: "One Rouse Check",
@@ -135,4 +136,5 @@ export const bloodSorceryRituals = {
       ]
     }
   }
-}; 
+};
+window.bloodSorceryRituals = bloodSorceryRituals; 

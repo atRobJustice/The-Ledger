@@ -1,4 +1,4 @@
-export const caitiff = {
+const caitiff = {
   name: "Caitiff",
   nicknames: ["The Clanless", "Panders", "Orphans", "Trash", "Scum", "Freestylers"],
   disciplines: {
@@ -71,4 +71,5 @@ export const caitiff = {
       }
     }
   }
-}; 
+};
+window.caitiff = caitiff; 

@@ -1,8 +1,64 @@
+// Conviction Manager with Component Architecture Integration
 class ConvictionManager {
     constructor() {
         this.convictions = [];
         this.maxConvictions = 3;
+        this.eventListeners = new Map();
+        this.isComponentMode = false;
+        this.parentComponent = null;
         this.initializeEventListeners();
+    }
+
+    /**
+     * Set component mode and parent component
+     */
+    setComponentMode(parentComponent) {
+        this.isComponentMode = true;
+        this.parentComponent = parentComponent;
+        console.log('ConvictionManager: Component mode enabled');
+    }
+
+    /**
+     * Event handling methods
+     */
+    on(event, handler) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(handler);
+    }
+
+    off(event, handler) {
+        if (this.eventListeners.has(event)) {
+            const handlers = this.eventListeners.get(event);
+            const index = handlers.indexOf(handler);
+            if (index > -1) {
+                handlers.splice(index, 1);
+            }
+        }
+    }
+
+    emit(event, data) {
+        // Emit to internal listeners
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(handler => {
+                try {
+                    handler(data);
+                } catch (err) {
+                    console.error(`Error in conviction manager event handler for ${event}:`, err);
+                }
+            });
+        }
+
+        // Emit to parent component if in component mode
+        if (this.isComponentMode && this.parentComponent) {
+            this.parentComponent.emit(event, data);
+        }
+
+        // Emit to document for legacy compatibility
+        document.dispatchEvent(new CustomEvent(`conviction${event.charAt(0).toUpperCase() + event.slice(1)}`, {
+            detail: { ...data, source: 'ConvictionManager' }
+        }));
     }
 
     initializeEventListeners() {
@@ -17,6 +73,17 @@ class ConvictionManager {
         });
         $(document).on('change', '.form-check-input', (e) => {
             this.updateAvailableSlots();
+            this.emitConvictionUpdated();
+        });
+        $(document).on('input', '.conviction-description, .touchstone-name, .touchstone-relationship, .touchstone-summary', (e) => {
+            this.emitConvictionUpdated();
+        });
+    }
+
+    emitConvictionUpdated() {
+        // Emit conviction updated event with current data
+        this.emit('convictionUpdated', {
+            convictions: this.saveConvictions()
         });
     }
 
@@ -43,7 +110,7 @@ class ConvictionManager {
     addConviction() {
         const activeConvictions = this.getActiveConvictions();
         if (activeConvictions >= this.maxConvictions) {
-            window.toastManager.show('Maximum number of active convictions reached (3)', 'warning', 'Conviction Manager');
+            this.showFeedback('Maximum number of active convictions reached (3)', 'warning');
             return;
         }
 
@@ -101,6 +168,14 @@ class ConvictionManager {
                 this.style.height = (this.scrollHeight) + 'px';
             });
         });
+
+        this.updateAvailableSlots();
+        
+        // Emit conviction added event
+        this.emit('convictionAdded', {
+            convictionId,
+            convictionNumber: this.convictions.length
+        });
     }
 
     removeConviction(id) {
@@ -112,6 +187,11 @@ class ConvictionManager {
             this.redistributeConvictions();
             this.updateConvictionNumbers();
             this.updateAvailableSlots();
+            
+            // Emit conviction removed event
+            this.emit('convictionRemoved', {
+                convictionId: id
+            });
         }
     }
 
@@ -192,24 +272,24 @@ class ConvictionManager {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Conviction</label>
-                        <textarea class="form-control bg-dark text-light conviction-description" rows="1"></textarea>
+                        <textarea class="form-control bg-dark text-light conviction-description" rows="1">${conviction.description || ''}</textarea>
                     </div>
                     <div class="touchstone-details">
                         <h6 class="mb-2">Touchstone</h6>
                         <div class="mb-2">
                             <label class="form-label">Name</label>
-                            <textarea class="form-control bg-dark text-light touchstone-name" rows="1"></textarea>
+                            <textarea class="form-control bg-dark text-light touchstone-name" rows="1">${conviction.touchstone?.name || ''}</textarea>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Relationship</label>
-                            <textarea class="form-control bg-dark text-light touchstone-relationship" rows="1"></textarea>
+                            <textarea class="form-control bg-dark text-light touchstone-relationship" rows="1">${conviction.touchstone?.relationship || ''}</textarea>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">What they represent</label>
-                            <textarea class="form-control bg-dark text-light touchstone-summary" rows="2"></textarea>
+                            <textarea class="form-control bg-dark text-light touchstone-summary" rows="2">${conviction.touchstone?.summary || ''}</textarea>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="touchstone-lost-${convictionId}">
+                            <input class="form-check-input" type="checkbox" id="touchstone-lost-${convictionId}" ${conviction.touchstone?.lost ? 'checked' : ''}>
                             <label class="form-check-label" for="touchstone-lost-${convictionId}">
                                 Touchstone Lost
                             </label>
@@ -234,34 +314,78 @@ class ConvictionManager {
                     this.style.height = 'auto';
                     this.style.height = (this.scrollHeight) + 'px';
                 });
+                // Trigger initial resize
+                $(this).trigger('input');
             });
         });
         
-        // Then populate the data and trigger resize
-        convictions.forEach((conviction, index) => {
-            const convictionId = this.convictions[index].id;
-            const $conviction = $(`[data-id="${convictionId}"]`);
-            
-            // Set values and trigger input event for auto-resize
-            $conviction.find('.conviction-description').val(conviction.description || '').trigger('input');
-            $conviction.find('.touchstone-name').val(conviction.touchstone?.name || '').trigger('input');
-            $conviction.find('.touchstone-relationship').val(conviction.touchstone?.relationship || '').trigger('input');
-            $conviction.find('.touchstone-summary').val(conviction.touchstone?.summary || '').trigger('input');
-            $conviction.find(`#touchstone-lost-${convictionId}`).prop('checked', conviction.touchstone?.lost || false);
-            
-            // Force a resize after a short delay to ensure content is rendered
-            setTimeout(() => {
-                $conviction.find('textarea').each(function() {
-                    this.style.height = 'auto';
-                    this.style.height = (this.scrollHeight) + 'px';
-                });
-            }, 0);
+        this.updateAvailableSlots();
+        
+        // Emit convictions loaded event
+        this.emit('convictionsLoaded', {
+            convictions: this.saveConvictions()
         });
+    }
+
+    /**
+     * Component integration methods
+     */
+    getData() {
+        return {
+            convictions: this.saveConvictions()
+        };
+    }
+
+    update(data) {
+        if (data.convictions) {
+            this.loadConvictions(data.convictions);
+        }
+    }
+
+    clear() {
+        // Clear all columns
+        $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
+        this.convictions = [];
+        this.updateAvailableSlots();
+        
+        // Emit convictions cleared event
+        this.emit('convictionsCleared');
+    }
+
+    setLockState(isLocked) {
+        const $addBtn = $('#add-conviction');
+        const $removeBtns = $('.remove-conviction');
+        const $textareas = $('.conviction-description, .touchstone-name, .touchstone-relationship, .touchstone-summary');
+        const $checkboxes = $('.form-check-input');
+
+        if (isLocked) {
+            $addBtn.prop('disabled', true);
+            $removeBtns.prop('disabled', true);
+            $textareas.prop('readonly', true);
+            $checkboxes.prop('disabled', true);
+        } else {
+            $addBtn.prop('disabled', false);
+            $removeBtns.prop('disabled', false);
+            $textareas.prop('readonly', false);
+            $checkboxes.prop('disabled', false);
+            this.updateAvailableSlots(); // Re-evaluate based on current state
+        }
+    }
+
+    showFeedback(message, type = 'info') {
+        if (window.toastManager) {
+            window.toastManager.show(message, type, 'Conviction Manager');
+        } else {
+            console.log(`[ConvictionManager] ${type.toUpperCase()}: ${message}`);
+        }
     }
 }
 
-// Initialize the conviction manager
+// Create and export the conviction manager instance
 const convictionManager = new ConvictionManager();
 
 // Add to window for global access
-window.convictionManager = convictionManager; 
+window.convictionManager = convictionManager;
+
+// Remove ES6 export - use traditional script loading
+// export default convictionManager; 

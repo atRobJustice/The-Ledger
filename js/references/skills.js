@@ -1,4 +1,4 @@
-export const skills = {
+const skills = {
   overview: {
     description: "Similar to Attributes, Skills are defined as follows. No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.",
     distribution: {
@@ -738,4 +738,5 @@ export const skills = {
       }
     }
   }
-}; 
+};
+window.skills = skills; 

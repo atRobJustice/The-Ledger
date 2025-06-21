@@ -1,4 +1,4 @@
-export const ministry = {
+const ministry = {
   name: "The Ministry",
   nicknames: ["The Clan of Faith", "Setites", "Followers of Set", "The Clan of Lies", "Typhonists", "Serpents", "Liberators", "Judasians"],
   disciplines: ["Protean", "Obfuscate", "Presence"],
@@ -83,4 +83,5 @@ export const ministry = {
   exclusiveLoresheets: [
     "Hesha Ruhadze"
   ]
-}; 
+};
+window.ministry = ministry; 

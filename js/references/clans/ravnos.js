@@ -1,4 +1,4 @@
-export const ravnos = {
+const ravnos = {
   name: "Ravnos",
   nicknames: ["Rogues", "Ravens", "Daredevils", "The Haunted"],
   disciplines: ["Animalism", "Obfuscate", "Presence"],
@@ -86,4 +86,5 @@ export const ravnos = {
       description: "There are no difference observed between Camarilla and Anarch. Most opt for Autarkis operate for the highest bidder."
     }
   }
-}; 
+};
+window.ravnos = ravnos; 

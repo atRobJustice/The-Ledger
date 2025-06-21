@@ -1,4 +1,5 @@
-export const obfuscate = {
+// Obfuscate Discipline Data
+const obfuscate = {
   name: "Obfuscate",
   nicknames: ["Stealth Mode", "Cloaking", "Veiling", "Occulto"],
   affinity: ["Banu Haqim", "Malkavian", "The Ministry", "Nosferatu", "Ravnos"],
@@ -288,4 +289,5 @@ export const obfuscate = {
       source: "Vampire: The Masquerade Players Guide, page 73"
     }
   ]
-}; 
+};
+window.obfuscate = obfuscate; 

@@ -1,4 +1,4 @@
-export const salubri = {
+const salubri = {
   name: "Salubri",
   nicknames: ["Cyclops", "Soul-Thieves", "Dajjals", "Saulot's progeny"],
   disciplines: ["Auspex", "Dominate", "Fortitude"],
@@ -48,4 +48,5 @@ export const salubri = {
       "Others seek to protect them in other ways by hunting down wights and other low humanity monsters that plague Kindred and cause nothing but problems"
     ]
   }
-}; 
+};
+window.salubri = salubri; 

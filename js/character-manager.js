@@ -1,16 +1,25 @@
 /**
  * Character Manager for Ledger
- * Handles multiple character management and UI
+ * Handles multiple character management and UI with component architecture integration
  */
 
-import databaseManager from './database-manager.js';
-import { toastManager } from './manager-utils.js';
+const charDatabaseManager = window.databaseManager;
+const charToastManager = window.toastManager;
 
 class CharacterManager {
     constructor() {
         this.currentCharacterId = null;
         this.characters = [];
         this.isInitialized = false;
+        this.characterSheetView = null;
+        this.eventListeners = new Map();
+        
+        // Data validation schemas
+        this.validationSchemas = {
+            basic: ['name', 'concept', 'clan', 'generation'],
+            attributes: ['strength', 'dexterity', 'stamina', 'charisma', 'manipulation', 'composure', 'intelligence', 'wits', 'resolve'],
+            vitals: ['health', 'willpower', 'hunger', 'humanity', 'bloodPotency']
+        };
     }
 
     /**
@@ -21,7 +30,7 @@ class CharacterManager {
 
         try {
             // Initialize database
-            await databaseManager.init();
+            await charDatabaseManager.init();
             
             // Load all characters
             await this.loadCharacters();
@@ -35,9 +44,21 @@ class CharacterManager {
             // Initialize UI
             this.initUI();
             
+            // Emit initialization event
+            this.emit('initialized', { characters: this.characters, currentCharacterId: this.currentCharacterId });
+            
         } catch (err) {
             console.error('Failed to initialize CharacterManager:', err);
+            throw err;
         }
+    }
+
+    /**
+     * Set the character sheet view component
+     */
+    setCharacterSheetView(view) {
+        this.characterSheetView = view;
+        console.log('Character sheet view attached to character manager');
     }
 
     /**
@@ -45,11 +66,16 @@ class CharacterManager {
      */
     async loadCharacters() {
         try {
-            this.characters = await databaseManager.getAllCharacters();
+            this.characters = await charDatabaseManager.getAllCharacters();
             console.log(`CharacterManager: Loaded ${this.characters.length} characters:`, this.characters);
+            
+            // Emit characters loaded event
+            this.emit('charactersLoaded', { characters: this.characters });
+            
         } catch (err) {
             console.error('CharacterManager: Failed to load characters:', err);
             this.characters = [];
+            throw err;
         }
     }
 
@@ -58,17 +84,22 @@ class CharacterManager {
      */
     async setCurrentCharacter() {
         try {
-            this.currentCharacterId = await databaseManager.getActiveCharacterId();
+            this.currentCharacterId = await charDatabaseManager.getActiveCharacterId();
             
             // If no active character, use the first one or create a new one
             if (!this.currentCharacterId && this.characters.length > 0) {
                 this.currentCharacterId = this.characters[0].id;
-                await databaseManager.setActiveCharacterId(this.currentCharacterId);
+                await charDatabaseManager.setActiveCharacterId(this.currentCharacterId);
             }
             
             console.log('Current character ID:', this.currentCharacterId);
+            
+            // Emit current character set event
+            this.emit('currentCharacterSet', { characterId: this.currentCharacterId });
+            
         } catch (err) {
             console.error('Failed to set current character:', err);
+            throw err;
         }
     }
 
@@ -77,7 +108,21 @@ class CharacterManager {
      */
     async getCurrentCharacter() {
         if (!this.currentCharacterId) return null;
-        return await databaseManager.getCharacter(this.currentCharacterId);
+        
+        try {
+            const character = await charDatabaseManager.getCharacter(this.currentCharacterId);
+            return this.validateCharacterData(character);
+        } catch (err) {
+            console.error('Failed to get current character:', err);
+            throw err;
+        }
+    }
+
+    /**
+     * Get all characters
+     */
+    async getCharacters() {
+        return this.characters;
     }
 
     /**
@@ -85,7 +130,13 @@ class CharacterManager {
      */
     async saveCurrentCharacter(characterData) {
         try {
-            const savedId = await databaseManager.saveActiveCharacter(characterData);
+            // Validate character data
+            const validatedData = this.validateCharacterData(characterData);
+            
+            // Sanitize character data
+            const sanitizedData = this.sanitizeCharacterData(validatedData);
+            
+            const savedId = await charDatabaseManager.saveActiveCharacter(sanitizedData);
             this.currentCharacterId = savedId;
             
             // Update the characters list
@@ -93,6 +144,9 @@ class CharacterManager {
             
             // Update UI
             this.updateCharacterList();
+            
+            // Emit character saved event
+            this.emit('characterSaved', { characterId: savedId, characterData: sanitizedData });
             
             return savedId;
         } catch (err) {
@@ -106,22 +160,34 @@ class CharacterManager {
      */
     async createNewCharacter(characterData = {}) {
         try {
+            // Validate and sanitize character data
+            const validatedData = this.validateCharacterData(characterData);
+            const sanitizedData = this.sanitizeCharacterData(validatedData);
+            
             const newCharacter = {
-                name: characterData.name || 'New Character',
-                ...characterData,
+                name: sanitizedData.name || 'New Character',
+                ...sanitizedData,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             };
             
-            const characterId = await databaseManager.saveCharacter(newCharacter);
+            const characterId = await charDatabaseManager.saveCharacter(newCharacter);
             
             // Set as current character
-            await databaseManager.setActiveCharacterId(characterId);
+            await charDatabaseManager.setActiveCharacterId(characterId);
             this.currentCharacterId = characterId;
             
             // Reload characters and update UI
             await this.loadCharacters();
             this.updateCharacterList();
+            
+            // Load the new character into the component system
+            if (this.characterSheetView) {
+                await this.characterSheetView.loadCharacterData(newCharacter);
+            }
+            
+            // Emit character created event
+            this.emit('characterCreated', { characterId, characterData: newCharacter });
             
             return characterId;
         } catch (err) {
@@ -135,24 +201,30 @@ class CharacterManager {
      */
     async switchCharacter(characterId) {
         try {
-            const character = await databaseManager.getCharacter(characterId);
+            // Validate character ID
+            const id = parseInt(characterId);
+            if (isNaN(id)) {
+                throw new Error('Invalid character ID');
+            }
+            
+            const character = await charDatabaseManager.getCharacter(id);
             if (!character) {
                 throw new Error('Character not found');
             }
             
             // Save current character state before switching
-            if (this.currentCharacterId && window.gatherCharacterData) {
-                const currentData = window.gatherCharacterData();
-                await databaseManager.saveCharacter(currentData, this.currentCharacterId);
+            if (this.currentCharacterId && this.characterSheetView) {
+                const currentData = this.characterSheetView.gatherCharacterData();
+                await charDatabaseManager.saveCharacter(currentData, this.currentCharacterId);
             }
             
             // Set new active character
-            await databaseManager.setActiveCharacterId(characterId);
-            this.currentCharacterId = characterId;
+            await charDatabaseManager.setActiveCharacterId(id);
+            this.currentCharacterId = id;
             
-            // Load the new character data
-            if (window.loadCharacterData) {
-                window.loadCharacterData(character);
+            // Load the new character data into component system
+            if (this.characterSheetView) {
+                await this.characterSheetView.loadCharacterData(character);
             }
             
             // Update UI
@@ -161,6 +233,9 @@ class CharacterManager {
             
             // Refresh the character management modal if it's open
             this.refreshCharacterManagementModal();
+            
+            // Emit character switched event
+            this.emit('characterSwitched', { characterId: id, characterData: character });
             
             console.log(`Switched to character: ${character.name}`);
             
@@ -184,26 +259,29 @@ class CharacterManager {
             console.log('Attempting to delete character with ID:', id);
             
             // Check if character exists before deleting
-            const character = await databaseManager.getCharacter(id);
+            const character = await charDatabaseManager.getCharacter(id);
             if (!character) {
                 throw new Error('Character not found');
             }
             
             console.log('Found character to delete:', character.name);
             
-            await databaseManager.deleteCharacter(id);
+            await charDatabaseManager.deleteCharacter(id);
             console.log('Character deleted from database');
             
             // Reload characters list to get updated data
             await this.loadCharacters();
             
             // If we deleted the current character, switch to another one
-            if (id === this.currentCharacterId) {
+            if (this.currentCharacterId === id) {
                 if (this.characters.length > 0) {
                     await this.switchCharacter(this.characters[0].id);
                 } else {
+                    // No characters left, clear the sheet
+                    if (this.characterSheetView) {
+                        await this.characterSheetView.clearCharacterData();
+                    }
                     this.currentCharacterId = null;
-                    await databaseManager.setActiveCharacterId(null);
                 }
             }
             
@@ -211,14 +289,241 @@ class CharacterManager {
             this.updateCharacterList();
             this.updateCurrentCharacterDisplay();
             
-            // Refresh the character management modal if it's open
-            this.refreshCharacterManagementModal();
+            // Emit character deleted event
+            this.emit('characterDeleted', { characterId: id, characterName: character.name });
             
             console.log('Character deletion completed successfully');
             
         } catch (err) {
             console.error('Failed to delete character:', err);
             throw err;
+        }
+    }
+
+    /**
+     * Validate character data
+     */
+    validateCharacterData(data) {
+        if (!data || typeof data !== 'object') {
+            throw new Error('Invalid character data: must be an object');
+        }
+
+        const validated = { ...data };
+
+        // Validate basic fields
+        if (validated.name && typeof validated.name !== 'string') {
+            throw new Error('Character name must be a string');
+        }
+
+        if (validated.generation && (isNaN(validated.generation) || validated.generation < 1 || validated.generation > 15)) {
+            throw new Error('Generation must be a number between 1 and 15');
+        }
+
+        // Validate attributes
+        if (validated.attributes) {
+            this.validationSchemas.attributes.forEach(attr => {
+                if (validated.attributes[attr] !== undefined) {
+                    const value = parseInt(validated.attributes[attr]);
+                    if (isNaN(value) || value < 0 || value > 5) {
+                        throw new Error(`Attribute ${attr} must be a number between 0 and 5`);
+                    }
+                    validated.attributes[attr] = value;
+                }
+            });
+        }
+
+        // Validate vitals
+        this.validationSchemas.vitals.forEach(vital => {
+            if (validated[vital] !== undefined) {
+                const value = parseInt(validated[vital]);
+                if (isNaN(value) || value < 0) {
+                    throw new Error(`Vital ${vital} must be a non-negative number`);
+                }
+                validated[vital] = value;
+            }
+        });
+
+        return validated;
+    }
+
+    /**
+     * Sanitize character data
+     */
+    sanitizeCharacterData(data) {
+        const sanitized = { ...data };
+
+        // Sanitize string fields
+        const stringFields = ['name', 'concept', 'clan', 'sire', 'chronicle', 'ambition', 'desire', 'predator'];
+        stringFields.forEach(field => {
+            if (sanitized[field] && typeof sanitized[field] === 'string') {
+                sanitized[field] = sanitized[field].trim().substring(0, 255);
+            }
+        });
+
+        // Sanitize arrays
+        if (sanitized.skills) {
+            Object.keys(sanitized.skills).forEach(category => {
+                if (Array.isArray(sanitized.skills[category])) {
+                    sanitized.skills[category] = sanitized.skills[category].filter(skill => 
+                        skill && typeof skill === 'object' && typeof skill.value === 'number'
+                    );
+                }
+            });
+        }
+
+        // Sanitize convictions
+        if (Array.isArray(sanitized.convictions)) {
+            sanitized.convictions = sanitized.convictions.filter(conviction => 
+                conviction && typeof conviction === 'object'
+            );
+        }
+
+        return sanitized;
+    }
+
+    /**
+     * Gather character data from component system
+     */
+    async gatherCharacterData() {
+        if (this.characterSheetView) {
+            return this.characterSheetView.gatherCharacterData();
+        }
+        
+        // Fallback to legacy method if component system not available
+        if (window.gatherCharacterData) {
+            return window.gatherCharacterData();
+        }
+        
+        return {};
+    }
+
+    /**
+     * Load character data into component system
+     */
+    async loadCharacterData(characterData) {
+        if (this.characterSheetView) {
+            await this.characterSheetView.loadCharacterData(characterData);
+        } else if (window.loadCharacterData) {
+            // Fallback to legacy method
+            window.loadCharacterData(characterData);
+        }
+    }
+
+    /**
+     * Clear current character sheet
+     */
+    async clearCurrentSheet() {
+        try {
+            if (this.characterSheetView) {
+                await this.characterSheetView.clearCharacterData();
+            } else {
+                // Fallback to legacy clear method
+                await this._legacyClearSheet();
+            }
+            
+            // Emit sheet cleared event
+            this.emit('sheetCleared');
+            
+            console.log('Sheet cleared successfully');
+            
+        } catch (err) {
+            console.error('Error clearing sheet:', err);
+            throw new Error('Failed to clear character sheet: ' + err.message);
+        }
+    }
+
+    /**
+     * Legacy clear sheet method (fallback)
+     */
+    async _legacyClearSheet() {
+        // Clear basic fields
+        document.querySelectorAll('.stat input, .stat textarea').forEach(input => {
+            input.value = '';
+        });
+
+        // Clear dropdowns
+        document.querySelectorAll('.stat select').forEach(select => {
+            select.selectedIndex = 0;
+        });
+
+        // Clear specialty data
+        document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
+
+        // Clear manager data
+        if (window.disciplineManager) {
+            window.disciplineManager.selectedDisciplines = new Map();
+            window.disciplineManager.renderDisciplineManager();
+        }
+        if (window.meritFlawManager) {
+            window.meritFlawManager.selectedMerits = new Map();
+            window.meritFlawManager.selectedFlaws = new Map();
+            window.meritFlawManager.renderMeritManager();
+            window.meritFlawManager.renderFlawManager();
+        }
+        if (window.backgroundManager) {
+            window.backgroundManager.selectedBackgrounds = new Map();
+            window.backgroundManager.selectedBackgroundFlaws = new Map();
+            window.backgroundManager.renderBackgroundManager();
+            window.backgroundManager.renderBackgroundFlawManager();
+        }
+        if (window.coterieManager) {
+            window.coterieManager.selectedMerits = new Map();
+            window.coterieManager.selectedFlaws = new Map();
+            window.coterieManager.renderCoterieMeritManager();
+            window.coterieManager.renderCoterieFlawManager();
+        }
+        if (window.loresheetManager) {
+            window.loresheetManager.selectedLoresheets = new Map();
+            window.loresheetManager.renderLoresheetManager();
+        }
+
+        // Clear convictions
+        if (window.convictionManager) {
+            window.convictionManager.convictions = [];
+            $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
+        }
+
+        // Clear XP data
+        if (window.databaseManager) {
+            await window.databaseManager.setSetting('xpData', { total: 0, spent: 0, history: [] });
+        }
+        ['total-xp', 'spent-xp', 'available-xp'].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = '0';
+        });
+        const hist = document.getElementById('experience-history');
+        if (hist) hist.innerHTML = '';
+    }
+
+    /**
+     * Event handling methods
+     */
+    on(event, handler) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(handler);
+    }
+
+    off(event, handler) {
+        if (this.eventListeners.has(event)) {
+            const handlers = this.eventListeners.get(event);
+            const index = handlers.indexOf(handler);
+            if (index > -1) {
+                handlers.splice(index, 1);
+            }
+        }
+    }
+
+    emit(event, data) {
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(handler => {
+                try {
+                    handler(data);
+                } catch (err) {
+                    console.error(`Error in event handler for ${event}:`, err);
+                }
+            });
         }
     }
 
@@ -342,118 +647,6 @@ class CharacterManager {
     }
 
     /**
-     * Clear the current character sheet
-     */
-    async clearCurrentSheet() {
-        try {
-            // Try to use the existing clear sheet function
-            if (window.performClearSheet) {
-                window.performClearSheet();
-                return;
-            }
-            
-            // Fallback clearing method if performClearSheet is not available
-            console.log('Using fallback sheet clearing method');
-            
-            // Clear all input fields and textareas
-            document.querySelectorAll('input[type="text"], textarea').forEach(input => {
-                input.value = '';
-                if (input.tagName.toLowerCase() === 'textarea') {
-                    input.style.height = 'auto';
-                    input.style.height = (input.scrollHeight) + 'px';
-                }
-            });
-            
-            // Clear select dropdowns
-            document.querySelectorAll('select').forEach(select => select.value = '');
-            
-            // Clear dots
-            document.querySelectorAll('.dots').forEach(dots => {
-                dots.setAttribute('data-value', '0');
-                dots.querySelectorAll('.dot').forEach(dot => dot.classList.remove('filled'));
-            });
-            
-            // Reset tracks
-            document.querySelectorAll('.track-container').forEach(track => {
-                const max = track.querySelectorAll('.track-box').length;
-                track.setAttribute('data-value', max);
-                track.querySelectorAll('.track-box').forEach(box => {
-                    box.classList.remove('superficial', 'aggravated', 'filled', 'stained');
-                });
-                const header = track.querySelector('.track-header span:first-child');
-                if (header) header.textContent = `Current: ${max}`;
-            });
-            
-            // Clear specialty data
-            document.querySelectorAll('[data-specialties]').forEach(el => el.removeAttribute('data-specialties'));
-            
-            // Refresh specialty display for all skills
-            if (window.specialtyManager && typeof window.specialtyManager.refreshRow === 'function') {
-                const SKILL_NAMES = [
-                    'athletics','brawl','craft','drive','firearms','larceny','melee','stealth','survival',
-                    'animal ken','etiquette','insight','intimidation','leadership','performance','persuasion','streetwise','subterfuge',
-                    'academics','awareness','finance','investigation','medicine','occult','politics','science','technology'
-                ];
-                SKILL_NAMES.forEach(skill => {
-                    const cap = skill.replace(/\b\w/g, c => c.toUpperCase());
-                    window.specialtyManager.refreshRow(cap);
-                });
-            }
-            
-            // Clear convictions
-            if (window.convictionManager) {
-                window.convictionManager.convictions = [];
-                $('#conviction-column-1, #conviction-column-2, #conviction-column-3').empty();
-            }
-            
-            // Clear manager data
-            if (window.disciplineManager) {
-                window.disciplineManager.selectedDisciplines = new Map();
-                window.disciplineManager.renderDisciplineManager();
-            }
-            if (window.meritFlawManager) {
-                window.meritFlawManager.selectedMerits = new Map();
-                window.meritFlawManager.selectedFlaws = new Map();
-                window.meritFlawManager.renderMeritManager();
-                window.meritFlawManager.renderFlawManager();
-            }
-            if (window.backgroundManager) {
-                window.backgroundManager.selectedBackgrounds = new Map();
-                window.backgroundManager.selectedBackgroundFlaws = new Map();
-                window.backgroundManager.renderBackgroundManager();
-                window.backgroundManager.renderBackgroundFlawManager();
-            }
-            if (window.coterieManager) {
-                window.coterieManager.selectedMerits = new Map();
-                window.coterieManager.selectedFlaws = new Map();
-                window.coterieManager.renderCoterieMeritManager();
-                window.coterieManager.renderCoterieFlawManager();
-            }
-            if (window.loresheetManager) {
-                window.loresheetManager.selectedLoresheets = new Map();
-                window.loresheetManager.renderLoresheetManager();
-            }
-            
-            // Clear XP data
-            if (window.databaseManager) {
-                await window.databaseManager.setSetting('xpData', { total: 0, spent: 0, history: [] });
-            }
-            ['total-xp', 'spent-xp', 'available-xp'].forEach((id) => {
-                const el = document.getElementById(id);
-                if (el) el.textContent = '0';
-            });
-            const hist = document.getElementById('experience-history');
-            if (hist) hist.innerHTML = '';
-            
-            console.log('Sheet cleared successfully');
-            
-        } catch (err) {
-            console.error('Error clearing sheet:', err);
-            throw new Error('Failed to clear character sheet: ' + err.message);
-        }
-    }
-
-    /**
      * Set the character name in the sheet
      */
     setCharacterName(name) {
@@ -518,7 +711,7 @@ class CharacterManager {
         document.getElementById('createCharacterBtn').onclick = async () => {
             const name = nameInput.value.trim();
             if (!name) {
-                toastManager.show('Please enter a character name', 'warning', 'Character Manager');
+                charToastManager.show('Please enter a character name', 'warning', 'Character Manager');
                 return;
             }
             
@@ -534,10 +727,10 @@ class CharacterManager {
                 this.setCharacterName(name);
                 
                 // Show success message
-                toastManager.show(`Character "${name}" created successfully!`, 'success', 'Character Manager');
+                charToastManager.show(`Character "${name}" created successfully!`, 'success', 'Character Manager');
                 
             } catch (err) {
-                toastManager.show('Failed to create character: ' + err.message, 'danger', 'Character Manager');
+                charToastManager.show('Failed to create character: ' + err.message, 'danger', 'Character Manager');
             }
         };
         
@@ -644,9 +837,9 @@ class CharacterManager {
         if (confirmed) {
             try {
                 await this.deleteCharacter(characterId);
-                toastManager.show(`Character "${characterName}" has been deleted successfully.`, 'success', 'Character Manager');
+                charToastManager.show(`Character "${characterName}" has been deleted successfully.`, 'success', 'Character Manager');
             } catch (err) {
-                toastManager.show(`Failed to delete character: ${err.message}`, 'danger', 'Character Manager');
+                charToastManager.show(`Failed to delete character: ${err.message}`, 'danger', 'Character Manager');
             }
         }
     }
@@ -715,12 +908,11 @@ class CharacterManager {
     }
 }
 
-// Create and export a singleton instance
+// Create and export the character manager instance
 const characterManager = new CharacterManager();
 
-// Expose globally for non-module scripts
-if (typeof window !== 'undefined') {
-    window.characterManager = characterManager;
-}
+// Add to window for global access
+window.characterManager = characterManager;
 
-export default characterManager; 
+// Remove ES6 export - use traditional script loading
+// export default characterManager; 

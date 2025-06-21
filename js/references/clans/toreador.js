@@ -1,4 +1,4 @@
-export const toreador = {
+const toreador = {
   name: "Toreador",
   nicknames: ["The Clan of Divas", "Degenerates", "Artists", "Harlots", "Hedonists", "Sensates", "Arikelites"],
   disciplines: ["Auspex", "Celerity", "Presence"],
@@ -92,4 +92,5 @@ export const toreador = {
   exclusiveLoresheets: [
     "Descendant of Helena"
   ]
-}; 
+};
+window.toreador = toreador; 

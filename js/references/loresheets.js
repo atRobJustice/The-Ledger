@@ -1,4 +1,4 @@
-export const loresheets = {
+const loresheets = {
   name: "Loresheets",
   description: "Loresheets are specific advantages tied to a character's background either through their lineage or their history. When looking at loresheets the players should consider how to tie them into their character's background and the plausibility of their implications together with their storyteller. Some loresheets require the character to be of a specific clan, especially Descendant loresheets, and others require certain cults. Players are able to take a Bloodline Loresheet in addition to a non-lineage Loresheet at Character Creation. Additionally, Storytellers may decide that Descendant loresheets are able to count as Bloodlines.",
   source: ["Vampire: The Masquerade Cults of the Blood Gods", "Vampire: The Masquerade Players Guide"],
@@ -251,4 +251,5 @@ export const loresheets = {
       }
     }
   }
-}; 
+};
+window.loresheets = loresheets; 

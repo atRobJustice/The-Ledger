@@ -1,4 +1,4 @@
-export const lasombra = {
+const lasombra = {
   name: "Lasombra",
   nicknames: ["The Night Clan", "Magisters", "Keepers", "Shadows", "Abyss Mystics", "Turncoats", "Traitors"],
   disciplines: ["Dominate", "Oblivion", "Potence"],
@@ -113,4 +113,5 @@ export const lasombra = {
   exclusiveLoresheets: [
     "Descendant of Montano"
   ]
-}; 
+};
+window.lasombra = lasombra; 

@@ -1,4 +1,4 @@
-export const ventrue = {
+const ventrue = {
   name: "Ventrue",
   nicknames: ["The Clan of Kings", "Blue Bloods", "Tyrants", "Warlords", "Patricians", "Borgias"],
   disciplines: ["Dominate", "Fortitude", "Presence"],
@@ -90,4 +90,5 @@ export const ventrue = {
     "Descendant of Lodin",
     "Spear of Orthia"
   ]
-}; 
+};
+window.ventrue = ventrue; 

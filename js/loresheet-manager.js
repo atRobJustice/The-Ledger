@@ -1,18 +1,78 @@
-// Loresheet Manager
-import { loresheets } from './references/loresheets.js';
-import { TraitManagerUtils } from './manager-utils.js';
+// Loresheet Manager with Component Architecture Integration
+// import { loresheets } from './references/loresheets.js';
+// import { TraitManagerUtils } from './manager-utils.js';
+
+const loresheetManagerLoresheets = window.loresheets;
+const loresheetTraitUtils = window.TraitManagerUtils;
 
 class LoresheetManager {
     constructor() {
         this.selectedLoresheets = new Map(); // loresheetKey -> { category: string, level: number, instances: Array }
-        this.availableCategories = Object.keys(loresheets.categories);
-        this.init();
+        this.availableCategories = Object.keys(loresheetManagerLoresheets.categories);
+        this.eventListeners = new Map();
+        this.isComponentMode = false;
+        this.parentComponent = null;
     }
 
+    /**
+     * Set component mode and parent component
+     */
+    setComponentMode(parentComponent) {
+        this.isComponentMode = true;
+        this.parentComponent = parentComponent;
+        console.log('LoresheetManager: Component mode enabled');
+    }
+
+    /**
+     * Initialize the manager
+     */
     init() {
         this.renderLoresheetManager();
         this.bindEvents();
         this.initializeTooltips();
+    }
+
+    /**
+     * Event handling methods
+     */
+    on(event, handler) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(handler);
+    }
+
+    off(event, handler) {
+        if (this.eventListeners.has(event)) {
+            const handlers = this.eventListeners.get(event);
+            const index = handlers.indexOf(handler);
+            if (index > -1) {
+                handlers.splice(index, 1);
+            }
+        }
+    }
+
+    emit(event, data) {
+        // Emit to internal listeners
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(handler => {
+                try {
+                    handler(data);
+                } catch (err) {
+                    console.error(`Error in loresheet manager event handler for ${event}:`, err);
+                }
+            });
+        }
+
+        // Emit to parent component if in component mode
+        if (this.isComponentMode && this.parentComponent) {
+            this.parentComponent.emit(event, data);
+        }
+
+        // Emit to document for legacy compatibility
+        document.dispatchEvent(new CustomEvent(`loresheet${event.charAt(0).toUpperCase() + event.slice(1)}`, {
+            detail: { ...data, source: 'LoresheetManager' }
+        }));
     }
 
     renderLoresheetManager() {
@@ -73,14 +133,14 @@ class LoresheetManager {
     getCategoryOptions() {
         return this.availableCategories
             .map(categoryKey => {
-                const category = loresheets.categories[categoryKey];
+                const category = loresheetManagerLoresheets.categories[categoryKey];
                 return `<option value="${categoryKey}">${category.name}</option>`;
             })
             .join('');
     }
 
     getLoresheetOptions(categoryKey, excludeSelected = true) {
-        const category = loresheets.categories[categoryKey];
+        const category = loresheetManagerLoresheets.categories[categoryKey];
         if (!category || !category.loresheets) return '';
 
         const categoryLoresheets = category.loresheets;
@@ -104,7 +164,7 @@ class LoresheetManager {
         const html = [];
         
         this.selectedLoresheets.forEach((loresheetData, loresheetKey) => {
-            const category = loresheets.categories[loresheetData.category];
+            const category = loresheetManagerLoresheets.categories[loresheetData.category];
             const loresheet = category.loresheets[loresheetKey];
             const instances = loresheetData.instances || [{ level: loresheetData.level }];
             
@@ -127,7 +187,7 @@ class LoresheetManager {
                                      data-bs-toggle="tooltip" 
                                      data-bs-placement="top" 
                                      title="Click dots to set level (1-5)">
-                                    ${TraitManagerUtils.createDots(instance.level, 5)}
+                                    ${loresheetTraitUtils.createDots(instance.level, 5)}
                                 </div>
                                 <button class="btn btn-danger btn-sm remove-loresheet-btn" data-loresheet="${loresheetKey}" data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
@@ -148,14 +208,14 @@ class LoresheetManager {
     bindEvents() {
         // Category selection events
         $(document).on('change', '.loresheet-category-dropdown', (e) => {
-            const $select = $(e.currentTarget);
+            const $select = $(e.target);
             const categoryKey = $select.val();
             this.updateLoresheetDropdown(categoryKey);
         });
 
         // Loresheet selection events
         $(document).on('change', '.loresheet-dropdown', (e) => {
-            const $select = $(e.currentTarget);
+            const $select = $(e.target);
             const addBtn = $('#addLoresheetBtn');
             addBtn.prop('disabled', !$select.val());
         });
@@ -174,15 +234,15 @@ class LoresheetManager {
 
         // Remove loresheet events
         $(document).on('click', '.remove-loresheet-btn', (e) => {
-            const $btn = $(e.currentTarget);
+            const $btn = $(e.target).closest('.remove-loresheet-btn');
             const loresheetKey = $btn.data('loresheet');
             const instanceIndex = $btn.data('instance');
             this.removeLoresheet(loresheetKey, instanceIndex);
         });
 
         // Dot click events
-        $(document).on('click', '.loresheet-item .dots .dot', (e) => {
-            const $dot = $(e.currentTarget);
+        $(document).on('click', '.dots .dot', (e) => {
+            const $dot = $(e.target);
             this.handleDotClick($dot);
         });
     }
@@ -193,88 +253,139 @@ class LoresheetManager {
         
         if (!categoryKey) {
             $select.prop('disabled', true).html('<option value="">Select a Loresheet</option>');
+            $addBtn.prop('disabled', true);
             return;
         }
 
         // Ensure the placeholder option is always present
         const options = `<option value="">Select a Loresheet</option>${this.getLoresheetOptions(categoryKey)}`;
-        $select.prop('disabled', false).html(options).val('');
+        $select.prop('disabled', false).html(options);
         $addBtn.prop('disabled', true);
     }
 
     addLoresheet(loresheetKey, categoryKey) {
-        const category = loresheets.categories[categoryKey];
-        const loresheet = category.loresheets[loresheetKey];
-
-        if (!this.selectedLoresheets.has(loresheetKey)) {
+        if (this.selectedLoresheets.has(loresheetKey)) {
+            // Check if we can add another instance
+            const loresheetData = this.selectedLoresheets.get(loresheetKey);
+            const category = loresheetManagerLoresheets.categories[categoryKey];
+            const loresheet = category.loresheets[loresheetKey];
+            
+            // Loresheets can have multiple instances
+            if (!loresheetData.instances) {
+                loresheetData.instances = [{ level: loresheetData.level }];
+            }
+            loresheetData.instances.push({ level: 1 });
+        } else {
+            // Add new loresheet
             this.selectedLoresheets.set(loresheetKey, {
                 category: categoryKey,
                 level: 1,
                 instances: [{ level: 1 }]
             });
-        } else {
-            const loresheetData = this.selectedLoresheets.get(loresheetKey);
-            loresheetData.instances.push({ level: 1 });
         }
 
         this.updateDisplay();
-        this.updateLoresheetDropdown(categoryKey);
+        
+        // Reset dropdowns
+        $('#loresheetCategorySelect').val('').trigger('change');
+        
+        // Emit loresheet added event
+        this.emit('loresheetAdded', {
+            loresheetKey,
+            categoryKey,
+            level: 1
+        });
     }
 
     removeLoresheet(loresheetKey, instanceIndex = null) {
-        if (!this.selectedLoresheets.has(loresheetKey)) return;
+        if (!this.selectedLoresheets.has(loresheetKey)) {
+            return;
+        }
 
         const loresheetData = this.selectedLoresheets.get(loresheetKey);
         
-        if (instanceIndex === null) {
-            this.selectedLoresheets.delete(loresheetKey);
-        } else {
+        if (instanceIndex !== null && loresheetData.instances && loresheetData.instances.length > 1) {
+            // Remove specific instance
             loresheetData.instances.splice(instanceIndex, 1);
-            if (loresheetData.instances.length === 0) {
-                this.selectedLoresheets.delete(loresheetKey);
-            }
+        } else {
+            // Remove entire loresheet
+            this.selectedLoresheets.delete(loresheetKey);
         }
 
         this.updateDisplay();
+        
+        // Emit loresheet removed event
+        this.emit('loresheetRemoved', {
+            loresheetKey,
+            instanceIndex
+        });
     }
 
     handleDotClick($dot) {
-        const $dots = $dot.parent();
+        const $dots = $dot.closest('.dots');
         const loresheetKey = $dots.data('loresheet');
         const instanceIndex = $dots.data('instance');
-        const newLevel = $dot.index() + 1;
+        const currentLevel = parseInt($dots.data('value'));
+        const clickedIndex = $dot.index();
+        const newLevel = clickedIndex + 1;
+
+        if (newLevel === currentLevel) {
+            // Same level clicked, do nothing
+            return;
+        }
 
         this.updateLoresheetInstanceLevel(loresheetKey, instanceIndex, newLevel);
     }
 
     updateLoresheetInstanceLevel(loresheetKey, instanceIndex, newLevel) {
-        if (!this.selectedLoresheets.has(loresheetKey)) return;
-
         const loresheetData = this.selectedLoresheets.get(loresheetKey);
-        const instance = loresheetData.instances[instanceIndex];
-        
-        if (instance) {
-            instance.level = newLevel;
-            this.updateDisplay();
+        if (!loresheetData) {
+            return;
         }
+
+        const oldLevel = loresheetData.instances[instanceIndex].level;
+        loresheetData.instances[instanceIndex].level = newLevel;
+
+        // Update display
+        const $loresheetItem = $(`.loresheet-item[data-loresheet="${loresheetKey}"][data-instance="${instanceIndex}"]`);
+        const $dots = $loresheetItem.find('.dots');
+        $dots.attr('data-value', newLevel);
+        $dots.html(loresheetTraitUtils.createDots(newLevel, 5));
+        
+        // Emit loresheet level changed event
+        this.emit('loresheetLevelChanged', {
+            loresheetKey,
+            instanceIndex,
+            oldLevel,
+            newLevel
+        });
     }
 
     updateDisplay() {
         this.renderLoresheetManager();
         this.initializeTooltips();
+        
+        // Emit display updated event
+        this.emit('displayUpdated', {
+            loresheets: this.exportLoresheets()
+        });
     }
 
     initializeTooltips() {
-        TraitManagerUtils.initTooltips(['.loresheets-container']);
+        // Reinitialize tooltips for new elements
+        $('[data-bs-toggle="tooltip"]').tooltip();
     }
 
     getSelectedLoresheets() {
-        return Array.from(this.selectedLoresheets.entries()).map(([key, data]) => ({
-            key,
-            category: data.category,
-            level: data.level,
-            instances: data.instances
-        }));
+        const result = {};
+        this.selectedLoresheets.forEach((data, key) => {
+            result[key] = {
+                category: data.category,
+                level: data.level,
+                instances: data.instances || [{ level: data.level }]
+            };
+        });
+        return result;
     }
 
     getLoresheetLevel(loresheetKey) {
@@ -283,27 +394,39 @@ class LoresheetManager {
     }
 
     getTotalLoresheetPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedLoresheets);
+        let total = 0;
+        this.selectedLoresheets.forEach((data) => {
+            const instances = data.instances || [{ level: data.level }];
+            instances.forEach(instance => {
+                total += instance.level;
+            });
+        });
+        return total;
     }
 
     loadLoresheets(loresheetsData) {
         this.selectedLoresheets.clear();
         
-        if (!loresheetsData) return;
-
-        loresheetsData.forEach(data => {
-            this.selectedLoresheets.set(data.key, {
-                category: data.category,
-                level: data.level,
-                instances: data.instances || [{ level: data.level }]
+        if (loresheetsData && typeof loresheetsData === 'object') {
+            Object.entries(loresheetsData).forEach(([loresheetKey, data]) => {
+                this.selectedLoresheets.set(loresheetKey, {
+                    category: data.category || this.findLoresheetCategory(loresheetKey),
+                    level: data.level || 1,
+                    instances: data.instances || [{ level: data.level || 1 }]
+                });
             });
-        });
-
+        }
+        
         this.updateDisplay();
+        
+        // Emit loresheets loaded event
+        this.emit('loresheetsLoaded', {
+            loresheets: this.exportLoresheets()
+        });
     }
 
     findLoresheetCategory(loresheetKey) {
-        for (const [categoryKey, category] of Object.entries(loresheets.categories)) {
+        for (const [categoryKey, category] of Object.entries(loresheetManagerLoresheets.categories)) {
             if (category.loresheets && category.loresheets[loresheetKey]) {
                 return categoryKey;
             }
@@ -312,11 +435,95 @@ class LoresheetManager {
     }
 
     exportLoresheets() {
-        return this.getSelectedLoresheets();
+        const exported = {};
+        this.selectedLoresheets.forEach((data, key) => {
+            exported[key] = {
+                category: data.category,
+                level: data.level,
+                instances: data.instances || [{ level: data.level }]
+            };
+        });
+        return exported;
+    }
+
+    /**
+     * Component integration methods
+     */
+    getData() {
+        return {
+            loresheets: this.exportLoresheets()
+        };
+    }
+
+    update(data) {
+        if (data.loresheets) {
+            this.loadLoresheets(data.loresheets);
+        }
+    }
+
+    clear() {
+        this.selectedLoresheets.clear();
+        this.updateDisplay();
+        
+        // Emit loresheets cleared event
+        this.emit('loresheetsCleared');
+    }
+
+    setLockState(isLocked) {
+        const $container = $('.loresheets-container');
+        const $addBtn = $container.find('#addLoresheetBtn');
+        const $removeBtns = $container.find('.remove-loresheet-btn');
+        const $dots = $container.find('.dots');
+
+        if (isLocked) {
+            $addBtn.prop('disabled', true);
+            $removeBtns.prop('disabled', true);
+            $dots.addClass('locked');
+        } else {
+            $addBtn.prop('disabled', false);
+            $removeBtns.prop('disabled', false);
+            $dots.removeClass('locked');
+        }
+    }
+
+    showFeedback(message, type = 'info') {
+        if (window.toastManager) {
+            window.toastManager.show(message, type, 'Loresheet Manager');
+        } else {
+            console.log(`[LoresheetManager] ${type.toUpperCase()}: ${message}`);
+        }
+    }
+
+    /**
+     * Ensure required containers exist in the DOM
+     */
+    static ensureContainer() {
+        if ($('.loresheets-container').length === 0) {
+            const container = document.createElement('div');
+            container.className = 'loresheets-container';
+            (document.getElementById('app') || document.body).appendChild(container);
+        }
+    }
+
+    /**
+     * Initialize manager after DOM is ready and containers exist
+     */
+    static initWhenReady() {
+        $(function() {
+            LoresheetManager.ensureContainer();
+            if (!window.loresheetManager) {
+                window.loresheetManager = new LoresheetManager();
+            }
+            window.loresheetManager.init();
+        });
     }
 }
 
-export { LoresheetManager };
+// Create and export the loresheet manager instance
+const loresheetManager = new LoresheetManager();
 
-// Initialize the manager
-window.loresheetManager = new LoresheetManager(); 
+// Add to window for global access
+window.loresheetManager = loresheetManager;
+
+// Remove ES6 export - use traditional script loading
+// export default loresheetManager; 

@@ -1,5 +1,5 @@
 // Animalism Discipline Data
-export const animalism = {
+const animalism = {
     name: "Animalism",
     nicknames: ["Doolittling", "Taming", "Bestiae Sermo"],
     affinity: ["Gangrel", "Nosferatu", "Ravnos", "Tzimisce"],
@@ -265,4 +265,5 @@ export const animalism = {
             source: "Vampire: The Masquerade Companion, page 28"
         }
     ]
-}; 
+};
+window.animalism = animalism; 

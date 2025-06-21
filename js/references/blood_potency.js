@@ -1,4 +1,4 @@
-export const bloodPotency = {
+const bloodPotency = {
   overview: {
     description: "As time passes the kindred's blood thickens from age within the boundaries of their Generation's limit. While the stronger they become with age, there is a downside that it will take more blood to satisfy the vampire.",
     progression: "Kindred generally raise Blood Potency by 1 every 100 years while active but even intense or dangerous experiences can expedite the process.",
@@ -124,4 +124,5 @@ export const bloodPotency = {
     };
     return levels[potency] || null;
   }
-}; 
+};
+window.bloodPotency = bloodPotency; 

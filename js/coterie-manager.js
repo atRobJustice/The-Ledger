@@ -1,6 +1,6 @@
 // Coterie Merit and Flaw Manager
-import { coterieBackgrounds } from './references/backgrounds-coterie.js';
-import { TraitManagerUtils } from './manager-utils.js';
+const coterieManagerBackgrounds = window.coterieBackgrounds;
+const coterieTraitUtils = window.TraitManagerUtils;
 
 class CoterieManager {
     constructor() {
@@ -21,18 +21,18 @@ class CoterieManager {
         const categories = [];
                
         // Add domain subcategories
-        if (coterieBackgrounds.domain && coterieBackgrounds.domain.traits) {
-            Object.entries(coterieBackgrounds.domain.traits).forEach(([traitKey, traitData]) => {
+        if (coterieManagerBackgrounds.domain && coterieManagerBackgrounds.domain.traits) {
+            Object.entries(coterieManagerBackgrounds.domain.traits).forEach(([traitKey, traitData]) => {
                 categories.push({
                     key: `domain.${traitKey}`,
-                    name: `Domain - ${TraitManagerUtils.camelToTitle(traitKey)}`,
+                    name: `Domain - ${coterieTraitUtils.camelToTitle(traitKey)}`,
                     description: traitData.description
                 });
             });
         }
         
         // Add domain flaws category
-        if (coterieBackgrounds.domain && coterieBackgrounds.domain.flaws) {
+        if (coterieManagerBackgrounds.domain && coterieManagerBackgrounds.domain.flaws) {
             categories.push({
                 key: 'domain.flaws',
                 name: 'Domain Flaws',
@@ -41,11 +41,11 @@ class CoterieManager {
         }
         
         // Add clan merits category (merits only)
-        if (coterieBackgrounds.clanMerits) {
+        if (coterieManagerBackgrounds.clanMerits) {
             categories.push({
                 key: 'clanMerits',
                 name: 'Clan Merits',
-                description: coterieBackgrounds.clanMerits.description
+                description: coterieManagerBackgrounds.clanMerits.description
             });
         }
         
@@ -140,7 +140,7 @@ class CoterieManager {
 
     categoryHasFlaws(categoryKey) {
         if (categoryKey === 'domain.flaws') {
-            return coterieBackgrounds.domain.flaws && Object.keys(coterieBackgrounds.domain.flaws).length > 0;
+            return coterieManagerBackgrounds.domain.flaws && Object.keys(coterieManagerBackgrounds.domain.flaws).length > 0;
         }
         // Domain trait subcategories and clan merits don't have flaws
         return false;
@@ -152,7 +152,7 @@ class CoterieManager {
         if (categoryKey.startsWith('domain.') && categoryKey !== 'domain.flaws') {
             // Domain trait subcategories (chasse, lien, portillon)
             const traitName = categoryKey.split('.')[1];
-            const traitData = coterieBackgrounds.domain.traits[traitName];
+            const traitData = coterieManagerBackgrounds.domain.traits[traitName];
             if (traitData && type === 'coterieMerit') {
                 // Combine regular merits and locationMerits
                 traits = {
@@ -161,9 +161,9 @@ class CoterieManager {
                 };
             }
         } else if (categoryKey === 'domain.flaws' && type === 'coterieFlaw') {
-            traits = coterieBackgrounds.domain.flaws || {};
+            traits = coterieManagerBackgrounds.domain.flaws || {};
         } else if (categoryKey === 'clanMerits' && type === 'coterieMerit') {
-            traits = coterieBackgrounds.clanMerits.merits || {};
+            traits = coterieManagerBackgrounds.clanMerits.merits || {};
         }
 
         if (!traits || Object.keys(traits).length === 0) return '';
@@ -175,7 +175,7 @@ class CoterieManager {
                 if (!excludeSelected) return true;
                 
                 const trait = traits[traitKey];
-                const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+                const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
                 
                 // If trait can repeat, always show it
                 if (dotsInfo.canRepeat) return true;
@@ -185,8 +185,8 @@ class CoterieManager {
             })
             .map(traitKey => {
                 const trait = traits[traitKey];
-                const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-                const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+                const displayName = trait.name || coterieTraitUtils.camelToTitle(traitKey);
+                const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
                 
                 let suffix = '';
                 if (dotsInfo.canRepeat && selectedTraits.has(traitKey)) {
@@ -206,8 +206,8 @@ class CoterieManager {
             const trait = this.getTraitData(traitData.category, traitKey, type);
             if (!trait) return;
             
-            const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-            const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+            const displayName = trait.name || coterieTraitUtils.camelToTitle(traitKey);
+            const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
             const instances = traitData.instances || [{ level: traitData.level }];
             const categoryName = this.availableCategories.find(cat => cat.key === traitData.category)?.name || traitData.category;
             
@@ -241,15 +241,15 @@ class CoterieManager {
         if (categoryKey.startsWith('domain.') && categoryKey !== 'domain.flaws') {
             // Domain trait subcategories (chasse, lien, portillon)
             const traitName = categoryKey.split('.')[1];
-            const traitData = coterieBackgrounds.domain.traits[traitName];
+            const traitData = coterieManagerBackgrounds.domain.traits[traitName];
             if (traitData && type === 'coterieMerit') {
                 // Check both regular merits and locationMerits
                 return traitData.merits?.[traitKey] || traitData.locationMerits?.[traitKey];
             }
         } else if (categoryKey === 'domain.flaws' && type === 'coterieFlaw') {
-            return coterieBackgrounds.domain.flaws?.[traitKey];
+            return coterieManagerBackgrounds.domain.flaws?.[traitKey];
         } else if (categoryKey === 'clanMerits' && type === 'coterieMerit') {
-            return coterieBackgrounds.clanMerits.merits?.[traitKey];
+            return coterieManagerBackgrounds.clanMerits.merits?.[traitKey];
         }
         
         return null;
@@ -308,7 +308,7 @@ class CoterieManager {
                  data-bs-toggle="tooltip" 
                  data-bs-placement="top" 
                  title="${tooltipText}">
-                ${TraitManagerUtils.createDots(instance.level, maxDots)}
+                ${coterieTraitUtils.createDots(instance.level, maxDots)}
             </div>
         `;
     }
@@ -408,8 +408,8 @@ class CoterieManager {
         const trait = this.getTraitData(categoryKey, traitKey, type);
         if (!trait) return;
         
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
-        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
+        const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
+        const displayName = trait.name || coterieTraitUtils.camelToTitle(traitKey);
 
         // Determine initial level
         let initialLevel;
@@ -425,7 +425,7 @@ class CoterieManager {
             // Add new instance to existing repeatable trait
             const traitData = selectedTraits.get(traitKey);
             traitData.instances.push({ level: initialLevel });
-            TraitManagerUtils.showFeedback(`Added another ${displayName}`, 'success');
+            coterieTraitUtils.showFeedback(`Added another ${displayName}`, 'success');
         } else if (!selectedTraits.has(traitKey)) {
             // Add new trait
             selectedTraits.set(traitKey, {
@@ -433,9 +433,9 @@ class CoterieManager {
                 level: initialLevel,
                 instances: [{ level: initialLevel }]
             });
-            TraitManagerUtils.showFeedback(`Added ${displayName}`, 'success');
+            coterieTraitUtils.showFeedback(`Added ${displayName}`, 'success');
         } else {
-            TraitManagerUtils.showFeedback(`${displayName} is already selected`, 'warning');
+            coterieTraitUtils.showFeedback(`${displayName} is already selected`, 'warning');
             return;
         }
         
@@ -453,17 +453,17 @@ class CoterieManager {
         const trait = this.getTraitData(traitData.category, traitKey, type);
         if (!trait) return;
         
-        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+        const displayName = trait.name || coterieTraitUtils.camelToTitle(traitKey);
+        const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
 
         if (dotsInfo.canRepeat && instanceIndex !== null && traitData.instances.length > 1) {
             // Remove specific instance of repeatable trait
             traitData.instances.splice(instanceIndex, 1);
-            TraitManagerUtils.showFeedback(`Removed ${displayName} instance`, 'info');
+            coterieTraitUtils.showFeedback(`Removed ${displayName} instance`, 'info');
         } else {
             // Remove entire trait
             selectedTraits.delete(traitKey);
-            TraitManagerUtils.showFeedback(`Removed ${displayName}`, 'info');
+            coterieTraitUtils.showFeedback(`Removed ${displayName}`, 'info');
         }
         
         this.updateDisplay();
@@ -489,7 +489,7 @@ class CoterieManager {
         const trait = this.getTraitData(traitData.category, traitKey, type);
         if (!trait) return;
         
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+        const dotsInfo = coterieTraitUtils.parseDotsNotation(trait.dots);
 
         let newValue;
         
@@ -527,9 +527,9 @@ class CoterieManager {
             
             this.updateTraitDisplay(type, traitKey, instanceIndex);
             
-            const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
+            const displayName = trait.name || coterieTraitUtils.camelToTitle(traitKey);
             const instanceSuffix = traitData.instances.length > 1 ? ` #${instanceIndex + 1}` : '';
-            TraitManagerUtils.showFeedback(`${displayName}${instanceSuffix} level set to ${newValue}`, 'info');
+            coterieTraitUtils.showFeedback(`${displayName}${instanceSuffix} level set to ${newValue}`, 'info');
         }
     }
 
@@ -544,13 +544,13 @@ class CoterieManager {
             if (!instance) return;
 
             const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${instanceIndex}"]`);
-            TraitManagerUtils.refreshDots($dots, instance.level);
+            coterieTraitUtils.refreshDots($dots, instance.level);
             $dots.attr('data-value', instance.level);
         } else {
             // Update all instances
             traitData.instances.forEach((instance, idx) => {
                 const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${idx}"]`);
-                TraitManagerUtils.refreshDots($dots, instance.level);
+                coterieTraitUtils.refreshDots($dots, instance.level);
                 $dots.attr('data-value', instance.level);
             });
         }
@@ -575,16 +575,16 @@ class CoterieManager {
     }
 
     initializeTooltips() {
-        TraitManagerUtils.initTooltips(['.coterie-merits-container','.coterie-flaws-container']);
+        coterieTraitUtils.initTooltips(['.coterie-merits-container','.coterie-flaws-container']);
     }
 
     // Public API methods
     getSelectedCoterieMerits() {
-        return TraitManagerUtils.mapToPlainObject(this.selectedCoterieMerits);
+        return coterieTraitUtils.mapToPlainObject(this.selectedCoterieMerits);
     }
 
     getSelectedCoterieFlaws() {
-        return TraitManagerUtils.mapToPlainObject(this.selectedCoterieFlaws);
+        return coterieTraitUtils.mapToPlainObject(this.selectedCoterieFlaws);
     }
 
     getCoterieMeritLevel(meritKey) {
@@ -598,11 +598,11 @@ class CoterieManager {
     }
 
     getTotalCoterieMeritPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedCoterieMerits);
+        return coterieTraitUtils.sumLevels(this.selectedCoterieMerits);
     }
 
     getTotalCoterieFlawPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedCoterieFlaws);
+        return coterieTraitUtils.sumLevels(this.selectedCoterieFlaws);
     }
 
     loadCoterieMeritsAndFlaws(meritsData, flawsData) {
@@ -647,5 +647,3 @@ class CoterieManager {
 $(document).ready(() => {
     window.coterieManager = new CoterieManager();
 });
-
-export { CoterieManager };

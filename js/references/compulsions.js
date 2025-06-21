@@ -1,4 +1,4 @@
-export const compulsions = {
+const compulsions = {
   general: {
     hunger: {
       name: "Hunger",
@@ -139,4 +139,5 @@ export const compulsions = {
   getGeneralCompulsion: function(compulsionName) {
     return this.general[compulsionName.toLowerCase()] || null;
   }
-}; 
+};
+window.compulsions = compulsions; 

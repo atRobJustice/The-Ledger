@@ -1,4 +1,4 @@
-export const gangrel = {
+const gangrel = {
   name: "Gangrel",
   nicknames: ["The Clan of the Beast", "Animals", "Ferals", "Barbarians", "Outcasts", "Wolves", "Strays"],
   disciplines: ["Animalism", "Fortitude", "Protean"],
@@ -83,4 +83,5 @@ export const gangrel = {
     "Descendant of Xaviar",
     "Mark Decker"
   ]
-}; 
+};
+window.gangrel = gangrel; 

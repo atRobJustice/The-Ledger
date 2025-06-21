@@ -1,4 +1,4 @@
-export const nosferatu = {
+const nosferatu = {
   name: "Nosferatu",
   nicknames: ["The Clan of the Hidden", "Horrors", "Sewer Rats", "Lepers", "Hives", "Scabs", "Vagrants", "Orloks"],
   disciplines: ["Animalism", "Obfuscate", "Potence"],
@@ -86,4 +86,5 @@ export const nosferatu = {
     "London under London",
     "The Nictuku"
   ]
-}; 
+};
+window.nosferatu = nosferatu; 

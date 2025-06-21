@@ -1,4 +1,4 @@
-export const brujah = {
+const brujah = {
   name: "Brujah",
   nicknames: ["The Learned Clan", "Rabble", "Punks", "Hipsters", "Prometheans", "Rebels", "Philosopher-Kings", "Hellenes"],
   disciplines: ["Celerity", "Potence", "Presence"],
@@ -107,4 +107,5 @@ export const brujah = {
     "Low Clan",
     "Descendant of Menele"
   ]
-}; 
+};
+window.brujah = brujah; 

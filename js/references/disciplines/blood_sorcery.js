@@ -1,4 +1,5 @@
-export const bloodSorcery = {
+// Blood Sorcery Discipline Data
+const bloodSorcery = {
   name: "Blood Sorcery",
   nicknames: ["A Kind of Magic", "Thaumaturgy", "Quietus"],
   affinity: ["Tremere", "Banu Haqim"],
@@ -242,4 +243,5 @@ export const bloodSorcery = {
       source: "Vampire: The Masquerade Sabbat: The Black Hand, page 49"
     }
   ]
-}; 
+};
+window.bloodSorcery = bloodSorcery; 

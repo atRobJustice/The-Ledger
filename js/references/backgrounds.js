@@ -1,4 +1,6 @@
-export const backgrounds = {
+// Remove ES6 export - use traditional script loading
+// export const backgrounds = {
+const backgrounds = {
   allies: {
     name: "Allies",
     description: "Groups of mortals who aid a vampire. The higher the rating, the more effective and reliable the allies.",
@@ -335,4 +337,5 @@ export const backgrounds = {
       }
     }
   }
-}; 
+};
+window.backgrounds = backgrounds; 

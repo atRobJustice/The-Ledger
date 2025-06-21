@@ -4,10 +4,11 @@
 
 // NOTE: This file assumes Bootstrap CSS & JS are already loaded on the page (as is the case for index.html).
 
-import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "./discord-integration.js";
-import { initControlBar } from "./control-bar.js";
-import { bloodPotency as bpData } from "./references/blood_potency.js";
-import { disciplines } from "./disciplines.js";
+// Use window references instead
+const { getDiscordWebhook: diceOverlayGetDiscordWebhook, setDiscordWebhook: diceOverlaySetDiscordWebhook, sendToDiscord: diceOverlaySendToDiscord, buildRollEmbed: diceOverlayBuildRollEmbed, getCharacterName: diceOverlayGetCharacterName, createWebhookModal: diceOverlayCreateWebhookModal } = window.discordIntegration || {};
+const { initControlBar: diceOverlayInitControlBar } = window.controlBar || {};
+const bpData = window.bloodPotency;
+const diceOverlayDisciplines = window.disciplines;
 
 // New flag: track whether the most recent roll used Blood Surge
 let lastRollHadBloodSurge = false;
@@ -209,7 +210,7 @@ let bonusMsg = null;
   //  power-selection handler and roll logic can use it.
   // -------------------------------------------------------------
   function findPowerLevelGlobal(disciplineKey, powerName) {
-    const disc = disciplines?.types?.[disciplineKey];
+    const disc = diceOverlayDisciplines?.types?.[disciplineKey];
     if (!disc || !disc.powers || typeof disc.powers !== 'object') return null;
     for (const [lvlKey, arr] of Object.entries(disc.powers)) {
       if (!Array.isArray(arr)) continue;
@@ -229,14 +230,14 @@ let bonusMsg = null;
     const name = statName.toLowerCase();
     return ATTRIBUTE_NAMES.includes(name) || 
            SKILL_NAMES.includes(name) || 
-           Object.keys(disciplines?.types || {}).includes(name);
+           Object.keys(diceOverlayDisciplines?.types || {}).includes(name);
   }
 
   // Helper: Check if a stat name is a valid third stat (skill or discipline)
   function isValidThirdStat(statName) {
     const name = statName.toLowerCase();
     return SKILL_NAMES.includes(name) || 
-           Object.keys(disciplines?.types || {}).includes(name);
+           Object.keys(diceOverlayDisciplines?.types || {}).includes(name);
   }
 
   // Helper: Check if a stat is a skill
@@ -246,7 +247,7 @@ let bonusMsg = null;
 
   // Helper: Check if a stat is a discipline
   function isDiscipline(statName) {
-    return Object.keys(disciplines?.types || {}).includes(statName.toLowerCase());
+    return Object.keys(diceOverlayDisciplines?.types || {}).includes(statName.toLowerCase());
   }
 
   // Simple visual outline to show selections
@@ -633,7 +634,7 @@ let bonusMsg = null;
           .trim();
 
         const rollData = {
-          characterName: getCharacterName() || '',
+          characterName: diceOverlayGetCharacterName() || '',
           successes: res.successes !== undefined ? res.successes : 0,
           poolText,
           resultPlain,
@@ -644,7 +645,7 @@ let bonusMsg = null;
           frenzyDice: pools.frenzy,
           difficulty: showDifficulty ? pools.difficulty : undefined
         };
-        sendToDiscord(buildRollEmbed(rollData));
+        diceOverlaySendToDiscord(diceOverlayBuildRollEmbed(rollData));
       } catch(e) {
         console.error('Failed to send Discord webhook for roll', e);
       }
@@ -958,7 +959,7 @@ let bonusMsg = null;
 
     // Discord notification
     try {
-      const characterName = getCharacterName() || '';
+      const characterName = diceOverlayGetCharacterName() || '';
       const discordMessage = {
         name: characterName || 'Dice Roller',
         title: characterName ? `${characterName}'s Willpower Reroll` : '🎲 Willpower Reroll',
@@ -966,7 +967,7 @@ let bonusMsg = null;
         fields: [ { name: 'Dice Rerolled', value: selCount, inline: true } ],
         timestamp: new Date().toISOString(),
       };
-      sendToDiscord(discordMessage);
+      diceOverlaySendToDiscord(discordMessage);
     } catch (e) {
       console.error('Failed to send Discord webhook for reroll', e);
     }
@@ -996,7 +997,7 @@ let bonusMsg = null;
     }
 
     // Spin up (or retrieve) the bar and wire required callbacks
-    initControlBar({
+    diceOverlayInitControlBar({
       disableAllTooltips,
       setTooltipEnabled,
       quickRoll,
@@ -1261,7 +1262,7 @@ let bonusMsg = null;
 
     // Helper: locate power object in discipline data
     function findPowerObject(disciplineKey, powerName) {
-      const disc = disciplines?.types?.[disciplineKey];
+      const disc = diceOverlayDisciplines?.types?.[disciplineKey];
       if (!disc) return null;
 
       // Search regular level powers
@@ -1408,7 +1409,7 @@ let bonusMsg = null;
         if (bpDiscBonus > 0) {
           const discKey2 = disciplineNameToKey(secondStatName);
           const discKey3 = thirdStatName ? disciplineNameToKey(thirdStatName) : null;
-          if (disciplines?.types?.[discKey2] || (discKey3 && disciplines?.types?.[discKey3])) {
+          if (diceOverlayDisciplines?.types?.[discKey2] || (discKey3 && diceOverlayDisciplines?.types?.[discKey3])) {
             total += bpDiscBonus;
             discBonusMsg = `+${bpDiscBonus} die${bpDiscBonus > 1 ? 's' : ''}: Blood Potency bonus`;
           }
@@ -1502,7 +1503,7 @@ let bonusMsg = null;
       // Map discipline key to display name to match stat labels.
       if(secondCandidate && secondCandidate.toLowerCase() === disciplineKey.toLowerCase()){
         // Use configured discipline display name if any
-        const discName = disciplines?.types?.[disciplineKey]?.name || disciplineKey;
+        const discName = diceOverlayDisciplines?.types?.[disciplineKey]?.name || disciplineKey;
         secondCandidate = discName;
       }
 

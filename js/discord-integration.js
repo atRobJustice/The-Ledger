@@ -5,7 +5,7 @@
  */
 
 // Retrieve the currently configured Discord webhook URL (or null if not set)
-export async function getDiscordWebhook() {
+async function getDiscordWebhook() {
   try {
     // Use IndexedDB exclusively
     if (window.databaseManager) {
@@ -20,7 +20,7 @@ export async function getDiscordWebhook() {
 }
 
 // Save (or clear, if falsy) the Discord webhook URL
-export async function setDiscordWebhook(url) {
+async function setDiscordWebhook(url) {
   try {
     if (url && url.trim()) {
       // Use IndexedDB exclusively
@@ -45,7 +45,7 @@ export async function setDiscordWebhook(url) {
 }
 
 // Best-effort helper to read the character's name from the sheet so we can include it in messages
-export function getCharacterName() {
+function getCharacterName() {
   const label = Array.from(document.querySelectorAll('.stat-label'))
     .find(l => l.textContent.trim().toLowerCase() === 'name');
   if (!label) return '';
@@ -67,7 +67,7 @@ export function getCharacterName() {
 }
 
 // Send either a plain text message or an embed object to Discord via webhook
-export async function sendToDiscord(contentOrEmbed) {
+async function sendToDiscord(contentOrEmbed) {
   const webhook = await getDiscordWebhook();
   if (!webhook) return; // nothing to do
 
@@ -93,7 +93,7 @@ export async function sendToDiscord(contentOrEmbed) {
 }
 
 // Build a Discord embed structure based on a dice-roll result object
-export function buildRollEmbed(rollData) {
+function buildRollEmbed(rollData) {
   // Determine embed colour & roll type
   let embedColor;
   let rollType;
@@ -186,7 +186,7 @@ export function buildRollEmbed(rollData) {
 }
 
 // Lazily create (and return) a Bootstrap modal that lets the user set their webhook URL
-export function createWebhookModal() {
+function createWebhookModal() {
   const modalHtml = `
     <div class="modal fade" id="discordWebhookModal" tabindex="-1" aria-labelledby="discordWebhookLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -210,4 +210,14 @@ export function createWebhookModal() {
     </div>`;
   document.body.insertAdjacentHTML('beforeend', modalHtml);
   return document.getElementById('discordWebhookModal');
-} 
+}
+
+// Assign to window
+window.discordIntegration = {
+    getDiscordWebhook,
+    setDiscordWebhook,
+    getCharacterName,
+    sendToDiscord,
+    buildRollEmbed,
+    createWebhookModal
+}; 

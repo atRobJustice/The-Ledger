@@ -12,9 +12,9 @@
   document.head.appendChild(style);
 })();
 
-// Import attribute and skill definitions
-import { attributes } from './references/attributes.js';
-import { skills } from './references/skills.js';
+// Use window references instead
+const infoButtonsAttributes = window.attributes;
+const infoButtonsSkills = window.skills;
 
 const mappings = [
   {
@@ -628,22 +628,22 @@ function initInfoButtons() {
     let statKey = null;
     let statData = null;
     for (const cat of ['physical', 'social', 'mental']) {
-      if (attributes[cat]?.attributes) {
+      if (infoButtonsAttributes[cat]?.attributes) {
         const key = statName.replace(/\s+/g, '');
-        if (attributes[cat].attributes[key]) {
+        if (infoButtonsAttributes[cat].attributes[key]) {
           statKey = key;
-          statData = attributes[cat].attributes[key];
+          statData = infoButtonsAttributes[cat].attributes[key];
           break;
         }
       }
     }
     if (!statData) {
       for (const cat of ['physical', 'social', 'mental']) {
-        if (skills[cat]) {
+        if (infoButtonsSkills[cat]) {
           const key = statName.toLowerCase().replace(/\s+(.)/g, (m,g)=>g.toUpperCase());
-          if (skills[cat][key]) {
+          if (infoButtonsSkills[cat][key]) {
             statKey = key;
-            statData = skills[cat][key];
+            statData = infoButtonsSkills[cat][key];
             break;
           }
         }

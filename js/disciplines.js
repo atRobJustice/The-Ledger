@@ -1,37 +1,43 @@
-// Import all discipline data
-import { animalism } from './references/disciplines/animalism.js';
-import { auspex } from './references/disciplines/auspex.js';
-import { bloodSorcery } from './references/disciplines/blood_sorcery.js';
-import { celerity } from './references/disciplines/celerity.js';
-import { dominate } from './references/disciplines/dominate.js';
-import { fortitude } from './references/disciplines/fortitude.js';
-import { obfuscate } from './references/disciplines/obfuscate.js';
-import { oblivion } from './references/disciplines/oblivion.js';
-import { potence } from './references/disciplines/potence.js';
-import { presence } from './references/disciplines/presence.js';
-import { protean } from './references/disciplines/protean.js';
-import { thinBloodAlchemy } from './references/disciplines/thin_blood_alchemy.js';
-import { bloodSorceryRituals } from './references/disciplines/blood_sorcery_rituals.js';
-import { oblivionCeremonies } from './references/disciplines/oblivion_ceremonies.js';
+// Remove ES6 imports - use window references
+// import { animalism } from './references/disciplines/animalism.js';
+// ... (all other imports)
+
+const animalism = window.animalism;
+const auspex = window.auspex;
+const bloodSorcery = window.bloodSorcery;
+const celerity = window.celerity;
+const dominate = window.dominate;
+const fortitude = window.fortitude;
+const obfuscate = window.obfuscate;
+const oblivion = window.oblivion;
+const potence = window.potence;
+const presence = window.presence;
+const protean = window.protean;
+const thinBloodAlchemy = window.thinBloodAlchemy;
+const bloodSorceryRituals = window.bloodSorceryRituals;
+const oblivionCeremonies = window.oblivionCeremonies;
 
 // Export combined discipline data
-export const disciplines = {
+const disciplinesData = {
   name: "Vampire Disciplines",
   description: "From the moment of the Embrace, Kindred gain access to powers colloquially known as Disciplines. These powers are developed and fueled by the Resonances of the victims they feed from, and allow the vampires to harness their Blood-borne abilities against others.",
   types: {
-    animalism: animalism,
-    auspex: auspex,
-    bloodSorcery: bloodSorcery,
-    celerity: celerity,
-    dominate: dominate,
-    fortitude: fortitude,
-    obfuscate: obfuscate,
-    oblivion: oblivion,
-    potence: potence,
-    presence: presence,
-    protean: protean,
-    thinBloodAlchemy: thinBloodAlchemy,
-    bloodSorceryRituals: bloodSorceryRituals,
-    oblivionCeremonies: oblivionCeremonies
+    animalism,
+    auspex,
+    bloodSorcery,
+    celerity,
+    dominate,
+    fortitude,
+    obfuscate,
+    oblivion,
+    potence,
+    presence,
+    protean,
+    thinBloodAlchemy,
+    bloodSorceryRituals,
+    oblivionCeremonies
   }
 };
+window.disciplines = disciplinesData;
+// Remove ES6 export - use traditional script loading
+// export const disciplines = { ... }

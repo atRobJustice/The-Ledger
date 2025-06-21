@@ -1,4 +1,6 @@
-export const humanity = {
+// Remove ES6 export - use traditional script loading
+// export const humanity = {
+const humanity = {
   overview: {
     description:
       "Most vampires will begin to drop in Humanity over time with neonates and ancillas sitting around Humanity 5. A vampire player character will start at Humanity 7 unless particular circumstances alter this such as Predator Types. Those that are freshly Embraced will begin at Humanity 8. Kindred are monsters, regardless of their rating and even the most saintly and highest of Humanity vampires can be morally corrupt. As their Humanity rating changes over time, it's important to keep track of the changes that will occur. As their rating deteriorates over time, their connections alter and soon they might find themselves holding the corpse of a human they had originally never intended to kill."
@@ -111,4 +113,5 @@ export const humanity = {
       effects: []
     }
   }
-}; 
+};
+window.humanity = humanity; 

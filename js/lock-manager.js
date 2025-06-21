@@ -1,4 +1,6 @@
-export const LockManager = (() => {
+// Remove ES6 export - use traditional script loading
+// export const LockManager = (() => {
+const LockManager = (() => {
   let locked = false;
 
   /* --------------------------------------------------

@@ -1,4 +1,4 @@
-export const auspex = {
+const auspex = {
   name: "Auspex",
   nicknames: ["Voyeurism", "Scrying", "Anima Visus"],
   affinity: ["Hecata", "Malkavian", "Salubri", "Toreador", "Tremere"],
@@ -290,4 +290,5 @@ export const auspex = {
       source: "Vampire: The Masquerade Winter's Teeth #3"
     }
   ]
-}; 
+};
+window.auspex = auspex; 

@@ -3,10 +3,11 @@
  * Bottom-left floating control bar used across Ledger – extracted from dice-overlay.js
  */
 
-import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
-import { bloodPotency as bpData } from "./references/blood_potency.js";
-import { LockManager } from "./lock-manager.js";
-import { TraitManagerUtils } from './manager-utils.js';
+// Use window references instead
+const { getDiscordWebhook: controlBarGetDiscordWebhook, setDiscordWebhook: controlBarSetDiscordWebhook, createWebhookModal: controlBarCreateWebhookModal } = window.discordIntegration || {};
+const controlBarBpData = window.bloodPotency;
+const controlBarLockManager = window.LockManager;
+const controlTraitUtils = window.TraitManagerUtils;
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -14,7 +15,7 @@ import { TraitManagerUtils } from './manager-utils.js';
  *
  * Expected dependencies are supplied via the `deps` argument so we do not rely on globals.
  */
-export function initControlBar(deps) {
+function initControlBar(deps) {
   const {
     disableAllTooltips,
     setTooltipEnabled,
@@ -143,7 +144,7 @@ export function initControlBar(deps) {
 
   function ensureWebhookModal() {
     if (webhookModalEl) return;
-    webhookModalEl = createWebhookModal();
+    webhookModalEl = controlBarCreateWebhookModal();
     webhookModalInstance = bootstrap.Modal.getOrCreateInstance(webhookModalEl);
 
     webhookModalEl
@@ -152,21 +153,21 @@ export function initControlBar(deps) {
         const url = webhookModalEl
           .querySelector("#discordWebhookInput")
           .value.trim();
-        setDiscordWebhook(url);
+        controlBarSetDiscordWebhook(url);
         webhookModalInstance.hide();
       });
 
     webhookModalEl
       .querySelector("#deleteDiscordWebhook")
       .addEventListener("click", () => {
-        setDiscordWebhook(null);
+        controlBarSetDiscordWebhook(null);
         webhookModalInstance.hide();
       });
   }
 
   btnDiscord.addEventListener("click", async () => {
     ensureWebhookModal();
-    const webhook = await getDiscordWebhook();
+    const webhook = await controlBarGetDiscordWebhook();
     webhookModalEl.querySelector("#discordWebhookInput").value = webhook || "";
     webhookModalEl.querySelector("#deleteDiscordWebhook").style.display = webhook
       ? "inline-block"
@@ -608,7 +609,7 @@ export function initControlBar(deps) {
 
     // Determine how much to heal based on Blood Potency lookup
     const bpVal = getBloodPotency();
-    const healAmt = bpData.getHealingAmount ? bpData.getHealingAmount(bpVal) : 1;
+    const healAmt = controlBarBpData.getHealingAmount ? controlBarBpData.getHealingAmount(bpVal) : 1;
 
     // Heal superficial Health damage
     const container = document.querySelector('.track-container[data-type="health"]');
@@ -1095,7 +1096,7 @@ export function initControlBar(deps) {
     const confirmBtn = lockModalEl.querySelector("#confirmLockBtn");
     if (confirmBtn) {
       confirmBtn.addEventListener("click", () => {
-        LockManager.lock();
+        controlBarLockManager.lock();
         updateLockButtonUI();
         lockModalInstance.hide();
       });
@@ -1109,7 +1110,7 @@ export function initControlBar(deps) {
     const confirmUnlock = unlockModalEl.querySelector('#confirmUnlockBtn');
     if(confirmUnlock){
       confirmUnlock.addEventListener('click', () => {
-        LockManager.unlock();
+        controlBarLockManager.unlock();
         updateLockButtonUI();
         unlockModalInstance.hide();
       });
@@ -1118,11 +1119,11 @@ export function initControlBar(deps) {
 
   btnLock.addEventListener("click", () => {
     // Unlock flow -----------------------------------------------------------
-    if (LockManager.isLocked()) {
+    if (controlBarLockManager.isLocked()) {
       if (unlockModalInstance) {
         unlockModalInstance.show();
-      } else if (TraitManagerUtils.showConfirmModal("Unlock character for editing?")) {
-        LockManager.unlock();
+      } else if (controlTraitUtils.showConfirmModal("Unlock character for editing?")) {
+        controlBarLockManager.unlock();
         updateLockButtonUI();
       }
       return;
@@ -1133,15 +1134,15 @@ export function initControlBar(deps) {
       lockModalInstance.show();
     } else {
       // Fallback simple confirm if modal missing
-      if (TraitManagerUtils.showConfirmModal("Lock character for play mode?")) {
-        LockManager.lock();
+      if (controlTraitUtils.showConfirmModal("Lock character for play mode?")) {
+        controlBarLockManager.lock();
         updateLockButtonUI();
       }
     }
   });
 
   function updateLockButtonUI() {
-    if (LockManager.isLocked()) {
+    if (controlBarLockManager.isLocked()) {
       btnLock.innerHTML = `<i class=\"bi bi-unlock\"></i>`;
       lockLabel.textContent = "Unlock";
       lockContainer.setAttribute("title", "Lock Character");
@@ -1155,4 +1156,9 @@ export function initControlBar(deps) {
   }
  
   return bar;
-} 
+}
+
+// Assign to window
+window.controlBar = {
+    initControlBar
+}; 

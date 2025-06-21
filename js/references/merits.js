@@ -1,4 +1,6 @@
-export const merits = {
+// Remove ES6 export - use traditional script loading
+// export const merits = {
+const merits = {
   linguistics: {
     name: "Linguistics",
     description: "Merits covering language and ability to communicate/understand spoken or written language.",
@@ -368,4 +370,5 @@ export const merits = {
       }
     }
   }
-}; 
+};
+window.merits = merits; 

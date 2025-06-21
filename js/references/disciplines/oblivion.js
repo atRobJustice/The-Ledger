@@ -1,4 +1,5 @@
-export const oblivion = {
+// Oblivion Discipline Data
+const oblivion = {
   name: "Oblivion",
   nicknames: ["Obtenebration", "Necromancy", "Shadow-boxing", "Abyssal Mastery", "Tenebrae Imperium", "Mortis", "the Dark Arts", "Black Magic", "Entropy"],
   affinity: ["Hecata", "Lasombra"],
@@ -282,4 +283,5 @@ export const oblivion = {
       source: "Vampire: The Masquerade Players Guide, page 71"
     }
   ]
-}; 
+};
+window.oblivion = oblivion; 

@@ -1,4 +1,4 @@
-export const banuHaqim = {
+const banuHaqim = {
   name: "Banu Haqim",
   nicknames: ["The Clan of the Hunt", "Assassins", "Children of Haqim", "Saracens", "Mediators", "Lawmen"],
   disciplines: ["Blood Sorcery", "Celerity", "Obfuscate"],
@@ -100,4 +100,5 @@ export const banuHaqim = {
     "Occult Artifacts",
     "Descendant of Al-Ashrad"
   ]
-}; 
+};
+window.banuHaqim = banuHaqim; 

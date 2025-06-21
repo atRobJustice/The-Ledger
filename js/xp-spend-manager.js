@@ -1,29 +1,93 @@
-// XP Spend Manager (scaffold)
+// XP Spend Manager with Component Architecture Integration
 // -------------------------------------------------------------
-// This module will orchestrate spending XP via the UI.
-// Current step: injects a placeholder modal and opens it when
-// the "Spend XP" button is clicked.
-// Future steps will extend this with pricing and trait updates.
+// This module orchestrates spending XP via the UI with component integration.
 
-import { getTotalPrice } from './xp-pricing.js';
-import { TraitManagerUtils } from './manager-utils.js';
+const xpGetTotalPrice = window.getTotalPrice;
+const xpTraitUtils = window.TraitManagerUtils;
+const ATTR_REF = window.attributes;
+const SKILL_REF = window.skills;
+const DISC_REF = window.disciplines;
+const CLAN_REF = window.clans;
+const MERIT_REF = window.merits;
+const BG_REF = window.backgrounds;
 
-// Import references for trait lists
-import { attributes as ATTR_REF } from './references/attributes.js';
-import { skills as SKILL_REF } from './references/skills.js';
-import { disciplines as DISC_REF } from './references/disciplines.js';
-import { clans as CLAN_REF } from './references/clans.js';
-import { merits as MERIT_REF } from './references/merits.js';
-import { backgrounds as BG_REF } from './references/backgrounds.js';
+class XPSpendManager {
+    constructor() {
+        this.eventListeners = new Map();
+        this.isComponentMode = false;
+        this.parentComponent = null;
+        this.init();
+    }
 
-(function () {
+    /**
+     * Set component mode and parent component
+     */
+    setComponentMode(parentComponent) {
+        this.isComponentMode = true;
+        this.parentComponent = parentComponent;
+        console.log('XPSpendManager: Component mode enabled');
+    }
+
+    /**
+     * Initialize the manager
+     */
+    init() {
   // Wait until DOM & Bootstrap ready
+        if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    injectModal();
-    bindClick();
-  });
+                this.injectModal();
+                this.bindClick();
+            });
+        } else {
+            this.injectModal();
+            this.bindClick();
+        }
+    }
 
-  function injectModal() {
+    /**
+     * Event handling methods
+     */
+    on(event, handler) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(handler);
+    }
+
+    off(event, handler) {
+        if (this.eventListeners.has(event)) {
+            const handlers = this.eventListeners.get(event);
+            const index = handlers.indexOf(handler);
+            if (index > -1) {
+                handlers.splice(index, 1);
+            }
+        }
+    }
+
+    emit(event, data) {
+        // Emit to internal listeners
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(handler => {
+                try {
+                    handler(data);
+                } catch (err) {
+                    console.error(`Error in XP spend manager event handler for ${event}:`, err);
+                }
+            });
+        }
+
+        // Emit to parent component if in component mode
+        if (this.isComponentMode && this.parentComponent) {
+            this.parentComponent.emit(event, data);
+        }
+
+        // Emit to document for legacy compatibility
+        document.dispatchEvent(new CustomEvent(`xpSpend${event.charAt(0).toUpperCase() + event.slice(1)}`, {
+            detail: { ...data, source: 'XPSpendManager' }
+        }));
+    }
+
+    injectModal() {
     if (document.getElementById('xp-spend-modal')) return; // already injected
 
     const modalHtml = `
@@ -75,7 +139,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     document.body.insertAdjacentHTML('beforeend', modalHtml);
   }
 
-  function bindClick() {
+    bindClick() {
     const btn = document.getElementById('spend-xp');
     if (!btn) return;
     btn.addEventListener('click', () => {
@@ -89,23 +153,23 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       const costInfo = document.getElementById('xp-cost-info');
       const confirmBtn = document.getElementById('xp-spend-confirm');
 
-      if(catSelect){ catSelect.value=''; }
-      if(traitSelect){
-        traitSelect.innerHTML='<option value="" disabled selected>Select Trait</option>';
+            if (catSelect) { catSelect.value = ''; }
+            if (traitSelect) {
+                traitSelect.innerHTML = '<option value="" disabled selected>Select Trait</option>';
         traitSelect.disabled = true;
       }
-      const specCheckbox=document.getElementById('xp-add-specialty');
-      if(specCheckbox) specCheckbox.checked=false;
+            const specCheckbox = document.getElementById('xp-add-specialty');
+            if (specCheckbox) specCheckbox.checked = false;
       // Always hide specialty container on reset
-      const specContainer=document.getElementById('specialty-checkbox-container');
-      if(specContainer) specContainer.classList.add('d-none');
-      if(levelContainer) levelContainer.style.display='none';
-      if(costInfo){
-        costInfo.style.display='none';
+            const specContainer = document.getElementById('specialty-checkbox-container');
+            if (specContainer) specContainer.classList.add('d-none');
+            if (levelContainer) levelContainer.style.display = 'none';
+            if (costInfo) {
+                costInfo.style.display = 'none';
         const costSpanEl = document.getElementById('xp-cost');
-        if(costSpanEl) costSpanEl.textContent='0';
+                if (costSpanEl) costSpanEl.textContent = '0';
       }
-      if(confirmBtn) confirmBtn.disabled = true;
+            if (confirmBtn) confirmBtn.disabled = true;
 
       // Refresh available XP display each open
       document.getElementById('xp-available').textContent = window.xpManager?.getAvailableXP() ?? 0;
@@ -114,12 +178,12 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       modal.show();
     });
 
-    populateCategoryOptions();
-    attachDynamicHandlers();
+        this.populateCategoryOptions();
+        this.attachDynamicHandlers();
   }
 
   // ----------------------- UI data helpers ----------------------
-  function populateCategoryOptions() {
+    populateCategoryOptions() {
     const select = document.getElementById('xp-category');
     if (!select) return;
     const categories = [
@@ -138,26 +202,26 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     });
   }
 
-  function getTraitOptions(categoryKey) {
+    getTraitOptions(categoryKey) {
     switch (categoryKey) {
       case 'attribute':
-        return extractAttributes();
+                return this.extractAttributes();
       case 'skill':
-        return extractSkills();
+                return this.extractSkills();
       case 'discipline':
-        return extractDisciplines();
+                return this.extractDisciplines();
       case 'bloodpotency':
         return [{ key: 'bloodpotency', label: 'Blood Potency' }];
       case 'merit':
-        return extractMerits();
+                return this.extractMerits();
       case 'background':
-        return extractBackgrounds();
+                return this.extractBackgrounds();
       default:
         return [];
     }
   }
 
-  function extractAttributes() {
+    extractAttributes() {
     const list = [];
     ['physical', 'social', 'mental'].forEach(group => {
       const attrs = ATTR_REF[group]?.attributes || {};
@@ -166,7 +230,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     return list;
   }
 
-  function extractSkills() {
+    extractSkills() {
     const list = [];
     ['physical', 'social', 'mental'].forEach(group => {
       const skills = SKILL_REF[group] || {};
@@ -175,13 +239,13 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
     return list;
   }
 
-  function normaliseKey(str){
-    if(!str) return '';
-    const withUnderscore = str.replace(/([a-z])([A-Z])/g,'$1_$2');
-    return withUnderscore.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z_]/g,'');
-  }
+    normaliseKey(str) {
+        if (!str) return '';
+        const withUnderscore = str.replace(/([a-z])([A-Z])/g, '$1_$2');
+        return withUnderscore.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z_]/g, '');
+    }
 
-  function extractDisciplines() {
+    extractDisciplines() {
     const types = DISC_REF.types || {};
     const clanKey = document.querySelector('.clan-dropdown')?.value || '';
     const isThinblood = clanKey === 'thinblood';
@@ -196,687 +260,391 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
       if (k === 'thin_blood_alchemy' || k === 'thinBloodAlchemy') {
         return isThinblood; // Only for Thin-bloods
       }
-      if (k === 'blood_sorcery_rituals' || k==='bloodSorceryRituals') {
+            if (k === 'blood_sorcery_rituals' || k === 'bloodSorceryRituals') {
         return hasBloodSorcery; // Need Blood Sorcery first
       }
-      if (k === 'oblivion_ceremonies' || k==='oblivionCeremonies') {
+            if (k === 'oblivion_ceremonies' || k === 'oblivionCeremonies') {
         return hasOblivion; // Need Oblivion first
       }
       return true;
     }).map(k => {
-      const snakeKey = normaliseKey(k);
-      const label = types[snakeKey]?.name || k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase());
-      return { key: k, label };
-    });
-  }
+            const discipline = types[k] || {};
+            return { key: k, label: discipline.name || k };
+        });
+    }
 
-  function extractMerits() {
-    const list=[];
-    Object.keys(MERIT_REF).forEach(catKey=>{
-      const cat=MERIT_REF[catKey];
-      const parentLabel = cat?.name || TraitManagerUtils.camelToTitle(catKey);
-      if(cat?.merits){
-        Object.keys(cat.merits).forEach(mk=>{
-          const child = cat.merits[mk];
-          list.push({key: mk,label: `${parentLabel}: ${child.name}`});
+    extractMerits() {
+        const list = [];
+        Object.keys(MERIT_REF).forEach(categoryKey => {
+            const category = MERIT_REF[categoryKey];
+            if (category.merits) {
+                Object.keys(category.merits).forEach(meritKey => {
+                    const merit = category.merits[meritKey];
+                    list.push({ key: meritKey, label: merit.name || meritKey });
         });
       }
     });
     return list;
   }
 
-  function extractBackgrounds() {
-    const list=[];
-    Object.keys(BG_REF).forEach(catKey=>{
-      const cat=BG_REF[catKey];
-      const parentLabel = cat?.name || TraitManagerUtils.camelToTitle(catKey);
-      if(cat?.merits){
-        Object.keys(cat.merits).forEach(bk=>{
-          const child = cat.merits[bk];
-          list.push({key: bk,label: `${parentLabel}: ${child.name}`});
+    extractBackgrounds() {
+        const list = [];
+        Object.keys(BG_REF).forEach(categoryKey => {
+            const category = BG_REF[categoryKey];
+            if (category.merits) {
+                Object.keys(category.merits).forEach(bgKey => {
+                    const bg = category.merits[bgKey];
+                    list.push({ key: bgKey, label: bg.name || bgKey });
         });
       }
     });
     return list;
   }
 
-  // ----------------------- Event handlers -----------------------
-  function attachDynamicHandlers() {
+    attachDynamicHandlers() {
+        // Category selection
     const catSelect = document.getElementById('xp-category');
+        if (catSelect) {
+            catSelect.addEventListener('change', (e) => {
+                const categoryKey = e.target.value;
+                this.populateTraitOptions(categoryKey);
+            });
+        }
+
+        // Trait selection
     const traitSelect = document.getElementById('xp-trait');
-    const levelRange = document.getElementById('xp-level');
-    const levelDisplay = document.getElementById('xp-level-display');
-    const levelContainer = document.getElementById('xp-level-container');
-    const costInfo = document.getElementById('xp-cost-info');
-    const costSpan = document.getElementById('xp-cost');
-    const confirmBtn = document.getElementById('xp-spend-confirm');
+        if (traitSelect) {
+            traitSelect.addEventListener('change', (e) => {
+                const traitKey = e.target.value;
+                const categoryKey = catSelect.value;
+                this.handleTraitSelection(categoryKey, traitKey);
+            });
+        }
 
-    catSelect.addEventListener('change', () => {
-      const cat = catSelect.value;
-      // Populate trait options
-      traitSelect.innerHTML = '';
-      // add placeholder
-      const ph = document.createElement('option');
-      ph.value = '';
-      ph.textContent = 'Select Trait';
-      ph.disabled = true;
-      ph.selected = true;
-      traitSelect.appendChild(ph);
+        // Level slider
+        const levelSlider = document.getElementById('xp-level');
+        if (levelSlider) {
+            levelSlider.addEventListener('input', (e) => {
+                const newLevel = parseInt(e.target.value);
+                document.getElementById('xp-level-display').textContent = newLevel;
+                this.updateCost();
+            });
+        }
 
-      const opts = getTraitOptions(cat);
-      opts.forEach(o => {
-        const optEl = document.createElement('option');
-        optEl.value = o.key;
-        optEl.textContent = o.label;
-        traitSelect.appendChild(optEl);
-      });
-      traitSelect.disabled = opts.length === 0;
-      levelContainer.style.display = 'none';
-      costInfo.style.display = 'none';
-      confirmBtn.disabled = true;
-
-      // Show specialty checkbox only when skill category selected
-      const specContainer = document.getElementById('specialty-checkbox-container');
+        // Specialty checkbox
       const specCheckbox = document.getElementById('xp-add-specialty');
-      if(cat === 'skill') {
+        if (specCheckbox) {
+            specCheckbox.addEventListener('change', (e) => {
+                const specContainer = document.getElementById('specialty-name-container');
+                if (e.target.checked) {
         specContainer.classList.remove('d-none');
-        if(specCheckbox) specCheckbox.checked = false;
-        document.getElementById('specialty-name-container').classList.add('d-none');
-        document.getElementById('xp-specialty-name').value='';
       } else {
         specContainer.classList.add('d-none');
-        if(specCheckbox) specCheckbox.checked = false;
-        document.getElementById('specialty-name-container').classList.add('d-none');
-      }
-    });
-
-    traitSelect.addEventListener('change', () => {
-      const addingSpecialty = (catSelect.value === 'skill') && document.getElementById('xp-add-specialty').checked;
-
-      if(addingSpecialty){
-        levelContainer.style.display='none';
-      } else {
-        // Special handling for merits/backgrounds
-        if(catSelect.value==='merit'||catSelect.value==='background'){
-          const meta=getTraitMeta(catSelect.value,traitSelect.value);
-          const info=TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
-          const { currentLevel }=getCurrentLevel(catSelect.value, traitSelect.value);
-          const showSlider = info.canRepeat || info.hasOr || (info.min!==info.max);
-          if(showSlider){
-            levelContainer.style.display='block';
-            let minVal, maxVal, stepVal=1;
-            if(info.hasOr){
-              const sorted=[...info.orValues].sort((a,b)=>a-b);
-              minVal=sorted[0];
-              maxVal=sorted[sorted.length-1];
-              stepVal= sorted.length>1 ? (sorted[1]-sorted[0]) : 1;
-            } else if(info.canRepeat){
-              minVal=currentLevel+info.min;
-              maxVal=minVal+info.min*4; // arbitrary cap
-            } else {
-              minVal=Math.min(info.max, currentLevel+1);
-              maxVal=info.max;
-            }
-            levelRange.min=minVal;
-            levelRange.max=maxVal;
-            levelRange.step=stepVal;
-            const start=Math.min(maxVal, Math.max(minVal, currentLevel+1));
-            levelRange.value=start;
-            levelDisplay.textContent=String(start);
-          } else {
-            levelContainer.style.display='none';
-          }
-        } else {
-          levelContainer.style.display='block';
-          const { currentLevel } = getCurrentLevel(catSelect.value, traitSelect.value);
-          const startLevel=Math.min(5,currentLevel+1);
-          levelRange.min=startLevel; levelRange.value=startLevel; levelDisplay.textContent=String(startLevel);
+                }
+                this.updateCost();
+            });
         }
-      }
-      updateCost();
-    });
 
-    levelRange.addEventListener('input', () => {
-      levelDisplay.textContent = levelRange.value;
-      updateCost();
-    });
+        // Confirm purchase
+        const confirmBtn = document.getElementById('xp-spend-confirm');
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', () => {
+                this.confirmPurchase();
+            });
+        }
+    }
 
-    // Specialty checkbox handler
-    document.getElementById('xp-add-specialty').addEventListener('change', () => {
-      const checked = document.getElementById('xp-add-specialty').checked;
-      // Hide level slider if adding specialty
-      levelContainer.style.display = checked ? 'none' : (traitSelect.value ? 'block' : 'none');
-      const nameCont=document.getElementById('specialty-name-container');
-      if(checked){ nameCont.classList.remove('d-none'); } else { nameCont.classList.add('d-none'); document.getElementById('xp-specialty-name').value=''; }
-      updateCost();
-    });
+    populateTraitOptions(categoryKey) {
+        const traitSelect = document.getElementById('xp-trait');
+        if (!traitSelect) return;
 
-    let latestCost = 0;
+        traitSelect.innerHTML = '<option value="" disabled selected>Select Trait</option>';
+        traitSelect.disabled = false;
 
-    confirmBtn.addEventListener('click', async () => {
-      const cat = catSelect.value;
-      const traitKey = traitSelect.value;
-      if (!cat || !traitKey) return;
-      const addingSpecialty = (cat === 'skill') && document.getElementById('xp-add-specialty').checked;
+        const options = this.getTraitOptions(categoryKey);
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option.key;
+            opt.textContent = option.label;
+            traitSelect.appendChild(opt);
+        });
+    }
 
-      const { currentLevel } = getCurrentLevel(cat, traitKey);
-      let desiredLevel;
-      const metaCat = (cat==='merit'||cat==='background');
-      let meta, info;
-      if(metaCat){
-        meta = getTraitMeta(cat, traitKey);
-        info = TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
-      }
+    handleTraitSelection(categoryKey, traitKey) {
+        if (!traitKey) return;
 
-      desiredLevel = addingSpecialty ? currentLevel : (
-        metaCat && info && (info.min===info.max&&!info.canRepeat&&!info.hasOr) ? info.max : parseInt(levelRange.value,10)
-      );
+        const currentLevel = this.getCurrentLevel(categoryKey, traitKey);
+        const levelContainer = document.getElementById('xp-level-container');
+        const levelSlider = document.getElementById('xp-level');
+        const levelDisplay = document.getElementById('xp-level-display');
+        const specialtyContainer = document.getElementById('specialty-checkbox-container');
 
-      let cost;
-      if(addingSpecialty){
-        cost = 3;
-      } else if(metaCat){
-        cost = calcMeritBackgroundCost(meta?.dots||'•', currentLevel, desiredLevel);
+        // Show level slider for non-specialty purchases
+        if (categoryKey === 'skill' && currentLevel >= 1) {
+            specialtyContainer.classList.remove('d-none');
       } else {
-        const { pricingCat, pricingOpts } = buildPricingContext(cat, traitKey);
-        cost = getTotalPrice(pricingCat, currentLevel, desiredLevel, pricingOpts);
-      }
-      latestCost = cost;
-      costSpan.textContent = cost;
-      document.getElementById('xp-available').textContent = window.xpManager?.getAvailableXP() ?? 0;
-      costInfo.style.display = 'block';
-      confirmBtn.disabled = cost === 0 || cost > (window.xpManager?.getAvailableXP() ?? 0);
+            specialtyContainer.classList.add('d-none');
+            levelContainer.style.display = 'block';
+            levelSlider.max = 5;
+            levelSlider.value = Math.min(currentLevel + 1, 5);
+            levelDisplay.textContent = levelSlider.value;
+        }
 
-      let note;
-      if(addingSpecialty){
-        const specName=document.getElementById('xp-specialty-name').value.trim();
-        if(!specName){ window.toastManager.show('Please enter a Specialty name', 'warning', 'XP Spend'); return; }
-        note = `Specialty (${specName}) in ${traitKey}`;
-      } else {
-        note = `Raised ${traitKey} ${currentLevel}→${desiredLevel}`;
-      }
-      const payload = {cat, traitKey, from: currentLevel, to: desiredLevel, specialty: addingSpecialty ? document.getElementById('xp-specialty-name').value.trim() : null};
-      const ok = window.xpManager?.spendXP(cost, note, payload);
-      if (!ok) {
-        window.toastManager.show('Not enough XP available.', 'warning', 'XP Spend');
+        this.updateCost();
+    }
+
+    updateCost() {
+        const categoryKey = document.getElementById('xp-category').value;
+        const traitKey = document.getElementById('xp-trait').value;
+        const levelSlider = document.getElementById('xp-level');
+        const specCheckbox = document.getElementById('xp-add-specialty');
+        const costInfo = document.getElementById('xp-cost-info');
+        const costSpan = document.getElementById('xp-cost');
+        const confirmBtn = document.getElementById('xp-spend-confirm');
+
+        if (!categoryKey || !traitKey) {
+            costInfo.style.display = 'none';
+            confirmBtn.disabled = true;
         return;
       }
 
-      if(!addingSpecialty) {
-        await applyTraitChange(cat, traitKey, currentLevel, desiredLevel);
-      } else {
-        // programmatically add specialty to skill row
-        const skillLabel = findLabelByKey('skill', traitKey);
-        addSpecialtyToSkill(skillLabel, document.getElementById('xp-specialty-name').value.trim());
-      }
+        let cost = 0;
+        const currentLevel = this.getCurrentLevel(categoryKey, traitKey);
 
-      // Close modal
-      bootstrap.Modal.getInstance(document.getElementById('xp-spend-modal')).hide();
+        if (categoryKey === 'skill' && specCheckbox && specCheckbox.checked) {
+            cost = 3; // Specialty cost
+        } else if (levelSlider) {
+            const newLevel = parseInt(levelSlider.value);
+            const context = this.buildPricingContext(categoryKey, traitKey);
+            cost = xpGetTotalPrice(context, currentLevel, newLevel);
+        }
 
-      // After applying changes, trigger autosave if available
-      if(typeof window.gatherCharacterData==='function'){
-        try{
-          const data = window.gatherCharacterData();
-          console.debug('[XP] autosave data', data);
-          
-          // Use IndexedDB exclusively
-          if (window.characterManager && window.characterManager.isInitialized) {
-            await window.characterManager.saveCurrentCharacter(data);
-          } else if (window.databaseManager) {
-            await window.databaseManager.saveActiveCharacter(data);
-          } else {
-            throw new Error('No database manager available for autosave');
-          }
-        }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
-      } else {
-        // Backup manager not yet loaded – retry shortly
-        let attempts = 0;
-        const retry = async () => {
-          if(typeof window.gatherCharacterData==='function'){
-            try{
-              const data = window.gatherCharacterData();
-              console.debug('[XP] autosave data', data);
-              
-              // Use IndexedDB exclusively
-              if (window.characterManager && window.characterManager.isInitialized) {
-                await window.characterManager.saveCurrentCharacter(data);
-              } else if (window.databaseManager) {
-                await window.databaseManager.saveActiveCharacter(data);
-              } else {
-                throw new Error('No database manager available for autosave');
-              }
-            }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
-          } else if(attempts < 10){
-            attempts++;
-            setTimeout(retry, 300);
-          }
-        };
-        setTimeout(retry, 300);
-      }
-    });
-
-    function updateCost() {
-      const cat = catSelect.value;
-      if (!cat || !traitSelect.value) return;
-      const addingSpecialty = (cat === 'skill') && document.getElementById('xp-add-specialty').checked;
-
-      const { currentLevel } = getCurrentLevel(cat, traitSelect.value);
-      let desiredLevel;
-      const metaCat = (cat==='merit'||cat==='background');
-      let meta, info;
-      if(metaCat){
-        meta = getTraitMeta(cat, traitSelect.value);
-        info = TraitManagerUtils.parseDotsNotation(meta?.dots||'•');
-      }
-
-      desiredLevel = addingSpecialty ? currentLevel : (
-        metaCat && info && (info.min===info.max&&!info.canRepeat&&!info.hasOr) ? info.max : parseInt(levelRange.value,10)
-      );
-
-      let cost;
-      if(addingSpecialty){
-        cost = 3;
-      } else if(metaCat){
-        cost = calcMeritBackgroundCost(meta?.dots||'•', currentLevel, desiredLevel);
-      } else {
-        const { pricingCat, pricingOpts } = buildPricingContext(cat, traitSelect.value);
-        cost = getTotalPrice(pricingCat, currentLevel, desiredLevel, pricingOpts);
-      }
-      latestCost = cost;
+        const available = window.xpManager?.getAvailableXP() ?? 0;
       costSpan.textContent = cost;
-      document.getElementById('xp-available').textContent = window.xpManager?.getAvailableXP() ?? 0;
+        document.getElementById('xp-available').textContent = available;
       costInfo.style.display = 'block';
-      confirmBtn.disabled = cost === 0 || cost > (window.xpManager?.getAvailableXP() ?? 0);
+        confirmBtn.disabled = cost <= 0 || cost > available;
     }
 
-    // Helper returns {currentLevel, label}
-    function getCurrentLevel(cat, traitKey) {
-      switch (cat) {
+    getCurrentLevel(categoryKey, traitKey) {
+        switch (categoryKey) {
         case 'attribute':
-        case 'skill': {
-          const label = findLabelByKey(cat, traitKey);
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
-          let lvl = 0;
-          if (row) {
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              lvl = parseInt(dotsEl.dataset.value || '0');
-            } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) lvl = parseInt(spans[1].textContent.trim() || '0');
-            }
-          }
-          return { currentLevel: isNaN(lvl) ? 0 : lvl, label };
-        }
-        case 'discipline': {
-          const lvl = window.disciplineManager?.getDisciplineLevel(traitKey) || 0;
-          const label = DISC_REF.types[traitKey]?.name || traitKey;
-          return { currentLevel: lvl, label };
-        }
-        case 'bloodpotency': {
-          let lvl = 0;
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency');
-          if (row) {
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              lvl = parseInt(dotsEl.dataset.value || '0');
-            } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) lvl = parseInt(spans[1].textContent.trim() || '0');
-            }
-          }
-          return { currentLevel: isNaN(lvl) ? 0 : lvl, label: 'Blood Potency' };
-        }
-        case 'specialty': {
-          let lvl = 0;
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'specialty');
-          if (row) {
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              lvl = parseInt(dotsEl.dataset.value || '0');
-            } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) lvl = parseInt(spans[1].textContent.trim() || '0');
-            }
-          }
-          return { currentLevel: isNaN(lvl) ? 0 : lvl, label: 'Specialty' };
-        }
-        case 'background': {
-          const lvl = window.backgroundManager?.getBackgroundLevel ? (window.backgroundManager.getBackgroundLevel(traitKey)||0) : 0;
-          const label = TraitManagerUtils.camelToTitle?.(traitKey) || traitKey;
-          return { currentLevel: lvl, label };
-        }
-        case 'merit': {
-          const lvl = window.meritFlawManager?.getMeritLevel ? (window.meritFlawManager.getMeritLevel(traitKey)||0) : 0;
-          return { currentLevel: lvl, label: traitKey };
-        }
-        default:
-          return { currentLevel: 0, label: traitKey };
-      }
-    }
-
-    async function applyTraitChange(cat, traitKey, oldLevel, newLevel) {
-      console.debug('[XP] applyTraitChange start', {cat, traitKey, oldLevel, newLevel});
-      switch (cat) {
-        case 'attribute':
-        case 'skill': {
-          const label = findLabelByKey(cat, traitKey);
-          console.debug('[XP] attribute/skill label resolved', label);
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
-          console.debug('[XP] row found for', label, row);
-          if (row) {
-            console.debug('[XP] dotsEl exists?', !!row.querySelector('.dots'));
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              console.debug('[XP] current dataset value', dotsEl.dataset.value, 'updating to', newLevel);
-              // update dots
-              dotsEl.dataset.value = newLevel;
-              dotsEl.setAttribute('data-value', newLevel);
-              // Sync jQuery data cache so gatherCharacterData reads the correct value
-              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-              const dotEls = dotsEl.querySelectorAll('.dot');
-              dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
-              console.debug('[XP] row dataset value set to', row.dataset.value);
-            } else {
-              console.warn('[XP] applyTraitChange: stat row not found for', label);
-            }
-            row.dataset.value = newLevel;
-          }
-          break;
-        }
-        case 'discipline': {
-          if (!window.disciplineManager) break;
-          const current = window.disciplineManager.getDisciplineLevel(traitKey) || 0;
-          if (current === 0) {
-            window.disciplineManager.addDiscipline(traitKey);
-          }
-          await window.disciplineManager.changeDisciplineLevel(traitKey, current, newLevel);
-          break;
-        }
-        case 'bloodpotency': {
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency');
-          if (row) {
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              dotsEl.dataset.value = newLevel;
-              dotsEl.setAttribute('data-value', newLevel);
-              // Sync jQuery data cache so gatherCharacterData reads the correct value
-              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-              const dotEls = dotsEl.querySelectorAll('.dot');
-              dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
-            } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) spans[1].textContent = newLevel;
-            }
-          }
-          break;
-        }
-        case 'specialty': {
-          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'specialty');
-          if (row) {
-            const dotsEl = row.querySelector('.dots');
-            if (dotsEl) {
-              dotsEl.dataset.value = newLevel;
-              dotsEl.setAttribute('data-value', newLevel);
-              // Sync jQuery data cache so gatherCharacterData reads the correct value
-              if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-              const dotEls = dotsEl.querySelectorAll('.dot');
-              dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
-            } else {
-              const spans = row.querySelectorAll('span');
-              if (spans.length > 1) spans[1].textContent = newLevel;
-            }
-          }
-          break;
-        }
-        case 'merit': {
-          if(!window.meritFlawManager) break;
-          const mgr = window.meritFlawManager;
-          const lvlNow = mgr.getMeritLevel(traitKey)||0;
-          if(lvlNow===0){
-            const cat = mgr.findTraitCategory ? mgr.findTraitCategory(traitKey,'merit'):null;
-            mgr.addTrait('merit', traitKey, cat||'');
-          }
-          mgr.updateTraitInstanceLevel('merit', traitKey, 0, newLevel);
-          break;
-        }
-        case 'background': {
-          if(!window.backgroundManager) break;
-          const mgr = window.backgroundManager;
-          const lvlNow = mgr.getBackgroundLevel(traitKey)||0;
-          if(lvlNow===0){
-            const cat = mgr.findTraitCategory ? mgr.findTraitCategory(traitKey,'background'):null;
-            mgr.addTrait('background', traitKey, cat||'');
-          }
-          mgr.updateTraitInstanceLevel('background', traitKey, 0, newLevel);
-          break;
-        }
-      }
-
-      // Expose to outer scope for undo logic
-      window.xpSpend_applyTraitChange = applyTraitChange;
-    }
-
-    function findLabelByKey(cat, key) {
-      switch (cat) {
-        case 'attribute': return extractAttributes().find(o => o.key === key)?.label || key;
-        case 'skill': return extractSkills().find(o => o.key === key)?.label || key;
-        default: return key;
-      }
-    }
-
-    // ---------------------- Pricing helpers ----------------------
-    function buildPricingContext(category, traitKey) {
-      // Default
-      let pricingCat = category;
-      const opts = {};
-
-      // Discipline specifics
-      if (category === 'discipline') {
-        // Ritual-like disciplines cost differently
-        const ritualKeys = ['blood_sorcery_rituals', 'oblivion_ceremonies', 'thin_blood_alchemy'];
-        const snakeKey = normaliseKey(traitKey);
-        if (ritualKeys.includes(snakeKey)) {
-          pricingCat = 'ritual';
-        } else {
-          // Determine clan match / caitiff
-          const clanKey = document.querySelector('.clan-dropdown')?.value || '';
-          if (clanKey) {
-            opts.caitiff = clanKey === 'caitiff';
-            if (!opts.caitiff) {
-              const clanObj = CLAN_REF.types[clanKey];
-              let discKeys = [];
-              if (clanObj?.disciplines) {
-                if (Array.isArray(clanObj.disciplines)) {
-                  discKeys = clanObj.disciplines.map(n => normaliseKey(n));
-                } else {
-                  discKeys = Object.keys(clanObj.disciplines).map(normaliseKey);
+                // Check character sheet for current attribute levels
+                const attrGroup = this.findAttributeGroup(traitKey);
+                if (attrGroup) {
+                    const dots = document.querySelector(`.${attrGroup} .dots[data-attribute="${traitKey}"]`);
+                    return dots ? parseInt(dots.getAttribute('data-value') || '0') : 0;
                 }
-              }
-              opts.clanMatched = discKeys.includes(snakeKey);
-            } else {
-              opts.clanMatched = false;
-            }
-          }
+                return 0;
+
+            case 'skill':
+                // Check character sheet for current skill levels
+                const skillGroup = this.findSkillGroup(traitKey);
+                if (skillGroup) {
+                    const dots = document.querySelector(`.${skillGroup} .dots[data-skill="${traitKey}"]`);
+                    return dots ? parseInt(dots.getAttribute('data-value') || '0') : 0;
+                }
+                return 0;
+
+            case 'discipline':
+                return window.disciplineManager?.getDisciplineLevel(traitKey) ?? 0;
+
+            case 'merit':
+                return window.meritFlawManager?.getMeritLevel(traitKey) ?? 0;
+
+            case 'background':
+                return window.backgroundManager?.getBackgroundLevel(traitKey) ?? 0;
+
+            case 'bloodpotency':
+                // Check character sheet for blood potency
+                const bpDots = document.querySelector('.dots[data-vital="bloodPotency"]');
+                return bpDots ? parseInt(bpDots.getAttribute('data-value') || '0') : 0;
+
+            default:
+                return 0;
         }
-      }
-      return { pricingCat, pricingOpts: opts };
     }
-  }
 
-  function addSpecialtyToSkill(skillLabel, spec){
-    if(!spec) return;
-    const row=document.querySelector(`.stat .stat-label[textContent="${skillLabel}"]`);
-    const statRow = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===skillLabel.toLowerCase());
-    if(!statRow) return;
-    let list=[];
-    try{ list=JSON.parse(statRow.dataset.specialties||'[]'); }catch(e){ list=[]; }
-    if(!list.includes(spec)){ list.push(spec); statRow.dataset.specialties=JSON.stringify(list); }
-    if(window.specialtyManager?.refreshRow){
-        const cap = skillLabel.replace(/\b\w/g, c=>c.toUpperCase());
-        window.specialtyManager.refreshRow(cap);
+    findAttributeGroup(traitKey) {
+        const groups = ['physical', 'social', 'mental'];
+        for (const group of groups) {
+            const attrs = ATTR_REF[group]?.attributes || {};
+            if (attrs[traitKey]) {
+                return group;
+            }
+        }
+        return null;
     }
-  }
 
-  // ---- helper to fetch trait metadata ----
-  function getTraitMeta(category,key){
-    let item=null;
-    if(category==='merit'){
-      Object.values(MERIT_REF).some(cat=>{
-        if(cat?.merits && key in cat.merits){ item=cat.merits[key]; return true; }
-        return false;
-      });
-    } else if(category==='background'){
-      Object.values(BG_REF).some(cat=>{
-        if(cat?.merits && key in cat.merits){ item=cat.merits[key]; return true; }
-        return false;
-      });
+    findSkillGroup(traitKey) {
+        const groups = ['physical', 'social', 'mental'];
+        for (const group of groups) {
+            const skills = SKILL_REF[group] || {};
+            if (skills[traitKey]) {
+                return group;
+            }
+        }
+        return null;
     }
-    return item;
-  }
 
-  function parseDots(dotsStr){
-    if(!dotsStr) return {variable:false,max:1,fixedLevel:1};
-    const clean=dotsStr.replace(/[()]/g,'');
-    const variable=/[+\-]/.test(clean);
-    const max=(clean.match(/•/g)||[]).length;
-    return {variable,max,fixedLevel:max};
-  }
+    buildPricingContext(categoryKey, traitKey) {
+        const context = {
+            category: categoryKey,
+            traitKey: traitKey,
+            clan: document.querySelector('.clan-dropdown')?.value || '',
+            generation: document.querySelector('.generation-dropdown')?.value || '',
+            predatorType: document.querySelector('.predator-dropdown')?.value || ''
+        };
 
-  // ---- Undo handling ----
-  document.addEventListener('xpUndo', async (e)=>{
-     const entry=e.detail;
-     if(!entry||entry.type!=='spend'||!entry.meta) return;
-     await revertTraitChange(entry.meta);
-  });
+        // Add trait-specific context
+        switch (categoryKey) {
+            case 'discipline':
+                context.disciplineLevel = this.getCurrentLevel(categoryKey, traitKey);
+          break;
+            case 'merit':
+            case 'background':
+                // Add merit/background specific context if needed
+          break;
+        }
 
-  async function revertTraitChange(meta){
-    const {cat, traitKey, from, to, specialty}=meta;
-    if(specialty){
-      const skillLabel = (typeof findLabelByKey==='function') ? findLabelByKey('skill', traitKey) : traitKey;
-      removeSpecialtyFromSkill(skillLabel, specialty);
-    } else {
-      if(typeof window.xpSpend_applyTraitChange==='function'){
-        await window.xpSpend_applyTraitChange(cat, traitKey, to, from);
-      } else {
-        console.warn('[XP] xpSpend_applyTraitChange not found – applying minimal revert');
-        minimalTraitRevert(cat, traitKey, to, from);
-      }
-      // trigger autosave after undo
-      if(typeof window.gatherCharacterData==='function'){
-        try{
-          const data = window.gatherCharacterData();
-          console.debug('[XP] autosave data', data);
-          
-          // Use IndexedDB exclusively
-          if (window.characterManager && window.characterManager.isInitialized) {
-            await window.characterManager.saveCurrentCharacter(data);
-          } else if (window.databaseManager) {
-            await window.databaseManager.saveActiveCharacter(data);
+        return context;
+    }
+
+    async confirmPurchase() {
+        const categoryKey = document.getElementById('xp-category').value;
+        const traitKey = document.getElementById('xp-trait').value;
+        const levelSlider = document.getElementById('xp-level');
+        const specCheckbox = document.getElementById('xp-add-specialty');
+        const specName = document.getElementById('xp-specialty-name')?.value || '';
+
+        if (!categoryKey || !traitKey) return;
+
+        const currentLevel = this.getCurrentLevel(categoryKey, traitKey);
+        let cost = 0;
+        let note = '';
+
+        try {
+            if (categoryKey === 'skill' && specCheckbox && specCheckbox.checked) {
+                // Add specialty
+                cost = 3;
+                note = `Added specialty "${specName}" to ${this.findLabelByKey(categoryKey, traitKey)}`;
+                await this.addSpecialtyToSkill(traitKey, specName);
+            } else if (levelSlider) {
+                // Increase trait level
+                const newLevel = parseInt(levelSlider.value);
+                const context = this.buildPricingContext(categoryKey, traitKey);
+                cost = xpGetTotalPrice(context, currentLevel, newLevel);
+                note = `Increased ${this.findLabelByKey(categoryKey, traitKey)} from ${currentLevel} to ${newLevel}`;
+                await this.applyTraitChange(categoryKey, traitKey, currentLevel, newLevel);
+            }
+
+            // Spend XP
+            if (cost > 0) {
+                const success = await window.xpManager?.spendXP(cost, note, {
+                    category: categoryKey,
+                    traitKey: traitKey,
+                    oldLevel: currentLevel,
+                    newLevel: levelSlider ? parseInt(levelSlider.value) : currentLevel
+                });
+
+                if (success) {
+                    this.showFeedback(`Successfully spent ${cost} XP: ${note}`, 'success');
+                    
+                    // Emit XP spent event
+                    this.emit('xpSpent', {
+                        category: categoryKey,
+                        traitKey: traitKey,
+                        cost: cost,
+                        note: note,
+                        oldLevel: currentLevel,
+                        newLevel: levelSlider ? parseInt(levelSlider.value) : currentLevel
+                    });
+
+                    // Close modal
+                    bootstrap.Modal.getInstance(document.getElementById('xp-spend-modal')).hide();
+                } else {
+                    this.showFeedback('Failed to spend XP - insufficient funds', 'error');
+                }
+            }
+        } catch (error) {
+            console.error('Error during XP purchase:', error);
+            this.showFeedback('Error during purchase. Please try again.', 'error');
+        }
+    }
+
+    findLabelByKey(categoryKey, traitKey) {
+        const options = this.getTraitOptions(categoryKey);
+        const option = options.find(opt => opt.key === traitKey);
+        return option ? option.label : traitKey;
+    }
+
+    async applyTraitChange(categoryKey, traitKey, oldLevel, newLevel) {
+        // This would integrate with the appropriate manager to update the trait
+        // For now, we'll emit an event that components can listen to
+        this.emit('traitChangeRequested', {
+            category: categoryKey,
+            traitKey: traitKey,
+            oldLevel: oldLevel,
+            newLevel: newLevel
+        });
+    }
+
+    async addSpecialtyToSkill(skillKey, specialtyName) {
+        // This would integrate with the skill manager to add the specialty
+        // For now, we'll emit an event that components can listen to
+        this.emit('specialtyAddRequested', {
+            skillKey: skillKey,
+            specialtyName: specialtyName
+        });
+    }
+
+    /**
+     * Component integration methods
+     */
+    getData() {
+        return {
+            // XP spend manager doesn't maintain its own data
+            // It works with other managers
+        };
+    }
+
+    update(data) {
+        // XP spend manager doesn't maintain its own data
+        // It works with other managers
+    }
+
+    clear() {
+        // XP spend manager doesn't maintain its own data
+        // It works with other managers
+    }
+
+    setLockState(isLocked) {
+        const $spendBtn = $('#spend-xp');
+        const $modalBtns = $('#xp-spend-modal .btn');
+
+        if (isLocked) {
+            $spendBtn.prop('disabled', true);
+            $modalBtns.prop('disabled', true);
           } else {
-            throw new Error('No database manager available for autosave');
-          }
-        }catch(err){ console.warn('[XP] autosave after undo failed', err); }
-      }
+            $spendBtn.prop('disabled', false);
+            $modalBtns.prop('disabled', false);
+        }
     }
-  }
 
-  function removeSpecialtyFromSkill(skillLabel, spec){
-    if(!spec) return;
-    const statRow = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===skillLabel.toLowerCase());
-    if(!statRow) return;
-    let list=[];
-    try{ list=JSON.parse(statRow.dataset.specialties||'[]'); }catch(e){ list=[]; }
-    const idx=list.indexOf(spec);
-    if(idx>-1){ list.splice(idx,1); statRow.dataset.specialties=JSON.stringify(list); }
-    if(window.specialtyManager?.refreshRow){
-        const cap = skillLabel.replace(/\b\w/g, c=>c.toUpperCase());
-        window.specialtyManager.refreshRow(cap);
+    showFeedback(message, type = 'info') {
+        if (window.toastManager) {
+            window.toastManager.show(message, type, 'XP Spend Manager');
+      } else {
+            console.log(`[XPSpendManager] ${type.toUpperCase()}: ${message}`);
+        }
     }
-  }
+}
 
-  // Fallback updater if main function unavailable (handles attr/skill only)
-  function minimalTraitRevert(cat, traitKey, oldLevel, newLevel){
-    if(cat==='attribute' || cat==='skill'){
-      const label = (typeof findLabelByKey==='function') ? findLabelByKey(cat, traitKey) : traitKey.replace(/(^|_)(\w)/g,(_,p1,p2)=>p2.toUpperCase());
-      const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()===label.toLowerCase());
-      if(!row) return;
-      const dotsEl = row.querySelector('.dots');
-      if(dotsEl){
-        dotsEl.dataset.value=newLevel;
-        dotsEl.setAttribute('data-value', newLevel);
-        if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-        dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
-      } else {
-        const spans=row.querySelectorAll('span');
-        if(spans.length>1) spans[1].textContent=newLevel;
-      }
-      row.dataset.value=newLevel;
-    } else if(cat==='bloodpotency'){
-      const row = Array.from(document.querySelectorAll('.stat')).find(r=>r.querySelector('.stat-label')?.textContent.trim().toLowerCase()==='blood potency');
-      if(!row) return;
-      const dotsEl = row.querySelector('.dots');
-      if(dotsEl){
-        dotsEl.dataset.value=newLevel;
-        dotsEl.setAttribute('data-value', newLevel);
-        if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
-        dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('filled', i<newLevel));
-      } else {
-        const spans=row.querySelectorAll('span');
-        if(spans.length>1) spans[1].textContent=newLevel;
-      }
-      row.dataset.value=newLevel;
-    } else if(cat==='discipline' && window.disciplineManager){
-      window.disciplineManager.changeDisciplineLevel(traitKey, oldLevel, newLevel);
-    } else if(cat==='merit' && window.meritFlawManager){
-      const mgr=window.meritFlawManager;
-      if(newLevel===0){
-        // remove trait
-        mgr.removeTrait && mgr.removeTrait('merit', traitKey);
-      } else {
-        mgr.updateTraitInstanceLevel('merit', traitKey, 0, newLevel);
-      }
-    } else if(cat==='background' && window.backgroundManager){
-      const mgr=window.backgroundManager;
-      if(newLevel===0){
-        mgr.removeTrait && mgr.removeTrait('background', traitKey);
-      } else {
-        mgr.updateTraitInstanceLevel('background', traitKey, 0, newLevel);
-      }
-    }
-  }
-})(); 
+// Create and export the XP spend manager instance
+const xpSpendManager = new XPSpendManager();
 
-export function parseDots(dotsString){
-  const clean = dotsString.replace(/[()]/g,'');
-  const variable = /[\+\-]/.test(clean);
-  const max = (clean.match(/•/g)||[]).length;
-  return { variable, max };
-} 
+// Add to window for global access
+window.xpSpendManager = xpSpendManager;
 
-// Helper to calculate Merit/Background XP cost based on dots notation rules
-function calcMeritBackgroundCost(dotsString, currentLevel, desiredLevel){
-  const info = TraitManagerUtils.parseDotsNotation(dotsString||'•');
-  // If repeatable ("+" notation)
-  if(info.canRepeat){
-    const baseDots = info.min || 1; // cost chunk size
-    return (desiredLevel - currentLevel) * baseDots * 3;
-  }
-  // Choice levels ("or" notation)
-  if(info.hasOr){
-    const sorted=[...info.orValues].sort((a,b)=>a-b);
-    let cost=0;
-    for(const lvl of sorted){
-      if(lvl>currentLevel && lvl<=desiredLevel){ cost += lvl*3; }
-    }
-    return cost;
-  }
-  // Range with dash "-" => escalating cost, each level n costs 3*n
-  if(info.min !== info.max){
-    let cost = 0;
-    for(let lvl=currentLevel+1; lvl<=desiredLevel; lvl++) cost += lvl*3;
-    return cost;
-  }
-  // Fixed level
-  return currentLevel>0 ? 0 : info.max*3;
-} 
+// Remove ES6 export - use traditional script loading
+// export default xpSpendManager; 

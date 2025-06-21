@@ -1,4 +1,4 @@
-export const tzimisce = {
+const tzimisce = {
   name: "Tzimisce",
   nicknames: ["Dragons", "The Old Clan", "Voivodes", "Stokers"],
   disciplines: ["Animalism", "Dominate", "Protean"],
@@ -77,4 +77,5 @@ export const tzimisce = {
       challenges: "A rare group they are at odds with the distrust the Tower has for their greed and the Tzimisce question if their personal investment will yield returns."
     }
   }
-}; 
+};
+window.tzimisce = tzimisce; 

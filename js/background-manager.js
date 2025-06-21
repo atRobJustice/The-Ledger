@@ -1,20 +1,77 @@
-// Background and Background Flaw Manager
-import { backgrounds } from './references/backgrounds.js';
-import { TraitManagerUtils } from './manager-utils.js';
+// Background and Background Flaw Manager with Component Architecture Integration
+const backgroundManagerBackgrounds = window.backgrounds;
+const backgroundTraitUtils = window.TraitManagerUtils;
 
 class BackgroundManager {
     constructor() {
         this.selectedBackgrounds = new Map(); // backgroundKey -> { category: string, level: number, instances: Array }
         this.selectedBackgroundFlaws = new Map(); // flawKey -> { category: string, level: number, instances: Array }
-        this.availableCategories = Object.keys(backgrounds);
-        this.init();
+        this.availableCategories = Object.keys(backgroundManagerBackgrounds);
+        this.eventListeners = new Map();
+        this.isComponentMode = false;
+        this.parentComponent = null;
     }
 
+    /**
+     * Set component mode and parent component
+     */
+    setComponentMode(parentComponent) {
+        this.isComponentMode = true;
+        this.parentComponent = parentComponent;
+        console.log('BackgroundManager: Component mode enabled');
+    }
+
+    /**
+     * Initialize the manager
+     */
     init() {
         this.renderBackgroundManager();
         this.renderBackgroundFlawManager();
         this.bindEvents();
         this.initializeTooltips();
+    }
+
+    /**
+     * Event handling methods
+     */
+    on(event, handler) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(handler);
+    }
+
+    off(event, handler) {
+        if (this.eventListeners.has(event)) {
+            const handlers = this.eventListeners.get(event);
+            const index = handlers.indexOf(handler);
+            if (index > -1) {
+                handlers.splice(index, 1);
+            }
+        }
+    }
+
+    emit(event, data) {
+        // Emit to internal listeners
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(handler => {
+                try {
+                    handler(data);
+                } catch (err) {
+                    console.error(`Error in background manager event handler for ${event}:`, err);
+                }
+            });
+        }
+
+        // Emit to parent component if in component mode
+        if (this.isComponentMode && this.parentComponent) {
+            this.parentComponent.emit(event, data);
+        }
+
+        // Emit to document for legacy compatibility
+        document.dispatchEvent(new CustomEvent(`background${event.charAt(0).toUpperCase() + event.slice(1)}`, {
+            detail: { ...data, source: 'BackgroundManager' }
+        }));
     }
 
     renderBackgroundManager() {
@@ -88,32 +145,32 @@ class BackgroundManager {
     getCategoryOptions() {
         return this.availableCategories
             .map(categoryKey => {
-                const category = backgrounds[categoryKey];
+                const category = backgroundManagerBackgrounds[categoryKey];
                 return `<option value="${categoryKey}">${category.name}</option>`;
             })
             .join('');
     }
 
     getTraitOptions(categoryKey, type, excludeSelected = true) {
-        const category = backgrounds[categoryKey];
+        const category = backgroundManagerBackgrounds[categoryKey];
         const traitsKey = type === 'background' ? 'merits' : 'flaws';
         if (!category || !category[traitsKey]) return '';
 
         const traits = category[traitsKey];
         const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
 
-        return TraitManagerUtils.generateTraitOptions(traits, selectedTraits, categoryKey);
+        return backgroundTraitUtils.generateTraitOptions(traits, selectedTraits, categoryKey);
     }
 
     getSelectedTraitsHtml(type, selectedTraits) {
         const html = [];
         
         selectedTraits.forEach((traitData, traitKey) => {
-            const category = backgrounds[traitData.category];
+            const category = backgroundManagerBackgrounds[traitData.category];
             const traitsKey = type === 'background' ? 'merits' : 'flaws';
             const trait = category[traitsKey][traitKey];
-            const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-            const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+            const displayName = trait.name || backgroundTraitUtils.camelToTitle(traitKey);
+            const dotsInfo = backgroundTraitUtils.parseDotsNotation(trait.dots);
             const instances = traitData.instances || [{ level: traitData.level }];
             
             instances.forEach((instance, instanceIndex) => {
@@ -145,7 +202,7 @@ class BackgroundManager {
     }
 
     renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo) {
-        const { maxDots, traitTypeClass, tooltipText } = TraitManagerUtils.getDotsMeta(dotsInfo, 'background');
+        const { maxDots, traitTypeClass, tooltipText } = backgroundTraitUtils.getDotsMeta(dotsInfo, 'background');
         
         return `
             <div class="dots" 
@@ -157,7 +214,7 @@ class BackgroundManager {
                  data-bs-toggle="tooltip" 
                  data-bs-placement="top" 
                  title="${tooltipText}">
-                ${TraitManagerUtils.createDots(instance.level, maxDots)}
+                ${backgroundTraitUtils.createDots(instance.level, maxDots)}
             </div>
         `;
     }
@@ -165,7 +222,7 @@ class BackgroundManager {
     bindEvents() {
         // Category selection events
         $(document).on('change', '#backgroundCategorySelect, #backgroundFlawCategorySelect', (e) => {
-            const $select = $(e.currentTarget);
+            const $select = $(e.target);
             const categoryKey = $select.val();
             const isBackgroundFlaw = $select.attr('id') === 'backgroundFlawCategorySelect';
             const type = isBackgroundFlaw ? 'backgroundFlaw' : 'background';
@@ -179,7 +236,7 @@ class BackgroundManager {
 
         // Trait selection events (to enable Add button)
         $(document).on('change', '#backgroundSelect, #backgroundFlawSelect', (e) => {
-            const $select = $(e.currentTarget);
+            const $select = $(e.target);
             const traitKey = $select.val();
             const isBackgroundFlaw = $select.attr('id') === 'backgroundFlawSelect';
             const addBtnId = isBackgroundFlaw ? '#addBackgroundFlawBtn' : '#addBackgroundBtn';
@@ -190,7 +247,7 @@ class BackgroundManager {
         // Add trait events
         $(document).on('click', '#addBackgroundBtn, #addBackgroundFlawBtn', (e) => {
             e.preventDefault();
-            const $btn = $(e.currentTarget);
+            const $btn = $(e.target);
             const isBackgroundFlaw = $btn.attr('id') === 'addBackgroundFlawBtn';
             const type = isBackgroundFlaw ? 'backgroundFlaw' : 'background';
             const selectId = isBackgroundFlaw ? '#backgroundFlawSelect' : '#backgroundSelect';
@@ -207,106 +264,96 @@ class BackgroundManager {
         // Remove trait events
         $(document).on('click', '.remove-trait-btn', (e) => {
             e.preventDefault();
-            const $btn = $(e.currentTarget);
+            const $btn = $(e.target).closest('.remove-trait-btn');
             const type = $btn.data('trait-type');
             const traitKey = $btn.data('trait-key');
             const instanceIndex = $btn.data('instance');
-            
-            if (traitKey && type) {
-                this.removeTrait(type, traitKey, instanceIndex);
-            }
+            this.removeTrait(type, traitKey, instanceIndex);
         });
 
-        // Dot click events for variable traits
-        $(document).on('click', '.backgrounds-container .dot, .background-flaws-container .dot', (e) => {
+        // Dot click events
+        $(document).on('click', '.dots .dot', (e) => {
             e.preventDefault();
-            this.handleDotClick($(e.currentTarget));
+            const $dot = $(e.target);
+            this.handleDotClick($dot);
         });
     }
 
     updateTraitOptions(categoryKey, type) {
-        const selectId = type === 'background' ? '#backgroundSelect' : '#backgroundFlawSelect';
-        const addBtnId = type === 'background' ? '#addBackgroundBtn' : '#addBackgroundFlawBtn';
-        
+        const selectId = type === 'backgroundFlaw' ? '#backgroundFlawSelect' : '#backgroundSelect';
         const $select = $(selectId);
-        const $addBtn = $(addBtnId);
-        
         const options = this.getTraitOptions(categoryKey, type);
         
         if (options) {
-            $select.html(`<option value="">Select ${type === 'background' ? 'Background' : 'Background Flaw'}</option>${options}`);
-            $select.prop('disabled', false);
+            $select.prop('disabled', false).html(`
+                <option value="">Select ${type === 'backgroundFlaw' ? 'Background Flaw' : 'Background'}</option>
+                ${options}
+            `);
         } else {
-            $select.html(`<option value="">No ${type === 'background' ? 'backgrounds' : 'background flaws'} available</option>`);
-            $select.prop('disabled', true);
+            $select.prop('disabled', true).html(`<option value="">No ${type === 'backgroundFlaw' ? 'background flaws' : 'backgrounds'} available in this category</option>`);
         }
         
-        $addBtn.prop('disabled', true);
+        // Disable add button
+        const addBtnId = type === 'backgroundFlaw' ? '#addBackgroundFlawBtn' : '#addBackgroundBtn';
+        $(addBtnId).prop('disabled', true);
     }
 
     clearTraitOptions(type) {
-        const selectId = type === 'background' ? '#backgroundSelect' : '#backgroundFlawSelect';
-        const addBtnId = type === 'background' ? '#addBackgroundBtn' : '#addBackgroundFlawBtn';
+        const selectId = type === 'backgroundFlaw' ? '#backgroundFlawSelect' : '#backgroundFlawSelect';
+        const addBtnId = type === 'backgroundFlaw' ? '#addBackgroundFlawBtn' : '#addBackgroundBtn';
         
-        const $select = $(selectId);
-        const $addBtn = $(addBtnId);
-        
-        $select.html(`<option value="">Select ${type === 'background' ? 'Background' : 'Background Flaw'}</option>`);
-        $select.prop('disabled', true);
-        
-        $addBtn.prop('disabled', true);
+        $(selectId).prop('disabled', true).html(`<option value="">Select ${type === 'backgroundFlaw' ? 'Background Flaw' : 'Background'}</option>`);
+        $(addBtnId).prop('disabled', true);
     }
 
     addTrait(type, traitKey, categoryKey) {
         const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
-        const category = backgrounds[categoryKey];
-        const traitsKey = type === 'background' ? 'merits' : 'flaws';
-        const trait = category[traitsKey][traitKey];
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
-        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
         
-        if (dotsInfo.canRepeat) {
-            // Handle repeatable traits (with +)
-            if (selectedTraits.has(traitKey)) {
-                // Add another instance
-                const traitData = selectedTraits.get(traitKey);
-                traitData.instances.push({ level: dotsInfo.min });
-            } else {
-                // First instance
-                selectedTraits.set(traitKey, {
-                    category: categoryKey,
-                    level: dotsInfo.min,
-                    instances: [{ level: dotsInfo.min }]
-                });
-            }
+        if (selectedTraits.has(traitKey)) {
+            // Check if we can add another instance
+            const traitData = selectedTraits.get(traitKey);
+            const category = backgroundManagerBackgrounds[categoryKey];
+            const traitsKey = type === 'background' ? 'merits' : 'flaws';
+            const trait = category[traitsKey][traitKey];
+            const dotsInfo = backgroundTraitUtils.parseDotsNotation(trait.dots);
             
-            const instanceCount = selectedTraits.get(traitKey).instances.length;
-            TraitManagerUtils.showFeedback(`Added ${displayName} (Instance #${instanceCount})`, 'success');
-        } else {
-            // Handle non-repeatable traits
-            if (selectedTraits.has(traitKey)) {
-                TraitManagerUtils.showFeedback(`${displayName} is already selected`, 'warning');
+            if (dotsInfo.allowMultiple) {
+                // Add another instance
+                if (!traitData.instances) {
+                    traitData.instances = [{ level: traitData.level }];
+                }
+                traitData.instances.push({ level: 1 });
+            } else {
+                this.showFeedback(`${type === 'background' ? 'Background' : 'Background Flaw'} already selected`, 'warning');
                 return;
             }
-            
-            let initialLevel;
-            if (dotsInfo.hasOr) {
-                // For "or" traits, start with the minimum value
-                initialLevel = dotsInfo.orValues[0];
-            } else {
-                initialLevel = dotsInfo.min;
-            }
+        } else {
+            // Add new trait
+            const category = backgroundManagerBackgrounds[categoryKey];
+            const traitsKey = type === 'background' ? 'merits' : 'flaws';
+            const trait = category[traitsKey][traitKey];
+            const dotsInfo = backgroundTraitUtils.parseDotsNotation(trait.dots);
             
             selectedTraits.set(traitKey, {
                 category: categoryKey,
-                level: initialLevel,
-                instances: [{ level: initialLevel }]
+                level: 1,
+                instances: dotsInfo.allowMultiple ? [{ level: 1 }] : undefined
             });
-            
-            TraitManagerUtils.showFeedback(`Added ${displayName}`, 'success');
         }
-        
+
         this.updateDisplay();
+        
+        // Reset dropdowns
+        const categorySelectId = type === 'backgroundFlaw' ? '#backgroundFlawCategorySelect' : '#backgroundCategorySelect';
+        $(categorySelectId).val('').trigger('change');
+        
+        // Emit trait added event
+        this.emit(`${type}Added`, {
+            traitKey,
+            categoryKey,
+            level: 1,
+            type
+        });
     }
 
     removeTrait(type, traitKey, instanceIndex = null) {
@@ -317,177 +364,138 @@ class BackgroundManager {
         }
 
         const traitData = selectedTraits.get(traitKey);
-        const category = backgrounds[traitData.category];
-        const traitsKey = type === 'background' ? 'merits' : 'flaws';
-        const trait = category[traitsKey][traitKey];
-        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
-
-        if (dotsInfo.canRepeat && instanceIndex !== null && traitData.instances.length > 1) {
-            // Remove specific instance of repeatable trait
+        
+        if (instanceIndex !== null && traitData.instances) {
+            // Remove specific instance
             traitData.instances.splice(instanceIndex, 1);
-            TraitManagerUtils.showFeedback(`Removed ${displayName} instance`, 'info');
+            
+            if (traitData.instances.length === 0) {
+                selectedTraits.delete(traitKey);
+            }
         } else {
             // Remove entire trait
             selectedTraits.delete(traitKey);
-            TraitManagerUtils.showFeedback(`Removed ${displayName}`, 'info');
         }
-        
+
         this.updateDisplay();
+        
+        // Emit trait removed event
+        this.emit(`${type}Removed`, {
+            traitKey,
+            instanceIndex,
+            type
+        });
     }
 
     handleDotClick($dot) {
-        const $dotsContainer = $dot.parent();
-        const currentValue = parseInt($dotsContainer.data('value') || '0');
-        const clickedValue = parseInt($dot.data('value'));
-        const traitType = $dotsContainer.data('trait-type-class');
-        
-        // Determine trait type, key, and instance
-        const traitKey = $dotsContainer.data('trait-key');
-        const type = $dotsContainer.data('trait-category');
-        const instanceIndex = parseInt($dotsContainer.data('instance') || '0');
-        
-        if (!traitKey) return;
+        const $dots = $dot.closest('.dots');
+        const traitKey = $dots.data('trait-key');
+        const type = $dots.data('trait-category');
+        const instanceIndex = $dots.data('instance');
+        const currentLevel = parseInt($dots.data('value'));
+        const clickedIndex = $dot.index();
+        const newLevel = clickedIndex + 1;
 
-        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
-        const traitData = selectedTraits.get(traitKey);
-        if (!traitData) return;
-
-        const category = backgrounds[traitData.category];
-        const traitsKey = type === 'background' ? 'merits' : 'flaws';
-        const trait = category[traitsKey][traitKey];
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
-
-        let newValue;
-        
-        if (traitType === 'fixed') {
-            // Fixed traits can't be changed - they're always at their fixed value
+        if (newLevel === currentLevel) {
+            // Same level clicked, do nothing
             return;
-        } else if (traitType === 'or') {
-            // For "or" traits, only allow the specific values from orValues
-            if (dotsInfo.orValues.includes(clickedValue)) {
-                newValue = clickedValue;
-            } else {
-                // If clicked value is not valid, find the closest valid value
-                const validValues = dotsInfo.orValues.sort((a, b) => a - b);
-                if (clickedValue < validValues[0]) {
-                    newValue = currentValue > 0 ? 0 : validValues[0]; // Toggle off or set to first valid
-                } else {
-                    // Find the next valid value
-                    const nextValid = validValues.find(v => v >= clickedValue);
-                    newValue = nextValid || validValues[validValues.length - 1];
-                }
-            }
-        } else {
-            // For range and repeat traits, use standard dot logic
-            // If clicking the last filled dot, decrease by 1 or turn off
-            if (clickedValue === currentValue) {
-                newValue = Math.max(clickedValue - 1, 0);
-                // But don't go below minimum unless turning off completely
-                if (newValue > 0 && newValue < dotsInfo.min) {
-                    newValue = 0;
-                }
-            }
-            // If clicking an empty dot, increase to that value
-            else if (clickedValue > currentValue) {
-                newValue = Math.min(clickedValue, dotsInfo.max);
-                // But don't allow values below minimum (jump to minimum)
-                if (newValue > 0 && newValue < dotsInfo.min) {
-                    newValue = dotsInfo.min;
-                }
-            }
-            // If clicking a filled dot (decreasing), set to that value
-            else {
-                newValue = Math.max(clickedValue, 0);
-                // But don't allow values below minimum unless turning off
-                if (newValue > 0 && newValue < dotsInfo.min) {
-                    newValue = 0;
-                }
-            }
         }
 
-        // Update the trait instance level
-        this.updateTraitInstanceLevel(type, traitKey, instanceIndex, newValue);
+        this.updateTraitInstanceLevel(type, traitKey, instanceIndex, newLevel);
     }
 
     updateTraitInstanceLevel(type, traitKey, instanceIndex, newLevel) {
         const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         const traitData = selectedTraits.get(traitKey);
-        if (!traitData) return;
-
-        const category = backgrounds[traitData.category];
-        const traitsKey = type === 'background' ? 'merits' : 'flaws';
-        const trait = category[traitsKey][traitKey];
-        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-
-        // Update the specific instance
-        if (traitData.instances && traitData.instances[instanceIndex]) {
-            traitData.instances[instanceIndex].level = newLevel;
-            
-            // Update main level for backward compatibility
-            traitData.level = newLevel;
-            
-            this.updateTraitDisplay(type, traitKey, instanceIndex);
-            
-            const instanceSuffix = traitData.instances.length > 1 ? ` #${instanceIndex + 1}` : '';
-            TraitManagerUtils.showFeedback(`${displayName}${instanceSuffix} level set to ${newLevel}`, 'info');
+        
+        if (!traitData) {
+            return;
         }
+
+        const oldLevel = instanceIndex !== null && traitData.instances ? 
+            traitData.instances[instanceIndex].level : traitData.level;
+
+        // Update the level
+        if (instanceIndex !== null && traitData.instances) {
+            traitData.instances[instanceIndex].level = newLevel;
+        } else {
+            traitData.level = newLevel;
+        }
+
+        this.updateTraitDisplay(type, traitKey, instanceIndex);
+        
+        // Emit trait level changed event
+        this.emit(`${type}LevelChanged`, {
+            traitKey,
+            instanceIndex,
+            oldLevel,
+            newLevel,
+            type
+        });
     }
 
     updateTraitDisplay(type, traitKey, instanceIndex = null) {
+        const $traitItem = $(`.${type}-item[data-${type}="${traitKey}"]${instanceIndex !== null ? `[data-instance="${instanceIndex}"]` : ''}`);
+        if ($traitItem.length === 0) {
+            return;
+        }
+
         const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         const traitData = selectedTraits.get(traitKey);
-        if (!traitData) return;
-
-        if (instanceIndex !== null) {
-            // Update specific instance
-            const instance = traitData.instances[instanceIndex];
-            if (!instance) return;
-
-            const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${instanceIndex}"]`);
-            TraitManagerUtils.refreshDots($dots, instance.level);
-            $dots.attr('data-value', instance.level);
-        } else {
-            // Update all instances
-            traitData.instances.forEach((instance, idx) => {
-                const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${idx}"]`);
-                TraitManagerUtils.refreshDots($dots, instance.level);
-                $dots.attr('data-value', instance.level);
-            });
+        
+        if (!traitData) {
+            return;
         }
+
+        const category = backgroundManagerBackgrounds[traitData.category];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        const trait = category[traitsKey][traitKey];
+        const dotsInfo = backgroundTraitUtils.parseDotsNotation(trait.dots);
+        const currentLevel = instanceIndex !== null && traitData.instances ? 
+            traitData.instances[instanceIndex].level : traitData.level;
+
+        // Update dots
+        const $dots = $traitItem.find('.dots');
+        $dots.attr('data-value', currentLevel);
+        $dots.html(backgroundTraitUtils.createDots(currentLevel, dotsInfo.maxDots));
     }
 
     updateDisplay() {
-        // Update background display
-        this.updateTraitTypeDisplay('background');
-        
-        // Update background flaw display
-        this.updateTraitTypeDisplay('backgroundFlaw');
-        
-        // Initialize tooltips for the new elements
+        this.renderBackgroundManager();
+        this.renderBackgroundFlawManager();
         this.initializeTooltips();
+        
+        // Emit display updated event
+        this.emit('displayUpdated', {
+            backgrounds: this.exportBackgroundsAndFlaws().backgrounds,
+            backgroundFlaws: this.exportBackgroundsAndFlaws().backgroundFlaws
+        });
     }
 
     updateTraitTypeDisplay(type) {
         const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
-        const containerClass = type === 'background' ? '.selected-backgrounds' : '.selected-background-flaws';
+        const container = type === 'background' ? '.backgrounds-container' : '.background-flaws-container';
         
-        $(containerClass).html(
+        $(container).find(`.selected-${type === 'background' ? 'backgrounds' : 'background-flaws'}`).html(
+            selectedTraits.size === 0 ? 
+                `<div class="fst-italic">No ${type === 'background' ? 'backgrounds' : 'background flaws'} selected</div>` : 
                 this.getSelectedTraitsHtml(type, selectedTraits)
         );
+        
+        this.initializeTooltips();
     }
 
     initializeTooltips() {
-        TraitManagerUtils.initTooltips(['.backgrounds-container','.background-flaws-container']);
+        // Reinitialize tooltips for new elements
+        $('[data-bs-toggle="tooltip"]').tooltip();
     }
 
-    // Public methods for external access
     getSelectedBackgrounds() {
-        return TraitManagerUtils.mapToPlainObject(this.selectedBackgrounds);
+        return Array.from(this.selectedBackgrounds.keys());
     }
 
     getSelectedBackgroundFlaws() {
-        return TraitManagerUtils.mapToPlainObject(this.selectedBackgroundFlaws);
+        return Array.from(this.selectedBackgroundFlaws.keys());
     }
 
     getBackgroundLevel(backgroundKey) {
@@ -500,54 +508,71 @@ class BackgroundManager {
         return flawData ? flawData.level : 0;
     }
 
-    // Calculate total background/flaw points
     getTotalBackgroundPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedBackgrounds);
+        return this.calculateTotalPoints(this.selectedBackgrounds, 'background');
     }
 
     getTotalBackgroundFlawPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedBackgroundFlaws);
+        return this.calculateTotalPoints(this.selectedBackgroundFlaws, 'backgroundFlaw');
     }
 
-    // Load backgrounds and flaws from data (for character loading)
+    calculateTotalPoints(selectedTraits, type) {
+        let total = 0;
+        
+        selectedTraits.forEach((traitData, traitKey) => {
+            const category = backgroundManagerBackgrounds[traitData.category];
+            const traitsKey = type === 'background' ? 'merits' : 'flaws';
+            const trait = category[traitsKey][traitKey];
+            const dotsInfo = backgroundTraitUtils.parseDotsNotation(trait.dots);
+            
+            if (traitData.instances) {
+                traitData.instances.forEach(instance => {
+                    total += instance.level * dotsInfo.pointCost;
+                });
+            } else {
+                total += traitData.level * dotsInfo.pointCost;
+            }
+        });
+        
+        return total;
+    }
+
     loadBackgroundsAndFlaws(backgroundsData, flawsData) {
         this.selectedBackgrounds.clear();
         this.selectedBackgroundFlaws.clear();
         
         if (backgroundsData && typeof backgroundsData === 'object') {
             Object.entries(backgroundsData).forEach(([backgroundKey, data]) => {
-                // Find the category for this background
-                const category = this.findTraitCategory(backgroundKey, 'background');
-                if (category) {
-                    this.selectedBackgrounds.set(backgroundKey, {
-                        category: category,
-                        level: data.level || 1,
-                        instances: data.instances || [{ level: data.level || 1 }]
-                    });
-                }
+                this.selectedBackgrounds.set(backgroundKey, {
+                    category: data.category || this.findTraitCategory(backgroundKey, 'background'),
+                    level: data.level || 1,
+                    instances: data.instances || undefined
+                });
             });
         }
         
         if (flawsData && typeof flawsData === 'object') {
             Object.entries(flawsData).forEach(([flawKey, data]) => {
-                // Find the category for this flaw
-                const category = this.findTraitCategory(flawKey, 'backgroundFlaw');
-                if (category) {
-                    this.selectedBackgroundFlaws.set(flawKey, {
-                        category: category,
-                        level: data.level || 1,
-                        instances: data.instances || [{ level: data.level || 1 }]
-                    });
-                }
+                this.selectedBackgroundFlaws.set(flawKey, {
+                    category: data.category || this.findTraitCategory(flawKey, 'backgroundFlaw'),
+                    level: data.level || 1,
+                    instances: data.instances || undefined
+                });
             });
         }
         
         this.updateDisplay();
+        
+        // Emit traits loaded event
+        this.emit('traitsLoaded', {
+            backgrounds: this.exportBackgroundsAndFlaws().backgrounds,
+            backgroundFlaws: this.exportBackgroundsAndFlaws().backgroundFlaws
+        });
     }
 
     findTraitCategory(traitKey, type) {
-        const traitsKey = type === 'background' ? 'merits' : 'flaws';
-        for (const [categoryKey, category] of Object.entries(backgrounds)) {
+        for (const [categoryKey, category] of Object.entries(backgroundManagerBackgrounds)) {
+            const traitsKey = type === 'background' ? 'merits' : 'flaws';
             if (category[traitsKey] && category[traitsKey][traitKey]) {
                 return categoryKey;
             }
@@ -555,21 +580,115 @@ class BackgroundManager {
         return null;
     }
 
-    // Export backgrounds and flaws data (for character saving)
     exportBackgroundsAndFlaws() {
-        return {
-            backgrounds: this.getSelectedBackgrounds(),
-            backgroundFlaws: this.getSelectedBackgroundFlaws()
+        const exported = {
+            backgrounds: {},
+            backgroundFlaws: {}
         };
+        
+        this.selectedBackgrounds.forEach((data, key) => {
+            exported.backgrounds[key] = {
+                category: data.category,
+                level: data.level,
+                instances: data.instances
+            };
+        });
+        
+        this.selectedBackgroundFlaws.forEach((data, key) => {
+            exported.backgroundFlaws[key] = {
+                category: data.category,
+                level: data.level,
+                instances: data.instances
+            };
+        });
+        
+        return exported;
+    }
+
+    /**
+     * Component integration methods
+     */
+    getData() {
+        return this.exportBackgroundsAndFlaws();
+    }
+
+    update(data) {
+        if (data.backgrounds || data.backgroundFlaws) {
+            this.loadBackgroundsAndFlaws(data.backgrounds, data.backgroundFlaws);
+        }
+    }
+
+    clear() {
+        this.selectedBackgrounds.clear();
+        this.selectedBackgroundFlaws.clear();
+        this.updateDisplay();
+        
+        // Emit traits cleared event
+        this.emit('traitsCleared');
+    }
+
+    setLockState(isLocked) {
+        const $backgroundContainer = $('.backgrounds-container');
+        const $backgroundFlawContainer = $('.background-flaws-container');
+        
+        const $backgroundAddBtn = $backgroundContainer.find('#addBackgroundBtn');
+        const $backgroundFlawAddBtn = $backgroundFlawContainer.find('#addBackgroundFlawBtn');
+        const $removeBtns = $('.remove-trait-btn');
+        const $dots = $('.dots');
+
+        if (isLocked) {
+            $backgroundAddBtn.prop('disabled', true);
+            $backgroundFlawAddBtn.prop('disabled', true);
+            $removeBtns.prop('disabled', true);
+            $dots.addClass('locked');
+        } else {
+            $backgroundAddBtn.prop('disabled', false);
+            $backgroundFlawAddBtn.prop('disabled', false);
+            $removeBtns.prop('disabled', false);
+            $dots.removeClass('locked');
+        }
+    }
+
+    showFeedback(message, type = 'info') {
+        if (window.toastManager) {
+            window.toastManager.show(message, type, 'Background Manager');
+        } else {
+            console.log(`[BackgroundManager] ${type.toUpperCase()}: ${message}`);
+        }
+    }
+
+    /**
+     * Ensure required containers exist in the DOM
+     */
+    static ensureContainer() {
+        if ($('.backgrounds-container').length === 0) {
+            const container = document.createElement('div');
+            container.className = 'backgrounds-container';
+            (document.getElementById('app') || document.body).appendChild(container);
+        }
+        if ($('.background-flaws-container').length === 0) {
+            const container = document.createElement('div');
+            container.className = 'background-flaws-container';
+            (document.getElementById('app') || document.body).appendChild(container);
+        }
+    }
+
+    /**
+     * Initialize manager after DOM is ready and containers exist
+     */
+    static initWhenReady() {
+        $(function() {
+            BackgroundManager.ensureContainer();
+            if (!window.backgroundManager) {
+                window.backgroundManager = new BackgroundManager();
+            }
+            window.backgroundManager.init();
+        });
     }
 }
 
-// Initialize the background manager when the DOM is ready
-$(document).ready(function() {
-    // Only initialize if the containers exist
-    if ($('.backgrounds-container').length > 0 || $('.background-flaws-container').length > 0) {
-        window.backgroundManager = new BackgroundManager();
-    }
-});
+// Create and export the background manager instance
+const backgroundManager = new BackgroundManager();
 
-export { BackgroundManager };
+// Add to window for global access
+window.backgroundManager = backgroundManager;

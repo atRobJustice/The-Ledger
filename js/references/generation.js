@@ -1,4 +1,4 @@
-export const generation = {
+const generation = {
   overview: {
     description: "Generation is the distance between a kindred and the first vampire, following their Embrace a newly formed vampire is one number higher than their sire. The only act which can lower this is known as diablerie.",
     note: "Generation, however, does not dictate the age of a vampire, as a 10th Generation vampire could have been embraced hundreds of years ago and in reverse, a low Generation vampire could have embraced a fledgling in the last year."
@@ -116,4 +116,5 @@ export const generation = {
     if (generation >= 14 && generation <= 16) return this.generationTiers.fourteenthThroughSixteenth;
     return null;
   }
-}; 
+};
+window.generation = generation; 

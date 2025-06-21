@@ -1,4 +1,4 @@
-export const sabbat = {
+const sabbat = {
   name: "Sabbat",
   description: "The Sabbat are monstrous creatures; vampire supremacists who see themselves above mortals and do not care for them. They are a sect that evokes fear at its mention with their ideologies being met with loathing. The Sword of Caine wages a war against the Antediluvians, a Gehenna War, seeking to claim revenge for Caine and the ancient betrayal done to him by his childer. Their goal is to destroy the Antediluvians and subject the mortal world to a world with vampires at the top.",
   source: ["Vampire: The Masquerade Sabbat: The Black Hand"],
@@ -171,4 +171,5 @@ export const sabbat = {
       }
     }
   }
-}; 
+};
+window.sabbat = sabbat; 

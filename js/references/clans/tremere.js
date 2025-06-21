@@ -1,4 +1,4 @@
-export const tremere = {
+const tremere = {
   name: "Tremere",
   nicknames: ["The Broken Clan", "Usurpers", "Warlocks", "Hermetics", "Thaumaturges", "Transgressors", "Blood Mages"],
   disciplines: ["Auspex", "Dominate", "Blood Sorcery"],
@@ -88,4 +88,5 @@ export const tremere = {
     "Praepositor",
     "The Pyramid"
   ]
-}; 
+};
+window.tremere = tremere; 

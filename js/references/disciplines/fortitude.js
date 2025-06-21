@@ -1,4 +1,5 @@
-export const fortitude = {
+// Fortitude Discipline Data
+const fortitude = {
   name: "Fortitude",
   nicknames: ["Bricking Up", "Stone Flesh", "Resistentia"],
   affinity: ["Gangrel", "Hecata", "Salubri", "Ventrue"],
@@ -264,4 +265,5 @@ export const fortitude = {
       source: "Vampire: The Masquerade Cults of the Blood Gods, page 206"
     }
   ]
-}; 
+};
+window.fortitude = fortitude; 

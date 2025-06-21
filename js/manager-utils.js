@@ -179,13 +179,13 @@ const toastManager = new ToastManager();
 
 // Expose globally for non-module scripts
 if (typeof window !== 'undefined') {
-    window.toastManager = toastManager;
+    if (!window.toastManager) window.toastManager = toastManager;
 }
 
-// Export the toast manager for use in other modules
-export { toastManager };
+// Remove ES6 export - use traditional script loading
+// export { toastManager };
 
-export class TraitManagerUtils {
+class TraitManagerUtils {
     /**
      * Create dots HTML for displaying trait levels
      * @param {number} value - Current value
@@ -565,3 +565,6 @@ export class TraitManagerUtils {
             .join('');
     }
 }
+
+// Assign to window
+window.TraitManagerUtils = TraitManagerUtils;

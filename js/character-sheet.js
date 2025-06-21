@@ -1,4 +1,5 @@
-import { LockManager } from './lock-manager.js';
+// Use window reference instead
+const charSheetLockManager = window.LockManager;
 
 // Inject styles for visual impairment indication
 (function(){
@@ -29,7 +30,7 @@ function createDots(value, maxDots = 5) {
         });
         
         $dot.on('click', function() {
-            if (LockManager && LockManager.isLocked && LockManager.isLocked()) {
+            if (charSheetLockManager && charSheetLockManager.isLocked && charSheetLockManager.isLocked()) {
                 // Allow edits for hunger dots even when sheet is locked
                 if (!$(this).closest('.hunger-dots').length) {
                     return;
@@ -954,7 +955,7 @@ async function saveCharacter() {
     const character = {
         // ... existing character properties ...
         convictions: saveConvictionsAndTouchstones(),
-        locked: LockManager.isLocked(),
+        locked: charSheetLockManager.isLocked(),
         // ... rest of existing properties ...
     };
     // ... rest of existing save logic ...
@@ -968,6 +969,6 @@ async function loadCharacter(characterData) {
     }
 
     // Initialize lock state after everything is rendered
-    LockManager.init(characterData.locked ?? false);
+    charSheetLockManager.init(characterData.locked ?? false);
     // ... rest of existing loading logic ...
 }

@@ -1,4 +1,4 @@
-export const hecata = {
+const hecata = {
   name: "Hecata",
   nicknames: ["The Clan of Death", "Necromancers", "Graverobbers", "The Family", "Stiffs", "Corpses", "Devil-Kindred", "Lazarenes"],
   disciplines: ["Auspex", "Fortitude", "Oblivion"],
@@ -162,4 +162,5 @@ export const hecata = {
     "1444 Chamber",
     "Descendant of Roger de Camden"
   ]
-}; 
+};
+window.hecata = hecata; 

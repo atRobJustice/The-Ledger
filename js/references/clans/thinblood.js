@@ -1,4 +1,4 @@
-export const thinblood = {
+const thinblood = {
   name: "Thin-Blood",
   nicknames: ["Duskborn", "Mercurians", "The Young Ones", "Run-Off", "Chameleons", "Abortions"],
   disciplines: ["Thin-Blood Alchemy"],
@@ -78,4 +78,5 @@ export const thinblood = {
     method: "A task accomplished by a Tremere tattoo artist or even scorched into their skin using the sun.",
     consequences: "Even Anarch and Autarkis will think twice before mingling with a branded thin-blood."
   }
-}; 
+};
+window.thinblood = thinblood; 

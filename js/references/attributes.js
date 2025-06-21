@@ -1,4 +1,4 @@
-export const attributes = {
+const attributes = {
   overview: {
     description: "Attributes represent the characters innate abilities, with 1 being relatively bad, 2 being average and up to 5 which represents peak ability. The Attributes are divided into three separate categories; Physical, Social and Mental.",
     distribution: "When building the sheet; the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots with this being the vampire's best trait."
@@ -359,4 +359,5 @@ export const attributes = {
       }
     }
   }
-}; 
+};
+window.attributes = attributes; 

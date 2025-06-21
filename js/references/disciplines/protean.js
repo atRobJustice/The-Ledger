@@ -1,4 +1,5 @@
-export const protean = {
+// Protean Discipline Data
+const protean = {
   name: "Protean",
   nicknames: ["Morphing", "Shapeshifting", "Mutatio"],
   affinity: ["Gangrel", "The Ministry", "Tzimisce"],
@@ -246,4 +247,5 @@ export const protean = {
       source: "Vampire: The Masquerade Anarch, page 185"
     }
   ]
-}; 
+};
+window.protean = protean; 
