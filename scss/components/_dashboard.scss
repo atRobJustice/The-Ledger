@@ -1,0 +1,427 @@
+// Dashboard Styles
+// =============================================================================
+
+// Dashboard Header
+.dashboard-header {
+  background: linear-gradient(135deg, var(--accent, #a40000) 0%, #7f1c1c 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-title {
+  font-family: "IM Fell English", serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+
+  .logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+  }
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+// Dashboard Statistics
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: var(--panel-bg, #1a1a1a);
+  border: 1px solid var(--panel-border, #333);
+  border-left: 4px solid var(--accent, #a40000);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent, #a40000);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-muted, #888);
+  font-variant: small-caps;
+  font-size: 0.9rem;
+}
+
+// Character Grid
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.character-card {
+  background-color: var(--panel-bg, #1a1a1a);
+  border: 1px solid var(--panel-border, #333);
+  border-left: 6px solid var(--accent, #a40000);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent, #a40000);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent, #a40000), #7f1c1c);
+  }
+}
+
+.character-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.character-name {
+  font-family: "IM Fell English", serif;
+  font-size: 1.4rem;
+  color: var(--accent, #a40000);
+  margin: 0;
+  font-weight: bold;
+}
+
+.character-system {
+  background-color: var(--accent, #a40000);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-details {
+  margin-bottom: 1rem;
+}
+
+.character-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed var(--panel-border-light, #555);
+  font-size: 0.9rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detail-label {
+  color: var(--text-muted, #888);
+  font-variant: small-caps;
+}
+
+.detail-value {
+  color: var(--text-primary, #d8d0c8);
+  font-weight: 500;
+}
+
+.character-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn-character {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+// Create Character Section
+.create-character-section {
+  background-color: var(--panel-bg, #1a1a1a);
+  border: 2px dashed var(--panel-border, #333);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent, #a40000);
+    background-color: rgba(164, 0, 0, 0.05);
+  }
+}
+
+.create-character-icon {
+  font-size: 3rem;
+  color: var(--accent, #a40000);
+  margin-bottom: 1rem;
+}
+
+.create-character-title {
+  font-family: "IM Fell English", serif;
+  font-size: 1.5rem;
+  color: var(--accent, #a40000);
+  margin-bottom: 0.5rem;
+}
+
+.create-character-subtitle {
+  color: var(--text-muted, #888);
+  margin-bottom: 1.5rem;
+}
+
+// System Cards
+.system-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.system-card {
+  background-color: var(--panel-bg, #1a1a1a);
+  border: 1px solid var(--panel-border, #333);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent, #a40000);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent, #a40000);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &:hover {
+      transform: none;
+      border-color: var(--panel-border, #333);
+      box-shadow: none;
+    }
+
+    &::before {
+      background: var(--panel-border, #333);
+    }
+
+    .system-icon {
+      color: var(--text-muted, #888);
+    }
+
+    .system-name {
+      color: var(--text-muted, #888);
+    }
+
+    .system-description {
+      color: var(--text-muted, #666);
+    }
+  }
+}
+
+.system-icon {
+  font-size: 2.5rem;
+  color: var(--accent, #a40000);
+  margin-bottom: 1rem;
+}
+
+.system-name {
+  font-family: "IM Fell English", serif;
+  font-size: 1.2rem;
+  color: var(--accent, #a40000);
+  margin-bottom: 0.5rem;
+}
+
+.system-description {
+  color: var(--text-muted, #888);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+// Empty State
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted, #888);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  color: var(--panel-border, #333);
+  margin-bottom: 1rem;
+}
+
+.empty-state-title {
+  font-family: "IM Fell English", serif;
+  font-size: 1.5rem;
+  color: var(--text-muted, #888);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+// Settings Modal Styles
+.settings-section {
+  padding: 1rem 0;
+}
+
+.settings-section-title {
+  color: var(--accent, #a40000);
+  font-family: "IM Fell English", serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--panel-border-light, #555);
+  padding-bottom: 0.5rem;
+}
+
+.settings-section-description {
+  color: var(--text-muted, #888);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-pills {
+  .nav-link {
+    color: var(--text-primary, #d8d0c8);
+    background-color: transparent;
+    border: 1px solid var(--panel-border, #333);
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(164, 0, 0, 0.1);
+      border-color: var(--accent, #a40000);
+      color: var(--accent, #a40000);
+    }
+
+    &.active {
+      background-color: var(--accent, #a40000);
+      border-color: var(--accent, #a40000);
+      color: white;
+    }
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.tab-content {
+  border: 1px solid var(--panel-border, #333);
+  border-radius: 6px;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent, #a40000);
+  border-color: var(--accent, #a40000);
+}
+
+.alert {
+  border-left: 4px solid;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &.alert-info {
+    border-left-color: var(--accent, #a40000);
+  }
+
+  &.alert-warning {
+    border-left-color: #ffc107;
+  }
+}
+
+// Utility Classes
+.hidden {
+  display: none !important;
+}
+
+// About Section Logo
+.about-logo {
+  width: 100px;
+  height: 100px;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 0.75rem;
+    }
+  }
+
+  .character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-pills {
+    flex-direction: row !important;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    .nav-link {
+      white-space: nowrap;
+      margin-right: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .tab-content {
+    padding: 1rem;
+  }
+} 

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='icon' href='./assets/favicon.ico' type='image/x-icon'/ >
+		<title>The Ledger</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+	</head>
+    <body class="p-3 m-0">
+        <h1 class="mt-2"><img src="assets/TheLedger.png" alt="The Ledger" class="logo"> The Ledger</h1>
+        
+        <!-- Modern Character Sheet Toolbar -->
+        <nav class="character-toolbar-glass" aria-label="Character Sheet Toolbar">
+            <div class="toolbar-group" aria-label="Dice & Quick Rolls">
+                <button class="toolbar-btn" id="btn-roll" title="Roll Dice" aria-label="Roll Dice"><i class="bi bi-dice-6"></i></button>
+                <button class="toolbar-btn" id="btn-rouse" title="Rouse Check" aria-label="Rouse Check"><i class="bi bi-droplet"></i></button>
+                <button class="toolbar-btn" id="btn-remorse" title="Remorse Check" aria-label="Remorse Check"><i class="bi bi-heart"></i></button>
+                <button class="toolbar-btn" id="btn-frenzy" title="Frenzy Check" aria-label="Frenzy Check"><i class="bi bi-lightning"></i></button>
+                <button class="toolbar-btn" id="btn-wp-reroll" title="Willpower Reroll" aria-label="Willpower Reroll"><i class="bi bi-arrow-clockwise"></i></button>
+                <button class="toolbar-btn" id="btn-mend" title="Mend Damage" aria-label="Mend Damage"><i class="bi bi-plus-circle"></i></button>
+                <button class="toolbar-btn" id="btn-wipe" title="Wipe Overlay" aria-label="Wipe Overlay"><i class="bi bi-eraser"></i></button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group" aria-label="Sheet Actions">
+                <button class="toolbar-btn" id="btn-save" title="Save Character" aria-label="Save Character"><i class="bi bi-save"></i></button>
+                <button class="toolbar-btn" id="btn-import" title="Import Character" aria-label="Import Character"><i class="bi bi-upload"></i></button>
+                <input type="file" id="import-file" accept="application/json" style="display:none;" />
+                <button class="toolbar-btn" id="btn-export" title="Export Character" aria-label="Export Character"><i class="bi bi-download"></i></button>
+                <button class="toolbar-btn" id="btn-clear" title="Clear Sheet" aria-label="Clear Sheet"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group" aria-label="Integrations">
+                <button class="toolbar-btn" id="btn-help" title="Dice Symbols Guide" aria-label="Dice Symbols Guide"><img src="assets/help.png" alt="Help" style="height:1.5em;width:auto;"></button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group" aria-label="Appearance & Settings">
+                <button class="toolbar-btn" id="btn-info-mode" title="Info Mode" aria-label="Info Mode"><i class="bi bi-info-circle"></i></button>
+                <button class="toolbar-btn" id="btn-lock" title="Lock/Unlock" aria-label="Lock/Unlock"><i class="bi bi-lock"></i></button>
+                <button class="toolbar-btn" id="btn-dashboard" title="Back to Dashboard" aria-label="Back to Dashboard"><i class="bi bi-arrow-left"></i></button>
+            </div>
+        </nav>
+        
+        <div class="character-sheet container">
+            <!-- Information Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Information</h3>
+                </div>
+                
+                <!-- Left Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Name</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Chronicle</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Resonance</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Temperament</span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Concept</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Ambition</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Desire</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Predator</span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Sire</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Clan</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Generation</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Compulsion</span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vitals Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Vitals</h3>
+                </div>
+                
+                <!-- Left Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Health</span>
+                            <span>4</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Blood Potency</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Willpower</span>
+                            <span>2</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Hunger</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Humanity</span>
+                            <span>7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Attributes Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Attributes</h3>
+                </div>
+                
+                <!-- Left Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Physical</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Strength</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Dexterity</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Stamina</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Social</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Charisma</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Manipulation</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label" data-stat="composure">Composure</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Mental</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Intelligence</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Wits</span>
+                            <span>1</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label" data-stat="resolve">Resolve</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Skills</h3>
+                </div>
+                
+                <!-- Left Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Physical</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Athletics</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Brawl</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Craft</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Drive</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Firearms</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Larceny</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Melee</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Stealth</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Survival</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Social</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Animal Ken</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Etiquette</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Insight</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Intimidation</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Leadership</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Performance</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Persuasion</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Streetwise</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Subterfuge</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Mental</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Academics</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Awareness</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Finance</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Investigation</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Medicine</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Occult</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Politics</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Science</span>
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-between stat">
+                            <span class="stat-label">Technology</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">&nbsp;</h3>
+                </div>
+                
+                <!-- Left Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Disciplines</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="disciplines-container">
+                            <!-- Discipline manager will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Merits</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="merits-container">
+                            <!-- Merit manager will be rendered here -->
+                        </div>
+                    </div>
+                    <h5 class="mb-2">Backgrounds</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="backgrounds-container">
+                            <!-- Background manager will be rendered here -->
+                        </div>
+                    </div>
+                    <h5 class="mb-2">Loresheets</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="loresheets-container">
+                            <!-- Loresheet manager will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-md-4 d-flex flex-column">
+                    <h5 class="mb-2">Flaws</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="flaws-container">
+                            <!-- Flaw manager will be rendered here -->
+                        </div>
+                    </div>
+                    <h5 class="mb-2">Background Flaws</h5>
+                    <div class="ledger p-3 my-3">
+                        <div class="background-flaws-container">
+                            <!-- Background flaw manager will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Convictions & Touchstones Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Convictions & Touchstones</h3>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4" id="conviction-column-1">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="conviction-column-2">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="conviction-column-3">
+                            <!-- Convictions will be added here dynamically -->
+                        </div>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button type="button" id="add-conviction" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-plus-circle"></i> Add Conviction
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Experience Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="mb-3">Experience Points</h3>
+                    <div class="ledger p-3">
+                        <div class="experience-container">
+                            <div class="experience-status">
+                                <div class="status-item">
+                                    <label>Total XP:</label>
+                                    <span id="total-xp">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <label>Spent XP:</label>
+                                    <span id="spent-xp">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <label>Available XP:</label>
+                                    <span id="available-xp">0</span>
+                                </div>
+                            </div>
+                            <div class="experience-actions">
+                                <button id="award-xp" class="btn btn-success award-xp">
+                                    <i class="bi bi-plus-circle"></i> Award XP
+                                </button>
+                                <button id="spend-xp" class="btn btn-danger spend-xp">
+                                    <i class="bi bi-arrow-bar-up"></i> Spend XP
+                                </button>
+                            </div>
+                            <div class="experience-history mt-3">
+                                <h4>Experience History</h4>
+                                <ul id="experience-history" class="list-group"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Lock Character Modal -->
+        <div class="modal fade" id="lockModal" tabindex="-1" aria-labelledby="lockModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h5 class="modal-title" id="lockModalLabel">Lock Character for Play</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Locking the character will disable manual editing of Attributes, Skills, Disciplines, Merits, and other core stats. XP spending will still apply automatically.<br/>
+                Are you sure you want to continue?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmLockBtn" class="btn btn-danger">Lock Character</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="unlockModal" tabindex="-1" aria-labelledby="unlockModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h5 class="modal-title" id="unlockModalLabel">Unlock Character for Editing</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Unlocking will allow manual edits to Traits and other sheet fields. Are you sure you want to unlock?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="confirmUnlockBtn" class="btn btn-success">Unlock Character</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Auto-upgrade elements that only have a title attribute into full Bootstrap tooltips -->
+        <script src="js/accessibility-fix.js"></script>
+        <script src="js/sticky-header.js"></script>
+        <!-- Database and character management -->
+        <script type="module" src="js/database-manager.js"></script>
+        <script type="module" src="js/character-manager.js"></script>
+        <!-- XP pricing utilities -->
+        <script src="js/xp-manager.js"></script>
+        <script type="module" src="js/xp-pricing.js"></script>
+        <script type="module" src="js/xp-spend-manager.js"></script>
+		<script type="module" src="js/character-sheet.js"></script>
+        <script type="module" src="js/discipline-manager.js"></script>
+        <script type="module" src="js/merit-flaw-manager.js"></script>
+        <script type="module" src="js/background-manager.js"></script>
+        <script type="module" src="js/coterie-manager.js"></script>
+        <script type="module" src="js/loresheet-manager.js"></script>
+        <script type="module" src="js/dice-overlay.js"></script>
+        <script type="module" src="js/backup-manager.js"></script>
+        <script type="module" src="js/specialty-manager.js"></script>
+        <script type="module" src="js/info-buttons.js"></script>
+        <script type="module" src="js/conviction-manager.js"></script>
+        <!-- Character toolbar -->
+        <script type="module" src="js/character-toolbar.js"></script>
+        <script>
+            // Initialize character manager after all modules are loaded
+            document.addEventListener('DOMContentLoaded', async () => {
+                // Wait a bit for all modules to initialize
+                setTimeout(async () => {
+                    if (window.characterManager) {
+                        await window.characterManager.init();
+                    }
+                }, 500);
+            });
+            
+            const textPrimary = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
+        </script>
+    </body>
+</html>

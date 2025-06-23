@@ -47,15 +47,14 @@
 }
 
 .vitals-section {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
+    top: auto;
+    z-index: 1;
     background-color: var(--panel-bg, $color-background);
     padding-top: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--panel-border, $color-border);
 
-    // Disable sticky behavior on mobile/tablet where columns stack
     @media (max-width: $breakpoint-md) {
         position: relative;
         top: auto;

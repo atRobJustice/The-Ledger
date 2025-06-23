@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='icon' href='./assets/favicon.ico' type='image/x-icon'/ >
-		<title>The Ledger</title>
+		<title>The Ledger - Character Dashboard</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,513 +13,411 @@
         <link rel="stylesheet" href="css/main.css">
 	</head>
     <body class="p-3 m-0">
-        <h1 class="mt-2"><img src="assets/TheLedger.png" alt="The Ledger" class="logo" style="width:75px; height:75px;"> The Ledger</h1>
-        <div class="character-sheet container">
-            <!-- Information Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Information</h3>
-                </div>
-                
-                <!-- Left Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Name</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Chronicle</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Resonance</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Temperament</span>
-                            <span></span>
-                        </div>
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="dashboard-title">
+                            <img src="assets/TheLedger.png" alt="The Ledger" class="logo"> 
+                            The Ledger
+                        </h1>
+                        <p class="dashboard-subtitle">Character Management Dashboard</p>
                     </div>
-                </div>
-                
-                <!-- Middle Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Concept</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Ambition</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Desire</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Predator</span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Sire</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Clan</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Generation</span>
-                            <span></span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Compulsion</span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Vitals Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Vitals</h3>
-                </div>
-                
-                <!-- Left Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Health</span>
-                            <span>4</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Blood Potency</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Middle Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Willpower</span>
-                            <span>2</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Hunger</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Humanity</span>
-                            <span>7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Attributes Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Attributes</h3>
-                </div>
-                
-                <!-- Left Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Physical</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Strength</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Dexterity</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Stamina</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Middle Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Social</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Charisma</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Manipulation</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label" data-stat="composure">Composure</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Mental</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Intelligence</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Wits</span>
-                            <span>1</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label" data-stat="resolve">Resolve</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Skills Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Skills</h3>
-                </div>
-                
-                <!-- Left Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Physical</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Athletics</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Brawl</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Craft</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Drive</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Firearms</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Larceny</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Melee</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Stealth</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Survival</span>
-                            <span>0</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Middle Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Social</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Animal Ken</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Etiquette</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Insight</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Intimidation</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Leadership</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Performance</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Persuasion</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Streetwise</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Subterfuge</span>
-                            <span>0</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Mental</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Academics</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Awareness</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Finance</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Investigation</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Medicine</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Occult</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Politics</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Science</span>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label">Technology</span>
-                            <span>0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Other Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">&nbsp;</h3>
-                </div>
-                
-                <!-- Left Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Disciplines</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="disciplines-container">
-                            <!-- Discipline manager will be rendered here -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Middle Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Merits</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="merits-container">
-                            <!-- Merit manager will be rendered here -->
-                        </div>
-                    </div>
-                    <h5 class="mb-2">Backgrounds</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="backgrounds-container">
-                            <!-- Background manager will be rendered here -->
-                        </div>
-                    </div>
-                    <h5 class="mb-2">Loresheets</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="loresheets-container">
-                            <!-- Loresheet manager will be rendered here -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column -->
-                <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Flaws</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="flaws-container">
-                            <!-- Flaw manager will be rendered here -->
-                        </div>
-                    </div>
-                    <h5 class="mb-2">Background Flaws</h5>
-                    <div class="ledger p-3 my-3">
-                        <div class="background-flaws-container">
-                            <!-- Background flaw manager will be rendered here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Convictions & Touchstones Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Convictions & Touchstones</h3>
-                </div>
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-md-4" id="conviction-column-1">
-                            <!-- Convictions will be added here dynamically -->
-                        </div>
-                        <div class="col-md-4" id="conviction-column-2">
-                            <!-- Convictions will be added here dynamically -->
-                        </div>
-                        <div class="col-md-4" id="conviction-column-3">
-                            <!-- Convictions will be added here dynamically -->
-                        </div>
-                    </div>
-                    <div class="text-end mt-3">
-                        <button type="button" id="add-conviction" class="btn btn-sm btn-outline-danger">
-                            <i class="bi bi-plus-circle"></i> Add Conviction
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Experience Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h3 class="mb-3">Experience Points</h3>
-                    <div class="ledger p-3">
-                        <div class="experience-container">
-                            <div class="experience-status">
-                                <div class="status-item">
-                                    <label>Total XP:</label>
-                                    <span id="total-xp">0</span>
-                                </div>
-                                <div class="status-item">
-                                    <label>Spent XP:</label>
-                                    <span id="spent-xp">0</span>
-                                </div>
-                                <div class="status-item">
-                                    <label>Available XP:</label>
-                                    <span id="available-xp">0</span>
-                                </div>
-                            </div>
-                            <div class="experience-actions">
-                                <button id="award-xp" class="btn btn-success award-xp">
-                                    <i class="bi bi-plus-circle"></i> Award XP
-                                </button>
-                                <button id="spend-xp" class="btn btn-danger spend-xp">
-                                    <i class="bi bi-arrow-bar-up"></i> Spend XP
-                                </button>
-                            </div>
-                            <div class="experience-history mt-3">
-                                <h4>Experience History</h4>
-                                <ul id="experience-history" class="list-group"></ul>
-                            </div>
+                    <div class="col-md-4 text-end">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="refreshDashboard()">
+                                <i class="bi bi-arrow-clockwise"></i> Refresh
+                            </button>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="openSettings()">
+                                <i class="bi bi-gear"></i> Settings
+                            </button>
+                            <button type="button" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-share"></i> Share
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br/><br/><br/><br/>
-        <!-- Lock Character Modal -->
-        <div class="modal fade" id="lockModal" tabindex="-1" aria-labelledby="lockModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-light">
-              <div class="modal-header">
-                <h5 class="modal-title" id="lockModalLabel">Lock Character for Play</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Locking the character will disable manual editing of Attributes, Skills, Disciplines, Merits, and other core stats. XP spending will still apply automatically.<br/>
-                Are you sure you want to continue?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" id="confirmLockBtn" class="btn btn-danger">Lock Character</button>
-              </div>
+
+        <div class="container">
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Total Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Vampire Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Hunter Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Shared Characters</div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="modal fade" id="unlockModal" tabindex="-1" aria-labelledby="unlockModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-light">
-              <div class="modal-header">
-                <h5 class="modal-title" id="unlockModalLabel">Unlock Character for Editing</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Unlocking will allow manual edits to Traits and other sheet fields. Are you sure you want to unlock?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" id="confirmUnlockBtn" class="btn btn-success">Unlock Character</button>
-              </div>
+
+            <!-- Character Grid -->
+            <div class="character-grid" id="character-grid">
+                <!-- Character cards will be loaded dynamically from IndexedDB -->
             </div>
-          </div>
+
+            <!-- Create Character Section -->
+            <div class="create-character-section">
+                <div class="create-character-icon">
+                    <i class="bi bi-plus-circle"></i>
+                </div>
+                <h2 class="create-character-title">Create New Character</h2>
+                <p class="create-character-subtitle">Choose a game system to get started</p>
+                
+                <div class="system-cards">
+                    <div class="system-card" onclick="createCharacter('vampire')">
+                        <div class="system-icon">
+                            <i class="bi bi-droplet-fill"></i>
+                        </div>
+                        <h3 class="system-name">Vampire: The Masquerade</h3>
+                        <p class="system-description">
+                            Create a vampire character in the World of Darkness. 
+                            Choose your clan, embrace your curse, and navigate the politics of the night.
+                        </p>
+                    </div>
+                    
+                    <div class="system-card" onclick="createCharacter('hunter')">
+                        <div class="system-icon">
+                            <i class="bi bi-shield-fill"></i>
+                        </div>
+                        <h3 class="system-name">Hunter: The Reckoning</h3>
+                        <p class="system-description">
+                            Become a hunter sworn to protect humanity from supernatural threats. 
+                            Choose your creed and fight the darkness.
+                        </p>
+                    </div>
+                    
+                    <div class="system-card disabled" style="opacity: 0.5; cursor: not-allowed;" title="Coming Soon">
+                        <div class="system-icon">
+                            <i class="bi bi-moon-fill"></i>
+                        </div>
+                        <h3 class="system-name">Werewolf: The Apocalypse</h3>
+                        <p class="system-description">
+                            Transform into a mighty Garou warrior. 
+                            Defend Gaia and fight against the corruption of the Wyrm.
+                        </p>
+                        <div class="mt-2">
+                            <span class="badge bg-secondary">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State (hidden by default) -->
+            <div class="empty-state hidden" id="empty-state">
+                <div class="empty-state-icon">
+                    <i class="bi bi-person-plus"></i>
+                </div>
+                <h2 class="empty-state-title">No Characters Yet</h2>
+                <p class="empty-state-subtitle">
+                    Create your first character to get started with The Ledger
+                </p>
+                <button class="btn btn-danger" onclick="showCreateCharacter()">
+                    <i class="bi bi-plus-circle"></i> Create Your First Character
+                </button>
+            </div>
         </div>
+
+        <!-- Modals -->
+        <div class="modal fade" id="createCharacterModal" tabindex="-1" aria-labelledby="createCharacterModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createCharacterModalLabel">Create New Character</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="createCharacterForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="characterName" class="form-label">Character Name</label>
+                                        <input type="text" class="form-control bg-dark" id="characterName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="gameSystem" class="form-label">Game System</label>
+                                        <select class="form-select bg-dark" id="gameSystem" required>
+                                            <option value="">Select a system...</option>
+                                            <option value="vampire">Vampire: The Masquerade</option>
+                                            <option value="hunter">Hunter: The Reckoning</option>
+                                            <option value="werewolf" disabled>Werewolf: The Apocalypse (Coming Soon)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="characterConcept" class="form-label">Character Concept</label>
+                                <textarea class="form-control bg-dark" id="characterConcept" rows="3" placeholder="Brief description of your character concept..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="createNewCharacter()">Create Character</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="settingsModalLabel">
+                            <i class="bi bi-gear"></i> Settings
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Settings Navigation -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="nav flex-column nav-pills" id="settingsTabs" role="tablist">
+                                    <button class="nav-link active" id="discord-tab" data-bs-toggle="pill" data-bs-target="#discord-pane" type="button" role="tab">
+                                        <i class="bi bi-discord"></i> Discord Integration
+                                    </button>
+                                    <button class="nav-link" id="general-tab" data-bs-toggle="pill" data-bs-target="#general-pane" type="button" role="tab">
+                                        <i class="bi bi-sliders"></i> General
+                                    </button>
+                                    <button class="nav-link" id="data-tab" data-bs-toggle="pill" data-bs-target="#data-pane" type="button" role="tab">
+                                        <i class="bi bi-database"></i> Data Management
+                                    </button>
+                                    <button class="nav-link" id="about-tab" data-bs-toggle="pill" data-bs-target="#about-pane" type="button" role="tab">
+                                        <i class="bi bi-info-circle"></i> About
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="tab-content" id="settingsTabContent">
+                                    <!-- Discord Integration Tab -->
+                                    <div class="tab-pane fade show active" id="discord-pane" role="tabpanel">
+                                        <div class="settings-section">
+                                            <h6 class="settings-section-title">
+                                                <i class="bi bi-discord"></i> Discord Webhook Configuration
+                                            </h6>
+                                            <p class="settings-section-description">
+                                                Configure Discord webhook to send dice roll results and character updates to your Discord server.
+                                            </p>
+                                            
+                                            <div class="mb-3">
+                                                <label for="discordWebhookInput" class="form-label">Webhook URL</label>
+                                                <div class="input-group">
+                                                    <input type="url" class="form-control bg-dark" id="discordWebhookInput" 
+                                                           placeholder="https://discord.com/api/webhooks/..." 
+                                                           pattern="https://discord\.com/api/webhooks/[0-9]+/[a-zA-Z0-9_-]+">
+                                                    <button class="btn btn-outline-secondary" type="button" onclick="testDiscordWebhook()">
+                                                        <i class="bi bi-play-circle"></i> Test
+                                                    </button>
+                                                </div>
+                                                <div class="form-text">
+                                                    <i class="bi bi-info-circle"></i> 
+                                                    To create a webhook: Go to your Discord server → Server Settings → Integrations → Webhooks → New Webhook
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="discordEnabled" checked>
+                                                    <label class="form-check-label" for="discordEnabled">
+                                                        Enable Discord integration
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label class="form-label">What to send to Discord:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="discordDiceRolls" checked>
+                                                    <label class="form-check-label" for="discordDiceRolls">
+                                                        Dice roll results
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="discordCharacterUpdates">
+                                                    <label class="form-check-label" for="discordCharacterUpdates">
+                                                        Character updates (XP, level ups, etc.)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="discordSystemMessages">
+                                                    <label class="form-check-label" for="discordSystemMessages">
+                                                        System messages (backups, errors, etc.)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="alert alert-info">
+                                                <i class="bi bi-lightbulb"></i>
+                                                <strong>Tip:</strong> Discord webhooks are server-specific. Make sure to use the webhook URL for the channel where you want to receive notifications.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- General Settings Tab -->
+                                    <div class="tab-pane fade" id="general-pane" role="tabpanel">
+                                        <div class="settings-section">
+                                            <h6 class="settings-section-title">
+                                                <i class="bi bi-sliders"></i> General Preferences
+                                            </h6>
+                                            
+                                            <div class="mb-3">
+                                                <label for="defaultTheme" class="form-label">Default Theme</label>
+                                                <select class="form-select bg-dark" id="defaultTheme">
+                                                    <option value="default">Default (Dark)</option>
+                                                    <option value="ivory">Ivory</option>
+                                                    <option value="daltonic">Colorblind Friendly</option>
+                                                    <option value="hc-dark">High Contrast Dark</option>
+                                                    <option value="hc-light">High Contrast Light</option>
+                                                    <option value="dyslexia">Dyslexia Friendly</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="autoSaveInterval" class="form-label">Auto-save Interval (minutes)</label>
+                                                <select class="form-select bg-dark" id="autoSaveInterval">
+                                                    <option value="1">1 minute</option>
+                                                    <option value="5" selected>5 minutes</option>
+                                                    <option value="10">10 minutes</option>
+                                                    <option value="15">15 minutes</option>
+                                                    <option value="30">30 minutes</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="showTooltips" checked>
+                                                    <label class="form-check-label" for="showTooltips">
+                                                        Show tooltips and help text
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="confirmDeletions" checked>
+                                                    <label class="form-check-label" for="confirmDeletions">
+                                                        Confirm before deleting characters
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Data Management Tab -->
+                                    <div class="tab-pane fade" id="data-pane" role="tabpanel">
+                                        <div class="settings-section">
+                                            <h6 class="settings-section-title">
+                                                <i class="bi bi-database"></i> Data Management
+                                            </h6>
+                                            
+                                            <div class="mb-3">
+                                                <button class="btn btn-outline-primary" onclick="exportAllData()">
+                                                    <i class="bi bi-download"></i> Export All Data
+                                                </button>
+                                                <div class="form-text">Download all characters and settings as a backup file.</div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <button class="btn btn-outline-warning" onclick="importData()">
+                                                    <i class="bi bi-upload"></i> Import Data
+                                                </button>
+                                                <div class="form-text">Import characters and settings from a backup file.</div>
+                                                <input type="file" id="importFile" accept=".json" class="hidden" onchange="handleImportFile(event)">
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <button class="btn btn-outline-danger" onclick="clearAllData()">
+                                                    <i class="bi bi-trash"></i> Clear All Data
+                                                </button>
+                                                <div class="form-text text-danger">This will permanently delete all characters and settings. This action cannot be undone.</div>
+                                            </div>
+                                            
+                                            <div class="alert alert-warning">
+                                                <i class="bi bi-exclamation-triangle"></i>
+                                                <strong>Warning:</strong> Data is stored locally in your browser. Clearing browser data will also clear your characters.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- About Tab -->
+                                    <div class="tab-pane fade" id="about-pane" role="tabpanel">
+                                        <div class="settings-section">
+                                            <h6 class="settings-section-title">
+                                                <i class="bi bi-info-circle"></i> About The Ledger
+                                            </h6>
+                                            
+                                            <div class="text-center mb-4">
+                                                <img src="assets/TheLedger.png" alt="The Ledger" class="about-logo">
+                                                <h4>The Ledger</h4>
+                                                <p class="text-muted">Character Management for World of Darkness</p>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <strong>Version:</strong> 1.0.0<br>
+                                                <strong>Database:</strong> IndexedDB<br>
+                                                <strong>Framework:</strong> Vanilla JavaScript + Bootstrap 5
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <h6>Supported Game Systems:</h6>
+                                                <ul>
+                                                    <li>Vampire: The Masquerade 5th Edition</li>
+                                                    <li>Hunter: The Reckoning 5th Edition</li>
+                                                    <li>More coming soon...</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <h6>Features:</h6>
+                                                <ul>
+                                                    <li>Character creation and management</li>
+                                                    <li>Dice rolling with Discord integration</li>
+                                                    <li>Experience point tracking</li>
+                                                    <li>Theme customization</li>
+                                                    <li>Data backup and restore</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="alert alert-info">
+                                                <i class="bi bi-github"></i>
+                                                <strong>Open Source:</strong> The Ledger is open source software. 
+                                                <a href="https://github.com/yourusername/ledger" target="_blank" class="alert-link">View on GitHub</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="saveSettings()">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Auto-upgrade elements that only have a title attribute into full Bootstrap tooltips -->
-        <script src="js/accessibility-fix.js"></script>
-        <script src="js/sticky-header.js"></script>
+        
         <!-- Database and character management -->
         <script type="module" src="js/database-manager.js"></script>
-        <script type="module" src="js/character-manager.js"></script>
-        <!-- XP pricing utilities -->
-        <script src="js/xp-manager.js"></script>
-        <script type="module" src="js/xp-pricing.js"></script>
-        <script type="module" src="js/xp-spend-manager.js"></script>
-		<script type="module" src="js/character-sheet.js"></script>
-        <script type="module" src="js/discipline-manager.js"></script>
-        <script type="module" src="js/merit-flaw-manager.js"></script>
-        <script type="module" src="js/background-manager.js"></script>
-        <script type="module" src="js/coterie-manager.js"></script>
-        <script type="module" src="js/loresheet-manager.js"></script>
-        <script type="module" src="js/dice-overlay.js"></script>
-        <script type="module" src="js/backup-manager.js"></script>
-        <script type="module" src="js/specialty-manager.js"></script>
-        <script type="module" src="js/info-buttons.js"></script>
-        <script type="module" src="js/conviction-manager.js"></script>
-        <script>
-            // Initialize character manager after all modules are loaded
-            document.addEventListener('DOMContentLoaded', async () => {
-                // Wait a bit for all modules to initialize
-                setTimeout(async () => {
-                    if (window.characterManager) {
-                        await window.characterManager.init();
-                    }
-                }, 500);
-            });
-            
-            const textPrimary = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
-        </script>
+        
+        <!-- Dashboard functionality -->
+        <script type="module" src="js/dashboard.js"></script>
     </body>
 </html>

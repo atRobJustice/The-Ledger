@@ -996,16 +996,96 @@ let bonusMsg = null;
     }
 
     // Spin up (or retrieve) the bar and wire required callbacks
-    initControlBar({
-      disableAllTooltips,
-      setTooltipEnabled,
-      quickRoll,
-      computeRemorseDice,
-      computeFrenzyDice,
-      isWPRerollAllowed,
-      handleWPRerollClick,
-      clearOverlay,
-    });
+    // DISABLED: Using new character toolbar instead
+    // initControlBar({
+    //   disableAllTooltips,
+    //   setTooltipEnabled,
+    //   quickRoll,
+    //   computeRemorseDice,
+    //   computeFrenzyDice,
+    //   isWPRerollAllowed,
+    //   handleWPRerollClick,
+    //   clearOverlay,
+    // });
+
+    // Make functions available globally for the new toolbar
+    window.disableAllTooltips = disableAllTooltips;
+    window.setTooltipEnabled = setTooltipEnabled;
+    window.quickRoll = quickRoll;
+    window.computeRemorseDice = computeRemorseDice;
+    window.computeFrenzyDice = computeFrenzyDice;
+    window.isWPRerollAllowed = isWPRerollAllowed;
+    window.handleWPRerollClick = handleWPRerollClick;
+    window.clearOverlay = clearOverlay;
+    
+    // Add mend functionality
+    window.mendHealth = function() {
+      // Find health container and mend superficial damage
+      const healthContainer = document.querySelector('.track-container[data-track="health"]');
+      if (healthContainer) {
+        const superficialBoxes = healthContainer.querySelectorAll('.track-box.superficial');
+        if (superficialBoxes.length > 0) {
+          // Remove one superficial damage
+          superficialBoxes[superficialBoxes.length - 1].classList.remove('superficial');
+          showToast('Mended 1 superficial Health damage', 'success');
+        } else {
+          showToast('No superficial damage to mend', 'warning');
+        }
+      }
+    };
+    
+    // Add dice overlay access
+    window.diceOverlay = {
+      show: function() {
+        btn.click(); // Trigger the existing dice modal
+      }
+    };
+    
+    // Add toast function if not already available
+    if (!window.showToast) {
+      window.showToast = function(message, type = 'info') {
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        toast.textContent = message;
+        
+        // Style the toast
+        toast.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          color: white;
+          font-weight: 500;
+          z-index: 9999;
+          animation: slideIn 0.3s ease-out;
+          max-width: 300px;
+        `;
+        
+        // Set background color based on type
+        const colors = {
+          success: '#28a745',
+          error: '#dc3545',
+          warning: '#ffc107',
+          info: '#17a2b8'
+        };
+        toast.style.backgroundColor = colors[type] || colors.info;
+        
+        // Add to page
+        document.body.appendChild(toast);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+          toast.style.animation = 'slideOut 0.3s ease-in';
+          setTimeout(() => {
+            if (toast.parentNode) {
+              toast.parentNode.removeChild(toast);
+            }
+          }, 300);
+        }, 3000);
+      };
+    }
 
     // The bar has already created the Roll button – grab a reference to it
     const btn = document.getElementById("openDiceRoll");
