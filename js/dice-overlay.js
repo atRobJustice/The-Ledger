@@ -1206,6 +1206,36 @@ let bonusMsg = null;
       }
     };
     
+    // Add showDiceSymbolsModal function globally
+    window.showDiceSymbolsModal = function() {
+      const content = `
+        <div class="dice-symbols-guide">
+          <div class="mb-3">
+            <strong>● or ✪</strong> - Success (+1)
+          </div>
+          <div class="mb-3">
+            <strong>✪ + ✪</strong> - Critical Success (+4)
+          </div>
+          <div class="mb-3">
+            <strong style="color: #dc3545;">⚠</strong> - Bestial Failure (no successes)
+          </div>
+          <div class="mb-3">
+            <strong style="color: #dc3545;">✪</strong> <strong>+ ✪ or </strong><strong style="color: #dc3545;">✪</strong> - Messy Critical (+4)
+          </div>
+        </div>
+      `;
+
+      const { modalElement, modalInstance } = window.modalManager.showCustom({
+        title: 'Dice Symbols',
+        content,
+        footer: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',
+        size: 'default',
+        centered: true
+      });
+
+      return { modalElement, modalInstance };
+    };
+
     // Add toast function if not already available
     if (!window.showToast) {
       window.showToast = function(message, type = 'info') {

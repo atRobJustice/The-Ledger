@@ -154,6 +154,9 @@
     }
 
     function loadCharacterData(data){
+        console.log('loadCharacterData called with data:', data);
+        console.log('loadCharacterData: data.locked value:', data.locked);
+        
         // Basic stats
         Object.entries(data).forEach(([key,val]) => {
             // --- XP Import ---
@@ -238,7 +241,20 @@
 
         // Restore lock state
         if(Object.prototype.hasOwnProperty.call(data,'locked') && window.LockManager){
-            window.LockManager.init(data.locked ?? false);
+            // Check if there's a locked parameter in the URL that should override character data
+            const urlParams = new URLSearchParams(window.location.search);
+            const lockedFromUrl = urlParams.get('locked');
+            
+            if (lockedFromUrl !== null) {
+                // URL parameter takes precedence
+                const shouldLock = lockedFromUrl === 'true';
+                console.log('Setting lock state from URL parameter (overriding character data in loadCharacterData):', shouldLock);
+                window.LockManager.init(shouldLock);
+            } else {
+                // Use character data if no URL parameter
+                console.log('Setting lock state from character data in loadCharacterData:', data.locked ?? false);
+                window.LockManager.init(data.locked ?? false);
+            }
         }
 
         // Restore theme (now using IndexedDB)

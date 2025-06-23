@@ -4,7 +4,6 @@
  */
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
-import { LockManager } from "./lock-manager.js";
 import { TraitManagerUtils } from './manager-utils.js';
 
 /**
@@ -27,6 +26,7 @@ export function initCharacterToolbar() {
     initThemeButton();
     initDiscordButton();
     initInfoModeButton();
+    initHelpButton();
     
     // Initialize tooltips
     initTooltips();
@@ -304,7 +304,7 @@ function initLockButton() {
     if (!btn) return;
     
     function updateLockButton() {
-        if (LockManager.isLocked()) {
+        if (window.LockManager.isLocked()) {
             btn.innerHTML = '<i class="bi bi-unlock"></i>';
             btn.title = 'Unlock Character';
         } else {
@@ -314,18 +314,64 @@ function initLockButton() {
     }
     
     btn.addEventListener('click', () => {
-        if (LockManager.isLocked()) {
-            // Unlock flow
-            if (TraitManagerUtils.showConfirmModal("Unlock character for editing?")) {
-                LockManager.unlock();
-                updateLockButton();
-            }
+        if (window.LockManager.isLocked()) {
+            // Unlock flow with detailed modal
+            const unlockContent = `
+                <p>Unlocking will allow manual edits to Traits and other sheet fields.</p>
+                <p>Are you sure you want to unlock?</p>
+            `;
+            
+            const unlockFooter = `
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="confirmUnlockBtn">Unlock Character</button>
+            `;
+            
+            const { modalElement, modalInstance } = window.modalManager.showCustom({
+                title: 'Unlock Character for Editing',
+                content: unlockContent,
+                footer: unlockFooter,
+                size: 'default',
+                centered: true
+            }, (element, instance) => {
+                // Add click handler for confirm button
+                const confirmBtn = element.querySelector('#confirmUnlockBtn');
+                if (confirmBtn) {
+                    confirmBtn.addEventListener('click', () => {
+                        window.LockManager.unlock();
+                        updateLockButton();
+                        instance.hide();
+                    });
+                }
+            });
         } else {
-            // Lock flow
-            if (TraitManagerUtils.showConfirmModal("Lock character for play mode?")) {
-                LockManager.lock();
-                updateLockButton();
-            }
+            // Lock flow with detailed modal
+            const lockContent = `
+                <p>Locking the character will disable manual editing of Attributes, Skills, Disciplines, Merits, and other core stats. XP spending will still apply automatically.</p>
+                <p>Are you sure you want to continue?</p>
+            `;
+            
+            const lockFooter = `
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmLockBtn">Lock Character</button>
+            `;
+            
+            const { modalElement, modalInstance } = window.modalManager.showCustom({
+                title: 'Lock Character for Play',
+                content: lockContent,
+                footer: lockFooter,
+                size: 'default',
+                centered: true
+            }, (element, instance) => {
+                // Add click handler for confirm button
+                const confirmBtn = element.querySelector('#confirmLockBtn');
+                if (confirmBtn) {
+                    confirmBtn.addEventListener('click', () => {
+                        window.LockManager.lock();
+                        updateLockButton();
+                        instance.hide();
+                    });
+                }
+            });
         }
     });
     
@@ -429,6 +475,21 @@ function initInfoModeButton() {
             if (window.disableAllTooltips) {
                 window.disableAllTooltips();
             }
+        }
+    });
+}
+
+/**
+ * Initialize Help button
+ */
+function initHelpButton() {
+    const btn = document.getElementById('btn-help');
+    if (!btn) return;
+    
+    btn.addEventListener('click', () => {
+        // Show Dice Symbols modal
+        if (window.showDiceSymbolsModal) {
+            window.showDiceSymbolsModal();
         }
     });
 }

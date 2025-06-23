@@ -1,5 +1,3 @@
-import { LockManager } from './lock-manager.js';
-
 // Inject styles for visual impairment indication
 (function(){
     const style = document.createElement('style');
@@ -29,7 +27,7 @@ function createDots(value, maxDots = 5) {
         });
         
         $dot.on('click', function() {
-            if (LockManager && LockManager.isLocked && LockManager.isLocked()) {
+            if (window.LockManager && window.LockManager.isLocked && window.LockManager.isLocked()) {
                 // Allow edits for hunger dots even when sheet is locked
                 if (!$(this).closest('.hunger-dots').length) {
                     return;
@@ -954,7 +952,7 @@ async function saveCharacter() {
     const character = {
         // ... existing character properties ...
         convictions: saveConvictionsAndTouchstones(),
-        locked: LockManager.isLocked(),
+        locked: window.LockManager.isLocked(),
         // ... rest of existing properties ...
     };
     // ... rest of existing save logic ...
@@ -967,8 +965,20 @@ async function loadCharacter(characterData) {
         loadConvictionsAndTouchstones(characterData.convictions);
     }
 
-    // Initialize lock state after everything is rendered
-    LockManager.init(characterData.locked ?? false);
+    // Check if there's a locked parameter in the URL that should override character data
+    const urlParams = new URLSearchParams(window.location.search);
+    const lockedFromUrl = urlParams.get('locked');
+    
+    if (lockedFromUrl !== null && window.LockManager) {
+        // URL parameter takes precedence
+        const shouldLock = lockedFromUrl === 'true';
+        console.log('Setting lock state from URL parameter (overriding character data):', shouldLock);
+        window.LockManager.init(shouldLock);
+    } else {
+        // Use character data if no URL parameter
+        console.log('Setting lock state from character data:', characterData.locked ?? false);
+        window.LockManager.init(characterData.locked ?? false);
+    }
     // ... rest of existing loading logic ...
 }
 

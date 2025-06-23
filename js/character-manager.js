@@ -61,6 +61,7 @@ class CharacterManager {
             // Check if there's a character ID in the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const characterIdFromUrl = urlParams.get('id');
+            const lockedFromUrl = urlParams.get('locked');
             
             if (characterIdFromUrl) {
                 // Convert to number if it's a string
@@ -74,6 +75,20 @@ class CharacterManager {
                         
                         // Set as active character in database
                         await databaseManager.setActiveCharacterId(characterId);
+                        
+                        // Initialize lock state from URL parameter if present
+                        if (lockedFromUrl !== null && window.LockManager) {
+                            const shouldLock = lockedFromUrl === 'true';
+                            console.log('Setting lock state from URL parameter:', shouldLock);
+                            window.LockManager.init(shouldLock);
+                        }
+                        
+                        // Load the character data into the UI
+                        if (window.loadCharacterData) {
+                            console.log('CharacterManager: Loading character data into UI from URL parameter');
+                            window.loadCharacterData(character);
+                        }
+                        
                         return;
                     } else {
                         console.warn('Character not found for ID from URL:', characterId);
@@ -88,6 +103,15 @@ class CharacterManager {
             if (!this.currentCharacterId && this.characters.length > 0) {
                 this.currentCharacterId = this.characters[0].id;
                 await databaseManager.setActiveCharacterId(this.currentCharacterId);
+            }
+            
+            // Load the current character data into the UI
+            if (this.currentCharacterId && window.loadCharacterData) {
+                const character = await databaseManager.getCharacter(this.currentCharacterId);
+                if (character) {
+                    console.log('CharacterManager: Loading character data into UI from database');
+                    window.loadCharacterData(character);
+                }
             }
             
             console.log('Current character ID:', this.currentCharacterId);
@@ -176,7 +200,10 @@ class CharacterManager {
             
             // Load the new character data
             if (window.loadCharacterData) {
+                console.log('CharacterManager: Calling loadCharacterData with character:', character);
                 window.loadCharacterData(character);
+            } else {
+                console.log('CharacterManager: loadCharacterData function not available');
             }
             
             // Update UI
@@ -506,7 +533,7 @@ class CharacterManager {
         if (!characterList) return;
         
         if (this.characters.length === 0) {
-            characterList.innerHTML = '<p class="text-muted">No characters found. Create your first character!</p>';
+            characterList.innerHTML = '<p>No characters found. Create your first character!</p>';
             return;
         }
         
@@ -524,7 +551,7 @@ class CharacterManager {
                                     ${character.name || 'Unnamed Character'}
                                     ${isCurrent ? '<span class="badge bg-primary ms-2">Current</span>' : ''}
                                 </h6>
-                                <p class="card-text text-muted small mb-2">
+                                <p class="card-text small mb-2">
                                     Created: ${createdAt} | Last updated: ${updatedAt}
                                 </p>
                             </div>

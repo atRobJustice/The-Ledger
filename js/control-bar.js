@@ -5,7 +5,6 @@
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
 import { bloodPotency as bpData } from "./references/blood_potency.js";
-import { LockManager } from "./lock-manager.js";
 import { TraitManagerUtils } from './manager-utils.js';
 
 /**
@@ -270,7 +269,7 @@ export function initControlBar(deps) {
       </div>
     `;
 
-    const { modalElement, modalInstance } = modalManager.showCustom({
+    const { modalElement, modalInstance } = window.modalManager.showCustom({
       title: 'Dice Symbols',
       content,
       footer: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',
@@ -1126,7 +1125,7 @@ export function initControlBar(deps) {
     const confirmBtn = lockModalEl.querySelector("#confirmLockBtn");
     if (confirmBtn) {
       confirmBtn.addEventListener("click", () => {
-        LockManager.lock();
+        window.LockManager.lock();
         updateLockButtonUI();
         lockModalInstance.hide();
       });
@@ -1140,7 +1139,7 @@ export function initControlBar(deps) {
     const confirmUnlock = unlockModalEl.querySelector('#confirmUnlockBtn');
     if(confirmUnlock){
       confirmUnlock.addEventListener('click', () => {
-        LockManager.unlock();
+        window.LockManager.unlock();
         updateLockButtonUI();
         unlockModalInstance.hide();
       });
@@ -1149,11 +1148,11 @@ export function initControlBar(deps) {
 
   btnLock.addEventListener("click", () => {
     // Unlock flow -----------------------------------------------------------
-    if (LockManager.isLocked()) {
+    if (window.LockManager.isLocked()) {
       if (unlockModalInstance) {
         unlockModalInstance.show();
       } else if (TraitManagerUtils.showConfirmModal("Unlock character for editing?")) {
-        LockManager.unlock();
+        window.LockManager.unlock();
         updateLockButtonUI();
       }
       return;
@@ -1165,14 +1164,14 @@ export function initControlBar(deps) {
     } else {
       // Fallback simple confirm if modal missing
       if (TraitManagerUtils.showConfirmModal("Lock character for play mode?")) {
-        LockManager.lock();
+        window.LockManager.lock();
         updateLockButtonUI();
       }
     }
   });
 
   function updateLockButtonUI() {
-    if (LockManager.isLocked()) {
+    if (window.LockManager.isLocked()) {
       btnLock.innerHTML = `<i class=\"bi bi-unlock\"></i>`;
       lockLabel.textContent = "Unlock";
       lockContainer.setAttribute("title", "Lock Character");

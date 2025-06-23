@@ -69,9 +69,6 @@
 
             <!-- Create Character Section -->
             <div class="create-character-section">
-                <div class="create-character-icon">
-                    <i class="bi bi-plus-circle"></i>
-                </div>
                 <h2 class="create-character-title">Create New Character</h2>
                 <p class="create-character-subtitle">Choose a game system to get started</p>
                 
@@ -87,7 +84,7 @@
                         </p>
                     </div>
                     
-                    <div class="system-card" onclick="createCharacter('hunter')">
+                    <div class="system-card disabled" style="opacity: 0.5; cursor: not-allowed;" title="Coming Soon">
                         <div class="system-icon">
                             <i class="bi bi-shield-fill"></i>
                         </div>
@@ -96,6 +93,9 @@
                             Become a hunter sworn to protect humanity from supernatural threats. 
                             Choose your creed and fight the darkness.
                         </p>
+                        <div class="mt-2">
+                            <span class="badge bg-secondary">Coming Soon</span>
+                        </div>
                     </div>
                     
                     <div class="system-card disabled" style="opacity: 0.5; cursor: not-allowed;" title="Coming Soon">
@@ -405,7 +405,7 @@
                                             <div class="text-center mb-4">
                                                 <img src="assets/TheLedger.png" alt="The Ledger" class="about-logo">
                                                 <h4>The Ledger</h4>
-                                                <p class="text-muted">Character Management for World of Darkness</p>
+                                                <p>Character Management for World of Darkness</p>
                                             </div>
                                             
                                             <div class="mb-3">

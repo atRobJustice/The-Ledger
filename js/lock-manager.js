@@ -1,11 +1,13 @@
-export const LockManager = (() => {
+const LockManager = (() => {
   let locked = false;
 
   /* --------------------------------------------------
    * Public API
    * --------------------------------------------------*/
   function init(isLocked = false) {
+    console.log('LockManager.init called with:', isLocked, 'Current locked state was:', locked);
     locked = !!isLocked;
+    console.log('LockManager.init: New locked state is:', locked);
     applyDOMState();
     emit();
   }
@@ -32,6 +34,7 @@ export const LockManager = (() => {
    * Private helpers
    * --------------------------------------------------*/
   function applyDOMState() {
+    console.log('LockManager.applyDOMState: Applying locked state:', locked);
     document.body.classList.toggle('locked-sheet', locked);
     // Toggle class on dot controls
     document.querySelectorAll('.lockable-dot').forEach(el => {
@@ -42,6 +45,7 @@ export const LockManager = (() => {
     document.querySelectorAll('[data-lockable="true"]').forEach(el => {
       el.disabled = locked;
     });
+    console.log('LockManager.applyDOMState: DOM updated, body has locked-sheet class:', document.body.classList.contains('locked-sheet'));
   }
 
   async function persist() {
