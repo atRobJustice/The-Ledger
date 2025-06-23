@@ -327,7 +327,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
                 $container.data('value', newValue);
             }
             
-            updateCurrentValue($trackBoxes[0]);
+            updateCurrentValue($container[0]);
         });
         
         $boxes.append($box);
@@ -970,4 +970,12 @@ async function loadCharacter(characterData) {
     // Initialize lock state after everything is rendered
     LockManager.init(characterData.locked ?? false);
     // ... rest of existing loading logic ...
+}
+
+// Handle "Back to Dashboard" button
+const btnDashboard = document.getElementById('btn-dashboard');
+if (btnDashboard) {
+    btnDashboard.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
 }

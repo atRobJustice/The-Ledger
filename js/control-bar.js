@@ -143,25 +143,42 @@ export function initControlBar(deps) {
 
   function ensureWebhookModal() {
     if (webhookModalEl) return;
-    webhookModalEl = createWebhookModal();
-    webhookModalInstance = bootstrap.Modal.getOrCreateInstance(webhookModalEl);
+    
+    const content = `
+      <div class="mb-3">
+        <label for="discordWebhookInput" class="form-label">Webhook URL</label>
+        <input type="url" class="form-control" id="discordWebhookInput" placeholder="https://discord.com/api/webhooks/...">
+      </div>
+    `;
 
-    webhookModalEl
-      .querySelector("#saveDiscordWebhook")
-      .addEventListener("click", () => {
-        const url = webhookModalEl
-          .querySelector("#discordWebhookInput")
-          .value.trim();
-        setDiscordWebhook(url);
-        webhookModalInstance.hide();
+    const footer = `
+      <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
+      <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
+    `;
+
+    const { modalElement, modalInstance } = window.modalManager.showCustom({
+      title: 'Discord Webhook',
+      content,
+      footer,
+      size: 'default',
+      centered: true
+    }, (element, instance) => {
+      // Handle save
+      element.querySelector("#saveDiscordWebhook").addEventListener("click", async () => {
+        const url = element.querySelector("#discordWebhookInput").value.trim();
+        await setDiscordWebhook(url);
+        instance.hide();
       });
 
-    webhookModalEl
-      .querySelector("#deleteDiscordWebhook")
-      .addEventListener("click", () => {
-        setDiscordWebhook(null);
-        webhookModalInstance.hide();
+      // Handle delete
+      element.querySelector("#deleteDiscordWebhook").addEventListener("click", async () => {
+        await setDiscordWebhook(null);
+        instance.hide();
       });
+    });
+
+    webhookModalEl = modalElement;
+    webhookModalInstance = modalInstance;
   }
 
   btnDiscord.addEventListener("click", async () => {
@@ -236,38 +253,32 @@ export function initControlBar(deps) {
   }
 
   function createDiceSymbolsModal() {
-    const modalHtml = `
-      <div class="modal fade" id="diceSymbolsModal" tabindex="-1" aria-labelledby="diceSymbolsLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="diceSymbolsLabel">Dice Symbols</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="dice-symbols-guide">
-                <div class="mb-3">
-                  <strong>● or ✪</strong> - Success (+1)
-                </div>
-                <div class="mb-3">
-                  <strong>✪ + ✪</strong> - Critical Success (+4)
-                </div>
-                <div class="mb-3">
-                  <strong style="color: #dc3545;">⚠</strong> - Bestial Failure (no successes)
-                </div>
-                <div class="mb-3">
-                  <strong style="color: #dc3545;">✪</strong> <strong>+ ✪ or </strong><strong style="color: #dc3545;">✪</strong> - Messy Critical (+4)
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
+    const content = `
+      <div class="dice-symbols-guide">
+        <div class="mb-3">
+          <strong>● or ✪</strong> - Success (+1)
         </div>
-      </div>`;
-    document.body.insertAdjacentHTML('beforeend', modalHtml);
-    return document.getElementById('diceSymbolsModal');
+        <div class="mb-3">
+          <strong>✪ + ✪</strong> - Critical Success (+4)
+        </div>
+        <div class="mb-3">
+          <strong style="color: #dc3545;">⚠</strong> - Bestial Failure (no successes)
+        </div>
+        <div class="mb-3">
+          <strong style="color: #dc3545;">✪</strong> <strong>+ ✪ or </strong><strong style="color: #dc3545;">✪</strong> - Messy Critical (+4)
+        </div>
+      </div>
+    `;
+
+    const { modalElement, modalInstance } = modalManager.showCustom({
+      title: 'Dice Symbols',
+      content,
+      footer: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',
+      size: 'default',
+      centered: true
+    });
+
+    return modalElement;
   }
 
   btnDiceHelp.addEventListener("click", () => {
@@ -419,41 +430,26 @@ export function initControlBar(deps) {
   function ensureClearSheetModal() {
     if (clearSheetModalInstance) return clearSheetModalInstance;
 
-    // Only inject the markup once
-    if (!document.getElementById('clearSheetModal')) {
-      const modalHtml = `
-        <div class="modal fade" id="clearSheetModal" tabindex="-1" aria-labelledby="clearSheetModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content bg-dark text-light border-secondary">
-              <div class="modal-header border-secondary">
-                <h5 class="modal-title" id="clearSheetModalLabel">Clear Character Sheet</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Are you sure you want to clear the character sheet? This will remove all character data.
-              </div>
-              <div class="modal-footer border-secondary">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmClearSheet">Yes, Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      document.body.insertAdjacentHTML('beforeend', modalHtml);
-    }
-
-    const el = document.getElementById('clearSheetModal');
-    clearSheetModalInstance = bootstrap.Modal.getOrCreateInstance(el);
-
-    // Bind confirm button only once
-    const btnYes = el.querySelector('#confirmClearSheet');
-    if (!btnYes.dataset.bound) {
-      btnYes.addEventListener('click', () => {
+    const message = 'Are you sure you want to clear the character sheet? This will remove all character data.';
+    
+    const { modalElement, modalInstance } = modalManager.showCustom({
+      title: 'Clear Character Sheet',
+      content: message,
+      footer: `
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmClearSheet">Yes, Clear</button>
+      `,
+      size: 'default',
+      centered: true
+    }, (element, instance) => {
+      // Bind confirm button
+      element.querySelector('#confirmClearSheet').addEventListener('click', () => {
         performClearSheet();
-        clearSheetModalInstance.hide();
+        instance.hide();
       });
-      btnYes.dataset.bound = '1';
-    }
+    });
+
+    clearSheetModalInstance = modalInstance;
     return clearSheetModalInstance;
   }
 
@@ -582,6 +578,60 @@ export function initControlBar(deps) {
 
   // Expose performClearSheet globally
   window.performClearSheet = performClearSheet;
+
+  // Expose mend functionality globally
+  window.mendHealth = function() {
+    // Helper to find the Blood Potency value from the sheet (0–5)
+    function getBloodPotency() {
+      const rows = document.querySelectorAll(".stat");
+      for (const row of rows) {
+        const lbl = row.querySelector(".stat-label");
+        if (lbl && lbl.textContent.trim().toLowerCase() === "blood potency") {
+          const dots = row.querySelector(".dots");
+          if (dots && dots.dataset.value !== undefined) {
+            const val = parseInt(dots.dataset.value, 10);
+            return isNaN(val) ? 0 : val;
+          }
+        }
+      }
+      return 0;
+    }
+
+    // Determine how much to heal based on Blood Potency lookup
+    const bpVal = getBloodPotency();
+    const healAmt = bpData.getHealingAmount ? bpData.getHealingAmount(bpVal) : 1;
+
+    // Heal superficial Health damage
+    const container = document.querySelector('.track-container[data-type="health"]');
+    if (container) {
+      const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+      
+      // Check if there's any damage to heal
+      if (superficialBoxes.length === 0) {
+        window.toastManager.show('No superficial damage to mend', 'warning');
+        return;
+      }
+
+      const toHeal = Math.min(healAmt, superficialBoxes.length);
+      // Heal starting from the rightmost (last) superficial box
+      superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
+
+      // Update displayed current health value
+      const total = container.querySelectorAll('.track-box').length;
+      const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
+      const newVal = total - damagedNow;
+      container.setAttribute('data-value', newVal);
+      const header = container.querySelector('.track-header span:first-child');
+      if (header) header.textContent = `Current: ${newVal}`;
+
+      window.toastManager.show(`Mended ${toHeal} superficial Health damage`, 'success');
+    } else {
+      window.toastManager.show('Health track not found', 'danger');
+    }
+
+    // Always perform a Rouse check to see if Hunger increases
+    quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
+  };
 
   // 7b) Clear Sheet button --------------------------------------------
   btnClear.addEventListener('click', () => {
@@ -832,102 +882,83 @@ export function initControlBar(deps) {
   let themeModalInstance;
 
   function ensureThemeModal() {
-    // Add CSS once for multi-column layout inside the theme modal
-    if (!document.getElementById("theme-modal-style")) {
-      const s = document.createElement("style");
-      s.id = "theme-modal-style";
-      s.textContent = `
-        /* Multi-column layout for long radio lists */
-        #themeModal .clan-options,
-        #themeModal .access-options {
-          column-count: 2;
-          column-gap: 1rem;
-        }
-        @media (min-width: 768px) {
-          #themeModal .clan-options { column-count: 3; }
-        }
-        #themeModal .clan-options .form-check,
-        #themeModal .access-options .form-check {
-          break-inside: avoid;
-        }
-      `;
-      document.head.appendChild(s);
-    }
     if (themeModalEl) return;
-    const modalHtml = `
-      <div class="modal fade" id="themeModal" tabindex="-1" aria-labelledby="themeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content bg-dark text-light">
-            <div class="modal-header">
-              <h5 class="modal-title" id="themeModalLabel">Color Scheme</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body vstack gap-2">
-              <h6 class="mt-2">Default Palettes</h6>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default">
-                <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
-              </div>
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory">
-                <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
-              </div>
 
-              <h6 class="mt-2">Accessibility Palettes</h6>
-              <div class="access-options">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCDark" value="hc-dark">
-                  <label class="form-check-label" for="schemeHCDark">High Contrast – Dark</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCLight" value="hc-light">
-                  <label class="form-check-label" for="schemeHCLight">High Contrast – Light</label>
-                </div>
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDyslexia" value="dyslexia">
-                <label class="form-check-label" for="schemeDyslexia">Dyslexia-Friendly</label>
-              </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic">
-                  <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
-                </div>
-              </div>
+    const content = `
+      <div class="vstack gap-2">
+        <h6 class="mt-2">Default Palettes</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default">
+          <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory">
+          <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
+        </div>
 
-              <h6 class="mt-2">Clan Palettes</h6>
-              <div class="clan-options">
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu"><label class="form-check-label" for="schemeBanu">Banu Haqim</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah"><label class="form-check-label" for="schemeBrujah">Brujah</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel"><label class="form-check-label" for="schemeGangrel">Gangrel</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata"><label class="form-check-label" for="schemeHecata">Hecata</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra"><label class="form-check-label" for="schemeLasombra">Lasombra</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian"><label class="form-check-label" for="schemeMalkavian">Malkavian</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry"><label class="form-check-label" for="schemeMinistry">The Ministry</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu"><label class="form-check-label" for="schemeNosferatu">Nosferatu</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos"><label class="form-check-label" for="schemeRavnos">Ravnos</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri"><label class="form-check-label" for="schemeSalubri">Salubri</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador"><label class="form-check-label" for="schemeToreador">Toreador</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere"><label class="form-check-label" for="schemeTremere">Tremere</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce"><label class="form-check-label" for="schemeTzimisce">Tzimisce</label></div>
-                <div class="form-check mb-1"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue"><label class="form-check-label" for="schemeVentrue">Ventrue</label></div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="saveThemeChoice">Apply</button>
-            </div>
+        <h6 class="mt-2">Accessibility Palettes</h6>
+        <div class="access-options">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCDark" value="hc-dark">
+            <label class="form-check-label" for="schemeHCDark">High Contrast – Dark</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCLight" value="hc-light">
+            <label class="form-check-label" for="schemeHCLight">High Contrast – Light</label>
+          </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDyslexia" value="dyslexia">
+          <label class="form-check-label" for="schemeDyslexia">Dyslexia-Friendly</label>
+        </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic">
+            <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
           </div>
         </div>
-      </div>`;
-    document.body.insertAdjacentHTML("beforeend", modalHtml);
-    themeModalEl = document.getElementById("themeModal");
-    themeModalInstance = bootstrap.Modal.getOrCreateInstance(themeModalEl);
 
-    themeModalEl.querySelector("#saveThemeChoice").addEventListener("click", () => {
-      const selected = themeModalEl.querySelector("input[name='schemeRadios']:checked");
-      if (selected) {
-        applyTheme(selected.value);
-        themeModalInstance.hide();
-      }
+        <h6 class="mt-2">Clan Palettes</h6>
+        <div class="clan-options">
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu"><label class="form-check-label" for="schemeBanu">Banu Haqim</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah"><label class="form-check-label" for="schemeBrujah">Brujah</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel"><label class="form-check-label" for="schemeGangrel">Gangrel</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata"><label class="form-check-label" for="schemeHecata">Hecata</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra"><label class="form-check-label" for="schemeLasombra">Lasombra</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian"><label class="form-check-label" for="schemeMalkavian">Malkavian</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry"><label class="form-check-label" for="schemeMinistry">The Ministry</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu"><label class="form-check-label" for="schemeNosferatu">Nosferatu</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos"><label class="form-check-label" for="schemeRavnos">Ravnos</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri"><label class="form-check-label" for="schemeSalubri">Salubri</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador"><label class="form-check-label" for="schemeToreador">Toreador</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere"><label class="form-check-label" for="schemeTremere">Tremere</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce"><label class="form-check-label" for="schemeTzimisce">Tzimisce</label></div>
+          <div class="form-check mb-1"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue"><label class="form-check-label" for="schemeVentrue">Ventrue</label></div>
+        </div>
+      </div>
+    `;
+
+    const footer = `
+      <button type="button" class="btn btn-primary" id="saveThemeChoice">Apply</button>
+    `;
+
+    const { modalElement, modalInstance } = modalManager.showCustom({
+      title: 'Color Scheme',
+      content,
+      footer,
+      size: 'default',
+      centered: true
+    }, (element, instance) => {
+      // Set up event handler
+      element.querySelector('#saveThemeChoice').addEventListener('click', () => {
+        const selected = element.querySelector('input[name="schemeRadios"]:checked');
+        if (selected) {
+          applyTheme(selected.value);
+          instance.hide();
+        }
+      });
     });
+
+    themeModalEl = modalElement;
+    themeModalInstance = modalInstance;
   }
 
   function applyTheme(themeKey) {

@@ -378,53 +378,21 @@ class DisciplineManager {
     async confirmPowerRemoval(disciplineKey, powersToRemove, oldLevel, newLevel) {
         const disciplineName = this.getDisciplineName(disciplineKey);
         
-        return new Promise((resolve) => {
-            const modalHtml = `
-                <div class="modal fade" id="confirmPowerRemovalModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark text-light">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Confirm Level Reduction</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Reducing <strong>${disciplineName}</strong> from level ${oldLevel} to ${newLevel} will remove the following powers:</p>
-                                <ul>
-                                    ${powersToRemove.map(power => `<li>${power}</li>`).join('')}
-                                </ul>
-                                <p>Do you want to continue?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelRemoval">Cancel</button>
-                                <button type="button" class="btn btn-danger" id="confirmRemoval">Remove Powers</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            $('body').append(modalHtml);
-            const modal = new bootstrap.Modal(document.getElementById('confirmPowerRemovalModal'));
-            
-            $('#confirmRemoval').on('click', () => {
-                modal.hide();
-                resolve(true);
-            });
-            
-            $('#cancelRemoval, .btn-close').on('click', () => {
-                modal.hide();
-                resolve(false);
-            });
-            
-            $('#confirmPowerRemovalModal').on('hidden.bs.modal', function() {
-                $(this).remove();
-            });
-            
-            modal.show();
+        const message = `
+            <p>Reducing <strong>${disciplineName}</strong> from level ${oldLevel} to ${newLevel} will remove the following powers:</p>
+            <ul>
+                ${powersToRemove.map(power => `<li>${power}</li>`).join('')}
+            </ul>
+            <p>Do you want to continue?</p>
+        `;
+        
+        return await modalManager.confirm('Confirm Level Reduction', message, {
+            confirmText: 'Remove Powers',
+            confirmClass: 'btn-danger'
         });
     }
 
-    showPowerSelectionModal(disciplineKey, level) {
+    async showPowerSelectionModal(disciplineKey, level) {
         const availablePowers = this.getAvailablePowersUpToLevel(disciplineKey, level);
         const disciplineName = this.getDisciplineName(disciplineKey);
         
@@ -433,70 +401,45 @@ class DisciplineManager {
             return;
         }
 
-        const modalHtml = `
-            <div class="modal fade" id="powerSelectionModal" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content bg-dark text-light">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Select Power - ${disciplineName} (Levels 1-${level})</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        const renderPowerOption = (power, index) => `
+            <div class="power-option mb-3 p-3 border rounded" data-power="${power.name}">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="power-details flex-grow-1">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <h6 class="power-name mb-0">${power.name}</h6>
+                            <span class="badge bg-secondary">Level ${power.level}</span>
+                            ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? 
+                                `<span class="badge bg-warning text-dark">Amalgam</span>` : ''}
                         </div>
-                        <div class="modal-body">
-                            <div class="alert alert-info">
-                                <small>You can select any power from level 1 up to your current level (${level}).</small>
-                            </div>
-                            <div class="power-selection">
-                                ${availablePowers.map(power => `
-                                    <div class="power-option mb-3 p-3 border rounded" data-power="${power.name}">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div class="power-details flex-grow-1">
-                                                <div class="d-flex align-items-center gap-2 mb-2">
-                                                    <h6 class="power-name mb-0">${power.name}</h6>
-                                                    <span class="badge bg-secondary">Level ${power.level}</span>
-                                                    ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? 
-                                                        `<span class="badge bg-warning text-dark">Amalgam</span>` : ''}
-                                                </div>
-                                                <div class="power-meta small">
-                                                    ${power.effect}
-                                                    ${power.cost && power.cost !== 'None' && power.cost !== 'N/A' ? `<br><strong>Cost:</strong> ${power.cost}` : ''}
-                                                    ${power.duration && power.duration !== 'None' && power.duration !== 'N/A' ? `<br><strong>Duration:</strong> ${power.duration}` : ''}
-                                                    ${power.dicePool && power.dicePool !== 'None' && power.dicePool !== 'N/A' ? `<br><strong>Dice Pool:</strong> ${power.dicePool}` : ''}
-                                                    ${power.opposingPool && power.opposingPool !== 'None' && power.opposingPool !== 'N/A' ? `<br><strong>Opposing Pool:</strong> ${power.opposingPool}` : ''}
-                                                    ${power.notes && power.notes !== 'None' && power.notes !== 'N/A' ? `<br><em>${power.notes}</em>` : ''}
-                                                    ${power.prerequisite && power.prerequisite !== 'None' ? `<br><em>Prerequisite: ${power.prerequisite}</em>` : ''}
-                                                    ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? `<br><em>Amalgam: ${power.amalgam}</em>` : ''}
-                                                    ${power.source ? `<br><span class="fst-italic" style="font-size: 0.8em;">Source: ${power.source}</span>` : ''}                                                </div>
-                                            </div>
-                                            <button class="btn btn-success btn-sm select-power-btn ms-3" data-power="${power.name}">
-                                                Select
-                                            </button>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <div class="power-meta small">
+                            ${power.effect}
+                            ${power.cost && power.cost !== 'None' && power.cost !== 'N/A' ? `<br><strong>Cost:</strong> ${power.cost}` : ''}
+                            ${power.duration && power.duration !== 'None' && power.duration !== 'N/A' ? `<br><strong>Duration:</strong> ${power.duration}` : ''}
+                            ${power.dicePool && power.dicePool !== 'None' && power.dicePool !== 'N/A' ? `<br><strong>Dice Pool:</strong> ${power.dicePool}` : ''}
+                            ${power.opposingPool && power.opposingPool !== 'None' && power.opposingPool !== 'N/A' ? `<br><strong>Opposing Pool:</strong> ${power.opposingPool}` : ''}
+                            ${power.notes && power.notes !== 'None' && power.notes !== 'N/A' ? `<br><em>${power.notes}</em>` : ''}
+                            ${power.prerequisite && power.prerequisite !== 'None' ? `<br><em>Prerequisite: ${power.prerequisite}</em>` : ''}
+                            ${power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None' ? `<br><em>Amalgam: ${power.amalgam}</em>` : ''}
+                            ${power.source ? `<br><span class="fst-italic" style="font-size: 0.8em;">Source: ${power.source}</span>` : ''}
                         </div>
                     </div>
+                    <button class="btn btn-success btn-sm select-option-btn ms-3" data-index="${index}">
+                        Select
+                    </button>
                 </div>
             </div>
         `;
-        
-        $('body').append(modalHtml);
-        const modal = new bootstrap.Modal(document.getElementById('powerSelectionModal'));
-        
-        $('.select-power-btn').on('click', (e) => {
-            const powerName = $(e.currentTarget).data('power');
-            this.addPower(disciplineKey, powerName);
-            modal.hide();
-        });
-        
-        $('#powerSelectionModal').on('hidden.bs.modal', function() {
-            $(this).remove();
-        });
-        
-        modal.show();
+
+        const result = await modalManager.select(
+            `Select Power - ${disciplineName} (Levels 1-${level})`,
+            availablePowers,
+            renderPowerOption,
+            { size: 'lg', scrollable: true }
+        );
+
+        if (result) {
+            this.addPower(disciplineKey, result.option.name);
+        }
     }
 
     getAvailablePowersAtLevel(disciplineKey, level) {

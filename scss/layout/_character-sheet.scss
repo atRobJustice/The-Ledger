@@ -363,7 +363,7 @@ h1 .logo {
   margin-bottom: 2rem;
   position: sticky;
   top: 1rem;
-  z-index: 1000;
+  z-index: 1800;
   min-width: 0;
   overflow-x: auto;
 }
@@ -412,7 +412,7 @@ h1 .logo {
   color: var(--accent, #ff5252);
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
   transform: translateY(-2px) scale(1.08);
-  z-index: 2;
+  z-index: 1900;
 }
 
 .toolbar-btn img {
@@ -468,4 +468,13 @@ h1 .logo {
   // Remove any sticky positioning - let it scroll normally
   position: relative;
   z-index: 1;
+}
+
+// Ensure Bootstrap modals appear above the toolbar
+.modal {
+  z-index: 3000 !important;
+}
+
+.modal-backdrop {
+  z-index: 2999 !important;
 } 

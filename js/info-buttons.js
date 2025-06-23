@@ -327,24 +327,9 @@ function createInfoButton(title) {
 }
 
 function ensureModal(id, titleText) {
-  let modal = document.getElementById(id);
-  if (modal) return modal;
-  const wrapper = document.createElement('div');
-  wrapper.innerHTML = `
-    <div class="modal fade" id="${id}" tabindex="-1" aria-labelledby="${id}-label" role="dialog" aria-modal="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="${id}-label">${titleText}</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="${id}-content"></div>
-          <div class="modal-footer"></div>
-        </div>
-      </div>
-    </div>`;
-  document.body.appendChild(wrapper.firstElementChild);
-  return document.getElementById(id);
+  // This function is no longer needed since modalManager handles modal creation
+  // Return a dummy element for backward compatibility
+  return document.createElement('div');
 }
 
 function list(label, items) {
@@ -364,11 +349,10 @@ function badge(label, value) {
 }
 
 function showModal(id, contentHtml, titleText = 'Info') {
-  const modalEl = ensureModal(id, titleText);
-  modalEl.querySelector(`#${id}-label`).textContent = titleText;
-  modalEl.querySelector(`#${id}-content`).innerHTML = contentHtml;
-  const instance = bootstrap.Modal.getOrCreateInstance(modalEl);
-  instance.show();
+  window.modalManager.info(titleText, contentHtml, {
+    size: 'default',
+    centered: true
+  });
 }
 
 function initInfoButtons() {
@@ -388,12 +372,7 @@ function initInfoButtons() {
         const module = await import(mapping.modulePath);
         const data = module[dataKey] || module.default || module;
         const contentHtml = mapping.buildContent(data);
-        const modalId = `${mapping.key}-heading-info-modal`;
-        const modalEl = ensureModal(modalId, mapping.titlePrefix);
-        modalEl.querySelector(`#${modalId}-label`).textContent = mapping.titlePrefix;
-        modalEl.querySelector(`#${modalId}-content`).innerHTML = contentHtml;
-        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
-        modalInstance.show();
+        showModal(`${mapping.key}-heading-info-modal`, contentHtml, mapping.titlePrefix);
       } catch (err) {
         console.error(`Error loading ${mapping.key} info:`, err);
       }

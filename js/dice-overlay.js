@@ -74,58 +74,134 @@ let bonusMsg = null;
   //  UI MARKUP helpers (Bootstrap 5 classes)
   // ----------------------------------------
   function createModal() {
-    const modalHtml = `
-      <div class="modal fade" id="diceRollModal" tabindex="-1" aria-labelledby="diceRollLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="diceRollLabel">Roll Dice</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="alert alert-danger d-none" id="impairmentNote" role="alert"></div>
-              <div class="alert alert-success d-none" id="bonusNote" role="alert"></div>
-              <div class="alert alert-info d-none" id="breakdownNote" role="alert"></div>
-              <form id="diceRollForm">
-                <!-- Blood Surge toggle -->
-                <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
-                  <input class="form-check-input" type="checkbox" id="bloodSurgeToggle">
-                  <label class="form-check-label" for="bloodSurgeToggle">Blood Surge</label>
-                  <span class="badge" style="background-color: var(--accent); color: white;" id="bloodSurgeBonus">+0</span>
-                </div>
-                <!-- Specialty selection (hidden if not applicable) -->
-                <div class="mb-3 d-none" id="specialtySection">
-                  <label for="specialtySelect" class="form-label">Specialty (optional)</label>
-                  <select class="form-select" id="specialtySelect"></select>
-                  <div class="form-check form-switch mt-2">
-                    <input class="form-check-input" type="checkbox" id="applySpecialtyCheckbox">
-                    <label class="form-check-label" for="applySpecialtyCheckbox">Apply +1 die</label>
-                  </div>
-                  <hr/>
-                </div>
-                <!-- Difficulty input -->
-                <div class="mb-3 row">
-                  <label for="difficultyInput" class="col-sm-4 col-form-label fw-bold">Difficulty</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control bg-dark text-light text-center" id="difficultyInput" min="1" value="1">
-                  </div>
-                  <div class="fst-italic small">Number of successes set by Storyteller to accomplish the action. Rouse, Remorse, & Frenzy checks ignore Difficulty.</div>
-                </div>
-                ${generateNumberInput("standard", "Standard")}
-                ${generateNumberInput("hunger", "Hunger")}
-                ${generateNumberInput("rouse", "Rouse")}
-                ${generateNumberInput("remorse", "Remorse")}
-                ${generateNumberInput("frenzy", "Frenzy")}
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" id="rollDiceConfirm">Roll</button>
-            </div>
-          </div>
+    const content = `
+      <div class="alert alert-danger d-none" id="impairmentNote" role="alert"></div>
+      <div class="alert alert-success d-none" id="bonusNote" role="alert"></div>
+      <div class="alert alert-info d-none" id="breakdownNote" role="alert"></div>
+      <form id="diceRollForm">
+        <!-- Blood Surge toggle -->
+        <div class="form-check form-switch mb-3" id="bloodSurgeToggleWrapper">
+          <input class="form-check-input" type="checkbox" id="bloodSurgeToggle">
+          <label class="form-check-label" for="bloodSurgeToggle">Blood Surge</label>
+          <span class="badge" style="background-color: var(--accent); color: white;" id="bloodSurgeBonus">+0</span>
         </div>
-      </div>`;
-    document.body.insertAdjacentHTML("beforeend", modalHtml);
-    return document.getElementById("diceRollModal");
+        <!-- Specialty selection (hidden if not applicable) -->
+        <div class="mb-3 d-none" id="specialtySection">
+          <label for="specialtySelect" class="form-label">Specialty (optional)</label>
+          <select class="form-select" id="specialtySelect"></select>
+          <div class="form-check form-switch mt-2">
+            <input class="form-check-input" type="checkbox" id="applySpecialtyCheckbox">
+            <label class="form-check-label" for="applySpecialtyCheckbox">Apply +1 die</label>
+          </div>
+          <hr/>
+        </div>
+        <!-- Difficulty input -->
+        <div class="mb-3 row">
+          <label for="difficultyInput" class="col-sm-4 col-form-label fw-bold">Difficulty</label>
+          <div class="col-sm-8">
+            <input type="number" class="form-control bg-dark text-light text-center" id="difficultyInput" min="1" value="1">
+          </div>
+          <div class="fst-italic small">Number of successes set by Storyteller to accomplish the action. Rouse, Remorse, & Frenzy checks ignore Difficulty.</div>
+        </div>
+        ${generateNumberInput("standard", "Standard")}
+        ${generateNumberInput("hunger", "Hunger")}
+        ${generateNumberInput("rouse", "Rouse")}
+        ${generateNumberInput("remorse", "Remorse")}
+        ${generateNumberInput("frenzy", "Frenzy")}
+      </form>
+    `;
+
+    const footer = `
+      <button type="button" class="btn btn-danger" id="rollDiceConfirm">Roll</button>
+    `;
+
+    const { modalElement, modalInstance } = modalManager.showCustom({
+      title: 'Roll Dice',
+      content,
+      footer,
+      size: 'default',
+      centered: false,
+      showCloseButton: true
+    }, (element, instance) => {
+      // Add keyboard event listener for Enter key
+      element.querySelector("#diceRollForm").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          element.querySelector("#rollDiceConfirm").click();
+        }
+      });
+
+      // Prevent form submission from reloading or re-triggering modal
+      element.querySelector("#diceRollForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+
+      // Ensure Difficulty input never goes below 1
+      const difficultyInput = element.querySelector("#difficultyInput");
+      difficultyInput.addEventListener("input", () => {
+        const value = parseInt(difficultyInput.value);
+        if (isNaN(value) || value < 1) {
+          difficultyInput.value = 1;
+        }
+      });
+      difficultyInput.addEventListener("blur", () => {
+        const value = parseInt(difficultyInput.value);
+        if (isNaN(value) || value < 1) {
+          difficultyInput.value = 1;
+        }
+      });
+
+      // Attach confirm handler only once
+      element.querySelector("#rollDiceConfirm").addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const pools = {
+          standard: parseInt(element.querySelector("#standardInput").value) || 0,
+          hunger: parseInt(element.querySelector("#hungerInput").value) || 0,
+          rouse: parseInt(element.querySelector("#rouseInput").value) || 0,
+          remorse: parseInt(element.querySelector("#remorseInput").value) || 0,
+          frenzy: parseInt(element.querySelector("#frenzyInput").value) || 0,
+          difficulty: parseInt(element.querySelector("#difficultyInput").value) || 1,
+        };
+
+        // ----------------------------------------------------
+        //  Blood Surge – adds dice & a mandatory Rouse check
+        // ----------------------------------------------------
+        const bloodSurgeToggle = element.querySelector("#bloodSurgeToggle");
+        const bloodSurgeOn = bloodSurgeToggle && bloodSurgeToggle.checked;
+        if (bloodSurgeOn) {
+          const bpVal = getStatValueByName("Blood Potency");
+          const surgeBonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
+          pools.standard += surgeBonus;
+          pools.rouse += 1;
+          lastRollHadBloodSurge = true;
+        } else {
+          lastRollHadBloodSurge = false;
+        }
+
+        instance.hide();
+
+        // Ensure libs loaded
+        await ensureDiceEngineLoaded();
+
+        // Create overlay & roll
+        const canvasContainer = createOverlay();
+        if (latestImpairmentMessage) {
+          const banner = document.createElement('div');
+          banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
+          banner.style.zIndex = '2010';
+          banner.textContent = latestImpairmentMessage;
+          canvasContainer.appendChild(banner);
+        }
+        rollVtmDice(canvasContainer, pools, () => {});
+        // Update WP reroll availability after roll
+        if (typeof window.refreshWPRerollButtonLocal === "function") {
+          window.refreshWPRerollButtonLocal();
+        }
+      });
+    });
+
+    return modalElement;
   }
 
   function generateNumberInput(id, label) {
@@ -145,11 +221,11 @@ let bonusMsg = null;
     const overlay = document.createElement("div");
     overlay.id = "dice-overlay";
     overlay.style.position = "fixed";
-    overlay.style.top = "0";
+    overlay.style.top = "120px"; // Start below the toolbar area (toolbar height + padding + margin)
     overlay.style.left = "0";
     overlay.style.width = "100%";
-    overlay.style.height = "100%";
-    overlay.style.zIndex = "2000"; // above Bootstrap modals (1055) and tooltips
+    overlay.style.height = "calc(100% - 120px)"; // Adjust height to account for top offset
+    overlay.style.zIndex = "1500"; // Dice Overlay: 1000-1999 (above content, below toolbar)
     overlay.style.pointerEvents = "auto"; // enable dice interactions
 
     const canvas = document.createElement("div");
@@ -650,8 +726,19 @@ let bonusMsg = null;
       }
 
       // Apply mechanical consequences
-      if (rouseLen > 0 && !rouseSuccess && !rouseWasRerolled) {
-        increaseHungerBy(1);
+      if (rouseLen > 0 && !rouseWasRerolled) {
+        // Count failed Rouse dice and increase Hunger by 1 for each failure
+        const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
+        if (failedRouseDice > 0) {
+          increaseHungerBy(failedRouseDice);
+        }
+      } else if (rouseLen > 0 && rouseWasRerolled) {
+        // For rerolled Rouse checks, we need to count the new results
+        // The new results are already in rouseRolls after the reroll
+        const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
+        if (failedRouseDice > 0) {
+          increaseHungerBy(failedRouseDice);
+        }
       }
 
       if (remorseLen > 0) {
@@ -673,27 +760,65 @@ let bonusMsg = null;
 
       // Enable click selection on canvasContainer
       canvasContainer.addEventListener('click', function selectHandler(ev) {
-        if (!currentRollCtx || currentRollCtx.box !== box) return;
-        const data = box.search_dice_by_mouse(ev);
-        if (!data) return;
+        console.log('Dice click detected:', ev);
+        console.log('Mouse coordinates:', ev.clientX, ev.clientY);
+        console.log('currentRollCtx:', currentRollCtx);
+        console.log('box:', box);
+        console.log('Number of dice in box:', box.dices ? box.dices.length : 0);
+        
+        if (!currentRollCtx || currentRollCtx.box !== box) {
+          console.log('No currentRollCtx or box mismatch');
+          return;
+        }
+        
+        // Adjust mouse coordinates to account for overlay offset
+        const canvasRect = canvasContainer.getBoundingClientRect();
+        const relativeX = ev.clientX - canvasRect.left;
+        const relativeY = ev.clientY - canvasRect.top;
+        
+        const adjustedEvent = {
+          ...ev,
+          clientX: relativeX,
+          clientY: relativeY
+        };
+        
+        const data = box.search_dice_by_mouse(adjustedEvent);
+        console.log('search_dice_by_mouse result:', data);
+        
+        if (!data) {
+          console.log('No dice found at click position');
+          return;
+        }
+        
         const idx = data.rollIndex;
         const mesh = data.mesh;
         const sLen = notation.set.length;
         const hLen = notation.hungerSet.length;
+        
+        console.log('Dice index:', idx, 'Standard dice count:', sLen, 'Hunger dice count:', hLen);
+        
         if (idx >= sLen) {
+          console.log('Dice index >= standard dice count, cannot reroll');
           // Hunger or later dice cannot be rerolled
           return;
         }
+        
         // toggle selection up to 3
         const sel = currentRollCtx.selected;
         if (sel.has(idx)) {
           sel.delete(idx);
           highlightDie(mesh, false);
+          console.log('Deselected die:', idx);
         } else {
-          if (sel.size >= 3) return; // limit
+          if (sel.size >= 3) {
+            console.log('Already selected 3 dice, cannot select more');
+            return; // limit
+          }
           sel.add(idx);
           highlightDie(mesh, true);
+          console.log('Selected die:', idx, 'Total selected:', sel.size);
         }
+        
         // Re-render scene to reflect highlight changes
         if (box && box.renderer) {
           box.renderer.render(box.scene, box.camera);
@@ -704,7 +829,8 @@ let bonusMsg = null;
       if (window.toastManager) {
         window.toastManager.show(toastHtml, 'info', 'Dice Overlay');
       } else {
-        window.toastManager.show(toastHtml.replace(/<[^>]+>/g, ''), 'info', 'Dice Overlay');
+        // Fallback to simple alert if toastManager is not available
+        alert(toastHtml.replace(/<[^>]+>/g, ''));
       }
 
       if (typeof onFinished === "function") onFinished(res);
@@ -1018,80 +1144,77 @@ let bonusMsg = null;
     window.handleWPRerollClick = handleWPRerollClick;
     window.clearOverlay = clearOverlay;
     
-    // Add mend functionality
+    // Add mendHealth function globally
     window.mendHealth = function() {
-      // Find health container and mend superficial damage
-      const healthContainer = document.querySelector('.track-container[data-track="health"]');
-      if (healthContainer) {
-        const superficialBoxes = healthContainer.querySelectorAll('.track-box.superficial');
-        if (superficialBoxes.length > 0) {
-          // Remove one superficial damage
-          superficialBoxes[superficialBoxes.length - 1].classList.remove('superficial');
-          showToast('Mended 1 superficial Health damage', 'success');
-        } else {
-          showToast('No superficial damage to mend', 'warning');
+      // Helper to find the Blood Potency value from the sheet (0–5)
+      function getBloodPotency() {
+        const rows = document.querySelectorAll(".stat");
+        for (const row of rows) {
+          const lbl = row.querySelector(".stat-label");
+          if (lbl && lbl.textContent.trim().toLowerCase() === "blood potency") {
+            const dots = row.querySelector(".dots");
+            if (dots && dots.dataset.value !== undefined) {
+              const val = parseInt(dots.dataset.value, 10);
+              return isNaN(val) ? 0 : val;
+            }
+          }
+        }
+        return 0;
+      }
+
+      // Determine how much to heal based on Blood Potency lookup
+      const bpVal = getBloodPotency();
+      const healAmt = (typeof bpData?.getHealingAmount === "function") ? (bpData.getHealingAmount(bpVal) || 1) : 1;
+
+      // Heal superficial Health damage
+      const container = document.querySelector('.track-container[data-type="health"]');
+      if (container) {
+        const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
+        
+        // Check if there's any damage to heal
+        if (superficialBoxes.length === 0) {
+          if (window.toastManager) {
+            window.toastManager.show('No superficial damage to mend', 'warning');
+          }
+          return;
+        }
+
+        const toHeal = Math.min(healAmt, superficialBoxes.length);
+        // Heal starting from the rightmost (last) superficial box
+        superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
+
+        // Update displayed current health value
+        const total = container.querySelectorAll('.track-box').length;
+        const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
+        const newVal = total - damagedNow;
+        container.setAttribute('data-value', newVal);
+        const header = container.querySelector('.track-header span:first-child');
+        if (header) header.textContent = `Current: ${newVal}`;
+
+        if (window.toastManager) {
+          window.toastManager.show(`Mended ${toHeal} superficial Health damage`, 'success');
+        }
+      } else {
+        if (window.toastManager) {
+          window.toastManager.show('Health track not found', 'danger');
         }
       }
-    };
-    
-    // Add dice overlay access
-    window.diceOverlay = {
-      show: function() {
-        btn.click(); // Trigger the existing dice modal
+
+      // Always perform a Rouse check to see if Hunger increases
+      if (window.quickRoll) {
+        window.quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
       }
     };
     
     // Add toast function if not already available
     if (!window.showToast) {
       window.showToast = function(message, type = 'info') {
-        // Create toast element
-        const toast = document.createElement('div');
-        toast.className = `toast-notification toast-${type}`;
-        toast.textContent = message;
-        
-        // Style the toast
-        toast.style.cssText = `
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          padding: 1rem 1.5rem;
-          border-radius: 8px;
-          color: white;
-          font-weight: 500;
-          z-index: 9999;
-          animation: slideIn 0.3s ease-out;
-          max-width: 300px;
-        `;
-        
-        // Set background color based on type
-        const colors = {
-          success: '#28a745',
-          error: '#dc3545',
-          warning: '#ffc107',
-          info: '#17a2b8'
-        };
-        toast.style.backgroundColor = colors[type] || colors.info;
-        
-        // Add to page
-        document.body.appendChild(toast);
-        
-        // Remove after 3 seconds
-        setTimeout(() => {
-          toast.style.animation = 'slideOut 0.3s ease-in';
-          setTimeout(() => {
-            if (toast.parentNode) {
-              toast.parentNode.removeChild(toast);
-            }
-          }, 300);
-        }, 3000);
+        if (window.toastManager) {
+          window.toastManager.show(message, type, 'Dice Overlay');
+        } else {
+          console.log(`${type.toUpperCase()}: ${message}`);
+        }
       };
-    }
-
-    // The bar has already created the Roll button – grab a reference to it
-    const btn = document.getElementById("openDiceRoll");
-    if (!btn) {
-      console.error("Ledger: failed to locate #openDiceRoll generated by control-bar.js");
-      return;
     }
 
     // Bridge to the bar's helper so the rest of the overlay logic can stay unchanged
@@ -1100,6 +1223,9 @@ let bonusMsg = null;
         window.refreshWPRerollButton();
       }
     }
+
+    // Expose refreshWPRerollButton globally so it can be called from other functions
+    window.refreshWPRerollButtonLocal = refreshWPRerollButton;
 
     // Helper used by computeDicePools further below (kept here because the overlay
     // still owns the dice-pool logic).
@@ -1114,172 +1240,6 @@ let bonusMsg = null;
 
     // Modal lazy creation
     let modalEl; // will be lazily created
-    let bootstrapModal;
-
-    btn.addEventListener("click", async () => {
-      // Wipe overlay before showing modal
-      if (typeof clearOverlay === "function") clearOverlay();
-
-      if (!modalEl) {
-        modalEl = createModal();
-        bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalEl);
-
-        // Add keyboard event listener for Enter key
-        modalEl.querySelector("#diceRollForm").addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            modalEl.querySelector("#rollDiceConfirm").click();
-          }
-        });
-
-        // Ensure Difficulty input never goes below 1
-        const difficultyInput = modalEl.querySelector("#difficultyInput");
-        difficultyInput.addEventListener("input", () => {
-          const value = parseInt(difficultyInput.value);
-          if (isNaN(value) || value < 1) {
-            difficultyInput.value = 1;
-          }
-        });
-        difficultyInput.addEventListener("blur", () => {
-          const value = parseInt(difficultyInput.value);
-          if (isNaN(value) || value < 1) {
-            difficultyInput.value = 1;
-          }
-        });
-
-        // Attach confirm handler only once
-        modalEl.querySelector("#rollDiceConfirm").addEventListener("click", async () => {
-          const pools = {
-            standard: parseInt(modalEl.querySelector("#standardInput").value) || 0,
-            hunger: parseInt(modalEl.querySelector("#hungerInput").value) || 0,
-            rouse: parseInt(modalEl.querySelector("#rouseInput").value) || 0,
-            remorse: parseInt(modalEl.querySelector("#remorseInput").value) || 0,
-            frenzy: parseInt(modalEl.querySelector("#frenzyInput").value) || 0,
-            difficulty: parseInt(modalEl.querySelector("#difficultyInput").value) || 1,
-          };
-
-          // ----------------------------------------------------
-          //  Blood Surge – adds dice & a mandatory Rouse check
-          // ----------------------------------------------------
-          const bloodSurgeToggle = modalEl.querySelector("#bloodSurgeToggle");
-          const bloodSurgeOn = bloodSurgeToggle && bloodSurgeToggle.checked;
-          if (bloodSurgeOn && pools.remorse === 0 && pools.frenzy === 0) {
-            const bpVal = getStatValueByName("Blood Potency");
-            const surgeBonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
-            pools.standard += surgeBonus;
-            pools.rouse += 1;
-            lastRollHadBloodSurge = true;
-          } else {
-            lastRollHadBloodSurge = false;
-          }
-
-          bootstrapModal.hide();
-
-          // Ensure libs loaded
-          await ensureDiceEngineLoaded();
-
-          // Create overlay & roll
-          const canvasContainer = createOverlay();
-          if (latestImpairmentMessage) {
-            const banner = document.createElement('div');
-            banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
-            banner.style.zIndex = '2010';
-            banner.textContent = latestImpairmentMessage;
-            canvasContainer.appendChild(banner);
-          }
-          rollVtmDice(canvasContainer, pools, () => {});
-          // Update WP reroll availability after roll
-          refreshWPRerollButton();
-        });
-      }
-
-      // Each time the button is pressed, compute & pre-fill the modal fields
-      const computed = computeDicePools();
-      if (computed) {
-        modalEl.querySelector("#standardInput").value = computed.standard;
-        modalEl.querySelector("#hungerInput").value = computed.hunger;
-        modalEl.querySelector("#rouseInput").value = computed.rouse;
-        modalEl.querySelector("#remorseInput").value = computed.remorse;
-        modalEl.querySelector("#frenzyInput").value = computed.frenzy;
-      }
-
-      // Update impairment note visibility
-      const noteBox = modalEl.querySelector('#impairmentNote');
-      if (noteBox) {
-        if (latestImpairmentMessage) {
-          noteBox.textContent = latestImpairmentMessage;
-          noteBox.classList.remove('d-none');
-        } else {
-          noteBox.classList.add('d-none');
-        }
-      }
-
-      // Update bonus note visibility (resonance & blood potency)
-      const bonusBox = modalEl.querySelector('#bonusNote');
-      const bonusMessages = [];
-      if (window.latestResonanceBonusMessage) bonusMessages.push(window.latestResonanceBonusMessage);
-      if (window.latestDisciplineBonusMessage) bonusMessages.push(window.latestDisciplineBonusMessage);
-      if (window.latestSpecialtyBonusMessage) bonusMessages.push(window.latestSpecialtyBonusMessage);
-      if (bonusBox) {
-        if (bonusMessages.length) {
-          bonusBox.innerHTML = bonusMessages.join('<br>');
-          bonusBox.classList.remove('d-none');
-        } else {
-          bonusBox.classList.add('d-none');
-        }
-      }
-
-      // New: Update breakdown note
-      const breakdownBox = modalEl.querySelector('#breakdownNote');
-      if (breakdownBox) {
-        if (window.latestDiceBreakdown) {
-          // Split breakdown lines into two columns
-          const lines = window.latestDiceBreakdown.split('<br>');
-          const midpoint = Math.ceil(lines.length / 2);
-          const leftColumn = lines.slice(0, midpoint);
-          const rightColumn = lines.slice(midpoint);
-          
-          const columnHtml = `
-            <div class="row">
-              <div class="col-6">
-                ${leftColumn.join('<br>')}
-              </div>
-              <div class="col-6">
-                ${rightColumn.join('<br>')}
-              </div>
-            </div>
-          `;
-          
-          breakdownBox.innerHTML = columnHtml;
-          breakdownBox.classList.remove('d-none');
-        } else {
-          breakdownBox.classList.add('d-none');
-        }
-      }
-
-      updateSpecialtySection(modalEl);
-
-      // Enable or disable Blood Surge toggle based on current Hunger (must be <5)
-      const hungerScore = getStatValueByName("Hunger");
-      const surgeWrapper = modalEl.querySelector("#bloodSurgeToggleWrapper");
-      const surgeInput = modalEl.querySelector("#bloodSurgeToggle");
-      const surgeBonus = modalEl.querySelector("#bloodSurgeBonus");
-      if (surgeWrapper && surgeInput) {
-        if (hungerScore >= 5) {
-          surgeInput.checked = false;
-          surgeInput.disabled = true;
-          if (surgeBonus) surgeBonus.textContent = "+0 Standard, +0 Rouse";
-        } else {
-          surgeInput.disabled = false;
-          // Update bonus display based on Blood Potency
-          const bpVal = getStatValueByName("Blood Potency");
-          const bonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
-          if (surgeBonus) surgeBonus.textContent = `+${bonus} Standard, +1 Rouse`;
-        }
-      }
-
-      bootstrapModal.show();
-    });
 
     // Initial button state
     refreshWPRerollButton();
@@ -1622,5 +1582,107 @@ let bonusMsg = null;
         window.__resonancesData = null;
       }
     })();
+
+    // Add dice overlay access
+    window.diceOverlay = {
+      show: async function() {
+        // Wipe overlay before showing modal
+        if (typeof clearOverlay === "function") clearOverlay();
+
+        // Always create a new modal each time the button is pressed
+        modalEl = createModal();
+
+        // Each time the button is pressed, compute & pre-fill the modal fields
+        const computed = computeDicePools();
+        if (computed) {
+          modalEl.querySelector("#standardInput").value = computed.standard;
+          modalEl.querySelector("#hungerInput").value = computed.hunger;
+          modalEl.querySelector("#rouseInput").value = computed.rouse;
+          modalEl.querySelector("#remorseInput").value = computed.remorse;
+          modalEl.querySelector("#frenzyInput").value = computed.frenzy;
+        }
+
+        // Update impairment note visibility
+        const noteBox = modalEl.querySelector('#impairmentNote');
+        if (noteBox) {
+          if (latestImpairmentMessage) {
+            noteBox.textContent = latestImpairmentMessage;
+            noteBox.classList.remove('d-none');
+          } else {
+            noteBox.classList.add('d-none');
+          }
+        }
+
+        // Update bonus note visibility (resonance & blood potency)
+        const bonusBox = modalEl.querySelector('#bonusNote');
+        const bonusMessages = [];
+        if (window.latestResonanceBonusMessage) bonusMessages.push(window.latestResonanceBonusMessage);
+        if (window.latestDisciplineBonusMessage) bonusMessages.push(window.latestDisciplineBonusMessage);
+        if (window.latestSpecialtyBonusMessage) bonusMessages.push(window.latestSpecialtyBonusMessage);
+        if (bonusBox) {
+          if (bonusMessages.length) {
+            bonusBox.innerHTML = bonusMessages.join('<br>');
+            bonusBox.classList.remove('d-none');
+          } else {
+            bonusBox.classList.add('d-none');
+          }
+        }
+
+        // New: Update breakdown note
+        const breakdownBox = modalEl.querySelector('#breakdownNote');
+        if (breakdownBox) {
+          if (window.latestDiceBreakdown) {
+            // Split breakdown lines into two columns
+            const lines = window.latestDiceBreakdown.split('<br>');
+            const midpoint = Math.ceil(lines.length / 2);
+            const leftColumn = lines.slice(0, midpoint);
+            const rightColumn = lines.slice(midpoint);
+            
+            const columnHtml = `
+              <div class="row">
+                <div class="col-6">
+                  ${leftColumn.join('<br>')}
+                </div>
+                <div class="col-6">
+                  ${rightColumn.join('<br>')}
+                </div>
+              </div>
+            `;
+            
+            breakdownBox.innerHTML = columnHtml;
+            breakdownBox.classList.remove('d-none');
+          } else {
+            breakdownBox.classList.add('d-none');
+          }
+        }
+
+        updateSpecialtySection(modalEl);
+
+        // Enable or disable Blood Surge toggle based on current Hunger (must be <5)
+        const hungerScore = getStatValueByName("Hunger");
+        const surgeWrapper = modalEl.querySelector("#bloodSurgeToggleWrapper");
+        const surgeInput = modalEl.querySelector("#bloodSurgeToggle");
+        const surgeBonus = modalEl.querySelector("#bloodSurgeBonus");
+        if (surgeWrapper && surgeInput) {
+          if (hungerScore >= 5) {
+            surgeInput.checked = false;
+            surgeInput.disabled = true;
+            if (surgeBonus) surgeBonus.textContent = "+0 Standard, +0 Rouse";
+          } else {
+            surgeInput.disabled = false;
+            // Update bonus display based on Blood Potency
+            const bpVal = getStatValueByName("Blood Potency");
+            const bonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
+            if (surgeBonus) surgeBonus.textContent = `+${bonus} Standard, +1 Rouse`;
+          }
+        }
+
+        // Show the modal
+        const modalData = modalManager.getModal(modalEl.id);
+        if (modalData) {
+          modalData.modalInstance.show();
+        }
+      }
+    };
   });
 })(); 

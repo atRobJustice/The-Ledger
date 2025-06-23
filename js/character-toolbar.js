@@ -21,6 +21,8 @@ export function initCharacterToolbar() {
     initFrenzyButton();
     initMendButton();
     initWPRerollButton();
+    initWipeButton();
+    initClearButton();
     initLockButton();
     initThemeButton();
     initDiscordButton();
@@ -39,13 +41,18 @@ function initSaveButton() {
     
     btn.addEventListener('click', async () => {
         try {
-            if (window.characterManager) {
-                await window.characterManager.saveCharacter();
-                showToast('Character saved successfully!', 'success');
+            if (window.characterManager && window.gatherCharacterData) {
+                const characterData = window.gatherCharacterData();
+                await window.characterManager.saveCurrentCharacter(characterData);
+                if (window.toastManager) {
+                    window.toastManager.show('Character saved successfully!', 'success', 'Character Toolbar');
+                }
             }
         } catch (error) {
             console.error('Failed to save character:', error);
-            showToast('Failed to save character', 'error');
+            if (window.toastManager) {
+                window.toastManager.show('Failed to save character', 'error', 'Character Toolbar');
+            }
         }
     });
 }
@@ -59,8 +66,8 @@ function initExportButton() {
     
     btn.addEventListener('click', async () => {
         try {
-            if (window.characterManager) {
-                const character = await window.characterManager.getCurrentCharacter();
+            if (window.gatherCharacterData) {
+                const character = window.gatherCharacterData();
                 if (character) {
                     const blob = new Blob([JSON.stringify(character, null, 2)], { type: 'application/json' });
                     const url = URL.createObjectURL(blob);
@@ -71,12 +78,16 @@ function initExportButton() {
                     a.click();
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
-                    showToast('Character exported successfully!', 'success');
+                    if (window.toastManager) {
+                        window.toastManager.show('Character exported successfully!', 'success', 'Character Toolbar');
+                    }
                 }
             }
         } catch (error) {
             console.error('Failed to export character:', error);
-            showToast('Failed to export character', 'error');
+            if (window.toastManager) {
+                window.toastManager.show('Failed to export character', 'error', 'Character Toolbar');
+            }
         }
     });
 }
@@ -107,13 +118,17 @@ function initImportButton() {
             const text = await file.text();
             const character = JSON.parse(text);
             
-            if (window.characterManager) {
-                await window.characterManager.loadCharacter(character);
-                showToast('Character imported successfully!', 'success');
+            if (window.loadCharacterData) {
+                window.loadCharacterData(character);
+                if (window.toastManager) {
+                    window.toastManager.show('Character imported successfully!', 'success', 'Character Toolbar');
+                }
             }
         } catch (error) {
             console.error('Failed to import character:', error);
-            showToast('Failed to import character', 'error');
+            if (window.toastManager) {
+                window.toastManager.show('Failed to import character', 'error', 'Character Toolbar');
+            }
         }
         
         // Clear file input
@@ -146,7 +161,7 @@ function initRouseButton() {
     btn.addEventListener('click', () => {
         // Trigger rouse check
         if (window.quickRoll) {
-            window.quickRoll('rouse');
+            window.quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
         }
     });
 }
@@ -160,11 +175,9 @@ function initRemorseButton() {
     
     btn.addEventListener('click', () => {
         // Trigger remorse check
-        if (window.computeRemorseDice) {
+        if (window.computeRemorseDice && window.quickRoll) {
             const dice = window.computeRemorseDice();
-            if (window.quickRoll) {
-                window.quickRoll('remorse', dice);
-            }
+            window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: dice, frenzy: 0 });
         }
     });
 }
@@ -178,11 +191,9 @@ function initFrenzyButton() {
     
     btn.addEventListener('click', () => {
         // Trigger frenzy check
-        if (window.computeFrenzyDice) {
+        if (window.computeFrenzyDice && window.quickRoll) {
             const dice = window.computeFrenzyDice();
-            if (window.quickRoll) {
-                window.quickRoll('frenzy', dice);
-            }
+            window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: 0, frenzy: dice });
         }
     });
 }
@@ -229,6 +240,60 @@ function initWPRerollButton() {
     // Update button state periodically
     setInterval(updateWPRerollButton, 1000);
     updateWPRerollButton();
+}
+
+/**
+ * Initialize Wipe button
+ */
+function initWipeButton() {
+    const btn = document.getElementById('btn-wipe');
+    if (!btn) return;
+    
+    btn.addEventListener('click', () => {
+        // Trigger wipe functionality
+        if (window.clearOverlay) {
+            window.clearOverlay();
+            if (window.toastManager) {
+                window.toastManager.show('Overlay cleared', 'info', 'Character Toolbar');
+            }
+        }
+    });
+}
+
+/**
+ * Initialize Clear button
+ */
+function initClearButton() {
+    const btn = document.getElementById('btn-clear');
+    if (!btn) return;
+    
+    btn.addEventListener('click', async () => {
+        // Show confirmation dialog
+        if (confirm('Are you sure you want to clear the character sheet? This action cannot be undone.')) {
+            try {
+                if (window.characterManager) {
+                    await window.characterManager.clearCurrentSheet();
+                    if (window.toastManager) {
+                        window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
+                    }
+                } else if (window.performClearSheet) {
+                    window.performClearSheet();
+                    if (window.toastManager) {
+                        window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
+                    }
+                } else {
+                    if (window.toastManager) {
+                        window.toastManager.show('Clear sheet functionality not available', 'error', 'Character Toolbar');
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to clear character sheet:', error);
+                if (window.toastManager) {
+                    window.toastManager.show('Failed to clear character sheet', 'error', 'Character Toolbar');
+                }
+            }
+        }
+    });
 }
 
 /**
@@ -294,32 +359,47 @@ function initDiscordButton() {
     if (!btn) return;
     
     btn.addEventListener('click', async () => {
-        // Show Discord webhook modal
-        const webhookModal = createWebhookModal();
-        document.body.appendChild(webhookModal);
-        
-        const modal = bootstrap.Modal.getOrCreateInstance(webhookModal);
-        
-        // Load current webhook
+        // Show Discord webhook modal using modalManager
         const webhook = await getDiscordWebhook();
-        webhookModal.querySelector("#discordWebhookInput").value = webhook || "";
         
+        const content = `
+            <div class="mb-3">
+                <label for="discordWebhookInput" class="form-label">Webhook URL</label>
+                <input type="url" class="form-control" id="discordWebhookInput" placeholder="https://discord.com/api/webhooks/..." value="${webhook || ''}">
+            </div>
+        `;
+
+        const footer = `
+            <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
+            <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
+        `;
+
+        window.modalManager.showCustom({
+            title: 'Discord Webhook',
+            content,
+            footer,
+            size: 'default',
+            centered: true
+        }, (element, instance) => {
         // Handle save
-        webhookModal.querySelector("#saveDiscordWebhook").addEventListener("click", () => {
-            const url = webhookModal.querySelector("#discordWebhookInput").value.trim();
-            setDiscordWebhook(url);
-            modal.hide();
-            showToast('Discord webhook saved!', 'success');
+            element.querySelector("#saveDiscordWebhook").addEventListener("click", async () => {
+                const url = element.querySelector("#discordWebhookInput").value.trim();
+                await setDiscordWebhook(url);
+                instance.hide();
+            if (window.toastManager) {
+                window.toastManager.show('Discord webhook saved!', 'success', 'Character Toolbar');
+            }
         });
         
         // Handle delete
-        webhookModal.querySelector("#deleteDiscordWebhook").addEventListener("click", () => {
-            setDiscordWebhook(null);
-            modal.hide();
-            showToast('Discord webhook removed!', 'success');
+            element.querySelector("#deleteDiscordWebhook").addEventListener("click", async () => {
+                await setDiscordWebhook(null);
+                instance.hide();
+            if (window.toastManager) {
+                window.toastManager.show('Discord webhook removed!', 'success', 'Character Toolbar');
+            }
         });
-        
-        modal.show();
+        });
     });
 }
 
@@ -365,227 +445,5 @@ function initTooltips() {
     }
 }
 
-/**
- * Show a toast notification
- */
-function showToast(message, type = 'info') {
-    // Create toast element
-    const toast = document.createElement('div');
-    toast.className = `toast-notification toast-${type}`;
-    toast.textContent = message;
-    
-    // Style the toast
-    toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        z-index: 9999;
-        animation: slideIn 0.3s ease-out;
-        max-width: 300px;
-    `;
-    
-    // Set background color based on type
-    const colors = {
-        success: '#28a745',
-        error: '#dc3545',
-        warning: '#ffc107',
-        info: '#17a2b8'
-    };
-    toast.style.backgroundColor = colors[type] || colors.info;
-    
-    // Add to page
-    document.body.appendChild(toast);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        toast.style.animation = 'slideOut 0.3s ease-in';
-        setTimeout(() => {
-            if (toast.parentNode) {
-                toast.parentNode.removeChild(toast);
-            }
-        }, 300);
-    }, 3000);
-}
-
-// Add CSS animations for toast
-if (!document.getElementById('toast-animations')) {
-    const style = document.createElement('style');
-    style.id = 'toast-animations';
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Initialize toolbar when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initCharacterToolbar();
-});
-
-// Character Toolbar Management
-class CharacterToolbar {
-    constructor() {
-        this.initializeEventListeners();
-    }
-
-    initializeEventListeners() {
-        // Character Actions
-        document.getElementById('btn-save')?.addEventListener('click', () => this.saveCharacter());
-        document.getElementById('btn-export')?.addEventListener('click', () => this.exportCharacter());
-        document.getElementById('btn-print')?.addEventListener('click', () => this.printCharacter());
-
-        // Game Actions
-        document.getElementById('btn-roll')?.addEventListener('click', () => this.rollDice());
-        document.getElementById('btn-rouse')?.addEventListener('click', () => this.rouseCheck());
-        document.getElementById('btn-xp')?.addEventListener('click', () => this.addExperience());
-
-        // Character Management
-        document.getElementById('btn-duplicate')?.addEventListener('click', () => this.duplicateCharacter());
-        document.getElementById('btn-reset')?.addEventListener('click', () => this.resetCharacter());
-        document.getElementById('btn-delete')?.addEventListener('click', () => this.deleteCharacter());
-
-        // Settings & Navigation
-        document.getElementById('btn-settings')?.addEventListener('click', () => this.openSettings());
-        document.getElementById('btn-dashboard')?.addEventListener('click', () => this.backToDashboard());
-    }
-
-    // Character Actions
-    saveCharacter() {
-        if (window.characterManager) {
-            window.characterManager.saveCharacter();
-            this.showNotification('Character saved successfully!', 'success');
-        } else {
-            this.showNotification('Character manager not available', 'error');
-        }
-    }
-
-    exportCharacter() {
-        if (window.characterManager) {
-            window.characterManager.exportCharacter();
-        } else {
-            this.showNotification('Character manager not available', 'error');
-        }
-    }
-
-    printCharacter() {
-        window.print();
-    }
-
-    // Game Actions
-    rollDice() {
-        if (window.diceOverlay) {
-            window.diceOverlay.showDiceOverlay();
-        } else {
-            this.showNotification('Dice overlay not available', 'error');
-        }
-    }
-
-    rouseCheck() {
-        if (window.diceOverlay) {
-            window.diceOverlay.showRouseCheck();
-        } else {
-            this.showNotification('Dice overlay not available', 'error');
-        }
-    }
-
-    addExperience() {
-        if (window.xpManager) {
-            window.xpManager.showAddXPModal();
-        } else {
-            this.showNotification('XP manager not available', 'error');
-        }
-    }
-
-    // Character Management
-    duplicateCharacter() {
-        if (window.characterManager) {
-            const character = window.characterManager.getCurrentCharacter();
-            if (character) {
-                const duplicatedCharacter = { ...character };
-                duplicatedCharacter.name = `${character.name} (Copy)`;
-                duplicatedCharacter.id = Date.now().toString();
-                
-                window.characterManager.saveCharacter(duplicatedCharacter);
-                this.showNotification('Character duplicated successfully!', 'success');
-            }
-        } else {
-            this.showNotification('Character manager not available', 'error');
-        }
-    }
-
-    resetCharacter() {
-        if (confirm('Are you sure you want to reset this character? This will clear all progress and return to starting values.')) {
-            if (window.characterManager) {
-                window.characterManager.resetCharacter();
-                this.showNotification('Character reset successfully!', 'success');
-            } else {
-                this.showNotification('Character manager not available', 'error');
-            }
-        }
-    }
-
-    deleteCharacter() {
-        if (confirm('Are you sure you want to delete this character? This action cannot be undone.')) {
-            if (window.characterManager) {
-                const character = window.characterManager.getCurrentCharacter();
-                if (character) {
-                    window.characterManager.deleteCharacter(character.id);
-                    this.showNotification('Character deleted successfully!', 'success');
-                    this.backToDashboard();
-                }
-            } else {
-                this.showNotification('Character manager not available', 'error');
-            }
-        }
-    }
-
-    // Settings & Navigation
-    openSettings() {
-        // Navigate to dashboard settings
-        window.location.href = 'index.html#settings';
-    }
-
-    backToDashboard() {
-        window.location.href = 'index.html';
-    }
-
-    // Utility Methods
-    showNotification(message, type = 'info') {
-        // Create a simple notification
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
-        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-        notification.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Auto-remove after 3 seconds
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 3000);
-    }
-}
-
-// Initialize toolbar when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    window.characterToolbar = new CharacterToolbar();
-});
-
-// Export for global access
-window.CharacterToolbar = CharacterToolbar; 
+// Initialize the toolbar when the module is loaded
+initCharacterToolbar(); 

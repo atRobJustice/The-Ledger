@@ -306,6 +306,21 @@ The control bar at the bottom of the screen provides quick access to essential f
 - Select a Progeny JSON export file
 - Character data will be converted and loaded
 
+### Dashboard Import Features
+The dashboard includes additional import options accessible from the main dashboard header:
+
+**Import Character:**
+- Click the "Import Character" button in the dashboard header
+- Select a JSON file exported from The Ledger
+- The character will be added to your character collection
+- Existing characters are not affected
+
+**Import Progeny Character:**
+- Click the "Import Progeny" button in the dashboard header
+- Select a JSON file exported from Progeny VTM character creator
+- The character will be converted to The Ledger format and added to your collection
+- All character data including disciplines, merits, and backgrounds will be preserved
+
 ### Clearing the Sheet
 1. Click the 🗑️ (Clear) button
 2. Confirm that you want to clear all character data

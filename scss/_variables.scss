@@ -42,8 +42,8 @@ $border-style: solid;
 $transition-base: all 0.2s ease-in-out;
 
 // Z-index
-$z-index-tooltip: 1050;
-$z-index-toast: 1055;
+$z-index-tooltip: 4000; // Tooltips: 4000-4999
+$z-index-toast: 3500;   // Toasts: 3000-3999 (modals range)
 
 // Breakpoints
 $breakpoint-sm: 576px;

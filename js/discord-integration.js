@@ -187,27 +187,37 @@ export function buildRollEmbed(rollData) {
 
 // Lazily create (and return) a Bootstrap modal that lets the user set their webhook URL
 export function createWebhookModal() {
-  const modalHtml = `
-    <div class="modal fade" id="discordWebhookModal" tabindex="-1" aria-labelledby="discordWebhookLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="discordWebhookLabel">Discord Webhook</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="discordWebhookInput" class="form-label">Webhook URL</label>
-              <input type="url" class="form-control" id="discordWebhookInput" placeholder="https://discord.com/api/webhooks/...">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
-            <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
-  return document.getElementById('discordWebhookModal');
+  const content = `
+    <div class="mb-3">
+      <label for="discordWebhookInput" class="form-label">Webhook URL</label>
+      <input type="url" class="form-control" id="discordWebhookInput" placeholder="https://discord.com/api/webhooks/...">
+    </div>
+  `;
+
+  const footer = `
+    <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
+    <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
+  `;
+
+  const { modalElement, modalInstance } = modalManager.showCustom({
+    title: 'Discord Webhook',
+    content,
+    footer,
+    size: 'default',
+    centered: true
+  }, (element, instance) => {
+    // Set up event handlers
+    element.querySelector('#saveDiscordWebhook').addEventListener('click', async () => {
+      const url = element.querySelector('#discordWebhookInput').value.trim();
+      await setDiscordWebhook(url);
+      instance.hide();
+    });
+
+    element.querySelector('#deleteDiscordWebhook').addEventListener('click', async () => {
+      await setDiscordWebhook(null);
+      instance.hide();
+    });
+  });
+
+  return modalElement;
 } 
