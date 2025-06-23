@@ -90,15 +90,41 @@ class BackgroundsPanel extends BaseComponent {
 
     async loadBackgroundsData() {
         try {
-            const module = await import('../../references/backgrounds.js');
-            this.backgroundsData = module.backgrounds;
+            // Wait for backgrounds data to be available
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.backgrounds && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            if (window.backgrounds) {
+                this.backgroundsData = window.backgrounds;
+            } else {
+                console.error('Backgrounds data not available');
+                this.backgroundsData = {};
+            }
         } catch (error) {
             console.error('Failed to load backgrounds data:', error);
             this.backgroundsData = {};
         }
+        
         try {
-            const coterieModule = await import('../../references/backgrounds-coterie.js');
-            this.coterieBackgroundsData = coterieModule.coterieBackgrounds;
+            // Wait for coterie backgrounds data to be available
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.coterieBackgrounds && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            if (window.coterieBackgrounds) {
+                this.coterieBackgroundsData = window.coterieBackgrounds;
+            } else {
+                this.coterieBackgroundsData = {};
+            }
         } catch (error) {
             this.coterieBackgroundsData = {};
         }
@@ -172,7 +198,60 @@ class BackgroundsPanel extends BaseComponent {
             .join('');
     }
 
-    // ... (other methods for trait options, add/remove, dot click, event emission, point summary, etc.)
+    /**
+     * Capitalize first letter of string
+     * @param {string} str - Input string
+     * @returns {string} Capitalized string
+     */
+    capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    /**
+     * Convert camelCase to Title Case
+     * @param {string} str - Input string
+     * @returns {string} Title case string
+     */
+    camelToTitle(str) {
+        return str.replace(/([A-Z])/g, ' $1')
+            .replace(/^./, str => str.toUpperCase())
+            .trim();
+    }
+
+    /**
+     * Bind event listeners
+     */
+    bindEventListeners() {
+        // This method will be implemented when needed
+        console.log('BackgroundsPanel bindEventListeners called');
+    }
+
+    /**
+     * Initialize tooltips
+     */
+    initTooltips() {
+        // This method will be implemented when needed
+        console.log('BackgroundsPanel initTooltips called');
+    }
+
+    /**
+     * Update point summary
+     */
+    updatePointSummary() {
+        // This method will be implemented when needed
+        console.log('BackgroundsPanel updatePointSummary called');
+    }
+
+    /**
+     * Get selected traits HTML
+     * @param {string} type - Trait type
+     * @param {Map} selectedTraits - Selected traits map
+     * @returns {string} HTML string
+     */
+    getSelectedTraitsHtml(type, selectedTraits) {
+        // This method will be implemented when needed
+        return '<div class="fst-italic">Implementation pending</div>';
+    }
 }
 
 // Attach to global scope for dynamic loading

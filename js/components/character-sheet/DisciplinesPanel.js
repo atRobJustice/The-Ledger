@@ -105,8 +105,21 @@ class DisciplinesPanel extends BaseComponent {
      */
     async loadDisciplineData() {
         try {
-            const module = await import('../../references/disciplines.js');
-            this.disciplinesData = module.disciplines;
+            // Wait for disciplines data to be available
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.disciplines && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            if (window.disciplines) {
+                this.disciplinesData = window.disciplines;
+            } else {
+                console.error('Disciplines data not available');
+                this.disciplinesData = { types: {} };
+            }
         } catch (error) {
             console.error('Failed to load discipline data:', error);
             this.disciplinesData = { types: {} };
@@ -316,51 +329,64 @@ class DisciplinesPanel extends BaseComponent {
      * Bind event listeners
      */
     bindEventListeners() {
-        // Discipline selector change
-        this.element.addEventListener('change', '#disciplineSelect', (e) => {
-            this.handleDisciplineSelect(e);
-        });
+        // Use event delegation for dynamic elements
+        if (this.element) {
+            // Discipline selector change
+            this.element.addEventListener('change', (e) => {
+                if (e.target.matches('#disciplineSelect')) {
+                    this.handleDisciplineSelect(e);
+                }
+            });
 
-        // Add discipline button
-        this.element.addEventListener('click', '#addDisciplineBtn', (e) => {
-            e.preventDefault();
-            this.handleAddDiscipline();
-        });
+            // Add discipline button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#addDisciplineBtn')) {
+                    e.preventDefault();
+                    this.handleAddDiscipline();
+                }
+            });
 
-        // Remove discipline button
-        this.element.addEventListener('click', '.remove-discipline-btn', (e) => {
-            e.preventDefault();
-            const disciplineKey = e.target.closest('.remove-discipline-btn').getAttribute('data-discipline');
-            this.handleRemoveDiscipline(disciplineKey);
-        });
+            // Remove discipline button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.remove-discipline-btn')) {
+                    e.preventDefault();
+                    const disciplineKey = e.target.closest('.remove-discipline-btn').getAttribute('data-discipline');
+                    this.handleRemoveDiscipline(disciplineKey);
+                }
+            });
 
-        // Dot clicks for discipline levels
-        this.element.addEventListener('click', '.dots .dot', (e) => {
-            this.handleDotClick(e);
-        });
+            // Dot clicks for discipline levels
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.dots .dot')) {
+                    this.handleDotClick(e);
+                }
+            });
 
-        // Add power button
-        this.element.addEventListener('click', '.add-power-btn', (e) => {
-            e.preventDefault();
-            const disciplineKey = e.target.closest('.add-power-btn').getAttribute('data-discipline');
-            const level = parseInt(e.target.closest('.add-power-btn').getAttribute('data-level'));
-            this.handleAddPower(disciplineKey, level);
-        });
+            // Add power button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.add-power-btn')) {
+                    e.preventDefault();
+                    const disciplineKey = e.target.closest('.add-power-btn').getAttribute('data-discipline');
+                    const level = parseInt(e.target.closest('.add-power-btn').getAttribute('data-level'));
+                    this.handleAddPower(disciplineKey, level);
+                }
+            });
 
-        // Remove power button
-        this.element.addEventListener('click', '.remove-power-btn', (e) => {
-            e.preventDefault();
-            const disciplineKey = e.target.closest('.remove-power-btn').getAttribute('data-discipline');
-            const powerName = e.target.closest('.remove-power-btn').getAttribute('data-power');
-            this.handleRemovePower(disciplineKey, powerName);
-        });
-
-        // Listen for lock state changes
-        if (window.LockManager) {
-            window.LockManager.on('lockStateChanged', (locked) => {
-                this.setLocked(locked);
+            // Remove power button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.remove-power-btn')) {
+                    e.preventDefault();
+                    const disciplineKey = e.target.closest('.remove-power-btn').getAttribute('data-discipline');
+                    const powerName = e.target.closest('.remove-power-btn').getAttribute('data-power');
+                    this.handleRemovePower(disciplineKey, powerName);
+                }
             });
         }
+
+        // Listen for lock state changes
+        document.addEventListener('ledger-lock-change', (e) => {
+            this.setLocked(e.detail.locked);
+        });
     }
 
     /**

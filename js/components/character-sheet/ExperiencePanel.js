@@ -113,31 +113,40 @@ class ExperiencePanel extends BaseComponent {
      * Set up event listeners for the component
      */
     _setupEventListeners() {
-        // Award XP button
-        this.on('click', '#award-xp', (e) => {
-            if (!this.isLocked) {
-                this._showAwardXPModal();
-            }
-        });
-
-        // Spend XP button
-        this.on('click', '#spend-xp', (e) => {
-            if (!this.isLocked) {
-                this._showSpendXPModal();
-            }
-        });
-
-        // Undo XP button
-        this.on('click', '#undo-xp', (e) => {
-            if (!this.isLocked && this.xpManager) {
-                const ok = this.xpManager.undoLast();
-                if (!ok) {
-                    window.toastManager?.show('Nothing to undo', 'info');
-                } else {
-                    this._emitXPChange();
+        // Use event delegation for dynamic elements
+        if (this.element) {
+            // Award XP button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#award-xp')) {
+                    if (!this.isLocked) {
+                        this._showAwardXPModal();
+                    }
                 }
-            }
-        });
+            });
+
+            // Spend XP button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#spend-xp')) {
+                    if (!this.isLocked) {
+                        this._showSpendXPModal();
+                    }
+                }
+            });
+
+            // Undo XP button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#undo-xp')) {
+                    if (!this.isLocked && this.xpManager) {
+                        const ok = this.xpManager.undoLast();
+                        if (!ok) {
+                            window.toastManager?.show('Nothing to undo', 'info');
+                        } else {
+                            this._emitXPChange();
+                        }
+                    }
+                }
+            });
+        }
     }
 
     /**

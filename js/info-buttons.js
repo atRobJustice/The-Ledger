@@ -185,7 +185,7 @@ const dropdownMappings = [
   {                // Resonance
     selector : '.resonance-dropdown',
     module   : './references/resonances.js',
-    pickData : m => m.resonances.types,        // object keyed by resonance key
+    pickData : m => window.resonances?.types,        // object keyed by resonance key
     buildContent: res => `
         <h5>${res.name}</h5>
         <p>${res.description}</p>
@@ -194,13 +194,13 @@ const dropdownMappings = [
   {                // Temperament
     selector : '.temperament-dropdown',
     module   : './references/resonances.js',
-    pickData : m => m.resonances.temperaments,
+    pickData : m => window.resonances?.temperaments,
     buildContent: t => `<h5>${t.name}</h5><p>${t.description}</p>`
   },
   {                // Predator
     selector : '.predator-dropdown',
     module   : './references/predator_types.js',
-    pickData : m => m.predatorTypes.types,
+    pickData : m => window.predatorTypes?.types,
     buildContent: p => `
         <h5>${p.name}</h5>
         <p>${p.description}</p>
@@ -211,7 +211,7 @@ const dropdownMappings = [
   {                // Clan
     selector : '.clan-dropdown',
     module   : './references/clans.js',
-    pickData : m => m.clans.types,
+    pickData : m => window.clans?.types,
     buildContent: c => `
         <h5>${c.name}</h5>
         <p>${c.background?.description||''}</p>
@@ -226,7 +226,7 @@ const dropdownMappings = [
     selector : '.generation-dropdown',
     module   : './references/generation.js',
     pickData : m => {
-      const gen = m.generation;
+      const gen = window.generation;
       // Create a mapping of generation numbers to tier names
       const tierMap = {
         '3': 'third',
@@ -245,13 +245,13 @@ const dropdownMappings = [
         '16': 'fourteenthThroughSixteenth'
       };
       return {
-        tiers: gen.generationTiers,
+        tiers: gen?.generationTiers,
         tierMap: tierMap
       };
     },
     buildContent: (data, key) => {
       const tierName = data.tierMap[key];
-      const tier = data.tiers[tierName];
+      const tier = data.tiers?.[tierName];
       if (!tier) return '<p>No information available for this generation.</p>';
       
       let content = `
@@ -260,7 +260,7 @@ const dropdownMappings = [
       `;
       
       // Add blood potency limits if available
-      const limits = data.tiers.bloodPotencyLimits?.[key];
+      const limits = data.tiers?.bloodPotencyLimits?.[key];
       if (limits) {
         content += `<p><strong>Blood Potency Range:</strong> ${limits.lowest} - ${limits.highest}</p>`;
       }
@@ -271,7 +271,7 @@ const dropdownMappings = [
   {                // Blood-Potency
     selector : '.blood-potency-dropdown',
     module   : './references/blood_potency.js',
-    pickData : m => m.bloodPotency.levels,
+    pickData : m => window.bloodPotency?.levels,
     buildContent: bp => `
         <h5>Blood-Potency ${bp.level}</h5>
         <p>${bp.description}</p>
@@ -285,11 +285,11 @@ const dropdownMappings = [
   {                // Compulsion
     selector : '.compulsion-dropdown',
     module   : './references/compulsions.js',
-    pickData : m => m.compulsions,
+    pickData : m => window.compulsions,
     buildContent: (data, key) => {
       // Handle both general and clan compulsions
       const [type, compKey] = key.split('.', 2);
-      const comp = type === 'general' ? data.general[compKey] : data.clanCompulsions[compKey];
+      const comp = type === 'general' ? data?.general?.[compKey] : data?.clanCompulsions?.[compKey];
       if (!comp) return '<p>No information available for this compulsion.</p>';
       
       let content = `

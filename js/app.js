@@ -40,6 +40,17 @@ class LedgerApp {
             this.initialized = true;
             console.log('LedgerApp initialized successfully');
 
+            // Clear any lingering loading states
+            if (this.loadingStateManager) {
+                this.loadingStateManager.clearAllLoadingStates();
+            }
+
+            // Hide the static loading indicator from HTML
+            const staticLoadingIndicator = document.getElementById('loading-indicator');
+            if (staticLoadingIndicator) {
+                staticLoadingIndicator.style.display = 'none';
+            }
+
             // Hide loading state
             this.hideAppLoading(true);
 
@@ -119,6 +130,16 @@ class LedgerApp {
     hideAppLoading(success = true) {
         if (this.loadingStateManager) {
             this.loadingStateManager.endLoading('app', success);
+        }
+        
+        // Only clear the loading UI if it actually exists
+        const appContainer = document.getElementById('app');
+        if (appContainer && appContainer.querySelector('.app-loading')) {
+            // Clear only the loading UI, not the entire container
+            const loadingElement = appContainer.querySelector('.app-loading');
+            if (loadingElement) {
+                loadingElement.remove();
+            }
         }
     }
 
@@ -274,54 +295,106 @@ class LedgerApp {
         
         const registry = window.ComponentRegistry.instance;
         
-        // Register dashboard components (already loaded in HTML)
-        if (window.DashboardView) {
-            await registry.register('DashboardView', window.DashboardView);
-        }
-        if (window.NavigationPanel) {
-            await registry.register('NavigationPanel', window.NavigationPanel);
-        }
-        if (window.CharacterListPanel) {
-            await registry.register('CharacterListPanel', window.CharacterListPanel);
-        }
-        if (window.QuickActionsPanel) {
-            await registry.register('QuickActionsPanel', window.QuickActionsPanel);
+        // Try to register components, but don't fail if they're not available yet
+        const componentsToRegister = [
+            { name: 'DashboardView', globalName: 'DashboardView' },
+            { name: 'NavigationPanel', globalName: 'NavigationPanel' },
+            { name: 'CharacterListPanel', globalName: 'CharacterListPanel' },
+            { name: 'QuickActionsPanel', globalName: 'QuickActionsPanel' },
+            { name: 'CharacterSheetView', globalName: 'CharacterSheetView' },
+            { name: 'InformationPanel', globalName: 'InformationPanel' },
+            { name: 'AttributesPanel', globalName: 'AttributesPanel' },
+            { name: 'SkillsPanel', globalName: 'SkillsPanel' },
+            { name: 'VitalsPanel', globalName: 'VitalsPanel' },
+            { name: 'DisciplinesPanel', globalName: 'DisciplinesPanel' },
+            { name: 'MeritsFlawsPanel', globalName: 'MeritsFlawsPanel' },
+            { name: 'BackgroundsPanel', globalName: 'BackgroundsPanel' },
+            { name: 'LoresheetsPanel', globalName: 'LoresheetsPanel' },
+            { name: 'ConvictionsPanel', globalName: 'ConvictionsPanel' },
+            { name: 'ExperiencePanel', globalName: 'ExperiencePanel' }
+        ];
+
+        for (const component of componentsToRegister) {
+            if (window[component.globalName]) {
+                try {
+                    await registry.register(component.name, window[component.globalName]);
+                    console.log(`Component '${component.name}' registered successfully`);
+                } catch (error) {
+                    console.warn(`Failed to register component '${component.name}':`, error);
+                }
+            } else {
+                console.log(`Component '${component.name}' not available yet, will register later`);
+            }
         }
 
-        // Register character sheet components (already loaded in HTML)
-        if (window.CharacterSheetView) {
-            await registry.register('CharacterSheetView', window.CharacterSheetView);
+        // Set up a mechanism to register components when they become available
+        this._setupComponentRegistrationObserver();
+
+        console.log('All components registered successfully');
+        
+        // Register default views in AppRouter after components are loaded
+        if (window.AppRouter && window.AppRouter.instance) {
+            try {
+                await window.AppRouter.instance.registerDefaultViews();
+            } catch (error) {
+                console.warn('Failed to register default views:', error);
+            }
         }
-        if (window.InformationPanel) {
-            await registry.register('InformationPanel', window.InformationPanel);
-        }
-        if (window.AttributesPanel) {
-            await registry.register('AttributesPanel', window.AttributesPanel);
-        }
-        if (window.SkillsPanel) {
-            await registry.register('SkillsPanel', window.SkillsPanel);
-        }
-        if (window.VitalsPanel) {
-            await registry.register('VitalsPanel', window.VitalsPanel);
-        }
-        if (window.DisciplinesPanel) {
-            await registry.register('DisciplinesPanel', window.DisciplinesPanel);
-        }
-        if (window.MeritsFlawsPanel) {
-            await registry.register('MeritsFlawsPanel', window.MeritsFlawsPanel);
-        }
-        if (window.BackgroundsPanel) {
-            await registry.register('BackgroundsPanel', window.BackgroundsPanel);
-        }
-        if (window.LoresheetsPanel) {
-            await registry.register('LoresheetsPanel', window.LoresheetsPanel);
-        }
-        if (window.ConvictionsPanel) {
-            await registry.register('ConvictionsPanel', window.ConvictionsPanel);
-        }
-        if (window.ExperiencePanel) {
-            await registry.register('ExperiencePanel', window.ExperiencePanel);
-        }
+    }
+
+    /**
+     * Set up observer to register components when they become available
+     */
+    _setupComponentRegistrationObserver() {
+        const componentMap = {
+            'DashboardView': 'DashboardView',
+            'NavigationPanel': 'NavigationPanel',
+            'CharacterListPanel': 'CharacterListPanel',
+            'QuickActionsPanel': 'QuickActionsPanel',
+            'CharacterSheetView': 'CharacterSheetView',
+            'InformationPanel': 'InformationPanel',
+            'AttributesPanel': 'AttributesPanel',
+            'SkillsPanel': 'SkillsPanel',
+            'VitalsPanel': 'VitalsPanel',
+            'DisciplinesPanel': 'DisciplinesPanel',
+            'MeritsFlawsPanel': 'MeritsFlawsPanel',
+            'BackgroundsPanel': 'BackgroundsPanel',
+            'LoresheetsPanel': 'LoresheetsPanel',
+            'ConvictionsPanel': 'ConvictionsPanel',
+            'ExperiencePanel': 'ExperiencePanel'
+        };
+
+        // Check for components periodically
+        const checkInterval = setInterval(() => {
+            const registry = window.ComponentRegistry.instance;
+            if (!registry) return;
+
+            let allRegistered = true;
+            for (const [name, globalName] of Object.entries(componentMap)) {
+                if (window[globalName] && !registry.isRegistered(name)) {
+                    try {
+                        registry.register(name, window[globalName]);
+                        console.log(`Component '${name}' registered via observer`);
+                    } catch (error) {
+                        console.warn(`Failed to register component '${name}' via observer:`, error);
+                    }
+                }
+                if (!registry.isRegistered(name)) {
+                    allRegistered = false;
+                }
+            }
+
+            // If all components are registered, stop checking
+            if (allRegistered) {
+                clearInterval(checkInterval);
+                console.log('All components registered successfully');
+            }
+        }, 100);
+
+        // Stop checking after 10 seconds to prevent infinite checking
+        setTimeout(() => {
+            clearInterval(checkInterval);
+        }, 10000);
     }
 
     /**
@@ -409,22 +482,29 @@ class LedgerApp {
         // Set up event system listeners
         this._setupEventSystemListeners();
 
-        // Navigation event listeners
-        document.getElementById('nav-dashboard').addEventListener('click', () => {
-            if (window.viewEventSystem) {
-                window.viewEventSystem.emitNavigateToDashboard();
-            } else {
-                this.showView('dashboard');
-            }
-        });
+        // Navigation event listeners - use centralized AppRouter methods
+        const navDashboard = document.getElementById('nav-dashboard');
+        const navCharacterSheet = document.getElementById('nav-character-sheet');
+        
+        if (navDashboard) {
+            navDashboard.addEventListener('click', () => {
+                if (window.navigateToDashboard) {
+                    window.navigateToDashboard();
+                } else if (window.AppRouter && window.AppRouter.instance) {
+                    window.AppRouter.instance.navigateTo('DashboardView');
+                }
+            });
+        }
 
-        document.getElementById('nav-character-sheet').addEventListener('click', () => {
-            if (window.viewEventSystem) {
-                window.viewEventSystem.emitNavigateToCharacterSheet();
-            } else {
-                this.showView('character-sheet');
-            }
-        });
+        if (navCharacterSheet) {
+            navCharacterSheet.addEventListener('click', () => {
+                if (window.navigateToCharacterSheet) {
+                    window.navigateToCharacterSheet();
+                } else if (window.AppRouter && window.AppRouter.instance) {
+                    window.AppRouter.instance.navigateTo('CharacterSheetView');
+                }
+            });
+        }
     }
 
     /**
@@ -495,6 +575,38 @@ class LedgerApp {
         window.viewEventSystem.subscribe(window.viewEventSystem.eventTypes.VIEW_ERROR, (eventData) => {
             this._handleViewError(eventData.data);
         });
+    }
+
+    /**
+     * Show loading indicator for a view
+     */
+    _showLoadingIndicator(viewName) {
+        if (this.loadingStateManager) {
+            this.loadingStateManager.startLoading(`view-${viewName}`, `Loading ${viewName}...`);
+        }
+    }
+
+    /**
+     * Hide loading indicator for a view
+     */
+    _hideLoadingIndicator(viewName) {
+        if (this.loadingStateManager) {
+            this.loadingStateManager.endLoading(`view-${viewName}`, true);
+        }
+    }
+
+    /**
+     * Handle view error
+     */
+    _handleViewError(data) {
+        const { viewName, error } = data;
+        if (this.loadingStateManager) {
+            this.loadingStateManager.endLoading(`view-${viewName}`, false, error.message);
+        }
+        const viewContainer = document.getElementById(`${viewName}-view`);
+        if (viewContainer) {
+            viewContainer.innerHTML = this.createFallbackUI(viewName, error);
+        }
     }
 
     /**
@@ -577,26 +689,6 @@ class LedgerApp {
             
             throw error;
         }
-        // Hide all views
-        document.querySelectorAll('.view-container').forEach(container => {
-            container.classList.add('view-hidden');
-            container.classList.remove('view-visible');
-        });
-
-        // Show target view
-        const targetView = document.getElementById(`${viewName}-view`);
-        if (targetView) {
-            targetView.classList.remove('view-hidden');
-            targetView.classList.add('view-visible');
-        }
-
-        // Initialize view component
-        await this._initViewComponent(viewName);
-
-        this.currentView = viewName;
-
-        // Update navigation state
-        this._updateNavigationState(viewName);
     }
 
     /**
@@ -612,31 +704,121 @@ class LedgerApp {
         // Clear existing content
         viewContainer.innerHTML = '';
 
-        // Start loading state
-        if (window.loadingStateManager) {
-            window.loadingStateManager.startLoading(`view-${viewName}`, `Loading ${viewName}...`);
-        }
+        // Loading state is handled by the event system via _showLoadingIndicator
+        // No need to start loading state here as it's already started by emitViewLoading
 
         try {
+            // Ensure ComponentRegistry is available
+            let registry = window.ComponentRegistry?.instance;
+            if (!registry) {
+                console.log('ComponentRegistry not available, attempting to initialize...');
+                
+                // Wait for ComponentRegistry class to be available
+                let attempts = 0;
+                const maxAttempts = 50;
+                while (!window.ComponentRegistry && attempts < maxAttempts) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+
+                if (!window.ComponentRegistry) {
+                    throw new Error('ComponentRegistry class not available');
+                }
+
+                // Create instance if it doesn't exist
+                if (!window.ComponentRegistry.instance) {
+                    window.ComponentRegistry.instance = new window.ComponentRegistry();
+                    await window.ComponentRegistry.instance.init();
+                }
+
+                registry = window.ComponentRegistry.instance;
+                if (!registry) {
+                    throw new Error('Failed to create ComponentRegistry instance');
+                }
+            }
+
             // Create component instance
             const componentName = this._getComponentName(viewName);
-            const registry = window.ComponentRegistry.instance;
             
-            if (!registry) {
-                throw new Error('ComponentRegistry not available');
+            // Debug information
+            console.log('Debug info:', {
+                componentName,
+                registry: registry,
+                registryType: typeof registry,
+                registryGet: registry?.get,
+                windowComponentRegistry: window.ComponentRegistry,
+                windowComponentRegistryInstance: window.ComponentRegistry?.instance
+            });
+            
+            let component;
+            
+            // Try to get component from registry first
+            if (registry && registry.get) {
+                const ComponentClass = registry.get(componentName);
+                
+                if (ComponentClass) {
+                    component = new ComponentClass(componentName);
+                } else {
+                    // Try to load the component dynamically
+                    console.log(`Component '${componentName}' not found in registry, attempting to load...`);
+                    try {
+                        await registry.load(componentName);
+                        const loadedComponentClass = registry.get(componentName);
+                        if (loadedComponentClass) {
+                            component = new loadedComponentClass(componentName);
+                        }
+                    } catch (loadError) {
+                        console.warn(`Failed to load component '${componentName}':`, loadError);
+                    }
+                }
+            }
+            
+            // If still no component, create fallback
+            if (!component) {
+                console.warn(`Component '${componentName}' not available, creating fallback component`);
+                const FallbackComponent = class FallbackComponent extends (window.BaseComponent || class {}) {
+                    constructor(id, config = {}) {
+                        super(id, config);
+                    }
+                    
+                    render() {
+                        return `
+                            <div class="fallback-component">
+                                <div class="alert alert-warning">
+                                    <h4>Component Not Available</h4>
+                                    <p>The component '${componentName}' could not be loaded.</p>
+                                    <p>This might be due to a loading issue or missing dependency.</p>
+                                    <p>Registry available: ${!!registry}</p>
+                                    <p>ComponentRegistry class available: ${!!window.ComponentRegistry}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    async init() {
+                        console.log(`Fallback component '${componentName}' initialized`);
+                    }
+                    
+                    async mount(container) {
+                        if (container) {
+                            container.innerHTML = this.render();
+                        }
+                    }
+                };
+                
+                component = new FallbackComponent(componentName);
             }
 
-            if (!registry.get(componentName)) {
-                throw new Error(`Component not found: ${componentName}`);
-            }
-
-            // Create component with error boundary wrapper
-            const ComponentClass = registry.get(componentName);
-            const component = new ComponentClass();
-            
             // Wrap component with error boundary if available
             if (window.errorBoundary) {
+                console.log(`Wrapping component ${componentName} with error boundary...`);
+                console.log('Component:', component);
+                console.log('Component methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(component)));
+                
                 const wrappedComponent = window.errorBoundary.wrapComponent(component, viewContainer);
+                console.log('Wrapped component:', wrappedComponent);
+                console.log('Wrapped component methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(wrappedComponent)));
+                
                 await wrappedComponent.init();
                 await wrappedComponent.mount(viewContainer);
                 this.components.set(viewName, wrappedComponent);
@@ -647,20 +829,16 @@ class LedgerApp {
                 this.components.set(viewName, component);
             }
 
-            // End loading state successfully
-            if (window.loadingStateManager) {
-                window.loadingStateManager.endLoading(`view-${viewName}`, true);
-            }
+            // Loading state is ended by the event system via _hideLoadingIndicator
+            // No need to end loading state here as it's handled by emitViewLoaded
 
             console.log(`View component ${componentName} initialized successfully`);
 
         } catch (error) {
             console.error(`Failed to initialize ${viewName} view:`, error);
             
-            // End loading state with error
-            if (window.loadingStateManager) {
-                window.loadingStateManager.endLoading(`view-${viewName}`, false);
-            }
+            // Loading state is ended by the event system via _handleViewError
+            // No need to end loading state here as it's handled by emitViewError
 
             // Show fallback UI
             viewContainer.innerHTML = this.createFallbackUI(viewName, error);
@@ -669,7 +847,9 @@ class LedgerApp {
             this.logError(error, {
                 viewName,
                 componentName: this._getComponentName(viewName),
-                context: 'view-initialization'
+                context: 'view-initialization',
+                registryAvailable: !!window.ComponentRegistry?.instance,
+                availableComponents: window.ComponentRegistry?.instance ? Array.from(window.ComponentRegistry.instance.list()) : []
             });
         }
     }
@@ -799,6 +979,19 @@ class LedgerApp {
 // Create global instance
 window.LedgerApp = LedgerApp;
 window.ledgerApp = new LedgerApp();
+
+// Ensure ComponentRegistry is available globally - make it synchronous
+if (window.ComponentRegistry && !window.ComponentRegistry.instance) {
+    try {
+        window.ComponentRegistry.instance = new window.ComponentRegistry();
+        // Initialize synchronously to avoid timing issues
+        window.ComponentRegistry.instance._setupDefaultPaths();
+        window.ComponentRegistry.instance._initialized = true;
+        console.log('Global ComponentRegistry instance created and initialized');
+    } catch (error) {
+        console.warn('Failed to initialize global ComponentRegistry instance:', error);
+    }
+}
 
 // Auto-initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {

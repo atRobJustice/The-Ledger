@@ -21,7 +21,7 @@
   "blood_potency": 1,
   "willpower": {
     "max": 3,
-    "current": 10,
+    "current": 3,
     "superficial": 0,
     "aggravated": 0,
     "type": "willpower"
@@ -29,7 +29,7 @@
   "hunger": 1,
   "humanity": {
     "max": 10,
-    "current": 6,
+    "current": 7,
     "superficial": 0,
     "aggravated": 0,
     "type": "humanity"
@@ -51,12 +51,15 @@
   "larceny": 2,
   "melee": 1,
   "melee_specialties": [
-    "knives"
+    "Knives"
   ],
   "stealth": 0,
   "survival": 1,
   "animal_ken": 0,
   "etiquette": 1,
+  "etiquette_specialties": [
+    "Elysium"
+  ],
   "insight": 2,
   "intimidation": 2,
   "leadership": 1,
@@ -80,6 +83,7 @@
   "auspex": 1,
   "obfuscate": 1,
   "vessel_recognition": 1,
+  "side_hustler": 2,
   "haven": 2,
   "watchmen": 1,
   "security_system": 1,
@@ -117,6 +121,15 @@
       "instances": [
         {
           "level": 1
+        }
+      ]
+    },
+    "sideHustler": {
+      "category": "other",
+      "level": 2,
+      "instances": [
+        {
+          "level": 2
         }
       ]
     }
@@ -232,10 +245,72 @@
     }
   ],
   "xp": {
-    "total": 0,
-    "spent": 0,
-    "history": []
+    "total": 9,
+    "spent": 9,
+    "history": [
+      {
+        "type": "award",
+        "amount": 4,
+        "date": "6/20/2025, 7:28:07 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/20/2025, 10:09:46 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/20/2025, 11:05:38 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 2,
+        "date": "6/20/2025, 11:41:48 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/21/2025, 12:04:22 AM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "spend",
+        "amount": 6,
+        "date": "6/21/2025, 12:05:26 AM",
+        "note": "Raised sideHustler 0→2",
+        "meta": {
+          "cat": "merit",
+          "traitKey": "sideHustler",
+          "from": 0,
+          "to": 2,
+          "specialty": null
+        }
+      },
+      {
+        "type": "spend",
+        "amount": 3,
+        "date": "6/21/2025, 12:15:18 AM",
+        "note": "Specialty (Elysium) in etiquette",
+        "meta": {
+          "cat": "skill",
+          "traitKey": "etiquette",
+          "from": 1,
+          "to": 1,
+          "specialty": "Elysium"
+        }
+      }
+    ]
   },
-  "locked": false,
+  "locked": true,
   "theme": "default"
 }

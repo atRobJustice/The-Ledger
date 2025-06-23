@@ -14,7 +14,6 @@ class QuickActionsPanel extends BaseComponent {
         this.handleImport = this.handleImport.bind(this);
         this.handleExport = this.handleExport.bind(this);
         this.handleCharacterQuickAccess = this.handleCharacterQuickAccess.bind(this);
-        this.handleActionClick = this.handleActionClick.bind(this);
         this.loadRecentData = this.loadRecentData.bind(this);
     }
 
@@ -40,24 +39,40 @@ class QuickActionsPanel extends BaseComponent {
             <div class="card h-100">
                 <div class="card-header">
                     <h5 class="mb-0">
-                        <i class="bi bi-lightning-fill"></i> Quick Actions
+                        <i class="bi bi-lightning"></i> Quick Actions
                     </h5>
                 </div>
                 <div class="card-body p-0">
-                    <!-- Quick Create Section -->
+                    <!-- Character Management Section -->
                     <div class="p-3 border-bottom">
-                        <div class="d-grid gap-2">
-                            <button id="quick-create-btn" class="btn btn-success">
-                                <i class="bi bi-plus-circle"></i> Quick Create Character
+                        <h6 class="mb-2">
+                            <i class="bi bi-person-plus"></i> Characters
+                        </h6>
+                        <div class="d-grid gap-1">
+                            <button class="btn btn-primary btn-sm" data-action="new-character">
+                                <i class="bi bi-plus-circle"></i> New Character
                             </button>
-                            <div class="btn-group" role="group">
-                                <button id="import-btn" class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-upload"></i> Import
-                                </button>
-                                <button id="export-btn" class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-download"></i> Export
-                                </button>
-                            </div>
+                            <button class="btn btn-outline-secondary btn-sm" data-action="import-character">
+                                <i class="bi bi-upload"></i> Import Character
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Data Management Section -->
+                    <div class="p-3 border-bottom">
+                        <h6 class="mb-2">
+                            <i class="bi bi-database"></i> Data
+                        </h6>
+                        <div class="d-grid gap-1">
+                            <button class="btn btn-outline-secondary btn-sm" data-action="backup">
+                                <i class="bi bi-cloud-arrow-up"></i> Backup Data
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" data-action="restore">
+                                <i class="bi bi-cloud-arrow-down"></i> Restore Data
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" data-action="export-all">
+                                <i class="bi bi-download"></i> Export All
+                            </button>
                         </div>
                     </div>
 
@@ -68,24 +83,6 @@ class QuickActionsPanel extends BaseComponent {
                         </h6>
                         <div id="recent-characters-list">
                             ${this.renderRecentCharacters()}
-                        </div>
-                    </div>
-
-                    <!-- Quick Navigation Section -->
-                    <div class="p-3 border-bottom">
-                        <h6 class="mb-2">
-                            <i class="bi bi-compass"></i> Quick Navigation
-                        </h6>
-                        <div class="d-grid gap-1">
-                            <button class="btn btn-outline-secondary btn-sm quick-nav-btn" data-target="character-sheet">
-                                <i class="bi bi-person-lines-fill"></i> Character Sheet
-                            </button>
-                            <button class="btn btn-outline-secondary btn-sm quick-nav-btn" data-target="backup">
-                                <i class="bi bi-cloud-arrow-up"></i> Backup Manager
-                            </button>
-                            <button class="btn btn-outline-secondary btn-sm quick-nav-btn" data-target="settings">
-                                <i class="bi bi-gear"></i> Settings
-                            </button>
                         </div>
                     </div>
 
@@ -517,7 +514,9 @@ class QuickActionsPanel extends BaseComponent {
     handleQuickNavigation(target) {
         switch (target) {
             case 'character-sheet':
-                if (window.AppRouter && typeof window.AppRouter.instance?.navigateTo === 'function') {
+                if (window.navigateToCharacterSheet) {
+                    window.navigateToCharacterSheet();
+                } else if (window.AppRouter && window.AppRouter.instance) {
                     window.AppRouter.instance.navigateTo('CharacterSheetView');
                 }
                 break;

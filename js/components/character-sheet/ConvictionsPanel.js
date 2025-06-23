@@ -96,40 +96,51 @@ class ConvictionsPanel extends BaseComponent {
     }
 
     /**
-     * Set up event listeners for the component
+     * Set up event listeners
      */
     _setupEventListeners() {
-        // Add conviction button
-        this.on('click', '#add-conviction', (e) => {
-            if (!this.isLocked && this.convictionManager) {
-                this.convictionManager.addConviction();
-                this._emitConvictionChange();
-            }
-        });
+        // Use event delegation for dynamic elements
+        if (this.element) {
+            // Add conviction button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#add-conviction')) {
+                    if (!this.isLocked && this.convictionManager) {
+                        this.convictionManager.addConviction();
+                        this._emitConvictionChange();
+                    }
+                }
+            });
 
-        // Remove conviction button
-        this.on('click', '.remove-conviction', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (!this.isLocked && this.convictionManager) {
-                const convictionId = $(e.target).closest('.conviction-item').data('id');
-                this.convictionManager.removeConviction(convictionId);
-                this._emitConvictionChange();
-            }
-        });
+            // Remove conviction button
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.remove-conviction')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!this.isLocked && this.convictionManager) {
+                        const convictionId = e.target.closest('.conviction-item').dataset.id;
+                        this.convictionManager.removeConviction(convictionId);
+                        this._emitConvictionChange();
+                    }
+                }
+            });
 
-        // Touchstone lost checkbox
-        this.on('change', '.form-check-input', (e) => {
-            if (this.convictionManager) {
-                this.convictionManager.updateAvailableSlots();
-                this._emitConvictionChange();
-            }
-        });
+            // Touchstone lost checkbox
+            this.element.addEventListener('change', (e) => {
+                if (e.target.matches('.form-check-input')) {
+                    if (this.convictionManager) {
+                        this.convictionManager.updateAvailableSlots();
+                        this._emitConvictionChange();
+                    }
+                }
+            });
 
-        // Conviction and touchstone text changes
-        this.on('input', '.conviction-description, .touchstone-name, .touchstone-relationship, .touchstone-summary', (e) => {
-            this._emitConvictionChange();
-        });
+            // Conviction and touchstone text changes
+            this.element.addEventListener('input', (e) => {
+                if (e.target.matches('.conviction-description, .touchstone-name, .touchstone-relationship, .touchstone-summary')) {
+                    this._emitConvictionChange();
+                }
+            });
+        }
     }
 
     /**

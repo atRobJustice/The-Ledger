@@ -608,11 +608,9 @@ class SkillsPanel extends BaseComponent {
      */
     bindEventListeners() {
         // Listen for lock state changes
-        if (window.LockManager) {
-            window.LockManager.on('lockStateChanged', (locked) => {
-                this.setLocked(locked);
-            });
-        }
+        document.addEventListener('ledger-lock-change', (e) => {
+            this.setLocked(e.detail.locked);
+        });
         
         // Delegate specialty add button clicks
         this.element.addEventListener('click', this.handleSpecialtyAdd);

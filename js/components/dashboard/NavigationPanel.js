@@ -11,9 +11,6 @@ class NavigationPanel extends BaseComponent {
         
         // Bind methods
         this.handleViewSwitch = this.handleViewSwitch.bind(this);
-        this.handleSettingsClick = this.handleSettingsClick.bind(this);
-        this.handleHelpClick = this.handleHelpClick.bind(this);
-        this.handleProfileClick = this.handleProfileClick.bind(this);
         this.handleThemeToggle = this.handleThemeToggle.bind(this);
         this.loadUserProfile = this.loadUserProfile.bind(this);
         this.loadAppSettings = this.loadAppSettings.bind(this);
@@ -247,53 +244,23 @@ class NavigationPanel extends BaseComponent {
         this.currentView = view;
         this.updateActiveView();
         
-        // Navigate using AppRouter
-        if (window.AppRouter && typeof window.AppRouter.instance?.navigateTo === 'function') {
-            const viewMap = {
-                'dashboard': 'DashboardView',
-                'character-sheet': 'CharacterSheetView'
-            };
-            
-            const targetView = viewMap[view];
-            if (targetView) {
-                window.AppRouter.instance.navigateTo(targetView);
+        // Use centralized navigation methods
+        if (view === 'dashboard') {
+            if (window.navigateToDashboard) {
+                window.navigateToDashboard();
+            } else if (window.AppRouter && window.AppRouter.instance) {
+                window.AppRouter.instance.navigateTo('DashboardView');
             }
-        } else {
-            // Fallback: direct view switching
-            this.switchViewDirectly(view);
+        } else if (view === 'character-sheet') {
+            if (window.navigateToCharacterSheet) {
+                window.navigateToCharacterSheet();
+            } else if (window.AppRouter && window.AppRouter.instance) {
+                window.AppRouter.instance.navigateTo('CharacterSheetView');
+            }
         }
         
         // Emit view change event
         this.emit('viewChanged', { view: view });
-    }
-
-    /**
-     * Switch view directly (fallback)
-     * @param {string} view - View name
-     */
-    switchViewDirectly(view) {
-        const dashboardView = document.getElementById('dashboard-view');
-        const characterSheetView = document.getElementById('character-sheet-view');
-        
-        if (view === 'dashboard') {
-            if (dashboardView) {
-                dashboardView.classList.remove('view-hidden');
-                dashboardView.classList.add('view-visible');
-            }
-            if (characterSheetView) {
-                characterSheetView.classList.add('view-hidden');
-                characterSheetView.classList.remove('view-visible');
-            }
-        } else if (view === 'character-sheet') {
-            if (characterSheetView) {
-                characterSheetView.classList.remove('view-hidden');
-                characterSheetView.classList.add('view-visible');
-            }
-            if (dashboardView) {
-                dashboardView.classList.add('view-hidden');
-                dashboardView.classList.remove('view-visible');
-            }
-        }
     }
 
     /**

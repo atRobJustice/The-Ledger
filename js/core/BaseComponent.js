@@ -291,10 +291,23 @@ class BaseComponent {
             window.loadingStateManager.endLoading(this.id, success);
         }
         
-        // Clear loading UI if mounted
-        if (this.element && this.element.parentNode && success) {
-            this.element.parentNode.innerHTML = '';
-            this.element.parentNode.appendChild(this.element);
+        // Restore component content if loading was shown
+        if (success && this.element && this.element.parentNode) {
+            try {
+                // If the parent contains a loading indicator, replace it with the component content
+                const loadingElement = this.element.parentNode.querySelector('.component-loading');
+                if (loadingElement) {
+                    // Remove the loading indicator
+                    loadingElement.remove();
+                    
+                    // Ensure the component element is in the right place
+                    if (!this.element.parentNode.contains(this.element)) {
+                        this.element.parentNode.appendChild(this.element);
+                    }
+                }
+            } catch (error) {
+                console.warn(`Failed to restore component element for ${this.id}:`, error);
+            }
         }
     }
 
@@ -584,6 +597,23 @@ class BaseComponent {
     }
 
     /**
+     * Emit component event
+     * @param {string} eventType - Component event type
+     * @param {*} data - Event data
+     */
+    _emitComponentEvent(eventType, data = {}) {
+        const eventName = `component:${eventType}`;
+        this.emit(eventName, {
+            componentId: this.id,
+            eventType,
+            ...data
+        }, {
+            priority: 5,
+            propagate: true
+        });
+    }
+
+    /**
      * Handle missing dependencies gracefully
      */
     handleMissingDependency(dependencyName, fallbackValue = null) {
@@ -683,6 +713,34 @@ class BaseComponent {
         if (window.errorReportingService) {
             window.errorReportingService.reportError(errorInfo);
         }
+    }
+
+    /**
+     * Remove all event listeners from the component
+     * @private
+     */
+    _removeAllEventListeners() {
+        if (!this.eventListeners) {
+            return;
+        }
+
+        // Remove all DOM event listeners
+        for (const [event, handlers] of this.eventListeners) {
+            for (const { handler, options } of handlers) {
+                if (this.isMounted && this.element && options.domEvent !== false) {
+                    try {
+                        this.element.removeEventListener(event, handler, options);
+                    } catch (error) {
+                        console.warn(`Failed to remove event listener for ${event} on component ${this.id}:`, error);
+                    }
+                }
+            }
+        }
+
+        // Clear the event listeners map
+        this.eventListeners.clear();
+        
+        console.log(`All event listeners removed for component ${this.id}`);
     }
 }
 

@@ -289,11 +289,9 @@ class AttributesPanel extends BaseComponent {
      */
     bindEventListeners() {
         // Listen for lock state changes
-        if (window.LockManager) {
-            window.LockManager.on('lockStateChanged', (locked) => {
-                this.setLocked(locked);
-            });
-        }
+        document.addEventListener('ledger-lock-change', (e) => {
+            this.setLocked(e.detail.locked);
+        });
     }
 
     /**

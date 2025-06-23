@@ -29,8 +29,8 @@ class CharacterListPanel extends BaseComponent {
             window.characterManager.on('characterDeleted', this.refreshCharacterList);
         }
         
-        // Load initial character list
-        await this.loadCharacters();
+        // Load initial character list but don't update display yet
+        await this.loadCharacters(false);
     }
 
     /**
@@ -89,6 +89,9 @@ class CharacterListPanel extends BaseComponent {
 
         // Bind character click events
         this.bindCharacterEvents();
+        
+        // Update display now that the component is mounted
+        this.updateDisplay();
     }
 
     /**
@@ -190,6 +193,10 @@ class CharacterListPanel extends BaseComponent {
      * Bind character item events
      */
     bindCharacterEvents() {
+        if (!this.element) {
+            return;
+        }
+        
         // Character selection
         const characterItems = this.element.querySelectorAll('.character-item');
         characterItems.forEach(item => {
@@ -222,9 +229,10 @@ class CharacterListPanel extends BaseComponent {
     }
 
     /**
-     * Load characters from character manager
+     * Load characters from storage or manager
+     * @param {boolean} updateDisplay - Whether to update the display after loading
      */
-    async loadCharacters() {
+    async loadCharacters(updateDisplay = true) {
         try {
             if (window.characterManager && typeof window.characterManager.getCharacters === 'function') {
                 this.characters = await window.characterManager.getCharacters();
@@ -234,7 +242,11 @@ class CharacterListPanel extends BaseComponent {
             }
             
             this.filteredCharacters = [...this.characters];
-            this.updateDisplay();
+            
+            // Only update display if requested and component is mounted
+            if (updateDisplay && this.element) {
+                this.updateDisplay();
+            }
         } catch (error) {
             console.error('Failed to load characters:', error);
             this.characters = [];
@@ -309,11 +321,13 @@ class CharacterListPanel extends BaseComponent {
      * @param {string} characterId - Character ID
      */
     handleEditCharacter(characterId) {
-        // Emit edit event or navigate to character sheet
+        // Emit edit event
         this.emit('characterEdit', { characterId });
         
-        // Navigate to character sheet with this character
-        if (window.AppRouter && typeof window.AppRouter.instance?.navigateTo === 'function') {
+        // Navigate to character sheet with this character using centralized navigation
+        if (window.navigateToCharacter) {
+            window.navigateToCharacter(characterId);
+        } else if (window.AppRouter && window.AppRouter.instance) {
             window.AppRouter.instance.navigateTo('CharacterSheetView', { characterId });
         }
     }
@@ -398,6 +412,10 @@ class CharacterListPanel extends BaseComponent {
      * Update character selection styling
      */
     updateSelection() {
+        if (!this.element) {
+            return;
+        }
+        
         const characterItems = this.element.querySelectorAll('.character-item');
         characterItems.forEach(item => {
             item.classList.remove('active');
@@ -411,6 +429,11 @@ class CharacterListPanel extends BaseComponent {
      * Update the display after data changes
      */
     updateDisplay() {
+        if (!this.element) {
+            console.warn('Cannot update display: component element not available');
+            return;
+        }
+        
         const characterList = this.element.querySelector('#character-list');
         if (characterList) {
             characterList.innerHTML = this.renderCharacterList();

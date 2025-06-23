@@ -43,32 +43,51 @@ class DashboardView extends BaseComponent {
      * Post-render setup: mount panels, bind events
      */
     async afterRender() {
-        // Mount panel components (assume registry is available globally)
-        if (window.ComponentRegistry) {
-            const registry = window.ComponentRegistry.instance || new window.ComponentRegistry();
-            window.ComponentRegistry.instance = registry;
-            if (!registry.isRegistered('CharacterListPanel')) {
-                // Optionally, dynamically load/register if not present
+        try {
+            // Mount panel components (assume registry is available globally)
+            if (window.ComponentRegistry) {
+                const registry = window.ComponentRegistry.instance || new window.ComponentRegistry();
+                window.ComponentRegistry.instance = registry;
+                
+                // Wait for registry to be initialized if needed
+                if (!registry._initialized) {
+                    await registry.init();
+                }
+                
+                // Mount panels if available
+                if (registry.isRegistered('CharacterListPanel')) {
+                    const charListPanel = await registry.create('CharacterListPanel', {});
+                    await charListPanel.mount(this.element.querySelector('#character-list-panel'));
+                    charListPanel.on('characterSelected', this.handleCharacterSelect);
+                } else {
+                    console.warn('CharacterListPanel not available in registry');
+                }
+                
+                if (registry.isRegistered('QuickActionsPanel')) {
+                    const quickActionsPanel = await registry.create('QuickActionsPanel', {});
+                    await quickActionsPanel.mount(this.element.querySelector('#quick-actions-panel'));
+                } else {
+                    console.warn('QuickActionsPanel not available in registry');
+                }
+                
+                if (registry.isRegistered('NavigationPanel')) {
+                    const navigationPanel = await registry.create('NavigationPanel', {});
+                    await navigationPanel.mount(this.element.querySelector('#navigation-panel'));
+                } else {
+                    console.warn('NavigationPanel not available in registry');
+                }
+            } else {
+                console.warn('ComponentRegistry not available, panels will not be mounted');
             }
-            // Mount panels if available
-            if (registry.isRegistered('CharacterListPanel')) {
-                const charListPanel = await registry.create('CharacterListPanel', {});
-                await charListPanel.mount(this.element.querySelector('#character-list-panel'));
-                charListPanel.on('characterSelected', this.handleCharacterSelect);
+            
+            // Bind navigation button
+            const btn = this.element.querySelector('#go-to-character-sheet');
+            if (btn) {
+                btn.addEventListener('click', this.handleGoToCharacterSheet);
             }
-            if (registry.isRegistered('QuickActionsPanel')) {
-                const quickActionsPanel = await registry.create('QuickActionsPanel', {});
-                await quickActionsPanel.mount(this.element.querySelector('#quick-actions-panel'));
-            }
-            if (registry.isRegistered('NavigationPanel')) {
-                const navigationPanel = await registry.create('NavigationPanel', {});
-                await navigationPanel.mount(this.element.querySelector('#navigation-panel'));
-            }
-        }
-        // Bind navigation button
-        const btn = this.element.querySelector('#go-to-character-sheet');
-        if (btn) {
-            btn.addEventListener('click', this.handleGoToCharacterSheet);
+        } catch (error) {
+            console.error('Error in DashboardView afterRender:', error);
+            // Don't throw the error, just log it so the component can still function
         }
     }
 
@@ -79,8 +98,10 @@ class DashboardView extends BaseComponent {
     handleCharacterSelect(event) {
         const detail = event.detail || {};
         const characterId = detail.data && detail.data.characterId;
-        // Optionally, store selected character in state or pass to AppRouter
-        if (window.AppRouter && typeof window.AppRouter.instance?.navigateTo === 'function') {
+        
+        if (characterId && window.navigateToCharacter) {
+            window.navigateToCharacter(characterId);
+        } else if (window.AppRouter && window.AppRouter.instance) {
             window.AppRouter.instance.navigateTo('CharacterSheetView', { characterId });
         }
     }
@@ -89,18 +110,10 @@ class DashboardView extends BaseComponent {
      * Handle navigation to character sheet
      */
     handleGoToCharacterSheet() {
-        if (window.AppRouter && typeof window.AppRouter.instance?.navigateTo === 'function') {
+        if (window.navigateToCharacterSheet) {
+            window.navigateToCharacterSheet();
+        } else if (window.AppRouter && window.AppRouter.instance) {
             window.AppRouter.instance.navigateTo('CharacterSheetView');
-        } else {
-            // Fallback: show character sheet view directly
-            if (document.getElementById('dashboard-view')) {
-                document.getElementById('dashboard-view').classList.add('view-hidden');
-                document.getElementById('dashboard-view').classList.remove('view-visible');
-            }
-            if (document.getElementById('character-sheet-view')) {
-                document.getElementById('character-sheet-view').classList.remove('view-hidden');
-                document.getElementById('character-sheet-view').classList.add('view-visible');
-            }
         }
     }
 }

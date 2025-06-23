@@ -59,8 +59,21 @@ class LoresheetsPanel extends BaseComponent {
 
     async loadLoresheetsData() {
         try {
-            const module = await import('../../references/loresheets.js');
-            this.loresheetsData = module.loresheets;
+            // Wait for loresheets data to be available
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.loresheets && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            if (window.loresheets) {
+                this.loresheetsData = window.loresheets;
+            } else {
+                console.error('Loresheets data not available');
+                this.loresheetsData = { categories: {} };
+            }
         } catch (error) {
             console.error('Failed to load loresheets data:', error);
             this.loresheetsData = { categories: {} };
@@ -122,6 +135,31 @@ class LoresheetsPanel extends BaseComponent {
                 return `<option value="${categoryKey}">${category.name}</option>`;
             })
             .join('');
+    }
+
+    /**
+     * Bind event listeners
+     */
+    bindEventListeners() {
+        // This method will be implemented when needed
+        console.log('LoresheetsPanel bindEventListeners called');
+    }
+
+    /**
+     * Initialize tooltips
+     */
+    initTooltips() {
+        // This method will be implemented when needed
+        console.log('LoresheetsPanel initTooltips called');
+    }
+
+    /**
+     * Get selected loresheets HTML
+     * @returns {string} HTML string
+     */
+    getSelectedLoresheetsHtml() {
+        // This method will be implemented when needed
+        return '<div class="fst-italic">Implementation pending</div>';
     }
 
     // ... (other methods for loresheet options, add/remove, dot click, event emission, benefit tracking, etc.)

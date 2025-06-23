@@ -21,20 +21,13 @@ class LoadingStateManager {
      * Setup event listeners
      */
     setupEventListeners() {
-        if (window.eventBus) {
-            // Listen for component loading events
-            window.eventBus.on('component:loading:start', (eventData) => {
-                this.startLoading(eventData.data.componentId, eventData.data.message);
-            });
-
-            window.eventBus.on('component:loading:end', (eventData) => {
-                this.endLoading(eventData.data.componentId);
-            });
-
-            window.eventBus.on('component:loading:progress', (eventData) => {
-                this.updateProgress(eventData.data.componentId, eventData.data.progress);
-            });
-        }
+        // Remove circular event listeners that cause infinite loops
+        // The LoadingStateManager should not listen for its own events
+        // These listeners were creating a circular dependency:
+        // startLoading() -> emitLoadingEvent() -> eventBus.emit() -> setupEventListeners() -> startLoading()
+        
+        // Instead, external components should call LoadingStateManager methods directly
+        // or listen for the events themselves if they need to react to loading state changes
     }
 
     /**
@@ -92,6 +85,9 @@ class LoadingStateManager {
 
         // Clear progress state
         this.progressStates.delete(componentId);
+
+        // Remove loading state from Map
+        this.loadingStates.delete(componentId);
 
         // Emit loading end event
         this.emitLoadingEvent('end', componentId, { 

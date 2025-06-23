@@ -132,8 +132,21 @@ class MeritsFlawsPanel extends BaseComponent {
      */
     async loadMeritsData() {
         try {
-            const module = await import('../../references/merits.js');
-            this.meritsData = module.merits;
+            // Wait for merits data to be available
+            let attempts = 0;
+            const maxAttempts = 50;
+            
+            while (!window.merits && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            if (window.merits) {
+                this.meritsData = window.merits;
+            } else {
+                console.error('Merits data not available');
+                this.meritsData = {};
+            }
         } catch (error) {
             console.error('Failed to load merits data:', error);
             this.meritsData = {};
@@ -374,39 +387,50 @@ class MeritsFlawsPanel extends BaseComponent {
      * Bind event listeners
      */
     bindEventListeners() {
-        // Category selection events
-        this.element.addEventListener('change', '.merit-category-dropdown, .flaw-category-dropdown', (e) => {
-            this.handleCategorySelect(e);
-        });
+        // Use event delegation for dynamic elements
+        if (this.element) {
+            // Category selection events
+            this.element.addEventListener('change', (e) => {
+                if (e.target.matches('.merit-category-dropdown, .flaw-category-dropdown')) {
+                    this.handleCategorySelect(e);
+                }
+            });
 
-        // Trait selection events
-        this.element.addEventListener('change', '.merit-dropdown, .flaw-dropdown', (e) => {
-            this.handleTraitSelect(e);
-        });
+            // Trait selection events
+            this.element.addEventListener('change', (e) => {
+                if (e.target.matches('.merit-dropdown, .flaw-dropdown')) {
+                    this.handleTraitSelect(e);
+                }
+            });
 
-        // Add trait events
-        this.element.addEventListener('click', '#addMeritBtn, #addFlawBtn', (e) => {
-            e.preventDefault();
-            this.handleAddTrait(e);
-        });
+            // Add trait events
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('#addMeritBtn, #addFlawBtn')) {
+                    e.preventDefault();
+                    this.handleAddTrait(e);
+                }
+            });
 
-        // Remove trait events
-        this.element.addEventListener('click', '.remove-merit-btn, .remove-flaw-btn', (e) => {
-            e.preventDefault();
-            this.handleRemoveTrait(e);
-        });
+            // Remove trait events
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.remove-merit-btn, .remove-flaw-btn')) {
+                    e.preventDefault();
+                    this.handleRemoveTrait(e);
+                }
+            });
 
-        // Dot clicks for trait levels
-        this.element.addEventListener('click', '.dots .dot', (e) => {
-            this.handleDotClick(e);
-        });
-
-        // Listen for lock state changes
-        if (window.LockManager) {
-            window.LockManager.on('lockStateChanged', (locked) => {
-                this.setLocked(locked);
+            // Dot clicks for trait levels
+            this.element.addEventListener('click', (e) => {
+                if (e.target.matches('.dots .dot')) {
+                    this.handleDotClick(e);
+                }
             });
         }
+
+        // Listen for lock state changes
+        document.addEventListener('ledger-lock-change', (e) => {
+            this.setLocked(e.detail.locked);
+        });
     }
 
     /**

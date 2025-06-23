@@ -151,7 +151,7 @@ class CharacterSheetView extends BaseComponent {
             }
 
             // Get component class from registry
-            const ComponentClass = window.ComponentRegistry?.get(config.component);
+            const ComponentClass = window.ComponentRegistry?.instance?.get(config.component);
             if (!ComponentClass) {
                 console.warn(`Component not found in registry: ${config.component}`);
                 return;
