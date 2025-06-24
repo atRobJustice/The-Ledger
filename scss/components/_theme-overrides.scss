@@ -30,6 +30,7 @@ body[data-theme='ivory'] {
   --form-border: #cbbfae;
   --form-text: #2c1b1b;
   --panel-bg: #fbf7f2;
+  --panel-bg-rgb: 251, 247, 242;
   --panel-border: #cbbfae;
   --panel-border-light: #cbbfae;
   --panel-text: #2c1b1b;
@@ -68,6 +69,7 @@ body[data-theme='daltonic'] {
   --form-border: #ff9900;
   --form-text: #1a1a1a;
   --panel-bg: #fafdff;
+  --panel-bg-rgb: 250, 253, 255;
   --panel-border: #ff9900;
   --panel-border-light: #ffb84d;
   --panel-text: #1a1a1a;
@@ -99,7 +101,9 @@ body[data-theme='hc-dark'] {
   --form-border: #ffd700;
   --form-text: #fff;
   --panel-bg: #101010;
+  --panel-bg-rgb: 16, 16, 16;
   --panel-border: #ffd700;
+  --panel-border-light: #ffd700;
   --panel-text: #fff;
 }
 
@@ -126,7 +130,9 @@ body[data-theme='hc-light'] {
   --form-border: #000;
   --form-text: #000;
   --panel-bg: #f7f7f7;
+  --panel-bg-rgb: 247, 247, 247;
   --panel-border: #000;
+  --panel-border-light: #000;
   --panel-text: #000;
 }
 
@@ -224,4 +230,22 @@ body[data-theme='default'] input#xp-level.form-range::-webkit-slider-runnable-tr
 body:not([data-theme]) input#xp-level.form-range:focus,
 body[data-theme='default'] input#xp-level.form-range:focus {
   outline: none;
+}
+
+// Dashboard header and title overrides for all themes
+body[data-theme] {
+  .dashboard-header {
+    background: linear-gradient(135deg, var(--accent, #a40000) 0%, rgba(127, 28, 28, 0.8) 100%);
+    color: white;
+  }
+  
+  .dashboard-title {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dashboard-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
 }

@@ -60,100 +60,7 @@
         });
     }
 
-    function gatherCharacterData(){
-        const data = {};
-
-        // Gather visible stats
-        $('.stat').each(function() {
-            const label = $(this).find('.stat-label').text().trim().toLowerCase();
-            let value;
-            const $input = $(this).find('input, textarea');
-            const $select = $(this).find('select');
-            const $dots = $(this).find('.dots');
-            const $track = $(this).find('.track-container');
-
-            if($input.length){
-                value = $input.val();
-            } else if($select.length){
-                value = $select.val();
-                // Special handling for compulsion to ensure it's properly exported
-                if(label === 'compulsion') {
-                    value = $select.val() || '';
-                }
-            } else if($dots.length){
-                value = parseInt($dots.data('value') || 0, 10);
-            } else if($track.length){
-                const trackType = $track.data('type');
-                const max = $track.find('.track-box').length;
-
-                if(trackType === 'humanity'){
-                    const score = $track.find('.track-box.filled').length;
-                    const stains = $track.find('.track-box.stained').length;
-                    value = {max, current: score, superficial: stains, aggravated: 0, type: trackType};
-                } else {
-                    const superficial = $track.find('.track-box.superficial').length;
-                    const aggravated = $track.find('.track-box.aggravated').length;
-                    const current = parseInt($track.data('value') || (max - superficial - aggravated) || 0, 10);
-                    value = {max, current, superficial, aggravated, type: trackType};
-                }
-            } else {
-                value = $(this).find('span:last-child').text().trim();
-            }
-
-            // Store the primary value
-            data[label.replace(/\s+/g,'_')] = value;
-
-            // Additionally store specialties if present on this stat row
-            const specialtiesRaw = $(this).attr('data-specialties');
-            if(specialtiesRaw){
-                try{
-                    const arr = JSON.parse(specialtiesRaw);
-                    data[`${label.replace(/\s+/g,'_')}_specialties`] = arr;
-                }catch(e){/* ignore malformed */}
-            }
-        });
-
-        // Manager exports (if present)
-        if(window.disciplineManager) data.disciplines = window.disciplineManager.exportDisciplines();
-        if(window.meritFlawManager){
-            const mf = window.meritFlawManager.exportMeritsAndFlaws();
-            data.merits = mf.merits;
-            data.flaws = mf.flaws;
-        }
-        if(window.backgroundManager){
-            const bg = window.backgroundManager.exportBackgroundsAndFlaws();
-            data.backgrounds = bg.backgrounds;
-            data.backgroundFlaws = bg.backgroundFlaws;
-        }
-        if(window.coterieManager){
-            const ct = window.coterieManager.exportCoterieMeritsAndFlaws();
-            data.coterieMerits = ct.coterieMerits;
-            data.coterieFlaws = ct.coterieFlaws;
-        }
-        if(window.loresheetManager) data.loresheets = window.loresheetManager.exportLoresheets();
-        if(window.convictionManager) data.convictions = window.convictionManager.saveConvictions();
-
-        // --- XP Export ---
-        if(window.getXPData) data.xp = window.getXPData();
-        // --- End XP Export ---
-
-        // Persist Discord webhook (now using IndexedDB)
-        if(window.databaseManager) {
-            // This will be handled by the database manager
-            // We don't need to include it in character data anymore
-        }
-
-        // Persist locked state
-        data.locked = (window.LockManager && window.LockManager.isLocked) ? window.LockManager.isLocked() : false;
-
-        // Persist current theme (now using IndexedDB)
-        const activeTheme = document.body.getAttribute('data-theme') || 'default';
-        data.theme = activeTheme;
-
-        return data;
-    }
-
-    function loadCharacterData(data){
+    async function loadCharacterData(data){
         console.log('loadCharacterData called with data:', data);
         console.log('loadCharacterData: data.locked value:', data.locked);
         
@@ -257,15 +164,25 @@
             }
         }
 
-        // Restore theme (now using IndexedDB)
+        // Restore theme (now using IndexedDB) - but only if no theme is currently set
         if(Object.prototype.hasOwnProperty.call(data,'theme') && window.databaseManager){
-            const t = data.theme || 'default';
-            if(t === 'default'){
-                document.body.removeAttribute('data-theme');
+            const currentTheme = document.body.getAttribute('data-theme');
+            const savedTheme = await window.databaseManager.getSetting('theme');
+            
+            // Only restore theme from character data if no theme is currently set
+            // This prevents character data from overriding user's theme preference
+            if (!currentTheme && !savedTheme) {
+                const t = data.theme || 'default';
+                if(t === 'default'){
+                    document.body.removeAttribute('data-theme');
+                } else {
+                    document.body.setAttribute('data-theme', t);
+                }
+                window.databaseManager.setSetting('theme', t);
+                console.log('Restored theme from character data:', t);
             } else {
-                document.body.setAttribute('data-theme', t);
+                console.log('Theme already set, not overriding with character data. Current:', currentTheme, 'Saved:', savedTheme);
             }
-            window.databaseManager.setSetting('theme', t);
         }
 
         // Recalculate and apply impairment classes based on imported track states
@@ -276,6 +193,99 @@
                 console.warn('Failed to evaluate impairment status after import', err);
             }
         }
+    }
+
+    function gatherCharacterData(){
+        const data = {};
+
+        // Gather visible stats
+        $('.stat').each(function() {
+            const label = $(this).find('.stat-label').text().trim().toLowerCase();
+            let value;
+            const $input = $(this).find('input, textarea');
+            const $select = $(this).find('select');
+            const $dots = $(this).find('.dots');
+            const $track = $(this).find('.track-container');
+
+            if($input.length){
+                value = $input.val();
+            } else if($select.length){
+                value = $select.val();
+                // Special handling for compulsion to ensure it's properly exported
+                if(label === 'compulsion') {
+                    value = $select.val() || '';
+                }
+            } else if($dots.length){
+                value = parseInt($dots.data('value') || 0, 10);
+            } else if($track.length){
+                const trackType = $track.data('type');
+                const max = $track.find('.track-box').length;
+
+                if(trackType === 'humanity'){
+                    const score = $track.find('.track-box.filled').length;
+                    const stains = $track.find('.track-box.stained').length;
+                    value = {max, current: score, superficial: stains, aggravated: 0, type: trackType};
+                } else {
+                    const superficial = $track.find('.track-box.superficial').length;
+                    const aggravated = $track.find('.track-box.aggravated').length;
+                    const current = parseInt($track.data('value') || (max - superficial - aggravated) || 0, 10);
+                    value = {max, current, superficial, aggravated, type: trackType};
+                }
+            } else {
+                value = $(this).find('span:last-child').text().trim();
+            }
+
+            // Store the primary value
+            data[label.replace(/\s+/g,'_')] = value;
+
+            // Additionally store specialties if present on this stat row
+            const specialtiesRaw = $(this).attr('data-specialties');
+            if(specialtiesRaw){
+                try{
+                    const arr = JSON.parse(specialtiesRaw);
+                    data[`${label.replace(/\s+/g,'_')}_specialties`] = arr;
+                }catch(e){/* ignore malformed */}
+            }
+        });
+
+        // Manager exports (if present)
+        if(window.disciplineManager) data.disciplines = window.disciplineManager.exportDisciplines();
+        if(window.meritFlawManager){
+            const mf = window.meritFlawManager.exportMeritsAndFlaws();
+            data.merits = mf.merits;
+            data.flaws = mf.flaws;
+        }
+        if(window.backgroundManager){
+            const bg = window.backgroundManager.exportBackgroundsAndFlaws();
+            data.backgrounds = bg.backgrounds;
+            data.backgroundFlaws = bg.backgroundFlaws;
+        }
+        if(window.coterieManager){
+            const ct = window.coterieManager.exportCoterieMeritsAndFlaws();
+            data.coterieMerits = ct.coterieMerits;
+            data.coterieFlaws = ct.coterieFlaws;
+        }
+        if(window.loresheetManager) data.loresheets = window.loresheetManager.exportLoresheets();
+        if(window.convictionManager) data.convictions = window.convictionManager.saveConvictions();
+
+        // --- XP Export ---
+        if(window.getXPData) data.xp = window.getXPData();
+        // --- End XP Export ---
+
+        // Persist Discord webhook (now using IndexedDB)
+        if(window.databaseManager) {
+            // This will be handled by the database manager
+            // We don't need to include it in character data anymore
+        }
+
+        // Persist locked state
+        data.locked = (window.LockManager && window.LockManager.isLocked) ? window.LockManager.isLocked() : false;
+
+        // Persist current theme (now using IndexedDB)
+        const activeTheme = document.body.getAttribute('data-theme') || 'default';
+        data.theme = activeTheme;
+
+        return data;
     }
 
     function applyTrackState($track, state){

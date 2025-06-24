@@ -64,4 +64,12 @@ $border-default: color.mix($color-border, $color-background, 80%);
   --accent: #{$color-primary};
   --color-background: #{$color-background};
   --color-border: #{$color-border};
+  --form-bg: #{$color-background-light};
+  --form-border: #{$color-border};
+  --form-text: #{$color-text};
+  --panel-bg: #{$color-background-light};
+  --panel-bg-rgb: 30, 30, 30;
+  --panel-border: #{$color-border};
+  --panel-border-light: #{$color-border-light};
+  --panel-text: #{$color-text};
 } 

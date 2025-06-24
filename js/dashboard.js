@@ -16,6 +16,9 @@ async function initDashboard() {
         // Initialize database
         await databaseManager.init();
         
+        // Load and apply saved theme
+        await loadSavedTheme();
+        
         // Load characters
         await loadCharacters();
         
@@ -24,6 +27,24 @@ async function initDashboard() {
         
     } catch (error) {
         console.error('Failed to initialize dashboard:', error);
+    }
+}
+
+// Load and apply saved theme
+async function loadSavedTheme() {
+    try {
+        if (databaseManager) {
+            const savedTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme');
+            if (savedTheme && savedTheme !== 'default') {
+                document.body.setAttribute('data-theme', savedTheme);
+                console.log('Applied saved theme:', savedTheme);
+            } else {
+                document.body.removeAttribute('data-theme');
+                console.log('Using default theme');
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load saved theme:', error);
     }
 }
 
@@ -366,13 +387,18 @@ async function loadSettings() {
         const discordWebhook = await databaseManager.getSetting('discordWebhook') || '';
         document.getElementById('discordWebhookInput').value = discordWebhook;
         
-        // Load other settings with defaults
-        const defaultTheme = await databaseManager.getSetting('defaultTheme') || 'default';
-        document.getElementById('defaultTheme').value = defaultTheme;
+        // Load theme setting (use 'theme' key from the theme system, fallback to 'defaultTheme')
+        const currentTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'default';
+        console.log('Loading theme setting:', currentTheme);
         
-        const autoSaveInterval = await databaseManager.getSetting('autoSaveInterval') || '5';
-        document.getElementById('autoSaveInterval').value = autoSaveInterval;
-                
+        const themeDropdown = document.getElementById('defaultTheme');
+        if (themeDropdown) {
+            themeDropdown.value = currentTheme;
+            console.log('Set theme dropdown value to:', currentTheme);
+        } else {
+            console.error('Theme dropdown not found');
+        }
+        
         const confirmDeletions = await databaseManager.getSetting('confirmDeletions') !== 'false';
         document.getElementById('confirmDeletions').checked = confirmDeletions;
         
@@ -388,17 +414,48 @@ async function loadSettings() {
         const discordSystemMessages = await databaseManager.getSetting('discordSystemMessages') === 'true';
         document.getElementById('discordSystemMessages').checked = discordSystemMessages;
         
+        // Add event listener for theme dropdown changes (only once)
+        if (themeDropdown && !themeDropdown.hasAttribute('data-theme-listener-added')) {
+            themeDropdown.setAttribute('data-theme-listener-added', 'true');
+            themeDropdown.addEventListener('change', function() {
+                console.log('Theme dropdown changed to:', this.value);
+                applyThemeFromDropdown(this.value);
+            });
+            console.log('Added theme dropdown event listener');
+        }
+        
     } catch (error) {
         console.error('Failed to load settings:', error);
+    }
+}
+
+// Function to apply theme from dropdown selection
+function applyThemeFromDropdown(themeKey) {
+    console.log('Applying theme from dropdown:', themeKey);
+    
+    if (themeKey === "default") {
+        document.body.removeAttribute("data-theme");
+    } else {
+        document.body.setAttribute("data-theme", themeKey);
+    }
+    
+    // Save to database using the 'theme' key (same as the existing theme system)
+    if (window.databaseManager) {
+        window.databaseManager.setSetting('theme', themeKey).catch(err => {
+            console.error('Failed to save theme to database:', err);
+        });
     }
 }
 
 async function saveSettings() {
     try {
         await databaseManager.setSetting('discordWebhook', document.getElementById('discordWebhookInput').value.trim());
-        await databaseManager.setSetting('defaultTheme', document.getElementById('defaultTheme').value);
-        await databaseManager.setSetting('autoSaveInterval', document.getElementById('autoSaveInterval').value);
-        await databaseManager.setSetting('showTooltips', document.getElementById('showTooltips').checked.toString());
+        
+        // Save and apply theme
+        const selectedTheme = document.getElementById('defaultTheme').value;
+        await databaseManager.setSetting('theme', selectedTheme);
+        applyThemeFromDropdown(selectedTheme);
+        
         await databaseManager.setSetting('confirmDeletions', document.getElementById('confirmDeletions').checked.toString());
         await databaseManager.setSetting('discordEnabled', document.getElementById('discordEnabled').checked.toString());
         await databaseManager.setSetting('discordDiceRolls', document.getElementById('discordDiceRolls').checked.toString());
@@ -454,7 +511,7 @@ async function exportAllData() {
     try {
         const characters = await databaseManager.getAllCharacters();
         const settings = {};
-        const settingKeys = ['discordWebhook', 'defaultTheme', 'autoSaveInterval', 'showTooltips', 'confirmDeletions', 'discordEnabled', 'discordDiceRolls', 'discordCharacterUpdates', 'discordSystemMessages'];
+        const settingKeys = ['discordWebhook', 'theme', 'confirmDeletions', 'discordEnabled', 'discordDiceRolls', 'discordCharacterUpdates', 'discordSystemMessages'];
         for (const key of settingKeys) {
             const value = await databaseManager.getSetting(key);
             if (value !== null) {

@@ -10,6 +10,9 @@ import { TraitManagerUtils } from './manager-utils.js';
  * Initialize the character sheet toolbar
  */
 export function initCharacterToolbar() {
+    // Load and apply saved theme first
+    loadSavedTheme();
+    
     // Initialize all toolbar buttons
     initSaveButton();
     initExportButton();
@@ -30,6 +33,47 @@ export function initCharacterToolbar() {
     
     // Initialize tooltips
     initTooltips();
+}
+
+/**
+ * Load and apply saved theme
+ */
+async function loadSavedTheme() {
+    try {
+        console.log('Starting theme loading on character sheet...');
+        
+        // Wait for database manager to be available
+        let attempts = 0;
+        while (!window.databaseManager && attempts < 100) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+            attempts++;
+        }
+        
+        if (window.databaseManager) {
+            console.log('Database manager found, loading theme...');
+            const savedTheme = await window.databaseManager.getSetting('theme') || await window.databaseManager.getSetting('defaultTheme') || 'default';
+            console.log('Retrieved theme from database:', savedTheme);
+            
+            if (savedTheme && savedTheme !== 'default') {
+                document.body.setAttribute('data-theme', savedTheme);
+                console.log('Applied saved theme to character sheet:', savedTheme);
+            } else {
+                document.body.removeAttribute('data-theme');
+                console.log('Using default theme on character sheet');
+            }
+            
+            // Double-check that the theme was actually applied
+            setTimeout(() => {
+                const currentTheme = document.body.getAttribute('data-theme');
+                console.log('Theme verification - current data-theme attribute:', currentTheme);
+            }, 100);
+            
+        } else {
+            console.warn('Database manager not available for theme loading after 5 seconds');
+        }
+    } catch (error) {
+        console.error('Failed to load saved theme on character sheet:', error);
+    }
 }
 
 /**
@@ -390,11 +434,113 @@ function initThemeButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Show theme modal
-        if (window.showThemeModal) {
-            window.showThemeModal();
-        }
+        showThemeModal();
     });
+}
+
+/**
+ * Show theme selection modal
+ */
+function showThemeModal() {
+    const currentTheme = document.body.getAttribute('data-theme') || 'default';
+    
+    const content = `
+        <div class="vstack gap-2">
+            <h6 class="mt-2">Default Palettes</h6>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default" ${currentTheme === 'default' ? 'checked' : ''}>
+                <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory" ${currentTheme === 'ivory' ? 'checked' : ''}>
+                <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
+            </div>
+
+            <h6 class="mt-2">Accessibility Palettes</h6>
+            <div class="access-options">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCDark" value="hc-dark" ${currentTheme === 'hc-dark' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeHCDark">High Contrast – Dark</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHCLight" value="hc-light" ${currentTheme === 'hc-light' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeHCLight">High Contrast – Light</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDyslexia" value="dyslexia" ${currentTheme === 'dyslexia' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeDyslexia">Dyslexia-Friendly</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic" ${currentTheme === 'daltonic' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
+                </div>
+            </div>
+
+            <h6 class="mt-2">Clan Palettes</h6>
+            <div class="clan-options">
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBanu" value="banu" ${currentTheme === 'banu' ? 'checked' : ''}><label class="form-check-label" for="schemeBanu">Banu Haqim</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeBrujah" value="brujah" ${currentTheme === 'brujah' ? 'checked' : ''}><label class="form-check-label" for="schemeBrujah">Brujah</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeGangrel" value="gangrel" ${currentTheme === 'gangrel' ? 'checked' : ''}><label class="form-check-label" for="schemeGangrel">Gangrel</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeHecata" value="hecata" ${currentTheme === 'hecata' ? 'checked' : ''}><label class="form-check-label" for="schemeHecata">Hecata</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeLasombra" value="lasombra" ${currentTheme === 'lasombra' ? 'checked' : ''}><label class="form-check-label" for="schemeLasombra">Lasombra</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMalkavian" value="malkavian" ${currentTheme === 'malkavian' ? 'checked' : ''}><label class="form-check-label" for="schemeMalkavian">Malkavian</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeMinistry" value="ministry" ${currentTheme === 'ministry' ? 'checked' : ''}><label class="form-check-label" for="schemeMinistry">The Ministry</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeNosferatu" value="nosferatu" ${currentTheme === 'nosferatu' ? 'checked' : ''}><label class="form-check-label" for="schemeNosferatu">Nosferatu</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeRavnos" value="ravnos" ${currentTheme === 'ravnos' ? 'checked' : ''}><label class="form-check-label" for="schemeRavnos">Ravnos</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeSalubri" value="salubri" ${currentTheme === 'salubri' ? 'checked' : ''}><label class="form-check-label" for="schemeSalubri">Salubri</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeToreador" value="toreador" ${currentTheme === 'toreador' ? 'checked' : ''}><label class="form-check-label" for="schemeToreador">Toreador</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTremere" value="tremere" ${currentTheme === 'tremere' ? 'checked' : ''}><label class="form-check-label" for="schemeTremere">Tremere</label></div>
+                <div class="form-check mb-1"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeTzimisce" value="tzimisce" ${currentTheme === 'tzimisce' ? 'checked' : ''}><label class="form-check-label" for="schemeTzimisce">Tzimisce</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="schemeRadios" id="schemeVentrue" value="ventrue" ${currentTheme === 'ventrue' ? 'checked' : ''}><label class="form-check-label" for="schemeVentrue">Ventrue</label></div>
+            </div>
+        </div>
+    `;
+
+    const footer = `
+        <button type="button" class="btn btn-primary" id="saveThemeChoice">Apply</button>
+    `;
+
+    window.modalManager.showCustom({
+        title: 'Color Scheme',
+        content,
+        footer,
+        size: 'default',
+        centered: true
+    }, (element, instance) => {
+        // Set up event handler
+        element.querySelector('#saveThemeChoice').addEventListener('click', () => {
+            const selected = element.querySelector('input[name="schemeRadios"]:checked');
+            if (selected) {
+                applyTheme(selected.value);
+                instance.hide();
+            }
+        });
+    });
+}
+
+/**
+ * Apply theme and save to database
+ */
+async function applyTheme(themeKey) {
+    console.log('Applying theme from character toolbar:', themeKey);
+    
+    if (themeKey === "default") {
+        document.body.removeAttribute("data-theme");
+    } else {
+        document.body.setAttribute("data-theme", themeKey);
+    }
+    
+    // Save to database using the 'theme' key (same as the existing theme system)
+    if (window.databaseManager) {
+        try {
+            await window.databaseManager.setSetting('theme', themeKey);
+            console.log('Theme saved to database:', themeKey);
+        } catch (err) {
+            console.error('Failed to save theme to database:', err);
+        }
+    } else {
+        console.error('No database manager available for theme storage');
+    }
 }
 
 /**
@@ -507,4 +653,38 @@ function initTooltips() {
 }
 
 // Initialize the toolbar when the module is loaded
-initCharacterToolbar(); 
+initCharacterToolbar();
+
+// Also ensure theme is loaded after page is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit more for all other scripts to initialize
+    setTimeout(() => {
+        loadSavedTheme();
+    }, 1000);
+});
+
+// Add a mutation observer to detect if theme is being overridden
+const themeObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            const currentTheme = document.body.getAttribute('data-theme');
+            console.log('Theme attribute changed to:', currentTheme);
+        }
+    });
+});
+
+// Start observing the body element for theme changes
+if (document.body) {
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
+} else {
+    // If body isn't available yet, wait for it
+    document.addEventListener('DOMContentLoaded', () => {
+        themeObserver.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    });
+} 

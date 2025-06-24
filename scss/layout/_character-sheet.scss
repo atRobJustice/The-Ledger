@@ -353,12 +353,12 @@ h1 .logo {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: rgba(30, 30, 40, 0.7);
+  background: rgba(var(--panel-bg-rgb, 26, 26, 26), 0.7);
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 0 rgba(255,255,255,0.08) inset;
   border-radius: 18px;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1.5px solid rgba(255,255,255,0.12);
+  border: 1.5px solid var(--panel-border-light, rgba(255,255,255,0.12));
   padding: 0.75rem 1.5rem;
   margin-bottom: 2rem;
   position: sticky;
@@ -372,16 +372,17 @@ h1 .logo {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: rgba(255,255,255,0.04);
+  background: var(--form-bg, rgba(255,255,255,0.04));
   border-radius: 12px;
   padding: 0.25rem 0.5rem;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.07);
+  border: 1px solid var(--panel-border-light, rgba(255,255,255,0.08));
 }
 
 .toolbar-divider {
   width: 2px;
   height: 2.5em;
-  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0.08) 100%);
+  background: linear-gradient(180deg, var(--panel-border-light, rgba(255,255,255,0.12)) 0%, var(--panel-border, rgba(0,0,0,0.08)) 100%);
   margin: 0 0.5rem;
   border-radius: 2px;
   align-self: center;
@@ -397,7 +398,7 @@ h1 .logo {
   min-height: 2.5em;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.10);
+  background: var(--form-bg, rgba(255,255,255,0.10));
   color: var(--accent, #e53935);
   font-size: 1.35em;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
@@ -405,14 +406,16 @@ h1 .logo {
   cursor: pointer;
   position: relative;
   outline: none;
+  border: 1px solid var(--panel-border-light, rgba(255,255,255,0.08));
 }
 
 .toolbar-btn:focus, .toolbar-btn:hover {
-  background: rgba(255,255,255,0.22);
+  background: var(--form-bg, rgba(255,255,255,0.22));
   color: var(--accent, #ff5252);
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
   transform: translateY(-2px) scale(1.08);
   z-index: 1900;
+  border-color: var(--accent, rgba(255,255,255,0.2));
 }
 
 .toolbar-btn img {

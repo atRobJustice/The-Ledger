@@ -885,7 +885,7 @@ export function initControlBar(deps) {
 
     const content = `
       <div class="vstack gap-2">
-        <h6 class="mt-2">Default Palettes</h6>
+        <h6 class="mt-2">Kindred Palettes</h6>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default">
           <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
