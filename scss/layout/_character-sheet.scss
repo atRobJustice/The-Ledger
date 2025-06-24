@@ -1,4 +1,5 @@
 @use '../globals' as *;
+@use 'sass:color';
 
 // Character sheet layout
 .character-sheet {
@@ -112,13 +113,13 @@ h1 .logo {
 
 // Button color variants
 .toolbar-section .btn-outline-danger {
-    background: linear-gradient(135deg, $color-danger, darken($color-danger, 10%));
+    background: linear-gradient(135deg, $color-danger, color.adjust($color-danger, $lightness: -10%));
     color: $color-white;
     border: 1px solid $color-danger;
     
     &:hover {
-        background: linear-gradient(135deg, darken($color-danger, 10%), darken($color-danger, 20%));
-        border-color: darken($color-danger, 10%);
+        background: linear-gradient(135deg, color.adjust($color-danger, $lightness: -10%), color.adjust($color-danger, $lightness: -20%));
+        border-color: color.adjust($color-danger, $lightness: -10%);
         color: $color-white;
     }
 }
@@ -136,49 +137,49 @@ h1 .logo {
 }
 
 .toolbar-section .btn-outline-warning {
-    background: linear-gradient(135deg, $color-warning, darken($color-warning, 10%));
+    background: linear-gradient(135deg, $color-warning, color.adjust($color-warning, $lightness: -10%));
     color: $color-black;
     border: 1px solid $color-warning;
     
     &:hover {
-        background: linear-gradient(135deg, darken($color-warning, 10%), darken($color-warning, 20%));
-        border-color: darken($color-warning, 10%);
+        background: linear-gradient(135deg, color.adjust($color-warning, $lightness: -10%), color.adjust($color-warning, $lightness: -20%));
+        border-color: color.adjust($color-warning, $lightness: -10%);
         color: $color-black;
     }
 }
 
 .toolbar-section .btn-outline-primary {
-    background: linear-gradient(135deg, $color-info, darken($color-info, 10%));
+    background: linear-gradient(135deg, $color-info, color.adjust($color-info, $lightness: -10%));
     color: $color-white;
     border: 1px solid $color-info;
     
     &:hover {
-        background: linear-gradient(135deg, darken($color-info, 10%), darken($color-info, 20%));
-        border-color: darken($color-info, 10%);
+        background: linear-gradient(135deg, color.adjust($color-info, $lightness: -10%), color.adjust($color-info, $lightness: -20%));
+        border-color: color.adjust($color-info, $lightness: -10%);
         color: $color-white;
     }
 }
 
 .toolbar-section .btn-outline-info {
-    background: linear-gradient(135deg, lighten($color-info, 10%), $color-info);
+    background: linear-gradient(135deg, color.adjust($color-info, $lightness: 10%), $color-info);
     color: $color-white;
-    border: 1px solid lighten($color-info, 10%);
+    border: 1px solid color.adjust($color-info, $lightness: 10%);
     
     &:hover {
-        background: linear-gradient(135deg, $color-info, darken($color-info, 10%));
+        background: linear-gradient(135deg, $color-info, color.adjust($color-info, $lightness: -10%));
         border-color: $color-info;
         color: $color-white;
     }
 }
 
 .toolbar-section .btn-outline-success {
-    background: linear-gradient(135deg, $color-success, darken($color-success, 10%));
+    background: linear-gradient(135deg, $color-success, color.adjust($color-success, $lightness: -10%));
     color: $color-white;
     border: 1px solid $color-success;
     
     &:hover {
-        background: linear-gradient(135deg, darken($color-success, 10%), darken($color-success, 20%));
-        border-color: darken($color-success, 10%);
+        background: linear-gradient(135deg, color.adjust($color-success, $lightness: -10%), color.adjust($color-success, $lightness: -20%));
+        border-color: color.adjust($color-success, $lightness: -10%);
         color: $color-white;
     }
 }
@@ -489,13 +490,13 @@ h1 .logo {
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, $color-danger, darken($color-danger, 10%));
+  background: linear-gradient(135deg, $color-danger, color.adjust($color-danger, $lightness: -10%));
   color: $color-white;
   border: 1px solid $color-danger;
   
   &:hover {
-    background: linear-gradient(135deg, darken($color-danger, 10%), darken($color-danger, 20%));
-    border-color: darken($color-danger, 10%);
+    background: linear-gradient(135deg, color.adjust($color-danger, $lightness: -10%), color.adjust($color-danger, $lightness: -20%));
+    border-color: color.adjust($color-danger, $lightness: -10%);
   }
 }
 
@@ -511,47 +512,47 @@ h1 .logo {
 }
 
 .btn-warning {
-  background: linear-gradient(135deg, $color-warning, darken($color-warning, 10%));
+  background: linear-gradient(135deg, $color-warning, color.adjust($color-warning, $lightness: -10%));
   color: $color-black;
   border: 1px solid $color-warning;
   
   &:hover {
-    background: linear-gradient(135deg, darken($color-warning, 10%), darken($color-warning, 20%));
-    border-color: darken($color-warning, 10%);
+    background: linear-gradient(135deg, color.adjust($color-warning, $lightness: -10%), color.adjust($color-warning, $lightness: -20%));
+    border-color: color.adjust($color-warning, $lightness: -10%);
     color: $color-black;
   }
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, $color-info, darken($color-info, 10%));
+  background: linear-gradient(135deg, $color-info, color.adjust($color-info, $lightness: -10%));
   color: $color-white;
   border: 1px solid $color-info;
   
   &:hover {
-    background: linear-gradient(135deg, darken($color-info, 10%), darken($color-info, 20%));
-    border-color: darken($color-info, 10%);
+    background: linear-gradient(135deg, color.adjust($color-info, $lightness: -10%), color.adjust($color-info, $lightness: -20%));
+    border-color: color.adjust($color-info, $lightness: -10%);
   }
 }
 
 .btn-info {
-  background: linear-gradient(135deg, lighten($color-info, 10%), $color-info);
+  background: linear-gradient(135deg, color.adjust($color-info, $lightness: 10%), $color-info);
   color: $color-white;
-  border: 1px solid lighten($color-info, 10%);
+  border: 1px solid color.adjust($color-info, $lightness: 10%);
   
   &:hover {
-    background: linear-gradient(135deg, $color-info, darken($color-info, 10%));
+    background: linear-gradient(135deg, $color-info, color.adjust($color-info, $lightness: -10%));
     border-color: $color-info;
   }
 }
 
 .btn-success {
-  background: linear-gradient(135deg, $color-success, darken($color-success, 10%));
+  background: linear-gradient(135deg, $color-success, color.adjust($color-success, $lightness: -10%));
   color: $color-white;
   border: 1px solid $color-success;
   
   &:hover {
-    background: linear-gradient(135deg, darken($color-success, 10%), darken($color-success, 20%));
-    border-color: darken($color-success, 10%);
+    background: linear-gradient(135deg, color.adjust($color-success, $lightness: -10%), color.adjust($color-success, $lightness: -20%));
+    border-color: color.adjust($color-success, $lightness: -10%);
   }
 }
 
