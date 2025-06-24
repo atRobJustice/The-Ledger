@@ -30,14 +30,14 @@
     }
 
     &:hover {
-        border-color: var(--accent, $color-primary);
-        background-color: rgba(var(--accent-rgb, 164,0,0), 0.1);
+        border-color: var(--accent);
+        background-color: rgba(var(--accent-rgb), 0.1);
     }
 }
 
 .selected-power {
-    background-color: rgba(var(--accent-rgb, 164,0,0), 0.1) !important;
-    border: $border-width $border-style rgba(var(--accent-rgb, 164,0,0), 0.3);
+    background-color: rgba(var(--accent-rgb), 0.1) !important;
+    border: $border-width $border-style rgba(var(--accent-rgb), 0.3);
     color: var(--panel-text, $color-text);
 
     .d-flex {

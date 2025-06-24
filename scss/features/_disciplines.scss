@@ -23,17 +23,17 @@
     background-color: rgba(var(--panel-border-rgb, 0,0,0), 0.3);
     border-radius: $border-radius;
     padding: 0.75rem;
-    border-left: 3px solid var(--accent, $color-primary);
+    border-left: 3px solid var(--accent);
 }
 
 .selected-power {
-    background-color: rgba(var(--accent-rgb, 164,0,0), 0.1) !important;
-    border: $border-width $border-style rgba(var(--accent-rgb, 164,0,0), 0.3);
-    color: var(--panel-text, $color-text);
+    background-color: rgba(var(--accent-rgb), 0.1) !important;
+    border: $border-width $border-style rgba(var(--accent-rgb), 0.3);
+    color: var(--accent);
 }
 
 .power-name {
-    color: var(--accent, $color-primary);
+    color: var(--accent);
     font-weight: bold;
 }
 
@@ -44,8 +44,8 @@
     transition: $transition-base;
 
     &:hover {
-        border-color: var(--accent, $color-primary) !important;
-        background-color: rgba(var(--accent-rgb, 164,0,0), 0.1);
+        border-color: var(--accent) !important;
+        background-color: rgba(var(--accent-rgb), 0.1);
     }
 
     .badge {
@@ -85,13 +85,13 @@
         position: relative;
 
         &:hover {
-            border-color: var(--accent, $color-primary);
+            border-color: var(--accent);
             transform: scale(1.1);
         }
 
         &.filled {
-            background-color: var(--accent, $color-primary);
-            border-color: var(--accent, $color-primary);
+            background-color: var(--accent);
+            border-color: var(--accent);
 
             &:hover {
                 background-color: color.adjust($color-primary, $lightness: 10%);

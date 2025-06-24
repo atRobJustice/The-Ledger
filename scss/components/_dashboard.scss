@@ -3,8 +3,8 @@
 
 // Dashboard Header
 .dashboard-header {
-  background: linear-gradient(135deg, var(--accent, #a40000) 0%, rgba(0, 0, 0, 0.4) 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--accent) 0%, rgba(0, 0, 0, 0.4) 100%);
+  color: var(--accent);
   padding: 2rem 0;
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -26,7 +26,7 @@
   font-family: "IM Fell English", serif;
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: white;
+  color: var(--accent);
   position: relative;
   z-index: 1;
 
@@ -56,7 +56,7 @@
 .stat-card {
   background-color: var(--panel-bg, #1a1a1a);
   border: 1px solid var(--panel-border, #333);
-  border-left: 4px solid var(--accent, #a40000);
+  border-left: 4px solid var(--accent);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
@@ -65,7 +65,7 @@
 .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
@@ -86,7 +86,7 @@
 .character-card {
   background-color: var(--panel-bg, #1a1a1a);
   border: 1px solid var(--panel-border, #333);
-  border-left: 6px solid var(--accent, #a40000);
+  border-left: 6px solid var(--accent);
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
@@ -97,7 +97,7 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    border-color: var(--accent, #a40000);
+    border-color: var(--accent);
   }
 
   &::before {
@@ -107,7 +107,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent, #a40000), #7f1c1c);
+    background: linear-gradient(90deg, var(--accent), transparent);
   }
 }
 
@@ -121,13 +121,13 @@
 .character-name {
   font-family: "IM Fell English", serif;
   font-size: 1.4rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin: 0;
   font-weight: bold;
 }
 
 .character-system {
-  background-color: var(--accent, #a40000);
+  background-color: var(--accent);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -191,21 +191,21 @@
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: var(--accent, #a40000);
-    background-color: rgba(164, 0, 0, 0.05);
+    border-color: var(--accent);
+    background-color: rgba(var(--accent-rgb), 0.05);
   }
 }
 
 .create-character-icon {
   font-size: 3rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 
 .create-character-title {
   font-family: "IM Fell English", serif;
   font-size: 1.5rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
@@ -236,7 +236,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    border-color: var(--accent, #a40000);
+    border-color: var(--accent);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
@@ -247,7 +247,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--accent, #a40000);
+    background: var(--accent);
   }
 
   &.disabled {
@@ -281,14 +281,14 @@
 
 .system-icon {
   font-size: 2.5rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 
 .system-name {
   font-family: "IM Fell English", serif;
   font-size: 1.2rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
@@ -308,8 +308,8 @@
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: var(--accent, #a40000);
-    background-color: rgba(164, 0, 0, 0.05);
+    border-color: var(--accent);
+    background-color: rgba(var(--accent-rgb), 0.05);
   }
 }
 
@@ -321,7 +321,7 @@
 .import-character-title {
   font-family: "IM Fell English", serif;
   font-size: 1.5rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -356,7 +356,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    border-color: var(--accent, #a40000);
+    border-color: var(--accent);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
@@ -367,24 +367,24 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--accent, #a40000);
+    background: var(--accent);
   }
 }
 
 .import-icon {
   width: 48px;
   height: 48px;
-  background-color: rgba(164, 0, 0, 0.1);
+  background-color: rgba(var(--accent-rgb), 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   flex-shrink: 0;
 
   &.progeny {
-    background-color: rgba(164, 0, 0, 0.1);
+    background-color: rgba(var(--accent-rgb), 0.1);
     
     img {
       width: 24px;
@@ -401,7 +401,7 @@
 .import-option-title {
   font-family: "IM Fell English", serif;
   font-size: 1.1rem;
-  color: var(--accent, #a40000);
+  color: var(--accent);
   margin-bottom: 0.25rem;
   font-weight: bold;
 }
@@ -421,7 +421,7 @@
 }
 
 .import-option:hover .import-arrow {
-  color: var(--accent, #a40000);
+  color: var(--accent);
   transform: translateX(4px);
 }
 
@@ -456,7 +456,7 @@
 }
 
 .settings-section-title {
-  color: var(--accent, #a40000);
+  color: var(--accent);
   font-family: "IM Fell English", serif;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -480,14 +480,14 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: rgba(164, 0, 0, 0.1);
-      border-color: var(--accent, #a40000);
-      color: var(--accent, #a40000);
+      background-color: rgba(var(--accent-rgb), 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     &.active {
-      background-color: var(--accent, #a40000);
-      border-color: var(--accent, #a40000);
+      background-color: var(--accent);
+      border-color: var(--accent);
       color: white;
     }
 
@@ -505,16 +505,16 @@
 }
 
 .form-check-input:checked {
-  background-color: var(--accent, #a40000);
-  border-color: var(--accent, #a40000);
+  background-color: var(--accent);
+  border-color: var(--accent);
 }
 
 .alert {
-  border-left: 4px solid;
+  border-left: 4px solid var(--accent);
   background-color: rgba(0, 0, 0, 0.2);
 
   &.alert-info {
-    border-left-color: var(--accent, #a40000);
+    border-left-color: var(--accent);
   }
 
   &.alert-warning {

@@ -4,7 +4,7 @@
 .modal-content {
     background-color: var(--panel-bg, $color-background);
     border: $border-width $border-style var(--panel-border, $color-border);
-    border-left: 6px solid var(--accent, $color-primary);
+    border-left: 6px solid var(--accent);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
     color: var(--panel-text, $color-text);
 

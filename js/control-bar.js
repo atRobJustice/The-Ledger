@@ -900,8 +900,8 @@ export function initControlBar(deps) {
   }
 
   function applyTheme(themeKey) {
-    if (themeKey === "default") {
-      document.body.removeAttribute("data-theme");
+    if (themeKey === "default" || !themeKey) {
+      document.body.setAttribute("data-theme", "wod-dark");
     } else {
       document.body.setAttribute("data-theme", themeKey);
     }

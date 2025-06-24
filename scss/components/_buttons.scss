@@ -68,10 +68,10 @@
     body:not([data-theme]) & {
         background-color: #2a1a1a;
         color: #d8d0c8;
-        border-left: 4px solid var(--accent, #a40000);
+        border-left: 4px solid var(--accent);
         
         .toast-header {
-            background-color: var(--accent, #a40000);
+            background-color: var(--accent);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -84,34 +84,34 @@
     
     // Success toasts
     &.bg-success {
-        background-color: $color-success !important;
+        background-color: var(--accent) !important;
         color: white !important;
-        border-left-color: $color-success;
+        border-left-color: var(--accent);
         
         .toast-header {
-            background-color: $color-success !important;
+            background-color: var(--accent) !important;
             color: white !important;
         }
         
         .toast-body {
-            background-color: $color-success !important;
+            background-color: var(--accent) !important;
             color: white !important;
         }
     }
     
     // Danger/Error toasts
     &.bg-danger {
-        background-color: var(--accent, $color-danger) !important;
+        background-color: var(--accent) !important;
         color: white !important;
-        border-left-color: var(--accent, $color-danger);
+        border-left-color: var(--accent);
         
         .toast-header {
-            background-color: var(--accent, $color-danger) !important;
+            background-color: var(--accent) !important;
             color: white !important;
         }
         
         .toast-body {
-            background-color: var(--accent, $color-danger) !important;
+            background-color: var(--accent) !important;
             color: white !important;
         }
     }
@@ -160,10 +160,10 @@ body[data-theme='ivory'] {
     .toast {
         background-color: #fbf7f2;
         color: #2c1b1b;
-        border-left: 4px solid var(--accent, #8b0000);
+        border-left: 4px solid var(--accent);
         
         .toast-header {
-            background-color: var(--accent, #8b0000);
+            background-color: var(--accent);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -196,10 +196,10 @@ body[data-theme='daltonic'] {
     .toast {
         background-color: #fafdff;
         color: #1a1a1a;
-        border-left: 4px solid var(--accent, #005fa3);
+        border-left: 4px solid var(--accent);
         
         .toast-header {
-            background-color: var(--accent, #005fa3);
+            background-color: var(--accent);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -243,10 +243,10 @@ body[data-theme='hc-dark'] {
     .toast {
         background-color: #101010;
         color: white;
-        border-left: 4px solid var(--accent, #ffd700);
+        border-left: 4px solid var(--accent);
         
         .toast-header {
-            background-color: var(--accent, #ffd700);
+            background-color: var(--accent);
             color: black;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
@@ -290,10 +290,10 @@ body[data-theme='hc-light'] {
     .toast {
         background-color: #f7f7f7;
         color: black;
-        border-left: 4px solid var(--accent, #0053d6);
+        border-left: 4px solid var(--accent);
         
         .toast-header {
-            background-color: var(--accent, #0053d6);
+            background-color: var(--accent);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
