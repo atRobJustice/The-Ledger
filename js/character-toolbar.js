@@ -355,6 +355,15 @@ function initLockButton() {
             btn.innerHTML = '<i class="bi bi-lock"></i>';
             btn.title = 'Lock Character';
         }
+        
+        // Update the Bootstrap tooltip to reflect the new title
+        if (window.bootstrap && bootstrap.Tooltip) {
+            const tooltipInstance = bootstrap.Tooltip.getInstance(btn);
+            if (tooltipInstance) {
+                // Update the tooltip content
+                tooltipInstance.setContent({ '.tooltip-inner': btn.title });
+            }
+        }
     }
     
     btn.addEventListener('click', () => {
@@ -669,8 +678,10 @@ function initHelpButton() {
  */
 function initTooltips() {
     if (window.bootstrap && bootstrap.Tooltip) {
-        const buttons = document.querySelectorAll('.character-toolbar [title]');
+        const buttons = document.querySelectorAll('.character-toolbar-glass [title]');
         buttons.forEach(button => {
+            // Set placement to bottom so tooltips appear below the buttons
+            button.setAttribute('data-bs-placement', 'bottom');
             bootstrap.Tooltip.getOrCreateInstance(button);
         });
     }
