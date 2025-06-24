@@ -19,6 +19,19 @@ export async function getDiscordWebhook() {
   }
 }
 
+// Check if Discord integration is enabled
+export async function isDiscordEnabled() {
+  try {
+    if (window.databaseManager) {
+      return await window.databaseManager.getSetting('discordEnabled') !== 'false';
+    }
+    return false; // Default to disabled if no database manager
+  } catch (err) {
+    console.error('Failed to check Discord enabled setting:', err);
+    return false; // Default to disabled on error
+  }
+}
+
 // Save (or clear, if falsy) the Discord webhook URL
 export async function setDiscordWebhook(url) {
   try {
@@ -68,6 +81,12 @@ export function getCharacterName() {
 
 // Send either a plain text message or an embed object to Discord via webhook
 export async function sendToDiscord(contentOrEmbed) {
+  // Check if Discord integration is enabled
+  const discordEnabled = await isDiscordEnabled();
+  if (!discordEnabled) {
+    return; // Discord integration is disabled, don't send any messages
+  }
+
   const webhook = await getDiscordWebhook();
   if (!webhook) return; // nothing to do
 

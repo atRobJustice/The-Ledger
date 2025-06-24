@@ -6,12 +6,19 @@ let characters = [];
 const toastManager = window.toastManager;
 const modalManager = window.modalManager;
 
+// Import Discord integration functions
+let sendToDiscord;
+
 // Initialize dashboard
 async function initDashboard() {
     try {
         // Import database manager
         const dbModule = await import('./database-manager.js');
         databaseManager = dbModule.default;
+        
+        // Import Discord integration
+        const discordModule = await import('./discord-integration.js');
+        sendToDiscord = discordModule.sendToDiscord;
         
         // Initialize database
         await databaseManager.init();
@@ -484,23 +491,17 @@ async function testDiscordWebhook() {
         const testEmbed = {
             title: "🎲 The Ledger - Discord Integration Test",
             description: "This is a test message from The Ledger character management system.",
-            color: 0xa40000,
+            color: 0x00a400,
             fields: [
                 { name: "Status", value: "✅ Discord integration is working!", inline: true },
                 { name: "Time", value: new Date().toLocaleString(), inline: true }
             ],
             timestamp: new Date().toISOString()
         };
-        const response = await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ embeds: [testEmbed] })
-        });
-        if (response.ok) {
-            toastManager.success('✅ Discord webhook test successful! Check your Discord channel.', 'Success');
-        } else {
-            toastManager.error('❌ Discord webhook test failed. Please check your webhook URL.', 'Error');
-        }
+        
+        // Use the sendToDiscord function which respects the discordEnabled toggle
+        await sendToDiscord(testEmbed);
+        toastManager.success('✅ Discord webhook test successful! Check your Discord channel.', 'Success');
     } catch (error) {
         console.error('Discord webhook test failed:', error);
         toastManager.error('❌ Discord webhook test failed. Please check your webhook URL and try again.', 'Error');
