@@ -260,12 +260,12 @@
                                                 <div class="input-group">
                                                     <input type="url" class="form-control bg-dark" id="discordWebhookInput" 
                                                            placeholder="https://discord.com/api/webhooks/..." 
-                                                           pattern="https://discord\.com/api/webhooks/[0-9]+/[a-zA-Z0-9_-]+">
+                                                           pattern="https:\/\/(discord\.com|discordapp\.com)\/api\/webhooks\/[0-9]+\/[a-zA-Z0-9_-]+">
                                                     <button class="btn btn-outline-secondary" type="button" onclick="testDiscordWebhook()">
                                                         <i class="bi bi-play-circle"></i> Test
                                                     </button>
                                                 </div>
-                                                <div class="form-text">
+                                                <div class="form-text text-light">
                                                     <i class="bi bi-info-circle"></i> 
                                                     To create a webhook: Go to your Discord server → Server Settings → Integrations → Webhooks → New Webhook
                                                 </div>
@@ -338,16 +338,7 @@
                                                     <option value="30">30 minutes</option>
                                                 </select>
                                             </div>
-                                            
-                                            <div class="mb-3">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="showTooltips" checked>
-                                                    <label class="form-check-label" for="showTooltips">
-                                                        Show tooltips and help text
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            
+                                                   
                                             <div class="mb-3">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox" id="confirmDeletions" checked>
@@ -370,14 +361,14 @@
                                                 <button class="btn btn-outline-primary" onclick="exportAllData()">
                                                     <i class="bi bi-download"></i> Export All Data
                                                 </button>
-                                                <div class="form-text">Download all characters and settings as a backup file.</div>
+                                                <div class="form-text text-light">Download all characters and settings as a backup file.</div>
                                             </div>
                                             
                                             <div class="mb-3">
                                                 <button class="btn btn-outline-warning" onclick="importData()">
                                                     <i class="bi bi-upload"></i> Import Data
                                                 </button>
-                                                <div class="form-text">Import characters and settings from a backup file.</div>
+                                                <div class="form-text text-light">Import characters and settings from a backup file.</div>
                                                 <input type="file" id="importFile" accept=".json" class="hidden" onchange="handleImportFile(event)">
                                             </div>
                                             
@@ -409,7 +400,7 @@
                                             </div>
                                             
                                             <div class="mb-3">
-                                                <strong>Version:</strong> 1.0.0<br>
+                                                <strong>Version:</strong> 1.3.0<br>
                                                 <strong>Database:</strong> IndexedDB<br>
                                                 <strong>Framework:</strong> Vanilla JavaScript + Bootstrap 5
                                             </div>
@@ -437,7 +428,7 @@
                                             <div class="alert alert-info">
                                                 <i class="bi bi-github"></i>
                                                 <strong>Open Source:</strong> The Ledger is open source software. 
-                                                <a href="https://github.com/yourusername/ledger" target="_blank" class="alert-link">View on GitHub</a>
+                                                <a href="https://github.com/atRobJustice/The-Ledger" target="_blank" class="alert-link">View on GitHub</a>
                                             </div>
                                         </div>
                                     </div>

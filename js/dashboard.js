@@ -372,10 +372,7 @@ async function loadSettings() {
         
         const autoSaveInterval = await databaseManager.getSetting('autoSaveInterval') || '5';
         document.getElementById('autoSaveInterval').value = autoSaveInterval;
-        
-        const showTooltips = await databaseManager.getSetting('showTooltips') !== 'false';
-        document.getElementById('showTooltips').checked = showTooltips;
-        
+                
         const confirmDeletions = await databaseManager.getSetting('confirmDeletions') !== 'false';
         document.getElementById('confirmDeletions').checked = confirmDeletions;
         
@@ -422,7 +419,7 @@ async function testDiscordWebhook() {
         toastManager.warning('Please enter a Discord webhook URL first.', 'Missing URL');
         return;
     }
-    if (!webhookUrl.match(/^https:\/\/discord\.com\/api\/webhooks\/[0-9]+\/[a-zA-Z0-9_-]+$/)) {
+    if (!webhookUrl.match(/^https:\/\/(discord\.com|discordapp\.com)\/api\/webhooks\/[0-9]+\/[a-zA-Z0-9_-]+$/)) {
         toastManager.warning('Please enter a valid Discord webhook URL.', 'Invalid URL');
         return;
     }
