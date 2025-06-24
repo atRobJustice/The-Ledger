@@ -172,9 +172,9 @@
             // Only restore theme from character data if no theme is currently set
             // This prevents character data from overriding user's theme preference
             if (!currentTheme && !savedTheme) {
-                const t = data.theme || 'default';
-                if(t === 'default'){
-                    document.body.removeAttribute('data-theme');
+                const t = data.theme || 'wod-dark';
+                if(t === 'wod-dark'){
+                    document.body.setAttribute('data-theme', 'wod-dark');
                 } else {
                     document.body.setAttribute('data-theme', t);
                 }

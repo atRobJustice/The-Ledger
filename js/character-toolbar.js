@@ -51,15 +51,15 @@ async function loadSavedTheme() {
         
         if (window.databaseManager) {
             console.log('Database manager found, loading theme...');
-            const savedTheme = await window.databaseManager.getSetting('theme') || await window.databaseManager.getSetting('defaultTheme') || 'default';
+            const savedTheme = await window.databaseManager.getSetting('theme') || await window.databaseManager.getSetting('defaultTheme') || 'wod-dark';
             console.log('Retrieved theme from database:', savedTheme);
             
-            if (savedTheme && savedTheme !== 'default') {
+            if (savedTheme && savedTheme !== 'wod-dark') {
                 document.body.setAttribute('data-theme', savedTheme);
                 console.log('Applied saved theme to character sheet:', savedTheme);
             } else {
-                document.body.removeAttribute('data-theme');
-                console.log('Using default theme on character sheet');
+                document.body.setAttribute('data-theme', 'wod-dark');
+                console.log('Using default World of Darkness dark theme on character sheet');
             }
             
             // Double-check that the theme was actually applied
@@ -448,12 +448,24 @@ function showThemeModal() {
         <div class="vstack gap-2">
             <h6 class="mt-2">Default Palettes</h6>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeMasquerade" value="default" ${currentTheme === 'default' ? 'checked' : ''}>
-                <label class="form-check-label" for="schemeMasquerade">Blood & Roses (Dark)</label>
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeKindredDark" value="kindred-dark" ${currentTheme === 'kindred-dark' ? 'checked' : ''}>
+                <label class="form-check-label" for="schemeKindredDark">Blood & Roses (Dark)</label>
             </div>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeIvory" value="ivory" ${currentTheme === 'ivory' ? 'checked' : ''}>
-                <label class="form-check-label" for="schemeIvory">Ivory Tower (Light)</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="schemeRadios" id="schemeKindredLight" value="kindred-light" ${currentTheme === 'kindred-light' ? 'checked' : ''}>
+                <label class="form-check-label" for="schemeKindredLight">Ivory Tower (Light)</label>
+            </div>
+
+            <h6 class="mt-2">World of Darkness</h6>
+            <div class="wod-options">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeWodDark" value="wod-dark" ${currentTheme === 'wod-dark' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeWodDark">Shadow Realm (Dark)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeWodLight" value="wod-light" ${currentTheme === 'wod-light' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeWodLight">Veil of Light (Light)</label>
+                </div>
             </div>
 
             <h6 class="mt-2">Accessibility Palettes</h6>
@@ -473,6 +485,18 @@ function showThemeModal() {
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="schemeRadios" id="schemeDaltonic" value="daltonic" ${currentTheme === 'daltonic' ? 'checked' : ''}>
                     <label class="form-check-label" for="schemeDaltonic">Daltonic (Blue/Orange)</label>
+                </div>
+            </div>
+
+            <h6 class="mt-2">Hunter: The Reckoning 5th Edition</h6>
+            <div class="hunter-options">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHunterDark" value="hunter-dark" ${currentTheme === 'hunter-dark' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeHunterDark">Night Watch (Dark)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="schemeRadios" id="schemeHunterLight" value="hunter-light" ${currentTheme === 'hunter-light' ? 'checked' : ''}>
+                    <label class="form-check-label" for="schemeHunterLight">Dawn Patrol (Light)</label>
                 </div>
             </div>
 
@@ -524,8 +548,8 @@ function showThemeModal() {
 async function applyTheme(themeKey) {
     console.log('Applying theme from character toolbar:', themeKey);
     
-    if (themeKey === "default") {
-        document.body.removeAttribute("data-theme");
+    if (themeKey === "wod-dark") {
+        document.body.setAttribute("data-theme", "wod-dark");
     } else {
         document.body.setAttribute("data-theme", themeKey);
     }

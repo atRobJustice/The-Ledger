@@ -34,13 +34,13 @@ async function initDashboard() {
 async function loadSavedTheme() {
     try {
         if (databaseManager) {
-            const savedTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme');
-            if (savedTheme && savedTheme !== 'default') {
+            const savedTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'wod-dark';
+            if (savedTheme && savedTheme !== 'wod-dark') {
                 document.body.setAttribute('data-theme', savedTheme);
                 console.log('Applied saved theme:', savedTheme);
             } else {
-                document.body.removeAttribute('data-theme');
-                console.log('Using default theme');
+                document.body.setAttribute('data-theme', 'wod-dark');
+                console.log('Using default World of Darkness dark theme');
             }
         }
     } catch (error) {
@@ -388,7 +388,7 @@ async function loadSettings() {
         document.getElementById('discordWebhookInput').value = discordWebhook;
         
         // Load theme setting (use 'theme' key from the theme system, fallback to 'defaultTheme')
-        const currentTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'default';
+        const currentTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'wod-dark';
         console.log('Loading theme setting:', currentTheme);
         
         const themeDropdown = document.getElementById('defaultTheme');
@@ -433,8 +433,8 @@ async function loadSettings() {
 function applyThemeFromDropdown(themeKey) {
     console.log('Applying theme from dropdown:', themeKey);
     
-    if (themeKey === "default") {
-        document.body.removeAttribute("data-theme");
+    if (themeKey === "wod-dark") {
+        document.body.setAttribute("data-theme", "wod-dark");
     } else {
         document.body.setAttribute("data-theme", themeKey);
     }

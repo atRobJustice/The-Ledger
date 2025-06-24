@@ -1,7 +1,7 @@
 /* Theme override styles (applied via body[data-theme]) */
 
-// Ivory Tower: light parchment look
-body[data-theme='ivory'] {
+// Kindred Light: Ivory Tower theme
+body[data-theme='kindred-light'] {
   background: linear-gradient(#ece8dd, #d8d4ca);
   color: #2c1b1b;
 
@@ -26,6 +26,7 @@ body[data-theme='ivory'] {
 
   /* Accent variable for shared component overrides */
   --accent: #8b0000;
+  --accent-rgb: 139, 0, 0;
   --form-bg: #fbf7f2;
   --form-border: #cbbfae;
   --form-text: #2c1b1b;
@@ -65,6 +66,7 @@ body[data-theme='daltonic'] {
 
   // Accent and component variables
   --accent: #005fa3;
+  --accent-rgb: 0, 95, 163;
   --form-bg: #fafdff;
   --form-border: #ff9900;
   --form-text: #1a1a1a;
@@ -97,6 +99,7 @@ body[data-theme='hc-dark'] {
   .btn-danger    { background-color: #ff2b2b; }
 
   --accent: #ffd700;
+  --accent-rgb: 255, 215, 0;
   --form-bg: #101010;
   --form-border: #ffd700;
   --form-text: #fff;
@@ -126,6 +129,7 @@ body[data-theme='hc-light'] {
   .btn-danger  { background-color: #b40000; color: #fff; }
 
   --accent: #0053d6;
+  --accent-rgb: 0, 83, 214;
   --form-bg: #f7f7f7;
   --form-border: #000;
   --form-text: #000;
@@ -134,6 +138,90 @@ body[data-theme='hc-light'] {
   --panel-border: #000;
   --panel-border-light: #000;
   --panel-text: #000;
+}
+
+// Hunter: The Reckoning 5th Edition - Dark Theme
+body[data-theme='hunter-dark'] {
+  background: linear-gradient(#0a0a0a, #1a1a1a);
+  color: #ffffff;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ff6600;
+    border-color: #ff6600;
+  }
+
+  .ledger {
+    background: #1a1a1a;
+    border-color: #333333;
+    border-left-color: #ff6600;
+    color: #ffffff;
+  }
+
+  .btn-success {
+    background-color: #ff6600;
+    color: #000000;
+  }
+
+  .btn-danger {
+    background-color: #cc0000;
+    color: #ffffff;
+  }
+
+  --accent: #ff6600;
+  --accent-rgb: 255, 102, 0;
+  --form-bg: #1a1a1a;
+  --form-border: #333333;
+  --form-text: #ffffff;
+  --panel-bg: #1a1a1a;
+  --panel-bg-rgb: 26, 26, 26;
+  --panel-border: #333333;
+  --panel-border-light: #666666;
+  --panel-text: #ffffff;
+  --text-primary: #ffffff;
+  --text-muted: #ff6600;
+  --border-default: #333333;
+}
+
+// Hunter: The Reckoning 5th Edition - Light Theme
+body[data-theme='hunter-light'] {
+  background: linear-gradient(#f8f8f8, #e8e8e8);
+  color: #000000;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ff6600;
+    border-color: #ff6600;
+  }
+
+  .ledger {
+    background: #ffffff;
+    border-color: #cccccc;
+    border-left-color: #ff6600;
+    color: #000000;
+  }
+
+  .btn-success {
+    background-color: #ff6600;
+    color: #ffffff;
+  }
+
+  .btn-danger {
+    background-color: #cc0000;
+    color: #ffffff;
+  }
+
+  --accent: #ff6600;
+  --accent-rgb: 255, 102, 0;
+  --form-bg: #ffffff;
+  --form-border: #cccccc;
+  --form-text: #000000;
+  --panel-bg: #ffffff;
+  --panel-bg-rgb: 255, 255, 255;
+  --panel-border: #cccccc;
+  --panel-border-light: #e0e0e0;
+  --panel-text: #000000;
+  --text-primary: #000000;
+  --text-muted: #ff6600;
+  --border-default: #cccccc;
 }
 
 @font-face {
@@ -234,11 +322,6 @@ body[data-theme='default'] input#xp-level.form-range:focus {
 
 // Dashboard header and title overrides for all themes
 body[data-theme] {
-  .dashboard-header {
-    background: linear-gradient(135deg, var(--accent, #a40000) 0%, rgba(127, 28, 28, 0.8) 100%);
-    color: white;
-  }
-  
   .dashboard-title {
     color: white !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -248,4 +331,88 @@ body[data-theme] {
     color: rgba(255, 255, 255, 0.9) !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
+}
+
+// World of Darkness - Dark Theme
+body[data-theme='wod-dark'] {
+  background: linear-gradient(#0d0d0d, #1a1a1a);
+  color: #d4d4d4;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #c0c0c0;
+    border-color: #666666;
+  }
+
+  .ledger {
+    background: #1a1a1a;
+    border-color: #333333;
+    border-left-color: #666666;
+    color: #d4d4d4;
+  }
+
+  .btn-success {
+    background-color: #2d5a2d;
+    color: #ffffff;
+  }
+
+  .btn-danger {
+    background-color: #5a2d2d;
+    color: #ffffff;
+  }
+
+  --accent: #666666;
+  --accent-rgb: 102, 102, 102;
+  --form-bg: #1a1a1a;
+  --form-border: #333333;
+  --form-text: #d4d4d4;
+  --panel-bg: #1a1a1a;
+  --panel-bg-rgb: 26, 26, 26;
+  --panel-border: #333333;
+  --panel-border-light: #4d4d4d;
+  --panel-text: #d4d4d4;
+  --text-primary: #d4d4d4;
+  --text-muted: #999999;
+  --border-default: #333333;
+}
+
+// World of Darkness - Light Theme
+body[data-theme='wod-light'] {
+  background: linear-gradient(#f5f5f5, #e8e8e8);
+  color: #2a2a2a;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #404040;
+    border-color: #666666;
+  }
+
+  .ledger {
+    background: #ffffff;
+    border-color: #cccccc;
+    border-left-color: #666666;
+    color: #2a2a2a;
+  }
+
+  .btn-success {
+    background-color: #4a7c4a;
+    color: #ffffff;
+  }
+
+  .btn-danger {
+    background-color: #7c4a4a;
+    color: #ffffff;
+  }
+
+  --accent: #666666;
+  --accent-rgb: 102, 102, 102;
+  --form-bg: #ffffff;
+  --form-border: #cccccc;
+  --form-text: #2a2a2a;
+  --panel-bg: #ffffff;
+  --panel-bg-rgb: 255, 255, 255;
+  --panel-border: #cccccc;
+  --panel-border-light: #e0e0e0;
+  --panel-text: #2a2a2a;
+  --text-primary: #2a2a2a;
+  --text-muted: #666666;
+  --border-default: #cccccc;
 }

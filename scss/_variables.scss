@@ -62,6 +62,7 @@ $border-default: color.mix($color-border, $color-background, 80%);
   --text-muted: #{$text-muted};
   --border-default: #{$border-default};
   --accent: #{$color-primary};
+  --accent-rgb: 164, 0, 0;
   --color-background: #{$color-background};
   --color-border: #{$color-border};
   --form-bg: #{$color-background-light};
