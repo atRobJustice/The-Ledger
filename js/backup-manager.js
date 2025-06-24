@@ -102,6 +102,7 @@
             const $select = $stat.find('select');
             const $dots = $stat.find('.dots');
             const $track = $stat.find('.track-container');
+            const $valueSpan = $stat.find('span:last-child');
 
             if($input.length){
                 $input.val(val);
@@ -125,6 +126,36 @@
                 const $compulsionSelect = $stat.find('select');
                 if($compulsionSelect.length) {
                     setSelectValueWithRetry($compulsionSelect, val);
+                }
+            } else if($valueSpan.length && typeof val === 'number') {
+                // If we have a span but no dots, create dots first
+                console.log('[loadCharacterData] Converting span to dots for:', label, 'value:', val);
+                
+                // Determine if this should be dots, track boxes, or something else
+                const textFields = ['name', 'concept', 'chronicle', 'ambition', 'desire', 'sire'];
+                const trackFields = ['health', 'willpower', 'humanity'];
+                
+                if (textFields.includes(label)) {
+                    // Convert to text input
+                    const input = createTextInput(val);
+                    $valueSpan.replaceWith(input);
+                } else if (trackFields.includes(label)) {
+                    // Convert to track boxes
+                    const trackBoxes = createTrackBoxes(10, val, 0, 0, label);
+                    $valueSpan.replaceWith(trackBoxes);
+                } else if (label === 'blood potency') {
+                    // Convert to dots for blood potency
+                    const dotsContainer = createDots(val, 5);
+                    $valueSpan.replaceWith(dotsContainer);
+                } else if (label === 'hunger') {
+                    // Convert to dots for hunger
+                    const dotsContainer = createDots(val, 5);
+                    $(dotsContainer).removeClass('lockable-dot').addClass('hunger-dots');
+                    $valueSpan.replaceWith(dotsContainer);
+                } else {
+                    // Default to dots for attributes and skills
+                    const dotsContainer = createDots(val, 5);
+                    $valueSpan.replaceWith(dotsContainer);
                 }
             }
         });

@@ -73,6 +73,12 @@ function createDots(value, maxDots = 5) {
     
     return $dotsContainer[0];
 }
+
+// Expose functions globally for use by other modules
+window.createDots = createDots;
+window.createTrackBoxes = createTrackBoxes;
+window.createTextInput = createTextInput;
+
 function createTextInput(value) {
     const $input = $('<textarea>', {
         'value': value,
@@ -334,6 +340,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
     $container.append($boxes);
     return $container[0];
 }
+
 function updateRelatedTrackBoxes($changedDot) {
     const statLabel = $changedDot.closest('.stat').find('.stat-label').text().toLowerCase();
     let $trackBoxes;
@@ -361,6 +368,7 @@ function updateRelatedTrackBoxes($changedDot) {
         }
     }
 }
+
 function updateTrackBoxesMax(trackBoxes, newMax) {
     const $trackBoxes = $(trackBoxes);
     const $header = $trackBoxes.find('.track-header');
@@ -432,6 +440,7 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
     
     updateCurrentValue($trackBoxes[0]);
 }
+
 function evaluateImpairmentStatus() {
     function assessTrack($track) {
         if(!$track.length) return 'healthy';
@@ -523,6 +532,7 @@ function updateCurrentValue(trackBoxes) {
     }
     evaluateImpairmentStatus();
 }
+
 $(document).ready(function() {
     $('.stat').each(function() {
         const $stat = $(this);

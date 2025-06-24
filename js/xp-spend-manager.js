@@ -491,6 +491,21 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
         case 'attribute':
         case 'skill': {
           const label = findLabelByKey(cat, traitKey);
+          // Try to get the level from the gathered character data first
+          if (window.gatherCharacterData) {
+            try {
+              const characterData = window.gatherCharacterData();
+              const key = traitKey.replace(/_/g, ' ');
+              const value = characterData[key];
+              if (typeof value === 'number') {
+                return { currentLevel: value, label };
+              }
+            } catch (err) {
+              console.warn('[XP] Failed to get level from character data, falling back to DOM:', err);
+            }
+          }
+          
+          // Fallback to DOM reading
           const row = Array.from(element.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
           let lvl = 0;
           if (row) {
@@ -510,6 +525,20 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
           return { currentLevel: lvl, label };
         }
         case 'bloodpotency': {
+          // Try to get from character data first
+          if (window.gatherCharacterData) {
+            try {
+              const characterData = window.gatherCharacterData();
+              const value = characterData.blood_potency;
+              if (typeof value === 'number') {
+                return { currentLevel: value, label: 'Blood Potency' };
+              }
+            } catch (err) {
+              console.warn('[XP] Failed to get blood potency from character data, falling back to DOM:', err);
+            }
+          }
+          
+          // Fallback to DOM reading
           let lvl = 0;
           const row = Array.from(element.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency');
           if (row) {
@@ -558,7 +587,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
         case 'skill': {
           const label = findLabelByKey(cat, traitKey);
           console.debug('[XP] attribute/skill label resolved', label);
-          const row = Array.from(element.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
+          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
           console.debug('[XP] row found for', label, row);
           if (row) {
             console.debug('[XP] dotsEl exists?', !!row.querySelector('.dots'));
@@ -574,9 +603,11 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
               dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
               console.debug('[XP] row dataset value set to', row.dataset.value);
             } else {
-              console.warn('[XP] applyTraitChange: stat row not found for', label);
+              console.warn('[XP] applyTraitChange: dots element not found for', label);
             }
             row.dataset.value = newLevel;
+          } else {
+            console.warn('[XP] applyTraitChange: stat row not found for', label);
           }
           break;
         }
@@ -590,7 +621,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
           break;
         }
         case 'bloodpotency': {
-          const row = Array.from(element.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency');
+          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency');
           if (row) {
             const dotsEl = row.querySelector('.dots');
             if (dotsEl) {
@@ -608,7 +639,7 @@ import { backgrounds as BG_REF } from './references/backgrounds.js';
           break;
         }
         case 'specialty': {
-          const row = Array.from(element.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'specialty');
+          const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'specialty');
           if (row) {
             const dotsEl = row.querySelector('.dots');
             if (dotsEl) {
