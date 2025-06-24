@@ -40,9 +40,7 @@
       // Add "+" button
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'btn btn-sm btn-outline-light specialty-add-btn me-2';
-      btn.style.padding = '0rem';
-      btn.style.border = 'none';
+      btn.className = 'btn btn-sm btn-outline-light specialty-add-btn me-2 specialty-add-btn';
       btn.innerHTML = '<i class="bi bi-plus"></i>';
       btn.dataset.skill = name;
       row.appendChild(btn);

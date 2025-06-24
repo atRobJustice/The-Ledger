@@ -18,8 +18,7 @@ class ToastManager {
         if (!document.getElementById(this.containerId)) {
             const container = document.createElement('div');
             container.id = this.containerId;
-            container.className = 'toast-container position-fixed top-0 end-0 p-3';
-            container.style.zIndex = '9999';
+            container.className = 'toast-container position-fixed top-0 end-0 p-3 manager-container';
             document.body.appendChild(container);
         }
     }

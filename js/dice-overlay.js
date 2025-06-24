@@ -188,8 +188,7 @@ let bonusMsg = null;
         const canvasContainer = createOverlay();
         if (latestImpairmentMessage) {
           const banner = document.createElement('div');
-          banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
-          banner.style.zIndex = '2010';
+          banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded dice-banner';
           banner.textContent = latestImpairmentMessage;
           canvasContainer.appendChild(banner);
         }
@@ -220,21 +219,10 @@ let bonusMsg = null;
     if (existing) existing.remove();
     const overlay = document.createElement("div");
     overlay.id = "dice-overlay";
-    overlay.style.position = "fixed";
-    overlay.style.top = "120px"; // Start below the toolbar area (toolbar height + padding + margin)
-    overlay.style.left = "0";
-    overlay.style.width = "100%";
-    overlay.style.height = "calc(100% - 120px)"; // Adjust height to account for top offset
-    overlay.style.zIndex = "1500"; // Dice Overlay: 1000-1999 (above content, below toolbar)
-    overlay.style.pointerEvents = "auto"; // enable dice interactions
 
     const canvas = document.createElement("div");
     canvas.id = "dice-canvas";
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
-    canvas.style.pointerEvents = "auto"; // enable dice interactions
     overlay.appendChild(canvas);
-    overlay.style.background = "transparent";
 
     document.body.appendChild(overlay);
     return canvas;
@@ -324,37 +312,6 @@ let bonusMsg = null;
   function isDiscipline(statName) {
     return Object.keys(disciplines?.types || {}).includes(statName.toLowerCase());
   }
-
-  // Simple visual outline to show selections
-  (function injectSelectionStyles() {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      .stat.dice-first-stat  { outline: 2px solid var(--bs-success); }
-      .stat.dice-second-stat { outline: 2px solid var(--bs-primary); }
-      .stat.dice-third-stat  { outline: 2px solid var(--bs-warning); }
-    `;
-    document.head.appendChild(style);
-
-    // Style for Info Mode switch colors
-    const style2 = document.createElement("style");
-    style2.innerHTML = `
-      #toggleInfoMode.form-check-input:checked {
-        background-color: #dc3545;
-        border-color: #dc3545;
-      }
-      #toggleInfoMode.form-check-input {
-        cursor: pointer;
-      }
-    `;
-    document.head.appendChild(style2);
-  })();
-
-  // Inject style for selected power highlight
-  (function injectPowerSelectionStyles(){
-    const style = document.createElement('style');
-    style.textContent = `.selected-power.dice-power-selected{ outline: 2px solid var(--bs-primary); }`;
-    document.head.appendChild(style);
-  })();
 
   // Helper: return the effective dot/value for a stat row given its label text
   function getStatValueByName(statLabel) {
@@ -997,8 +954,7 @@ let bonusMsg = null;
     const canvasContainer = createOverlay(); // createOverlay removes any existing overlay automatically
     if (latestImpairmentMessage) {
       const banner = document.createElement('div');
-      banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded';
-      banner.style.zIndex = '2010';
+      banner.className = 'position-absolute top-0 start-50 translate-middle-x bg-danger bg-opacity-75 text-white fw-bold py-1 px-3 rounded dice-banner';
       banner.textContent = latestImpairmentMessage;
       canvasContainer.appendChild(banner);
     }

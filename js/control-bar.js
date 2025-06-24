@@ -37,73 +37,18 @@ export function initControlBar(deps) {
   bar.id = "ledger-control-bar";
   bar.className =
     "position-fixed bottom-0 start-0 w-100 p-2 bg-dark bg-opacity-75 d-grid align-items-center";
-  bar.style.borderTop = "2px solid rgba(255,255,255,.2)";
-  bar.style.zIndex = "2100";
   document.body.appendChild(bar);
 
   // Full-width anchored bar that uses CSS Grid instead of flexbox
   // Replace rounded corners because the bar now spans the full width
   // Add custom styling (grid, animation, collapsed state, etc.) once per page
-  if (!document.getElementById("ledger-control-bar-style")) {
-    const style = document.createElement("style");
-    style.id = "ledger-control-bar-style";
-    style.textContent = `
-      #ledger-control-bar {
-        grid-auto-flow: column;
-        grid-template-rows: repeat(2, auto);
-        gap: .25rem .5rem;
-      }
-      /* Simple vertical divider */
-      #ledger-control-bar .vr {
-        width: 1px;
-        background: rgba(255,255,255,.25);
-        align-self: stretch;
-      }
-      /* Attention pulse when WP-reroll becomes available */
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(13,110,253,0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(13,110,253,0); }
-        100% { box-shadow: 0 0 0 0 rgba(13,110,253,0); }
-      }
-      .pulse-once {
-        animation: pulse 1s ease-out 0s 2;
-      }
-      /* Ensure ALL tooltips appear above the control bar */
-      .tooltip {
-        z-index: 3000 !important;
-      }
-      /* Responsive layout for smaller screens */
-      @media (max-width: 768px) {
-        #ledger-control-bar {
-          grid-auto-flow: row;
-          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-          padding: 0.5rem;
-          gap: 0.5rem;
-        }
-        #ledger-control-bar .btn {
-          width: 100%;
-          margin: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        #ledger-control-bar .form-check {
-          margin-bottom: 0.5rem;
-          grid-column: 1 / -1;
-        }
-        #ledger-control-bar .vr {
-          display: none;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
+  // Removed injected styles - now handled by CSS
 
   // 1) Info-mode toggle ------------------------------------------------
   const toggleWrapper = document.createElement("div");
   toggleWrapper.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
   toggleWrapper.innerHTML = `
-    <div class="d-flex justify-content-center align-items-center w-100" style="height: 32px;">
+    <div class="d-flex justify-content-center align-items-center w-100 lock-btn-wrapper">
       <input class="form-check-input mx-auto" type="checkbox" id="toggleInfoMode" title="Show info popups for sheet elements" data-bs-toggle="tooltip">
     </div>
     <label class="form-check-label text-center w-100 mt-1" for="toggleInfoMode">Info Mode</label>
@@ -129,11 +74,9 @@ export function initControlBar(deps) {
   // 2) Discord webhook configuration ----------------------------------
   const btnDiscord = document.createElement("button");
   btnDiscord.id = "discordWebhookBtn";
-  btnDiscord.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnDiscord.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center control-bar-btn discord-btn";
   btnDiscord.setAttribute("title", "Configure Discord Webhook");
   btnDiscord.setAttribute("data-bs-toggle", "tooltip");
-  btnDiscord.style.backgroundColor = "transparent";
-  btnDiscord.style.border = 0;
   btnDiscord.innerHTML = `<img src="assets/Discord-Symbol-Blurple.png" alt="Discord" style="height:24px;width:auto;">`;
   bar.appendChild(btnDiscord);
 
@@ -184,27 +127,24 @@ export function initControlBar(deps) {
     ensureWebhookModal();
     const webhook = await getDiscordWebhook();
     webhookModalEl.querySelector("#discordWebhookInput").value = webhook || "";
-    webhookModalEl.querySelector("#deleteDiscordWebhook").style.display = webhook
-      ? "inline-block"
-      : "none";
+    webhookModalEl.querySelector("#deleteDiscordWebhook").classList.toggle("d-none", !webhook);
+    webhookModalEl.querySelector("#deleteDiscordWebhook").classList.toggle("d-inline-block", !!webhook);
     webhookModalInstance.show();
   });
 
   // 2b) Progeny import button ----------------------------------
   const btnProgeny = document.createElement("button");
   btnProgeny.id = "importProgenyBtn";
-  btnProgeny.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnProgeny.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center control-bar-btn progeny-btn";
   btnProgeny.setAttribute("title", "Import Progeny JSON");
   btnProgeny.setAttribute("data-bs-toggle", "tooltip");
-  btnProgeny.style.backgroundColor = "transparent";
-  btnProgeny.style.border = 0;
   btnProgeny.innerHTML = `<img src="assets/progeny-icon.svg" alt="Progeny" style="width:24px;height:24px;">`;
   bar.appendChild(btnProgeny);
 
   const progenyFileInput = document.createElement("input");
   progenyFileInput.type = "file";
   progenyFileInput.accept = "application/json";
-  progenyFileInput.style.display = "none";
+  progenyFileInput.className = "hidden-file-input";
   bar.appendChild(progenyFileInput);
 
   btnProgeny.addEventListener("click", () => progenyFileInput.click());
@@ -234,11 +174,9 @@ export function initControlBar(deps) {
   // 2c) Dice Symbols help button ----------------------------------
   const btnDiceHelp = document.createElement("button");
   btnDiceHelp.id = "diceSymbolsBtn";
-  btnDiceHelp.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
+  btnDiceHelp.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center control-bar-btn dice-help-btn";
   btnDiceHelp.setAttribute("title", "Dice Symbols Guide");
   btnDiceHelp.setAttribute("data-bs-toggle", "tooltip");
-  btnDiceHelp.style.backgroundColor = "transparent";
-  btnDiceHelp.style.border = 0;
   btnDiceHelp.innerHTML = `<img src="assets/help.png" alt="Help" style="width:24px;height:24px;">`;
   bar.appendChild(btnDiceHelp);
 
@@ -299,10 +237,9 @@ export function initControlBar(deps) {
   function createQuickBtn(id, text, hexColor, tooltip = text) {
     const b = document.createElement("button");
     b.id = id;
-    b.className = "btn";
+    b.className = "btn quick-btn";
     b.textContent = text;
-    b.style.backgroundColor = hexColor;
-    b.style.color = "#fff";
+    b.style.setProperty('--quick-btn-bg', hexColor);
     b.setAttribute("title", tooltip);
     b.setAttribute("data-bs-toggle", "tooltip");
     return b;
@@ -371,7 +308,7 @@ export function initControlBar(deps) {
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "application/json";
-  fileInput.style.display = "none";
+  fileInput.className = "hidden-file-input";
 
   bar.appendChild(btnRouse);
   bar.appendChild(btnRemorse);
@@ -459,6 +396,8 @@ export function initControlBar(deps) {
       input.value = '';
       // Trigger input event for textareas to reset their height
       if (input.tagName.toLowerCase() === 'textarea') {
+        input.classList.add('auto-resize');
+        // Force recalculation of height
         input.style.height = 'auto';
         input.style.height = (input.scrollHeight) + 'px';
       }
@@ -1050,7 +989,7 @@ export function initControlBar(deps) {
   const groupData = makeGroup(btnImport, btnExport, btnClear);
   const groupIntegrations = makeGroup(btnProgeny, btnDiscord, btnDiceHelp);
   const groupAppearance = makeGroup(themeContainer, toggleWrapper);
-  groupIntegrations.style.justifySelf = "center";
+  groupIntegrations.classList.add('integration-group');
 
   // Clear current order and rebuild layout
   // (File input stays, it's invisible and doesn't affect layout)
@@ -1080,7 +1019,8 @@ export function initControlBar(deps) {
 
   // Reserve space so main content never hides behind the fixed footer
   function adjustBodyPadding() {
-    document.body.style.paddingBottom = bar.offsetHeight + "px";
+    document.body.classList.add('body-padding-bottom');
+    document.body.style.setProperty('--control-bar-height', bar.offsetHeight + "px");
   }
   adjustBodyPadding();
   window.addEventListener("resize", adjustBodyPadding);
@@ -1090,14 +1030,12 @@ export function initControlBar(deps) {
   lockContainer.className = "form-check form-switch mb-3 d-flex flex-column align-items-center";
 
   const lockBtnWrapper = document.createElement("div");
-  lockBtnWrapper.className = "d-flex justify-content-center align-items-center w-100";
-  lockBtnWrapper.style.height = "32px";
+  lockBtnWrapper.className = "d-flex justify-content-center align-items-center w-100 lock-btn-wrapper";
 
   const btnLock = document.createElement("button");
   btnLock.id = "btn-lock";
-  btnLock.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center";
-  btnLock.style.backgroundColor = "transparent";
-  btnLock.style.border = 0;
+  btnLock.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center control-bar-btn lock-btn";
+  // Removed inline styles - now handled by CSS
 
   lockBtnWrapper.appendChild(btnLock);
 

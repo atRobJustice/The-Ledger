@@ -22,6 +22,9 @@
 @use 'components/experience';
 @use 'components/lock';
 @use 'components/dashboard';
+@use 'components/dice-overlay';
+@use 'components/control-bar';
+@use 'components/js-utilities';
 
 // Features
 @use 'features/disciplines';

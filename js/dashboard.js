@@ -78,13 +78,13 @@ function updateCharacterGrid() {
     const emptyState = document.getElementById('empty-state');
     
     if (characters.length === 0) {
-        characterGrid.style.display = 'none';
-        emptyState.style.display = 'block';
-        return;
+        characterGrid.classList.add('d-none');
+        emptyState.classList.add('d-block');
+    } else {
+        characterGrid.classList.remove('d-none');
+        characterGrid.classList.add('d-grid');
+        emptyState.classList.remove('d-block');
     }
-    
-    characterGrid.style.display = 'grid';
-    emptyState.style.display = 'none';
     
     // Clear existing cards
     const existingCards = characterGrid.querySelectorAll('.character-card');

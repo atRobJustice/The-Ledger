@@ -146,8 +146,8 @@ function initImportButton() {
     // Create hidden file input
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
-    fileInput.accept = '.json';
-    fileInput.style.display = 'none';
+    fileInput.accept = 'application/json';
+    fileInput.className = 'hidden-file-input';
     document.body.appendChild(fileInput);
     
     btn.addEventListener('click', () => {

@@ -14,12 +14,21 @@
 }
 
 .modal-header {
-    border-bottom: 1px dashed var(--panel-border-light, $color-border-light);
+    background-color: var(--panel-bg, $color-background-light);
+    border-bottom: 1px solid var(--panel-border, $color-border);
+    color: var(--panel-text, $color-text);
     padding-bottom: 0.75rem;
 }
 
+.modal-body {
+    background-color: var(--panel-bg, $color-background-light);
+    color: var(--panel-text, $color-text);
+}
+
 .modal-footer {
-    border-top: 1px dashed var(--panel-border-light, $color-border-light);
+    background-color: var(--panel-bg, $color-background-light);
+    border-top: 1px solid var(--panel-border, $color-border);
+    color: var(--panel-text, $color-text);
     padding-top: 0.75rem;
 }
 
@@ -95,18 +104,22 @@
     }
 }
 
-.modal-footer {
-    .btn-secondary {
-        background-color: transparent;
-        color: var(--panel-text, $color-text);
-        border-color: $color-border-light;
-        transition: $transition-base;
-
-        &:hover {
-            background-color: rgba($color-primary, 0.8);
-            border-color: $color-primary;
-            color: $color-white;
-        }
+.btn-secondary {
+    background-color: var(--panel-border-light, $color-border-light);
+    color: $color-white;
+    border: 1px solid var(--accent, $color-primary);
+    
+    &:hover {
+        color: var(--accent, $color-primary);
+        box-shadow: 0 0 0 2px var(--accent, $color-primary);
+        background: var(--panel-border-light, $color-border-light);
+        color: var(--accent, $color-primary);
+    }
+    
+    &:focus {
+        background: var(--accent, $color-primary);
+        color: $color-white;
+        border-color: var(--accent, $color-primary);
     }
 }
 
@@ -162,7 +175,7 @@
 .xp-modal .xp-minus:active,
 .xp-modal .xp-plus:active {
   background-color: var(--accent, $color-primary);
-  color: #fff;
+  color: $color-white;
   border-color: var(--accent, $color-primary);
 }
 .xp-modal .xp-quick-btns {
@@ -176,20 +189,20 @@
   min-width: 70px;
   font-size: 1rem;
   border-radius: 0.375rem;
-  border: 1px solid var(--accent, #a40000);
+  border: 1px solid var(--accent, $color-primary);
   background: transparent;
-  color: var(--accent, #a40000);
+  color: var(--accent, $color-primary);
   font-weight: bold;
   transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.1s;
 }
 .xp-modal .quick-xp:active,
 .xp-modal .quick-xp:focus {
-  box-shadow: 0 0 0 2px var(--accent, #a40000);
-  background: var(--panel-border-light, #333);
-  color: var(--accent, #a40000);
+  box-shadow: 0 0 0 2px var(--accent, $color-primary);
+  background: var(--panel-border-light, $color-border-light);
+  color: var(--accent, $color-primary);
 }
 .xp-modal .quick-xp:hover {
-  background: var(--accent, #a40000);
-  color: #fff;
-  border-color: var(--accent, #a40000);
+  background: var(--accent, $color-primary);
+  color: $color-white;
+  border-color: var(--accent, $color-primary);
 } 
