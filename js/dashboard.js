@@ -119,7 +119,7 @@ function createCharacterCard(character) {
             ${details.map(detail => `
                 <div class="character-detail">
                     <span class="detail-label">${detail.label}</span>
-                    <span class="detail-value">${detail.value}</span>
+                    <span class="detail-value">${detail.value.charAt(0).toUpperCase() + detail.value.slice(1)}</span>
                 </div>
             `).join('')}
             <div class="character-detail">

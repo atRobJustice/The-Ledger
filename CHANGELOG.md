@@ -4,91 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.2] - 2025-01-18
+## [1.3.0] - 2025-01-25
 
 ### Added
 - **Unified Toast Notification System**: Consolidated all toast notifications into a single `ToastManager` class in `manager-utils.js`
-  - Replaced scattered toast implementations across multiple files with a centralized system
-  - Added support for different toast types: success, error, warning, info
-  - Implemented proper toast stacking prevention and cleanup
-  - Added global accessibility for both module and non-module scripts
-
-### Changed
-- **Theme-Aware Toast Styling**: Complete redesign of toast notifications to match application themes
-  - **Default Theme (Blood & Roses)**: Dark background with red accent border
-  - **Ivory Tower**: Light parchment background with dark red accent
-  - **Daltonic**: Light blue background with blue/orange color scheme for color-blind accessibility
-  - **High Contrast Dark**: Black background with bright yellow accent
-  - **High Contrast Light**: White background with blue accent
-  - **Dyslexia**: Inherits default styling but uses OpenDyslexic font
-- **Toast Type Colors**: Each toast type now has theme-appropriate colors
-  - Success: Green variants appropriate for each theme
-  - Danger/Error: Red variants using theme accent colors
-  - Warning: Yellow/Orange with proper contrast ratios
-  - Info: Blue variants suitable for each theme
-- **Enhanced Visual Design**: Added subtle shadows, backdrop blur, and left border accents
-- **Accessibility Improvements**: Proper contrast ratios, color-blind friendly options, and high contrast alternatives
-
-### Removed
-- **Duplicate Toast Functions**: Eliminated all local `showToast` wrapper functions
-  - Removed from `character-manager.js`, `control-bar.js`, `backup-manager.js`, `xp-manager.js`
-  - Removed legacy `showFeedback` method from `TraitManagerUtils`
-  - All toast calls now route directly through the unified `ToastManager`
-
-### Fixed
-- **Browser Native Pop-ups**: Replaced all `alert()`, `confirm()`, and `prompt()` calls with themed alternatives
-  - `alert()` calls replaced with appropriate toast notifications
-  - `confirm()` calls replaced with themed Bootstrap modals using `TraitManagerUtils.showConfirmModal()`
-  - Improved user experience with consistent, theme-aware notifications
-- **Toast Styling Issues**: Fixed light text on light background problems
-  - All toasts now properly contrast with their backgrounds
-  - Theme-specific color overrides ensure readability across all themes
-
-## [1.3.1] - 2025-01-18
-
-### Fixed
-- **Clear Button**: Fixed issue where the clear button (🗑️) wasn't properly clearing specialty badges from the character sheet
-  - Clear button now properly refreshes the visual display of specialty badges after removing data
-  - Updated both `control-bar.js` and `character-manager.js` clear functions to call `specialtyManager.refreshRow()` for all skills
-  - Ensures both data storage and visual display are properly cleared when using the clear sheet functionality
-
-## [1.3.0] - 2025-01-18
-
-### Added
 - **Multiple Character Support**: Complete refactor from localStorage to IndexedDB storage
   - New `DatabaseManager` class for IndexedDB operations
   - New `CharacterManager` class for multiple character management
-  - Character selector dropdown in the control bar
-  - Character management modal for organizing character roster
-  - Automatic migration from localStorage to IndexedDB on first load
 - **Character Management UI**:
-  - Character selector dropdown with current character highlighted
-  - "+" button to create new characters
-  - Gear icon to open character management modal
-  - Character list with creation dates and management options
 - **Enhanced Data Persistence**:
   - All character data now stored in IndexedDB exclusively
   - Settings (theme, Discord webhook, lock state) stored separately
-  - XP data stored per character
-  - Automatic autosave to IndexedDB
-- **Testing Infrastructure**:
-  - `test-indexeddb.html` for testing database functionality
-  - Comprehensive test suite for database manager, character manager, and migration
+- **Discord integration improvements**: Including webhook validation
 
 ### Changed
+- **Enhanced Visual Design**: Added subtle shadows, backdrop blur, and left border accents
+- **Accessibility Improvements**: Proper contrast ratios, color-blind friendly options, and high contrast alternatives
 - **Storage System**: Migrated from localStorage to IndexedDB for better data management
   - Character data now stored in separate database records
-  - Settings stored in dedicated settings table
-  - Improved data structure with timestamps and metadata
-  - **Removed all localStorage fallbacks** - application now works exclusively with IndexedDB
-- **Autosave System**: Updated to use IndexedDB exclusively
-- **XP Management**: XP data now stored per character in IndexedDB
-- **Theme System**: Theme preferences now stored in IndexedDB
-- **Discord Integration**: Webhook URLs now stored in IndexedDB
-- **Lock Manager**: Lock state now persisted in IndexedDB
+  - **Removed all localStorage fallbacks** - application now works exclusively with IndexedD.
+- New favicon and icon for the application.
+
+### Removed
+- **Duplicate Toast Functions**: Eliminated all local `showToast` wrapper functions
 
 ### Fixed
-- **Data Migration**: Automatic migration of existing localStorage data to IndexedDB (one-time process)
+- **Browser Native Pop-ups**: Replaced all `alert()`, `confirm()`, and `prompt()` calls with themed alternatives
+- **Toast Styling Issues**: Fixed light text on light background problems
+- **Clear Button**: Fixed issue where the clear button (🗑️) wasn't properly clearing specialty badges from the character sheet
 - **Character Switching**: Proper state management when switching between characters
 - **Data Persistence**: Improved reliability of data saving and loading with IndexedDB-only approach
 
