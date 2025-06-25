@@ -125,7 +125,7 @@ class MeritFlawManager {
                             </div>
                             <div class="${type}-controls d-flex align-items-center gap-2">
                                 ${this.renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo)}
-                                <button class="btn btn-danger btn-sm remove-${type}-btn" data-${type}="${traitKey}" data-instance="${instanceIndex}">
+                                <button class="btn theme-btn-primary btn-sm remove-${type}-btn" data-${type}="${traitKey}" data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>

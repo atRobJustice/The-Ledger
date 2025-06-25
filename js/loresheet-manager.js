@@ -129,7 +129,7 @@ class LoresheetManager {
                                      title="Click dots to set level (1-5)">
                                     ${TraitManagerUtils.createDots(instance.level, 5)}
                                 </div>
-                                <button class="btn btn-danger btn-sm remove-loresheet-btn" data-loresheet="${loresheetKey}" data-instance="${instanceIndex}">
+                                <button class="btn theme-btn-primary btn-sm remove-loresheet-btn" data-loresheet="${loresheetKey}" data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>

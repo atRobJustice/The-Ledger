@@ -26,14 +26,14 @@
                     </div>
                     <div class="col-md-4 text-end">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="refreshDashboard()">
+                            <button type="button" class="btn theme-btn-outline-secondary btn-sm" onclick="refreshDashboard()">
                                 <i class="bi bi-arrow-clockwise"></i> Refresh
                             </button>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="openSettings()">
+                            <button type="button" class="btn theme-btn-outline-secondary btn-sm" onclick="openSettings()">
                                 <i class="bi bi-gear"></i> Settings
                             </button>
-                            <button type="button" class="btn btn-outline-light btn-sm">
-                                <i class="bi bi-share"></i> Share
+                            <button type="button" class="btn theme-btn-outline-secondary btn-sm">
+                                <i class="bi bi-question-circle"></i> Help
                             </button>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <h3 class="system-name">Vampire: The Masquerade</h3>
                         <p class="system-description">
                             You are a vampire trapped between hunger and Humanity.<br>
-                            You’ll navigate undead politics, feed carefully, and fight to stay yourself.
+                            You'll navigate undead politics, feed carefully, and fight to stay yourself.
                         </p>
                     </div>
                     
@@ -90,8 +90,8 @@
                         </div>
                         <h3 class="system-name">Hunter: The Reckoning</h3>
                         <p class="system-description">
-                            You are a mortal who’s seen the truth and can’t walk away.<br>
-                            You’ll track the supernatural and decide what justice really costs.
+                            You are a mortal who's seen the truth and can't walk away.<br>
+                            You'll track the supernatural and decide what justice really costs.
                         </p>
                         <div class="mt-2">
                             <span class="badge bg-secondary">Coming Soon</span>
@@ -105,7 +105,7 @@
                         <h3 class="system-name">Werewolf: The Apocalypse</h3>
                         <p class="system-description">
                             You are a shapeshifter born to a broken world.<br>
-                            You’ll rage against corruption and choose what kind of monster you become.
+                            You'll rage against corruption and choose what kind of monster you become.
                         </p>
                         <div class="mt-2">
                             <span class="badge bg-secondary">Coming Soon</span>
@@ -155,20 +155,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Empty State (hidden by default) -->
-            <div class="empty-state hidden" id="empty-state">
-                <div class="empty-state-icon">
-                    <i class="bi bi-person-plus"></i>
-                </div>
-                <h2 class="empty-state-title">No Characters Yet</h2>
-                <p class="empty-state-subtitle">
-                    Create your first character to get started with The Ledger
-                </p>
-                <button class="btn btn-danger" onclick="showCreateCharacter()">
-                    <i class="bi bi-plus-circle"></i> Create Your First Character
-                </button>
-            </div>
         </div>
 
         <!-- Modals -->
@@ -208,7 +194,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" onclick="createNewCharacter()">Create Character</button>
+                        <button type="button" class="btn theme-btn-primary" onclick="createNewCharacter()">Create Character</button>
                     </div>
                 </div>
             </div>
@@ -261,7 +247,7 @@
                                                     <input type="url" class="form-control bg-dark" id="discordWebhookInput" 
                                                            placeholder="https://discord.com/api/webhooks/..." 
                                                            pattern="https:\/\/(discord\.com|discordapp\.com)\/api\/webhooks\/[0-9]+\/[a-zA-Z0-9_-]+">
-                                                    <button class="btn btn-outline-secondary" type="button" onclick="testDiscordWebhook()">
+                                                    <button class="btn theme-btn-outline-secondary" type="button" onclick="testDiscordWebhook()">
                                                         <i class="bi bi-play-circle"></i> Test
                                                     </button>
                                                 </div>
@@ -377,14 +363,14 @@
                                             </h6>
                                             
                                             <div class="mb-3">
-                                                <button class="btn btn-outline-primary" onclick="exportAllData()">
+                                                <button class="btn theme-btn-outline-primary" onclick="exportAllData()">
                                                     <i class="bi bi-download"></i> Export All Data
                                                 </button>
                                                 <div class="form-text text-light">Download all characters and settings as a backup file.</div>
                                             </div>
                                             
                                             <div class="mb-3">
-                                                <button class="btn btn-outline-warning" onclick="importData()">
+                                                <button class="btn theme-btn-outline-warning" onclick="importData()">
                                                     <i class="bi bi-upload"></i> Import Data
                                                 </button>
                                                 <div class="form-text text-light">Import characters and settings from a backup file.</div>
@@ -392,7 +378,7 @@
                                             </div>
                                             
                                             <div class="mb-3">
-                                                <button class="btn btn-outline-danger" onclick="clearAllData()">
+                                                <button class="btn theme-btn-outline-danger" onclick="clearAllData()">
                                                     <i class="bi bi-trash"></i> Clear All Data
                                                 </button>
                                                 <div class="form-text text-danger">This will permanently delete all characters and settings. This action cannot be undone.</div>
@@ -457,7 +443,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" onclick="saveSettings()">Save Settings</button>
+                        <button type="button" class="btn theme-btn-primary" onclick="saveSettings()">Save Settings</button>
                     </div>
                 </div>
             </div>

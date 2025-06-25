@@ -94,7 +94,7 @@ export function initControlBar(deps) {
     `;
 
     const footer = `
-      <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
+      <button type="button" class="btn theme-btn-danger" id="deleteDiscordWebhook">Delete</button>
       <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
     `;
 
@@ -226,7 +226,7 @@ export function initControlBar(deps) {
   // 3) Main Roll button ------------------------------------------------
   const btnRoll = document.createElement("button");
   btnRoll.id = "openDiceRoll";
-  btnRoll.className = "btn btn-danger";
+  btnRoll.className = "btn theme-btn-primary";
   btnRoll.setAttribute("title", "Open detailed roll dialog");
   btnRoll.setAttribute("data-bs-toggle", "tooltip");
   btnRoll.textContent = "Roll";
@@ -285,22 +285,22 @@ export function initControlBar(deps) {
   // --- Export / Import buttons --------------------------------------
   const btnImport = document.createElement("button");
   btnImport.id = "importJsonBtn";
-  btnImport.className = "btn btn-outline-light p-1";
-  btnImport.innerHTML = "📂";
-  btnImport.setAttribute("title", "Import character from JSON");
+  btnImport.className = "btn theme-btn-outline-secondary p-1";
+  btnImport.innerHTML = '<i class="bi bi-upload"></i>';
+  btnImport.setAttribute("title", "Import Character");
   btnImport.setAttribute("data-bs-toggle", "tooltip");
 
   const btnExport = document.createElement("button");
   btnExport.id = "exportJsonBtn";
-  btnExport.className = "btn btn-outline-light p-1";
-  btnExport.innerHTML = "💾";
-  btnExport.setAttribute("title", "Export character to JSON");
+  btnExport.className = "btn theme-btn-outline-secondary p-1";
+  btnExport.innerHTML = '<i class="bi bi-download"></i>';
+  btnExport.setAttribute("title", "Export Character");
   btnExport.setAttribute("data-bs-toggle", "tooltip");
 
 
   const btnClear = document.createElement("button");
   btnClear.id = "clearBtn";
-  btnClear.className = "btn btn-outline-light p-1";
+  btnClear.className = "btn theme-btn-outline-secondary p-1";
   btnClear.innerHTML = "🗑️";
   btnClear.setAttribute("title", "Clear the character sheet");
   btnClear.setAttribute("data-bs-toggle", "tooltip");
@@ -373,7 +373,7 @@ export function initControlBar(deps) {
       content: message,
       footer: `
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" id="confirmClearSheet">Yes, Clear</button>
+        <button type="button" class="btn theme-btn-danger" id="confirmClearSheet">Yes, Clear</button>
       `,
       size: 'default',
       centered: true

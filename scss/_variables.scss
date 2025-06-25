@@ -1,6 +1,6 @@
 @use 'sass:color';
 // Colors
-$color-primary: #a40000;
+$color-primary: #666666;
 $color-background: #1a1a1a;
 $color-background-light: #1e1e1a;
 $color-text: #d8d0c8;
@@ -105,19 +105,19 @@ $border-default: color.mix($color-border, $color-background, 80%);
 
 // Expose variables to :root for JS access
 :root {
-  --text-primary: #{$text-primary};
-  --text-muted: #{$text-muted};
-  --border-default: #{$border-default};
-  --accent: #{$color-primary};
-  --accent-rgb: 164, 0, 0;
-  --color-background: #{$color-background};
-  --color-border: #{$color-border};
-  --form-bg: #{$color-background-light};
-  --form-border: #{$color-border};
-  --form-text: #{$color-text};
-  --panel-bg: #{$color-background-light};
-  --panel-bg-rgb: 30, 30, 30;
-  --panel-border: #{$color-border};
-  --panel-border-light: #{$color-border-light};
-  --panel-text: #{$color-text};
+  --text-primary: #d4d4d4;
+  --text-muted: #999999;
+  --border-default: #333333;
+  --accent: #666666;
+  --accent-rgb: 102, 102, 102;
+  --color-background: #1a1a1a;
+  --color-border: #333333;
+  --form-bg: #1a1a1a;
+  --form-border: #333333;
+  --form-text: #d4d4d4;
+  --panel-bg: #1a1a1a;
+  --panel-bg-rgb: 26, 26, 26;
+  --panel-border: #333333;
+  --panel-border-light: #666666;
+  --panel-text: #d4d4d4;
 } 

@@ -294,7 +294,7 @@ body[data-theme='default'] input#xp-level.form-range::-webkit-slider-thumb {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
-  background: var(--accent, #a40000);
+  background: var(--accent, #666666);
   border: 2px solid var(--color-border, #fff);
   cursor: pointer;
   margin-top: -0.15rem;
@@ -305,7 +305,7 @@ body[data-theme='default'] input#xp-level.form-range::-moz-range-thumb {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
-  background: var(--accent, #a40000);
+  background: var(--accent, #666666);
   border: 2px solid var(--color-border, #fff);
   cursor: pointer;
 }
@@ -454,4 +454,47 @@ body[data-theme='light'] {
 // High contrast theme
 body[data-theme='high-contrast'] {
   background: linear-gradient($color-gray-lightest, $color-gray-light);
+}
+
+// Blood & Roses (Kindred Dark) Theme
+body[data-theme='kindred-dark'] {
+  background: linear-gradient(#0d0d0d, #2c1b1b);
+  color: #d8d0c8;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #a40000;
+    border-color: #a40000;
+  }
+
+  .ledger {
+    background: #2c1b1b;
+    border-color: #333;
+    border-left-color: #a40000;
+    color: #d8d0c8;
+  }
+
+  .btn-success {
+    background-color: #567d5e;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background-color: #8b2d2d;
+    color: #fff;
+  }
+
+  --accent: #a40000;
+  --accent-rgb: 164, 0, 0;
+  --color-background: #0d0d0d;
+  --form-bg: #2c1b1b;
+  --form-border: #333;
+  --form-text: #d8d0c8;
+  --panel-bg: #2c1b1b;
+  --panel-bg-rgb: 44, 27, 27;
+  --panel-border: #333;
+  --panel-border-light: #555;
+  --panel-text: #d8d0c8;
+  --text-primary: #d8d0c8;
+  --text-muted: #888;
+  --border-default: #333;
 }

@@ -80,7 +80,7 @@
         if(!document.getElementById('undo-xp')){
             const btnUndo=document.createElement('button');
             btnUndo.id='undo-xp';
-            btnUndo.className='btn btn-warning undo-xp ms-2';
+            btnUndo.className='btn theme-btn-warning undo-xp ms-2';
             btnUndo.innerHTML='<i class="bi bi-arrow-counterclockwise"></i> Undo Last';
             document.querySelector('.experience-actions').appendChild(btnUndo);
         }
@@ -100,15 +100,15 @@
                 <button class="btn xp-plus" id="xp-plus" type="button">+</button>
             </div>
             <div class="mb-3 xp-quick-btns">
-                <button class="btn btn-outline-primary quick-xp" data-xp="3">3 XP</button>
-                <button class="btn btn-outline-primary quick-xp" data-xp="5">5 XP</button>
-                <button class="btn btn-outline-primary quick-xp" data-xp="10">10 XP</button>
+                <button class="btn theme-btn-outline-primary quick-xp" data-xp="3">3 XP</button>
+                <button class="btn theme-btn-outline-primary quick-xp" data-xp="5">5 XP</button>
+                <button class="btn theme-btn-outline-primary quick-xp" data-xp="10">10 XP</button>
             </div>
         `;
 
         const footer = `
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-success" id="xp-award-confirm">Award</button>
+            <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn theme-btn-primary" id="xp-award-confirm">Award</button>
         `;
 
         window.modalManager.showCustom({

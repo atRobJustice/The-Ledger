@@ -20,8 +20,8 @@
 
 // Form check input styles
 .form-check-input {
-    background-color: var(--form-bg, transparent);
-    border-color: var(--form-border, $color-border);
+    background-color: var(--form-bg, #1a1a1a);
+    border-color: var(--form-border, #333333);
     cursor: pointer;
     transition: $transition-base;
 
@@ -64,7 +64,7 @@
     }
 
     .form-check-label {
-        color: var(--form-text, $color-text);
+        color: var(--form-text, #d4d4d4);
         padding-left: 0.5rem;
     }
 }
@@ -122,8 +122,8 @@
 .temperament-dropdown option,
 .compulsion-dropdown option {
     outline: none;
-    background-color: var(--form-bg, $color-background);
-    color: var(--form-text, $color-text);
+    background-color: var(--form-bg, #1a1a1a);
+    color: var(--form-text, #d4d4d4);
 }
 
 // Disabled state

@@ -112,7 +112,7 @@ let bonusMsg = null;
     `;
 
     const footer = `
-      <button type="button" class="btn btn-danger" id="rollDiceConfirm">Roll</button>
+      <button type="button" class="btn theme-btn-primary" id="rollDiceConfirm">Roll</button>
     `;
 
     const { modalElement, modalInstance } = modalManager.showCustom({

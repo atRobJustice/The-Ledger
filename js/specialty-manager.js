@@ -40,7 +40,7 @@
       // Add "+" button
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'btn btn-sm btn-outline-light specialty-add-btn me-2 specialty-add-btn';
+      btn.className = 'btn btn-sm theme-btn-outline-secondary specialty-add-btn me-2 specialty-add-btn';
       btn.innerHTML = '<i class="bi bi-plus"></i>';
       btn.dataset.skill = name;
       row.appendChild(btn);
@@ -126,7 +126,7 @@
     specs.forEach(spec => {
       const li = document.createElement('li');
       li.className = 'list-group-item d-flex justify-content-between align-items-center';
-      li.innerHTML = `<span>${spec}</span><button type="button" class="btn btn-sm btn-outline-danger remove-specialty-btn" data-spec="${spec}">&times;</button>`;
+      li.innerHTML = `<span>${spec}</span><button type="button" class="btn btn-sm theme-btn-outline-danger remove-specialty-btn" data-spec="${spec}">&times;</button>`;
       listEl.appendChild(li);
     });
     updateSpecialtiesRow(currentSkill);
@@ -139,12 +139,12 @@
       <ul class="list-group mb-3" id="specialtyList"></ul>
       <div class="input-group">
         <input type="text" class="form-control" id="newSpecialtyInput" placeholder="New specialty">
-        <button class="btn btn-primary" type="button" id="addSpecialtyBtn">Add</button>
+        <button class="btn theme-btn-primary" type="button" id="addSpecialtyBtn">Add</button>
       </div>
     `;
 
     const footer = `
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
     `;
 
     window.modalManager.showCustom({

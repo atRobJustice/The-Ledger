@@ -214,8 +214,8 @@ export function createWebhookModal() {
   `;
 
   const footer = `
-    <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
-    <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
+    <button type="button" class="btn theme-btn-secondary" id="deleteDiscordWebhook">Delete</button>
+    <button type="button" class="btn theme-btn-primary" id="saveDiscordWebhook">Save</button>
   `;
 
   const { modalElement, modalInstance } = modalManager.showCustom({

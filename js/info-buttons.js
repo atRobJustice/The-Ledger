@@ -318,7 +318,7 @@ const dropdownMappings = [
 
 function createInfoButton(title) {
   const btn = document.createElement('button');
-  btn.className = `btn btn-sm btn-outline-secondary ms-2 ledger-info-btn ${title.toLowerCase().replace(/\s+/g, '-')}-info-button`;
+  btn.className = `btn btn-sm theme-btn-outline-secondary ms-2 ledger-info-btn ${title.toLowerCase().replace(/\s+/g, '-')}-info-button`;
   btn.innerHTML = '<i class="bi bi-info-circle"></i>';
   btn.setAttribute('aria-label', `Show ${title} information`);
   btn.setAttribute('data-bs-toggle', 'tooltip');

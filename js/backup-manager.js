@@ -18,8 +18,8 @@
         // If buttons already exist (added by control-bar.js), do nothing
         if(document.getElementById('exportJsonBtn')) return;
 
-        const $exportBtn = $('<button>', {id: 'exportJsonBtn', class: 'btn btn-outline-light', text: 'Export'});
-        const $importBtn = $('<button>', {id: 'importJsonBtn', class: 'btn btn-outline-light', text: 'Import'});
+        const $exportBtn = $('<button>', {id: 'exportJsonBtn', class: 'btn theme-btn-outline-secondary', text: 'Export'});
+        const $importBtn = $('<button>', {id: 'importJsonBtn', class: 'btn theme-btn-outline-secondary', text: 'Import'});
         const $fileInput = $('<input>', {id: 'importJsonInput', type: 'file', accept: 'application/json', style: 'display:none'});
 
         // Add buttons and hidden file input to the control bar

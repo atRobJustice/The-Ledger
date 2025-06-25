@@ -2,11 +2,11 @@
 
 // Modal styles
 .modal-content {
-    background-color: var(--panel-bg, $color-background);
-    border: $border-width $border-style var(--panel-border, $color-border);
+    background-color: var(--panel-bg, #1a1a1a);
+    border: 1px solid var(--panel-border, #333333);
     border-left: 6px solid var(--accent);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-    color: var(--panel-text, $color-text);
+    color: var(--panel-text, #d4d4d4);
 
     &.bg-dark {
         background-color: var(--panel-bg, $color-background) !important;

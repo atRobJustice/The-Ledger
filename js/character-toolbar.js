@@ -276,8 +276,8 @@ function initWPRerollButton() {
         if (window.isWPRerollAllowed) {
             const allowed = window.isWPRerollAllowed();
             btn.disabled = !allowed;
-            btn.classList.toggle('btn-outline-info', allowed);
-            btn.classList.toggle('btn-outline-secondary', !allowed);
+            btn.classList.toggle('theme-btn-outline-primary', allowed);
+            btn.classList.toggle('theme-btn-outline-secondary', !allowed);
         }
     }
     
@@ -375,8 +375,8 @@ function initLockButton() {
             `;
             
             const unlockFooter = `
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success" id="confirmUnlockBtn">Unlock Character</button>
+                <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn theme-btn-primary" id="confirmUnlockBtn">Unlock Character</button>
             `;
             
             const { modalElement, modalInstance } = window.modalManager.showCustom({
@@ -404,8 +404,8 @@ function initLockButton() {
             `;
             
             const lockFooter = `
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmLockBtn">Lock Character</button>
+                <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn theme-btn-danger" id="confirmLockBtn">Lock Character</button>
             `;
             
             const { modalElement, modalInstance } = window.modalManager.showCustom({
@@ -530,7 +530,7 @@ function showThemeModal() {
     `;
 
     const footer = `
-        <button type="button" class="btn btn-primary" id="saveThemeChoice">Apply</button>
+        <button type="button" class="btn theme-btn-primary" id="saveThemeChoice">Apply</button>
     `;
 
     window.modalManager.showCustom({
@@ -595,8 +595,8 @@ function initDiscordButton() {
         `;
 
         const footer = `
-            <button type="button" class="btn btn-danger" id="deleteDiscordWebhook">Delete</button>
-            <button type="button" class="btn btn-primary" id="saveDiscordWebhook">Save</button>
+            <button type="button" class="btn theme-btn-danger" id="deleteDiscordWebhook">Delete</button>
+            <button type="button" class="btn theme-btn-primary" id="saveDiscordWebhook">Save</button>
         `;
 
         window.modalManager.showCustom({
@@ -641,15 +641,15 @@ function initInfoModeButton() {
         infoModeEnabled = !infoModeEnabled;
         
         if (infoModeEnabled) {
-            btn.classList.remove('btn-outline-secondary');
-            btn.classList.add('btn-secondary');
+            btn.classList.remove('theme-btn-outline-secondary');
+            btn.classList.add('theme-btn-secondary');
             document.body.classList.add('info-mode');
             if (window.setTooltipEnabled) {
                 window.setTooltipEnabled(true);
             }
         } else {
-            btn.classList.remove('btn-secondary');
-            btn.classList.add('btn-outline-secondary');
+            btn.classList.remove('theme-btn-secondary');
+            btn.classList.add('theme-btn-outline-secondary');
             document.body.classList.remove('info-mode');
             if (window.disableAllTooltips) {
                 window.disableAllTooltips();
@@ -696,30 +696,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         loadSavedTheme();
     }, 1000);
-});
-
-// Add a mutation observer to detect if theme is being overridden
-const themeObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-            const currentTheme = document.body.getAttribute('data-theme');
-            console.log('Theme attribute changed to:', currentTheme);
-        }
-    });
-});
-
-// Start observing the body element for theme changes
-if (document.body) {
-    themeObserver.observe(document.body, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-    });
-} else {
-    // If body isn't available yet, wait for it
-    document.addEventListener('DOMContentLoaded', () => {
-        themeObserver.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['data-theme']
-        });
-    });
-} 
+}); 

@@ -474,8 +474,8 @@ class CharacterManager {
                 </div>
             `,
             footer: `
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="createCharacterBtn">Create</button>
+                <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn theme-btn-primary" id="createCharacterBtn">Create</button>
             `,
             size: 'default',
             centered: true
@@ -510,7 +510,7 @@ class CharacterManager {
         `;
 
         const footer = `
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
         `;
 
         const { modalElement, modalInstance } = modalManager.showCustom({
@@ -556,8 +556,8 @@ class CharacterManager {
                                 </p>
                             </div>
                             <div class="btn-group btn-group-sm">
-                                ${!isCurrent ? `<button class="btn btn-outline-primary" onclick="characterManager.switchCharacter(${character.id})">Switch</button>` : ''}
-                                <button class="btn btn-outline-danger" onclick="characterManager.confirmDeleteCharacter(${character.id}, '${character.name || 'Unnamed Character'}')">Delete</button>
+                                ${!isCurrent ? `<button class="btn theme-btn-outline-primary" onclick="characterManager.switchCharacter(${character.id})">Switch</button>` : ''}
+                                <button class="btn theme-btn-outline-danger" onclick="characterManager.confirmDeleteCharacter(${character.id}, '${character.name || 'Unnamed Character'}')">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -590,7 +590,7 @@ class CharacterManager {
         const message = `Are you sure you want to delete "${characterName}"? This action cannot be undone.`;
         return await window.modalManager.confirm('Confirm Deletion', message, {
             confirmText: 'Delete Character',
-            confirmClass: 'btn-danger',
+            confirmClass: 'theme-btn-danger',
             centered: true
         });
     }

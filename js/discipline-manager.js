@@ -99,7 +99,7 @@ class DisciplineManager {
                                 <div class="dots" data-value="${disciplineData.level}" data-discipline="${disciplineKey}">
                                     ${TraitManagerUtils.createDots(disciplineData.level)}
                                 </div>
-                                <button class="btn btn-danger btn-sm remove-discipline-btn" data-discipline="${disciplineKey}">
+                                <button class="btn theme-btn-primary btn-sm remove-discipline-btn" data-discipline="${disciplineKey}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>
@@ -131,11 +131,10 @@ class DisciplineManager {
                         <div class="d-flex justify-content-between align-items-center">
                             <small class="fw-bold">Level ${level} Powers</small>
                             ${level === disciplineData.level ? `
-                                <button class="btn btn-outline-success btn-sm add-power-btn" 
+                                <button class="btn theme-btn-outline-primary btn-sm add-power-btn"
                                         data-discipline="${disciplineKey}" 
-                                        data-level="${disciplineData.level}"
-                                        ${this.getAvailablePowersUpToLevel(disciplineKey, disciplineData.level).length === 0 ? 'disabled' : ''}>
-                                    <i class="bi bi-plus"></i> Add Power
+                                        data-level="${level}">
+                                    <i class="bi bi-plus"></i>
                                 </button>
                             ` : ''}
                         </div>
@@ -180,7 +179,7 @@ class DisciplineManager {
                         ${power.source ? `<br><span class="fst-italic" style="font-size: 0.8em;">Source: ${power.source}</span>` : ''}
                     </div>
                 </div>
-                <button class="btn btn-outline-danger btn-sm remove-power-btn" 
+                <button class="btn theme-btn-outline-danger btn-sm remove-power-btn" 
                         data-discipline="${disciplineKey}" 
                         data-power="${powerName}">
                     <i class="bi bi-x"></i>
@@ -388,7 +387,7 @@ class DisciplineManager {
         
         return await modalManager.confirm('Confirm Level Reduction', message, {
             confirmText: 'Remove Powers',
-            confirmClass: 'btn-danger'
+            confirmClass: 'theme-btn-primary'
         });
     }
 

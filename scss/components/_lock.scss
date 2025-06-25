@@ -13,8 +13,8 @@
 }
 
 body.locked-sheet {
-  background: $color-gray-dark !important;
-  color: $color-gray-light !important;
+  background: var(--color-background, $color-gray-dark) !important;
+  color: var(--text-muted, $color-gray-light) !important;
   .disciplines-container .btn,
   .merits-container .btn,
   .flaws-container .btn,

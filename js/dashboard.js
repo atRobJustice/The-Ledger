@@ -79,11 +79,15 @@ function updateCharacterGrid() {
     
     if (characters.length === 0) {
         characterGrid.classList.add('d-none');
-        emptyState.classList.add('d-block');
+        if (emptyState) {
+            emptyState.classList.add('d-block');
+        }
     } else {
         characterGrid.classList.remove('d-none');
         characterGrid.classList.add('d-grid');
-        emptyState.classList.remove('d-block');
+        if (emptyState) {
+            emptyState.classList.remove('d-block');
+        }
     }
     
     // Clear existing cards
@@ -125,16 +129,16 @@ function createCharacterCard(character) {
             </div>
         </div>
         <div class="character-actions">
-            <button class="btn btn-outline-danger btn-character btn-view">
+            <button class="btn theme-btn-outline-primary btn-character btn-view">
                 <i class="bi bi-eye"></i> View
             </button>
-            <button class="btn btn-outline-secondary btn-character btn-edit">
+            <button class="btn theme-btn-outline-secondary btn-character btn-edit">
                 <i class="bi bi-pencil"></i> Edit
             </button>
-            <button class="btn btn-outline-warning btn-character btn-copy">
+            <button class="btn theme-btn-outline-warning btn-character btn-copy">
                 <i class="bi bi-files"></i> Copy
             </button>
-            <button class="btn btn-outline-danger btn-character btn-delete">
+            <button class="btn theme-btn-outline-danger btn-character btn-delete">
                 <i class="bi bi-trash"></i> Delete
             </button>
         </div>
@@ -285,7 +289,7 @@ async function deleteCharacter(characterId, characterName) {
     if (shouldConfirm) {
         shouldDelete = await modalManager.confirm('Delete Character', `Are you sure you want to delete "${characterName}"? This action cannot be undone.`, {
             confirmText: 'Delete',
-            confirmClass: 'btn-danger',
+            confirmClass: 'theme-btn-danger',
         });
     }
     if (shouldDelete) {
@@ -581,12 +585,12 @@ async function handleImportFile(event) {
 async function clearAllData() {
     const confirm1 = await modalManager.confirm('Clear All Data', '⚠️ This will permanently delete ALL characters and settings. This action cannot be undone. Are you absolutely sure?', {
         confirmText: 'Yes, Delete All',
-        confirmClass: 'btn-danger',
+        confirmClass: 'theme-btn-danger',
     });
     if (confirm1) {
         const confirm2 = await modalManager.confirm('Final Warning', '⚠️ Final warning: This will delete everything. Continue?', {
             confirmText: 'Delete Everything',
-            confirmClass: 'btn-danger',
+            confirmClass: 'theme-btn-danger',
         });
         if (confirm2) {
             try {

@@ -9,8 +9,9 @@
 
 // Power selection styles
 .power-option {
-    background-color: var(--panel-bg, rgba($color-background, 0.8));
-    border: $border-width $border-style var(--panel-border-light, $color-border-light);
+    background-color: var(--panel-bg, #1a1a1a);
+    border: 1px solid var(--panel-border, #333333);
+    border-left: 3px solid var(--accent, #666666);
     border-radius: $border-radius;
     transition: $transition-base;
 
@@ -38,7 +39,7 @@
 .selected-power {
     background-color: rgba(var(--accent-rgb), 0.1) !important;
     border: $border-width $border-style rgba(var(--accent-rgb), 0.3);
-    color: var(--panel-text, $color-text);
+    color: var(--panel-text, #d4d4d4);
 
     .d-flex {
         @include media-breakpoint-down(md) {

@@ -32,4 +32,6 @@
 @use 'features/predator';
 
 // Responsive styles
-@use 'responsive'; 
+@use 'responsive';
+
+// Default palette is now wod-dark (see _variables.scss :root) 

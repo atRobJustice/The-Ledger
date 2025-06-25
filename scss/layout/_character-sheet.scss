@@ -4,8 +4,8 @@
 // Character sheet layout
 .character-sheet {
     margin: 0 auto;
-    background: linear-gradient(135deg, $color-background 0%, $color-gray-dark 100%);
-    border: 1px solid var(--panel-border, $color-gray-dark);
+    background: var(--panel-bg, #1a1a1a);
+    border: 1px solid var(--panel-border, #333);
 }
 
 // Character sheet header logo
@@ -17,13 +17,11 @@ h1 .logo {
 
 // Character Sheet Toolbar - Modern Design
 .character-toolbar {
-    background: linear-gradient(135deg, $color-background 0%, $color-gray-dark 100%);
-    border: 1px solid var(--panel-border, $color-gray-dark);
+    background: var(--panel-bg, #1a1a1a);
+    border: 1px solid var(--panel-border, #333);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba($color-white, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
     margin-bottom: 2rem;
     position: relative;
     overflow: hidden;
@@ -402,7 +400,7 @@ h1 .logo {
   border-radius: 50%;
   border: none;
   background: var(--form-bg, rgba(255,255,255,0.10));
-  color: var(--accent, #e53935);
+  color: var(--accent, #666666);
   font-size: 1.35em;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
   transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
@@ -431,7 +429,7 @@ h1 .logo {
 
 // Accessibility: show focus ring
 .toolbar-btn:focus-visible {
-  outline: 2px solid var(--accent, #e53935);
+  outline: 2px solid var(--accent, #666666);
   outline-offset: 2px;
 }
 
@@ -486,7 +484,7 @@ h1 .logo {
 }
 
 .ledger-header {
-  background: linear-gradient(90deg, var(--accent, $color-primary), $color-danger, var(--accent, $color-primary));
+  background: linear-gradient(90deg, var(--accent, #666666), #333333, var(--accent, #666666));
 }
 
 .btn-danger {
