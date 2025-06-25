@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
   - Character data now stored in separate database records
   - **Removed all localStorage fallbacks** - application now works exclusively with IndexedD.
 - New favicon and icon for the application.
+- js folder structure
 
 ### Removed
 - **Duplicate Toast Functions**: Eliminated all local `showToast` wrapper functions

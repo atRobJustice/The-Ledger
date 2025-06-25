@@ -2,6 +2,9 @@
 
 *A Vampire: The Masquerade 5th Edition character ledger*
 
+[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/atrobjustice/The-Ledger/releases)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+
 ---
 
 ## Table of Contents
@@ -9,11 +12,12 @@
 1. [About](#about)
 2. [Demo](#demo)
 3. [Features](#features)
-4. [Getting&nbsp;Started](#getting-started)
+4. [Getting Started](#getting-started)
 5. [Development](#development)
-6. [Folder&nbsp;Structure](#folder-structure)
-7. [Acknowledgements](#acknowledgements)
-8. [License](#license)
+6. [Folder Structure](#folder-structure)
+7. [User Guide](#user-guide)
+8. [Acknowledgements](#acknowledgements)
+9. [License](#license)
 
 ---
 
@@ -38,43 +42,60 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 - 📄 **Complete Character Sheet**
   - All core V5 character sheet sections
   - Theme-aware form controls
+  - Responsive design for all devices
 
 - 🎲 **Enhanced Dice System**
   - Optional 3-D dice roller overlay
-  - Hunger dice integration
+  - Hunger dice integration with visual indicators
   - Critical & messy critical handling
-  - Discord webhook integration
+  - Difficulty-based success/failure determination
+  - Discord webhook integration with structured formatting
 
-- 💾 **Data Management**
+- 💾 **Advanced Data Management**
   - 100% client-side – nothing is sent to a server
   - **Multiple character support** with IndexedDB storage
   - JSON export/import for backups
-  - Progeny VTM character import
+  - Progeny VTM character import compatibility
+  - Automatic data persistence and recovery
 
-- 🎨 **UI/UX Features**
-  - Clan-specific themes
-  - Dark/Light mode support
-  - Responsive design
-  - Keyboard navigation
+- 🎨 **Rich UI/UX Features**
+  - 15 clan-specific themes plus Blood & Roses (dark) and Ivory Tower (light)
+  - Dark/Light mode support with accessibility considerations
+  - Responsive design optimized for mobile and desktop
+  - Keyboard navigation and screen reader support
+  - High contrast alternatives for accessibility
 
 - 🔒 **Lock / Play Mode**
-  - One-click toggle to freeze the entire sheet during play and avoid accidental edits
-  - Locked status is persisted in autosave, JSON export/import, and IndexedDB storage
+  - One-click toggle to freeze the entire sheet during play
+  - Prevents accidental edits during game sessions
+  - Locked status persisted across sessions and exports
 
 - 📈 **Experience Points (XP) Tracker**
   - Dedicated modal for logging earned and spent XP
   - Automatic calculation of Total, Spent, and Available XP
-  - Full undo/redo history with autosave and IndexedDB persistence
+  - Full undo/redo history with autosave
+  - IndexedDB persistence for reliability
 
-- 🛈 **Info Mode & Rules Reference**
-  - Contextual info buttons reveal detailed rules text for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and more
-  - Integrated Humanity ladder, Conviction & Touchstone effects, and other reference data
+- 🛈 **Comprehensive Rules Reference**
+  - Contextual info buttons throughout the interface
+  - Detailed rules text for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and more
+  - Integrated Humanity ladder with detailed effects
+  - Conviction & Touchstone system with dedicated tracking
+  - Dice symbols help modal for quick reference
 
 - 👥 **Multiple Character Management**
-  - Create and manage multiple characters
+  - Create and manage unlimited characters
   - Easy character switching with dropdown selector
   - Character management modal for organizing your roster
   - Each character maintains separate XP, settings, and data
+  - Seamless character switching with state preservation
+
+- 🎯 **Advanced Game Mechanics**
+  - Blood Surge mechanic with automatic dice-pool handling
+  - Impairment status tracking with UI indicators
+  - Resonance and Temperament tracking
+  - Blood Potency bonus dice and Rouse rerolls
+  - Conviction & Touchstone system (up to 3 active convictions)
 
 ---
 
@@ -82,7 +103,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 
 1. **Clone** the repo
    ```bash
-   git clone https://github.com/<your_username>/Ledger.git
+   git clone https://github.com/atrobjustice/Ledger.git
    cd Ledger
    ```
 
@@ -96,15 +117,16 @@ Clone the repository and open `index.html`, or visit the [live version](https://
    npm run sass
    ```
 
-4. **Open** `index.html` in your favourite browser – that's it! No build step required.
+4. **Open** `index.html` in your favorite browser – that's it! No build step required.
 
 ### Multiple Character Support
 
-The Ledger now supports multiple characters using IndexedDB storage exclusively:
+The Ledger supports multiple characters using IndexedDB storage exclusively:
 
 - **Character Selector**: Use the dropdown in the control bar to switch between characters
 - **New Character**: Click the "+" button to create a new character
 - **Character Management**: Click the gear icon to manage your character roster
+- **Data Persistence**: All character data is automatically saved and persists between sessions
 
 ---
 
@@ -119,16 +141,14 @@ All styling lives in `scss/` and is compiled to `css/` using [`sass`](https://sa
 
 For detailed technical documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
 
-### Testing IndexedDB Integration
+### Project Structure
 
-A test file is included to verify the IndexedDB functionality:
+The application is built with vanilla JavaScript using a modular architecture:
 
-```bash
-# Open the test file in your browser
-open test-indexeddb.html
-```
-
-This will test the database manager, character manager, and migration functionality.
+- **Managers**: Core functionality modules in `js/core/managers/`
+- **UI Components**: Interface components in `js/core/ui/`
+- **Data**: Game rules and reference data in `js/data/`
+- **Utilities**: Helper functions and game logic in `js/core/utils/`
 
 Feel free to raise issues or open pull requests – contributions are welcome!
 
@@ -138,26 +158,42 @@ Feel free to raise issues or open pull requests – contributions are welcome!
 
 ```text
 Ledger/
-├── assets/       # images, fonts, icons
-├── css/          # compiled CSS (git-ignored in dev)
-├── scss/         # source SCSS files
-│   ├── base/     # typography, utilities
-│   ├── components/ # reusable UI components
-│   ├── layout/   # layout-specific styles
-│   └── features/ # feature-specific styles
-├── js/           # JavaScript modules
-│   ├── lib/      # third-party libraries
-│   ├── references/ # game data & rules
-│   ├── database-manager.js    # IndexedDB management
-│   └── character-manager.js   # Multiple character support
-├── data/         # JSON & YAML rules data
-├── reference/    # additional reference materials
-├── index.html    # main entry point
-├── test-indexeddb.html # IndexedDB integration test
-├── DOCUMENTATION.md # technical documentation
-├── CHANGELOG.md  # version history
-└── package.json  # npm scripts & dev dependencies
+├── assets/           # images, fonts, icons
+├── css/              # compiled CSS (git-ignored in dev)
+├── scss/             # source SCSS files
+│   ├── base/         # typography, utilities
+│   ├── components/   # reusable UI components
+│   ├── layout/       # layout-specific styles
+│   └── features/     # feature-specific styles
+├── js/               # JavaScript modules
+│   ├── core/
+│   │   ├── managers/ # core functionality managers
+│   │   ├── ui/       # interface components
+│   │   └── utils/    # helper functions
+│   ├── data/         # game rules and reference data
+│   ├── integrations/ # external integrations
+│   └── lib/          # third-party libraries
+├── data/             # JSON character data
+├── reference/        # additional reference materials
+├── index.html        # main entry point
+├── character-sheet.html # alternative character sheet view
+├── DOCUMENTATION.md  # technical documentation
+├── USER_GUIDE.md     # user documentation
+├── CHANGELOG.md      # version history
+└── package.json      # npm scripts & dev dependencies
 ```
+
+---
+
+## User Guide
+
+For detailed instructions on using The Ledger, see [USER_GUIDE.md](USER_GUIDE.md). The guide covers:
+
+- Creating and managing characters
+- Using the dice roller
+- Understanding the XP system
+- Working with themes and accessibility
+- Importing/exporting character data
 
 ---
 
@@ -172,4 +208,4 @@ Ledger/
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information. 
+Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information. 

@@ -6,18 +6,24 @@
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Character Information](#character-information)
-3. [Vitals and Tracks](#vitals-and-tracks)
-4. [Attributes and Skills](#attributes-and-skills)
-5. [Disciplines and Powers](#disciplines-and-powers)
-6. [Backgrounds and Merits](#backgrounds-and-merits)
-7. [Experience Points](#experience-points)
-8. [Dice Rolling](#dice-rolling)
-9. [Control Bar Features](#control-bar-features)
-10. [Data Management](#data-management)
-11. [Appearance and Themes](#appearance-and-themes)
-12. [Play Mode](#play-mode)
-13. [Tips and Tricks](#tips-and-tricks)
+2. [Dashboard Overview](#dashboard-overview)
+3. [Character Information](#character-information)
+4. [Vitals and Tracks](#vitals-and-tracks)
+5. [Attributes and Skills](#attributes-and-skills)
+6. [Disciplines and Powers](#disciplines-and-powers)
+7. [Backgrounds and Merits](#backgrounds-and-merits)
+8. [Coterie Management](#coterie-management)
+9. [Convictions and Touchstones](#convictions-and-touchstones)
+10. [Loresheets](#loresheets)
+11. [Blood Potency and Generation](#blood-potency-and-generation)
+12. [Experience Points](#experience-points)
+13. [Dice Rolling](#dice-rolling)
+14. [Control Bar Features](#control-bar-features)
+15. [Data Management](#data-management)
+16. [Settings and Configuration](#settings-and-configuration)
+17. [Appearance and Themes](#appearance-and-themes)
+18. [Play Mode](#play-mode)
+19. [Tips and Tricks](#tips-and-tricks)
 
 ---
 
@@ -27,14 +33,41 @@
 
 ### Opening The Ledger
 1. Open [The Ledger](https://atrobjustice.github.io/The-Ledger/) in any modern web browser
-2. The character sheet will load with default values
+2. You'll be taken to the dashboard where you can manage multiple characters
 3. All your data is automatically saved to your browser's local storage
 
 ### First Steps
-- Start by filling in your character's basic information (name, concept, clan, etc.)
+- Create your first character using the "Create Character" button
+- Fill in your character's basic information (name, concept, clan, etc.)
 - Set your character's attributes and skills using the dot system
 - Configure your vitals (Health, Willpower, Humanity, Hunger)
 - Add your character's disciplines and powers
+
+---
+
+## Dashboard Overview
+
+The dashboard is your central hub for managing multiple characters and accessing The Ledger's features.
+
+### Dashboard Features
+- **Character Grid**: View all your created characters with key information
+- **Create Character**: Start a new character with guided setup
+- **Import Options**: Import characters from The Ledger or Progeny VTM
+- **Settings**: Configure app preferences and Discord integration
+- **Data Management**: Export/import all data, clear storage
+
+### Character Cards
+Each character card displays:
+- Character name and system (Vampire, Hunter, etc.)
+- Clan/creed and concept
+- Last modified date
+- Action buttons: View, Edit, Copy, Delete
+
+### Quick Actions
+- **View**: Open character in read-only mode (locked)
+- **Edit**: Open character in edit mode
+- **Copy**: Duplicate character (coming soon)
+- **Delete**: Remove character with confirmation
 
 ---
 
@@ -86,6 +119,8 @@ The top section contains your character's core details:
 - **Maximum**: 10 (represents your connection to humanity)
 - **Current**: Your current humanity score
 - **Effects**: Low humanity can lead to derangements and loss of control
+- **Stains**: Mark violations of your convictions or chronicle tenets
+- **Remorse**: Roll to resist humanity loss at session end
 
 ### Hunger Track
 - **Maximum**: 5 (represents your blood hunger)
@@ -204,6 +239,154 @@ Backgrounds represent your character's connections and resources:
 
 ---
 
+## Coterie Management
+
+### Coterie Types
+Coterie types define your group's purpose and structure:
+
+**Common Types:**
+- **Blood Cult**: Entices mortals into supernatural rituals
+- **Cerberus**: Protects a specific location or item
+- **Champions**: Fights for a cause in mortal or kindred society
+- **Commando**: Built for combat and warfare
+- **Corporate**: Organized like a business
+- **Day Watch**: Protects during daylight hours
+- **Diocese**: Secret members of mortal-facing cults
+- **Hunting Party**: Specializes in capturing special humans
+- **Maréchal**: Guards for a Prince or Baron
+- **Missionaries**: Tries to convert others
+- **Watchmen**: Patrols and protects the city
+
+### Coterie Backgrounds
+Coterie backgrounds provide group advantages:
+
+**Domain Backgrounds:**
+- **Hospital**: Medical facility with specific hunting bonuses
+- **Nightlife**: Entertainment district with social advantages
+- **Shelter**: Safe haven with street connections
+
+**Coterie Merits and Flaws:**
+- **Merits**: Group advantages like transportation, bolt holes, privileged access
+- **Flaws**: Group disadvantages like bullies, cursed, custodians, targeted, territorial
+
+### Adding Coterie Elements
+1. Click "Add Coterie Type" or "Add Coterie Background"
+2. Select from available options
+3. Set levels and requirements
+4. Add clan-specific advantages if applicable
+
+---
+
+## Convictions and Touchstones
+
+### Convictions
+Convictions are moral principles that help maintain your humanity:
+
+**Purpose:**
+- Provide moral guidance for your character
+- Reduce stains from certain actions
+- Connect to touchstones for emotional grounding
+
+**Managing Convictions:**
+- Add up to 3 convictions per character
+- Each conviction must have an associated touchstone
+- Mark convictions as broken when violated
+- Use convictions to reduce stain penalties
+
+### Touchstones
+Touchstones are mortal connections that keep you human:
+
+**Touchstone Details:**
+- **Name**: The mortal's full name
+- **Relationship**: How you know them
+- **What they represent**: The human quality they embody
+- **Lost**: Mark if the touchstone has been lost or harmed
+
+**Touchstone Effects:**
+- Provide emotional grounding
+- Help resist humanity loss
+- Can be harmed by your actions
+- Losing touchstones can cause humanity loss
+
+### Adding Convictions and Touchstones
+1. Click "Add Conviction" in the convictions section
+2. Fill in the conviction description
+3. Add touchstone details (name, relationship, what they represent)
+4. Mark as lost if the touchstone has been harmed
+
+---
+
+## Loresheets
+
+### What are Loresheets?
+Loresheets are specific advantages tied to your character's background through lineage or history.
+
+### Types of Loresheets
+**Corebook Loresheets:**
+- **The Bahari**: Connected to the cult of the Bahari
+- **Theo Bell**: Connected to the Anarchs and Theo Bell
+- **Cainite Heresy**: Connected to the Church of Caine
+- **Carna**: Connected to House of Carna
+- **Golconda**: Connected to enlightenment and Saulot
+- **Descendant Loresheets**: Clan-specific lineage connections
+
+**Camarilla Loresheets:**
+- **Carmelita Neillson**: Connected to the Camarilla's history
+- **Justicar Loresheets**: Connected to various Justicars
+- **City-specific Loresheets**: Connected to specific domains
+
+**Cults of the Blood Gods Loresheets:**
+- **Bankers of Dunsirn**: Hecata bloodline connections
+- **Children of Tenochtitlan**: Hecata bloodline connections
+- **Various cult connections**: Connected to different blood cults
+
+### Adding Loresheets
+1. Click "Add Loresheet"
+2. Select from available options
+3. Set the level (1-5 dots)
+4. Each level must be purchased separately
+
+---
+
+## Blood Potency and Generation
+
+### Blood Potency
+Blood Potency represents the thickness and power of your blood:
+
+**Effects by Level:**
+- **0**: Thin-blood abilities, limited powers
+- **1**: Basic vampire abilities, 1-die discipline bonus
+- **2**: Enhanced healing, 1-die discipline bonus
+- **3**: Better healing, 1-die discipline bonus
+- **4**: Superior healing, 2-dice discipline bonus
+- **5**: Maximum healing, 2-dices discipline bonus
+
+**Progression:**
+- Generally increases by 1 every 100 years
+- Can be expedited by intense experiences
+- Decreases in torpor (1 point per 50 years)
+- Limited by generation
+
+### Generation
+Generation determines your blood potency limits:
+
+**Common Generations:**
+- **13th**: Maximum Blood Potency 3
+- **14th**: Maximum Blood Potency 0 (Thin-blood)
+- **15th**: Maximum Blood Potency 0 (Thin-blood)
+
+**Effects:**
+- Lower generations can resist Dominate from higher generations
+- Diablerie can reduce generation
+- Generation affects blood potency limits
+
+### Setting Blood Potency and Generation
+- Set your generation first (affects blood potency limits)
+- Blood potency cannot exceed generation limits
+- Use the info button (ℹ️) to see detailed effects
+
+---
+
 ## Experience Points
 
 ### XP Tracking
@@ -257,6 +440,12 @@ The control bar includes several quick roll options:
 - **Hunger Dice**: Red dice represent hunger and can cause messy criticals
 - **Willpower Reroll**: Available after certain rolls to improve results
 
+### 3D Dice Overlay
+- Optional 3D dice visualization using Three.js
+- Realistic physics-based dice rolling
+- Can be disabled for performance
+- Requires WebGL support
+
 ---
 
 ## Control Bar Features
@@ -279,14 +468,19 @@ The control bar at the bottom of the screen provides quick access to essential f
 ### Appearance
 - **🎨 Themes**: Choose from clan-specific color schemes or accessibility options
 
+### Lock/Unlock
+- **🔒 Lock**: Prevent accidental changes during play
+- **🔓 Unlock**: Allow editing of character data
+
 ---
 
 ## Data Management
 
 ### Automatic Saving
-- Your character data is automatically saved to your browser's local storage
+- Your character data is automatically saved to your browser's IndexedDB
 - No need to manually save - changes are preserved immediately
 - Data persists between browser sessions
+- Multiple characters are supported
 
 ### Exporting Characters
 1. Click the 💾 (Export) button in the control bar
@@ -327,6 +521,46 @@ The dashboard includes additional import options accessible from the main dashbo
 3. The sheet will reset to default values
 4. This action cannot be undone
 
+### Data Export/Import
+- **Export All Data**: Download all characters and settings
+- **Import Data**: Restore from a complete backup
+- **Clear All Data**: Remove all characters and settings
+
+---
+
+## Settings and Configuration
+
+### Accessing Settings
+Click the gear icon (⚙️) in the dashboard header to open the settings modal.
+
+### Discord Integration
+**Webhook Configuration:**
+- **Webhook URL**: Your Discord webhook URL
+- **Enable Discord**: Toggle Discord integration on/off
+- **Dice Rolls**: Send dice roll results to Discord
+- **Character Updates**: Send character changes to Discord
+- **System Messages**: Send system notifications to Discord
+
+**Testing:**
+- Use "Test Webhook" to verify your configuration
+- Messages include structured formatting for easy reading
+
+### General Preferences
+**Theme Settings:**
+- **Default Theme**: Choose your preferred color scheme
+- **Theme Categories**: World of Darkness, Kindred, Hunter palettes
+- **Accessibility**: High contrast, dyslexia-friendly, daltonic options
+
+**Confirmation Settings:**
+- **Confirm Deletions**: Require confirmation before deleting characters
+- **Auto-save**: Automatic data saving (always enabled)
+
+### Data Management
+**Backup Options:**
+- **Export All Data**: Download complete backup
+- **Import Data**: Restore from backup
+- **Clear All Data**: Remove all data (with confirmation)
+
 ---
 
 ## Appearance and Themes
@@ -334,9 +568,17 @@ The dashboard includes additional import options accessible from the main dashbo
 ### Theme Selection
 Click the 🎨 (Themes) button to access theme options:
 
-**Default Themes:**
-- **Blood & Roses (Dark)**: Classic dark theme
-- **Ivory Tower (Light)**: Light theme for bright environments
+**World of Darkness Themes:**
+- **Shadow Realm (Dark)**: Classic dark theme
+- **Veil of Light (Light)**: Light theme for bright environments
+
+**Kindred Palettes:**
+- **Blood & Roses (Dark)**: Rich red and black theme
+- **Ivory Tower (Light)**: Elegant light theme
+
+**Hunter Palettes:**
+- **Night Watch (Dark)**: Stealth-focused dark theme
+- **Dawn Patrol (Light)**: Vigilant light theme
 
 **Accessibility Themes:**
 - **High Contrast - Dark**: Enhanced contrast for visibility
@@ -345,13 +587,14 @@ Click the 🎨 (Themes) button to access theme options:
 - **Daltonic**: Color scheme for colorblind users
 
 **Clan Themes:**
-- Each vampire clan has its own color scheme
-- Themes include: Banu Haqim, Brujah, Gangrel, Hecata, Lasombra, Malkavian, The Ministry, Nosferatu, Ravnos, Salubri, Toreador, Tremere, Tzimisce, Ventrue
+Each vampire clan has its own color scheme:
+- Banu Haqim, Brujah, Gangrel, Hecata, Lasombra, Malkavian, The Ministry, Nosferatu, Ravnos, Salubri, Toreador, Tremere, Tzimisce, Ventrue
 
 ### Theme Features
 - Themes change colors throughout the interface
 - Your theme choice is automatically saved
 - Themes work on all devices and screen sizes
+- Responsive design adapts to different screen sizes
 
 ---
 
@@ -383,6 +626,12 @@ Even when locked, these elements remain editable:
 - Damage tracks (Health, Willpower)
 - Experience point awards
 - Dice rolling and results
+- Humanity stains and remorse rolls
+
+### URL Parameters
+- Add `?locked=true` to URL to open character in locked mode
+- Add `?id=characterId` to open specific character
+- Combine both: `?id=characterId&locked=true`
 
 ---
 
@@ -392,28 +641,40 @@ Even when locked, these elements remain editable:
 - Use Tab to move between fields
 - Use Enter to confirm changes
 - Use Escape to cancel editing
+- Use arrow keys to navigate dot tracks
 
 ### Mobile Use
 - The interface is responsive and works on mobile devices
 - Touch-friendly controls for all features
 - Optimized layout for small screens
+- Swipe gestures for navigation
 
 ### Browser Compatibility
 - Works best in modern browsers (Chrome, Firefox, Safari, Edge)
 - Requires JavaScript to be enabled
+- WebGL support recommended for 3D dice
 - No internet connection needed after initial load
 
+### Performance Tips
+- Disable 3D dice overlay if experiencing lag
+- Use the lock feature to prevent accidental changes
+- Export characters regularly as backups
+- Clear browser cache if experiencing issues
+
 ### Troubleshooting
-- **Data not saving**: Check that your browser allows local storage
+- **Data not saving**: Check that your browser allows IndexedDB storage
 - **Import not working**: Ensure the JSON file is valid and from The Ledger
 - **Theme not changing**: Try refreshing the page after selecting a theme
 - **Dice not rolling**: Ensure JavaScript is enabled and the page is fully loaded
+- **3D dice not working**: Check WebGL support in your browser
 
 ### Best Practices
 - Export your character regularly as a backup
 - Use the lock feature during play sessions
 - Take advantage of info mode to learn game rules
 - Keep your browser updated for the best experience
+- Use the dashboard to manage multiple characters
+- Configure Discord integration for online play
 
 ---
 
@@ -423,16 +684,25 @@ Even when locked, these elements remain editable:
 - The Ledger includes built-in rules references
 - Use Info Mode to access detailed rule descriptions
 - All data is based on official V5 rules
+- Reference materials available for all game elements
 
 ### Community
 - The Ledger is open source and community-driven
 - Report issues or suggest features through the project repository
 - Share character files with other players
+- Contribute to development and documentation
 
 ### Updates
 - The Ledger receives regular updates and improvements
 - New features and bug fixes are added over time
 - Check the project repository for the latest version
+- Follow the changelog for detailed update information
+
+### Technical Support
+- Check browser console for error messages
+- Ensure all required browser features are enabled
+- Try clearing browser cache and data
+- Use a different browser if issues persist
 
 ---
 
