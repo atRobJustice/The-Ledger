@@ -1,5 +1,5 @@
 // Loresheet Manager
-import { loresheets } from './references/loresheets.js';
+import { loresheets } from '../../data/loresheets.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class LoresheetManager {

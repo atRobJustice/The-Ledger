@@ -5,16 +5,16 @@
 // the "Spend XP" button is clicked.
 // Future steps will extend this with pricing and trait updates.
 
-import { getTotalPrice } from './xp-pricing.js';
+import { getTotalPrice } from '../utils/xp-pricing.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 // Import references for trait lists
-import { attributes as ATTR_REF } from './references/attributes.js';
-import { skills as SKILL_REF } from './references/skills.js';
-import { disciplines as DISC_REF } from './references/disciplines.js';
-import { clans as CLAN_REF } from './references/clans.js';
-import { merits as MERIT_REF } from './references/merits.js';
-import { backgrounds as BG_REF } from './references/backgrounds.js';
+import { attributes as ATTR_REF } from '../../data/attributes.js';
+import { skills as SKILL_REF } from '../../data/skills.js';
+import { disciplines as DISC_REF } from '../../data/disciplines.js';
+import { clans as CLAN_REF } from '../../data/clans.js';
+import { merits as MERIT_REF } from '../../data/merits.js';
+import { backgrounds as BG_REF } from '../../data/backgrounds.js';
 
 (function () {
   // Wait until DOM & Bootstrap ready

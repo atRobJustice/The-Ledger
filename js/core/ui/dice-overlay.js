@@ -4,10 +4,10 @@
 
 // NOTE: This file assumes Bootstrap CSS & JS are already loaded on the page (as is the case for index.html).
 
-import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "./discord-integration.js";
+import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "../../integrations/discord-integration.js";
 import { initControlBar } from "./control-bar.js";
-import { bloodPotency as bpData } from "./references/blood_potency.js";
-import { disciplines } from "./disciplines.js";
+import { bloodPotency as bpData } from "../../data/blood_potency.js";
+import { disciplines } from "../utils/disciplines.js";
 
 // New flag: track whether the most recent roll used Blood Surge
 let lastRollHadBloodSurge = false;
@@ -1561,7 +1561,7 @@ let bonusMsg = null;
     // -------------------------------------------------------------
     (async () => {
       try {
-        const module = await import('./references/resonances.js');
+        const module = await import('../../data/resonances.js');
         window.__resonancesData = module.resonances;
       } catch (err) {
         console.error('Failed to load resonance data:', err);

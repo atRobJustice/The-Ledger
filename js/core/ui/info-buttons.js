@@ -13,14 +13,42 @@
 })();
 
 // Import attribute and skill definitions
-import { attributes } from './references/attributes.js';
-import { skills } from './references/skills.js';
+import { attributes } from '../../data/attributes.js';
+import { skills } from '../../data/skills.js';
+import { TraitManagerUtils } from '../managers/manager-utils.js';
 
 const mappings = [
   {
+    selector: '.disciplines-container',
+    modulePath: '../data/disciplines.js',
+    dataKey: 'disciplines',
+    title: 'Disciplines'
+  },
+  {
+    selector: '.merits-container',
+    modulePath: '../data/merits.js',
+    dataKey: 'merits',
+    title: 'Merits'
+  },
+  {
+    selector: '.merits-container',
+    modulePath: '../data/merits.js', // same file
+    dataKey: 'merits',
+    title: 'Merits'
+  },
+  {
+    selector: '.backgrounds-container',
+    modulePath: '../data/backgrounds.js',
+    dataKey: 'backgrounds',
+    title: 'Backgrounds'
+  },
+  {
+    selector: '.backgrounds-container',
+    modulePath: '../data/backgrounds.js',
+    dataKey: 'backgrounds',
     key: 'disciplines',
     heading: 'Disciplines',
-    modulePath: './references/disciplines.js',
+    modulePath: '../data/disciplines.js',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -41,7 +69,7 @@ const mappings = [
   {
     key: 'merits',
     heading: 'Merits',
-    modulePath: './references/merits.js',
+    modulePath: '../data/merits.js',
     buildContent: (data) => {
       let content = '<p>Merits provide advantages that customise a character.</p>';
       const categories = Object.values(data || {});
@@ -57,7 +85,7 @@ const mappings = [
   {
     key: 'flaws',
     heading: 'Flaws',
-    modulePath: './references/merits.js', // same file
+    modulePath: '../data/merits.js', // same file
     dataKey: 'merits',
     buildContent: (data) => {
       let content = '<p>Flaws represent disadvantages and weaknesses.</p>';
@@ -76,7 +104,7 @@ const mappings = [
   {
     key: 'backgrounds',
     heading: 'Backgrounds',
-    modulePath: './references/backgrounds.js',
+    modulePath: '../data/backgrounds.js',
     buildContent: (data) => {
       let content = '<p>Background Merits grant social and material advantages.</p>';
       const categories = Object.values(data || {});
@@ -94,7 +122,7 @@ const mappings = [
   {
     key: 'backgroundFlaws',
     heading: 'Background Flaws',
-    modulePath: './references/backgrounds.js',
+    modulePath: '../data/backgrounds.js',
     dataKey: 'backgrounds',
     buildContent: (data) => {
       let content = '<p>Background Flaws represent social or material hindrances.</p>';
@@ -113,7 +141,7 @@ const mappings = [
   {
     key: 'loresheets',
     heading: 'Loresheets',
-    modulePath: './references/loresheets.js',
+    modulePath: '../data/loresheets.js',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -133,7 +161,7 @@ const mappings = [
   {
     key: 'attributes',
     heading: 'Attributes',
-    modulePath: './references/attributes.js',
+    modulePath: '../data/attributes.js',
     buildContent: (data) => {
       let content = '';
       if (data.overview?.description) {
@@ -159,7 +187,7 @@ const mappings = [
   {
     key: 'skills',
     heading: 'Skills',
-    modulePath: './references/skills.js',
+    modulePath: '../data/skills.js',
     buildContent: (data) => {
       let content = '';
       if (data.overview?.description) {
@@ -184,135 +212,45 @@ const mappings = [
 const dropdownMappings = [
   {                // Resonance
     selector : '.resonance-dropdown',
-    module   : './references/resonances.js',
-    pickData : m => m.resonances.types,        // object keyed by resonance key
-    buildContent: res => `
-        <h5>${res.name}</h5>
-        <p>${res.description}</p>
-        <p><strong>Disciplines:</strong> ${res.disciplines?.join(', ')}</p>`
+    module   : '../data/resonances.js',
+    dataKey: 'resonances',
+    title: 'Resonance'
   },
   {                // Temperament
     selector : '.temperament-dropdown',
-    module   : './references/resonances.js',
-    pickData : m => m.resonances.temperaments,
-    buildContent: t => `<h5>${t.name}</h5><p>${t.description}</p>`
+    module   : '../data/resonances.js',
+    dataKey: 'resonances',
+    title: 'Temperament'
   },
-  {                // Predator
+  {                // Predator Type
     selector : '.predator-dropdown',
-    module   : './references/predator_types.js',
-    pickData : m => m.predatorTypes.types,
-    buildContent: p => `
-        <h5>${p.name}</h5>
-        <p>${p.description}</p>
-        ${list('Dice Pools',  p.dicePools)}
-        ${list('Benefits',   p.benefits)}
-        ${list('Drawbacks',  p.drawbacks)}`
+    module   : '../data/predator_types.js',
+    dataKey: 'predatorTypes',
+    title: 'Predator Type'
   },
   {                // Clan
     selector : '.clan-dropdown',
-    module   : './references/clans.js',
-    pickData : m => m.clans.types,
-    buildContent: c => `
-        <h5>${c.name}</h5>
-        <p>${c.background?.description||''}</p>
-        ${badge('Nicknames',   c.nicknames?.join(', '))}
-        ${badge('Disciplines', Array.isArray(c.disciplines)
-                               ? c.disciplines.join(', ')
-                               : Object.keys(c.disciplines||{}).join(', '))}
-        ${badge('Bane',        c.bane?.description)}
-        ${badge('Compulsion',  c.compulsion?.description)}`
+    module   : '../data/clans.js',
+    dataKey: 'clans',
+    title: 'Clan'
   },
   {                // Generation
     selector : '.generation-dropdown',
-    module   : './references/generation.js',
-    pickData : m => {
-      const gen = m.generation;
-      // Create a mapping of generation numbers to tier names
-      const tierMap = {
-        '3': 'third',
-        '4': 'fourthAndFifth',
-        '5': 'fourthAndFifth',
-        '6': 'sixthThroughNinth',
-        '7': 'sixthThroughNinth',
-        '8': 'sixthThroughNinth',
-        '9': 'sixthThroughNinth',
-        '10': 'tenthAndEleventh',
-        '11': 'tenthAndEleventh',
-        '12': 'twelfthAndThirteenth',
-        '13': 'twelfthAndThirteenth',
-        '14': 'fourteenthThroughSixteenth',
-        '15': 'fourteenthThroughSixteenth',
-        '16': 'fourteenthThroughSixteenth'
-      };
-      return {
-        tiers: gen.generationTiers,
-        tierMap: tierMap
-      };
-    },
-    buildContent: (data, key) => {
-      const tierName = data.tierMap[key];
-      const tier = data.tiers[tierName];
-      if (!tier) return '<p>No information available for this generation.</p>';
-      
-      let content = `
-        <h5>${tier.name || 'Generation Tier'}</h5>
-        <p>${tier.description}</p>
-      `;
-      
-      // Add blood potency limits if available
-      const limits = data.tiers.bloodPotencyLimits?.[key];
-      if (limits) {
-        content += `<p><strong>Blood Potency Range:</strong> ${limits.lowest} - ${limits.highest}</p>`;
-      }
-      
-      return content;
-    }
+    module   : '../data/generation.js',
+    dataKey: 'generation',
+    title: 'Generation'
   },
-  {                // Blood-Potency
+  {                // Blood Potency
     selector : '.blood-potency-dropdown',
-    module   : './references/blood_potency.js',
-    pickData : m => m.bloodPotency.levels,
-    buildContent: bp => `
-        <h5>Blood-Potency ${bp.level}</h5>
-        <p>${bp.description}</p>
-        ${list('Effects', bp.effects)}
-        ${badge('Bane Severity',      bp.baneSeverity)}
-        ${badge('Surge Bonus',        bp.bloodSurgeBonus && '+'+bp.bloodSurgeBonus+' dice')}
-        ${badge('Mend per Rouse',     bp.healingAmount && bp.healingAmount+' Superficial')}
-        ${badge('Discipline Bonus',   bp.disciplineBonus && '+'+bp.disciplineBonus+' die')}
-    `
+    module   : '../data/blood_potency.js',
+    dataKey: 'bloodPotency',
+    title: 'Blood Potency'
   },
   {                // Compulsion
     selector : '.compulsion-dropdown',
-    module   : './references/compulsions.js',
-    pickData : m => m.compulsions,
-    buildContent: (data, key) => {
-      // Handle both general and clan compulsions
-      const [type, compKey] = key.split('.', 2);
-      const comp = type === 'general' ? data.general[compKey] : data.clanCompulsions[compKey];
-      if (!comp) return '<p>No information available for this compulsion.</p>';
-      
-      let content = `
-        <h5>${comp.name}</h5>
-        <p>${comp.description}</p>
-        ${comp.penalty ? `<p><strong>Penalty:</strong> ${comp.penalty}</p>` : ''}
-        ${comp.resolution ? `<p><strong>Resolution:</strong> ${comp.resolution}</p>` : ''}
-        ${comp.note ? `<p><strong>Note:</strong> ${comp.note}</p>` : ''}`;
-      
-      // Handle variants if present
-      if (comp.variants) {
-        content += '<h5>Variants</h5><ul>';
-        Object.values(comp.variants).forEach(variant => {
-          content += `<li><strong>${variant.name}:</strong> ${variant.description}`;
-          if (variant.penalty) content += `<br/>Penalty: ${variant.penalty}`;
-          if (variant.resolution) content += `<br/>Resolution: ${variant.resolution}`;
-          content += '</li>';
-        });
-        content += '</ul>';
-      }
-      
-      return content;
-    }
+    module   : '../data/compulsions.js',
+    dataKey: 'compulsions',
+    title: 'Compulsion'
   }
 ];
 
@@ -381,8 +319,8 @@ function initInfoButtons() {
 
   dropdownMappings.forEach(async map => {
     try {
-      const mod = await import(map.module);
-      const data = map.pickData(mod);
+      const mod = await import('../../data/' + map.module.split('/').pop());
+      const data = mod[map.dataKey] || mod.default || mod;
       if (!data) {
         console.error(`No data found for ${map.selector}`);
         return;
@@ -397,7 +335,7 @@ function initInfoButtons() {
         const baseClass = map.selector.replace('.', '').split('-')[0] + '-info-button';
         if (dd.nextElementSibling?.classList.contains(baseClass) || dd.nextElementSibling?.classList.contains('dd-info-btn')) return;
 
-        const infoBtn = createInfoButton('info');
+        const infoBtn = createInfoButton(map.title);
         infoBtn.classList.add('dd-info-btn', baseClass);
         dd.after(infoBtn);
         new bootstrap.Tooltip(infoBtn);
@@ -474,7 +412,7 @@ function initInfoButtons() {
       const validCurrent = Math.min(Math.max(current, 0), 10);
 
       try {
-        const mod          = await import('./references/humanity.js');
+        const mod          = await import('../data/humanity.js');
         const humanityData = mod?.humanity || mod?.default || mod || {};
 
         // Basic overview — always show if present
@@ -544,7 +482,7 @@ function initInfoButtons() {
       bpBtn.addEventListener('click', async ()=>{
         const level = parseInt(dots.dataset.value || '0', 10);
         try {
-          const mod = await import('./references/blood_potency.js');
+          const mod = await import('../../data/blood_potency.js');
           const bpData = mod.bloodPotency || mod.default || mod;
           const bpLevels = (bpData && bpData.levels) ? bpData.levels : {};
           const bp = bpLevels[level] || {};
@@ -653,7 +591,7 @@ function initInfoButtons() {
         // Special handling for Generation
         if (statName === 'generation') {
           try {
-            const mod = await import('./references/generation.js');
+            const mod = await import('../data/generation.js');
             const genData = mod.generation;
             
             let content = `<p>${genData.overview.description}</p>`;

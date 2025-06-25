@@ -1,5 +1,5 @@
 // Enhanced Discipline Manager with Powers
-import { disciplines } from './disciplines.js';
+import { disciplines } from '../utils/disciplines.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class DisciplineManager {

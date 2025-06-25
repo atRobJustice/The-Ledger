@@ -13,11 +13,11 @@ let sendToDiscord;
 async function initDashboard() {
     try {
         // Import database manager
-        const dbModule = await import('./database-manager.js');
+        const dbModule = await import('../managers/database-manager.js');
         databaseManager = dbModule.default;
         
         // Import Discord integration
-        const discordModule = await import('./discord-integration.js');
+        const discordModule = await import('../../integrations/discord-integration.js');
         sendToDiscord = discordModule.sendToDiscord;
         
         // Initialize database

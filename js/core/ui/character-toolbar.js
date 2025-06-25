@@ -3,8 +3,8 @@
  * Traditional toolbar-style navigation for character sheet
  */
 
-import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
-import { TraitManagerUtils } from './manager-utils.js';
+import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
+import { TraitManagerUtils } from '../managers/manager-utils.js';
 
 /**
  * Initialize the character sheet toolbar

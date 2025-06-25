@@ -1,104 +1,106 @@
-// Merit and Flaw Manager
-import { merits } from './references/merits.js';
+// Background and Background Flaw Manager
+import { backgrounds } from '../../data/backgrounds.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
-class MeritFlawManager {
+class BackgroundManager {
     constructor() {
-        this.selectedMerits = new Map(); // meritKey -> { category: string, level: number, instances: Array }
-        this.selectedFlaws = new Map(); // flawKey -> { category: string, level: number, instances: Array }
-        this.availableCategories = Object.keys(merits);
+        this.selectedBackgrounds = new Map(); // backgroundKey -> { category: string, level: number, instances: Array }
+        this.selectedBackgroundFlaws = new Map(); // flawKey -> { category: string, level: number, instances: Array }
+        this.availableCategories = Object.keys(backgrounds);
         this.init();
     }
 
     init() {
-        this.renderMeritManager();
-        this.renderFlawManager();
+        this.renderBackgroundManager();
+        this.renderBackgroundFlawManager();
         this.bindEvents();
         this.initializeTooltips();
     }
 
-    renderMeritManager() {
-        const meritContainer = $('.merits-container');
-        if (meritContainer.length === 0) {
-            console.error('Merits container not found');
-            return;
-        }
+    renderBackgroundManager() {
+        const $container = $('.backgrounds-container');
+        if ($container.length === 0) return;
 
-        meritContainer.empty();
-        this.renderTraitSection(meritContainer, 'merit', 'Merits', this.selectedMerits);
-    }
-
-    renderFlawManager() {
-        const flawContainer = $('.flaws-container');
-        if (flawContainer.length === 0) {
-            console.error('Flaws container not found');
-            return;
-        }
-
-        flawContainer.empty();
-        this.renderTraitSection(flawContainer, 'flaw', 'Flaws', this.selectedFlaws);
-    }
-
-    renderTraitSection(container, type, title, selectedTraits) {
-        // Add trait selector
-        this.renderTraitSelector(container, type, title);
-        
-        // Add selected traits list
-        this.renderSelectedTraits(container, type, selectedTraits);
-    }
-
-    renderTraitSelector(container, type, title) {
-        const selectorHtml = `
-            <div class="${type}-selector mb-3">
-                <div class="d-flex align-items-center gap-2 mb-2">
-                    <select class="form-select ${type}-category-dropdown" id="${type}CategorySelect">
-                        <option value="">Select Category</option>
-                        ${this.getCategoryOptions()}
-                    </select>
+        const html = `
+            <div class="background-manager">
+                <div class="background-controls mb-3">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <select class="form-select background-category-dropdown" id="backgroundCategorySelect">
+                            <option value="">Select Category</option>
+                            ${this.getCategoryOptions()}
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <select class="form-select background-dropdown" id="backgroundSelect" disabled>
+                            <option value="">Select Background</option>
+                        </select>
+                        <button class="btn btn-success btn-sm" id="addBackgroundBtn" disabled>
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="d-flex align-items-center gap-2">
-                    <select class="form-select ${type}-dropdown" id="${type}Select" disabled>
-                        <option value="">Select a ${title.slice(0, -1)}</option>
-                    </select>
-                    <button class="btn btn-success btn-sm" id="add${TraitManagerUtils.capitalizeFirst(type)}Btn" disabled>
-                        <i class="bi bi-plus-circle"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-        container.append(selectorHtml);
-    }
-
-    renderSelectedTraits(container, type, selectedTraits) {
-        const selectedHtml = `
-            <div class="selected-${type}s">
-                <div id="${type}sList" class="${type}s-list">
-                    ${selectedTraits.size === 0 ? 
-                        `<div class="fst-italic">No ${type}s selected</div>` : 
-                        this.getSelectedTraitsHtml(type, selectedTraits)
+                <div class="selected-backgrounds">
+                    ${this.selectedBackgrounds.size === 0 ? 
+                        `<div class="fst-italic">No backgrounds selected</div>` : 
+                        this.getSelectedTraitsHtml('background', this.selectedBackgrounds)
                     }
                 </div>
             </div>
         `;
-        container.append(selectedHtml);
+
+        $container.html(html);
+    }
+
+    renderBackgroundFlawManager() {
+        const $container = $('.background-flaws-container');
+        if ($container.length === 0) return;
+
+        const html = `
+            <div class="background-flaw-manager">
+                <div class="background-flaw-controls mb-3">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <select class="form-select background-flaw-category-dropdown" id="backgroundFlawCategorySelect">
+                            <option value="">Select Category</option>
+                            ${this.getCategoryOptions()}
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <select class="form-select background-flaw-dropdown" id="backgroundFlawSelect" disabled>
+                            <option value="">Select Background Flaw</option>
+                        </select>
+                        <button class="btn btn-success btn-sm" id="addBackgroundFlawBtn" disabled>
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="selected-background-flaws">
+                    ${this.selectedBackgroundFlaws.size === 0 ? 
+                        `<div class="fst-italic">No background flaws selected</div>` : 
+                        this.getSelectedTraitsHtml('backgroundFlaw', this.selectedBackgroundFlaws)
+                    }
+                </div>
+            </div>
+        `;
+
+        $container.html(html);
     }
 
     getCategoryOptions() {
         return this.availableCategories
             .map(categoryKey => {
-                const category = merits[categoryKey];
-                const displayName = category.name || TraitManagerUtils.camelToTitle(categoryKey);
-                return `<option value="${categoryKey}">${displayName}</option>`;
+                const category = backgrounds[categoryKey];
+                return `<option value="${categoryKey}">${category.name}</option>`;
             })
             .join('');
     }
 
     getTraitOptions(categoryKey, type, excludeSelected = true) {
-        const category = merits[categoryKey];
-        if (!category || !category[type + 's']) return '';
+        const category = backgrounds[categoryKey];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        if (!category || !category[traitsKey]) return '';
 
-        const traits = category[type + 's'];
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
+        const traits = category[traitsKey];
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
 
         return TraitManagerUtils.generateTraitOptions(traits, selectedTraits, categoryKey);
     }
@@ -107,8 +109,9 @@ class MeritFlawManager {
         const html = [];
         
         selectedTraits.forEach((traitData, traitKey) => {
-            const category = merits[traitData.category];
-            const trait = category[type + 's'][traitKey];
+            const category = backgrounds[traitData.category];
+            const traitsKey = type === 'background' ? 'merits' : 'flaws';
+            const trait = category[traitsKey][traitKey];
             const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
             const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
             const instances = traitData.instances || [{ level: traitData.level }];
@@ -125,7 +128,7 @@ class MeritFlawManager {
                             </div>
                             <div class="${type}-controls d-flex align-items-center gap-2">
                                 ${this.renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo)}
-                                <button class="btn theme-btn-primary btn-sm remove-${type}-btn" data-${type}="${traitKey}" data-instance="${instanceIndex}">
+                                <button class="btn theme-btn-primary btn-sm remove-trait-btn" data-trait-type="${type}" data-trait-key="${traitKey}" data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>
@@ -142,14 +145,15 @@ class MeritFlawManager {
     }
 
     renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo) {
-        const { maxDots, traitTypeClass, tooltipText } = TraitManagerUtils.getDotsMeta(dotsInfo, type);
+        const { maxDots, traitTypeClass, tooltipText } = TraitManagerUtils.getDotsMeta(dotsInfo, 'background');
         
         return `
             <div class="dots" 
                  data-value="${instance.level}" 
-                 data-${type}="${traitKey}" 
+                 data-trait-key="${traitKey}"
+                 data-trait-type-class="${traitTypeClass}"
+                 data-trait-category="${type}"
                  data-instance="${instanceIndex}" 
-                 data-trait-type="${traitTypeClass}"
                  data-bs-toggle="tooltip" 
                  data-bs-placement="top" 
                  title="${tooltipText}">
@@ -160,29 +164,40 @@ class MeritFlawManager {
 
     bindEvents() {
         // Category selection events
-        $(document).on('change', '.merit-category-dropdown, .flaw-category-dropdown', (e) => {
+        $(document).on('change', '#backgroundCategorySelect, #backgroundFlawCategorySelect', (e) => {
             const $select = $(e.currentTarget);
             const categoryKey = $select.val();
-            const type = $select.hasClass('merit-category-dropdown') ? 'merit' : 'flaw';
+            const isBackgroundFlaw = $select.attr('id') === 'backgroundFlawCategorySelect';
+            const type = isBackgroundFlaw ? 'backgroundFlaw' : 'background';
             
-            this.updateTraitDropdown(categoryKey, type);
+            if (categoryKey) {
+                this.updateTraitOptions(categoryKey, type);
+            } else {
+                this.clearTraitOptions(type);
+            }
         });
 
-        // Trait selection events
-        $(document).on('change', '.merit-dropdown, .flaw-dropdown', (e) => {
+        // Trait selection events (to enable Add button)
+        $(document).on('change', '#backgroundSelect, #backgroundFlawSelect', (e) => {
             const $select = $(e.currentTarget);
-            const type = $select.hasClass('merit-dropdown') ? 'merit' : 'flaw';
-            const addBtn = $(`#add${TraitManagerUtils.capitalizeFirst(type)}Btn`);
-            addBtn.prop('disabled', !$select.val());
+            const traitKey = $select.val();
+            const isBackgroundFlaw = $select.attr('id') === 'backgroundFlawSelect';
+            const addBtnId = isBackgroundFlaw ? '#addBackgroundFlawBtn' : '#addBackgroundBtn';
+            
+            $(addBtnId).prop('disabled', !traitKey);
         });
 
         // Add trait events
-        $(document).on('click', '#addMeritBtn, #addFlawBtn', (e) => {
+        $(document).on('click', '#addBackgroundBtn, #addBackgroundFlawBtn', (e) => {
             e.preventDefault();
-            const type = e.currentTarget.id.includes('Merit') ? 'merit' : 'flaw';
-            const select = $(`#${type}Select`);
-            const traitKey = select.val();
-            const categoryKey = select.find('option:selected').data('category');
+            const $btn = $(e.currentTarget);
+            const isBackgroundFlaw = $btn.attr('id') === 'addBackgroundFlawBtn';
+            const type = isBackgroundFlaw ? 'backgroundFlaw' : 'background';
+            const selectId = isBackgroundFlaw ? '#backgroundFlawSelect' : '#backgroundSelect';
+            
+            const $select = $(selectId);
+            const traitKey = $select.val();
+            const categoryKey = $select.find('option:selected').data('category');
             
             if (traitKey && categoryKey) {
                 this.addTrait(type, traitKey, categoryKey);
@@ -190,49 +205,63 @@ class MeritFlawManager {
         });
 
         // Remove trait events
-        $(document).on('click', '.remove-merit-btn, .remove-flaw-btn', (e) => {
+        $(document).on('click', '.remove-trait-btn', (e) => {
             e.preventDefault();
             const $btn = $(e.currentTarget);
-            const type = $btn.hasClass('remove-merit-btn') ? 'merit' : 'flaw';
-            const traitKey = $btn.data(type);
+            const type = $btn.data('trait-type');
+            const traitKey = $btn.data('trait-key');
             const instanceIndex = $btn.data('instance');
-            this.removeTrait(type, traitKey, instanceIndex);
+            
+            if (traitKey && type) {
+                this.removeTrait(type, traitKey, instanceIndex);
+            }
         });
 
         // Dot click events for variable traits
-        $(document).on('click', '.merits-container .dot, .flaws-container .dot', (e) => {
+        $(document).on('click', '.backgrounds-container .dot, .background-flaws-container .dot', (e) => {
             e.preventDefault();
             this.handleDotClick($(e.currentTarget));
         });
     }
 
-    updateTraitDropdown(categoryKey, type) {
-        const $dropdown = $(`#${type}Select`);
-        const $addBtn = $(`#add${TraitManagerUtils.capitalizeFirst(type)}Btn`);
+    updateTraitOptions(categoryKey, type) {
+        const selectId = type === 'background' ? '#backgroundSelect' : '#backgroundFlawSelect';
+        const addBtnId = type === 'background' ? '#addBackgroundBtn' : '#addBackgroundFlawBtn';
         
-        if (!categoryKey) {
-            $dropdown.prop('disabled', true).html(`<option value="">Select a ${type}</option>`);
-            $addBtn.prop('disabled', true);
-            return;
-        }
-
+        const $select = $(selectId);
+        const $addBtn = $(addBtnId);
+        
         const options = this.getTraitOptions(categoryKey, type);
+        
         if (options) {
-            $dropdown.prop('disabled', false).html(`
-                <option value="">Select a ${type}</option>
-                ${options}
-            `);
+            $select.html(`<option value="">Select ${type === 'background' ? 'Background' : 'Background Flaw'}</option>${options}`);
+            $select.prop('disabled', false);
         } else {
-            $dropdown.prop('disabled', true).html(`<option value="">No ${type}s available in this category</option>`);
+            $select.html(`<option value="">No ${type === 'background' ? 'backgrounds' : 'background flaws'} available</option>`);
+            $select.prop('disabled', true);
         }
         
         $addBtn.prop('disabled', true);
     }
 
+    clearTraitOptions(type) {
+        const selectId = type === 'background' ? '#backgroundSelect' : '#backgroundFlawSelect';
+        const addBtnId = type === 'background' ? '#addBackgroundBtn' : '#addBackgroundFlawBtn';
+        
+        const $select = $(selectId);
+        const $addBtn = $(addBtnId);
+        
+        $select.html(`<option value="">Select ${type === 'background' ? 'Background' : 'Background Flaw'}</option>`);
+        $select.prop('disabled', true);
+        
+        $addBtn.prop('disabled', true);
+    }
+
     addTrait(type, traitKey, categoryKey) {
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
-        const category = merits[categoryKey];
-        const trait = category[type + 's'][traitKey];
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
+        const category = backgrounds[categoryKey];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        const trait = category[traitsKey][traitKey];
         const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
         const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
         
@@ -281,15 +310,16 @@ class MeritFlawManager {
     }
 
     removeTrait(type, traitKey, instanceIndex = null) {
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         
         if (!selectedTraits.has(traitKey)) {
             return;
         }
 
         const traitData = selectedTraits.get(traitKey);
-        const category = merits[traitData.category];
-        const trait = category[type + 's'][traitKey];
+        const category = backgrounds[traitData.category];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        const trait = category[traitsKey][traitKey];
         const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
         const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
 
@@ -310,21 +340,22 @@ class MeritFlawManager {
         const $dotsContainer = $dot.parent();
         const currentValue = parseInt($dotsContainer.data('value') || '0');
         const clickedValue = parseInt($dot.data('value'));
-        const traitType = $dotsContainer.data('trait-type');
+        const traitType = $dotsContainer.data('trait-type-class');
         
         // Determine trait type, key, and instance
-        const traitKey = $dotsContainer.data('merit') || $dotsContainer.data('flaw');
-        const type = $dotsContainer.data('merit') ? 'merit' : 'flaw';
+        const traitKey = $dotsContainer.data('trait-key');
+        const type = $dotsContainer.data('trait-category');
         const instanceIndex = parseInt($dotsContainer.data('instance') || '0');
         
         if (!traitKey) return;
 
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         const traitData = selectedTraits.get(traitKey);
         if (!traitData) return;
 
-        const category = merits[traitData.category];
-        const trait = category[type + 's'][traitKey];
+        const category = backgrounds[traitData.category];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        const trait = category[traitsKey][traitKey];
         const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
 
         let newValue;
@@ -380,12 +411,13 @@ class MeritFlawManager {
     }
 
     updateTraitInstanceLevel(type, traitKey, instanceIndex, newLevel) {
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         const traitData = selectedTraits.get(traitKey);
         if (!traitData) return;
 
-        const category = merits[traitData.category];
-        const trait = category[type + 's'][traitKey];
+        const category = backgrounds[traitData.category];
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        const trait = category[traitsKey][traitKey];
         const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
 
         // Update the specific instance
@@ -403,7 +435,7 @@ class MeritFlawManager {
     }
 
     updateTraitDisplay(type, traitKey, instanceIndex = null) {
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
         const traitData = selectedTraits.get(traitKey);
         if (!traitData) return;
 
@@ -412,13 +444,13 @@ class MeritFlawManager {
             const instance = traitData.instances[instanceIndex];
             if (!instance) return;
 
-            const $dots = $(`.dots[data-${type}="${traitKey}"][data-instance="${instanceIndex}"]`);
+            const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${instanceIndex}"]`);
             TraitManagerUtils.refreshDots($dots, instance.level);
             $dots.attr('data-value', instance.level);
         } else {
             // Update all instances
             traitData.instances.forEach((instance, idx) => {
-                const $dots = $(`.dots[data-${type}="${traitKey}"][data-instance="${idx}"]`);
+                const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${idx}"]`);
                 TraitManagerUtils.refreshDots($dots, instance.level);
                 $dots.attr('data-value', instance.level);
             });
@@ -426,89 +458,68 @@ class MeritFlawManager {
     }
 
     updateDisplay() {
-        // Update merit display
-        this.updateTraitTypeDisplay('merit');
+        // Update background display
+        this.updateTraitTypeDisplay('background');
         
-        // Update flaw display
-        this.updateTraitTypeDisplay('flaw');
+        // Update background flaw display
+        this.updateTraitTypeDisplay('backgroundFlaw');
         
         // Initialize tooltips for the new elements
         this.initializeTooltips();
     }
 
-    initializeTooltips() {
-        TraitManagerUtils.initTooltips(['.merits-container','.flaws-container']);
-    }
-
     updateTraitTypeDisplay(type) {
-        // Update the category dropdown to refresh available traits
-        const $categorySelect = $(`#${type}CategorySelect`);
-        const currentCategory = $categorySelect.val();
+        const selectedTraits = type === 'background' ? this.selectedBackgrounds : this.selectedBackgroundFlaws;
+        const containerClass = type === 'background' ? '.selected-backgrounds' : '.selected-background-flaws';
         
-        if (currentCategory) {
-            this.updateTraitDropdown(currentCategory, type);
-        }
-        
-        // Reset trait selection
-        $(`#${type}Select`).val('');
-        $(`#add${TraitManagerUtils.capitalizeFirst(type)}Btn`).prop('disabled', true);
-        
-        // Update the selected traits list
-        const selectedTraits = type === 'merit' ? this.selectedMerits : this.selectedFlaws;
-        $(`#${type}sList`).html(
-            selectedTraits.size === 0 ? 
-                `<div class="fst-italic">No ${type}s selected</div>` : 
+        $(containerClass).html(
                 this.getSelectedTraitsHtml(type, selectedTraits)
         );
     }
 
+    initializeTooltips() {
+        TraitManagerUtils.initTooltips(['.backgrounds-container','.background-flaws-container']);
+    }
+
     // Public methods for external access
-    getSelectedMerits() {
-        return TraitManagerUtils.mapToPlainObject(this.selectedMerits);
+    getSelectedBackgrounds() {
+        return TraitManagerUtils.mapToPlainObject(this.selectedBackgrounds);
     }
 
-    getSelectedFlaws() {
-        const result = {};
-        this.selectedFlaws.forEach((data, key) => {
-            result[key] = {
-                category: data.category,
-                level: data.level,
-                instances: data.instances || [{ level: data.level }]
-            };
-        });
-        return result;
+    getSelectedBackgroundFlaws() {
+        return TraitManagerUtils.mapToPlainObject(this.selectedBackgroundFlaws);
     }
 
-    getMeritLevel(meritKey) {
-        const meritData = this.selectedMerits.get(meritKey);
-        return meritData ? meritData.level : 0;
+    getBackgroundLevel(backgroundKey) {
+        const backgroundData = this.selectedBackgrounds.get(backgroundKey);
+        return backgroundData ? backgroundData.level : 0;
     }
 
-    getFlawLevel(flawKey) {
-        const flawData = this.selectedFlaws.get(flawKey);
+    getBackgroundFlawLevel(flawKey) {
+        const flawData = this.selectedBackgroundFlaws.get(flawKey);
         return flawData ? flawData.level : 0;
     }
 
-    // Calculate total merit/flaw points
-    getTotalMeritPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedMerits);
+    // Calculate total background/flaw points
+    getTotalBackgroundPoints() {
+        return TraitManagerUtils.sumLevels(this.selectedBackgrounds);
     }
 
-    getTotalFlawPoints() {
-        return TraitManagerUtils.sumLevels(this.selectedFlaws);
+    getTotalBackgroundFlawPoints() {
+        return TraitManagerUtils.sumLevels(this.selectedBackgroundFlaws);
     }
 
-    // Load merits and flaws from data (for character loading)
-    loadMeritsAndFlaws(meritsData, flawsData) {
-        this.selectedMerits.clear();
-        this.selectedFlaws.clear();
+    // Load backgrounds and flaws from data (for character loading)
+    loadBackgroundsAndFlaws(backgroundsData, flawsData) {
+        this.selectedBackgrounds.clear();
+        this.selectedBackgroundFlaws.clear();
         
-        if (meritsData && typeof meritsData === 'object') {
-            Object.entries(meritsData).forEach(([meritKey, data]) => {
-                // Find the category for this merit
-                const category = this.findTraitCategory(meritKey, 'merit');
+        if (backgroundsData && typeof backgroundsData === 'object') {
+            Object.entries(backgroundsData).forEach(([backgroundKey, data]) => {
+                // Find the category for this background
+                const category = this.findTraitCategory(backgroundKey, 'background');
                 if (category) {
-                    this.selectedMerits.set(meritKey, {
+                    this.selectedBackgrounds.set(backgroundKey, {
                         category: category,
                         level: data.level || 1,
                         instances: data.instances || [{ level: data.level || 1 }]
@@ -520,9 +531,9 @@ class MeritFlawManager {
         if (flawsData && typeof flawsData === 'object') {
             Object.entries(flawsData).forEach(([flawKey, data]) => {
                 // Find the category for this flaw
-                const category = this.findTraitCategory(flawKey, 'flaw');
+                const category = this.findTraitCategory(flawKey, 'backgroundFlaw');
                 if (category) {
-                    this.selectedFlaws.set(flawKey, {
+                    this.selectedBackgroundFlaws.set(flawKey, {
                         category: category,
                         level: data.level || 1,
                         instances: data.instances || [{ level: data.level || 1 }]
@@ -535,30 +546,30 @@ class MeritFlawManager {
     }
 
     findTraitCategory(traitKey, type) {
-        for (const categoryKey of this.availableCategories) {
-            const category = merits[categoryKey];
-            if (category[type + 's'] && category[type + 's'][traitKey]) {
+        const traitsKey = type === 'background' ? 'merits' : 'flaws';
+        for (const [categoryKey, category] of Object.entries(backgrounds)) {
+            if (category[traitsKey] && category[traitsKey][traitKey]) {
                 return categoryKey;
             }
         }
         return null;
     }
 
-    // Export merits and flaws data (for character saving)
-    exportMeritsAndFlaws() {
+    // Export backgrounds and flaws data (for character saving)
+    exportBackgroundsAndFlaws() {
         return {
-            merits: this.getSelectedMerits(),
-            flaws: this.getSelectedFlaws()
+            backgrounds: this.getSelectedBackgrounds(),
+            backgroundFlaws: this.getSelectedBackgroundFlaws()
         };
     }
 }
 
-// Initialize the merit-flaw manager when the DOM is ready
+// Initialize the background manager when the DOM is ready
 $(document).ready(function() {
     // Only initialize if the containers exist
-    if ($('.merits-container').length > 0 || $('.flaws-container').length > 0) {
-        window.meritFlawManager = new MeritFlawManager();
+    if ($('.backgrounds-container').length > 0 || $('.background-flaws-container').length > 0) {
+        window.backgroundManager = new BackgroundManager();
     }
 });
 
-export { MeritFlawManager };
+export { BackgroundManager };

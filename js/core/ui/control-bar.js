@@ -3,9 +3,9 @@
  * Bottom-left floating control bar used across Ledger – extracted from dice-overlay.js
  */
 
-import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "./discord-integration.js";
-import { bloodPotency as bpData } from "./references/blood_potency.js";
-import { TraitManagerUtils } from './manager-utils.js';
+import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
+import { bloodPotency as bpData } from "../../data/blood_potency.js";
+import { TraitManagerUtils } from '../managers/manager-utils.js';
 
 /**
  * Create the control bar and wire up all event handlers.
