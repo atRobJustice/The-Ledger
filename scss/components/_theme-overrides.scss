@@ -1,133 +1,229 @@
+@use '../variables' as *;
+
 /* Theme override styles (applied via body[data-theme]) */
 
-// Ivory Tower: light parchment look
-body[data-theme='ivory'] {
-  background: linear-gradient(#ece8dd, #d8d4ca);
-  color: #2c1b1b;
+// Kindred Light: Ivory Tower theme
+body[data-theme='kindred-light'] {
+  background: linear-gradient($color-kindred-light-bg, $color-kindred-light-bg-alt);
+  color: $color-kindred-light-text;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #8b0000;
-    border-color: #8b0000;
+    color: $color-kindred-light-accent;
+    border-color: $color-kindred-light-accent;
   }
 
   .ledger {
-    background: #fbf7f2;
-    border-color: #cbbfae;
-    border-left-color: #8b0000;
+    background: $color-kindred-light-panel;
+    border-color: $color-kindred-light-border;
+    border-left-color: $color-kindred-light-accent;
   }
 
   .btn-success {
-    background-color: #567d5e;
+    background-color: $color-kindred-light-success;
   }
 
   .btn-danger {
-    background-color: #8b2d2d;
+    background-color: $color-kindred-light-danger;
   }
 
   /* Accent variable for shared component overrides */
-  --accent: #8b0000;
-  --form-bg: #fbf7f2;
-  --form-border: #cbbfae;
-  --form-text: #2c1b1b;
-  --panel-bg: #fbf7f2;
-  --panel-border: #cbbfae;
-  --panel-border-light: #cbbfae;
-  --panel-text: #2c1b1b;
+  --accent: #{$color-kindred-light-accent};
+  --accent-rgb: 139, 0, 0;
+  --form-bg: #{$color-kindred-light-panel};
+  --form-border: #{$color-kindred-light-border};
+  --form-text: #{$color-kindred-light-text};
+  --panel-bg: #{$color-kindred-light-panel};
+  --panel-bg-rgb: 251, 247, 242;
+  --panel-border: #{$color-kindred-light-border};
+  --panel-border-light: #{$color-kindred-light-border};
+  --panel-text: #{$color-kindred-light-text};
 }
 
 // Daltonic: color-blind friendly blue/orange palette
 body[data-theme='daltonic'] {
-  background: linear-gradient(#f5f6fa, #e3e6f3);
-  color: #1a1a1a;
+  background: linear-gradient($color-daltonic-bg, $color-daltonic-bg-alt);
+  color: $color-daltonic-text;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #005fa3;
-    border-color: #005fa3;
+    color: $color-daltonic-accent;
+    border-color: $color-daltonic-accent;
   }
 
   .ledger {
-    background: #fafdff;
-    border-color: #ff9900;
-    border-left-color: #005fa3;
-    color: #1a1a1a;
+    background: $color-daltonic-panel;
+    border-color: $color-daltonic-border;
+    border-left-color: $color-daltonic-accent;
+    color: $color-daltonic-text;
   }
 
   .btn-success {
-    background-color: #ff9900;
-    color: #fff;
+    background-color: $color-daltonic-border;
+    color: $color-white;
   }
 
   .btn-danger {
-    background-color: #005fa3;
-    color: #fff;
+    background-color: $color-daltonic-accent;
+    color: $color-white;
   }
 
   // Accent and component variables
-  --accent: #005fa3;
-  --form-bg: #fafdff;
-  --form-border: #ff9900;
-  --form-text: #1a1a1a;
-  --panel-bg: #fafdff;
-  --panel-border: #ff9900;
-  --panel-border-light: #ffb84d;
-  --panel-text: #1a1a1a;
-  --text-primary: #1a1a1a;
+  --accent: #{$color-daltonic-accent};
+  --accent-rgb: 0, 95, 163;
+  --form-bg: #{$color-daltonic-panel};
+  --form-border: #{$color-daltonic-border};
+  --form-text: #{$color-daltonic-text};
+  --panel-bg: #{$color-daltonic-panel};
+  --panel-bg-rgb: 250, 253, 255;
+  --panel-border: #{$color-daltonic-border};
+  --panel-border-light: #{$color-daltonic-border-light};
+  --panel-text: #{$color-daltonic-text};
+  --text-primary: #{$color-daltonic-text};
   --text-muted: #5a5a5a;
-  --border-default: #ff9900;
+  --border-default: #{$color-daltonic-border};
 }
 
 body[data-theme='hc-dark'] {
-  background: #000;
-  color: #fff;
+  background: $color-hc-dark-bg;
+  color: $color-hc-dark-text;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #ffd700;
-    border-color: #ffd700;
+    color: $color-hc-dark-accent;
+    border-color: $color-hc-dark-accent;
   }
 
   .ledger {
-    background: #101010;
-    border-color: #ffd700;
-    border-left-color: #00cfff;
+    background: $color-hc-dark-panel;
+    border-color: $color-hc-dark-accent;
+    border-left-color: $color-hc-dark-success;
   }
 
-  .btn-success   { background-color: #00cfff; }
-  .btn-danger    { background-color: #ff2b2b; }
+  .btn-success   { background-color: $color-hc-dark-success; }
+  .btn-danger    { background-color: $color-hc-dark-danger; }
 
-  --accent: #ffd700;
-  --form-bg: #101010;
-  --form-border: #ffd700;
-  --form-text: #fff;
-  --panel-bg: #101010;
-  --panel-border: #ffd700;
-  --panel-text: #fff;
+  --accent: #{$color-hc-dark-accent};
+  --accent-rgb: 255, 215, 0;
+  --form-bg: #{$color-hc-dark-panel};
+  --form-border: #{$color-hc-dark-accent};
+  --form-text: #{$color-hc-dark-text};
+  --panel-bg: #{$color-hc-dark-panel};
+  --panel-bg-rgb: 16, 16, 16;
+  --panel-border: #{$color-hc-dark-accent};
+  --panel-border-light: #{$color-hc-dark-accent};
+  --panel-text: #{$color-hc-dark-text};
 }
 
 body[data-theme='hc-light'] {
-  background: #fff;
-  color: #000;
+  background: $color-hc-light-bg;
+  color: $color-hc-light-text;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #0053d6;
-    border-color: #0053d6;
+    color: $color-hc-light-accent;
+    border-color: $color-hc-light-accent;
   }
 
   .ledger {
-    background: #f7f7f7;
-    border-color: #000;
-    border-left-color: #0053d6;
+    background: $color-hc-light-panel;
+    border-color: $color-hc-light-text;
+    border-left-color: $color-hc-light-accent;
   }
 
-  .btn-success { background-color: #0053d6; color: #fff; }
-  .btn-danger  { background-color: #b40000; color: #fff; }
+  .btn-success { background-color: $color-hc-light-accent; color: $color-white; }
+  .btn-danger  { background-color: $color-hc-light-danger; color: $color-white; }
 
-  --accent: #0053d6;
-  --form-bg: #f7f7f7;
-  --form-border: #000;
-  --form-text: #000;
-  --panel-bg: #f7f7f7;
-  --panel-border: #000;
-  --panel-text: #000;
+  --accent: #{$color-hc-light-accent};
+  --accent-rgb: 0, 83, 214;
+  --form-bg: #{$color-hc-light-panel};
+  --form-border: #{$color-hc-light-text};
+  --form-text: #{$color-hc-light-text};
+  --panel-bg: #{$color-hc-light-panel};
+  --panel-bg-rgb: 247, 247, 247;
+  --panel-border: #{$color-hc-light-text};
+  --panel-border-light: #{$color-hc-light-text};
+  --panel-text: #{$color-hc-light-text};
+}
+
+// Hunter: The Reckoning 5th Edition - Dark Theme
+body[data-theme='hunter-dark'] {
+  background: linear-gradient($color-hunter-dark-bg, $color-hunter-dark-bg-alt);
+  color: $color-hunter-dark-text;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-hunter-dark-accent;
+    border-color: $color-hunter-dark-accent;
+  }
+
+  .ledger {
+    background: $color-hunter-dark-panel;
+    border-color: $color-hunter-dark-border;
+    border-left-color: $color-hunter-dark-accent;
+    color: $color-hunter-dark-text;
+  }
+
+  .btn-success {
+    background-color: $color-hunter-dark-accent;
+    color: $color-black;
+  }
+
+  .btn-danger {
+    background-color: $color-hunter-dark-danger;
+    color: $color-white;
+  }
+
+  --accent: #{$color-hunter-dark-accent};
+  --accent-rgb: 255, 102, 0;
+  --form-bg: #{$color-hunter-dark-panel};
+  --form-border: #{$color-hunter-dark-border};
+  --form-text: #{$color-hunter-dark-text};
+  --panel-bg: #{$color-hunter-dark-panel};
+  --panel-bg-rgb: 26, 26, 26;
+  --panel-border: #{$color-hunter-dark-border};
+  --panel-border-light: #666666;
+  --panel-text: #{$color-hunter-dark-text};
+  --text-primary: #{$color-hunter-dark-text};
+  --text-muted: #{$color-hunter-dark-accent};
+  --border-default: #{$color-hunter-dark-border};
+}
+
+// Hunter: The Reckoning 5th Edition - Light Theme
+body[data-theme='hunter-light'] {
+  background: linear-gradient($color-hunter-light-bg, $color-hunter-light-bg-alt);
+  color: $color-hunter-light-text;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-hunter-light-accent;
+    border-color: $color-hunter-light-accent;
+  }
+
+  .ledger {
+    background: $color-hunter-light-panel;
+    border-color: $color-hunter-light-border;
+    border-left-color: $color-hunter-light-accent;
+    color: $color-hunter-light-text;
+  }
+
+  .btn-success {
+    background-color: $color-hunter-light-accent;
+    color: $color-white;
+  }
+
+  .btn-danger {
+    background-color: $color-hunter-light-danger;
+    color: $color-white;
+  }
+
+  --accent: #{$color-hunter-light-accent};
+  --accent-rgb: 255, 102, 0;
+  --form-bg: #{$color-hunter-light-panel};
+  --form-border: #{$color-hunter-light-border};
+  --form-text: #{$color-hunter-light-text};
+  --panel-bg: #{$color-hunter-light-panel};
+  --panel-bg-rgb: 255, 255, 255;
+  --panel-border: #{$color-hunter-light-border};
+  --panel-border-light: #e0e0e0;
+  --panel-text: #{$color-hunter-light-text};
+  --text-primary: #{$color-hunter-light-text};
+  --text-muted: #{$color-hunter-light-accent};
+  --border-default: #{$color-hunter-light-border};
 }
 
 @font-face {
@@ -198,7 +294,7 @@ body[data-theme='default'] input#xp-level.form-range::-webkit-slider-thumb {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
-  background: var(--accent, #a40000);
+  background: var(--accent, #666666);
   border: 2px solid var(--color-border, #fff);
   cursor: pointer;
   margin-top: -0.15rem;
@@ -209,7 +305,7 @@ body[data-theme='default'] input#xp-level.form-range::-moz-range-thumb {
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 50%;
-  background: var(--accent, #a40000);
+  background: var(--accent, #666666);
   border: 2px solid var(--color-border, #fff);
   cursor: pointer;
 }
@@ -224,4 +320,181 @@ body[data-theme='default'] input#xp-level.form-range::-webkit-slider-runnable-tr
 body:not([data-theme]) input#xp-level.form-range:focus,
 body[data-theme='default'] input#xp-level.form-range:focus {
   outline: none;
+}
+
+// Dashboard header and title overrides for all themes
+body[data-theme] {
+  .dashboard-title {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dashboard-subtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// World of Darkness - Dark Theme
+body[data-theme='wod-dark'] {
+  background: linear-gradient(#0d0d0d, #1a1a1a);
+  color: #d4d4d4;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #c0c0c0;
+    border-color: #666666;
+  }
+
+  .ledger {
+    background: #1a1a1a;
+    border-color: #333333;
+    border-left-color: #666666;
+    color: #d4d4d4;
+  }
+
+  .btn-success {
+    background-color: #2d5a2d;
+    color: #ffffff;
+  }
+
+  .btn-danger {
+    background-color: #5a2d2d;
+    color: #ffffff;
+  }
+
+  --accent: #666666;
+  --accent-rgb: 102, 102, 102;
+  --form-bg: #1a1a1a;
+  --form-border: #333333;
+  --form-text: #d4d4d4;
+  --panel-bg: #1a1a1a;
+  --panel-bg-rgb: 26, 26, 26;
+  --panel-border: #333333;
+  --panel-border-light: #4d4d4d;
+  --panel-text: #d4d4d4;
+  --text-primary: #d4d4d4;
+  --text-muted: #999999;
+  --border-default: #333333;
+}
+
+// World of Darkness - Light Theme
+body[data-theme='wod-light'] {
+  background: linear-gradient(#f5f5f5, #e8e8e8);
+  color: #2a2a2a;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #404040;
+    border-color: #666666;
+  }
+
+  .ledger {
+    background: #ffffff;
+    border-color: #cccccc;
+    border-left-color: #666666;
+    color: #2a2a2a;
+  }
+
+  .btn-success {
+    background-color: #4a7c4a;
+    color: #ffffff;
+  }
+
+  .btn-danger {
+    background-color: #7c4a4a;
+    color: #ffffff;
+  }
+
+  --accent: #666666;
+  --accent-rgb: 102, 102, 102;
+  --form-bg: #ffffff;
+  --form-border: #cccccc;
+  --form-text: #2a2a2a;
+  --panel-bg: #ffffff;
+  --panel-bg-rgb: 255, 255, 255;
+  --panel-border: #cccccc;
+  --panel-border-light: #e0e0e0;
+  --panel-text: #2a2a2a;
+  --text-primary: #2a2a2a;
+  --text-muted: #666666;
+  --border-default: #cccccc;
+}
+
+// Light theme overrides
+body[data-theme='light'] {
+  background: linear-gradient($color-gray-lightest, $color-gray-light);
+  color: $color-black;
+  
+  h1, h2, h3, h4, h5, h6 { 
+    color: $color-primary; 
+    border-color: $color-primary; 
+  }
+  
+  .ledger { 
+    background: $color-white; 
+    border-color: $color-gray-light; 
+    border-left-color: $color-primary; 
+  }
+  
+  .btn-success { background-color: $color-success; }
+  .btn-danger { background-color: $color-danger; }
+  
+  /* Accent variable for shared component overrides */
+  --accent: $color-primary;
+  --accent-rgb: 139, 0, 0;
+  --form-bg: $color-white;
+  --form-border: $color-gray-light;
+  --form-text: $color-black;
+  --panel-bg: $color-white;
+  --panel-bg-rgb: 251, 247, 242;
+  --panel-border: $color-gray-light;
+  --panel-border-light: $color-gray-light;
+  --panel-text: $color-black;
+}
+
+// High contrast theme
+body[data-theme='high-contrast'] {
+  background: linear-gradient($color-gray-lightest, $color-gray-light);
+}
+
+// Blood & Roses (Kindred Dark) Theme
+body[data-theme='kindred-dark'] {
+  background: linear-gradient(#0d0d0d, #2c1b1b);
+  color: #d8d0c8;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #a40000;
+    border-color: #a40000;
+  }
+
+  .ledger {
+    background: #2c1b1b;
+    border-color: #333;
+    border-left-color: #a40000;
+    color: #d8d0c8;
+  }
+
+  .btn-success {
+    background-color: #567d5e;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background-color: #8b2d2d;
+    color: #fff;
+  }
+
+  --accent: #a40000;
+  --accent-rgb: 164, 0, 0;
+  --color-background: #0d0d0d;
+  --form-bg: #2c1b1b;
+  --form-border: #333;
+  --form-text: #d8d0c8;
+  --panel-bg: #2c1b1b;
+  --panel-bg-rgb: 44, 27, 27;
+  --panel-border: #333;
+  --panel-border-light: #555;
+  --panel-text: #d8d0c8;
+  --text-primary: #d8d0c8;
+  --text-muted: #888;
+  --border-default: #333;
 }

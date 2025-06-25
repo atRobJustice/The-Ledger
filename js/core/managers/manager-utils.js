@@ -18,8 +18,7 @@ class ToastManager {
         if (!document.getElementById(this.containerId)) {
             const container = document.createElement('div');
             container.id = this.containerId;
-            container.className = 'toast-container position-fixed top-0 end-0 p-3';
-            container.style.zIndex = '9999';
+            container.className = 'toast-container position-fixed top-0 end-0 p-3 manager-container';
             document.body.appendChild(container);
         }
     }
@@ -174,18 +173,361 @@ class ToastManager {
     }
 }
 
-// Create singleton instance
+/**
+ * Modal Manager - Consolidated modal system
+ * Provides consistent modal creation, management, and cleanup
+ */
+class ModalManager {
+    constructor() {
+        this.modalCounter = 0;
+        this.activeModals = new Map();
+    }
+
+    /**
+     * Generate a unique modal ID
+     * @param {string} prefix - Optional prefix for the modal ID
+     * @returns {string} Unique modal ID
+     */
+    generateModalId(prefix = 'modal') {
+        return `${prefix}_${++this.modalCounter}_${Date.now()}`;
+    }
+
+    /**
+     * Create a basic modal structure
+     * @param {Object} options - Modal configuration options
+     * @returns {Object} Object with modalId, modalHtml, and modalElement
+     */
+    createModal(options = {}) {
+        const {
+            id = this.generateModalId(),
+            title = '',
+            content = '',
+            size = 'default', // default, sm, lg, xl
+            centered = false,
+            scrollable = false,
+            backdrop = true,
+            keyboard = true,
+            showCloseButton = true,
+            footer = '',
+            customClass = '',
+            onShow = null,
+            onHide = null,
+            onHidden = null
+        } = options;
+
+        // Size classes
+        const sizeClass = size !== 'default' ? `modal-${size}` : '';
+        
+        // Additional classes
+        const additionalClasses = [];
+        if (centered) additionalClasses.push('modal-dialog-centered');
+        if (scrollable) additionalClasses.push('modal-dialog-scrollable');
+        
+        const modalHtml = `
+            <div class="modal fade ${customClass}" id="${id}" tabindex="-1" aria-labelledby="${id}-label" aria-hidden="true">
+                <div class="modal-dialog ${sizeClass} ${additionalClasses.join(' ')}">
+                    <div class="modal-content bg-dark text-light">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="${id}-label">${title}</h5>
+                            ${showCloseButton ? '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>' : ''}
+                        </div>
+                        <div class="modal-body" id="${id}-content">
+                            ${content}
+                        </div>
+                        ${footer ? `<div class="modal-footer">${footer}</div>` : ''}
+                    </div>
+                </div>
+            </div>`;
+
+        return {
+            modalId: id,
+            modalHtml: modalHtml,
+            modalElement: null,
+            options: options
+        };
+    }
+
+    /**
+     * Show a confirmation modal
+     * @param {string} title - Modal title
+     * @param {string} message - Modal message
+     * @param {Object} options - Additional options
+     * @returns {Promise<boolean>} Promise that resolves to true if confirmed
+     */
+    async confirm(title, message, options = {}) {
+        const {
+            confirmText = 'Confirm',
+            cancelText = 'Cancel',
+            confirmClass = 'btn-primary',
+            cancelClass = 'btn-secondary',
+            size = 'default',
+            centered = true
+        } = options;
+
+        const footer = `
+            <button type="button" class="btn ${cancelClass}" data-bs-dismiss="modal">${cancelText}</button>
+            <button type="button" class="btn ${confirmClass}" id="confirmBtn">${confirmText}</button>
+        `;
+
+        const modalConfig = this.createModal({
+            title,
+            content: message,
+            footer,
+            size,
+            centered,
+            ...options
+        });
+
+        return new Promise((resolve) => {
+            this.showModal(modalConfig, (modalElement, modalInstance) => {
+                // Handle confirm button
+                const confirmBtn = modalElement.querySelector('#confirmBtn');
+                confirmBtn.addEventListener('click', () => {
+                    modalInstance.hide();
+                    resolve(true);
+                });
+
+                // Handle cancel/close
+                const handleCancel = () => {
+                    modalInstance.hide();
+                    resolve(false);
+                };
+
+                modalElement.querySelectorAll('[data-bs-dismiss="modal"]').forEach(btn => {
+                    btn.addEventListener('click', handleCancel);
+                });
+
+                // Handle escape key and backdrop click
+                modalElement.addEventListener('hidden.bs.modal', () => {
+                    resolve(false);
+                });
+            });
+        });
+    }
+
+    /**
+     * Show an information modal
+     * @param {string} title - Modal title
+     * @param {string} content - Modal content (HTML)
+     * @param {Object} options - Additional options
+     * @returns {Promise<void>} Promise that resolves when modal is closed
+     */
+    async info(title, content, options = {}) {
+        const {
+            size = 'default',
+            centered = true,
+            scrollable = true
+        } = options;
+
+        const modalConfig = this.createModal({
+            title,
+            content,
+            size,
+            centered,
+            scrollable,
+            ...options
+        });
+
+        return new Promise((resolve) => {
+            this.showModal(modalConfig, (modalElement, modalInstance) => {
+                modalElement.addEventListener('hidden.bs.modal', () => {
+                    resolve();
+                });
+            });
+        });
+    }
+
+    /**
+     * Show a selection modal
+     * @param {string} title - Modal title
+     * @param {Array} options - Array of options to choose from
+     * @param {Function} renderOption - Function to render each option
+     * @param {Object} modalOptions - Additional modal options
+     * @returns {Promise<Object>} Promise that resolves to selected option and index
+     */
+    async select(title, options, renderOption, modalOptions = {}) {
+        const {
+            size = 'lg',
+            scrollable = true
+        } = modalOptions;
+
+        const content = `
+            <div class="selection-options">
+                ${options.map((option, index) => renderOption(option, index)).join('')}
+            </div>
+        `;
+
+        const modalConfig = this.createModal({
+            title,
+            content,
+            size,
+            scrollable,
+            footer: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>',
+            ...modalOptions
+        });
+
+        return new Promise((resolve) => {
+            this.showModal(modalConfig, (modalElement, modalInstance) => {
+                // Bind selection events
+                modalElement.querySelectorAll('.select-option-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.dataset.index);
+                        modalInstance.hide();
+                        resolve({ option: options[index], index });
+                    });
+                });
+
+                // Handle cancel
+                modalElement.addEventListener('hidden.bs.modal', () => {
+                    resolve(null);
+                });
+            });
+        });
+    }
+
+    /**
+     * Show a custom modal with full control
+     * @param {Object} options - Modal configuration
+     * @param {Function} onReady - Callback when modal is ready (receives modalElement, modalInstance)
+     * @returns {Object} Object with modalElement and modalInstance
+     */
+    showCustom(options, onReady = null) {
+        const modalConfig = this.createModal(options);
+        return this.showModal(modalConfig, onReady);
+    }
+
+    /**
+     * Internal method to show a modal
+     * @param {Object} modalConfig - Modal configuration object
+     * @param {Function} onReady - Callback when modal is ready
+     * @returns {Object} Object with modalElement and modalInstance
+     */
+    showModal(modalConfig, onReady = null) {
+        const { modalId, modalHtml, options } = modalConfig;
+
+        // Remove existing modal if it exists
+        this.hideModal(modalId);
+
+        // Add modal to DOM
+        $('body').append(modalHtml);
+        const modalElement = document.getElementById(modalId);
+        
+        // Create Bootstrap modal instance
+        const modalInstance = new bootstrap.Modal(modalElement, {
+            backdrop: options.backdrop !== false,
+            keyboard: options.keyboard !== false
+        });
+
+        // Store active modal
+        this.activeModals.set(modalId, { modalElement, modalInstance, options });
+
+        // Set up event handlers
+        if (options.onShow) {
+            modalElement.addEventListener('show.bs.modal', options.onShow);
+        }
+        if (options.onHide) {
+            modalElement.addEventListener('hide.bs.modal', options.onHide);
+        }
+        if (options.onHidden) {
+            modalElement.addEventListener('hidden.bs.modal', options.onHidden);
+        }
+
+        // Always clean up on hidden
+        modalElement.addEventListener('hidden.bs.modal', () => {
+            this.cleanupModal(modalId);
+        });
+
+        // Call onReady callback if provided
+        if (onReady) {
+            onReady(modalElement, modalInstance);
+        }
+
+        // Show the modal
+        modalInstance.show();
+
+        return { modalElement, modalInstance };
+    }
+
+    /**
+     * Hide a specific modal
+     * @param {string} modalId - ID of modal to hide
+     */
+    hideModal(modalId) {
+        const modalData = this.activeModals.get(modalId);
+        if (modalData) {
+            modalData.modalInstance.hide();
+        }
+    }
+
+    /**
+     * Hide all active modals
+     */
+    hideAllModals() {
+        this.activeModals.forEach((modalData, modalId) => {
+            modalData.modalInstance.hide();
+        });
+    }
+
+    /**
+     * Clean up modal resources
+     * @param {string} modalId - ID of modal to cleanup
+     */
+    cleanupModal(modalId) {
+        const modalData = this.activeModals.get(modalId);
+        if (modalData) {
+            // Remove from DOM
+            if (modalData.modalElement && modalData.modalElement.parentNode) {
+                modalData.modalElement.parentNode.removeChild(modalData.modalElement);
+            }
+            
+            // Dispose Bootstrap modal instance
+            if (modalData.modalInstance) {
+                modalData.modalInstance.dispose();
+            }
+            
+            // Remove from active modals
+            this.activeModals.delete(modalId);
+        }
+    }
+
+    /**
+     * Get modal instance by ID
+     * @param {string} modalId - Modal ID
+     * @returns {Object|null} Modal data or null if not found
+     */
+    getModal(modalId) {
+        return this.activeModals.get(modalId) || null;
+    }
+
+    /**
+     * Check if a modal is currently active
+     * @param {string} modalId - Modal ID
+     * @returns {boolean} True if modal is active
+     */
+    isModalActive(modalId) {
+        return this.activeModals.has(modalId);
+    }
+
+    /**
+     * Get count of active modals
+     * @returns {number} Number of active modals
+     */
+    getActiveModalCount() {
+        return this.activeModals.size;
+    }
+}
+
+// Create singleton instances
 const toastManager = new ToastManager();
+const modalManager = new ModalManager();
 
 // Expose globally for non-module scripts
 if (typeof window !== 'undefined') {
     window.toastManager = toastManager;
+    window.modalManager = modalManager;
 }
 
-// Export the toast manager for use in other modules
-export { toastManager };
-
-export class TraitManagerUtils {
+class TraitManagerUtils {
     /**
      * Create dots HTML for displaying trait levels
      * @param {number} value - Current value
@@ -227,47 +569,10 @@ export class TraitManagerUtils {
      * @param {string} confirmClass - Confirm button CSS class
      * @returns {Promise<boolean>} Promise that resolves to true if confirmed
      */
-    static showConfirmModal(title, message, confirmText = 'Confirm', confirmClass = 'btn-primary') {
-        return new Promise((resolve) => {
-            const modalId = 'confirmModal_' + Date.now();
-            const modalHtml = `
-                <div class="modal fade" id="${modalId}" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark text-light">
-                            <div class="modal-header">
-                                <h5 class="modal-title">${title}</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                ${message}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelBtn_${modalId}">Cancel</button>
-                                <button type="button" class="btn ${confirmClass}" id="confirmBtn_${modalId}">${confirmText}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            $('body').append(modalHtml);
-            const modal = new bootstrap.Modal(document.getElementById(modalId));
-            
-            $(`#confirmBtn_${modalId}`).on('click', () => {
-                modal.hide();
-                resolve(true);
-            });
-            
-            $(`#cancelBtn_${modalId}, .btn-close`).on('click', () => {
-                modal.hide();
-                resolve(false);
-            });
-            
-            $(`#${modalId}`).on('hidden.bs.modal', function() {
-                $(this).remove();
-            });
-            
-            modal.show();
+    static async showConfirmModal(title, message, confirmText = 'Confirm', confirmClass = 'btn-primary') {
+        return await modalManager.confirm(title, message, {
+            confirmText,
+            confirmClass
         });
     }
 
@@ -415,44 +720,11 @@ export class TraitManagerUtils {
      * @param {Function} renderOption - Function to render each option
      * @param {Function} onSelect - Callback when option is selected
      */
-    static showSelectionModal(title, options, renderOption, onSelect) {
-        const modalId = 'selectionModal_' + Date.now();
-        const modalHtml = `
-            <div class="modal fade" id="${modalId}" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content bg-dark text-light">
-                        <div class="modal-header">
-                            <h5 class="modal-title">${title}</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="selection-options">
-                                ${options.map((option, index) => renderOption(option, index)).join('')}
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        $('body').append(modalHtml);
-        const modal = new bootstrap.Modal(document.getElementById(modalId));
-        
-        // Bind selection events
-        $(`#${modalId} .select-option-btn`).on('click', (e) => {
-            const index = parseInt($(e.currentTarget).data('index'));
-            onSelect(options[index], index);
-            modal.hide();
-        });
-        
-        $(`#${modalId}`).on('hidden.bs.modal', function() {
-            $(this).remove();
-        });
-        
-        modal.show();
+    static async showSelectionModal(title, options, renderOption, onSelect) {
+        const result = await modalManager.select(title, options, renderOption);
+        if (result) {
+            onSelect(result.option, result.index);
+        }
     }
 
     /**
@@ -565,3 +837,6 @@ export class TraitManagerUtils {
             .join('');
     }
 }
+
+// Export the classes and instances
+export { TraitManagerUtils, ToastManager, ModalManager, toastManager, modalManager };

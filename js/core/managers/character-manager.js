@@ -4,7 +4,7 @@
  */
 
 import databaseManager from './database-manager.js';
-import { toastManager } from './manager-utils.js';
+import { TraitManagerUtils } from './manager-utils.js';
 
 class CharacterManager {
     constructor() {
@@ -58,12 +58,60 @@ class CharacterManager {
      */
     async setCurrentCharacter() {
         try {
+            // Check if there's a character ID in the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const characterIdFromUrl = urlParams.get('id');
+            const lockedFromUrl = urlParams.get('locked');
+            
+            if (characterIdFromUrl) {
+                // Convert to number if it's a string
+                const characterId = parseInt(characterIdFromUrl);
+                if (!isNaN(characterId)) {
+                    // Check if the character exists
+                    const character = await databaseManager.getCharacter(characterId);
+                    if (character) {
+                        this.currentCharacterId = characterId;
+                        console.log('Loading character from URL parameter:', characterId);
+                        
+                        // Set as active character in database
+                        await databaseManager.setActiveCharacterId(characterId);
+                        
+                        // Initialize lock state from URL parameter if present
+                        if (lockedFromUrl !== null && window.LockManager) {
+                            const shouldLock = lockedFromUrl === 'true';
+                            console.log('Setting lock state from URL parameter:', shouldLock);
+                            window.LockManager.init(shouldLock);
+                        }
+                        
+                        // Load the character data into the UI
+                        if (window.loadCharacterData) {
+                            console.log('CharacterManager: Loading character data into UI from URL parameter');
+                            window.loadCharacterData(character);
+                        }
+                        
+                        return;
+                    } else {
+                        console.warn('Character not found for ID from URL:', characterId);
+                    }
+                }
+            }
+            
+            // Fall back to active character from database
             this.currentCharacterId = await databaseManager.getActiveCharacterId();
             
             // If no active character, use the first one or create a new one
             if (!this.currentCharacterId && this.characters.length > 0) {
                 this.currentCharacterId = this.characters[0].id;
                 await databaseManager.setActiveCharacterId(this.currentCharacterId);
+            }
+            
+            // Load the current character data into the UI
+            if (this.currentCharacterId && window.loadCharacterData) {
+                const character = await databaseManager.getCharacter(this.currentCharacterId);
+                if (character) {
+                    console.log('CharacterManager: Loading character data into UI from database');
+                    window.loadCharacterData(character);
+                }
             }
             
             console.log('Current character ID:', this.currentCharacterId);
@@ -152,7 +200,10 @@ class CharacterManager {
             
             // Load the new character data
             if (window.loadCharacterData) {
+                console.log('CharacterManager: Calling loadCharacterData with character:', character);
                 window.loadCharacterData(character);
+            } else {
+                console.log('CharacterManager: loadCharacterData function not available');
             }
             
             // Update UI
@@ -226,74 +277,12 @@ class CharacterManager {
      * Initialize the character management UI
      */
     initUI() {
-        // Create character management UI
-        this.createCharacterManagementUI();
+        // Character management UI is now handled by the dashboard
+        // No need to create control bar UI elements
         
         // Update displays
         this.updateCharacterList();
         this.updateCurrentCharacterDisplay();
-    }
-
-    /**
-     * Create the character management UI
-     */
-    createCharacterManagementUI() {
-        // Find the control bar
-        const controlBar = document.getElementById('ledger-control-bar');
-        if (!controlBar) {
-            console.warn('Control bar not found, retrying...');
-            setTimeout(() => this.createCharacterManagementUI(), 1000);
-            return;
-        }
-
-        // Create character selector container
-        const characterContainer = document.createElement('div');
-        characterContainer.className = 'character-manager-container';
-        characterContainer.style.cssText = `
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-right: 16px;
-        `;
-
-        // Create character selector
-        const characterSelect = document.createElement('select');
-        characterSelect.id = 'character-selector';
-        characterSelect.className = 'form-select form-select-sm';
-        characterSelect.style.cssText = `
-            min-width: 150px;
-            max-width: 200px;
-        `;
-
-        // Create new character button
-        const newCharacterBtn = document.createElement('button');
-        newCharacterBtn.className = 'btn btn-outline-light btn-sm';
-        newCharacterBtn.innerHTML = '<i class="bi bi-plus"></i>';
-        newCharacterBtn.title = 'Create New Character';
-        newCharacterBtn.onclick = () => this.showNewCharacterModal();
-
-        // Create character management button
-        const manageBtn = document.createElement('button');
-        manageBtn.className = 'btn btn-outline-light btn-sm';
-        manageBtn.innerHTML = '<i class="bi bi-gear"></i>';
-        manageBtn.title = 'Manage Characters';
-        manageBtn.onclick = () => this.showCharacterManagementModal();
-
-        // Add elements to container
-        characterContainer.appendChild(characterSelect);
-        characterContainer.appendChild(newCharacterBtn);
-        characterContainer.appendChild(manageBtn);
-
-        // Insert at the beginning of the control bar
-        controlBar.insertBefore(characterContainer, controlBar.firstChild);
-
-        // Add event listener for character selection
-        characterSelect.addEventListener('change', (e) => {
-            const characterId = parseInt(e.target.value);
-            if (characterId && characterId !== this.currentCharacterId) {
-                this.switchCharacter(characterId);
-            }
-        });
     }
 
     /**
@@ -473,124 +462,67 @@ class CharacterManager {
     }
 
     /**
-     * Show the new character modal
+     * Show the new character creation modal
      */
     showNewCharacterModal() {
-        const modalHtml = `
-            <div class="modal fade" id="newCharacterModal" tabindex="-1" aria-labelledby="newCharacterModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="newCharacterModalLabel">Create New Character</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="newCharacterName" class="form-label">Character Name</label>
-                                <input type="text" class="form-control" id="newCharacterName" placeholder="Enter character name">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="createCharacterBtn">Create Character</button>
-                        </div>
-                    </div>
+        const { modalElement, modalInstance } = window.modalManager.showCustom({
+            title: 'Create New Character',
+            content: `
+                <div class="mb-3">
+                    <label for="characterNameInput" class="form-label">Character Name</label>
+                    <input type="text" class="form-control" id="characterNameInput" placeholder="Enter character name">
                 </div>
-            </div>`;
-        
-        // Remove existing modal if present
-        const existingModal = document.getElementById('newCharacterModal');
-        if (existingModal) {
-            existingModal.remove();
-        }
-        
-        // Add modal to page
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
-        
-        const modal = document.getElementById('newCharacterModal');
-        const modalInstance = new bootstrap.Modal(modal);
-        
-        // Focus on name input
-        const nameInput = document.getElementById('newCharacterName');
-        nameInput.focus();
-        
-        // Handle create button
-        document.getElementById('createCharacterBtn').onclick = async () => {
-            const name = nameInput.value.trim();
-            if (!name) {
-                toastManager.show('Please enter a character name', 'warning', 'Character Manager');
-                return;
-            }
-            
-            try {
-                // Clear the current sheet first
-                await this.clearCurrentSheet();
-                
-                // Create the new character
-                await this.createNewCharacter({ name });
-                modalInstance.hide();
-                
-                // Set the character name in the sheet
-                this.setCharacterName(name);
-                
-                // Show success message
-                toastManager.show(`Character "${name}" created successfully!`, 'success', 'Character Manager');
-                
-            } catch (err) {
-                toastManager.show('Failed to create character: ' + err.message, 'danger', 'Character Manager');
-            }
-        };
-        
-        // Handle Enter key
-        nameInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('createCharacterBtn').click();
-            }
+            `,
+            footer: `
+                <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn theme-btn-primary" id="createCharacterBtn">Create</button>
+            `,
+            size: 'default',
+            centered: true
+        }, (element, instance) => {
+            // Handle create button click
+            element.querySelector('#createCharacterBtn').addEventListener('click', async () => {
+                const name = element.querySelector('#characterNameInput').value.trim();
+                if (!name) {
+                    window.toastManager.show('Please enter a character name', 'warning', 'Character Manager');
+                    return;
+                }
+
+                try {
+                    await this.createNewCharacter({ name });
+                    instance.hide();
+                    window.toastManager.show(`Character "${name}" created successfully!`, 'success', 'Character Manager');
+                } catch (err) {
+                    window.toastManager.show('Failed to create character: ' + err.message, 'danger', 'Character Manager');
+                }
+            });
         });
-        
-        modalInstance.show();
     }
 
     /**
      * Show the character management modal
      */
     showCharacterManagementModal() {
-        const modalHtml = `
-            <div class="modal fade" id="characterManagementModal" tabindex="-1" aria-labelledby="characterManagementModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="characterManagementModalLabel">Manage Characters</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="characterList">
-                                <!-- Character list will be populated here -->
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-        
-        // Remove existing modal if present
-        const existingModal = document.getElementById('characterManagementModal');
-        if (existingModal) {
-            existingModal.remove();
-        }
-        
-        // Add modal to page
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
-        
-        const modal = document.getElementById('characterManagementModal');
-        const modalInstance = new bootstrap.Modal(modal);
-        
-        // Populate character list
-        this.populateCharacterManagementList();
-        
-        modalInstance.show();
+        const content = `
+            <div id="characterList">
+                <!-- Character list will be populated here -->
+            </div>
+        `;
+
+        const footer = `
+            <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
+        `;
+
+        const { modalElement, modalInstance } = modalManager.showCustom({
+            title: 'Manage Characters',
+            content,
+            footer,
+            size: 'lg',
+            centered: true
+        }, (element, instance) => {
+            // Populate character list
+            this.populateCharacterManagementList();
+        });
     }
 
     /**
@@ -601,7 +533,7 @@ class CharacterManager {
         if (!characterList) return;
         
         if (this.characters.length === 0) {
-            characterList.innerHTML = '<p class="text-muted">No characters found. Create your first character!</p>';
+            characterList.innerHTML = '<p>No characters found. Create your first character!</p>';
             return;
         }
         
@@ -619,13 +551,13 @@ class CharacterManager {
                                     ${character.name || 'Unnamed Character'}
                                     ${isCurrent ? '<span class="badge bg-primary ms-2">Current</span>' : ''}
                                 </h6>
-                                <p class="card-text text-muted small mb-2">
+                                <p class="card-text small mb-2">
                                     Created: ${createdAt} | Last updated: ${updatedAt}
                                 </p>
                             </div>
                             <div class="btn-group btn-group-sm">
-                                ${!isCurrent ? `<button class="btn btn-outline-primary" onclick="characterManager.switchCharacter(${character.id})">Switch</button>` : ''}
-                                <button class="btn btn-outline-danger" onclick="characterManager.confirmDeleteCharacter(${character.id}, '${character.name || 'Unnamed Character'}')">Delete</button>
+                                ${!isCurrent ? `<button class="btn theme-btn-outline-primary" onclick="characterManager.switchCharacter(${character.id})">Switch</button>` : ''}
+                                <button class="btn theme-btn-outline-danger" onclick="characterManager.confirmDeleteCharacter(${character.id}, '${character.name || 'Unnamed Character'}')">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -644,9 +576,9 @@ class CharacterManager {
         if (confirmed) {
             try {
                 await this.deleteCharacter(characterId);
-                toastManager.show(`Character "${characterName}" has been deleted successfully.`, 'success', 'Character Manager');
+                window.toastManager.show(`Character "${characterName}" has been deleted successfully.`, 'success', 'Character Manager');
             } catch (err) {
-                toastManager.show(`Failed to delete character: ${err.message}`, 'danger', 'Character Manager');
+                window.toastManager.show(`Failed to delete character: ${err.message}`, 'danger', 'Character Manager');
             }
         }
     }
@@ -654,53 +586,12 @@ class CharacterManager {
     /**
      * Show delete confirmation modal
      */
-    showDeleteConfirmationModal(characterName) {
-        return new Promise((resolve) => {
-            const modalHtml = `
-                <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-dark text-light">
-                            <div class="modal-header border-secondary">
-                                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete <strong>"${characterName}"</strong>?</p>
-                                <p class="text-warning mb-0"><i class="bi bi-exclamation-triangle"></i> This action cannot be undone.</p>
-                            </div>
-                            <div class="modal-footer border-secondary">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete Character</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-            
-            // Remove existing modal if present
-            const existingModal = document.getElementById('deleteConfirmationModal');
-            if (existingModal) {
-                existingModal.remove();
-            }
-            
-            // Add modal to page
-            document.body.insertAdjacentHTML('beforeend', modalHtml);
-            
-            const modal = document.getElementById('deleteConfirmationModal');
-            const modalInstance = new bootstrap.Modal(modal);
-            
-            // Handle confirm button
-            document.getElementById('confirmDeleteBtn').onclick = () => {
-                modalInstance.hide();
-                resolve(true);
-            };
-            
-            // Handle cancel and close
-            modal.addEventListener('hidden.bs.modal', () => {
-                resolve(false);
-                modal.remove();
-            });
-            
-            modalInstance.show();
+    async showDeleteConfirmationModal(characterName) {
+        const message = `Are you sure you want to delete "${characterName}"? This action cannot be undone.`;
+        return await window.modalManager.confirm('Confirm Deletion', message, {
+            confirmText: 'Delete Character',
+            confirmClass: 'theme-btn-danger',
+            centered: true
         });
     }
 

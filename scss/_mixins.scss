@@ -54,21 +54,21 @@
 @mixin hover-transition {
   transition: $transition-base;
   &:hover {
-    border-color: var(--accent, $color-primary);
+    border-color: var(--accent, #666666);
   }
 }
 
 // Form control mixins
 @mixin form-control-dark {
-  background-color: var(--form-bg, transparent) !important;
-  border: $border-width $border-style var(--form-border, $color-border) !important;
-  color: var(--form-text, $color-text) !important;
+  background-color: var(--form-bg, #1a1a1a) !important;
+  border: $border-width $border-style var(--form-border, #333333) !important;
+  color: var(--form-text, #d4d4d4) !important;
   font-family: $font-primary;
   transition: border-color 0.2s;
 
   &:focus {
     outline: none;
-    border-color: var(--accent, $color-primary) !important;
+    border-color: var(--accent, #666666) !important;
     box-shadow: none;
   }
 }

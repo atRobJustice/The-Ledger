@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .lockable-dot.disabled {
   pointer-events: none;
   opacity: 0.75;
@@ -5,12 +7,14 @@
 }
 
 [data-lockable="true"]:disabled {
-  background: #222 !important;
-  color: #777 !important;
+  background: $color-gray-dark !important;
+  color: $color-gray-light !important;
   cursor: not-allowed;
 }
 
 body.locked-sheet {
+  background: var(--color-background, $color-gray-dark) !important;
+  color: var(--text-muted, $color-gray-light) !important;
   .disciplines-container .btn,
   .merits-container .btn,
   .flaws-container .btn,

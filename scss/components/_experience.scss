@@ -3,15 +3,16 @@
 
 // Experience Points Component
 .experience-container {
-  background-color: var(--panel-bg, $color-background);
-  border: $border-width $border-style var(--panel-border, $color-border);
-  border-left: 6px solid var(--accent, $color-primary);
+  background-color: var(--panel-bg, #1a1a1a);
+  border: 1px solid var(--panel-border, #333333);
+  border-left: 6px solid var(--accent);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: $spacing-md;
   margin-bottom: $spacing-lg;
+  color: var(--panel-text, #d4d4d4);
 
   h3 {
-    color: var(--accent, $color-primary);
+    color: var(--accent);
     margin-top: 0;
     margin-bottom: $spacing-md;
     font-size: 1.25rem;
@@ -56,7 +57,7 @@
   margin-top: $spacing-md;
 
   h4 {
-    color: var(--accent, $color-primary);
+    color: var(--accent);
     margin-bottom: $spacing-sm;
     font-size: 1rem;
   }

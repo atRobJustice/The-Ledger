@@ -1,0 +1,107 @@
+@use '../variables' as *;
+// Control Bar Styles
+// Replaces inline styles from js/control-bar.js
+
+#ledger-control-bar {
+  border-top: 2px solid rgba($color-white, 0.2);
+  z-index: 2100;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  gap: 0.25rem 0.5rem;
+  
+  // Simple vertical divider
+  .vr {
+    width: 1px;
+    background: rgba($color-white, 0.25);
+    align-self: stretch;
+  }
+  
+  // Attention pulse when WP-reroll becomes available
+  @keyframes pulse {
+    0% { 
+      box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7); 
+    }
+    70% { 
+      box-shadow: 0 0 0 10px rgba(13, 110, 253, 0); 
+    }
+    100% { 
+      box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); 
+    }
+  }
+  
+  .pulse-once {
+    animation: pulse 1s ease-out 0s 2;
+  }
+  
+  // Ensure ALL tooltips appear above the control bar
+  .tooltip {
+    z-index: 3000 !important;
+  }
+  
+  // Responsive layout for smaller screens
+  @media (max-width: 768px) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    padding: 0.5rem;
+    gap: 0.5rem;
+    
+    .btn {
+      width: 100%;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .form-check {
+      margin-bottom: 0.5rem;
+      grid-column: 1 / -1;
+    }
+    
+    .vr {
+      display: none;
+    }
+  }
+}
+
+// Control bar button styles
+.control-bar-btn {
+  background-color: transparent;
+  border: 0;
+  
+  &.discord-btn,
+  &.progeny-btn,
+  &.dice-help-btn,
+  &.lock-btn {
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+// Quick button styles
+.quick-btn {
+  background-color: var(--quick-btn-bg, $color-info);
+  color: $color-white;
+}
+
+// File input hiding
+.hidden-file-input {
+  display: none;
+}
+
+// Auto-resize textarea
+.auto-resize-textarea {
+  height: auto;
+  overflow: hidden;
+  resize: none;
+}
+
+// Integration group centering
+.integration-group {
+  justify-self: center;
+}
+
+// Lock button wrapper
+.lock-btn-wrapper {
+  height: 32px;
+} 

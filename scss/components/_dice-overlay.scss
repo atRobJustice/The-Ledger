@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+// Dice Overlay Styles
+// Replaces inline styles from js/dice-overlay.js
+
+#dice-overlay {
+  position: fixed;
+  top: 120px; // Start below the toolbar area (toolbar height + padding + margin)
+  left: 0;
+  width: 100%;
+  height: calc(100% - 120px); // Adjust height to account for top offset
+  z-index: 1500; // Dice Overlay: 1000-1999 (above content, below toolbar)
+  pointer-events: auto; // enable dice interactions
+  background: transparent;
+}
+
+#dice-canvas {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto; // enable dice interactions
+}
+
+// Dice selection styles (replaces injected styles)
+.stat {
+  &.dice-first-stat {
+    outline: 2px solid var(--bs-success);
+  }
+  
+  &.dice-second-stat {
+    outline: 2px solid var(--bs-primary);
+  }
+  
+  &.dice-third-stat {
+    outline: 2px solid var(--bs-warning);
+  }
+}
+
+// Info Mode switch colors (replaces injected styles)
+#toggleInfoMode.form-check-input {
+  cursor: pointer;
+  
+  &:checked {
+    background-color: $color-danger;
+    border-color: $color-danger;
+  }
+}
+
+// Selected power highlight (replaces injected styles)
+.selected-power.dice-power-selected {
+  outline: 2px solid var(--bs-primary);
+}
+
+// Dice banner z-index
+.dice-banner {
+  z-index: 2010;
+} 

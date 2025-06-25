@@ -1,5 +1,3 @@
-import { LockManager } from './lock-manager.js';
-
 // Inject styles for visual impairment indication
 (function(){
     const style = document.createElement('style');
@@ -29,7 +27,7 @@ function createDots(value, maxDots = 5) {
         });
         
         $dot.on('click', function() {
-            if (LockManager && LockManager.isLocked && LockManager.isLocked()) {
+            if (window.LockManager && window.LockManager.isLocked && window.LockManager.isLocked()) {
                 // Allow edits for hunger dots even when sheet is locked
                 if (!$(this).closest('.hunger-dots').length) {
                     return;
@@ -75,6 +73,12 @@ function createDots(value, maxDots = 5) {
     
     return $dotsContainer[0];
 }
+
+// Expose functions globally for use by other modules
+window.createDots = createDots;
+window.createTrackBoxes = createTrackBoxes;
+window.createTextInput = createTextInput;
+
 function createTextInput(value) {
     const $input = $('<textarea>', {
         'value': value,
@@ -327,7 +331,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
                 $container.data('value', newValue);
             }
             
-            updateCurrentValue($trackBoxes[0]);
+            updateCurrentValue($container[0]);
         });
         
         $boxes.append($box);
@@ -336,6 +340,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
     $container.append($boxes);
     return $container[0];
 }
+
 function updateRelatedTrackBoxes($changedDot) {
     const statLabel = $changedDot.closest('.stat').find('.stat-label').text().toLowerCase();
     let $trackBoxes;
@@ -363,6 +368,7 @@ function updateRelatedTrackBoxes($changedDot) {
         }
     }
 }
+
 function updateTrackBoxesMax(trackBoxes, newMax) {
     const $trackBoxes = $(trackBoxes);
     const $header = $trackBoxes.find('.track-header');
@@ -434,6 +440,7 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
     
     updateCurrentValue($trackBoxes[0]);
 }
+
 function evaluateImpairmentStatus() {
     function assessTrack($track) {
         if(!$track.length) return 'healthy';
@@ -525,6 +532,7 @@ function updateCurrentValue(trackBoxes) {
     }
     evaluateImpairmentStatus();
 }
+
 $(document).ready(function() {
     $('.stat').each(function() {
         const $stat = $(this);
@@ -614,7 +622,7 @@ $(document).ready(function() {
     // Function to populate the predator dropdown with values from predator_types.js
     async function populatePredatorDropdown(dropdown) {
         try {
-            const module = await import('./references/predator_types.js');
+            const module = await import('../../data/predator_types.js');
             const predatorTypes = module.predatorTypes;
             const $dropdown = $(dropdown);
             const predatorEntries = Object.entries(predatorTypes.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
@@ -649,7 +657,7 @@ $(document).ready(function() {
     // Function to populate an individual clan dropdown with values from clans.js
     async function populateClanDropdown(dropdown) {
         try {
-            const module = await import('./references/clans.js');
+            const module = await import('../../data/clans.js');
             const clans = module.clans;
             const $dropdown = $(dropdown);
             const clanEntries = Object.entries(clans.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
@@ -671,7 +679,7 @@ $(document).ready(function() {
     // Function to populate the generation dropdown with values from generation.js
     async function populateGenerationDropdown(dropdown) {
         try {
-            const module = await import('./references/generation.js');
+            const module = await import('../../data/generation.js');
             const generationData = module.generation;
             const $dropdown = $(dropdown);
             const generations = Object.keys(generationData.bloodPotencyLimits).map(Number).sort((a,b)=>a-b);
@@ -694,7 +702,7 @@ $(document).ready(function() {
     // Function to populate the blood potency dropdown with values from blood_potency.js
     async function populateBloodPotencyDropdown(dropdown) {
         try {
-            const module = await import('./references/blood_potency.js');
+            const module = await import('../../data/blood_potency.js');
             const bpData = module.bloodPotency;
             const $dropdown = $(dropdown);
             const levels = Object.keys(bpData.levels).map(Number).sort((a,b)=>a-b);
@@ -738,7 +746,7 @@ $(document).ready(function() {
     // Populate Resonance dropdown from references/resonances.js
     async function populateResonanceDropdown(dropdown) {
         try {
-            const module = await import('./references/resonances.js');
+            const module = await import('../../data/resonances.js');
             const resonanceData = module.resonances;
             const entries = Object.entries(resonanceData.types);
             // Sort alphabetically by name
@@ -760,7 +768,7 @@ $(document).ready(function() {
     // Populate Temperament dropdown from references/resonances.js
     async function populateTemperamentDropdown(dropdown) {
         try {
-            const module = await import('./references/resonances.js');
+            const module = await import('../../data/resonances.js');
             const temperamentData = module.resonances.temperaments;
             const order = ['fleeting', 'intense', 'acute'];
             const entries = Object.entries(temperamentData);
@@ -781,7 +789,7 @@ $(document).ready(function() {
     // Function to populate the compulsion dropdown with values from compulsions.js
     async function populateCompulsionDropdown(dropdown) {
         try {
-            const module = await import('./references/compulsions.js');
+            const module = await import('../../data/compulsions.js');
             const compulsionData = module.compulsions;
 
             const $dropdown = $(dropdown);
@@ -858,7 +866,7 @@ async function populateClanDropdowns() {
     
     try {
         // Import the clans module
-        const module = await import('./references/clans.js');
+        const module = await import('../../data/clans.js');
         
         // Populate each dropdown
         clanDropdowns.forEach(dropdown => {
@@ -954,7 +962,7 @@ async function saveCharacter() {
     const character = {
         // ... existing character properties ...
         convictions: saveConvictionsAndTouchstones(),
-        locked: LockManager.isLocked(),
+        locked: window.LockManager.isLocked(),
         // ... rest of existing properties ...
     };
     // ... rest of existing save logic ...
@@ -967,7 +975,27 @@ async function loadCharacter(characterData) {
         loadConvictionsAndTouchstones(characterData.convictions);
     }
 
-    // Initialize lock state after everything is rendered
-    LockManager.init(characterData.locked ?? false);
+    // Check if there's a locked parameter in the URL that should override character data
+    const urlParams = new URLSearchParams(window.location.search);
+    const lockedFromUrl = urlParams.get('locked');
+    
+    if (lockedFromUrl !== null && window.LockManager) {
+        // URL parameter takes precedence
+        const shouldLock = lockedFromUrl === 'true';
+        console.log('Setting lock state from URL parameter (overriding character data):', shouldLock);
+        window.LockManager.init(shouldLock);
+    } else {
+        // Use character data if no URL parameter
+        console.log('Setting lock state from character data:', characterData.locked ?? false);
+        window.LockManager.init(characterData.locked ?? false);
+    }
     // ... rest of existing loading logic ...
+}
+
+// Handle "Back to Dashboard" button
+const btnDashboard = document.getElementById('btn-dashboard');
+if (btnDashboard) {
+    btnDashboard.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
 }

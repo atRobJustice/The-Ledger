@@ -1,5 +1,5 @@
 // Coterie Merit and Flaw Manager
-import { coterieBackgrounds } from './references/backgrounds-coterie.js';
+import { coterieBackgrounds } from '../../data/backgrounds-coterie.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class CoterieManager {
@@ -221,7 +221,7 @@ class CoterieManager {
                             </div>
                             <div class="${type}-controls d-flex align-items-center gap-2">
                                 ${this.renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo)}
-                                <button class="btn btn-danger btn-sm remove-trait-btn" data-trait-type="${type}" data-trait-key="${traitKey}" data-instance="${instanceIndex}">
+                                <button class="btn theme-btn-primary btn-sm remove-trait-btn" data-trait-type="${type}" data-trait-key="${traitKey}" data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>

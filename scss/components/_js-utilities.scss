@@ -1,0 +1,56 @@
+// JavaScript Utilities Classes
+// Replaces inline styles from various JavaScript files
+
+// Display utilities
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
+// Z-index utilities
+.z-index-9999 {
+  z-index: 9999 !important;
+}
+
+.z-index-2010 {
+  z-index: 2010 !important;
+}
+
+// Button utilities
+.btn-no-padding {
+  padding: 0rem !important;
+}
+
+.btn-no-border {
+  border: none !important;
+}
+
+// Auto-resize textarea utility
+.auto-resize {
+  height: auto !important;
+  overflow: hidden;
+  resize: none;
+}
+
+// Body padding utility (for control bar)
+.body-padding-bottom {
+  padding-bottom: var(--control-bar-height, 120px) !important;
+}
+
+// Specialty button styles
+.specialty-add-btn {
+  padding: 0rem !important;
+  border: none !important;
+}
+
+// Manager container styles
+.manager-container {
+  z-index: 9999 !important;
+} 

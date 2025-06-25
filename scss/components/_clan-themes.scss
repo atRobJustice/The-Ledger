@@ -17,10 +17,12 @@ body[data-theme='banu'] {
   .btn-danger { background-color: #72171A; }
   /* Accent variable for shared component overrides */
   --accent: #B29D34;
+  --accent-rgb: 178, 157, 52;
   --form-bg: #FBF7F4;
   --form-border: #424242;
   --form-text: #23101B;
   --panel-bg: #FBF7F4;
+  --panel-bg-rgb: 251, 247, 244;
   --panel-border: #424242;
   --panel-border-light: #424242;
   --panel-text: #23101B;
@@ -36,10 +38,12 @@ body[data-theme='brujah'] {
   .btn-danger { background-color: #C30011; }
   /* Accent variable */
   --accent: #FF7214;
+  --accent-rgb: 255, 114, 20;
   --form-bg: #333333;
   --form-border: #C30011;
   --form-text: #FFC665;
   --panel-bg: #333333;
+  --panel-bg-rgb: 51, 51, 51;
   --panel-border: #C30011;
   --panel-border-light: #C30011;
   --panel-text: #FFC665;
@@ -54,10 +58,12 @@ body[data-theme='gangrel'] {
   .btn-success { background-color: #2E2F04; }
   .btn-danger { background-color: #795D15; }
   --accent: #795D15;
+  --accent-rgb: 121, 93, 21;
   --form-bg: #594E36;
   --form-border: #2E2F04;
   --form-text: #EDEBDD;
   --panel-bg: #594E36;
+  --panel-bg-rgb: 89, 78, 54;
   --panel-border: #2E2F04;
   --panel-border-light: #2E2F04;
   --panel-text: #EDEBDD;
@@ -72,10 +78,12 @@ body[data-theme='hecata'] {
   .btn-success { background-color: #886F68; }
   .btn-danger { background-color: #424C55; }
   --accent: #D1CDDC;
+  --accent-rgb: 209, 205, 220;
   --form-bg: #F5EDF0;
   --form-border: #886F68;
   --form-text: #3D2C2E;
   --panel-bg: #F5EDF0;
+  --panel-bg-rgb: 245, 237, 240;
   --panel-border: #886F68;
   --panel-border-light: #886F68;
   --panel-text: #3D2C2E;
@@ -88,10 +96,12 @@ body[data-theme='lasombra'] {
   h1, h2, h3, h4, h5, h6 { color: #292B36; border-color: #292B36; }
   .ledger { background: #19272A; color: #F0F0F0; border-color: #292B36; border-left-color: #292B36; }
   --accent: #292B36;
+  --accent-rgb: 41, 43, 54;
   --form-bg: #19272A;
   --form-border: #292B36;
   --form-text: #F0F0F0;
   --panel-bg: #19272A;
+  --panel-bg-rgb: 25, 39, 42;
   --panel-border: #292B36;
   --panel-border-light: #292B36;
   --panel-text: #F0F0F0;
@@ -104,10 +114,12 @@ body[data-theme='malkavian'] {
   h1, h2, h3, h4, h5, h6 { color: #F93943; border-color: #F93943; }
   .ledger { background: #FCB0B3; color: #333; border-color: #7EB2DD; border-left-color: #F93943; }
   --accent: #F93943;
+  --accent-rgb: 249, 57, 67;
   --form-bg: #FCB0B3;
   --form-border: #7EB2DD;
   --form-text: #333;
   --panel-bg: #FCB0B3;
+  --panel-bg-rgb: 252, 176, 179;
   --panel-border: #7EB2DD;
   --panel-border-light: #7EB2DD;
   --panel-text: #333;
@@ -120,10 +132,12 @@ body[data-theme='ministry'] {
   h1, h2, h3, h4, h5, h6 { color: #6BD425; border-color: #6BD425; }
   .ledger { background: #61452E; color: #E8E8E8; border-color: #618B25; border-left-color: #6BD425; }
   --accent: #6BD425;
+  --accent-rgb: 107, 212, 37;
   --form-bg: #61452E;
   --form-border: #618B25;
   --form-text: #E8E8E8;
   --panel-bg: #61452E;
+  --panel-bg-rgb: 97, 69, 46;
   --panel-border: #618B25;
   --panel-border-light: #618B25;
   --panel-text: #E8E8E8;
@@ -136,10 +150,12 @@ body[data-theme='nosferatu'] {
   h1, h2, h3, h4, h5, h6 { color: #A19F74; border-color: #A19F74; }
   .ledger { background: #404E51; color: #F0F0F0; border-color: #4D2B1E; border-left-color: #A19F74; }
   --accent: #A19F74;
+  --accent-rgb: 161, 159, 116;
   --form-bg: #404E51;
   --form-border: #4D2B1E;
   --form-text: #F0F0F0;
   --panel-bg: #404E51;
+  --panel-bg-rgb: 64, 78, 81;
   --panel-border: #4D2B1E;
   --panel-border-light: #4D2B1E;
   --panel-text: #F0F0F0;
@@ -152,10 +168,12 @@ body[data-theme='ravnos'] {
   h1, h2, h3, h4, h5, h6 { color: #E15656; border-color: #E15656; }
   .ledger { background: #C78F44; color: #1B1B1B; border-color: #5C251F; border-left-color: #E15656; }
   --accent: #E15656;
+  --accent-rgb: 225, 86, 86;
   --form-bg: #C78F44;
   --form-border: #5C251F;
   --form-text: #1B1B1B;
   --panel-bg: #C78F44;
+  --panel-bg-rgb: 199, 143, 68;
   --panel-border: #5C251F;
   --panel-border-light: #5C251F;
   --panel-text: #1B1B1B;
@@ -168,10 +186,12 @@ body[data-theme='salubri'] {
   h1, h2, h3, h4, h5, h6 { color: #A93F55; border-color: #A93F55; }
   .ledger { background: #F0EEF1; color: #333333; border-color: #5A5766; border-left-color: #A93F55; }
   --accent: #A93F55;
+  --accent-rgb: 169, 63, 85;
   --form-bg: #F0EEF1;
   --form-border: #5A5766;
   --form-text: #333333;
   --panel-bg: #F0EEF1;
+  --panel-bg-rgb: 240, 238, 241;
   --panel-border: #5A5766;
   --panel-border-light: #5A5766;
   --panel-text: #333333;
@@ -184,10 +204,12 @@ body[data-theme='toreador'] {
   h1, h2, h3, h4, h5, h6 { color: #DD2C68; border-color: #DD2C68; }
   .ledger { background: #9F5D77; color: #F3E6EB; border-color: #4A001F; border-left-color: #DD2C68; }
   --accent: #DD2C68;
+  --accent-rgb: 221, 44, 104;
   --form-bg: #9F5D77;
   --form-border: #4A001F;
   --form-text: #F3E6EB;
   --panel-bg: #9F5D77;
+  --panel-bg-rgb: 159, 93, 119;
   --panel-border: #4A001F;
   --panel-border-light: #4A001F;
   --panel-text: #F3E6EB;
@@ -200,10 +222,12 @@ body[data-theme='tremere'] {
   h1, h2, h3, h4, h5, h6 { color: #941414; border-color: #941414; }
   .ledger { background: #937EA5; color: #E8E6EF; border-color: #501E5C; border-left-color: #941414; }
   --accent: #941414;
+  --accent-rgb: 148, 20, 20;
   --form-bg: #937EA5;
   --form-border: #501E5C;
   --form-text: #E8E6EF;
   --panel-bg: #937EA5;
+  --panel-bg-rgb: 147, 126, 165;
   --panel-border: #501E5C;
   --panel-border-light: #501E5C;
   --panel-text: #E8E6EF;
@@ -216,10 +240,12 @@ body[data-theme='tzimisce'] {
   h1, h2, h3, h4, h5, h6 { color: #643173; border-color: #643173; }
   .ledger { background: #B8C4BB; color: #1B1B1B; border-color: #333333; border-left-color: #643173; }
   --accent: #643173;
+  --accent-rgb: 100, 49, 115;
   --form-bg: #B8C4BB;
   --form-border: #333333;
   --form-text: #1B1B1B;
   --panel-bg: #B8C4BB;
+  --panel-bg-rgb: 184, 196, 187;
   --panel-border: #333333;
   --panel-border-light: #333333;
   --panel-text: #1B1B1B;
@@ -232,10 +258,12 @@ body[data-theme='ventrue'] {
   h1, h2, h3 { color: #B09E4F; border-color: #B09E4F; }
   .ledger { background: #7E6D5D; color: #F0F0F0; border-color: #0F0D4F; border-left-color: #B09E4F; }
   --accent: #B09E4F;
+  --accent-rgb: 176, 158, 79;
   --form-bg: #7E6D5D;
   --form-border: #0F0D4F;
   --form-text: #F0F0F0;
   --panel-bg: #7E6D5D;
+  --panel-bg-rgb: 126, 109, 93;
   --panel-border: #0F0D4F;
   --panel-border-light: #0F0D4F;
   --panel-text: #F0F0F0;

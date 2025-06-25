@@ -21,8 +21,8 @@
   "blood_potency": 1,
   "willpower": {
     "max": 3,
-    "current": 2,
-    "superficial": 1,
+    "current": 3,
+    "superficial": 0,
     "aggravated": 0,
     "type": "willpower"
   },
@@ -34,15 +34,15 @@
     "aggravated": 0,
     "type": "humanity"
   },
-  "strength": 2,
+  "strength": 3,
   "dexterity": 2,
   "stamina": 2,
-  "charisma": 4,
-  "manipulation": 3,
-  "composure": 1,
+  "charisma": 3,
+  "manipulation": 4,
+  "composure": 2,
   "intelligence": 3,
-  "wits": 3,
-  "resolve": 2,
+  "wits": 2,
+  "resolve": 1,
   "athletics": 1,
   "brawl": 1,
   "craft": 0,
@@ -51,17 +51,20 @@
   "larceny": 2,
   "melee": 1,
   "melee_specialties": [
-    "knives"
+    "Knives"
   ],
-  "stealth": 2,
-  "survival": 0,
+  "stealth": 0,
+  "survival": 1,
   "animal_ken": 0,
-  "etiquette": 0,
+  "etiquette": 1,
+  "etiquette_specialties": [
+    "Elysium"
+  ],
   "insight": 2,
-  "intimidation": 3,
+  "intimidation": 2,
   "leadership": 1,
   "performance": 0,
-  "persuasion": 1,
+  "persuasion": 3,
   "persuasion_specialties": [
     "Marketing"
   ],
@@ -71,7 +74,7 @@
   "awareness": 2,
   "finance": 1,
   "investigation": 2,
-  "medicine": 1,
+  "medicine": 0,
   "occult": 1,
   "politics": 0,
   "science": 0,
@@ -79,20 +82,23 @@
   "dominate": 2,
   "auspex": 1,
   "obfuscate": 1,
-  "folkloric_bane": 1,
-  "folkloric_block": 1,
+  "vessel_recognition": 1,
+  "side_hustler": 2,
   "haven": 2,
   "watchmen": 1,
+  "security_system": 1,
   "resources": 2,
-  "herd": 3,
+  "herd": 1,
   "retainers": 1,
+  "folkloric_bane": 1,
+  "folkloric_block": 1,
   "creepy": 1,
   "disciplines": {
     "dominate": {
       "level": 2,
       "powers": [
-        "Compel",
-        "Mesmerize"
+        "Mesmerize",
+        "Cloud Memory"
       ]
     },
     "auspex": {
@@ -108,7 +114,26 @@
       ]
     }
   },
-  "merits": {},
+  "merits": {
+    "vesselRecognition": {
+      "category": "feeding",
+      "level": 1,
+      "instances": [
+        {
+          "level": 1
+        }
+      ]
+    },
+    "sideHustler": {
+      "category": "other",
+      "level": 2,
+      "instances": [
+        {
+          "level": 2
+        }
+      ]
+    }
+  },
   "flaws": {
     "folkloricBane": {
       "category": "mythic",
@@ -148,6 +173,15 @@
         }
       ]
     },
+    "securitySystem": {
+      "category": "haven",
+      "level": 1,
+      "instances": [
+        {
+          "level": 1
+        }
+      ]
+    },
     "resources": {
       "category": "resources",
       "level": 2,
@@ -159,10 +193,10 @@
     },
     "herd": {
       "category": "herd",
-      "level": 3,
+      "level": 1,
       "instances": [
         {
-          "level": 3
+          "level": 1
         }
       ]
     },
@@ -190,5 +224,92 @@
   "coterieMerits": {},
   "coterieFlaws": {},
   "loresheets": [],
-  "theme": "default"
+  "convictions": [
+    {
+      "description": "Never leave your crew behind.",
+      "touchstone": {
+        "name": "Cornelius \"Cornbread\" Tate",
+        "relationship": "Former Bayview Mafia street boss",
+        "summary": "A future where they came home, drank themselves to death, and were forgotten.",
+        "lost": false
+      }
+    },
+    {
+      "description": "It's always worth fighting for hope.",
+      "touchstone": {
+        "name": "Eden Vale",
+        "relationship": "In her, they see the best parts of Cedonia, the pieces they failed to protect.",
+        "summary": "To her, Malcolm and Marcus Carter were supposed to be legends of hope, not warnings.",
+        "lost": false
+      }
+    }
+  ],
+  "xp": {
+    "total": 9,
+    "spent": 9,
+    "history": [
+      {
+        "type": "award",
+        "amount": 4,
+        "date": "6/20/2025, 7:28:07 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/20/2025, 10:09:46 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/20/2025, 11:05:38 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 2,
+        "date": "6/20/2025, 11:41:48 PM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "award",
+        "amount": 1,
+        "date": "6/21/2025, 12:04:22 AM",
+        "note": "",
+        "meta": null
+      },
+      {
+        "type": "spend",
+        "amount": 6,
+        "date": "6/21/2025, 12:05:26 AM",
+        "note": "Raised sideHustler 0→2",
+        "meta": {
+          "cat": "merit",
+          "traitKey": "sideHustler",
+          "from": 0,
+          "to": 2,
+          "specialty": null
+        }
+      },
+      {
+        "type": "spend",
+        "amount": 3,
+        "date": "6/21/2025, 12:15:18 AM",
+        "note": "Specialty (Elysium) in etiquette",
+        "meta": {
+          "cat": "skill",
+          "traitKey": "etiquette",
+          "from": 1,
+          "to": 1,
+          "specialty": "Elysium"
+        }
+      }
+    ]
+  },
+  "locked": true
 }

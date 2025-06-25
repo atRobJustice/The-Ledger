@@ -11,48 +11,149 @@
 
 // Success button
 .btn-success {
-    @include button-variant($color-success);
+    background-color: var(--accent, $color-success) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-success) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
 }
 
 // Danger button
 .btn-danger {
-    @include button-variant(var(--accent, $color-danger));
+    background-color: var(--accent, $color-danger) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-danger) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+// Warning button
+.btn-warning {
+    background-color: var(--accent, $color-warning) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-warning) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
 }
 
 // Outline buttons
 .btn-outline-success {
-    color: $color-success;
-    border-color: $color-success;
-    background-color: transparent;
+    color: $color-success !important;
+    border-color: $color-success !important;
+    background-color: transparent !important;
 
     &:hover {
-        background-color: $color-success;
-        border-color: $color-success;
-        color: white;
+        background-color: $color-success !important;
+        border-color: $color-success !important;
+        color: white !important;
     }
 
     &:disabled {
-        color: $color-border-light;
-        border-color: $color-border-light;
-        background-color: transparent;
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.btn-outline-secondary {
+    color: var(--accent, $color-gray) !important;
+    border-color: var(--accent, $color-gray) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-gray) !important;
+        border-color: var(--accent, $color-gray) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.btn-outline-warning {
+    color: var(--accent, $color-warning) !important;
+    border-color: var(--accent, $color-warning) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-warning) !important;
+        border-color: var(--accent, $color-warning) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.btn-outline-primary {
+    color: var(--accent, $color-info) !important;
+    border-color: var(--accent, $color-info) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-info) !important;
+        border-color: var(--accent, $color-info) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
     }
 }
 
 .btn-outline-danger {
-    color: var(--accent, $color-danger);
-    border-color: var(--accent, $color-danger);
-    background-color: transparent;
+    color: var(--accent, $color-danger) !important;
+    border-color: var(--accent, $color-danger) !important;
+    background-color: transparent !important;
 
     &:hover {
-        background-color: var(--accent, $color-danger);
-        border-color: var(--accent, $color-danger);
-        color: white;
+        background-color: var(--accent, $color-danger) !important;
+        border-color: var(--accent, $color-danger) !important;
+        color: white !important;
     }
 
     &:disabled {
-        color: $color-border-light;
-        border-color: $color-border-light;
-        background-color: transparent;
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
     }
 }
 
@@ -66,52 +167,52 @@
     // Default theme (Blood & Roses)
     &:not([data-theme]) &,
     body:not([data-theme]) & {
-        background-color: #2a1a1a;
-        color: #d8d0c8;
-        border-left: 4px solid var(--accent, #a40000);
+        background-color: var(--panel-bg, #1a1a1a);
+        color: var(--panel-text, #d4d4d4);
+        border-left: 4px solid var(--accent, #666666);
         
         .toast-header {
-            background-color: var(--accent, #a40000);
+            background-color: var(--accent, #666666);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .toast-body {
-            background-color: #2a1a1a;
-            color: #d8d0c8;
+            background-color: var(--panel-bg, #1a1a1a);
+            color: var(--panel-text, #d4d4d4);
         }
     }
     
     // Success toasts
     &.bg-success {
-        background-color: $color-success !important;
+        background-color: var(--accent, #666666) !important;
         color: white !important;
-        border-left-color: $color-success;
+        border-left-color: var(--accent, #666666);
         
         .toast-header {
-            background-color: $color-success !important;
+            background-color: var(--accent, #666666) !important;
             color: white !important;
         }
         
         .toast-body {
-            background-color: $color-success !important;
+            background-color: var(--accent, #666666) !important;
             color: white !important;
         }
     }
     
     // Danger/Error toasts
     &.bg-danger {
-        background-color: var(--accent, $color-danger) !important;
+        background-color: var(--accent, #666666) !important;
         color: white !important;
-        border-left-color: var(--accent, $color-danger);
+        border-left-color: var(--accent, #666666);
         
         .toast-header {
-            background-color: var(--accent, $color-danger) !important;
+            background-color: var(--accent, #666666) !important;
             color: white !important;
         }
         
         .toast-body {
-            background-color: var(--accent, $color-danger) !important;
+            background-color: var(--accent, #666666) !important;
             color: white !important;
         }
     }
@@ -160,10 +261,10 @@ body[data-theme='ivory'] {
     .toast {
         background-color: #fbf7f2;
         color: #2c1b1b;
-        border-left: 4px solid var(--accent, #8b0000);
+        border-left: 4px solid var(--accent, #666666);
         
         .toast-header {
-            background-color: var(--accent, #8b0000);
+            background-color: var(--accent, #666666);
             color: white;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -196,18 +297,7 @@ body[data-theme='daltonic'] {
     .toast {
         background-color: #fafdff;
         color: #1a1a1a;
-        border-left: 4px solid var(--accent, #005fa3);
-        
-        .toast-header {
-            background-color: var(--accent, #005fa3);
-            color: white;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .toast-body {
-            background-color: #fafdff;
-            color: #1a1a1a;
-        }
+        border-left: 4px solid var(--accent, #666666);
         
         // Override type-specific colors for daltonic theme
         &.bg-success {
@@ -243,18 +333,7 @@ body[data-theme='hc-dark'] {
     .toast {
         background-color: #101010;
         color: white;
-        border-left: 4px solid var(--accent, #ffd700);
-        
-        .toast-header {
-            background-color: var(--accent, #ffd700);
-            color: black;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .toast-body {
-            background-color: #101010;
-            color: white;
-        }
+        border-left: 4px solid var(--accent, #666666);
         
         // Override type-specific colors for hc-dark theme
         &.bg-success {
@@ -290,18 +369,7 @@ body[data-theme='hc-light'] {
     .toast {
         background-color: #f7f7f7;
         color: black;
-        border-left: 4px solid var(--accent, #0053d6);
-        
-        .toast-header {
-            background-color: var(--accent, #0053d6);
-            color: white;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .toast-body {
-            background-color: #f7f7f7;
-            color: black;
-        }
+        border-left: 4px solid var(--accent, #666666);
         
         // Override type-specific colors for hc-light theme
         &.bg-success {
@@ -342,4 +410,152 @@ body[data-theme='dyslexia'] {
 
 .toast-container {
     z-index: $z-index-toast;
-} 
+}
+
+// Theme-aware button classes
+.theme-btn-primary {
+    background-color: var(--accent, $color-gray) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-gray) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+.theme-btn-secondary {
+    background-color: var(--accent, $color-gray) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-gray) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+.theme-btn-danger {
+    background-color: var(--accent, $color-danger) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-danger) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+.theme-btn-warning {
+    background-color: var(--accent, $color-warning) !important;
+    color: white !important;
+    border: none !important;
+    transition: $transition-base;
+
+    &:hover {
+        background-color: var(--accent, $color-warning) !important;
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: $color-border-light !important;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+// Theme-aware outline button classes
+.theme-btn-outline-primary {
+    color: var(--accent, $color-gray) !important;
+    border-color: var(--accent, $color-gray) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-gray) !important;
+        border-color: var(--accent, $color-gray) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.theme-btn-outline-secondary {
+    color: var(--accent, $color-gray) !important;
+    border-color: var(--accent, $color-gray) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-gray) !important;
+        border-color: var(--accent, $color-gray) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.theme-btn-outline-danger {
+    color: var(--accent, $color-danger) !important;
+    border-color: var(--accent, $color-danger) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-danger) !important;
+        border-color: var(--accent, $color-danger) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+.theme-btn-outline-warning {
+    color: var(--accent, $color-warning) !important;
+    border-color: var(--accent, $color-warning) !important;
+    background-color: transparent !important;
+
+    &:hover {
+        background-color: var(--accent, $color-warning) !important;
+        border-color: var(--accent, $color-warning) !important;
+        color: white !important;
+    }
+
+    &:disabled {
+        color: $color-border-light !important;
+        border-color: $color-border-light !important;
+        background-color: transparent !important;
+    }
+}
+
+// Success button 

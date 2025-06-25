@@ -3,10 +3,10 @@
 
 // Discipline item styles
 .discipline-item {
-    border: $border-width $border-style var(--panel-border, $color-border);
+    border: $border-width $border-style var(--panel-border, #333333);
     border-radius: $border-radius;
     padding: $spacing-md;
-    background-color: var(--panel-bg, rgba($color-background, 0.5));
+    background-color: var(--panel-bg, #1a1a1a);
 }
 
 .discipline-header {
@@ -23,17 +23,17 @@
     background-color: rgba(var(--panel-border-rgb, 0,0,0), 0.3);
     border-radius: $border-radius;
     padding: 0.75rem;
-    border-left: 3px solid var(--accent, $color-primary);
+    border-left: 3px solid var(--accent, #666666);
 }
 
 .selected-power {
-    background-color: rgba(var(--accent-rgb, 164,0,0), 0.1) !important;
-    border: $border-width $border-style rgba(var(--accent-rgb, 164,0,0), 0.3);
-    color: var(--panel-text, $color-text);
+    background-color: rgba(var(--accent-rgb), 0.1) !important;
+    border: $border-width $border-style rgba(var(--accent-rgb), 0.3);
+    color: var(--accent, #666666);
 }
 
 .power-name {
-    color: var(--accent, $color-primary);
+    color: var(--accent, #666666);
     font-weight: bold;
 }
 
@@ -44,8 +44,8 @@
     transition: $transition-base;
 
     &:hover {
-        border-color: var(--accent, $color-primary) !important;
-        background-color: rgba(var(--accent-rgb, 164,0,0), 0.1);
+        border-color: var(--accent) !important;
+        background-color: rgba(var(--accent-rgb), 0.1);
     }
 
     .badge {
@@ -85,13 +85,13 @@
         position: relative;
 
         &:hover {
-            border-color: var(--accent, $color-primary);
+            border-color: var(--accent);
             transform: scale(1.1);
         }
 
         &.filled {
-            background-color: var(--accent, $color-primary);
-            border-color: var(--accent, $color-primary);
+            background-color: var(--accent);
+            border-color: var(--accent);
 
             &:hover {
                 background-color: color.adjust($color-primary, $lightness: 10%);

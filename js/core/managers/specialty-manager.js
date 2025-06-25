@@ -40,9 +40,7 @@
       // Add "+" button
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'btn btn-sm btn-outline-light specialty-add-btn me-2';
-      btn.style.padding = '0rem';
-      btn.style.border = 'none';
+      btn.className = 'btn btn-sm theme-btn-outline-secondary specialty-add-btn me-2 specialty-add-btn';
       btn.innerHTML = '<i class="bi bi-plus"></i>';
       btn.dataset.skill = name;
       row.appendChild(btn);
@@ -80,44 +78,10 @@
   }
 
   let currentSkill = null; // skill currently being edited
-  let bsModalInstance = null;
+  let modalInstance = null;
 
   function injectModal(){
-    if(document.getElementById('specialtyModal')) return; // already
-    const html = `
-      <div class="modal fade" id="specialtyModal" tabindex="-1" aria-labelledby="specialtyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="specialtyModalLabel">Specialties</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <ul class="list-group mb-3" id="specialtyList"></ul>
-              <div class="input-group">
-                <input type="text" class="form-control" id="newSpecialtyInput" placeholder="New specialty">
-                <button class="btn btn-primary" type="button" id="addSpecialtyBtn">Add</button>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>`;
-    document.body.insertAdjacentHTML('beforeend', html);
-
-    const modalEl = document.getElementById('specialtyModal');
-    bsModalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
-
-    // Add event handler for Add button
-    modalEl.querySelector('#addSpecialtyBtn').addEventListener('click', () => {
-      const input = modalEl.querySelector('#newSpecialtyInput');
-      const val = input.value.trim();
-      if(val) addSpecialty(val);
-      input.value = '';
-      input.focus();
-    });
+    // Modal will be created dynamically by modalManager when needed
   }
 
   function getSpecialties(skill){
@@ -155,14 +119,14 @@
     });
   }
 
-  function refreshModalList(){
-    const listEl = document.getElementById('specialtyList');
+  function refreshModalList(modalElement){
+    const listEl = modalElement.querySelector('#specialtyList');
     listEl.innerHTML = '';
     const specs = getSpecialties(currentSkill);
     specs.forEach(spec => {
       const li = document.createElement('li');
       li.className = 'list-group-item d-flex justify-content-between align-items-center';
-      li.innerHTML = `<span>${spec}</span><button type="button" class="btn btn-sm btn-outline-danger remove-specialty-btn" data-spec="${spec}">&times;</button>`;
+      li.innerHTML = `<span>${spec}</span><button type="button" class="btn btn-sm theme-btn-outline-danger remove-specialty-btn" data-spec="${spec}">&times;</button>`;
       listEl.appendChild(li);
     });
     updateSpecialtiesRow(currentSkill);
@@ -170,17 +134,50 @@
 
   function openModal(skill){
     currentSkill = skill;
-    document.getElementById('specialtyModalLabel').textContent = `${skill} Specialties`;
-    refreshModalList();
-    bsModalInstance.show();
+    
+    const content = `
+      <ul class="list-group mb-3" id="specialtyList"></ul>
+      <div class="input-group">
+        <input type="text" class="form-control" id="newSpecialtyInput" placeholder="New specialty">
+        <button class="btn theme-btn-primary" type="button" id="addSpecialtyBtn">Add</button>
+      </div>
+    `;
+
+    const footer = `
+      <button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
+    `;
+
+    window.modalManager.showCustom({
+      title: `${skill} Specialties`,
+      content,
+      footer,
+      size: 'default',
+      centered: true
+    }, (element, instance) => {
+      modalInstance = instance;
+      
+      // Add event handler for Add button
+      element.querySelector('#addSpecialtyBtn').addEventListener('click', () => {
+        const input = element.querySelector('#newSpecialtyInput');
+        const val = input.value.trim();
+        if(val) addSpecialty(val, element);
+        input.value = '';
+        input.focus();
+      });
+
+      // Initial list refresh
+      refreshModalList(element);
+    });
   }
 
-  function addSpecialty(spec){
+  function addSpecialty(spec, modalElement = null){
     const list = getSpecialties(currentSkill);
     if(!list.includes(spec)){
       list.push(spec);
       setSpecialties(currentSkill, list);
-      refreshModalList();
+      if (modalElement) {
+        refreshModalList(modalElement);
+      }
     }
   }
 
@@ -188,7 +185,11 @@
     let list = getSpecialties(currentSkill);
     list = list.filter(s => s !== spec);
     setSpecialties(currentSkill, list);
-    refreshModalList();
+    // Refresh the modal if it's open
+    const modalElement = document.querySelector('.modal.show');
+    if (modalElement) {
+      refreshModalList(modalElement);
+    }
   }
 
   // Expose for other modules (e.g., backup manager)

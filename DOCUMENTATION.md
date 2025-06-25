@@ -1,6 +1,6 @@
 # Technical Documentation – The Ledger
 
-> Version 1.2.3 – Last updated 18 June 2025
+> Version 1.3.0 – Last updated 25 January 2025
 
 Welcome to the technical documentation for **The Ledger**, an offline-first web app for managing *Vampire: The Masquerade* 5th Edition characters.
 
@@ -35,7 +35,7 @@ The Ledger is a **purely client-side, single-page application** built with vanil
 Key design goals:
 
 * **Offline-first** – must run from a local `index.html` without a network connection.
-* **Multiple character support** – manage multiple characters with seamless switching.
+* **Multiple character support** – manage multiple characters with seamless switching via a dashboard interface.
 * **Robust data persistence** – IndexedDB provides reliable storage with automatic backups.
 * **Minimal build pipeline** – only SCSS compilation is required for development.
 * **Source-of-truth data** – rules data is imported from the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
@@ -43,13 +43,15 @@ Key design goals:
 * **Game-accurate dice** – optional 3-D dice overlay using Three.js & Cannon.js.
 * **Theme-aware** – comprehensive theming system with clan-specific color schemes.
 * **Accessible** – ARIA attributes, keyboard navigation, and screen reader support.
+* **Discord integration** – optional webhook integration for sharing dice rolls and character updates.
 
 ---
 
 ## Folder & File Layout
 
 ```text
-├── index.html                # Main HTML entry
+├── index.html                # Main HTML entry (dashboard interface)
+├── character-sheet.html      # Character sheet interface
 ├── css/                      # Compiled CSS (ignored in VCS)
 ├── scss/                     # Source stylesheets (Sass)
 │   ├── _variables.scss      # Design tokens & theme variables
@@ -69,37 +71,66 @@ Key design goals:
 │   │   ├── _sticky-header.scss # Sticky header styles
 │   │   ├── _tracks.scss     # Health/Willpower tracks
 │   │   ├── _buttons.scss    # Button variants
-│   │   └── _tooltips.scss   # Info tooltips
+│   │   ├── _tooltips.scss   # Info tooltips
+│   │   └── _dashboard.scss  # Dashboard interface styles
 │   ├── layout/              # Layout-specific styles
 │   └── features/            # Feature-specific styles
 ├── js/
-│   ├── character-sheet.js    # Core sheet initialisation & orchestration
-│   ├── manager-utils.js      # Shared helpers for manager modules
-│   ├── database-manager.js   # IndexedDB operations & data persistence
-│   ├── character-manager.js  # Multiple character management & UI
-│   ├── discipline-manager.js # Manages Disciplines UI & state
-│   ├── disciplines.js        # Static Discipline definitions (ES module)
-│   ├── background-manager.js # Backgrounds, Advantages & Flaws
-│   ├── merit-flaw-manager.js # Merits & Flaws (prints inside Backgrounds)
-│   ├── specialty-manager.js  # Skill Specialities
-│   ├── loresheet-manager.js  # Loresheets section
-│   ├── coterie-manager.js    # Coterie information
-│   ├── conviction-manager.js # Convictions & Touchstones
-│   ├── info-buttons.js       # Info mode & reference system
-│   ├── sticky-header.js      # Sticky header component
-│   ├── dice-overlay.js       # 3-D overlay + UI toolbar
-│   ├── dice.js               # Core dice physics/render (Three.js + Cannon.js)
-│   ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
-│   ├── backup-manager.js     # JSON import / export / autosave
-│   ├── lock-manager.js       # Global Lock / Play mode
-│   ├── xp-manager.js         # Experience Points tracker & history
-│   ├── xp-spend-manager.js   # XP spending modal & trait purchasing
-│   ├── xp-pricing.js         # XP cost calculations
-│   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
-│   ├── discord-integration.js# Rich-presence hooks (optional)
-│   ├── accessibility-fix.js  # Misc ARIA / keyboard tweaks
-│   ├── lib/                  # Vendored libs (three.js, cannon.js, teal.js…)
-│   └── references/           # Auto-generated JSON data (clans, skills, …)
+│   ├── core/
+│   │   ├── managers/        # Character data managers
+│   │   │   ├── database-manager.js   # IndexedDB operations & data persistence
+│   │   │   ├── character-manager.js  # Multiple character management & UI
+│   │   │   ├── discipline-manager.js # Manages Disciplines UI & state
+│   │   │   ├── background-manager.js # Backgrounds, Advantages & Flaws
+│   │   │   ├── merit-flaw-manager.js # Merits & Flaws (prints inside Backgrounds)
+│   │   │   ├── specialty-manager.js  # Skill Specialities
+│   │   │   ├── loresheet-manager.js  # Loresheets section
+│   │   │   ├── coterie-manager.js    # Coterie information
+│   │   │   ├── conviction-manager.js # Convictions & Touchstones
+│   │   │   ├── lock-manager.js       # Global Lock / Play mode
+│   │   │   ├── xp-manager.js         # Experience Points tracker & history
+│   │   │   ├── xp-spend-manager.js   # XP spending modal & trait purchasing
+│   │   │   ├── backup-manager.js     # JSON import / export / autosave
+│   │   │   └── manager-utils.js      # Shared helpers for manager modules
+│   │   ├── ui/              # User interface components
+│   │   │   ├── character-sheet.js    # Core sheet initialisation & orchestration
+│   │   │   ├── dashboard.js          # Dashboard interface & character management
+│   │   │   ├── character-toolbar.js  # Character-specific toolbar
+│   │   │   ├── control-bar.js        # Sticky toolbar (save, load, roll, etc.)
+│   │   │   ├── dice-overlay.js       # 3-D overlay + UI toolbar
+│   │   │   ├── info-buttons.js       # Info mode & reference system
+│   │   │   ├── sticky-header.js      # Sticky header component
+│   │   │   └── accessibility-fix.js  # Misc ARIA / keyboard tweaks
+│   │   └── utils/           # Utility functions
+│   │       ├── dice.js               # Core dice physics/render (Three.js + Cannon.js)
+│   │       ├── dice-vtm.js           # V5-specific dice logic (hunger, crits, bestial)
+│   │       ├── disciplines.js        # Static Discipline definitions (ES module)
+│   │       └── xp-pricing.js         # XP cost calculations
+│   ├── data/                # Static game data
+│   │   ├── attributes.js
+│   │   ├── backgrounds-coterie.js
+│   │   ├── backgrounds.js
+│   │   ├── blood_potency.js
+│   │   ├── clans/           # Clan-specific data
+│   │   ├── clans.js
+│   │   ├── compulsions.js
+│   │   ├── coterie_types.js
+│   │   ├── disciplines/     # Discipline-specific data
+│   │   ├── disciplines.js
+│   │   ├── factions/        # Faction-specific data
+│   │   ├── generation.js
+│   │   ├── humanity.js
+│   │   ├── loresheets.js
+│   │   ├── merits.js
+│   │   ├── predator_types.js
+│   │   ├── resonances.js
+│   │   └── skills.js
+│   ├── integrations/        # External integrations
+│   │   └── discord-integration.js    # Discord webhook integration
+│   └── lib/                 # Vendored libraries
+│       ├── cannon.min.js
+│       ├── teal.min.js
+│       └── three.min.js
 ├── assets/                   # Images, icons, fonts
 ├── data/                     # **↯   Rules data sourced from Progeny & VTM Wiki**
 ├── reference/                # Additional reference materials
@@ -133,14 +164,17 @@ Key design goals:
 ```mermaid
 flowchart TD
     subgraph UI
-        indexHTML([index.html]) --> CharacterSheet
+        indexHTML([index.html - Dashboard]) --> Dashboard
+        characterSheetHTML([character-sheet.html]) --> CharacterSheet
+        Dashboard -->|switches to| CharacterSheet
         ControlBar -->|buttons| CharacterSheet
-        CharacterManager -->|switches| CharacterSheet
+        CharacterManager -->|manages| Dashboard
     end
 
     subgraph Data
         DatabaseManager -->|persists| IndexedDB
         CharacterManager -->|manages| DatabaseManager
+        Dashboard -->|displays| DatabaseManager
     end
 
     CharacterSheet -->|delegates| Managers
@@ -152,21 +186,37 @@ flowchart TD
     DiceOverlay --> DiceEngine
     DiceEngine --> ThreeJS[Three.js]
     DiceEngine --> CannonJS[Cannon.js]
+
+    DiscordIntegration -->|webhooks| Discord
 ```
 
-• **index.html** contains semantic markup for every sheet cell.  Manager modules enhance these nodes at runtime (adding dot trackers, dropdowns, etc.).
+• **index.html** serves as the main dashboard interface for character management and creation.
+• **character-sheet.html** contains semantic markup for every sheet cell. Manager modules enhance these nodes at runtime.
+• **Dashboard** provides character grid, creation interface, and management tools.
 • **Control Bar** emits custom events (`save`, `load`, `roll`) caught by the appropriate modules.
 • **Character Manager** handles multiple character support with seamless switching.
 • **Database Manager** provides IndexedDB operations for robust data persistence.
 • **BackupManager** serialises the DOM-derived character model into JSON and vice-versa.
 • **DiceOverlay** is lazily loaded; if disabled, none of the large 3-D libs are downloaded.
+• **Discord Integration** provides optional webhook functionality for sharing dice rolls.
 
 ---
 
 ## Major JavaScript Modules
 
+### `dashboard.js`
+Manages the main dashboard interface for character management, creation, and system selection.
+
+Key features:
+* Character grid display with cards
+* New character creation interface
+* System selection (Vampire, Hunter, Werewolf)
+* Character import from various sources
+* Settings management
+* Theme switching
+
 ### `character-sheet.js`
-Responsible for bootstrapping the sheet: loops over DOM sections, initialises the relevant manager, and wires cross-section interactions (e.g., Willpower dots update the track boxes).
+Responsible for bootstrapping the character sheet: loops over DOM sections, initialises the relevant manager, and wires cross-section interactions.
 
 Key exports:
 * `init()` – main entry called on DOM-ready.
@@ -194,7 +244,7 @@ Key features:
 * Automatic data persistence
 
 ### `manager-utils.js`
-Common helper functions: value parsing, dot creation, tooltip wiring, REST-like fetch of reference JSON.
+Common helper functions: value parsing, dot creation, tooltip wiring, REST-like fetch of reference JSON, and unified toast notification system.
 
 ### Manager classes
 | Module | Responsibility |
@@ -220,6 +270,15 @@ Also exposes `downloadJSON()` and `loadFromFile()` helpers. Now integrates with 
 ### `dice-overlay.js`
 Creates a full-window transparent canvas, initialises `dice.js`, and exposes `rollDice(config)` given a dice notation (`5v/2h` = 5 normal, 2 hunger).  Listens for `Ctrl + R` keyboard shortcut.
 
+### `discord-integration.js`
+Provides Discord webhook integration for sharing dice rolls and character updates. Includes webhook validation and structured embed creation.
+
+Key features:
+* Webhook URL management
+* Roll result formatting
+* Character name integration
+* Settings persistence
+
 ### `info-buttons.js`
 Provides context-sensitive information display for game mechanics and rules. Replaces the older tooltip system with a more comprehensive reference system.
 
@@ -227,7 +286,7 @@ Provides context-sensitive information display for game mechanics and rules. Rep
 
 ## Data Layer
 
-All reference data lives in `js/references/` and `data/`:
+All reference data lives in `js/data/` and `data/`:
 
 * **Source projects:**
   * [@prncc/vampire-dice-roller](https://github.com/prncc/vampire-dice-roller)
@@ -248,7 +307,7 @@ The application uses IndexedDB with two object stores:
 
 ```jsonc
 {
-  "meta": { "format": 1, "generated": "2025-06-13T18:22:00Z" },
+  "meta": { "format": 1, "generated": "2025-01-25T18:22:00Z" },
   "info": {
     "name": "Dr Jane Doe",
     "concept": "Reluctant Scholar",
@@ -321,8 +380,9 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 
 * **Linting:** not enforced currently; follow Airbnb JS where reasonable.
 * **Modules:** keep each manager self-contained; expose a default class with `init()`.
-* **DOM selectors:** always query via ids/classes defined in `index.html`; avoid brittle text-based selectors.
+* **DOM selectors:** always query via ids/classes defined in HTML; avoid brittle text-based selectors.
 * **Data persistence:** use IndexedDB exclusively through the database manager.
+* **Toast notifications:** use the unified `ToastManager` from `manager-utils.js`.
 
 ---
 
@@ -348,6 +408,7 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
    - Check IndexedDB persistence
    - Test character switching and management
    - Check accessibility with screen readers
+   - Test Discord integration (if enabled)
 
 4. **Building**
    ```bash
@@ -357,6 +418,14 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 ---
 
 ## Component Architecture
+
+### Dashboard Interface
+- Character grid with cards
+- System selection interface
+- Character creation workflow
+- Import functionality (Ledger, Progeny)
+- Settings management
+- Theme switching
 
 ### Character Management
 - Character selector dropdown
@@ -461,6 +530,12 @@ A: Check browser console for IndexedDB errors. Ensure the browser supports Index
 
 **Q: Multiple characters not working.**  
 A: Verify that the character manager is properly initialized. Check for console errors during startup.
+
+**Q: Dashboard not loading characters.**  
+A: Ensure the database manager is properly initialized. Check for IndexedDB support and console errors.
+
+**Q: Discord integration not working.**  
+A: Verify webhook URL is correct and Discord integration is enabled in settings. Check browser console for network errors.
 
 ---
 

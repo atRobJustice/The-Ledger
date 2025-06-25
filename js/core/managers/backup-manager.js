@@ -18,8 +18,8 @@
         // If buttons already exist (added by control-bar.js), do nothing
         if(document.getElementById('exportJsonBtn')) return;
 
-        const $exportBtn = $('<button>', {id: 'exportJsonBtn', class: 'btn btn-outline-light', text: 'Export'});
-        const $importBtn = $('<button>', {id: 'importJsonBtn', class: 'btn btn-outline-light', text: 'Import'});
+        const $exportBtn = $('<button>', {id: 'exportJsonBtn', class: 'btn theme-btn-outline-secondary', text: 'Export'});
+        const $importBtn = $('<button>', {id: 'importJsonBtn', class: 'btn theme-btn-outline-secondary', text: 'Import'});
         const $fileInput = $('<input>', {id: 'importJsonInput', type: 'file', accept: 'application/json', style: 'display:none'});
 
         // Add buttons and hidden file input to the control bar
@@ -58,6 +58,172 @@
             };
             reader.readAsText(file);
         });
+    }
+
+    async function loadCharacterData(data){
+        console.log('loadCharacterData called with data:', data);
+        console.log('loadCharacterData: data.locked value:', data.locked);
+        
+        // Basic stats
+        Object.entries(data).forEach(([key,val]) => {
+            // --- XP Import ---
+            if(key === 'xp' && window.setXPData) {
+                window.setXPData(val);
+                return;
+            }
+            // --- End XP Import ---
+            // Skip manager keys handled later
+            if(['disciplines','merits','flaws','backgrounds','backgroundFlaws','coterieMerits','coterieFlaws','loresheets','convictions'].includes(key)) return;
+
+            // First, handle specialties keys so they don't fall through to generic processing
+            if(key.endsWith('_specialties')){
+                const skillLabel = key.replace('_specialties','');
+                const skillLabelReadable = skillLabel.replace(/_/g,' ');
+                const $skillStat = $('.stat').filter(function(){
+                    return $(this).find('.stat-label').text().trim().toLowerCase() === skillLabelReadable;
+                });
+                if($skillStat.length){
+                    $skillStat.attr('data-specialties', JSON.stringify(val||[]));
+                    if(window.specialtyManager && typeof window.specialtyManager.refreshRow==='function'){
+                        const cap = skillLabelReadable.replace(/\b\w/g, c=>c.toUpperCase());
+                        window.specialtyManager.refreshRow(cap);
+                    }
+                }
+                return;
+            }
+
+            const label = key.replace(/_/g,' ');
+            const $stat = $('.stat').filter(function(){
+                return $(this).find('.stat-label').text().trim().toLowerCase() === label;
+            });
+            if(!$stat.length) return;
+
+            const $input = $stat.find('input, textarea');
+            const $select = $stat.find('select');
+            const $dots = $stat.find('.dots');
+            const $track = $stat.find('.track-container');
+            const $valueSpan = $stat.find('span:last-child');
+
+            if($input.length){
+                $input.val(val);
+                // Trigger input event for textareas to handle auto-resize
+                if($input.is('textarea')) {
+                    $input.trigger('input');
+                }
+            } else if($select.length){
+                setSelectValueWithRetry($select, val);
+            } else if($dots.length && typeof val === 'number'){
+                $dots.data('value', val).attr('data-value', val);
+                $dots.find('.dot').each((i,el)=>$(el).toggleClass('filled', i<val));
+                // Update dependent tracks (health/willpower) if the helper is available
+                if(typeof updateRelatedTrackBoxes === 'function'){
+                    updateRelatedTrackBoxes($dots.find('.dot').first());
+                }
+            } else if($track.length && typeof val === 'object'){
+                applyTrackState($track, val);
+            } else if(label === 'compulsion') {
+                // Special handling for compulsion
+                const $compulsionSelect = $stat.find('select');
+                if($compulsionSelect.length) {
+                    setSelectValueWithRetry($compulsionSelect, val);
+                }
+            } else if($valueSpan.length && typeof val === 'number') {
+                // If we have a span but no dots, create dots first
+                console.log('[loadCharacterData] Converting span to dots for:', label, 'value:', val);
+                
+                // Determine if this should be dots, track boxes, or something else
+                const textFields = ['name', 'concept', 'chronicle', 'ambition', 'desire', 'sire'];
+                const trackFields = ['health', 'willpower', 'humanity'];
+                
+                if (textFields.includes(label)) {
+                    // Convert to text input
+                    const input = createTextInput(val);
+                    $valueSpan.replaceWith(input);
+                } else if (trackFields.includes(label)) {
+                    // Convert to track boxes
+                    const trackBoxes = createTrackBoxes(10, val, 0, 0, label);
+                    $valueSpan.replaceWith(trackBoxes);
+                } else if (label === 'blood potency') {
+                    // Convert to dots for blood potency
+                    const dotsContainer = createDots(val, 5);
+                    $valueSpan.replaceWith(dotsContainer);
+                } else if (label === 'hunger') {
+                    // Convert to dots for hunger
+                    const dotsContainer = createDots(val, 5);
+                    $(dotsContainer).removeClass('lockable-dot').addClass('hunger-dots');
+                    $valueSpan.replaceWith(dotsContainer);
+                } else {
+                    // Default to dots for attributes and skills
+                    const dotsContainer = createDots(val, 5);
+                    $valueSpan.replaceWith(dotsContainer);
+                }
+            }
+        });
+
+        // Manager imports
+        if(data.disciplines && window.disciplineManager) window.disciplineManager.loadDisciplines(data.disciplines);
+        if(window.meritFlawManager) window.meritFlawManager.loadMeritsAndFlaws(data.merits||{}, data.flaws||{});
+        if(window.backgroundManager) window.backgroundManager.loadBackgroundsAndFlaws(data.backgrounds||{}, data.backgroundFlaws||{});
+        if(window.coterieManager) window.coterieManager.loadCoterieMeritsAndFlaws(data.coterieMerits||{}, data.coterieFlaws||{});
+        if(window.loresheetManager) window.loresheetManager.loadLoresheets(data.loresheets||[]);
+        if(window.convictionManager) window.convictionManager.loadConvictions(data.convictions||[]);
+
+        // Restore Discord webhook (now using IndexedDB)
+        if(Object.prototype.hasOwnProperty.call(data,'discordWebhook') && window.databaseManager){
+            if(data.discordWebhook){
+                window.databaseManager.setSetting('discordWebhook', data.discordWebhook);
+            } else {
+                window.databaseManager.deleteSetting('discordWebhook');
+            }
+        }
+
+        // Restore lock state
+        if(Object.prototype.hasOwnProperty.call(data,'locked') && window.LockManager){
+            // Check if there's a locked parameter in the URL that should override character data
+            const urlParams = new URLSearchParams(window.location.search);
+            const lockedFromUrl = urlParams.get('locked');
+            
+            if (lockedFromUrl !== null) {
+                // URL parameter takes precedence
+                const shouldLock = lockedFromUrl === 'true';
+                console.log('Setting lock state from URL parameter (overriding character data in loadCharacterData):', shouldLock);
+                window.LockManager.init(shouldLock);
+            } else {
+                // Use character data if no URL parameter
+                console.log('Setting lock state from character data in loadCharacterData:', data.locked ?? false);
+                window.LockManager.init(data.locked ?? false);
+            }
+        }
+
+        // Restore theme (now using IndexedDB) - but only if no theme is currently set
+        if(Object.prototype.hasOwnProperty.call(data,'theme') && window.databaseManager){
+            const currentTheme = document.body.getAttribute('data-theme');
+            const savedTheme = await window.databaseManager.getSetting('theme');
+            
+            // Only restore theme from character data if no theme is currently set
+            // This prevents character data from overriding user's theme preference
+            if (!currentTheme && !savedTheme) {
+                const t = data.theme || 'wod-dark';
+                if(t === 'wod-dark'){
+                    document.body.setAttribute('data-theme', 'wod-dark');
+                } else {
+                    document.body.setAttribute('data-theme', t);
+                }
+                window.databaseManager.setSetting('theme', t);
+                console.log('Restored theme from character data:', t);
+            } else {
+                console.log('Theme already set, not overriding with character data. Current:', currentTheme, 'Saved:', savedTheme);
+            }
+        }
+
+        // Recalculate and apply impairment classes based on imported track states
+        if(typeof evaluateImpairmentStatus === 'function') {
+            try {
+                evaluateImpairmentStatus();
+            } catch(err) {
+                console.warn('Failed to evaluate impairment status after import', err);
+            }
+        }
     }
 
     function gatherCharacterData(){
@@ -151,115 +317,6 @@
         data.theme = activeTheme;
 
         return data;
-    }
-
-    function loadCharacterData(data){
-        // Basic stats
-        Object.entries(data).forEach(([key,val]) => {
-            // --- XP Import ---
-            if(key === 'xp' && window.setXPData) {
-                window.setXPData(val);
-                return;
-            }
-            // --- End XP Import ---
-            // Skip manager keys handled later
-            if(['disciplines','merits','flaws','backgrounds','backgroundFlaws','coterieMerits','coterieFlaws','loresheets','convictions'].includes(key)) return;
-
-            // First, handle specialties keys so they don't fall through to generic processing
-            if(key.endsWith('_specialties')){
-                const skillLabel = key.replace('_specialties','');
-                const skillLabelReadable = skillLabel.replace(/_/g,' ');
-                const $skillStat = $('.stat').filter(function(){
-                    return $(this).find('.stat-label').text().trim().toLowerCase() === skillLabelReadable;
-                });
-                if($skillStat.length){
-                    $skillStat.attr('data-specialties', JSON.stringify(val||[]));
-                    if(window.specialtyManager && typeof window.specialtyManager.refreshRow==='function'){
-                        const cap = skillLabelReadable.replace(/\b\w/g, c=>c.toUpperCase());
-                        window.specialtyManager.refreshRow(cap);
-                    }
-                }
-                return;
-            }
-
-            const label = key.replace(/_/g,' ');
-            const $stat = $('.stat').filter(function(){
-                return $(this).find('.stat-label').text().trim().toLowerCase() === label;
-            });
-            if(!$stat.length) return;
-
-            const $input = $stat.find('input, textarea');
-            const $select = $stat.find('select');
-            const $dots = $stat.find('.dots');
-            const $track = $stat.find('.track-container');
-
-            if($input.length){
-                $input.val(val);
-                // Trigger input event for textareas to handle auto-resize
-                if($input.is('textarea')) {
-                    $input.trigger('input');
-                }
-            } else if($select.length){
-                setSelectValueWithRetry($select, val);
-            } else if($dots.length && typeof val === 'number'){
-                $dots.data('value', val).attr('data-value', val);
-                $dots.find('.dot').each((i,el)=>$(el).toggleClass('filled', i<val));
-                // Update dependent tracks (health/willpower) if the helper is available
-                if(typeof updateRelatedTrackBoxes === 'function'){
-                    updateRelatedTrackBoxes($dots.find('.dot').first());
-                }
-            } else if($track.length && typeof val === 'object'){
-                applyTrackState($track, val);
-            } else if(label === 'compulsion') {
-                // Special handling for compulsion
-                const $compulsionSelect = $stat.find('select');
-                if($compulsionSelect.length) {
-                    setSelectValueWithRetry($compulsionSelect, val);
-                }
-            }
-        });
-
-        // Manager imports
-        if(data.disciplines && window.disciplineManager) window.disciplineManager.loadDisciplines(data.disciplines);
-        if(window.meritFlawManager) window.meritFlawManager.loadMeritsAndFlaws(data.merits||{}, data.flaws||{});
-        if(window.backgroundManager) window.backgroundManager.loadBackgroundsAndFlaws(data.backgrounds||{}, data.backgroundFlaws||{});
-        if(window.coterieManager) window.coterieManager.loadCoterieMeritsAndFlaws(data.coterieMerits||{}, data.coterieFlaws||{});
-        if(window.loresheetManager) window.loresheetManager.loadLoresheets(data.loresheets||[]);
-        if(window.convictionManager) window.convictionManager.loadConvictions(data.convictions||[]);
-
-        // Restore Discord webhook (now using IndexedDB)
-        if(Object.prototype.hasOwnProperty.call(data,'discordWebhook') && window.databaseManager){
-            if(data.discordWebhook){
-                window.databaseManager.setSetting('discordWebhook', data.discordWebhook);
-            } else {
-                window.databaseManager.deleteSetting('discordWebhook');
-            }
-        }
-
-        // Restore lock state
-        if(Object.prototype.hasOwnProperty.call(data,'locked') && window.LockManager){
-            window.LockManager.init(data.locked ?? false);
-        }
-
-        // Restore theme (now using IndexedDB)
-        if(Object.prototype.hasOwnProperty.call(data,'theme') && window.databaseManager){
-            const t = data.theme || 'default';
-            if(t === 'default'){
-                document.body.removeAttribute('data-theme');
-            } else {
-                document.body.setAttribute('data-theme', t);
-            }
-            window.databaseManager.setSetting('theme', t);
-        }
-
-        // Recalculate and apply impairment classes based on imported track states
-        if(typeof evaluateImpairmentStatus === 'function') {
-            try {
-                evaluateImpairmentStatus();
-            } catch(err) {
-                console.warn('Failed to evaluate impairment status after import', err);
-            }
-        }
     }
 
     function applyTrackState($track, state){

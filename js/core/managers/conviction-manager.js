@@ -52,7 +52,7 @@ class ConvictionManager {
             <div class="conviction-item ledger p-3 my-3" data-id="${convictionId}">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h5 class="mb-0">Conviction ${this.convictions.length + 1}</h5>
-                    <button type="button" class="btn btn-sm btn-outline-danger remove-conviction">
+                    <button type="button" class="btn btn-sm theme-btn-outline-danger remove-conviction">
                         <i class="bi bi-dash-circle"></i>
                     </button>
                 </div>
@@ -186,7 +186,7 @@ class ConvictionManager {
                 <div class="conviction-item ledger p-3 my-3" data-id="${convictionId}">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h5 class="mb-0">Conviction ${index + 1}</h5>
-                        <button type="button" class="btn btn-sm btn-outline-danger remove-conviction">
+                        <button type="button" class="btn btn-sm theme-btn-outline-danger remove-conviction">
                             <i class="bi bi-dash-circle"></i>
                         </button>
                     </div>

@@ -22,4 +22,12 @@ SOFTWARE.
 
 ---
 
-Note: This project is a non-commercial fan work of *Vampire: The Masquerade* and the World of Darkness, which are properties of Paradox Interactive AB. This software is released under the MIT License, but its use is subject to the Dark Pack guidelines and Paradox Interactive's intellectual property rights. 
+## Dark Pack Agreement Compliance
+
+This project is a non-commercial fan work of *Vampire: The Masquerade* and the World of Darkness, which are properties of Paradox Interactive AB. This software is released under the MIT License, but its use is subject to the Dark Pack guidelines and Paradox Interactive's intellectual property rights.
+
+**Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit worldofdarkness.com.**
+
+**This is not official World of Darkness material.**
+
+This project complies with the [Dark Pack Agreement](https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement) for non-commercial fan content. The Dark Pack logo should be displayed on promotional materials and websites associated with this project to indicate compliance with this agreement. 
