@@ -32,9 +32,6 @@
                             <button type="button" class="btn theme-btn-outline-secondary btn-sm" onclick="openSettings()">
                                 <i class="bi bi-gear"></i> Settings
                             </button>
-                            <button type="button" class="btn theme-btn-outline-secondary btn-sm">
-                                <i class="bi bi-question-circle"></i> Help
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -42,26 +39,6 @@
         </div>
 
         <div class="container">
-            <!-- Dashboard Stats -->
-            <div class="dashboard-stats">
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Total Characters</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Vampire Characters</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Hunter Characters</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Shared Characters</div>
-                </div>
-            </div>
-
             <!-- Character Grid -->
             <div class="character-grid" id="character-grid">
                 <!-- Character cards will be loaded dynamically from IndexedDB -->
@@ -267,21 +244,21 @@
                                             </div>
                                             
                                             <div class="mb-3">
-                                                <label class="form-label">What to send to Discord:</label>
+                                                <label class="form-label">What to send to Discord: (Coming Soon)</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="discordDiceRolls" checked>
+                                                    <input class="form-check-input" type="checkbox" id="discordDiceRolls" checked disabled>
                                                     <label class="form-check-label" for="discordDiceRolls">
                                                         Dice roll results
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="discordCharacterUpdates">
+                                                    <input class="form-check-input" type="checkbox" id="discordCharacterUpdates" disabled>
                                                     <label class="form-check-label" for="discordCharacterUpdates">
                                                         Character updates (XP, level ups, etc.)
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="discordSystemMessages">
+                                                    <input class="form-check-input" type="checkbox" id="discordSystemMessages" disabled>
                                                     <label class="form-check-label" for="discordSystemMessages">
                                                         System messages (backups, errors, etc.)
                                                     </label>
@@ -414,7 +391,6 @@
                                                 <h6>Supported Game Systems:</h6>
                                                 <ul>
                                                     <li>Vampire: The Masquerade 5th Edition</li>
-                                                    <li>Hunter: The Reckoning 5th Edition</li>
                                                     <li>More coming soon...</li>
                                                 </ul>
                                             </div>
@@ -434,6 +410,13 @@
                                                 <i class="bi bi-github"></i>
                                                 <strong>Open Source:</strong> The Ledger is open source software. 
                                                 <a href="https://github.com/atRobJustice/The-Ledger" target="_blank" class="alert-link">View on GitHub</a>
+                                            </div>
+
+                                            <div class="mb-5">
+                                                <img src="assets/darkpack_logo.png" alt="Dark Pack" class="wod-logo" style="width:100px;height:auto; float:right;">
+                                                <i>Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, 
+                                                and are used with permission. All rights reserved. For more information please visit 
+                                                <a href="http://www.worldofdarkness.com" target="_blank" class="alert-link">worldofdarkness.com</a>.</i>
                                             </div>
                                         </div>
                                     </div>

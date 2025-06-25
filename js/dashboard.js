@@ -69,7 +69,6 @@ async function loadCharacters() {
 // Update dashboard display
 function updateDashboard() {
     updateCharacterGrid();
-    updateDashboardStats();
 }
 
 // Update character grid
@@ -252,20 +251,6 @@ function formatLastModified(dateString) {
     } else {
         return date.toLocaleDateString();
     }
-}
-
-// Update dashboard statistics
-function updateDashboardStats() {
-    const totalCharacters = characters.length;
-    const vampireCharacters = characters.filter(c => c.clan || c.bloodPotency !== undefined).length;
-    const hunterCharacters = characters.filter(c => c.creed || c.virtue).length;
-    const sharedCharacters = 0; // TODO: Implement sharing functionality
-    
-    // Update stat cards
-    document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = totalCharacters;
-    document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = vampireCharacters;
-    document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = hunterCharacters;
-    document.querySelector('.stat-card:nth-child(4) .stat-number').textContent = sharedCharacters;
 }
 
 // Character actions
