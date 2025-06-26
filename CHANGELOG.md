@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0.1] - 2025-01-25
+
+### Fixed
+- **Dice Engine Loading**: Fixed incorrect file paths in `dice-overlay.js` that were causing "Failed to load script: js/dice.js" errors
+  - Updated `ensureDiceEngineLoaded()` function to use correct paths: `js/core/utils/dice.js` and `js/core/utils/dice-vtm.js`
+  - Resolves script loading failures that prevented dice rolling functionality
+
 ## [1.3.0] - 2025-01-25
 
 ### Added

@@ -1,6 +1,6 @@
-# Technical Documentation – The Ledger
+# The Ledger - Vampire: The Masquerade V5 Character Sheet
 
-> Version 1.3.0 – Last updated 25 January 2025
+> Version 1.3.0.1 – Last updated 25 January 2025
 
 Welcome to the technical documentation for **The Ledger**, an offline-first web app for managing *Vampire: The Masquerade* 5th Edition characters.
 

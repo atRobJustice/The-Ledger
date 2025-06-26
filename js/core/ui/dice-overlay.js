@@ -62,8 +62,8 @@ let bonusMsg = null;
     await loadScriptOnce(`js/lib/three.min.js`);
     await loadScriptOnce(`js/lib/cannon.min.js`);
     await loadScriptOnce(`js/lib/teal.min.js`);
-    await loadScriptOnce(`js/dice.js`);
-    await loadScriptOnce(`js/dice-vtm.js`);
+    await loadScriptOnce(`js/core/utils/dice.js`);
+    await loadScriptOnce(`js/core/utils/dice-vtm.js`);
   }
 
   // -------------------------------------------------------------
