@@ -2,7 +2,7 @@
 
 *A Vampire: The Masquerade 5th Edition character ledger*
 
-[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/atrobjustice/The-Ledger/releases)
+[![Version](https://img.shields.io/badge/version-1.3.0.1-blue.svg)](https://github.com/atrobjustice/The-Ledger/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 
 ---
