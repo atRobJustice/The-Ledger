@@ -1,3 +1,101 @@
+/**
+ * @fileoverview Dashboard for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Main dashboard interface for managing characters, settings, and system configuration.
+ *             Provides character grid display, creation, editing, deletion, and import/export functionality.
+ *             Handles theme management, Discord integration, and data persistence.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires database-manager.js - For character data persistence and settings
+ * @requires discord-integration.js - For Discord webhook integration
+ * @requires toastManager - Global toast notification manager
+ * @requires modalManager - Global modal dialog manager
+ * @requires Bootstrap - For UI components and styling
+ * @requires jQuery - For DOM manipulation and event handling
+ * 
+ * @namespace Dashboard
+ * @description Main namespace for dashboard functionality
+ * 
+ * @property {Object} databaseManager - Database manager instance
+ * @property {Array} characters - Array of loaded characters
+ * @property {Function} sendToDiscord - Discord integration function
+ * 
+ * @function initDashboard - Initializes the dashboard and loads data
+ * @function loadSavedTheme - Loads and applies saved theme setting
+ * @function loadCharacters - Loads characters from IndexedDB
+ * @function updateDashboard - Updates dashboard display
+ * @function updateCharacterGrid - Updates character grid display
+ * @function createCharacterCard - Creates a character card element
+ * @function getCharacterSystem - Determines character system type
+ * @function getCharacterDetails - Gets character details based on system
+ * @function formatLastModified - Formats last modified date
+ * @function openCharacter - Opens a character for viewing
+ * @function editCharacter - Opens a character for editing
+ * @function duplicateCharacter - Duplicates a character
+ * @function deleteCharacter - Deletes a character
+ * @function createCharacter - Creates a new character
+ * @function showCreateCharacter - Shows character creation modal
+ * @function createNewCharacter - Creates a new character instance
+ * @function refreshDashboard - Refreshes dashboard data
+ * @function openSettings - Opens settings modal
+ * @function loadSettings - Loads settings from database
+ * @function applyThemeFromDropdown - Applies theme from dropdown selection
+ * @function saveSettings - Saves settings to database
+ * @function testDiscordWebhook - Tests Discord webhook connection
+ * @function exportAllData - Exports all data as JSON
+ * @function importData - Imports data from file
+ * @function handleImportFile - Handles file import
+ * @function clearAllData - Clears all data from database
+ * @function importCharacter - Imports character from file
+ * @function handleCharacterImport - Handles character file import
+ * @function importProgenyCharacter - Imports Progeny character
+ * @function handleProgenyImport - Handles Progeny file import
+ * @function convertProgenyToLedger - Converts Progeny format to Ledger format
+ * @function disciplineNameToKey - Converts discipline name to key
+ * 
+ * @typedef {Object} Character
+ * @property {string} id - Character unique identifier
+ * @property {string} name - Character name
+ * @property {string} clan - Character clan (vampire)
+ * @property {number} bloodPotency - Blood potency level (vampire)
+ * @property {number} generation - Generation level (vampire)
+ * @property {string} creed - Character creed (hunter)
+ * @property {string} virtue - Character virtue (hunter)
+ * @property {number} conviction - Conviction level (hunter)
+ * @property {string} createdAt - Creation timestamp
+ * @property {string} updatedAt - Last modification timestamp
+ * 
+ * @typedef {Object} CharacterSystem
+ * @property {string} type - System type ('vampire', 'hunter', 'unknown')
+ * @property {string} displayName - Display name for the system
+ * @property {string} icon - Bootstrap icon class
+ * 
+ * @typedef {Object} CharacterDetail
+ * @property {string} label - Detail label
+ * @property {string} value - Detail value
+ * 
+ * @typedef {Object} DashboardSettings
+ * @property {string} theme - Selected theme
+ * @property {string} discordWebhook - Discord webhook URL
+ * @property {boolean} autoSave - Auto-save setting
+ * @property {boolean} showTooltips - Tooltip display setting
+ * 
+ * @example
+ * // Initialize dashboard
+ * await initDashboard();
+ * 
+ * // Create a new character
+ * await createNewCharacter('vampire');
+ * 
+ * // Open settings
+ * openSettings();
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Dashboard functionality
 let databaseManager;
 let characters = [];

@@ -1,3 +1,67 @@
+/**
+ * @fileoverview XP Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages experience points. Provides functionality for awarding, spending, and tracking
+ *             XP with a complete history system and integration with the backup manager for data persistence.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires window.databaseManager - For persisting XP data to IndexedDB
+ * @requires window.modalManager - For displaying XP award modals
+ * @requires window.toastManager - For displaying feedback messages
+ * @requires Bootstrap - Used for UI components and styling
+ * 
+ * @namespace XPManager
+ * @description Main namespace for managing experience points
+ * 
+ * @property {Object} xpData - Object containing XP state
+ * @property {number} xpData.total - Total XP awarded
+ * @property {number} xpData.spent - Total XP spent
+ * @property {Array} xpData.history - Array of transaction records
+ * 
+ * @function loadXPFromStorage - Loads XP data from IndexedDB on initialization
+ * @function saveXPToStorage - Saves XP data to IndexedDB
+ * @function updateXPUI - Updates the XP display in the UI
+ * @function setupXPHandlers - Sets up event listeners for XP-related buttons
+ * @function showAwardXPModal - Shows the modal for awarding XP
+ * @function awardXP - Awards XP to the character
+ * @function spendXP - Spends XP from the character's pool
+ * @function getAvailableXP - Returns the amount of available XP
+ * @function undoLast - Undoes the last XP transaction
+ * 
+ * @typedef {Object} XPData
+ * @property {number} total - Total XP awarded
+ * @property {number} spent - Total XP spent
+ * @property {Array<TransactionRecord>} history - Array of transaction records
+ * 
+ * @typedef {Object} TransactionRecord
+ * @property {string} type - Transaction type ('award' or 'spend')
+ * @property {number} amount - XP amount
+ * @property {string} date - Transaction timestamp
+ * @property {string} [note] - Optional note about the transaction
+ * @property {Object} [meta] - Optional metadata
+ * 
+ * @event xpUndo - Custom event emitted when XP is undone
+ * @eventparam {TransactionRecord} detail - The transaction that was undone
+ * 
+ * @example
+ * // Award XP
+ * await awardXP(5, 'Session completion');
+ * 
+ * // Spend XP
+ * await spendXP(3, 'Attribute increase');
+ * 
+ * // Get available XP
+ * const available = getAvailableXP();
+ * 
+ * // Undo last transaction
+ * await undoLast();
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // XP Manager for Ledger
 
 (function(){

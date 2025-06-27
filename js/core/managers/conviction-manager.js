@@ -1,3 +1,56 @@
+/**
+ * @fileoverview Conviction Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages character convictions and touchstones. Provides functionality for adding,
+ *             removing, and managing up to 3 convictions, each with an associated touchstone
+ *             that represents the character's connection to humanity.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and styling
+ * @requires window.toastManager - For displaying warning messages
+ * 
+ * @class ConvictionManager
+ * @classdesc Main class for managing character convictions and touchstones
+ * 
+ * @property {Array} convictions - Array of conviction objects with id and column properties
+ * @property {number} maxConvictions - Maximum number of convictions allowed (3)
+ * 
+ * @method constructor - Initializes the conviction manager with empty convictions array and max limit
+ * @method initializeEventListeners - Sets up event listeners for add/remove buttons and checkbox changes
+ * @method getActiveConvictions - Returns the count of active (non-lost) convictions
+ * @method updateAvailableSlots - Updates the add button state based on available conviction slots
+ * @method addConviction - Adds a new conviction with touchstone details to the appropriate column
+ * @method removeConviction - Removes a specific conviction and redistributes remaining ones
+ * @method redistributeConvictions - Redistributes convictions across the 3-column layout
+ * @method updateConvictionNumbers - Updates conviction numbering after changes
+ * @method saveConvictions - Collects and returns all conviction data for saving
+ * @method loadConvictions - Loads conviction data and recreates the UI elements
+ * 
+ * @typedef {Object} Conviction
+ * @property {number} id - Unique identifier for the conviction
+ * @property {number} column - Column index (0-2) for layout
+ * @property {string} description - The conviction text
+ * @property {Touchstone} touchstone - Object containing touchstone details
+ * 
+ * @typedef {Object} Touchstone
+ * @property {string} name - Touchstone's name
+ * @property {string} relationship - Relationship to the character
+ * @property {string} summary - What the touchstone represents
+ * @property {boolean} lost - Boolean indicating if the touchstone is lost
+ * 
+ * @example
+ * const convictionManager = new ConvictionManager();
+ * convictionManager.addConviction();
+ * convictionManager.removeConviction(convictionId);
+ * const convictions = convictionManager.saveConvictions();
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 class ConvictionManager {
     constructor() {
         this.convictions = [];

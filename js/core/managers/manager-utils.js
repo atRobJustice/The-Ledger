@@ -1,3 +1,115 @@
+/**
+ * @fileoverview Manager Utilities for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Provides shared utility classes and functions for managing character traits.
+ *             Includes three main classes: ToastManager for notifications, ModalManager
+ *             for modal dialogs, and TraitManagerUtils for trait-specific operations.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires Bootstrap - Used for toast notifications, modals, and UI components
+ * @requires jQuery - Used for DOM manipulation in some utility functions
+ * 
+ * @class ToastManager
+ * @classdesc Toast notification system with theme support
+ * 
+ * @property {string} containerId - ID of the toast container element
+ * @property {number} toastCounter - Counter for generating unique toast IDs
+ * 
+ * @method constructor - Initializes the toast manager with container setup
+ * @method initContainer - Creates the toast container if it doesn't exist
+ * @method show - Shows a toast notification
+ * @method success - Shows a success toast
+ * @method error - Shows an error toast
+ * @method warning - Shows a warning toast
+ * @method info - Shows an info toast
+ * @method removeExistingToasts - Removes existing toasts to prevent stacking
+ * @method getToastIcon - Gets the appropriate icon for toast type
+ * @method getThemeClass - Gets theme-appropriate CSS class
+ * @method getDefaultTitle - Gets default title for toast type
+ * 
+ * @class ModalManager
+ * @classdesc Modal management system with consistent API
+ * 
+ * @property {Map} activeModals - Map of active modal instances
+ * @property {number} modalCounter - Counter for generating unique modal IDs
+ * 
+ * @method constructor - Initializes the modal manager
+ * @method generateModalId - Generates unique modal IDs
+ * @method createModal - Creates basic modal structure
+ * @method confirm - Shows confirmation modal
+ * @method info - Shows info modal
+ * @method select - Shows selection modal
+ * @method showCustom - Shows custom modal
+ * @method showModal - Shows modal with configuration
+ * @method hideModal - Hides specific modal
+ * @method hideAllModals - Hides all active modals
+ * @method cleanupModal - Cleans up modal resources
+ * @method getModal - Gets modal instance
+ * @method isModalActive - Checks if modal is active
+ * @method getActiveModalCount - Gets count of active modals
+ * 
+ * @class TraitManagerUtils
+ * @classdesc Static utility class for trait-specific operations
+ * 
+ * @static
+ * @method createDots - Creates HTML for dot displays
+ * @method capitalizeFirst - Capitalizes first letter of string
+ * @method camelToTitle - Converts camelCase to Title Case
+ * @method showConfirmModal - Shows confirmation modal
+ * @method initTooltips - Initializes Bootstrap tooltips
+ * @method refreshDots - Refreshes dot display
+ * @method mapToPlainObject - Converts Map to plain object
+ * @method sumLevels - Sums levels from a Map
+ * @method parseDotsNotation - Parses dot notation strings
+ * @method formatDotsDisplay - Formats dots for display
+ * @method isValidValue - Validates trait values
+ * @method getValidValues - Gets valid values for a trait
+ * @method showSelectionModal - Shows selection modal
+ * @method debounce - Creates debounced function
+ * @method deepClone - Deep clones an object
+ * @method getDotsMeta - Gets UI metadata from dots info
+ * @method generateTraitOptions - Generates trait options HTML
+ * 
+ * @typedef {Object} ToastOptions
+ * @property {string} message - Message to display
+ * @property {string} type - Type of notification (success, info, warning, danger)
+ * @property {string} [title] - Optional title for the toast
+ * @property {number} [delay] - Auto-hide delay in milliseconds
+ * 
+ * @typedef {Object} ModalOptions
+ * @property {string} title - Modal title
+ * @property {string} content - Modal content
+ * @property {string} [footer] - Modal footer
+ * @property {string} [size] - Modal size (sm, lg, xl)
+ * @property {boolean} [centered] - Whether modal is centered
+ * @property {boolean} [backdrop] - Whether to show backdrop
+ * @property {boolean} [keyboard] - Whether to close on escape
+ * 
+ * @typedef {Object} DotsInfo
+ * @property {number} maxDots - Maximum number of dots
+ * @property {string} traitTypeClass - CSS class for trait type
+ * @property {string} tooltipText - Tooltip text for dots
+ * 
+ * @example
+ * // Toast notifications
+ * toastManager.show('Operation successful', 'success', 'Success');
+ * toastManager.error('Something went wrong', 'Error');
+ * 
+ * // Modal dialogs
+ * const result = await modalManager.confirm('Confirm Action', 'Are you sure?');
+ * modalManager.info('Information', 'This is an info message');
+ * 
+ * // Trait utilities
+ * const dots = TraitManagerUtils.createDots(3, 5);
+ * const title = TraitManagerUtils.camelToTitle('camelCase');
+ * const dotsInfo = TraitManagerUtils.parseDotsNotation('•••');
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Shared utilities for managing character traits (Disciplines, Merits, Flaws, etc.)
 
 /**

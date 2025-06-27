@@ -1,3 +1,63 @@
+/**
+ * @fileoverview Background and Background Flaw Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages the selection, display, and manipulation of character backgrounds and background flaws.
+ *             Provides a complete interface for adding, removing, and modifying background traits with 
+ *             dot-based leveling system. Handles both positive backgrounds and negative background flaws.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires backgrounds.js - Contains all background data and categories
+ * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and tooltips
+ * 
+ * @class BackgroundManager
+ * @classdesc Main class for managing character backgrounds and background flaws
+ * 
+ * @property {Map} selectedBackgrounds - Map of backgroundKey -> { category: string, level: number, instances: Array }
+ * @property {Map} selectedBackgroundFlaws - Map of flawKey -> { category: string, level: number, instances: Array }
+ * @property {Array} availableCategories - Array of available background category keys
+ * 
+ * @method constructor - Initializes the manager with empty collections and available categories
+ * @method init - Sets up the UI, binds events, and initializes tooltips
+ * @method renderBackgroundManager - Creates the HTML structure for background selection interface
+ * @method renderBackgroundFlawManager - Creates the HTML structure for background flaw selection interface
+ * @method getCategoryOptions - Generates HTML options for background categories dropdown
+ * @method getTraitOptions - Generates HTML options for traits within a category
+ * @method getSelectedTraitsHtml - Creates HTML representation of selected traits
+ * @method renderTraitControls - Renders dot controls for traits
+ * @method bindEvents - Sets up event listeners for user interactions
+ * @method updateTraitOptions - Updates trait dropdown options when category changes
+ * @method clearTraitOptions - Clears trait dropdown options
+ * @method addTrait - Adds a new trait to the selected collection
+ * @method removeTrait - Removes a trait from the selected collection
+ * @method handleDotClick - Handles clicks on dot controls to change trait levels
+ * @method updateTraitInstanceLevel - Updates the level of a trait instance
+ * @method updateTraitDisplay - Updates the visual display of a trait
+ * @method updateDisplay - Refreshes the entire display
+ * @method updateTraitTypeDisplay - Updates display for a specific trait type
+ * @method initializeTooltips - Sets up Bootstrap tooltips
+ * @method getSelectedBackgrounds - Returns the map of selected backgrounds
+ * @method getSelectedBackgroundFlaws - Returns the map of selected background flaws
+ * @method getBackgroundLevel - Gets the total level of a specific background
+ * @method getBackgroundFlawLevel - Gets the total level of a specific background flaw
+ * @method getTotalBackgroundPoints - Calculates total background points spent
+ * @method getTotalBackgroundFlawPoints - Calculates total background flaw points gained
+ * @method loadBackgroundsAndFlaws - Loads saved background data
+ * @method findTraitCategory - Finds which category a trait belongs to
+ * @method exportBackgroundsAndFlaws - Exports current background data for saving
+ * 
+ * @example
+ * const backgroundManager = new BackgroundManager();
+ * backgroundManager.addTrait('background', 'allies', 'social');
+ * backgroundManager.getBackgroundLevel('allies'); // Returns total level
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Background and Background Flaw Manager
 import { backgrounds } from '../../data/backgrounds.js';
 import { TraitManagerUtils } from './manager-utils.js';

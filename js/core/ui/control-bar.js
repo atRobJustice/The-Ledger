@@ -1,6 +1,93 @@
-/*
- * control-bar.js
- * Bottom-left floating control bar used across Ledger – extracted from dice-overlay.js
+/**
+ * @fileoverview Control Bar for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Bottom-left floating control bar providing quick access to common functions
+ *             including info mode toggle, Discord webhook configuration, Progeny import,
+ *             dice symbols help, quick roll buttons, and theme management.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires discord-integration.js - For Discord webhook management
+ * @requires blood_potency.js - For blood potency data and calculations
+ * @requires manager-utils.js - For trait management utilities
+ * @requires modalManager - Global modal dialog manager
+ * @requires toastManager - Global toast notification manager
+ * @requires Bootstrap - For UI components and styling
+ * @requires jQuery - For DOM manipulation and event handling
+ * 
+ * @namespace ControlBar
+ * @description Main namespace for control bar functionality
+ * 
+ * @function initControlBar - Initializes the control bar with all components
+ * @function createQuickBtn - Creates a quick action button
+ * @function refreshWPRerollButton - Refreshes willpower reroll button state
+ * @function ensureClearSheetModal - Ensures clear sheet confirmation modal exists
+ * @function performClearSheet - Performs character sheet clearing
+ * @function disciplineNameToKey - Converts discipline name to key
+ * @function convertProgenyToLedger - Converts Progeny format to Ledger format
+ * @function ensureThemeModal - Ensures theme selection modal exists
+ * @function applyTheme - Applies selected theme
+ * @function loadTheme - Loads saved theme from storage
+ * @function isThemeSet - Checks if theme is set
+ * @function initTheme - Initializes theme system
+ * @function makeGroup - Creates a button group
+ * @function makeDivider - Creates a visual divider
+ * @function adjustBodyPadding - Adjusts body padding for control bar
+ * @function updateLockButtonUI - Updates lock button UI state
+ * 
+ * @typedef {Object} ControlBarDeps
+ * @property {Function} disableAllTooltips - Function to disable all tooltips
+ * @property {Function} setTooltipEnabled - Function to enable/disable tooltips
+ * @property {Function} quickRoll - Function to perform quick dice roll
+ * @property {Function} computeRemorseDice - Function to compute remorse dice
+ * @property {Function} computeFrenzyDice - Function to compute frenzy dice
+ * @property {Function} isWPRerollAllowed - Function to check WP reroll availability
+ * @property {Function} handleWPRerollClick - Function to handle WP reroll clicks
+ * @property {Function} clearOverlay - Function to clear dice overlay
+ * 
+ * @typedef {Object} QuickButton
+ * @property {string} id - Button identifier
+ * @property {string} text - Button text
+ * @property {string} hexColor - Button color in hex
+ * @property {string} tooltip - Button tooltip text
+ * @property {Function} onClick - Click handler function
+ * 
+ * @typedef {Object} ThemeConfig
+ * @property {string} key - Theme key identifier
+ * @property {string} name - Theme display name
+ * @property {string} description - Theme description
+ * @property {string} preview - Theme preview image path
+ * 
+ * @typedef {Object} ProgenyData
+ * @property {Object} character - Character data from Progeny
+ * @property {Object} attributes - Attribute data
+ * @property {Object} skills - Skill data
+ * @property {Object} disciplines - Discipline data
+ * @property {Object} merits - Merit data
+ * @property {Object} backgrounds - Background data
+ * 
+ * @example
+ * // Initialize control bar
+ * initControlBar({
+ *   disableAllTooltips,
+ *   setTooltipEnabled,
+ *   quickRoll,
+ *   computeRemorseDice,
+ *   computeFrenzyDice,
+ *   isWPRerollAllowed,
+ *   handleWPRerollClick,
+ *   clearOverlay
+ * });
+ * 
+ * // Create a quick button
+ * const button = createQuickBtn('strength', 'Strength', '#ff0000', 'Roll Strength');
+ * 
+ * // Apply a theme
+ * applyTheme('wod-dark');
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
  */
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";

@@ -1,4 +1,73 @@
 /**
+ * @fileoverview Database Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Provides IndexedDB-based data persistence for character data. Handles all database
+ *             operations including character storage, settings management, and active character
+ *             tracking. Uses a singleton pattern to ensure consistent database access.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires IndexedDB - Browser's built-in database API for client-side storage
+ * 
+ * @class DatabaseManager
+ * @classdesc Main class for managing IndexedDB operations and data persistence
+ * 
+ * @property {string} dbName - Database name ('LedgerDB')
+ * @property {number} dbVersion - Database version for schema management
+ * @property {IDBDatabase|null} db - IndexedDB database instance
+ * @property {boolean} isInitialized - Boolean indicating if database is ready
+ * 
+ * @method constructor - Initializes the database manager with database configuration
+ * @method init - Initializes the IndexedDB connection and creates object stores
+ * @method getAllCharacters - Retrieves all characters from the database
+ * @method getCharacter - Retrieves a specific character by ID
+ * @method saveCharacter - Saves or updates a character
+ * @method deleteCharacter - Deletes a character from the database
+ * @method getSetting - Retrieves a setting value from the database
+ * @method setSetting - Saves a setting value to the database
+ * @method deleteSetting - Deletes a setting from the database
+ * @method getActiveCharacterId - Gets the ID of the currently active character
+ * @method setActiveCharacterId - Sets the ID of the currently active character
+ * @method getActiveCharacter - Gets the data of the currently active character
+ * @method saveActiveCharacter - Saves character data as the active character
+ * @method clearAllData - Clears all data from the database (for testing/debugging)
+ * 
+ * @typedef {Object} Character
+ * @property {number} id - Unique identifier (auto-generated)
+ * @property {string} name - Character name
+ * @property {string} createdAt - ISO timestamp of creation
+ * @property {string} updatedAt - ISO timestamp of last update
+ * @property {Object} [attributes] - Character attributes data
+ * @property {Object} [skills] - Character skills data
+ * @property {Object} [disciplines] - Character disciplines data
+ * @property {Object} [merits] - Character merits data
+ * @property {Object} [flaws] - Character flaws data
+ * @property {Object} [backgrounds] - Character backgrounds data
+ * @property {Object} [backgroundFlaws] - Character background flaws data
+ * @property {Object} [coterieMerits] - Character coterie merits data
+ * @property {Object} [coterieFlaws] - Character coterie flaws data
+ * @property {Array} [loresheets] - Character loresheets data
+ * @property {Array} [convictions] - Character convictions data
+ * @property {boolean} [locked] - Whether the character sheet is locked
+ * @property {string} [theme] - Character theme preference
+ * @property {string} [discordWebhook] - Discord webhook URL for the character
+ * 
+ * @typedef {Object} Setting
+ * @property {string} key - Setting key
+ * @property {*} value - Setting value (string, number, boolean, object)
+ * 
+ * @example
+ * const dbManager = new DatabaseManager();
+ * await dbManager.init();
+ * const characters = await dbManager.getAllCharacters();
+ * await dbManager.saveCharacter(characterData);
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
+/**
  * Database Manager for Ledger
  * Handles IndexedDB operations for character data storage
  */

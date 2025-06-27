@@ -1,4 +1,134 @@
 /**
+ * @fileoverview Accessibility Fix for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Provides accessibility improvements for Bootstrap components. Addresses Bootstrap
+ *             component accessibility issues and ensures proper focus management for screen readers
+ *             and keyboard navigation.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires Bootstrap - Used for modals, tooltips, and UI components
+ * @requires jQuery - Used for some event handling and DOM manipulation
+ * 
+ * @namespace AccessibilityFix
+ * @description Main namespace for accessibility improvements
+ * 
+ * @property {Object} window.accessibilityFix - Global accessibility handler
+ * @property {HTMLElement} window._lastActiveElement - Stores last active element for focus restoration
+ * 
+ * @function storeTrigger - Stores the trigger element for a modal
+ * @function fixSpecificModals - Applies accessibility fixes to specific modals
+ * @function setupInfoButtonHandlers - Sets up handlers for info buttons
+ * @function fixModalAccessibility - Applies accessibility fixes to a modal
+ * @function replaceCloseButton - Replaces close button with accessible version
+ * @function setupModalEvents - Sets up event handlers for modal focus management
+ * @function waitForElement - Waits for an element to be available in DOM
+ * @function fixDropdownAccessibility - Applies accessibility fixes to dropdowns
+ * @function fixSingleDropdown - Fixes accessibility for a single dropdown
+ * @function setupDropdownHandlers - Sets up global handlers for dropdowns
+ * @function fixClanModalCloseButton - Special fix for clan modal close button
+ * @function fixCloseButtonDirectly - Direct fix for modal close button
+ * 
+ * @typedef {Object} ModalConfig
+ * @property {HTMLElement} modal - The modal element
+ * @property {HTMLElement} trigger - The trigger button
+ * @property {HTMLElement} _lastTrigger - Last trigger element for focus restoration
+ * @property {boolean} _accessibilityFixed - Whether accessibility fixes have been applied
+ * 
+ * @typedef {Object} DropdownConfig
+ * @property {HTMLElement} dropdown - The dropdown element
+ * @property {HTMLElement} button - The dropdown button
+ * @property {HTMLElement} menu - The dropdown menu
+ * @property {boolean} _accessibilityFixed - Whether accessibility fixes have been applied
+ * 
+ * @example
+ * // Store trigger for a modal
+ * accessibilityFix.storeTrigger(modalElement, triggerButton);
+ * 
+ * // Fix modal accessibility
+ * fixModalAccessibility(modalElement);
+ * 
+ * // Fix dropdown accessibility
+ * fixSingleDropdown(dropdownElement);
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
+/**
+ * Accessibility Fix
+ * 
+ * This file provides accessibility improvements for the Vampire: The Masquerade character sheet,
+ * specifically addressing Bootstrap component accessibility issues and ensuring proper focus
+ * management for screen readers and keyboard navigation.
+ * 
+ * External Dependencies:
+ * - Bootstrap: Used for modals, tooltips, and UI components
+ * - jQuery: Used for some event handling and DOM manipulation
+ * - No external libraries required for core functionality
+ * 
+ * Functions:
+ * - storeTrigger(modal, trigger): Stores the trigger element for a modal
+ * - fixSpecificModals(): Applies accessibility fixes to specific modals
+ * - setupInfoButtonHandlers(): Sets up handlers for info buttons
+ * - fixModalAccessibility(modal): Applies accessibility fixes to a modal
+ * - replaceCloseButton(modal): Replaces close button with accessible version
+ * - setupModalEvents(modal): Sets up event handlers for modal focus management
+ * - waitForElement(parent, selector): Waits for an element to be available in DOM
+ * - fixDropdownAccessibility(): Applies accessibility fixes to dropdowns
+ * - fixSingleDropdown(dropdown): Fixes accessibility for a single dropdown
+ * - setupDropdownHandlers(): Sets up global handlers for dropdowns
+ * - fixClanModalCloseButton(): Special fix for clan modal close button
+ * - fixCloseButtonDirectly(modal): Direct fix for modal close button
+ * 
+ * Features:
+ * - Fixes "Blocked aria-hidden" warnings for modals
+ * - Implements proper focus management for modal dialogs
+ * - Uses `inert` attribute as recommended by WAI-ARIA
+ * - Automatic tooltip conversion for elements with title attributes
+ * - Dropdown accessibility improvements
+ * - Info button focus management
+ * - Mutation observer for dynamic content
+ * 
+ * Accessibility Improvements:
+ * - Proper ARIA attributes for modals and dropdowns
+ * - Focus restoration to trigger elements
+ * - Keyboard navigation support
+ * - Screen reader compatibility
+ * - Tooltip accessibility
+ * 
+ * Modal Fixes:
+ * - Replaces close buttons with accessible versions
+ * - Manages focus before and after modal display
+ * - Prevents focus trapping issues
+ * - Uses inert attribute to prevent background interaction
+ * 
+ * Dropdown Fixes:
+ * - Adds proper ARIA attributes
+ * - Manages focus for associated info buttons
+ * - Updates aria-expanded state
+ * - Handles dynamic content changes
+ * 
+ * Global Objects:
+ * - window.accessibilityFix: Global accessibility handler
+ * - window._lastActiveElement: Stores last active element for focus restoration
+ * 
+ * Events Handled:
+ * - DOMContentLoaded: Initial fixes and setup
+ * - load: Additional fixes after page load
+ * - show.bs.modal: Modal show event
+ * - hide.bs.modal: Modal hide event
+ * - change: Dropdown change events
+ * - click: Info button click events
+ * 
+ * Mutation Observer:
+ * - Watches for dynamically added modals
+ * - Applies fixes to new content automatically
+ * - Handles clan modal specifically
+ */
+
+/**
  * Accessibility fix for Bootstrap components
  * 
  * This script fixes accessibility issues including:

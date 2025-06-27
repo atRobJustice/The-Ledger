@@ -1,3 +1,81 @@
+/**
+ * @fileoverview VtM Dice Utilities for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Vampire: The Masquerade specific dice rolling utilities and result interpretation.
+ *             Provides custom die types (standard, hunger, rouse, remorse, frenzy), VtM notation parsing,
+ *             result interpretation with success counting, criticals, messy criticals, and bestial failures.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires teal.min.js - Core utility library ($t)
+ * @requires dice.js - Base dice engine functionality
+ * @requires three.min.js - 3D graphics library for dice rendering
+ * @requires cannon.min.js - Physics engine for dice physics
+ * 
+ * @namespace VtMDice
+ * @description Main namespace for VtM dice functionality
+ * 
+ * @property {Array} standard_dice_face_labels - Face labels for standard dice
+ * @property {Array} hunger_dice_face_labels - Face labels for hunger dice
+ * @property {Array} rouse_dice_face_labels - Face labels for rouse dice
+ * @property {Array} remorse_dice_face_labels - Face labels for remorse dice
+ * @property {Array} frenzy_dice_face_labels - Face labels for frenzy dice
+ * @property {string} label_color - Color for dice face labels
+ * @property {string} dice_color - Color for standard dice
+ * @property {string} hunger_dice_color - Color for hunger dice
+ * @property {string} rouse_dice_color - Color for rouse dice
+ * @property {string} remorse_dice_color - Color for remorse dice
+ * @property {string} frenzy_dice_color - Color for frenzy dice
+ * 
+ * @function createVampireDiceMaterials - Creates materials for VtM die types
+ * @function parse_notation - Parses VtM dice notation
+ * @function interpretResults - Interprets dice roll results for VtM
+ * @function formatResults - Formats results for display
+ * 
+ * @typedef {Object} DiceNotation
+ * @property {Array<string>} set - Standard dice set
+ * @property {Array<string>} hungerSet - Hunger dice set
+ * @property {Array<string>} rouseSet - Rouse dice set
+ * @property {Array<string>} remorseSet - Remorse dice set
+ * @property {Array<string>} frenzySet - Frenzy dice set
+ * @property {number} constant - Constant modifier
+ * @property {Array<number>} result - Roll results
+ * @property {boolean} error - Error flag
+ * 
+ * @typedef {Object} VtMResults
+ * @property {number} successes - Number of successes (6+)
+ * @property {number} critical - Number of critical successes (pairs of 10s)
+ * @property {boolean} messyCritical - Whether critical is messy (involves hunger dice)
+ * @property {boolean} bestialFailure - Whether roll is a bestial failure (0 successes + hunger 1)
+ * 
+ * @typedef {string} DieType
+ * @description Valid die types: 'Standard', 'Hunger', 'Rouse', 'Remorse', 'Frenzy'
+ * 
+ * @typedef {Object} DiceColors
+ * @property {string} standard - Standard dice color (#080206)
+ * @property {string} hunger - Hunger dice color (#A41B2E)
+ * @property {string} rouse - Rouse dice color (#331D43)
+ * @property {string} remorse - Remorse dice color (#19305B)
+ * @property {string} frenzy - Frenzy dice color (#B83B1A)
+ * 
+ * @example
+ * // Create VtM dice materials
+ * const materials = $t.vtm.createVampireDiceMaterials('Hunger');
+ * 
+ * // Parse dice notation
+ * const notation = $t.vtm.parse_notation(5, 2, 1, 0, 0); // 5 standard, 2 hunger, 1 rouse
+ * 
+ * // Interpret results
+ * const results = $t.vtm.interpretResults(notation, [6, 8, 10, 10, 3, 1, 7, 6]);
+ * 
+ * // Format for display
+ * const html = $t.vtm.formatResults(results);
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 "use strict";
 
 // Initialize the VtM module

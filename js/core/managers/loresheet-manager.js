@@ -1,3 +1,67 @@
+/**
+ * @fileoverview Loresheet Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages character loresheets. Provides functionality for selecting, leveling,
+ *             and managing loresheets with category-based organization and dot-based leveling system.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires loresheets.js - Contains all loresheet data and categories
+ * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and tooltips
+ * 
+ * @class LoresheetManager
+ * @classdesc Main class for managing character loresheets
+ * 
+ * @property {Map} selectedLoresheets - Map of loresheetKey -> { category: string, level: number, instances: Array }
+ * @property {Array} availableCategories - Array of available loresheet category keys
+ * 
+ * @method constructor - Initializes the manager with empty collections and available categories
+ * @method init - Sets up the UI, binds events, and initializes tooltips
+ * @method renderLoresheetManager - Creates the main loresheet management interface
+ * @method renderLoresheetSection - Creates the loresheet section with selector and list
+ * @method renderLoresheetSelector - Creates the loresheet selection interface
+ * @method renderSelectedLoresheets - Creates the selected loresheets display
+ * @method getCategoryOptions - Generates HTML options for loresheet categories dropdown
+ * @method getLoresheetOptions - Generates HTML options for loresheets within a category
+ * @method getSelectedLoresheetsHtml - Creates HTML representation of selected loresheets
+ * @method bindEvents - Sets up event listeners for user interactions
+ * @method updateLoresheetDropdown - Updates loresheet dropdown options when category changes
+ * @method addLoresheet - Adds a new loresheet to the selected collection
+ * @method removeLoresheet - Removes a loresheet from the selected collection
+ * @method handleDotClick - Handles clicks on dot controls to change loresheet levels
+ * @method updateLoresheetInstanceLevel - Updates the level of a loresheet instance
+ * @method updateDisplay - Refreshes the entire display
+ * @method initializeTooltips - Sets up Bootstrap tooltips
+ * @method getSelectedLoresheets - Returns the map of selected loresheets
+ * @method getLoresheetLevel - Gets the total level of a specific loresheet
+ * @method getTotalLoresheetPoints - Calculates total loresheet points spent
+ * @method loadLoresheets - Loads saved loresheet data
+ * @method findLoresheetCategory - Finds which category a loresheet belongs to
+ * @method exportLoresheets - Exports current loresheet data for saving
+ * 
+ * @typedef {Object} LoresheetData
+ * @property {string} category - Category key the loresheet belongs to
+ * @property {number} level - Current loresheet level (1-5)
+ * @property {Array} instances - Array of loresheet instances for repeatable loresheets
+ * 
+ * @typedef {Object} Loresheet
+ * @property {string} name - Loresheet name
+ * @property {string} description - Loresheet description
+ * @property {string} restrictions - Special requirements or restrictions
+ * @property {string} category - Category the loresheet belongs to
+ * 
+ * @example
+ * const loresheetManager = new LoresheetManager();
+ * loresheetManager.addLoresheet('anarch_philosophy', 'anarch');
+ * loresheetManager.getLoresheetLevel('anarch_philosophy'); // Returns total level
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Loresheet Manager
 import { loresheets } from '../../data/loresheets.js';
 import { TraitManagerUtils } from './manager-utils.js';

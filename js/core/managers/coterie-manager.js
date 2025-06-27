@@ -1,3 +1,74 @@
+/**
+ * @fileoverview Coterie Merit and Flaw Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages coterie merits and flaws. Provides functionality for selecting, displaying,
+ *             and manipulating coterie-level traits including domain traits, domain flaws, and
+ *             clan merits with dot-based leveling system.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires backgrounds-coterie.js - Contains all coterie background data and categories
+ * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and tooltips
+ * 
+ * @class CoterieManager
+ * @classdesc Main class for managing coterie merits and flaws
+ * 
+ * @property {Map} selectedCoterieMerits - Map of meritKey -> { category: string, level: number, instances: Array }
+ * @property {Map} selectedCoterieFlaws - Map of flawKey -> { category: string, level: number, instances: Array }
+ * @property {Array} availableCategories - Array of available coterie category objects
+ * 
+ * @method constructor - Initializes the manager with empty collections and available categories
+ * @method init - Sets up the UI, binds events, and initializes tooltips
+ * @method getAvailableCategories - Builds the list of available coterie categories
+ * @method renderCoterieMeritManager - Creates the HTML structure for coterie merit selection interface
+ * @method renderCoterieFlawManager - Creates the HTML structure for coterie flaw selection interface
+ * @method getCategoryOptions - Generates HTML options for coterie categories dropdown
+ * @method categoryHasFlaws - Checks if a category contains flaws
+ * @method getTraitOptions - Generates HTML options for traits within a category
+ * @method getSelectedTraitsHtml - Creates HTML representation of selected traits
+ * @method getTraitData - Retrieves trait data from the appropriate category
+ * @method renderTraitControls - Renders dot controls for traits
+ * @method bindEvents - Sets up event listeners for user interactions
+ * @method updateTraitOptions - Updates trait dropdown options when category changes
+ * @method clearTraitOptions - Clears trait dropdown options
+ * @method addTrait - Adds a new trait to the selected collection
+ * @method removeTrait - Removes a trait from the selected collection
+ * @method handleDotClick - Handles clicks on dot controls to change trait levels
+ * @method updateTraitInstanceLevel - Updates the level of a trait instance
+ * @method updateTraitDisplay - Updates the visual display of a trait
+ * @method updateDisplay - Refreshes the entire display
+ * @method initializeTooltips - Sets up Bootstrap tooltips
+ * @method getSelectedCoterieMerits - Returns the map of selected coterie merits
+ * @method getSelectedCoterieFlaws - Returns the map of selected coterie flaws
+ * @method getCoterieMeritLevel - Gets the total level of a specific coterie merit
+ * @method getCoterieFlawLevel - Gets the total level of a specific coterie flaw
+ * @method getTotalCoterieMeritPoints - Calculates total coterie merit points spent
+ * @method getTotalCoterieFlawPoints - Calculates total coterie flaw points gained
+ * @method loadCoterieMeritsAndFlaws - Loads saved coterie data
+ * @method exportCoterieMeritsAndFlaws - Exports current coterie data for saving
+ * 
+ * @typedef {Object} CoterieCategory
+ * @property {string} key - Category key (e.g., 'domain.chasse', 'domain.flaws', 'clanMerits')
+ * @property {string} name - Display name for the category
+ * @property {string} description - Description of the category
+ * 
+ * @typedef {Object} CoterieTraitData
+ * @property {string} category - Category the trait belongs to
+ * @property {number} level - Current level of the trait
+ * @property {Array} instances - Array of trait instances for repeatable traits
+ * 
+ * @example
+ * const coterieManager = new CoterieManager();
+ * coterieManager.addTrait('coterieMerit', 'allies', 'domain.chasse');
+ * coterieManager.getCoterieMeritLevel('allies'); // Returns total level
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Coterie Merit and Flaw Manager
 import { coterieBackgrounds } from '../../data/backgrounds-coterie.js';
 import { TraitManagerUtils } from './manager-utils.js';

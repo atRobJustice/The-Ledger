@@ -1,6 +1,95 @@
-/*
- * character-toolbar.js
- * Traditional toolbar-style navigation for character sheet
+/**
+ * @fileoverview Character Toolbar for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Traditional toolbar-style navigation providing quick access to character sheet functions
+ *             including save, export, import, dice rolling, rouse checks, remorse checks, frenzy checks,
+ *             mending, willpower reroll, data management, locking, theme selection, Discord integration,
+ *             info mode, and help functionality.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires discord-integration.js - For Discord webhook management
+ * @requires manager-utils.js - For trait management utilities
+ * @requires characterManager - Global character manager instance
+ * @requires databaseManager - Global database manager instance
+ * @requires toastManager - Global toast notification manager
+ * @requires modalManager - Global modal dialog manager
+ * @requires Bootstrap - For UI components and styling
+ * @requires jQuery - For DOM manipulation and event handling
+ * 
+ * @namespace CharacterToolbar
+ * @description Main namespace for character toolbar functionality
+ * 
+ * @function initCharacterToolbar - Initializes the character sheet toolbar
+ * @function loadSavedTheme - Loads and applies saved theme setting
+ * @function initSaveButton - Initializes save button functionality
+ * @function initExportButton - Initializes export button functionality
+ * @function initImportButton - Initializes import button functionality
+ * @function initRollButton - Initializes dice roll button functionality
+ * @function initRouseButton - Initializes rouse check button functionality
+ * @function initRemorseButton - Initializes remorse check button functionality
+ * @function initFrenzyButton - Initializes frenzy check button functionality
+ * @function initMendButton - Initializes mend button functionality
+ * @function initWPRerollButton - Initializes willpower reroll button functionality
+ * @function initWipeButton - Initializes wipe button functionality
+ * @function initClearButton - Initializes clear button functionality
+ * @function initLockButton - Initializes lock button functionality
+ * @function initThemeButton - Initializes theme button functionality
+ * @function showThemeModal - Shows theme selection modal
+ * @function applyTheme - Applies selected theme
+ * @function initDiscordButton - Initializes Discord button functionality
+ * @function initInfoModeButton - Initializes info mode button functionality
+ * @function initHelpButton - Initializes help button functionality
+ * @function initTooltips - Initializes Bootstrap tooltips
+ * 
+ * @typedef {Object} CharacterData
+ * @property {string} name - Character name
+ * @property {Object} attributes - Character attributes
+ * @property {Object} skills - Character skills
+ * @property {Object} disciplines - Character disciplines
+ * @property {Object} merits - Character merits
+ * @property {Object} backgrounds - Character backgrounds
+ * @property {string} clan - Character clan
+ * @property {number} bloodPotency - Blood potency level
+ * @property {number} generation - Generation level
+ * @property {string} createdAt - Creation timestamp
+ * @property {string} updatedAt - Last modification timestamp
+ * 
+ * @typedef {Object} ThemeConfig
+ * @property {string} key - Theme key identifier
+ * @property {string} name - Theme display name
+ * @property {string} description - Theme description
+ * @property {string} preview - Theme preview image path
+ * 
+ * @typedef {Object} ToolbarButton
+ * @property {string} id - Button identifier
+ * @property {string} text - Button text
+ * @property {string} icon - Button icon class
+ * @property {string} tooltip - Button tooltip text
+ * @property {Function} onClick - Click handler function
+ * @property {boolean} [disabled] - Whether button is disabled
+ * 
+ * @typedef {Object} DiceRollConfig
+ * @property {number} standard - Standard dice pool
+ * @property {number} hunger - Hunger dice pool
+ * @property {number} rouse - Rouse dice pool
+ * @property {number} remorse - Remorse dice pool
+ * @property {number} frenzy - Frenzy dice pool
+ * @property {number} difficulty - Difficulty (success threshold)
+ * 
+ * @example
+ * // Initialize character toolbar
+ * initCharacterToolbar();
+ * 
+ * // Apply a theme
+ * applyTheme('wod-dark');
+ * 
+ * // Show theme modal
+ * showThemeModal();
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
  */
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";

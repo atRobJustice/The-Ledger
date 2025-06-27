@@ -1,3 +1,45 @@
+/**
+ * @fileoverview Lock Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages the lock state of the character sheet. Provides functionality to lock and
+ *             unlock the character sheet to prevent accidental changes, with persistence to
+ *             IndexedDB and keyboard shortcuts for Game Master override functionality.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires window.databaseManager - For persisting lock state to IndexedDB
+ * 
+ * @namespace LockManager
+ * @description Main namespace for managing character sheet lock state
+ * 
+ * @property {boolean} locked - Boolean indicating if the sheet is currently locked
+ * 
+ * @function init - Initializes the lock manager with an optional initial state
+ * @function lock - Locks the character sheet and persists the state
+ * @function unlock - Unlocks the character sheet and persists the state
+ * @function isLocked - Returns the current lock state
+ * @function applyDOMState - Applies the lock state to DOM elements
+ * @function persist - Persists the lock state to IndexedDB
+ * @function emit - Emits a custom event when lock state changes
+ * 
+ * @event ledger-lock-change - Custom event emitted when lock state changes
+ * @eventparam {Object} detail - Event detail object
+ * @eventparam {boolean} detail.locked - Current lock state
+ * 
+ * @keyboard Shortcuts
+ * @keyboard Shift+L - Unlocks the sheet (GM override)
+ * 
+ * @example
+ * LockManager.init(false); // Initialize unlocked
+ * LockManager.lock(); // Lock the sheet
+ * LockManager.unlock(); // Unlock the sheet
+ * const isLocked = LockManager.isLocked(); // Check current state
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 const LockManager = (() => {
   let locked = false;
 

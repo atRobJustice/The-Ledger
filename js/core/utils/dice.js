@@ -1,3 +1,81 @@
+/**
+ * @fileoverview Dice Engine for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description 3D dice rolling engine using Three.js and Cannon.js physics.
+ *             Provides realistic dice physics, custom die types (standard, hunger, rouse, remorse, frenzy),
+ *             texture generation, and result calculation for VtM dice pools.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires three.min.js - 3D graphics library for dice rendering
+ * @requires cannon.min.js - Physics engine for dice physics
+ * @requires teal.min.js - Animation and utility library
+ * @requires jQuery - For DOM manipulation and AJAX
+ * 
+ * @namespace DiceEngine
+ * @description Main namespace for dice rolling functionality
+ * 
+ * @property {Array} random_storage - Storage for true random numbers
+ * @property {boolean} use_true_random - Whether to use true random numbers
+ * @property {number} frame_rate - Animation frame rate (1/60)
+ * @property {Object} material_options - Default material options for dice
+ * 
+ * @function prepare_rnd - Prepares random number storage
+ * @function rnd - Returns random number from storage or Math.random()
+ * @function create_shape - Creates Cannon.js physics shape for dice
+ * @function make_geom - Creates Three.js geometry for dice faces
+ * @function chamfer_geom - Creates chamfered geometry for rounded dice
+ * @function create_geom - Creates complete dice geometry with physics
+ * @function calc_texture_size - Calculates optimal texture size
+ * @function create_dice_materials - Creates materials for different die types
+ * @function create_d10_geometry - Creates d10 geometry
+ * @function make_random_vector - Creates random vector for dice physics
+ * @function addDiceToVectors - Adds dice to physics vectors
+ * @function get_dice_value - Gets value from a single die
+ * @function get_dice_values - Gets values from multiple dice
+ * @function shift_dice_faces - Shifts dice faces for proper orientation
+ * @function throw_dices - Throws dice with physics simulation
+ * 
+ * @typedef {Object} DiceConfig
+ * @property {string} dieType - Type of die ('Standard', 'Hunger', 'Rouse', 'Remorse', 'Frenzy')
+ * @property {number} radius - Die radius
+ * @property {number} margin - Texture margin
+ * @property {Array<string>} face_labels - Labels for die faces
+ * 
+ * @typedef {Object} DicePhysics
+ * @property {CANNON.Body} body - Physics body
+ * @property {THREE.Mesh} mesh - 3D mesh
+ * @property {number} value - Current face value
+ * @property {string} type - Die type
+ * 
+ * @typedef {Object} DiceResult
+ * @property {Array<number>} values - Array of dice values
+ * @property {number} successes - Number of successes (6+)
+ * @property {number} criticals - Number of critical successes (10)
+ * @property {number} messy - Number of messy criticals
+ * @property {number} bestial - Number of bestial failures (1 on hunger dice)
+ * 
+ * @typedef {Object} PhysicsWorld
+ * @property {CANNON.World} world - Cannon.js physics world
+ * @property {THREE.Scene} scene - Three.js scene
+ * @property {THREE.Camera} camera - Three.js camera
+ * @property {THREE.Renderer} renderer - Three.js renderer
+ * 
+ * @example
+ * // Create dice materials
+ * const materials = create_dice_materials(['1','2','3','4','5','6'], 32, 0.1, 'Standard');
+ * 
+ * // Create d10 geometry
+ * const geometry = create_d10_geometry(16);
+ * 
+ * // Throw dice
+ * throw_dices(box, vector, boost, dist, notation_getter, before_roll, after_roll);
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 "use strict";
 
 (function(dice) {

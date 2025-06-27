@@ -1,3 +1,83 @@
+/**
+ * @fileoverview XP Spend Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages the spending of experience points. Provides a comprehensive interface for
+ *             purchasing character improvements including attributes, skills, disciplines, merits,
+ *             backgrounds, blood potency, and specialties with proper pricing calculations and
+ *             undo functionality.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires xp-pricing.js - Provides pricing calculations for different trait types
+ * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
+ * @requires attributes.js - Reference data for attributes
+ * @requires skills.js - Reference data for skills
+ * @requires disciplines.js - Reference data for disciplines
+ * @requires clans.js - Reference data for clans
+ * @requires merits.js - Reference data for merits
+ * @requires backgrounds.js - Reference data for backgrounds
+ * @requires window.modalManager - For displaying XP spending modals
+ * @requires window.xpManager - For XP operations
+ * @requires window.disciplineManager - For discipline management
+ * @requires window.specialtyManager - For specialty management
+ * 
+ * @namespace XPSpendManager
+ * @description Main namespace for managing XP spending
+ * 
+ * @function bindClick - Sets up event listener for the spend XP button
+ * @function showSpendXPModal - Shows the modal for spending XP
+ * @function populateCategoryOptions - Populates category dropdown options
+ * @function getTraitOptions - Gets available traits for a category
+ * @function extractAttributes - Extracts available attributes from reference data
+ * @function extractSkills - Extracts available skills from reference data
+ * @function normaliseKey - Normalizes trait keys to consistent format
+ * @function extractDisciplines - Extracts available disciplines with clan restrictions
+ * @function extractMerits - Extracts available merits from reference data
+ * @function extractBackgrounds - Extracts available backgrounds from reference data
+ * @function attachDynamicHandlers - Sets up dynamic event handlers for the modal
+ * @function updateCost - Updates the cost display based on current selections
+ * @function getCurrentLevel - Gets the current level of a trait
+ * @function applyTraitChange - Applies trait level changes
+ * @function findLabelByKey - Finds display label for a trait key
+ * @function buildPricingContext - Builds context for pricing calculations
+ * @function addSpecialtyToSkill - Adds a specialty to a skill
+ * @function getTraitMeta - Gets metadata for a trait
+ * @function parseDots - Parses dot notation strings
+ * @function revertTraitChange - Reverts trait changes for undo functionality
+ * @function removeSpecialtyFromSkill - Removes a specialty from a skill
+ * @function minimalTraitRevert - Reverts trait level changes
+ * @function calcMeritBackgroundCost - Calculates merit/background costs
+ * 
+ * @typedef {Object} TraitOption
+ * @property {string} key - Trait key identifier
+ * @property {string} label - Display label for the trait
+ * 
+ * @typedef {Object} PricingContext
+ * @property {string} pricingCat - Category for pricing calculations
+ * @property {Object} pricingOpts - Pricing options and parameters
+ * 
+ * @typedef {Object} UndoMetadata
+ * @property {string} cat - Category of the trait
+ * @property {string} traitKey - Trait key identifier
+ * @property {number} from - Previous level
+ * @property {number} to - New level
+ * @property {string} [specialty] - Specialty name if applicable
+ * 
+ * @example
+ * // Show the XP spending modal
+ * showSpendXPModal();
+ * 
+ * // Apply a trait change
+ * await applyTraitChange('attribute', 'strength', 2, 3);
+ * 
+ * // Parse dot notation
+ * const level = parseDots('•••'); // Returns 3
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // XP Spend Manager (scaffold)
 // -------------------------------------------------------------
 // This module will orchestrate spending XP via the UI.

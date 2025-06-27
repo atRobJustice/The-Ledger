@@ -1,3 +1,76 @@
+/**
+ * @fileoverview Merit and Flaw Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Manages character merits and flaws. Provides functionality for selecting, displaying,
+ *             and manipulating merit and flaw traits with dot-based leveling system and category-based
+ *             organization.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires merits.js - Contains all merit and flaw data and categories
+ * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and tooltips
+ * 
+ * @class MeritFlawManager
+ * @classdesc Main class for managing character merits and flaws
+ * 
+ * @property {Map} selectedMerits - Map of meritKey -> { category: string, level: number, instances: Array }
+ * @property {Map} selectedFlaws - Map of flawKey -> { category: string, level: number, instances: Array }
+ * @property {Array} availableCategories - Array of available trait category keys
+ * 
+ * @method constructor - Initializes the manager with empty collections and available categories
+ * @method init - Sets up the UI, binds events, and initializes tooltips
+ * @method renderMeritManager - Creates the merit management interface
+ * @method renderFlawManager - Creates the flaw management interface
+ * @method renderTraitSection - Creates a trait section with selector and list
+ * @method renderTraitSelector - Creates the trait selection interface
+ * @method renderSelectedTraits - Creates the selected traits display
+ * @method getCategoryOptions - Generates HTML options for trait categories dropdown
+ * @method getTraitOptions - Generates HTML options for traits within a category
+ * @method getSelectedTraitsHtml - Creates HTML representation of selected traits
+ * @method renderTraitControls - Renders dot controls for traits
+ * @method bindEvents - Sets up event listeners for user interactions
+ * @method updateTraitDropdown - Updates trait dropdown options when category changes
+ * @method addTrait - Adds a new trait to the selected collection
+ * @method removeTrait - Removes a trait from the selected collection
+ * @method handleDotClick - Handles clicks on dot controls to change trait levels
+ * @method updateTraitInstanceLevel - Updates the level of a trait instance
+ * @method updateTraitDisplay - Updates the visual display of a trait
+ * @method updateDisplay - Refreshes the entire display
+ * @method initializeTooltips - Sets up Bootstrap tooltips
+ * @method updateTraitTypeDisplay - Updates display for a specific trait type
+ * @method getSelectedMerits - Returns the map of selected merits
+ * @method getSelectedFlaws - Returns the map of selected flaws
+ * @method getMeritLevel - Gets the total level of a specific merit
+ * @method getFlawLevel - Gets the total level of a specific flaw
+ * @method getTotalMeritPoints - Calculates total merit points spent
+ * @method getTotalFlawPoints - Calculates total flaw points gained
+ * @method loadMeritsAndFlaws - Loads saved merit and flaw data
+ * @method findTraitCategory - Finds which category a trait belongs to
+ * @method exportMeritsAndFlaws - Exports current merit and flaw data for saving
+ * 
+ * @typedef {Object} TraitData
+ * @property {string} category - Category key the trait belongs to
+ * @property {number} level - Current trait level
+ * @property {Array} instances - Array of trait instances for repeatable traits
+ * 
+ * @typedef {Object} Trait
+ * @property {string} name - Trait name
+ * @property {string} description - Trait description
+ * @property {string} dots - Dot notation (e.g., "•••", "•••••", "•••••+")
+ * @property {string} category - Category the trait belongs to
+ * 
+ * @example
+ * const meritFlawManager = new MeritFlawManager();
+ * meritFlawManager.addTrait('merit', 'allies', 'social');
+ * meritFlawManager.getMeritLevel('allies'); // Returns total level
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Merit and Flaw Manager
 import { merits } from '../../data/merits.js';
 import { TraitManagerUtils } from './manager-utils.js';

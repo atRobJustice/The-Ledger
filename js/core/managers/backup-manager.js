@@ -1,3 +1,45 @@
+/**
+ * @fileoverview Backup Manager for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Handles import and export functionality for character data. Provides UI buttons for
+ *             exporting character data as JSON files and importing character data from JSON files.
+ *             Integrates with IndexedDB for persistent storage and manages character data restoration.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and notifications
+ * @requires window.toastManager - For displaying success/error notifications
+ * @requires window.databaseManager - For IndexedDB operations
+ * @requires window.LockManager - For managing sheet lock state
+ * @requires Various manager classes (disciplineManager, meritFlawManager, etc.) - For data restoration
+ * 
+ * @function initBackupUI - Initializes the backup UI by adding export/import buttons to the control bar
+ * @function gatherCharacterData - Collects all character data from the DOM and managers for export
+ * @function loadCharacterData - Restores character data from imported JSON, handling all data types
+ * @function applyTrackState - Applies track box states (health, willpower, humanity) from imported data
+ * @function recalcTrackCurrent - Recalculates current values for track boxes after restoration
+ * @function setSelectValueWithRetry - Sets select element values with retry logic for dynamic content
+ * @function debounce - Utility function to debounce function calls
+ * @function autoSave - Automatically saves character data to IndexedDB after import
+ * 
+ * @event DOMContentLoaded - Triggers initialization of backup UI
+ * @event click - Handles export button clicks to download character data
+ * @event change - Handles file input changes for importing character data
+ * 
+ * @example
+ * // Export character data
+ * const data = gatherCharacterData();
+ * const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+ * 
+ * // Import character data
+ * loadCharacterData(importedData);
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 (function(){
     // Wait for DOM and managers to be ready
     document.addEventListener('DOMContentLoaded', () => {

@@ -1,3 +1,57 @@
+/**
+ * @fileoverview XP Pricing Utilities for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Experience point pricing utilities following VTM5e core book rules.
+ *             Provides cost calculation functions for purchasing character improvements
+ *             including attributes, skills, disciplines, specialties, blood potency,
+ *             rituals, merits, and backgrounds.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires None - Pure utility functions, no external dependencies
+ * 
+ * @namespace XPPricing
+ * @description Main namespace for XP pricing functionality
+ * 
+ * @property {Object} COST_RULES - Cost calculation rules for different trait types
+ * 
+ * @function normaliseType - Normalizes trait type keys for consistent lookup
+ * @function getDotPrice - Calculates price for purchasing a specific new level
+ * @function getTotalPrice - Calculates cumulative cost from current to desired level
+ * 
+ * @typedef {Object} CostRules
+ * @property {Function} attribute - Cost function for attributes (level * 5)
+ * @property {Function} skill - Cost function for skills (level * 3)
+ * @property {Function} specialty - Cost function for specialties (3 XP)
+ * @property {Function} bloodpotency - Cost function for blood potency (level * 10)
+ * @property {Function} ritual - Cost function for rituals (level * 3)
+ * @property {Function} merit - Cost function for merits (3 XP)
+ * @property {Function} background - Cost function for backgrounds (3 XP)
+ * @property {Function} discipline - Cost function for disciplines (varies by clan)
+ * 
+ * @typedef {Object} PricingOptions
+ * @property {boolean} [clanMatched] - Whether discipline matches character's clan
+ * @property {boolean} [caitiff] - Whether character is Caitiff
+ * 
+ * @typedef {string} TraitType
+ * @description Valid trait types: 'attribute', 'skill', 'specialty', 'bloodpotency', 
+ *              'ritual', 'merit', 'background', 'discipline'
+ * 
+ * @example
+ * // Calculate cost for a single attribute dot
+ * const cost = getDotPrice('attribute', 3); // Returns 15 XP
+ * 
+ * // Calculate total cost for multiple levels
+ * const totalCost = getTotalPrice('skill', 2, 4); // Returns 9 XP (3+6)
+ * 
+ * // Calculate discipline cost with clan matching
+ * const discCost = getDotPrice('discipline', 2, { clanMatched: true }); // Returns 10 XP
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Experience point pricing utilities for Ledger
 // -------------------------------------------------
 // ES module exposing getDotPrice and getTotalPrice.

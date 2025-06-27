@@ -1,3 +1,88 @@
+/**
+ * @fileoverview Character Sheet UI for Vampire: The Masquerade Character Sheet
+ * @version 1.3.1
+ * @description Provides the core UI functionality for the character sheet. Handles the creation
+ *             and management of interactive elements including dots, track boxes, dropdowns, and
+ *             form inputs, as well as impairment status evaluation and character data persistence.
+ * 
+ * @author The Ledger Development Team
+ * @license MIT
+ * 
+ * @requires jQuery - Used for DOM manipulation and event handling
+ * @requires Bootstrap - Used for UI components and styling
+ * @requires clans.js - Reference data for clans
+ * @requires predator_types.js - Reference data for predator types
+ * @requires compulsions.js - Reference data for compulsions
+ * @requires window.LockManager - For sheet lock state management
+ * @requires window.convictionManager - For conviction data management
+ * 
+ * @namespace CharacterSheetUI
+ * @description Main namespace for character sheet UI functionality
+ * 
+ * @function createDots - Creates interactive dot displays for attributes/skills
+ * @function createTextInput - Creates auto-resizing textarea inputs
+ * @function createPredatorDropdown - Creates predator type selection dropdown
+ * @function capitalizeFirst - Capitalizes first letter of a string
+ * @function createClanDropdown - Creates clan selection dropdown
+ * @function createGenerationDropdown - Creates generation selection dropdown
+ * @function createBloodPotencyDropdown - Creates blood potency selection dropdown
+ * @function createCompulsionDropdown - Creates compulsion selection dropdown
+ * @function createTrackBoxes - Creates track boxes for health/willpower/humanity
+ * @function updateRelatedTrackBoxes - Updates dependent track boxes when attributes change
+ * @function updateTrackBoxesMax - Updates maximum value for track boxes
+ * @function evaluateImpairmentStatus - Evaluates and applies impairment status to tracks
+ * @function assessTrack - Assesses individual track for impairment status
+ * @function updateCurrentValue - Updates current value display for track boxes
+ * @function populatePredatorDropdown - Populates predator dropdown with data
+ * @function populateClanDropdown - Populates clan dropdown with data
+ * @function populateGenerationDropdown - Populates generation dropdown with data
+ * @function populateBloodPotencyDropdown - Populates blood potency dropdown with data
+ * @function createResonanceDropdown - Creates resonance selection dropdown
+ * @function createTemperamentDropdown - Creates temperament selection dropdown
+ * @function populateResonanceDropdown - Populates resonance dropdown with data
+ * @function populateTemperamentDropdown - Populates temperament dropdown with data
+ * @function populateCompulsionDropdown - Populates compulsion dropdown with data
+ * @function populateClanDropdowns - Populates all clan dropdowns with data
+ * @function normalizeKey - Normalizes keys for data matching
+ * @function saveConvictionsAndTouchstones - Saves conviction data
+ * @function loadConvictionsAndTouchstones - Loads conviction data
+ * @function saveCharacter - Saves character data
+ * @function loadCharacter - Loads character data
+ * 
+ * @typedef {Object} TrackBoxConfig
+ * @property {number} maxValue - Maximum value for the track
+ * @property {number} currentValue - Current value
+ * @property {number} superficial - Superficial damage (for health/willpower)
+ * @property {number} aggravated - Aggravated damage (for health/willpower)
+ * @property {string} type - Track type ('health', 'willpower', 'humanity')
+ * 
+ * @typedef {Object} DotConfig
+ * @property {number} value - Current dot value
+ * @property {number} maxDots - Maximum number of dots
+ * @property {string} className - Additional CSS classes
+ * 
+ * @typedef {Object} DropdownConfig
+ * @property {string} value - Selected value
+ * @property {string} type - Dropdown type ('clan', 'predator', 'generation', etc.)
+ * @property {Array} options - Available options
+ * 
+ * @example
+ * // Create dots for an attribute
+ * const dots = createDots(3, 5);
+ * 
+ * // Create track boxes for health
+ * const trackBoxes = createTrackBoxes(10, 8, 2, 0, 'health');
+ * 
+ * // Create text input
+ * const input = createTextInput('Character name');
+ * 
+ * // Create dropdown
+ * const dropdown = createClanDropdown('brujah');
+ * 
+ * @since 1.0.0
+ * @updated 1.3.1
+ */
+
 // Inject styles for visual impairment indication
 (function(){
     const style = document.createElement('style');
