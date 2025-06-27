@@ -1,0 +1,31 @@
+==Attributes==
+Attributes represent the characters innate abilities, with 1 being relatively bad, 2 being average and up to 5 which represents peak ability. The Attributes are divided into three separate categories; Physical, Social and Mental. <ref>[[Werewolf: The Apocalypse Corebook]], page 85</ref>
+
+When building the sheet; the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots with this being the werewolf's best trait. 
+
+===Physical ===
+The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character.
+
+'''Strength:''' How strong the character is, how much they can lift, and how much force they can exert.
+
+'''Dexterity:''' How agile a character is, how graceful they can be, or how nimble those fingers are.
+
+'''Stamina:''' The character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb. <ref> [[Werewolf: The Apocalypse Corebook]], page 85-86</ref>
+
+===Social===
+The Social Attributes reflect how easily the character can communicate with others to achieve their goals. The Garou are social creatures and this makes their culture richer, these Attributes also help in communication with the spirits when a point of relation can be found with them.
+
+'''Charisma:''' Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on it's own. 
+
+'''Manipulation:''' Showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are.
+
+'''Composure:''' Reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations and firefights. <ref> [[Werewolf: The Apocalypse Corebook]], page 86-87</ref>
+
+=== Mental===
+The Mental Attributes represent the character's natural intuition, the ability to learn quickly and react quickly with thoughts rather than their bodies. It also represents their determination and dedication to accomplishing something.
+
+'''Intelligence:''' Represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read.
+
+'''Wits:''' Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment.
+
+'''Resolve:''' Measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.  <ref> [[Werewolf: The Apocalypse Corebook]], page 87-89</ref>

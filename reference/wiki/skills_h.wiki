@@ -1,0 +1,806 @@
+==Skills==
+Similar to Attributes, Skills are defined as follows: No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill. <ref name="CB60-61">[[Hunter: The Reckoning Corebook]], page 60-61</ref>
+
+The distribution of Skills is a choice between three different options.
+
+*'''Jack of All Trades:''' One Skill at 3 dots, eight Skills at 2 dots, and ten Skills at 1 dot.
+*'''Balanced:''' Three Skills at 3 dots, five Skills at 2 dots, and seven Skills at 1 dot.
+*'''Specialist:''' One Skill at 4 dots, three Skills at 3 dots, three Skills at 2 dots, and three Skills at 1 dot.
+Following this is Skill specialty, which is specific expertise in a given Skill. If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more free specialty to place in any Skill. Remember that most Skills only allow as many specialties as the character has dots. <ref>[[Hunter: The Reckoning Corebook]], page 61</ref>
+
+===Physical===
+Centered on physical ability, talent, or effort.
+
+'''[[Athletics]]:''' Running, jumping, and climbing are all actions within Athletics.
+Athletics describes an aptitude for competitive physical performance, whether against another athlete or against the parameters of a sporting-type challenge.
+
+Athletics translates to outpacing someone in pursuit, leaping out of the way of an oncoming car, and climbing and swiming with vigor. A character can use Athletics in place of any Physical combat Skill in a conflict roll, but in that case, they never inflict any hits on their opponent, no matter how many successes they roll.<ref name="CB61">[[Hunter: The Reckoning Corebook]], page 61</ref><hr/>
+
+● Always attentive in gym class and still has a spring in your step.
+
+● ● Had some training, or has a remarkable knack with sporting-themed physical activity.
+
+● ● ● Fit as a fiddle and excel at sports.
+
+● ● ● ● An exemplary athlete.
+
+● ● ● ● ● Olympic records await; what only a very few peak humans can achieve.
+
+==Specialties==
+Acrobatics, Archery, Climbing, Endurance, Jumping, Parkour, Swimming, Throwing.
+
+==Uses==
+* [[Athletics]]: Hunters can substitute Athletics in place for any Physical combat skill in a conflict roll, but then no hits can be inflicted<ref name="CB119">[[Hunter: The Reckoning Corebook]], page 119</ref>
+* [[Athletics]] + [[Dexterity]] : Climbing<ref name="ST9">[[Hunter The Reckoning Storytellers Toolkit]], page 9</ref>
+* [[Athletics]] + [[Dexterity]]: Flee, Dodging, diving for cover <ref name="CB107">[[Hunter: The Reckoning Corebook]], page 107</ref><ref name="CB118-120">[[Hunter: The Reckoning Corebook]], page 118-120</ref>
+* [[Athletics]] + [[Dexterity]] : Falling on ones feet to negate fall damage with Difficulty equal to meters fallen.<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Athletics]] + [[Strength]]: Tearing self free from a net <ref name="CB106">[[Hunter: The Reckoning Corebook]], page 106</ref>
+* [[Athletics]] + [[Strength]] : Lifting or smashing things.<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Athletics]] + [[Strength]]/[[Dexterity]] : Throwing something heavy. (Choose worst attribute)<ref name="ST10"/>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Brawl]]:''' Combat focused on using the body as a weapon rather than an item.
+Brawl enables characters to hit their target when they swing with fist, boot, or chokehold. As long as the Hunter has no weapon in hand, the attack constitutes a brawl, from graceful martial arts to drunken fistfights. <ref name="CB61-62">[[Hunter: The Reckoning Corebook]], page 61-62</ref><hr/>
+
+● That one kid who always had a black eye — but you should’ve seen the other kid.
+
+● ● Received some training in hitting someone hard and accurately.
+
+● ● ● Hold more than their own in a scrap.
+
+● ● ● ● Either received institutional training, or have learned the hard way in numerous combative escapades.
+
+● ● ● ● ● Could win MMA championships even without the use of your Drive.
+
+==Specialties==
+Animals, Armed Humans, Bar Fights, Fucking Up Vampires, Grappling, Sporting Combat, Unarmed Humans
+
+==Uses==
+* [[Brawl]] + [[Strength]]: Punching, Kicking, Tackling<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Craft]]:''' Creating, building, or shaping items from beautiful to functional.
+Craft broadly encompasses artistry, creation of items and utilities from the beautiful to the functional, and arts and crafts from throwing pottery all the way to architecture and interior design.
+Unlike most [[Skills]], Hunters can have more specialties in Craft than dots. <ref name="CB62">[[Hunter: The Reckoning Corebook]], page 62</ref><hr/>
+
+● An amateur, but they know what they’re doing.
+
+● ● The craftsmanship is admired for its functionality.
+
+● ● ● The creations can be beautiful or horrifying, but their intent is always clear.
+
+● ● ● ● Skill is highly respected among those who are aware of it, whether they are supernatural or mundane themselves.
+
+● ● ● ● ● A virtuoso, capable of visionary breakthroughs in the chosen form.
+
+==Specialties==
+Carpentry, Carving, Design, Painting, Sculpting, Sewing, Weaponsmithing, Interior Design
+
+When you take this [[Skill]], get a free specialty.
+
+==Uses==
+* [[Craft]] + [[Intelligence]]: [[Edges#Arsenal|Arsenal Edge]] for keeping and maintaining an arsenal.<ref name="CB91">[[Hunter: The Reckoning Corebook]], page 91</ref>
+* [[Craft]] + [[Intelligence]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] to repair or rebuild the drone.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Craft]] + [[Intelligence]]: Creating an old-school bomb using with clock parts and colored wires.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Craft|Craft (Interior Design)]] + [[Intelligence]]: Hide an item in plain sight.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Craft|Craft (Carpentry)]]/[[Academics|Academics (Architecture)]] + [[Intelligence]]: Building false compartments or secret chambers.<ref name="ST7"/>
+* [[Craft]]/[[Technology]]/[[Science]] + [[Intelligence]]: [[Edges#Improvised_Gear|Improvised Gear Edge]] to create short-lived but useful tools.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+* [[Craft]] + [[Intelligence]]: Creating a [[Equipment#Disguised_Weapon|Disguised Weapon]].<ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+
+* [[Craft]] + [[Strength]]: Figuring out how to correctly manipulate/open complex/uncommon structures, e.g. a sarcophagus.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+
+* [[Craft]]/[[Stealth]] + 1: Difficulty of spotting a [[Equipment#Disguised_Weapon|Disguised Weapon]].<ref name="CB104"/>
+
+==Related==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Driving]]:''' Driving vehicles specifically under duress and adverse or difficult conditions.
+Anyone can learn to drive a car. In most cases, simply driving isn’t extremely difficult. Just driving to the store or even cross-country isn’t notably risky.
+
+The Driving Skill connotes ability to drive fast and safely under adverse conditions or in stressful situations: to drive off-road, speed away from ambushes, win street races, and escape from pursuit with org flunkies, police, or security forces. <ref name="CB62">[[Hunter: The Reckoning Corebook]], page 62</ref><hr/>
+
+● A cautious driver, unlikely to make any mistakes.
+
+● ● Can put foot down without much fear of an accident, provided visibility is good.
+
+● ● ● Won car chases, worthy of a reputation in certain circles.
+
+● ● ● ● Could be a stunt driver; few can match skill and knowledge.
+
+● ● ● ● ● Wanna race for pinks?
+
+==Specialties==
+All-Terrain Vehicles, Evasion, Motorcycles, Street Racing, Stunts, Tailing, Trucks, Vintage Models
+
+==Uses==
+* [[Driving]] + [[Dexterity]] : Driving at high speed, making complex maneuvers, evading traffic <ref name="ST9">[[Hunter: The Reckoning Storytellers Toolkit]], page 10</ref>
+
+==Related==
+* The [[Edges#Fleet|Performance Perk for the Fleet Edge]] gives a bonus against Pursuit-related Driving tests.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Firearms]]:''' Using ranged weaponry such as crossbows and guns as well as cleaning, unjamming, and rapidly reloading these weapons.
+Hunters use Firearms often; they can come close to evening the odds against the quarry, if the cell gets a bunch of other operational details right. This [[Skill]] comprises familiarity with small arms from holdout pistols to assault rifles. It also includes other trigger-operated weapons, such as crossbows and shoulder-fired rocket-propelled grenades. Finally, it includes cleaning, unjamming, and rapidly reloading such weapons. <ref name="CB62-63">[[Hunter: The Reckoning Corebook]], page 62-63</ref><hr/>
+
+● Fired a gun a few times, at the range or in less-formal circumstances.
+
+● ● Know (and know how) to keep the weapon clean, take it apart, and reassemble it
+
+● ● ● Exchanged fire with hostiles, and come out the other side.
+
+● ● ● ● Handle trick shots, called shots, running shots — really anything ending in a gunshot.
+
+● ● ● ● ● If it’s in range, can hit it dead-center.
+
+==Specialties==
+Crossbows, Gun Dealing, Gunsmithing, Handloading Ammunition, Quick-Draw, Sniper, Trick Shooting
+
+<b>Note:</b> Storytellers should discourage specialties in “Combat Shooting,” “Pistols,” or even “Glock 17s.” A specialty in a Personal Signature Weapon might be allowable, because a personally engraved Colt balanced to a personal grip involved every gunfight is much more likely to be dropped, be stolen, or have its ballistic fingerprint connected to a series of murders.
+
+==Uses==
+* [[Firearms]] + [[Composure]]: Shooting<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Larceny]]:''' Lockpicking a locked door, hotwiring a car, deactivating alarms, and other forms of breaking and entering.
+This [[Skill]] entails familiarity with the tools and techniques for picking locks, planting bugs, deactivating standard burglar and car alarms, manual forgery, hot-wiring automobiles, or even safecracking, as well as countless forms of breaking and entering. Characters also use it for setting up “unbeatable” security systems or deducing how and where systems failed in a break-in. Doesn’t matter which side of the law, Larceny relates to the doing of dirty deeds as well as the countermeasures.
+
+These days, most high-end security systems feature computer controls, video surveillance, or electronic alarms, so they might also involve the [[Technology|Technology Skill]] to defeat.<ref name="CB63">[[Hunter: The Reckoning Corebook]], page 63</ref><hr/>
+
+● Pick a simple lock or a careless pocket.
+
+● ● Hotwire a car or shoplift with ease.
+
+● ● ● Identify the locations of security cameras and alarms the better to bypass them.
+
+● ● ● ● Defeat a keypad, retool an ID card, or crack a safe.
+
+● ● ● ● ● Get into — or out of — the vault of a multinational bank.
+
+==Specialties==
+Alarms, Forgery, Grand Theft Auto, Housebreaking, Lockpicking, Pickpocket, Safecracking, Security Analysis
+
+==Uses==
+* [[Larceny]] + [[Dexterity]] : Slipping free from handcuffs (Difficulty 4) <ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+* [[Larceny]] + [[Dexterity]]: Picking a lock<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Larceny]] + [[Dexterity]]: Dodging a laser sensor<ref name="ST10"/>
+* [[Larceny]] + [[Intelligence]]: Detonation of a pre-made bomb/explosive. <ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Larceny]] + [[Resolve]]: Cleaning up a murder scene. <ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+
+==Related==
+* The [[Equipment#Lockpick_Gun|Lockpin Gun]] adds 4 dice to a [[Dexterity]] + [[Larceny]] roll to pick a lock <ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Melee]]:''' Combat focused around using handheld weaponry such as a lead pipe or a baseball bat.
+Use Melee to wield handheld weapons such as knives, chains, and baseball bats with prowess. Feel free to improvise with a length of rebar or, hell, maybe a manhole cover, if it can be swung.<ref name="CB63">[[Hunter: The Reckoning Corebook]], page 63</ref><hr/>
+
+● Swing a bat or blade and mostly hit the people intended.
+
+● ● Clear competence with a weapon in hand should give attackers pause.
+
+● ● ● Know when to use Thibault against Capo Ferro, but keeping Agrippa at the ready.
+
+● ● ● ● The fools brought a gun to a knife fight.
+
+● ● ● ● ● Weapon moves like an extension of body, instinctively.
+
+==Specialties==
+Axes, Chains, Clubs, Fencing, Disarming Blows, Garrotes, Improvised Weapons, Knives, Stakes, Swords
+
+==Uses==
+* [[Melee]] + [[Strength]]: Using a physical implement to hit someone or something.
+
+==References==
+<references />
+
+'''[[Stealth]]:''' Blending into surroundings to either not be seen or not be recognized and benefiting from the ability to spy, sneak, and otherwise not stand out.
+Stealth allows a character to shadow a target, whether in an urban environment or in remote wilds. They benefit from the ability to spy, sneak, and blend in with crowds when needed.<ref name="CB63-64">[[Hunter: The Reckoning Corebook]], page 63-64</ref><hr/>
+
+● Being spotted under the cover of darkness or in camouflage proves difficult.
+
+● ● Sneak by casual observers and stalk unknowing victims without earning any attention.
+
+● ● ● Evade patrolling guards, moving softly and hiding easily.
+
+● ● ● ● Subtle, silent passage, the bane of creatures born as prey.
+
+● ● ● ● ● The quarry doesn’t even know there’s a “there” when the Hunter is there, let alone presence.
+
+==Specialties==
+Ambushes, Crowds, Disguise, Hiding, Shadowing, Silent Movement, Urban, Wilderness
+
+==Uses==
+* [[Stealth]] + [[Dexterity]]: Sneaking <ref name="CB117">[[Hunter: The Reckoning Corebook]], page 117</ref>
+* [[Stealth]]/[[Craft]] + 1: Difficulty of spotting a [[Equipment#Disguised_Weapon|Disguised Weapon]]. <ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+'''[[Survival]]:''' Creating makeshift shelters, surviving adverse conditions, and navigating by the stars, whether within the city streets or out in the wilderness. <ref>[[Hunter: The Reckoning Corebook]], page 61-64</ref>
+Survival conveys the ability to exist in the wild and under adverse conditions. Navigating by the stars, establishing a makeshift shelter, and noticing the spoors of prey and predators are all part of it, as is foraging for food and seeking cover. Whether on city streets or across trackless wastes, the intent is the same. <ref name="CB64">[[Hunter: The Reckoning Corebook]], page 64</ref><hr/>
+
+● Know the trails and wilderness of your immediate locale.
+
+● ● Spend more time outdoors than inside, and can track anyone who possesses a lesser degree of your craft.
+
+● ● ● Subsist when denied “home,” setting traps and building shelter as necessary.
+
+● ● ● ● Thrive on the fly like a true predator.
+
+● ● ● ● ● The Hunter's hardiness is a lesson to all.
+
+==Specialties==
+Desert, Hunting, Jungle, Tracking, Traps, Shelters, Urban Exploration, Woodlands
+
+==Uses==
+*[[Survival]] + [[Composure]]: Remove enough burning material from self to prevent further burns. (Difficulty 3)<ref name="CB106">[[Hunter: The Reckoning Corebook]], page 106</ref>
+* [[Survival]] + [[Dexterity]]: Escape without leaving tracks to avoid pursuit <ref name="ST9/>
+* [[Survival]] + [[Intelligence]]: Camouflaging in nature, burying a body in nature. <ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Survival]] + [[Wits]]: Tracking by following evidence like footprints <ref name="ST9>[[Hunter: The Reckoning Storytellers Toolkit]], page 9</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Physical Skill]]
+
+=== Social ===
+Working with strangers and with your cellmates without these Skills is likely to turn negative from time to time.
+
+'''[[Animal Ken]]:''' Pacifying and understanding animal behavior to handle them and work with them.
+Animal Ken allows one to manage, pacify, and even befriend animals. This [[Skill]] allows for predicting how an animal might react in a given situation, training a domesticated creature, or even trying to calm or enrage animals. Without this [[Skill]], most wild creatures pointedly avoid humankind. Note, though, that using Animal Ken won’t allow for flawlessly commanding animals, nor is their response instantaneous — Animal Ken is a [[Skill]], not a supernatural power in and of itself.
+
+Animal Ken also makes for familiarity with various animal spoor, remains, and even behavior. “Something bigger than the average wolf must have made these bite marks.”<ref name="CB64">[[Hunter: The Reckoning Corebook]], page 64</ref><hr/>
+
+● Animals shy away but will not bolt or snap.
+
+● ● Animals are docile, acting as if nobody is there, unless there's already a built rapport with them.
+
+● ● ● Animals act as if with a familiar, friendly owner, unless provoked to do otherwise.
+
+● ● ● ● Draw animals into orbit. Few attacking creatures maintain their aggression.
+
+● ● ● ● ● Predict an animal’s feelings and thoughts, and they can feel and act vice versa.
+
+==Specialties==
+Attack Training, Cats, Dogs, Falconry, Horses, Pacification, Rats, Snakes, Stunt Training
+
+==Uses==
+* [[Animal Ken]] + [[Charisma]]: [[Edges#Beast_Whisperer|Beast Whisperer Edge]] to issue commands to animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+* [[Animal Ken]] + [[Composure]]: [[Edges#Beast_Whisperer|Beast Whisperer Edge]] to train animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+* [[Animal Ken]] + [[Intelligence]]: [[Edges#Beast_Whisperer|Complex Commands Perk for Beast Whisperer Edge]] to understand the animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Etiquette]]:''' The ability to respond to social conventions in social settings and blend into different groups.
+Etiquette is the ability to identify and respond to the social conventions in the current scene, set new protocols, and please everyone around with good graces. This isn’t necessarily all tea rooms and hierarchies of royal address — it’s all forms of respecting customs, from the tattoo parlor to the executive boardroom.<ref name="CB65">[[Hunter: The Reckoning Corebook]], page 65</ref><hr/>
+
+● Know the conversational difference between uses of “get the fuck out of here.”
+
+● ● Know the rules of etiquette in all the popular nightspots.
+
+● ● ● Impress others with your command of politeness, deference, and grace.
+
+● ● ● ● Behavior sets trends, especially if doing something to buck the norm of etiquette.
+
+● ● ● ● ● Beau Brummel when need be, but could get away with being Lord Byron.
+
+==Specialties==
+Celebrities, Corporate, Downtown, Org Protocol, One-Percenter, Secret Society
+
+==Uses==
+* [[Etiquette]] + [[Manipulation]]: Debate<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+* [[Etiquette]] + [[Stamina]]: Overnight drinking session to gather information.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Insight]]:''' Reading body language and other cues to discern emotions, lies, or motives.
+Insight grants you the ability to interpret body language, note subtle cues in expression and tone, and determine truth from lies. It also allows for perceiving and understanding the motives behind another’s actions. <ref name="CB65">[[Hunter: The Reckoning Corebook]], page 65</ref><hr/>
+
+● See straight through hollow boasts.
+
+● ● Pick up on the hidden emotion between humans.
+
+● ● ● It’s hard to put one over on the Hunter; almost never the mark.
+
+● ● ● ● Veritable lie detector. Only the most mendacious can slip one by.
+
+● ● ● ● ● People are as books, and they are printed in large type, easy to read.
+
+==Specialties==
+Ambitions, Desires, Discerning Lies, Emotions, Empathy, Interrogation, Motives, Phobias, Vices
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Intimidation]]:''' Using menacing presence or direct force to ensure compliance, submission, or fear from others. As well as using threats to persuade them to back down.
+Intimidation is the power to bully, coerce, threaten, and strongarm your way to a social victory. Hunters who rely on Intimidation never hesitate to crush the wills — and occasionally the bones — of their quarry or the quarry’s minions.<ref name="CB65">[[Hunter: The Reckoning Corebook]], page 65</ref><hr/>
+
+● Words are cudgels.
+
+● ● Push their way around most humans without difficulty.
+
+● ● ● The Hunter's Swagger and cruel behavior have earned them a reputation.
+
+● ● ● ● Far past mere physical threats.
+
+● ● ● ● ● Even Dracula may step back.
+
+==Specialties==
+Extortion, Insults, Interrogation, Physical Coercion, Staredowns, Veiled Threats, Wordless
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Leadership]]:''' Motivating, inspiring, or commanding the character's followers.
+Leadership grants the ability to lead a crowd, command a detachment, boost the morale of your supporters, or subdue a riot. As the cell accumulates successes, so, too, rises expectation, and veteran Hunters might be expected to lead those of humbler experience.<ref name="CB65">[[Hunter: The Reckoning Corebook]], page 65</ref><hr/>
+
+● Led informal clubs before and can organize individuals of like mind.
+
+● ● Voice makes itself heard in the cell, and even your superiors sometimes listen.
+
+● ● ● Command on the battlefield and lead soldiers into death.
+
+● ● ● ● Inspire the injured and dying to action, so long as the Hunter is there to lead them.
+
+● ● ● ● ● Presence could rouse an entire org to hurl itself into the fires of Hell.
+
+==Specialties==
+Command, Down But Not Out, Guerilla Rally, Inspiration, Oratory, Team Dynamics
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Performance]]:''' Showcasing the character's art in front of a crowd, regardless of size, singing, acting, and oration are all examples of this.
+Performance covers a range of arts, from dance to poetry and comedy to melodrama. May be a gifted performer in their own right or simply an enthusiastic student of the arts.<ref name="CB65-66">[[Hunter: The Reckoning Corebook]], page 65-66</ref><hr/>
+
+● The life of the party, but wouldn’t take the act to the stage.
+
+● ● Performed for others, to mixed reviews. Some love it, others have no opinion.
+
+● ● ● An expert student of the chosen performing art.
+
+● ● ● ● Performed the practiced art form stunningly, winning over even the most curmudgeonly critics.
+
+● ● ● ● ● Play the audience’s emotions as masterfully as any instrument.
+
+==Specialties==
+Comedy, Dance, Drama, Drums, Guitar, Keyboards, Poetry, Public Speaking, Rap, Singing, Violin, Wind Instruments
+
+When allocating dots to this [[Skill]], get a free specialty.
+
+<b>Note:</b> In theory, the Storyteller could break these specialties down endlessly — can even a five-dot pop star also perform as a coloratura soprano and a country crooner? But in practice, unless the whole chronicle happens in a musical or theatrical milieu, allow broader specialties.
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Persuasion]]:''' Convincing or swaying others to do the character's will or at least agree with their stance.
+Use Persuasion when trying to convince others to see a point of view — or what’s best for them. Skilled persuaders make effective arguments and organize their positions well, but can also play on victims’ emotions and appeal to peers’ reason. Persuasion applies in law courts and around campfires, in boardrooms, barrooms, and bedrooms.<ref name="CB66">[[Hunter: The Reckoning Corebook]], page 66</ref><hr/>
+
+● Can sell to a motivated buyer.
+
+● ● Always swing a discount or get on the inside track of the latest gossip.
+
+● ● ● Always figure out a compromise in a given conflict.
+
+● ● ● ● “I mean, sure, the law as written says that, but…”.
+
+● ● ● ● ● May be the original silver-tongued devil
+
+==Specialties==
+Bargaining, Fast Talk, Interrogation, Legal Argument, Negotiation, Nonstop Bullshit Technique, Rhetoric
+
+==Uses==
+* [[Persuasion]] + [[Charisma]]/[[Manipulation]]: Debate<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+* [[Persuasion]] + [[Manipulation]]: [[Edges#Fleet|Fleet Edge]] for relying on contacts for a fleet.<ref name="CB90">[[Hunter: The Reckoning Corebook]], page 90</ref>
+* [[Persuasion]] + [[Manipulation]]: Get information by interviewing experts (Limited by dots in relevant fields such as [[Academics]], [[Finance]], [[Occult]], or [[Science]].<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Streetwise]]:''' Knowledge of the streets in criminal and urban societies; being able to locate a gang or dealer; knowing which shortcut will be the fastest.
+Streetwise enables characters to talk the language and negotiate the societies of the streets and the underworld. Can understand code words and slang, interpret graffiti tags, and emulate gang signs. Streetwise doesn’t inherently require criminality, but they do seem to overlap in many situations…<ref name="CB66">[[Hunter: The Reckoning Corebook]], page 66</ref><hr/>
+
+● Know where to buy weed that isn’t oregano.
+
+● ● Know which gangs operate in the area, including their colors and rivalries. May have personal graffiti tag.
+
+● ● ● Can tell the good shit from bad, score guns, and blend in seamlessly with streetlife.
+
+● ● ● ● When someone connected says “I know a guy,” the Hunter is who they know.
+
+● ● ● ● ● Can hire, orchestrate, or arrange almost any criminal activity anywhere in your city. 
+
+==Specialties==
+Arms Dealing, Black Market, Bribery, Drugs, Fence Stolen Goods, Gangs, Graffiti, Sex Trade, The Best Parties
+
+==Uses==
+* [[Streetwise]] + [[Composure]]: [[Edges#Ordnance|Ordnance Edge]] for relying on contacts for ordnance.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+* [[Streetwise]] + [[Intelligence]]: Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Streetwise]] + [[Intelligence]]: Camouflaging in urban settings. <ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Streetwise]] + [[Manipulation]]: [[Edges#Arsenal|Arsenal Edge]] for relying on contacts for an arsenal.<ref name="CB90">[[Hunter: The Reckoning Corebook]], page 90</ref>
+* [[Streetwise]]/[[Technology]] + [[Wits]]: Finding a GPS tracker on a vehicle. (Difficulty 3)<ref name="CB103">[[Hunter: The Reckoning Corebook]], page 103</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+'''[[Subterfuge]]:''' Deceiving others to complete the character's desires, agree with them, or manipulate the truth to further their goals. <ref>[[Hunter: The Reckoning Corebook]], page 64-66</ref>
+Subterfuge is the art of lying convincingly, pressing an agenda, and making good excuses for bad actions. This [[Skill]] defines talent for intrigue, secrets, and double-dealing. Subterfuge can also be used for seduction and imitating responses expected of someone serving the supernatural.<ref name="CB66">[[Hunter: The Reckoning Corebook]], page 66</ref><hr/>
+
+● Tell believable, simple lies.
+
+● ● Hustle naive people, old and young, into giving away their things.
+
+● ● ● Operate on multiple levels, telling lies intended to be uncovered to bolster other lies.
+
+● ● ● ● Operate endlessly in deep cover: a perfect double agent. Perhaps even is!
+
+● ● ● ● ● Nobody believes the Hunter has even a single dot in Subterfuge.
+
+==Specialties==
+Bluff, Impeccable Lies, Innocence, Passing As a Ghoul (maybe you once were one…), The Long Con, Seduction
+
+==Uses==
+* [[Subterfuge]] + [[Advantages_and_Flaws#Contacts|Contacts]]: Decipher scripts<ref name="CB70">[[Hunter: The Reckoning Corebook]], page 70</ref>
+* [[Subterfuge]] + [[Composure]]: Remain calm in disguise<ref name="CB127-128">[[Hunter: The Reckoning Corebook]], page 127-128</ref>
+* [[Subterfuge]] + [[Manipulation]]: Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Social Skill]]
+
+===Mental===
+Built around specialized knowledge as well as core intellectual gifts.
+
+'''[[Academics]]:''' Topics surrounding the humanities and liberal arts.
+Academics reflects understanding, higher education, and ability to research fields within the humanities and the liberal arts. Historical study, for instance, is hardly “just academic” when considering the cultural breadth of the creeds and their localized appearances among mortal societies since as long as Hunters have had [[Drives]]. <ref name="CB67">[[Hunter: The Reckoning Corebook]], page 67</ref><hr/>
+
+● Basic primary and secondary education; a night class at community college
+
+● ● Basic university education or tutelage from a standard mentor; a four-year degree
+
+● ● ● Advanced university education or dedicated personal tuition; an excellent four-year degree, a doctorate
+
+● ● ● ● Advanced specialized study beyond university, learning into subjects few understand
+
+● ● ● ● ● Refined and advanced scholarship, likely to be sought out for advice and tutelage
+
+==Specialties==
+African Literature, Architecture, History of Art, History (specific field or period), Journalism, Philosophy, Research, Teaching, Telugu Film Studies, Theology
+
+When taking this Skill, get a free specialty. For foreign languages, use the [[Advantages_and_Flaws#Linguistics|Linguistics Merit]].
+
+===Optional Rule: Academics Specialties===
+Another possible specialization would be <i>"Language and Literature"</i> which covers fluency in said one language and associated culture/literature.<ref name="AM24">[[Hunter: The Reckoning Alma Maters]], page 24</ref>
+
+==Uses==
+*  Reading centuries-old documents or chanting in a strange dialect<ref name="CB70">[[Hunter: The Reckoning Corebook]], page 70</ref>
+* [[Academics|Academics (Architecture)]]/[[Craft|Craft (Carpentry)]] + [[Intelligence]]: Building false compartments or secret chambers.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Academics]] + [[Resolve]]: [[Edges#Library|Library Edge]] for researching their quarry.<ref name="CB93">[[Hunter: The Reckoning Corebook]], page 93</ref>
+* [[Academics]] + [[Resolve]]: Researching through books, ledgers and journals.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Awareness]]:''' Vigilant to their surroundings and having the ability to understand and react to threats.
+Awareness handles perceptions. The hair may stand up on the back of the neck before the werewolf erupts from the shadows, may spy a key dropped in the trash, or sense a lingering perfume. <ref name="CB67">[[Hunter: The Reckoning Corebook]], page 67</ref><hr/>
+
+● Have a history of knowing when something is out of place.
+
+● ● Spot erratic or pattern behavior in an individual.
+
+● ● ● See through most disguises and sense concealed dangers or hidden clues.
+
+● ● ● ● Even when distracted, few things are beyond notice.
+
+● ● ● ● ● Senses are preternatural
+
+==Specialties==
+Ambushes, Camouflage, Concealed Objects, Hearing, Instincts, Sight, Traps, Wilderness
+
+==Uses==
+* [[Awareness]] + [[Intelligence]]: Recognize something <ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Awareness]] + [[Intelligence]]: Operate [[Equipment#Chaoscope|Chaoscope]] to reliably detect supernatural. (Difficulty 6)<ref name="CB102">[[Hunter: The Reckoning Corebook]], page 102</ref>
+* [[Awareness]] + [[Resolve]]: Researching by digging through physical materials.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Awareness]] + [[Resolve]]: Surveillance
+* [[Awareness]] + [[Resolve]]: Pick out key details out of a cloud of distractions<ref name="ST8"/>
+* [[Awareness]] + [[Wits]]: Notice Hidden Things, in the moment<ref name="CB117">[[Hunter: The Reckoning Corebook]], page 117</ref><ref name="ST8"/>
+* [[Awareness]] + [[Wits]]: Spotting a [[Equipment#Disguised_Weapon|Disguised Weapon]]<ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+
+==Related==
+* The [[Edges#Fleet|Surveillance Perk for the Fleet Edge]] gives a bonus on stakeouts from the vehicle, such as Awareness or [[Technology]] tests.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Finance]]:''' Knowing how to move and make money legally or not, and tracing and accessing the wealth of others.
+Finance allows one to identify trends in the market, invest well, manipulate stock, and know when a fall is coming. It also allows one to assess — and trace — the wealth of others and broker financial deals. Can generally appraise art, property, or any other non-criminal good. <ref name="CB67">[[Hunter: The Reckoning Corebook]], page 67</ref><hr/>
+
+● Run a business and keep books.
+
+● ● Manage a corporate division or bank branch; file impeccably plausible tax returns.
+
+● ● ● Thanks to international trading, could make a fine broker on foreign stock exchanges.
+
+● ● ● ● Investment banks follow the Hunter's financial lead. Have no trouble concealing fraud.
+
+● ● ● ● ● Make money do anything, including stick to one's pockets — or crash countries.
+
+==Specialties==
+Appraisal, Banking, Black Markets, Corporate Finance, Currency Manipulation, Fine Art, Forensic Accounting, Modern Monetary Theory, Money Laundering, Stock Market
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Investigation]]:''' Being able to find and follow clues, decipher their meaning, and solve a mystery.
+Investigation allows one to unravel cases of mundane and mysterious means, spot clues, interpret them, and trace missing persons. Hunters find this Skill especially useful when connecting the dots between immediate tragedies and the supernatural entities behind them. <ref name="CB67-68">[[Hunter: The Reckoning Corebook]], page 67-68</ref><hr/>
+
+● Love a good mystery novel and fancy yourself an amateur sleuth.
+
+● ● A firm knowledge of criminology and the signature telltale signs of greater malfeasance.
+
+● ● ● Are, or could be, a detective by trade. Nothing in a crime scene escapes perception.
+
+● ● ● ● Consulted by local law enforcement when unknown parties have risked the community’s safety.
+
+● ● ● ● ● Set riddles for others and live an enigmatic existence few can penetrate.
+
+==Specialties==
+Criminology, Deduction, Forensics, Missing Persons, Murder, Paranormal Mysteries, Racketeering, Traffic Analysis
+
+==Uses==
+* [[Investigation]] + [[Wits]]: Noticing Clues
+* [[Investigation]] + [[Investigation]]: Searching a crime scene for clues/evidence.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Investigation]] + [[Resolve]]: Questioning people <ref name="CB111">[[Hunter: The Reckoning Corebook]], page 111</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Medicine]]:''' Handling injuries and diagnosing and treating diseases in people and animals.
+Medicine allows giving health aid to people or animals who need it and diagnose causes of death or sickness in a victim. It also allows usage of medical equipment, prescribe drugs, and stanch (or encourage) rapid blood flow.
+
+Characters use Medicine to [[Health#Aggravated_Health_damage|heal Aggravated Health damage]].<ref name="CB68">[[Hunter: The Reckoning Corebook]], page 68</ref><hr/>
+
+● Know basic anatomy and the difference in blood flow from a vein and an artery. Can perform CPR and other first aid.
+
+● ● Comfortably treat minor traumas and illnesses and narrow down a diagnosis. May be a nurse or EMT.
+
+● ● ● Training allows for performing major operations and treat serious injuries. May be an internist, pediatrician, or general practitioner.
+
+● ● ● ● Diagnose and treat all but the rarest of illnesses. May be a surgeon or specialist.
+
+● ● ● ● ● Noted medical expert, sought out for knowledge and insight.
+
+==Specialties==
+First Aid, Hematology, Pathology, Pharmacy, Phlebotomy, Surgery, Trauma Care, Veterinary
+
+==Uses==
+* [[Intelligence]] + [[Medicine]]: Identify disease symptoms<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Intelligence]] + [[Medicine]]: Over the course of a night, convert Aggravated Health Damage to Superficial Damage at a Difficulty equal to the total Aggravated Damage sustained by the patient. Attempts to heal oneself adds +1 to the Difficulty.<ref name="CB123">[[Hunter: The Reckoning Corebook]], page 123</ref>
+
+==Related==
+* The [[Advantages_and_Flaws#Safe_House|Surgery Safe House Merit]] adds two dice to a relevant dice pool, which is generally [[Medicine]], when performed in the safe house.<ref name="CB79">[[Hunter: The Reckoning Corebook]], page 79</ref><hr/>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Occult]]:''' Understanding of the supernatural and their rituals, effective or not.
+Even though Hunters are themselves invested in the dealing-with of creatures of supernatural origin, that doesn’t convey any inherent understanding of the fine details of such to them. Even to the most vigilant cell, the World of Darkness remains a strange place, to say nothing of the liminal spaces of the world that don’t conform to the human paradigm.
+
+Occult represents knowledge of the mystical world, from the rites and practices of various cultural notions of magic through any amount of esoteric knowledge. Recognizing occult sigils and folk-magic practices, effective or not.<ref name="CB68-69">[[Hunter: The Reckoning Corebook]], page 68-69</ref><hr/>
+
+● Know a handful of the world’s secrets at a rudimentary level.
+
+● ● Sift the truth from pop occult nonsense.
+
+● ● ● Firsthand experience of something inexplicable, even by Hunter standards.
+
+● ● ● ● Could make a physical model of the metaphysical cosmology with some degree of cultural accuracy.
+
+● ● ● ● ● Consulted by from Ghosts and sorcerers on obscure lore. 
+
+==Specialties==
+Alchemy, Blood Magic, Faeries, Ghosts, Goetia, Grimoires, Magi, Metaphysics, Necromancy, Parapsychology, Vampires
+
+==Uses==
+*  Reading centuries-old documents or chanting in a strange dialect<ref name="CB70">[[Hunter: The Reckoning Corebook]], page 70</ref>
+* [[Occult]]/[[Science]] + [[Composure]]: [[Edges#Thwart_the_Unnatural|Thwart the Unnatural Edge]] to resist supernatural abilities.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+* [[Occult]]/[[Science]] + [[Resolve]]: [[Edges#Repel_the_Unnatural|Repel the Unnatural Edge]] to hold back supernatural creatures.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+* [[Occult]]/[[Science]] + [[Wits]]: [[Edges#Sense_the_Unnatural|Sense the Unnatural Edge]] to  detect the nearby presence of supernatural creatures.<ref name="CB97">[[Hunter: The Reckoning Corebook]], page 97</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Politics]]:''' Knowing the inner workings of the government and rival organizations.
+Politics covers diplomacy, both human and otherwise, as well as the bureaucracy of worldly institutions. Can work with, and possibly put pressure on, city government and perhaps higher levels. Among the Reckoning subculture, know the inside scoop on which cells claim which territories, which org is nursing a grudge with whom, and where more than a few bodies are buried, literally.<ref name="CB69">[[Hunter: The Reckoning Corebook]], page 69</ref><hr/>
+
+● Follow mortal political affairs in the region, and know “the lay of the land” as regards local Hunter politics.
+
+● ● Can apply influence at a local level, or know who can.
+
+● ● ● Could run political campaigns or political machines, or make waves among werewolves as an up-and-comer.
+
+● ● ● ● Know the true personalities of the real movers and shakers, human and perhaps even supernatural, in the area.
+
+● ● ● ● ● Either acknowledged as an elder statesman or shall someday be.
+
+==Specialties==
+City Government, Diplomacy, Media, National Politics, State/Provincial Politics, Org (specific)
+
+==Uses==
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Science]]:''' Scientific knowledge and theory of the real world.
+Science is a broad remit, covering everything from basic principles of life to the understanding of universal entropy. The laws of science govern the physical world — mostly — and individuals who are a part of that world study them. Even creatures beyond the realm of “traditional” science may be well versed in the truths of the temporal world.
+
+Levels of the Science Skill roughly match those in [[Academics]], from “some college” to “world-famous scholar.” <ref name="CB69">[[Hunter: The Reckoning Corebook]], page 69</ref><hr/>
+
+● Dabble in the sciences and understand the principles behind the building blocks of life.
+
+● ● Study goes deeper than the surface, explaining as much “why” as “what”.
+
+● ● ● An excellent scientific manager; can run a laboratory, interpret scientific findings, and come up to speed on scientific research in most fields. Can repair scientific equipment.
+
+● ● ● ● Expert in the field and in those allied to it.
+
+● ● ● ● ● Few peers can match one's understanding, and others come for guidance.
+
+==Specialties==
+Astronomy, Biology, Chemistry, Demolitions, Engineering, Genetics, Geology, Mathematics, Physics, Natural World
+
+Also like [[Academics]], characters with a rating in Science get a free specialty. 
+
+==Uses==
+* [[Science]] + [[Composure]]: [[Edges#Ordnance|Ordnance Edge]] for keeping and maintaining ordnance.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+* [[Science]]/[[Occult]] + [[Composure]]: [[Edges#Thwart_the_Unnatural|Thwart the Unnatural Edge]] to resist supernatural abilities.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+
+* [[Science|Science (Engineering)]] + [[Intelligence]]: Carefully controlled detonation of a pre-made bomb/explosive from a calculated safe distance.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Science]] + [[Intelligence]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] for how many days the drone can stay active.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Science]] + [[Intelligence]]: Creating explosives.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Science]] + [[Intelligence]]:Researching/Understanding complex experimental processes.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Science]]/[[Craft]]/[[Technology]] + [[Intelligence]]: [[Edges#Improvised_Gear|Improvised Gear Edge]] to create short-lived but useful tools.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+
+* [[Science]]/[[Occult]] + [[Resolve]]: [[Edges#Repel_the_Unnatural|Repel the Unnatural Edge]] to hold back supernatural creatures.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+
+* [[Science]]/[[Occult]] + [[Wits]]: [[Edges#Sense_the_Unnatural|Sense the Unnatural Edge]] to  detect the nearby presence of supernatural creatures.<ref name="CB97">[[Hunter: The Reckoning Corebook]], page 97</ref>
+
+==Related==
+* The [[Advantages_and_Flaws#Safe_House|Laboratory Safe House Merit]] adds one dot to the dice pool related to one Science or [[Technology]] specialty performed in the safe house.<ref name="CB79">[[Hunter: The Reckoning Corebook]], page 79</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]
+
+'''[[Technology]]:''' Internet and computer comprehension, and its ever-growing evolution as technology advances. <ref>[[Hunter: The Reckoning Corebook]], page 67-69</ref>
+As a [[Skill]], Technology acts as something of a moving target; it governs the operation and understanding of “modern” technological developments, with a very impressionistic definition for “modern.” A hundred years ago, Technology might have most often concerned itself with steam engines and electricity. Now, it governs computers and computer systems. Of course, now computers govern almost everything, including steam turbines in power plants and electrical systems in office buildings.<ref name="CB69">[[Hunter: The Reckoning Corebook]], page 69</ref><hr/>
+
+● Know how to upgrade a home PC and keep it protected from viruses.
+
+● ● Can conceal your IP, operate drones, and fake a digital photograph.
+
+● ● ● Can create and unleash your own viruses without fear of detection.
+
+● ● ● ● Could personally manage cybersecurity for a business or region.
+
+● ● ● ● ● On the internet, nobody knows one is a dog — or even that one is there at all.
+
+==Specialties==
+Artillery, Coding, Computer Building, Data Mining, Energy Systems, Hacking, Networks, Phones, Surveillance Systems
+
+==Uses==
+* [[Technology]] + [[Intelligence]]: [[Edges#Fleet|Fleet Edge]] for keeping and maintaining a fleet.<ref name="CB91">[[Hunter: The Reckoning Corebook]], page 91</ref>
+* [[Technology]] + [[Intelligence]]: [[Edges#Global_Access|Global Access Edge]] to obtain data on any subject or person in any database.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+* [[Technology]] + [[Intelligence]]: Setting up [[Equipment#Plastic_Explosives|Plastic Explosives]].<ref name="CB107">[[Hunter: The Reckoning Corebook]], page 107</ref>
+* [[Technology]] + [[Intelligence]]: Hacking/Subverting a computer system. (1 or 2 for a small, poorly secured network, 4 for decent corporate security, 6 for secure databases, 8+ for the NSA)<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Technology]] + [[Intelligence]]: Creating a bomb using sufficient explosives.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Technology]] + [[Intelligence]]: Employing a complex trigger detonation of a pre-made bomb/explosive. <ref name="ST8"/>
+* [[Technology]] + [[Intelligence]]: Researching through computer files, internet forums, cloud servers/databases.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Technology]]/[[Craft]]/[[Science]] + [[Intelligence]]: [[Edges#Improvised_Gear|Improvised Gear Edge]] to create short-lived but useful tools.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+* [[Technology]] + [[Resolve]]: [[Edges#Drone_Jockey|Autonomous Perk for Drone Jockey Edge]] for complicated decision trees.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Technology]] + [[Wits]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] to operate the drone.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Technology]]/[[Streetwise]] + [[Wits]]: Finding a GPS tracker on a vehicle. (Difficulty 3)<ref name="CB103">[[Hunter: The Reckoning Corebook]], page 103</ref>
+
+==Related==
+* The [[Advantages_and_Flaws#Safe_House|Laboratory Safe House Merit]] adds one dot to the dice pool related to one [[Science]] or [[Technology]] specialty performed in the safe house.<ref name="CB79">[[Hunter: The Reckoning Corebook]], page 79</ref>
+* The [[Edges#Fleet|Surveillance Perk for the Fleet Edge]] gives a bonus on stakeouts from the vehicle, such as [[Awareness]] or [[Technology]] tests.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+
+==References==
+<references />
+
+[[Category:Skill]]
+[[Category:Mental Skill]]

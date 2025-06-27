@@ -20,35 +20,35 @@ import { TraitManagerUtils } from '../managers/manager-utils.js';
 const mappings = [
   {
     selector: '.disciplines-container',
-    modulePath: '../data/disciplines.js',
+    modulePath: '../data/vampire/disciplines.js',
     dataKey: 'disciplines',
     title: 'Disciplines'
   },
   {
     selector: '.merits-container',
-    modulePath: '../data/merits.js',
+    modulePath: '../data/vampire/merits.js',
     dataKey: 'merits',
     title: 'Merits'
   },
   {
     selector: '.merits-container',
-    modulePath: '../data/merits.js', // same file
+    modulePath: '../data/vampire/merits.js', // same file
     dataKey: 'merits',
     title: 'Merits'
   },
   {
     selector: '.backgrounds-container',
-    modulePath: '../data/backgrounds.js',
+    modulePath: '../data/vampire/backgrounds.js',
     dataKey: 'backgrounds',
     title: 'Backgrounds'
   },
   {
     selector: '.backgrounds-container',
-    modulePath: '../data/backgrounds.js',
+    modulePath: '../data/vampire/backgrounds.js',
     dataKey: 'backgrounds',
     key: 'disciplines',
     heading: 'Disciplines',
-    modulePath: '../data/disciplines.js',
+    modulePath: '../data/vampire/disciplines.js',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -69,7 +69,7 @@ const mappings = [
   {
     key: 'merits',
     heading: 'Merits',
-    modulePath: '../data/merits.js',
+    modulePath: '../data/vampire/merits.js',
     buildContent: (data) => {
       let content = '<p>Merits provide advantages that customise a character.</p>';
       const categories = Object.values(data || {});
@@ -85,7 +85,7 @@ const mappings = [
   {
     key: 'flaws',
     heading: 'Flaws',
-    modulePath: '../data/merits.js', // same file
+    modulePath: '../data/vampire/merits.js', // same file
     dataKey: 'merits',
     buildContent: (data) => {
       let content = '<p>Flaws represent disadvantages and weaknesses.</p>';
@@ -104,7 +104,7 @@ const mappings = [
   {
     key: 'backgrounds',
     heading: 'Backgrounds',
-    modulePath: '../data/backgrounds.js',
+    modulePath: '../data/vampire/backgrounds.js',
     buildContent: (data) => {
       let content = '<p>Background Merits grant social and material advantages.</p>';
       const categories = Object.values(data || {});
@@ -122,7 +122,7 @@ const mappings = [
   {
     key: 'backgroundFlaws',
     heading: 'Background Flaws',
-    modulePath: '../data/backgrounds.js',
+    modulePath: '../data/vampire/backgrounds.js',
     dataKey: 'backgrounds',
     buildContent: (data) => {
       let content = '<p>Background Flaws represent social or material hindrances.</p>';
@@ -141,7 +141,7 @@ const mappings = [
   {
     key: 'loresheets',
     heading: 'Loresheets',
-    modulePath: '../data/loresheets.js',
+    modulePath: '../data/vampire/loresheets.js',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -212,43 +212,43 @@ const mappings = [
 const dropdownMappings = [
   {                // Resonance
     selector : '.resonance-dropdown',
-    module   : '../data/resonances.js',
+    module   : '../data/vampire/resonances.js',
     dataKey: 'resonances',
     title: 'Resonance'
   },
   {                // Temperament
     selector : '.temperament-dropdown',
-    module   : '../data/resonances.js',
+    module   : '../data/vampire/resonances.js',
     dataKey: 'resonances',
     title: 'Temperament'
   },
   {                // Predator Type
     selector : '.predator-dropdown',
-    module   : '../data/predator_types.js',
+    module   : '../data/vampire/predator_types.js',
     dataKey: 'predatorTypes',
     title: 'Predator Type'
   },
   {                // Clan
     selector : '.clan-dropdown',
-    module   : '../data/clans.js',
+    module   : '../data/vampire/clans.js',
     dataKey: 'clans',
     title: 'Clan'
   },
   {                // Generation
     selector : '.generation-dropdown',
-    module   : '../data/generation.js',
+    module   : '../data/vampire/generation.js',
     dataKey: 'generation',
     title: 'Generation'
   },
   {                // Blood Potency
     selector : '.blood-potency-dropdown',
-    module   : '../data/blood_potency.js',
+    module   : '../data/vampire/blood_potency.js',
     dataKey: 'bloodPotency',
     title: 'Blood Potency'
   },
   {                // Compulsion
     selector : '.compulsion-dropdown',
-    module   : '../data/compulsions.js',
+    module   : '../data/vampire/compulsions.js',
     dataKey: 'compulsions',
     title: 'Compulsion'
   }
@@ -412,7 +412,7 @@ function initInfoButtons() {
       const validCurrent = Math.min(Math.max(current, 0), 10);
 
       try {
-        const mod          = await import('../data/humanity.js');
+        const mod          = await import('../data/vampire/humanity.js');
         const humanityData = mod?.humanity || mod?.default || mod || {};
 
         // Basic overview — always show if present
@@ -482,7 +482,7 @@ function initInfoButtons() {
       bpBtn.addEventListener('click', async ()=>{
         const level = parseInt(dots.dataset.value || '0', 10);
         try {
-          const mod = await import('../../data/blood_potency.js');
+          const mod = await import('../../data/vampire/blood_potency.js');
           const bpData = mod.bloodPotency || mod.default || mod;
           const bpLevels = (bpData && bpData.levels) ? bpData.levels : {};
           const bp = bpLevels[level] || {};
@@ -591,7 +591,7 @@ function initInfoButtons() {
         // Special handling for Generation
         if (statName === 'generation') {
           try {
-            const mod = await import('../data/generation.js');
+            const mod = await import('../data/vampire/generation.js');
             const genData = mod.generation;
             
             let content = `<p>${genData.overview.description}</p>`;

@@ -70,7 +70,7 @@
  */
 
 // Coterie Merit and Flaw Manager
-import { coterieBackgrounds } from '../../data/backgrounds-coterie.js';
+import { coterieBackgrounds } from '../../data/vampire/backgrounds-coterie.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class CoterieManager {

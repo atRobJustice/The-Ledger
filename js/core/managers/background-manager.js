@@ -59,7 +59,7 @@
  */
 
 // Background and Background Flaw Manager
-import { backgrounds } from '../../data/backgrounds.js';
+import { backgrounds } from '../../data/vampire/backgrounds.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class BackgroundManager {

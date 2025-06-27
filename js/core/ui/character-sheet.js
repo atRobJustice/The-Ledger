@@ -707,7 +707,7 @@ $(document).ready(function() {
     // Function to populate the predator dropdown with values from predator_types.js
     async function populatePredatorDropdown(dropdown) {
         try {
-            const module = await import('../../data/predator_types.js');
+            const module = await import('../../data/vampire/predator_types.js');
             const predatorTypes = module.predatorTypes;
             const $dropdown = $(dropdown);
             const predatorEntries = Object.entries(predatorTypes.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
@@ -742,7 +742,7 @@ $(document).ready(function() {
     // Function to populate an individual clan dropdown with values from clans.js
     async function populateClanDropdown(dropdown) {
         try {
-            const module = await import('../../data/clans.js');
+            const module = await import('../../data/vampire/clans.js');
             const clans = module.clans;
             const $dropdown = $(dropdown);
             const clanEntries = Object.entries(clans.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
@@ -764,7 +764,7 @@ $(document).ready(function() {
     // Function to populate the generation dropdown with values from generation.js
     async function populateGenerationDropdown(dropdown) {
         try {
-            const module = await import('../../data/generation.js');
+            const module = await import('../../data/vampire/generation.js');
             const generationData = module.generation;
             const $dropdown = $(dropdown);
             const generations = Object.keys(generationData.bloodPotencyLimits).map(Number).sort((a,b)=>a-b);
@@ -787,7 +787,7 @@ $(document).ready(function() {
     // Function to populate the blood potency dropdown with values from blood_potency.js
     async function populateBloodPotencyDropdown(dropdown) {
         try {
-            const module = await import('../../data/blood_potency.js');
+            const module = await import('../../data/vampire/blood_potency.js');
             const bpData = module.bloodPotency;
             const $dropdown = $(dropdown);
             const levels = Object.keys(bpData.levels).map(Number).sort((a,b)=>a-b);
@@ -831,7 +831,7 @@ $(document).ready(function() {
     // Populate Resonance dropdown from references/resonances.js
     async function populateResonanceDropdown(dropdown) {
         try {
-            const module = await import('../../data/resonances.js');
+            const module = await import('../../data/vampire/resonances.js');
             const resonanceData = module.resonances;
             const entries = Object.entries(resonanceData.types);
             // Sort alphabetically by name
@@ -853,7 +853,7 @@ $(document).ready(function() {
     // Populate Temperament dropdown from references/resonances.js
     async function populateTemperamentDropdown(dropdown) {
         try {
-            const module = await import('../../data/resonances.js');
+            const module = await import('../../data/vampire/resonances.js');
             const temperamentData = module.resonances.temperaments;
             const order = ['fleeting', 'intense', 'acute'];
             const entries = Object.entries(temperamentData);
@@ -874,7 +874,7 @@ $(document).ready(function() {
     // Function to populate the compulsion dropdown with values from compulsions.js
     async function populateCompulsionDropdown(dropdown) {
         try {
-            const module = await import('../../data/compulsions.js');
+            const module = await import('../../data/vampire/compulsions.js');
             const compulsionData = module.compulsions;
 
             const $dropdown = $(dropdown);
@@ -951,7 +951,7 @@ async function populateClanDropdowns() {
     
     try {
         // Import the clans module
-        const module = await import('../../data/clans.js');
+        const module = await import('../../data/vampire/clans.js');
         
         // Populate each dropdown
         clanDropdowns.forEach(dropdown => {

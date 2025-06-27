@@ -1,62 +1,58 @@
 ==Skills==
-Similar to Attributes, Skills are defined as follows. No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill. <ref>[[Vampire: The Masquerade Corebook]], page 159</ref>
+Similar to Attributes, Skills are defined as follows: No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.
 
-The distribution of Skills is a choice between three different options;
+The distribution of Skills is a choice between three different options:
 
 *'''Jack of All Trades:''' One Skill at 3 dots, eight Skills at 2 dots, and ten Skills at 1 dot.
 *'''Balanced:''' Three Skills at 3 dots, five Skills at 2 dots, and seven Skills at 1 dot.
 *'''Specialist:''' One Skill at 4 dots, three Skills at 3 dots, three Skills at 2 dots, and three Skills at 1 dot.
-Following this is Skill specialty, which is specific expertise in a given Skill. If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Don't forget to add in the spec from the Predator type and remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill. If the character gains a specialty from the Predator type but has no dots in the Skill, the specialty can instead be converted to the first dot of one Skill. <ref>[[Vampire: The Masquerade Corebook]], page 149</ref>
+
+Following this is Skill specialty, which is specific expertise in a given Skill. If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill.
 
 ===Physical===
 '''[[Athletics]]:''' Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat and throwing an item or weapon is also Athletics.
-Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat and throwing an item or weapon is also Athletics. Athletics can be used in place of any Physical combat skill in a conflict roll, but they never land any hits. <ref>[[Vampire: The Masquerade Corebook]], page 159</ref>
+
+Athletics describes an aptitude for competitive physical performance, whether against another athlete or against the parameters of a sporting-type challenge. Athletics can be used in place of any Physical combat skill in a conflict roll, but they never land any hits.
+
 ==Dot values==
-● They were attentive in gym class 
+● They were attentive in gym class.
 
-● ● They are as fit as a mortal doing regular exercise. 
+● ● They are as fit as someone doing regular exercise.
 
-● ● ● Could play professional sports at night. 
+● ● ● Could play professional sports.
 
-● ● ● ● Immense parkour ability, why even turn into a bat? 
+● ● ● ● Immense parkour ability.
 
-● ● ● ● ● They could take Olympic records and Kindred mistake their skill for Disciplines. 
+● ● ● ● ● They could take Olympic records.
 
-== Example Specialties ==
-Acrobatics, Archery, Climbing, Endurance, Jumping, Parkour, Swimming, Throwing. <ref>[[Vampire: The Masquerade Corebook]], page 160</ref>
+==Example Specialties==
+Acrobatics, Archery, Climbing, Endurance, Jumping, Parkour, Swimming, Throwing.
 
 ==Example pools==
-
-*[[Dexterity]] + Athletics
-**Dodge both close combat and ranged attacks. <ref>[[Vampire: The Masquerade Corebook]], page 125</ref> 
-**Fleeing a situation. <ref>[[Vampire: The Masquerade Corebook]], page 130</ref> 
-**Used in [[Celerity]] powers, such a Fleetness. <ref>[[Vampire: The Masquerade Corebook]], page 253</ref> 
-**Used to dodge an attack from a [[Potence]] power, such as Earthshock. <ref>[[Vampire: The Masquerade Corebook]], page 265</ref> 
-**Used in [[Blood Sorcery]] powers such as Scorpion's touch to spit acid. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref> 
-**Used to throw weapons. <ref>[[Vampire: The Masquerade Corebook]], page 301</ref> 
-**Climbing. <ref>[[Vampire: The Masquerade Corebook]], page 409</ref> 
-**Determining how much fall damage a character takes. <ref>[[Vampire: The Masquerade Corebook]], page 409</ref>
-*[[Stamina]] + Athletics
-**Out run pursuers in long distance. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref> 
-**Swimming. <ref>[[Vampire: The Masquerade Corebook]], page 411</ref>
-*[[Strength]] + Athletics
-**Used in [[Blood Sorcery Rituals]] such as preventing being picked up by Essence of Air. <ref>[[Vampire: The Masquerade Corebook]], page 279</ref> 
-**Also used to resist [[Thin-blood Alchemy]] powers such as Far Reach. <ref>[[Vampire: The Masquerade Corebook]], page 284</ref> 
-**Lifting or smashing things. <ref>[[Vampire: The Masquerade Corebook]], page 410</ref>
-*[[Manipulation]] + Athletics 
-**Picking up someone at a gym using seduction. <ref>[[Vampire: The Masquerade Corebook]], page 414</ref>
-{{GameConceptsNavbox}}
-
-==References==
+* [[Dexterity]] + Athletics
+** Dodge both close combat and ranged attacks.
+** Fleeing a situation.
+** Used to throw weapons.
+** Climbing.
+** Determining how much fall damage a character takes.
+* [[Stamina]] + Athletics
+** Outrun pursuers in long distance.
+** Swimming.
+* [[Strength]] + Athletics
+** Lifting or smashing things.
+* [[Manipulation]] + Athletics
+** Picking up someone at a gym using seduction.
 
 [[Category: Skills]]
 [[Category: Physical]]
 [[Category: Index]]
 
 '''[[Brawl]]:''' Combat focused on using the body as a weapon rather than an item.
-Combat focused on using the body as a weapon rather than an item. <ref name=":0" />
+
+Brawl enables characters to hit their target when they swing with fist, boot, or chokehold. As long as the character has no weapon in hand, the attack constitutes a brawl, from graceful martial arts to drunken fistfights.
+
 ==Dot values==
-● They had a tough upbringing and had to fight to survive, they still have some moved.
+● They had a tough upbringing and had to fight to survive, they still have some moves.
 
 ● ● They have been trained in hitting someone hard and well aimed.
 
@@ -64,56 +60,63 @@ Combat focused on using the body as a weapon rather than an item. <ref name=":0"
 
 ● ● ● ● They either were trained in the special forces or have spent decades fighting.
 
-● ● ● ● ● They could win a MMA championship and not need their Disciplines to do it. <ref name=":0" />
+● ● ● ● ● They could win an MMA championship.
 
-== Example specs ==
-Animals, Armed Mortals, Bar Fights, Grappling, Kindred, Sporting Combat, Unarmed Mortals, Werewolves, While in Protean Beast Form <ref name=":0">[[Vampire: The Masquerade Corebook]], page 160</ref>
+==Example Specialties==
+Animals, Armed Humans, Bar Fights, Grappling, Sporting Combat, Unarmed Humans.
 
 ==Example pools==
-*[[Strength]] + Brawl
-**A conflict pool for a fight. <ref>[[Vampire: The Masquerade Corebook]], page 124</ref> 
-**Escape a foe biting them. <ref>[[Vampire: The Masquerade Corebook]], page 213</ref> 
-**Grappling an opponent, but this doesn't cause damage regardless of successes. <ref>[[Vampire: The Masquerade Corebook]], page 301</ref> 
-**Hunting as an [[Predator types#Alleycat|alleycat]]. <ref>[[Vampire: The Masquerade Corebook]], page 307</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Strength]] + Brawl
+** A conflict pool for a fight.
+** Escape a foe biting them.
+** Grappling an opponent, but this doesn't cause damage regardless of successes.
 
-'''[[Craft]]:''' Creating, building, or shaping items such as artwork but also making a makeshift catapult.
-Creating, building, or shaping items such as artwork but also making a makeshift catapult.
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
 
-When taken this skill gains one spec, unlike other Skills, Craft can have more specs than dots. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 160</ref>
+'''[[Craft]]:''' Creating, building, or shaping items from beautiful to functional.
 
-This is a skill that gives a free spec upon taking at least one dot. <ref>[[Vampire: The Masquerade Corebook]], page 136</ref>
+Craft broadly encompasses artistry, creation of items and utilities from the beautiful to the functional, and arts and crafts from throwing pottery all the way to architecture and interior design.
+
+When taken this skill gains one spec, unlike other Skills, Craft can have more specs than dots.
+
+This is a skill that gives a free spec upon taking at least one dot.
+
 ==Dot values==
 ● They are an amateur artist.
 
-● ● Their work is admired for it's usefulness.
+● ● Their work is admired for its usefulness.
 
 ● ● ● Their creations can be gorgeous or terrifying, but intent is always clear.
 
-● ● ● ● Their skill is highly regarded among the kine and Kindred know this.
+● ● ● ● Their skill is highly regarded among those who are aware of it.
 
-● ● ● ● ● They are often selected to create focal points for parties at Elysium. <ref name=":0" />
+● ● ● ● ● They are often selected to create focal points for important events.
 
-== Example specs ==
-Carpentry, Carving, Design, Painting, Sculpting, Sewing, Weaponsmith <ref name=":0" />
+==Example Specialties==
+Carpentry, Carving, Design, Painting, Sculpting, Sewing, Weaponsmithing, Interior Design.
 
 ==Example pools==
-*[[Wits]] + Craft
-**Board up a door in record speed and it can hold. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-*[[Intelligence]] + Craft
-**Convince the city to build something with magical geometry. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref>
-**Tagging something with graffiti, or making poster art/painting. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref> 
-**Build false compartments. <ref>[[Vampire: The Masquerade Corebook]], page 407</ref> 
-**Create bombs with clock parts and wires. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 408</ref> 
-**Preparedness roll to remember a wrench. <ref name=":1" />
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Wits]] + Craft
+** Board up a door in record speed and it can hold.
+* [[Intelligence]] + Craft
+** Build false compartments.
+** Create bombs with clock parts and wires.
+** Preparedness roll to remember a wrench.
+* [[Strength]] + Craft
+** Figuring out how to correctly manipulate/open complex/uncommon structures.
+
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
 
 '''[[Drive]]:''' Driving vehicles specifically under duress and adverse or difficult conditions. Also used for working on cars or general mechanic skills.
-Driving vehicles specifically under duress and adverse or difficult conditions. Also used for working on cars or general mechanic skills.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 160</ref>
+
+Anyone can learn to drive a car. In most cases, simply driving isn't extremely difficult. Just driving to the store or even cross-country isn't notably risky.
+
+The Driving Skill connotes ability to drive fast and safely under adverse conditions or in stressful situations: to drive off-road, speed away from ambushes, win street races, and escape from pursuit.
+
 ==Dot values==
 ● They are a cautious driver.
 
@@ -123,28 +126,29 @@ Driving vehicles specifically under duress and adverse or difficult conditions. 
 
 ● ● ● ● They could be a stunt driver or personal chauffeur for someone in power.
 
-● ● ● ● ● They know cars inside and out, very few can match this skill and knowledge. <ref name=":0" />
+● ● ● ● ● They know cars inside and out, very few can match this skill and knowledge.
 
-== Example specs ==
-All-Terrain Vehicles, Evasion, Motorcycles, Street Racing, Stunts, Tailing, Trucks, Vintage Models <ref name=":0" />
+==Example Specialties==
+All-Terrain Vehicles, Evasion, Motorcycles, Street Racing, Stunts, Tailing, Trucks, Vintage Models.
 
 ==Example pools==
-*[[Wits]] + Drive
-**Swerve out of the way in time. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref> 
-**Pull alongside a vehicle so others can jump on. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref> 
-**Keeping the pursuer insight and chasing. <ref>[[Vampire: The Masquerade Corebook]], page 410</ref>
-*[[Resolve]] + Drive
-**Scrounging roll to find a vehicle. <ref>[[Vampire: The Masquerade Corebook]], page 334</ref>
-*[[Manipulation]] + Drive 
-**For a spectre to control a possessed human, <ref>[[Vampire: The Masquerade Corebook]], page 377</ref>
-*[[Dexterity]] + Drive
-**Evading traffic, high speed chases, or complex maneuvers. <ref>[[Vampire: The Masquerade Corebook]], page 409</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Wits]] + Drive
+** Swerve out of the way in time.
+** Pull alongside a vehicle so others can jump on.
+** Keeping the pursuer in sight and chasing.
+* [[Resolve]] + Drive
+** Scrounging roll to find a vehicle.
+* [[Dexterity]] + Drive
+** Evading traffic, high speed chases, or complex maneuvers.
 
-'''[[Firearms]]:''' Using ranged weaponry such as bows and guns as well as gunsmithing and repair of said items.
-Using ranged weaponry such as bows and guns as well as gunsmithing and repair of said items. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 162</ref>
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
+
+'''[[Firearms]]:''' Using ranged weaponry such as bows and guns as well as cleaning, unjamming, and rapidly reloading these weapons.
+
+This Skill comprises familiarity with small arms from holdout pistols to assault rifles. It also includes other trigger-operated weapons, such as crossbows and shoulder-fired rocket-propelled grenades. Finally, it includes cleaning, unjamming, and rapidly reloading such weapons.
+
 ==Dot values==
 ● They've fired a gun a few times.
 
@@ -154,28 +158,32 @@ Using ranged weaponry such as bows and guns as well as gunsmithing and repair of
 
 ● ● ● ● They can handle trick shots, called shots, running shots, any shots.
 
-● ● ● ● ● They've been practicing since the Winchester came out. <ref name=":0" />
+● ● ● ● ● They've been practicing since the Winchester came out.
 
-== Example specs ==
-Crossbows, Gun Dealing, Gunsmithing, Handloading, Ammunition, Quick-Draw, Sniper, Trick Shooting <ref name=":0" />
+==Example Specialties==
+Crossbows, Gun Dealing, Gunsmithing, Handloading Ammunition, Quick-Draw, Sniper, Trick Shooting.
+
 ==Example pools==
-*[[Composure]] + Firearms
-**Standard conflict pool. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 301</ref>
-*[[Resolve]] + Firearms
-**Sniper shot <ref name=":1" /> 
-**Scrounging roll for bullets. <ref>[[Vampire: The Masquerade Corebook]], page 334</ref>
-*[[Dexterity]] + Firearms
-**High-noon stand off for the first shot. <ref name=":1" />
-*[[Strength]] + Firearms
-**If engaged in hand to hand combat. <ref>[[Vampire: The Masquerade Corebook]], page 302</ref>
-*[[Intelligence]] + Firearms
-**Preparedness roll to see if they brought a silencer. <ref>[[Vampire: The Masquerade Corebook]], page 408</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Composure]] + Firearms
+** Standard conflict pool.
+* [[Resolve]] + Firearms
+** Sniper shot.
+** Scrounging roll for bullets.
+* [[Dexterity]] + Firearms
+** High-noon stand off for the first shot.
+* [[Strength]] + Firearms
+** If engaged in hand to hand combat.
+* [[Intelligence]] + Firearms
+** Preparedness roll to see if they brought a silencer.
 
-'''[[Larceny]]:''' Lockpicking a locked door or breaking in other ways, pickpocketing and sleight of hand.
-Lockpicking a locked door or breaking in other ways, pickpocketing and sleight of hand.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 163</ref>
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
+
+'''[[Larceny]]:''' Lockpicking a locked door, hotwiring a car, deactivating alarms, and other forms of breaking and entering.
+
+This Skill entails familiarity with the tools and techniques for picking locks, planting bugs, deactivating standard burglar and car alarms, manual forgery, hot-wiring automobiles, or even safecracking, as well as countless forms of breaking and entering. Characters also use it for setting up "unbeatable" security systems or deducing how and where systems failed in a break-in.
+
 ==Dot values==
 ● They can pick a simple lock or pocket.
 
@@ -185,61 +193,70 @@ Lockpicking a locked door or breaking in other ways, pickpocketing and sleight o
 
 ● ● ● ● They can defeat a keypad, re-tool and ID card, or break into a safe.
 
-● ● ● ● ● They can into or out of a multinational bank. <ref name=":0" />
+● ● ● ● ● They can get into or out of a multinational bank.
 
-== Example specs ==
-Alarms, Forgery, Grand Theft Auto, Housebreaking, Lockpicking, Pickpocket, Safecracking, Security Analysis <ref name=":0" />
+==Example Specialties==
+Alarms, Forgery, Grand Theft Auto, Housebreaking, Lockpicking, Pickpocket, Safecracking, Security Analysis.
 
 ==Example pools==
-*[[Intelligence]] + Larceny
-**Determining what type of alarm is it. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref> 
-**Beating the roof alarm. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 294</ref> 
-**Controlled demolitions. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 408</ref> 
-**Bypassing an alarm circuit.<ref name=":3">[[Vampire: The Masquerade Corebook]], page 410</ref> 
-**Setting up a security system. <ref name=":3" />
-*[[Dexterity]] + Larceny
-**Breaking in through the skylight. <ref name=":1" /> 
-**Cracking a safe. <ref name=":3" /> 
-**Sleight of hand. <ref>[[Vampire: The Masquerade Corebook]], page 411</ref>
-*[[Composure]] + Larceny
-**Extracting an item from a laser field.<ref name=":1" />  
-*[[Resolve]] + Larceny
-**Cleaning up a crime scene. <ref name=":2" />
-*[[Wits]] + Larceny
-**Noticing a hidden camera. <ref name=":3" />
-*[[Strength]] + Larceny
-**Breaking a lock cleanly. <ref name=":3" />
-{{GameConceptsNavbox}}[[Category: Index]][[Category:Physical]][[Category:Skills]]
-==References==
+* [[Intelligence]] + Larceny
+** Determining what type of alarm it is.
+** Beating the roof alarm.
+** Controlled demolitions.
+** Bypassing an alarm circuit.
+** Setting up a security system.
+* [[Dexterity]] + Larceny
+** Breaking in through the skylight.
+** Cracking a safe.
+** Sleight of hand.
+** Slipping free from handcuffs.
+** Picking a lock.
+** Dodging a laser sensor.
+* [[Composure]] + Larceny
+** Extracting an item from a laser field.
+* [[Resolve]] + Larceny
+** Cleaning up a crime scene.
+* [[Wits]] + Larceny
+** Noticing a hidden camera.
+* [[Strength]] + Larceny
+** Breaking a lock cleanly.
+
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
 
 '''[[Melee]]:''' Combat focused around using handheld weaponry such as a lead pipe or a baseball bat.
-Combat focused around using handheld weaponry such as a lead pipe or a baseball bat.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 164</ref>
+
+Use Melee to wield handheld weapons such as knives, chains, and baseball bats with prowess. Feel free to improvise with a length of rebar or, hell, maybe a manhole cover, if it can be swung.
+
 ==Dot values==
 ● They can swing a bat or blade.
 
 ● ● They have competence with weapon handling.
 
-● ● ● Their skill with a weapon is known in the domain.
+● ● ● Their skill with a weapon is known in the area.
 
 ● ● ● ● The enemies brought a gun to a knife fight.
 
-● ● ● ● ● They are the domain's weaponmaster.<ref name=":0" />
+● ● ● ● ● They are the area's weaponmaster.
 
-== Example specs ==
-Axes, Chains, Clubs, Fencing, Disarming Blows, Garrotes, Improvised Weapons, Knives, Stakes, Swords. <ref name=":0" />
+==Example Specialties==
+Axes, Chains, Clubs, Fencing, Disarming Blows, Garrotes, Improvised Weapons, Knives, Stakes, Swords.
 
 ==Example pools==
-*[[Strength]] + Melee
-**Used when attempting to stake someone. <ref>[[Vampire: The Masquerade Corebook]], page 221</ref> 
-**Two-handed melee weapons. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 301</ref>
-*[[Dexterity]] + Melee
-**One-handed weapons. <ref name=":1" />
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Strength]] + Melee
+** Two-handed melee weapons.
+* [[Dexterity]] + Melee
+** One-handed weapons.
+
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
 
 '''[[Stealth]]:''' Blending into surroundings to either not be seen or not be recognized, allows characters to move around without alerting anyone of their presence either by sight or sound.
-Blending into surroundings to either not be seen or not be recognized, allows characters to move around without alerting anyone of their presence either by sight or sound.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 164</ref>
+
+Stealth allows a character to shadow a target, whether in an urban environment or in remote wilds. They benefit from the ability to spy, sneak, and blend in with crowds when needed.
+
 ==Dot values==
 ● They can hide in darkness or camouflage.
 
@@ -249,63 +266,68 @@ Blending into surroundings to either not be seen or not be recognized, allows ch
 
 ● ● ● ● They are subtle with silent movement.
 
-● ● ● ● ● The [[Banu Haqim]] come to them for advise. <ref name=":0" />
+● ● ● ● ● The target doesn't even know there's a "there" when the character is there, let alone presence.
 
-== Example specs ==
-Ambushes, Crowds, Diguise, Hiding, Shadowing, Silent Movement, Urban, Wilderness<ref name=":0" />
+==Example Specialties==
+Ambushes, Crowds, Disguise, Hiding, Shadowing, Silent Movement, Urban, Wilderness.
 
 ==Example pools==
-*[[Dexterity]] + Stealth
-**Sneaking. <ref>[[Vampire: The Masquerade Corebook]], page 45</ref> 
-**Surprise attacks <ref>[[Vampire: The Masquerade Corebook]], page 300</ref> 
-**Break in and feed from the sleeping as a [[Predator types#Sandman|Sandman]]. <ref>[[Vampire: The Masquerade Corebook]], page 308</ref>
-*[[Stamina]] + Stealth
-**Remain motionless while in hiding. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-*[[Wits]] + Stealth
-**Used with [[Obfuscate]] powers to hide from active searchers with [[Auspex#Sense the Unseen|Sense the Unseen]]. <ref>[[Vampire: The Masquerade Corebook]], page 261</ref> 
-**Shake surveillance. <ref>[[Vampire: The Masquerade Corebook]], page 411</ref>
-*[[Resolve]] + Stealth
-**Wait in an alleyway to feed off an unsuspecting victim. <ref>[[Vampire: The Masquerade Corebook]], page 307</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
+* [[Dexterity]] + Stealth
+** Sneaking.
+** Surprise attacks.
+* [[Stamina]] + Stealth
+** Remain motionless while in hiding.
+* [[Wits]] + Stealth
+** Shake surveillance.
+* [[Resolve]] + Stealth
+** Wait in an alleyway to ambush an unsuspecting victim.
+
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
 
 '''[[Survival]]:''' Using nature to find shelter, tracking animals or people, and general survival in the wilderness.
-Using nature to find shelter, tracking animals or people, and general survival in the wilderness. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 164</ref>
+
+Survival conveys the ability to exist in the wild and under adverse conditions. Navigating by the stars, establishing a makeshift shelter, and noticing the spoors of prey and predators are all part of it, as is foraging for food and seeking cover. Whether on city streets or across trackless wastes, the intent is the same.
+
 ==Dot values==
-● They know the trails and wilderness around the domain.
+● They know the trails and wilderness around the area.
 
 ● ● They spend more time outside than inside.
 
-● ● ● They can subsist outside the city, set ups traps, and shelter for themself.
+● ● ● They can subsist outside the city, set up traps, and shelter for themselves.
 
 ● ● ● ● They can thrive in the outside.
 
-● ● ● ● ● [[Gangrel]] packs run alongside them. <ref name=":0" />
+● ● ● ● ● Their hardiness is a lesson to all.
 
-== Example specs ==
-Desert, Hunting, Jungle, Tracking, Traps, Shelters, Urban Exploration, Woodlands. <ref name=":0" />
+==Example Specialties==
+Desert, Hunting, Jungle, Tracking, Traps, Shelters, Urban Exploration, Woodlands.
 
 ==Example pools==
-*[[Wits]] + Survival
-**Find somewhere to sleep for the night. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref> 
-**Used in [[Fortitude]] powers such as Defy Bane. <ref>[[Vampire: The Masquerade Corebook]], page 259</ref> 
-**Used in [[Protean]] powers such as Weight of the Feather. <ref>[[Vampire: The Masquerade Corebook]], page 270</ref> 
-**Tracking something or someone. <ref>[[Vampire: The Masquerade Corebook]], page 409</ref>
-*[[Intelligence]] + Survival
-**Used in [[Blood Sorcery Rituals]] such as Illuminate the Trail of Prey. <ref>[[Vampire: The Masquerade Corebook]], page 277</ref> 
-**Camouflage in nature or burying a body outside undetected. <ref>[[Vampire: The Masquerade Corebook]], page 407</ref>
-*[[Stamina]] + Survival
-**Used to defend against [[Thin-blood Alchemy]] powers such as Envelop. <ref>[[Vampire: The Masquerade Corebook]], page 285</ref>
-*[[Composure]] + Survival
-**Remove flammable material from themselves from something like a Molotov cocktail. <ref>[[Vampire: The Masquerade Corebook]], page 380</ref>
-{{GameConceptsNavbox}}
-[[Category: Index]][[Category:Physical]][[Category:Skills]]
-==References==
+* [[Wits]] + Survival
+** Find somewhere to sleep for the night.
+** Tracking something or someone.
+* [[Intelligence]] + Survival
+** Camouflage in nature or burying a body outside undetected.
+* [[Stamina]] + Survival
+** Used to defend against supernatural powers.
+* [[Composure]] + Survival
+** Remove flammable material from themselves from something like a Molotov cocktail.
+* [[Dexterity]] + Survival
+** Escape without leaving tracks to avoid pursuit.
 
-=== Social ===
+[[Category: Index]]
+[[Category: Physical]]
+[[Category: Skills]]
+
+===Social===
 '''[[Animal Ken]]:''' Understanding and reading animal behavior to handle them and work with them.
-Animal Ken helps characters understand and read animal behavior to handle and work with them.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 164</ref> 
+
+Animal Ken allows one to manage, pacify, and even befriend animals. This Skill allows for predicting how an animal might react in a given situation, training a domesticated creature, or even trying to calm or enrage animals. Without this Skill, most wild creatures pointedly avoid humankind.
+
+Animal Ken also makes for familiarity with various animal spoor, remains, and even behavior.
+
 ==Dot values==
 ● Animals shy away from them but do not bolt or attack.
 
@@ -315,389 +337,408 @@ Animal Ken helps characters understand and read animal behavior to handle and wo
 
 ● ● ● ● Animals are drawn to them, few creatures keep their aggression.
 
-● ● ● ● ● They can sense the animal's feelings and thoughts.<ref name=":0" />
+● ● ● ● ● They can sense the animal's feelings and thoughts.
 
-==Example specs==
-Attack Training, Cats, Dogs, Falconry, Horses, Pacification, Rats, Snakes, Stunt Training, Wolves. <ref name=":0" /> 
+==Example Specialties==
+Attack Training, Cats, Dogs, Falconry, Horses, Pacification, Rats, Snakes, Stunt Training, Wolves.
 
 ==Example pools==
-*[[Charisma]] + Animal Ken
-**Used in [[Animalism]] powers such as Bond Famulus to give commands to animals <ref>[[Vampire: The Masquerade Corebook]], page 245</ref>,
-*[[Composure]] + Animal Ken
-**To feed from animals through the [[Predator types#Farmer|Farmer]] Predator type. <ref>[[Vampire: The Masquerade Corebook]], page 307</ref>
-*[[Manipulation]] + Animal Ken
-**Distract guard dogs <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-{{GameConceptsNavbox}}
-==References==
+* [[Charisma]] + Animal Ken
+** Used with animal-related abilities to give commands to animals.
+* [[Composure]] + Animal Ken
+** To train animal companions.
+* [[Manipulation]] + Animal Ken
+** Distract guard dogs.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Etiquette]]:''' The ability to interact in social settings or blend into different groups.
-Etiquette is the ability to interact in social settings or blend into different groups. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 164-165</ref> 
+
+Etiquette is the ability to identify and respond to the social conventions in the current scene, set new protocols, and please everyone around with good graces. This isn't necessarily all tea rooms and hierarchies of royal address — it's all forms of respecting customs, from the tattoo parlor to the executive boardroom.
+
 ==Dot values==
-● They can address their ruler without a faux pas. 
+● They can address their ruler without a faux pas.
 
-● ● They know the rules of the domain's popular hotspots. 
+● ● They know the rules of the area's popular hotspots.
 
-● ● ● They can impress others with their politeness, humble submission and respect. 
+● ● ● They can impress others with their politeness, humble submission and respect.
 
-● ● ● ● Their behavior sets the trend, especially if they push against the norms. 
+● ● ● ● Their behavior sets the trend, especially if they push against the norms.
 
-● ● ● ● ● The Keeper of Elysium and Harpies use them to set the protocols.<ref name=":0" /> 
+● ● ● ● ● The social leaders use them to set the protocols.
 
-==Example specs==
-Anarch, Camarilla, Celebrities, Corporate, Elysium, Feudal, One-Percenter, Secret Society<ref name=":0" />
+==Example Specialties==
+Celebrities, Corporate, Downtown, Protocol, One-Percenter, Secret Society.
 
 ==Example pools==
-*[[Manipulation]] + Etiquette
-**In a debate <ref>[[Vampire: The Masquerade Corebook]], page 124</ref> 
-**Seeking to increase social position by undermining or gossiping about their rival <ref name=":1">[[Vampire: The Masquerade Corebook]], page 305</ref>
-*[[Composure]] + Etiquette
-**To divert a conversation. <ref>[[Vampire: The Masquerade Corebook]], page 130</ref> 
-**Seeking to increase social position against another during Elysium <ref>[[Vampire: The Masquerade Corebook]], page 304</ref>
-**Getting a prime dance at a formal event. <ref>[[Vampire: The Masquerade Corebook]], page 415</ref>
-*[[Wits]] + Etiquette
-**To resolve initiative order in social conflict <ref name=":1" />,
-{{GameConceptsNavbox}}
-==References==
+* [[Manipulation]] + Etiquette
+** In a debate.
+** Seeking to increase social position by undermining or gossiping about their rival.
+* [[Composure]] + Etiquette
+** To divert a conversation.
+** Seeking to increase social position against another during formal events.
+** Getting a prime dance at a formal event.
+* [[Stamina]] + Etiquette
+** Overnight drinking session to gather information.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Insight]]:''' Reading body language and other cues to discern emotions, thoughts, or motives.
-Insight allows the character to read body language and other cues to discern emotions, thoughts, or motives. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 165</ref> 
+
+Insight allows the character to read body language and other cues to discern emotions, thoughts, or motives. It also allows for perceiving and understanding the motives behind another's actions.
+
 ==Dot values==
-● They can see through empty boasts. 
+● They can see through empty boasts.
 
-● ● They can pick up on hidden emotions in kine and sometimes Kindred. 
+● ● They can pick up on hidden emotions in people.
 
-● ● ● They can provide therapy. 
+● ● ● They can provide therapy.
 
-● ● ● ● They are able to detect lies easily, only the best con artists go undetected. 
+● ● ● ● They are able to detect lies easily, only the best con artists go undetected.
 
-● ● ● ● ● People are very easy to read, as if books with large printed text.<ref name=":0" /> 
+● ● ● ● ● People are very easy to read, as if books with large printed text.
 
-==Example specs==
+==Example Specialties==
+Ambitions, Desires, Detect Lies, Emotions, Empathy, Interrogation, Motives, Phobias, Vices.
 
-Ambitions, Desires, Detect Lies, Emotions, Empathy, Interrogation, Motives, Phobias, Vices<ref name=":0" />
 ==Example pools==
-*[[Manipulation]]  + Insight
-**Change the [[Resonance]] of a [[Merits and Flaws#Herd|Herd]] <ref>[[Vampire: The Masquerade Corebook]], page 190</ref>
-**Involving third parties to seduce their rivals vanities and desires <ref name=":1">[[Vampire: The Masquerade Corebook]], page 305</ref> 
-**Interrogating someone without violence <ref name=":2">[[Vampire: The Masquerade Corebook]], page 413</ref>
-*[[Resolve]] + Insight
-**After a scene to determine Resonance if it's not already known <ref>[[Vampire: The Masquerade Corebook]], page 228</ref>
-*[[Charisma]] + Insight
-**Seduce their rivals vanities and desires <ref name=":1" />
-**Carousing with others to influence them to relax, <ref>[[Vampire: The Masquerade Corebook]], page 412</ref> 
-**Picking someone up at a bar. <ref name=":3">[[Vampire: The Masquerade Corebook]], page 414</ref>
-*[[Composure]] + Insight
-**Avoiding or detecting something fishy going on when someone is risking a [[Blood Bond]] <ref>[[Vampire: The Masquerade Corebook]], page 310</ref>
-**Resisting fast talking <ref name=":2" />
-*[[Wits]] + Insight
-**Detecting a scam <ref>[[Vampire: The Masquerade Corebook]], page 412</ref>
-*[[Intelligence]] + Insight
-**Tailor a speech to the crowd without having time beforehand to prepare <ref name=":3" />
-{{GameConceptsNavbox}}
-==References==
+* [[Manipulation]] + Insight
+** Involving third parties to seduce their rivals vanities and desires.
+** Interrogating someone without violence.
+* [[Resolve]] + Insight
+** After a scene to determine resonance if it's not already known.
+* [[Charisma]] + Insight
+** Seduce their rivals vanities and desires.
+** Carousing with others to influence them to relax.
+** Picking someone up at a bar.
+* [[Composure]] + Insight
+** Avoiding or detecting something fishy going on when someone is risking bonding.
+** Resisting fast talking.
+* [[Wits]] + Insight
+** Detecting a scam.
+* [[Intelligence]] + Insight
+** Tailor a speech to the crowd without having time beforehand to prepare.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Intimidation]]:''' Using menacing presence or direct force to ensure compliance, submission, or fear from others. As well as using threats to persuade them to back down.
-Intimidation is using a menacing presence or direct force to ensure compliance, submission, or fear from others. As well as using threats to persuade them to back down. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 165</ref> 
+
+Intimidation is the power to bully, coerce, threaten, and strongarm your way to a social victory. Characters who rely on Intimidation never hesitate to crush the wills — and occasionally the bones — of their targets or the target's minions.
+
 ==Dot values==
-● They can use scathing insults effectively. 
+● They can use scathing insults effectively.
 
-● ● They can push humans around easily. 
+● ● They can push humans around easily.
 
-● ● ● Their swagger and harsh behavior has given them a reputation. 
+● ● ● Their swagger and harsh behavior has given them a reputation.
 
-● ● ● ● They are beyond only physical threats. 
+● ● ● ● They are beyond only physical threats.
 
-● ● ● ● ● Other Kindred may step back if they get involved. <ref name=":0" /> 
+● ● ● ● ● Others may step back if they get involved.
 
-==Example specs==
+==Example Specialties==
+Extortion, Insults, Interrogation, Physical Coercion, Staredowns, Veiled Threats, Wordless.
 
-Extortion, Insults, Interrogation, Physical Coercion, Staredowns, Veiled Threats <ref name=":0" />
 ==Example pools==
-*[[Charisma]] + Intimidation
-**Cow a gang leader into submission <ref name=":1">[[Vampire: The Masquerade Corebook]], page 128</ref> 
-**Staredown a rival gang <ref>[[Vampire: The Masquerade Corebook]], page 304</ref>
-*[[Manipulation]] + Intimidation
-**Veiled threat <ref name=":1" /> 
-**Violent interrogation <ref>[[Vampire: The Masquerade Corebook]], page 413</ref> 
-**Subtle coercion <ref>[[Vampire: The Masquerade Corebook]], page 414</ref>
-*[[Wits]] + Intimidation
-**Determine if something was a threat <ref name=":1" />
-*[[Resolve]] + Intimidation
-**To catch someone's eyes to establish eye contact during the use of [[Dominate]] <ref>[[Vampire: The Masquerade Corebook]], page 225</ref>
-*[[Strength]] + Intimidation
-**Using physical strength to showcase power while threatening someone <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+* [[Charisma]] + Intimidation
+** Cow a gang leader into submission.
+** Staredown a rival gang.
+* [[Manipulation]] + Intimidation
+** Veiled threat.
+** Violent interrogation.
+** Subtle coercion.
+* [[Wits]] + Intimidation
+** Determine if something was a threat.
+* [[Resolve]] + Intimidation
+** To catch someone's eyes to establish eye contact during the use of mind control.
+* [[Strength]] + Intimidation
+** Using physical strength to showcase power while threatening someone.
 
-'''[[Leadership]]:''' Motivating, inspiring, or commanding the character's followers. 
-Leadership dictates how motivating or inspiring they can be, as well as commanding the character's followers. <ref>[[Vampire: The Masquerade Corebook]], page 165-166</ref> 
+[[Category: Index]]
+[[Category: Social]]
+[[Category: Skills]]
+
+'''[[Leadership]]:''' Motivating, inspiring, or commanding the character's followers.
+
+Leadership grants the ability to lead a crowd, command a detachment, boost the morale of your supporters, or subdue a riot. As the group accumulates successes, so, too, rises expectation, and veteran characters might be expected to lead those of humbler experience.
+
 ==Dot values==
-● They have led informal clubs before. 
+● They have led informal clubs before.
 
-● ● They can make their voices heard in council and sometimes their superiors listen. 
+● ● They can make their voices heard in council and sometimes their superiors listen.
 
-● ● ● They can command on a battlefield. 
+● ● ● They can command on a battlefield.
 
-● ● ● ● They can inspire those dying or near death into action. 
+● ● ● ● They can inspire those dying or near death into action.
 
-● ● ● ● ● Their words fill a Kindred's heart to make it feel alive and beating once again. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 166</ref> 
+● ● ● ● ● Their words fill a character's heart to make it feel alive and beating once again.
 
-==Example specs==
+==Example Specialties==
+Command, Inspiration, Oratory, Praxis, Team Dynamics, War Pack.
 
-Command, Inspiration, Oratory, Praxis, Team Dynamics, War Pack <ref name=":0" />
 ==Example pools==
-*[[Manipulation]] + Leadership
-**To rally allies in a message. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref>
-{{GameConceptsNavbox}}
-==References==
+* [[Manipulation]] + Leadership
+** To rally allies in a message.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
-'''[[Performance]]:''' Showcasing the character's art in front of a crowd regardless of size. Singing, acting, and oration are all examples of this.
-Performance showcases the character's art in front of a crowd, regardless of the crowd's size. Singing, acting, and oration are all examples of this. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 166</ref> 
+'''[[Performance]]:''' Showcasing the character's art in front of a crowd, regardless of size. Singing, acting, and oration are all examples of this.
 
-This is a skill that gives a free spec upon taking at least one dot. <ref>[[Vampire: The Masquerade Corebook]], page 136</ref> 
+Performance covers a range of arts, from dance to poetry and comedy to melodrama. May be a gifted performer in their own right or simply an enthusiastic student of the arts.
+
+This is a skill that gives a free spec upon taking at least one dot.
+
 ==Dot values==
-● They are the life of a party but can't take this act on stage. 
+● They are the life of a party but can't take this act on stage.
 
-● ● They have performed for others, but reviews are mixed. 
+● ● They have performed for others, but reviews are mixed.
 
-● ● ● They are an expert student of their craft. 
+● ● ● They are an expert student of their craft.
 
-● ● ● ● They can perform their craft to exceptional success, that even the Toreador have interest. 
+● ● ● ● They can perform their craft to exceptional success.
 
-● ● ● ● ● They can improvise without issue; every night a different audience and a different show. <ref name=":0" /> 
+● ● ● ● ● They can improvise without issue; every night a different audience and a different show.
 
-==Example specs==
+==Example Specialties==
+Comedy, Dance, Drama, Drums, Guitar, Keyboards, Poetry, Public Speaking, Rap, Singing, Violin, Wind Instruments.
 
-Comedy, Dance, Drama, Drums, Guitar, Keyboards, Poetry, Public Speaking, Rap, Singing, Violin, Wind Instruments. <ref name=":0" />
 ==Example pools==
-*[[Charisma]] + Performance
-**How good they look performing to have groupies <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-**Giving a speech <ref>[[Vampire: The Masquerade Corebook]], page 299</ref>
-**Fight a rap battle with stage presence instead of rhyming <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
-**Get someone to cross the line <ref name=":1">[[Vampire: The Masquerade Corebook]], page 310</ref>
-**Dancing <ref name=":2">[[Vampire: The Masquerade Corebook]], page 326</ref>
-*[[Manipulation]] + Performance
-**To impersonate someone else <ref>[[Vampire: The Masquerade Corebook]], page 251</ref> 
-**Get someone to cross the line <ref name=":1" />
-*[[Wits]] + Performance
-**A rap battle or a duel of poesy <ref>[[Vampire: The Masquerade Corebook]], page 304</ref>
-*[[Dexterity]] + Performance
-**Dancing <ref name=":2" />
-{{GameConceptsNavbox}}
-==References==
+* [[Charisma]] + Performance
+** How good they look performing to have groupies.
+** Giving a speech.
+** Fight a rap battle with stage presence instead of rhyming.
+** Get someone to cross the line.
+** Dancing.
+* [[Manipulation]] + Performance
+** To impersonate someone else.
+** Get someone to cross the line.
+* [[Wits]] + Performance
+** A rap battle or a duel of poesy.
+* [[Dexterity]] + Performance
+** Dancing.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Persuasion]]:''' Convincing or swaying others to do the character's will or at least agree with their stance.
-Persuasion is the act of convincing or swaying others to do the character's will or at least agree with their stance. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 166</ref> 
+
+Use Persuasion when trying to convince others to see a point of view — or what's best for them. Skilled persuaders make effective arguments and organize their positions well, but can also play on victims' emotions and appeal to peers' reason. Persuasion applies in law courts and around campfires, in boardrooms, barrooms, and bedrooms.
+
 ==Dot values==
-● They can sell to someone who already wants to buy. 
+● They can sell to someone who already wants to buy.
 
-● ● They can get a discount or find an inside path to hot gossip. 
+● ● They can get a discount or find an inside path to hot gossip.
 
-● ● ● They can find a compromise in a conflict. 
+● ● ● They can find a compromise in a conflict.
 
-● ● ● ● The other side looks at settlement first when they see them in court. 
+● ● ● ● The other side looks at settlement first when they see them in court.
 
-● ● ● ● ● They very well could be the OG silver-tongued devil. <ref name=":0" /> 
+● ● ● ● ● They very well could be the OG silver-tongued devil.
 
-==Example specs==
+==Example Specialties==
+Bargaining, Fast Talk, Interrogation, Legal Argument, Negotiation, Rhetoric.
 
-Bargaining, Fast Talk, Interrogation, Legal Argument, Negotiation, Rhetoric. <ref name=":0" />
 ==Example pools==
-*[[Charisma]] + Persuasion
-**In a debate <ref>[[Vampire: The Masquerade Corebook]], page 124</ref>
-*[[Manipulation]] + Persuasion
-**Which story will the Prince believe? <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
-**Take blood by consent, by lying about the real reason via [[Predator types#Consensualist|Consensualist]]. <ref>[[Vampire: The Masquerade Corebook]], page 307</ref>
-**Feed from high or low-class society by isolating and gaslighting them into silence via [[Predator types#Scene Queen|Scene Queen]]. <ref>[[Vampire: The Masquerade Corebook]], page 308</ref>
-**Convert onlookers in a mesage. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref>
-*[[Intelligence]] + Persuasion
-**Convince the Prince the other is lying with ample research. <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
-{{GameConceptsNavbox}}
-==References==
+* [[Charisma]] + Persuasion
+** In a debate.
+* [[Manipulation]] + Persuasion
+** Whose story will be believed?
+** Taking something through consent, under the guise of medical work or kink.
+** Feed from high or low-class society by isolating and gaslighting them into silence.
+** Convert onlookers in a message.
+* [[Intelligence]] + Persuasion
+** Convince someone the other is lying with ample research.
+* [[Manipulation]] + Persuasion
+** Get information by interviewing experts.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Streetwise]]:''' Knowledge of the streets in criminal and urban societies, being able to locate a gang or dealer, knowing which shortcut will be the fastest.
-Streetwise is knowledge of the streets in criminal and urban societies, being able to locate a gang or dealer, and knowing which shortcut will be the fastest. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 166</ref> 
+
+Streetwise enables characters to talk the language and negotiate the societies of the streets and the underworld. Can understand code words and slang, interpret graffiti tags, and emulate gang signs. Streetwise doesn't inherently require criminality, but they do seem to overlap in many situations.
+
 ==Dot values==
-● They know where to score sex or drugs in the domain. 
+● They know where to score sex or drugs in the area.
 
-● ● They know which gangs are operating in the area, they may have their own graffiti tag. 
+● ● They know which gangs are operating in the area, they may have their own graffiti tag.
 
-● ● ● They can tell the good product from the bad, get ahold of guns, and blend in with street people and gang members. 
+● ● ● They can tell the good product from the bad, get ahold of guns, and blend in with street people and gang members.
 
-● ● ● ● They are the person someone is referring to when they say "I know a guy". 
+● ● ● ● They are the person someone is referring to when they say "I know a guy".
 
-● ● ● ● ● They can hire and arrange almost any criminal activity in the city. <ref name=":0" /> 
+● ● ● ● ● They can hire and arrange almost any criminal activity in the city.
 
-==Example specs==
+==Example Specialties==
+Arms Dealing, Black Market, Bribery, Drugs, Fence Stolen Goods, Gangs, Graffiti, Personal Rep, Sex Trade, Urban Survival.
 
-Arms Dealing, Black Market, Bribery, Drugs, Fence Stolen Goods, Gangs, Graffiti, Personal Rep, Sex Trade, Urban Survival. <ref name=":0" /> 
 ==Example pools==
-*[[Charisma]] + Streetwise
-**To learn more about a new gang in town. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
-*[[Manipulation]] + Streetwise
-**A test to determine if they have access to something. <ref>[[Vampire: The Masquerade Corebook]], page 154</ref>
-**Locate someone. <ref>[[Vampire: The Masquerade Corebook]], page 297</ref>
-*[[Wits]] + Streetwise
-**Find a criminal victim to feed upon via [[Predator types#Alleycat|Alleycat]]. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 307</ref>
-**Disguising marks as normal graffiti. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref>
-**Shake someone shadowing. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 411</ref>
-*[[Intelligence]] + Streetwise
-**Acquire preserved blood instead of hunting, or feed from the dying or dead via [[Predator types#Bagger|Bagger]]. <ref name=":1" />
-**To spot, recognize or decipher street tags. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref>
-*[[Resolve]] + Streetwise
-**For looking for something or someone through legwork. <ref>[[Vampire: The Masquerade Corebook]], page 334</ref>
-**Scrounge for a specific designer drug. <ref>[[Vampire: The Masquerade Corebook]], page 334</ref>
-**Resisting being shadowed by usual precautions. <ref name=":2" />
-{{GameConceptsNavbox}}
-==References==
+* [[Charisma]] + Streetwise
+** To learn more about a new gang in town.
+* [[Manipulation]] + Streetwise
+** A test to determine if they have access to something.
+** Locate someone.
+* [[Wits]] + Streetwise
+** Find a criminal victim to feed upon.
+** Disguising marks as normal graffiti.
+** Shake someone shadowing.
+* [[Intelligence]] + Streetwise
+** Acquire preserved blood instead of hunting, or feed from the dying or dead.
+** To spot, recognize or decipher street tags.
+** Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online.
+** Camouflaging in urban settings.
+* [[Resolve]] + Streetwise
+** For looking for something or someone through legwork.
+** Scrounge for a specific designer drug.
+** Resisting being shadowed by usual precautions.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 '''[[Subterfuge]]:''' Deceiving others to complete the character's desires or agree with them or manipulating the truth to further their goals.
-Subterfuge is the act of deceiving others to fulfill a character's desires, agree with them, or manipulate the truth to further their goals. <ref>[[Vampire: The Masquerade Corebook]], page 166-168</ref> 
+
+Subterfuge is the art of lying convincingly, pressing an agenda, and making good excuses for bad actions. This Skill defines talent for intrigue, secrets, and double-dealing. Subterfuge can also be used for seduction and imitating responses expected of someone serving the supernatural.
+
 ==Dot values==
-● They tell believable and simple lies. 
+● They tell believable and simple lies.
 
-● ● They can hustle naive people into giving up their things. 
+● ● They can hustle naive people into giving up their things.
 
-● ● ● They can tell lies that should be uncovered to bolster their later and bigger lies. 
+● ● ● They can tell lies that should be uncovered to bolster their later and bigger lies.
 
-● ● ● ● They can operate well in deep cover. 
+● ● ● ● They can operate well in deep cover.
 
-● ● ● ● ● They do not believe this person is a liar at all.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 168</ref> 
+● ● ● ● ● They do not believe this person is a liar at all.
 
-==Example specs==
+==Example Specialties==
+Bluff, Feign Mortality, Impeccable Lies, Innocence, The Long Con, Seduction, Coverups.
 
-Bluff, Feign Mortality, Impeccable Lies, Innocence, The Long Con, Seduction,<ref name=":0" /> Coverups, <ref>[[Vampire: The Masquerade Corebook]], page 177
-
-</ref> Seduction <ref>[[Vampire: The Masquerade Corebook]], page 178</ref>
 ==Example pools==
-*[[Dexterity]] + Subterfuge
-**Distract someone to not notice a knife. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-*[[Composure]] + Subterfuge
-**Used to resist powers in [[Animalism]] such as Sense the Beast <ref>[[Vampire: The Masquerade Corebook]], page 245</ref>
-**Used to resist powers in [[Auspex]] such as Scry the Soul. <ref>[[Vampire: The Masquerade Corebook]], page 250</ref>
-**Faking a direct sip during a [[Blood Bond]]. <ref>[[Vampire: The Masquerade Corebook]], page 310</ref>
-*[[Wits]] + Subterfuge
-**Used to resist powers in [[Auspex]] such as Telepathy. <ref>[[Vampire: The Masquerade Corebook]], page 252</ref>
-**Used to resist powers in [[Blood Sorcery]] such as Extinguish Vitae. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref>
-**Picking up someone at a coffee shop. <ref>[[Vampire: The Masquerade Corebook]], page 414</ref>
-*[[Charisma]] + Subterfuge
-**Convince another into a Blood Bond. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref>
-**Feeding from the guise of sex. <ref>[[Vampire: The Masquerade Corebook]], page 308</ref>
-**Fast talking. <ref>[[Vampire: The Masquerade Corebook]], page 413</ref>
-*[[Manipulation]] + Subterfuge
-**Feeding from their mortal friends and family via [[Predator types#Cleaver|Cleaver]]. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 307</ref>
-**Feeding from their fans, church, or another adoring crowd via [[Predator types#Osiris|Osiris]]. <ref name=":1" />
-**Sending a false message through markings. <ref>[[Vampire: The Masquerade Corebook]], page 323</ref>
-**Social engineering by tricking someone to give you their password. <ref>[[Vampire: The Masquerade Corebook]], page 407</ref>
-**Scamming someone and showing fake credentials. <ref>[[Vampire: The Masquerade Corebook]], page 412</ref>
-{{GameConceptsNavbox}}
-==References==
+* [[Dexterity]] + Subterfuge
+** Distract someone to not notice a knife.
+* [[Composure]] + Subterfuge
+** Used to resist supernatural abilities.
+** Used to resist mind-reading abilities.
+** Fake a direct sip during a potential bonding.
+** Remain calm in disguise.
+* [[Wits]] + Subterfuge
+** Used to resist supernatural abilities.
+** Picking up someone at a coffee shop.
+* [[Charisma]] + Subterfuge
+** Convince another into bonding.
+** Feeding from the guise of sex.
+** Fast talking.
+* [[Manipulation]] + Subterfuge
+** Taking something covertly from their friends and family.
+** Feed from their fans or an adoring crowd.
+** Sending a false message through markings.
+** Social engineering by tricking someone to give you their password.
+** Scamming someone and showing fake credentials.
+
 [[Category: Index]]
-[[Category:Social]]
-[[Category:Skills]]
+[[Category: Social]]
+[[Category: Skills]]
 
 ===Mental===
 '''[[Academics]]:''' Topics surrounding the humanities and liberal arts.
-Academics represents the knowledge on topics surrounding the humanities and liberal arts. <ref name=":0">[[Vampire: The Masquerade Corebook]], pg 168</ref> 
 
-Whenever the first dot is taken in this skill, gain a free specialty. <ref>[[Vampire: The Masquerade Corebook]], pg 145</ref> 
+Academics reflects understanding, higher education, and ability to research fields within the humanities and the liberal arts. Historical study, for instance, is hardly "just academic" when considering the cultural breadth of the creeds and their localized appearances among mortal societies.
+
+Whenever the first dot is taken in this skill, gain a free specialty.
+
 ==Dot values==
-● Basic primary and secondary educations.  
+● Basic primary and secondary educations.
 
-● ● Basic university education or training, equal to a four-year degree. 
+● ● Basic university education or training, equal to a four-year degree.
 
-● ● ● Advanced university education or training, equal to an excellent four-year degree or doctorate. 
+● ● ● Advanced university education or training, equal to an excellent four-year degree or doctorate.
 
-● ● ● ● Advanced specializations outside of university on subjects very few know.  
+● ● ● ● Advanced specializations outside of university on subjects very few know.
 
-● ● ● ● ● A refined and high level scholar likely to be requested for advice or teaching. <ref name=":0" /> 
+● ● ● ● A refined and high level scholar likely to be requested for advice or teaching.
 
-==Example specs==
-Architecture, English Literature, History of art, History (specific field or period), Journalism, Philosophy, Research, Teaching, Theology.<ref name=":0" />
+==Example Specialties==
+Architecture, English Literature, History of Art, History (specific field or period), Journalism, Philosophy, Research, Teaching, Theology.
 
 ==Example pools==
-
 * [[Charisma]] + Academics
-** Convince the police that they need to release the Kindred before sunrise. <ref>[[Vampire: The Masquerade Corebook]], pg 129</ref>
+** Convince the police that they need to release someone before sunrise.
 * [[Intelligence]] + Academics
-** Playing chess, either the board game or with living pawns. <ref name=":1">[[Vampire: The Masquerade Corebook]], pg 305</ref>
-** Hide a building to make it look like another through architecture or creating false comparments. <ref>[[Vampire: The Masquerade Corebook]], pg 407</ref>
+** Playing chess, either the board game or with living pawns.
+** Hide a building to make it look like another through architecture or creating false compartments.
 * [[Manipulation]] + Academics
-** Playing chess not to win, but to show they are ruthless. <ref name=":1" />
-{{GameConceptsNavbox}}
-==References==
+** Playing chess not to win, but to show they are ruthless.
+* [[Resolve]] + Academics
+** Researching through books, ledgers and journals.
+* [[Academics]] + [[Resolve]]
+** Researching their quarry.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Awareness]]:''' Vigilant to their surroundings and the ability to understand/react to threats.
-Awareness determines how vigilant they are to their surroundings and their ability to understand/react to threats.<ref name=":0">[[Vampire: The Masquerade Corebook]], pg 168</ref> 
+
+Awareness handles perceptions. The hair may stand up on the back of the neck before danger erupts from the shadows, may spy a key dropped in the trash, or sense a lingering perfume.
+
 ==Dot values==
-● They can tell when something is out of place. 
+● They can tell when something is out of place.
 
-● ● They can spot strange or pattern behavior in someone. 
+● ● They can spot strange or pattern behavior in someone.
 
-● ● ● They can see through most disguises and pick up on hidden things. 
+● ● ● They can see through most disguises and pick up on hidden things.
 
-● ● ● ● Few things escape their notice even when distracted. 
+● ● ● ● Few things escape their notice even when distracted.
 
-● ● ● ● ● They have senses like that of a wild animal.<ref name=":0" /> 
+● ● ● ● ● They have senses like that of a wild animal.
 
-==Example specs==
-Ambushes, Camouflage, Concealed Objects, Hearing, Instincts, Smell, Sight, Traps, Wilderness. <ref name=":0" />
+==Example Specialties==
+Ambushes, Camouflage, Concealed Objects, Hearing, Instincts, Smell, Sight, Traps, Wilderness.
 
 ==Example pools==
-
 * [[Resolve]] + Awareness
-** Used for the [[Ventrue#Bane|Ventrue Bane]] to determine if a mortal has the blood they required. <ref>[[Vampire: The Masquerade Corebook]], pg 102</ref>
-** Used for the [[Merits and Flaws#Bloodhound|Bloodhound]] Merit to determine someone's [[Resonance]]. <ref>[[Vampire: The Masquerade Corebook]], pg 182</ref>
-** Vampires who have waited enough time in [[Torpor]], make this roll when a potential victim enters the room. <ref>[[Vampire: The Masquerade Corebook]], pg 223</ref>
+** Used to determine if a mortal has the blood they required.
+** Used to determine someone's resonance.
+** Characters who have waited enough time in torpor, make this roll when a potential victim enters the room.
 * [[Wits]] + Awareness
-** Resistance roll against those actively hiding. <ref>[[Vampire: The Masquerade Corebook]], pg 123</ref>
-** Avoiding the gaze of someone attempting to use [[Dominate]]. <ref>[[Vampire: The Masquerade Corebook]], pg 255</ref>
-** If a vampire using [[Obfuscate]] draws attention to themself on accident, those nearby roll to detect them. <ref name=":1">[[Vampire: The Masquerade Corebook]], pg 261</ref>
-** Resisting surprise attacks. <ref>[[Vampire: The Masquerade Corebook]], pg 300</ref>
+** Resistance roll against those actively hiding.
+** Avoiding the gaze of someone attempting to use mind control.
+** If a character using invisibility draws attention to themselves on accident, those nearby roll to detect them.
+** Resisting surprise attacks.
+** Notice hidden things, in the moment.
 * [[Resolve]] + Awareness
-** Those actively searching for a Kindred who drew attention on accident while using Obfuscate. <ref name=":1" />
-** Locating a building or something that doesn't move through legwork. <ref>[[Vampire: The Masquerade Corebook]], pg 334</ref>
+** Those actively searching for a character who drew attention on accident while using invisibility.
+** Locating a building or something that doesn't move through legwork.
+** Researching by digging through physical materials.
+** Surveillance.
+** Pick out key details out of a cloud of distractions.
 * [[Composure]] + Awareness
-** Initiative rating for physical combat. <ref>[[Vampire: The Masquerade Corebook]], pg 300</ref>
+** Initiative rating for physical combat.
 * [[Intelligence]] + Awareness
-** Used by SI who are attempting to detect vampires through chaoscopes. <ref>[[Vampire: The Masquerade Corebook]], pg 378</ref>
-{{GameConceptsNavbox}}
-==References==
+** Used by hunters to spot supernatural creatures reliably.
+** Recognize something.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Finance]]:''' Knowing how to move and make money legally or not, being able to handle finances and their taxes.
-Finance is knowing how to move and make money legally or not, and being able to handle personal finances and taxes.<ref name=":0">[[Vampire: The Masquerade Corebook]], pg 168-169</ref> 
+
+Finance allows one to identify trends in the market, invest well, manipulate stock, and know when a fall is coming. It also allows one to assess — and trace — the wealth of others and broker financial deals. Can generally appraise art, property, or any other non-criminal good.
+
 ==Dot values==
-● They can run a business and keep the books. 
+● They can run a business and keep the books.
 
 ● ● They are able to run a corporate division or bank branch.
 
@@ -705,107 +746,127 @@ Finance is knowing how to move and make money legally or not, and being able to 
 
 ● ● ● ● Investments banks follow what they do and they have no issue concealing fraud.
 
-● ● ● ● ● They can make money doing anything anywhere. <ref name=":0" /> 
+● ● ● ● ● They can make money doing anything anywhere.
 
-==Example specs==
-Appraisal, Banking, Black Markets, Corporate Finance, Currency Manipulation, Forensic Accounting, Money Laundering, Stock Market. <ref name=":0" />
+==Example Specialties==
+Appraisal, Banking, Black Markets, Corporate Finance, Currency Manipulation, Fine Art, Forensic Accounting, Money Laundering, Stock Market.
 
 ==Example pools==
-
 * [[Manipulation]] + Finance
-** Convince the clerk that they are an IRS auditor. <ref>[[Vampire: The Masquerade Corebook]], pg 129</ref>
-{{GameConceptsNavbox}}
-==References==
+** Convince the clerk that they are an IRS auditor.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Investigation]]:''' Being able to find and follow clues, decipher their meaning and solve a mystery.
-Investigation is their skill to find and follow clues, decipher their meaning and solve a mystery. <ref name=":0">[[Vampire: The Masquerade Corebook]], pg 169</ref> 
+
+Investigation allows one to unravel cases of mundane and mysterious means, spot clues, interpret them, and trace missing persons. Characters find this Skill especially useful when connecting the dots between immediate tragedies and the supernatural entities behind them.
+
 ==Dot values==
-● An amateur sleuth. 
+● An amateur sleuth.
 
 ● ● Strong knowledge on criminology and signature acts of local issues.
 
 ● ● ● They either are or could be a professional detective.
 
-● ● ● ● The Sheriff reaches out when they need aid.
+● ● ● ● The authorities reach out when they need aid.
 
-● ● ● ● ● They live an enigmatic existence and set riddles for others. <ref name=":0" />
-==Example specs==
-Criminology, Deduction, Forensics, Missing Persons, Murder, Paranormal Mysteries, Traffic Analysis.<ref name=":0" />
+● ● ● ● ● They live an enigmatic existence and set riddles for others.
+
+==Example Specialties==
+Criminology, Deduction, Forensics, Missing Persons, Murder, Paranormal Mysteries, Traffic Analysis.
 
 ==Example pools==
-
 * [[Resolve]] + Investigation
-** Canvassing the neighborhood for information. <ref>[[Vampire: The Masquerade Corebook]], pg 118</ref>
-** Going through a heavy amount of paperwork. <ref>[[Vampire: The Masquerade Corebook]], pg 334</ref>
+** Canvassing the neighborhood for information.
+** Going through a heavy amount of paperwork.
+** Questioning people.
 * [[Intelligence]] + Investigation
-** Check a crime scene for clues or pick up clues. <ref>[[Vampire: The Masquerade Corebook]], pg 205</ref>
-** Noticing patterns in markings. <ref>[[Vampire: The Masquerade Corebook]], pg 323</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+** Check a crime scene for clues or pick up clues.
+** Noticing patterns in markings.
+* [[Wits]] + Investigation
+** Noticing clues.
+* [[Investigation]] + [[Investigation]]
+** Searching a crime scene for clues/evidence.
 
-'''[[Medicine]]:''' Handling mortal injuries and diagnosing/treating diseases.
-Medicine is used to handle mortal injuries and diagnose and/or treat diseases.<ref name=":0">[[Vampire: The Masquerade Corebook]], pg 169-170</ref> 
+[[Category: Index]]
+[[Category: Mental]]
+[[Category: Skills]]
+
+'''[[Medicine]]:''' Handling injuries and diagnosing and treating diseases in people and animals.
+
+Medicine allows giving health aid to people or animals who need it and diagnose causes of death or sickness in a victim. It also allows usage of medical equipment, prescribe drugs, and stanch (or encourage) rapid blood flow.
+
+Characters use Medicine to heal aggravated health damage.
+
 ==Dot values==
-● They know basic anatomy and can perform basic first aid and CPR. 
+● They know basic anatomy and can perform basic first aid and CPR.
 
 ● ● They can treat minor trauma and illnesses.
 
 ● ● ● They can perform major operations and treat serious injuries.
 
-● ● ● ●They can diagnose and treat all but the most obscure diseases and illnesses.
+● ● ● ● They can diagnose and treat all but the most obscure diseases and illnesses.
 
-● ● ● ● ● They are a medical expert, sought out for their knowledge by Kindred and mortals alike. <ref name=":0" />
-==Example specs==
-First Aid, Hematology, Pathology, Pharmacy, Phlebotomy, Surgery, Trauma Care, Veterinary.<ref name=":0" /> Anesthetics. <ref>[[Vampire: The Masquerade Corebook]], pg 177</ref>
+● ● ● ● ● They are a medical expert, sought out for their knowledge.
+
+==Example Specialties==
+First Aid, Hematology, Pathology, Pharmacy, Phlebotomy, Surgery, Trauma Care, Veterinary.
 
 ==Example pools==
-
 * [[Intelligence]] + Medicine
-** Used to convert [[Health|Aggravated damage]] on a Mortal's Health tracker to Superficial damage. <ref>[[Vampire: The Masquerade Corebook]], pg 127</ref>
-** Spotting a disease symptom on a human. <ref>[[Vampire: The Masquerade Corebook]], pg 408</ref>
+** Used to convert aggravated damage on a mortal's health tracker to superficial damage.
+** Spotting a disease symptom on a human.
+** Identify disease symptoms.
+** Over the course of a night, convert aggravated health damage to superficial damage at a difficulty equal to the total aggravated damage sustained by the patient. Attempts to heal oneself adds +1 to the difficulty.
 * [[Dexterity]] + Medicine
-** Remove a shattered stake splinter from the body per [[Blood Sorcery Rituals#Shaft of Belated Dissolution|Shaft of Belated Dissolution]]. <ref>[[Vampire: The Masquerade Corebook]], page 282</ref>
-{{GameConceptsNavbox}}
-==References==
-[[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+** Remove a shattered splinter from the body.
 
-'''[[Occult]]:''' Mystical knowledge of the supernatural and rituals, Kindred related or not.
-Occult is the mystical knowledge of the supernatural and rituals, Kindred related or not.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 170</ref> 
+[[Category: Index]]
+[[Category: Mental]]
+[[Category: Skills]]
+
+'''[[Occult]]:''' Mystical knowledge of the supernatural and rituals.
+
+Even though characters are themselves invested in the dealing-with of creatures of supernatural origin, that doesn't convey any inherent understanding of the fine details of such to them. Even to the most vigilant group, the world remains a strange place, to say nothing of the liminal spaces of the world that don't conform to the human paradigm.
+
+Occult represents knowledge of the mystical world, from the rites and practices of various cultural notions of magic through any amount of esoteric knowledge. Recognizing occult sigils and folk-magic practices, effective or not.
+
 ==Dot values==
-● They know the stories of Caine and the Antediluvians. 
+● They know a handful of the world's secrets at a rudimentary level.
 
 ● ● They can find the truth in pop culture nonsense.
 
-● ● ● They have experience with something unknown even by Kindred standards.
+● ● ● They have experience with something unknown even by expert standards.
 
-● ● ● ● They can name most of the Antediluvians.
+● ● ● ● They can name most of the ancient beings.
 
-● ● ● ● ● [[Tremere]] and [[Banu Haqim]] consult with them for rare lore.<ref name=":0" />
-==Example specs==
-Alchemy, Blood Magic, Faeries, Ghosts, Grimoires, Infernalism, Magi, Necromancy, Noddism, Parapsychology, Voudun, Werewolves. <ref name=":0" /> Specific Tradition <ref>[[Vampire: The Masquerade Corebook]], page 177</ref>
+● ● ● ● ● Sorcerers consult with them for rare lore.
+
+==Example Specialties==
+Alchemy, Blood Magic, Faeries, Ghosts, Grimoires, Infernalism, Magi, Necromancy, Parapsychology, Voudun.
 
 ==Example pools==
-
 * [[Intelligence]] + Occult
-** Reading a different language version of the [[Noddist|Book of Nod]] without losing anything. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
-{{GameConceptsNavbox}}
-==References==
+** Reading a different language version of ancient texts without losing anything.
+* [[Occult]]/[[Science]] + [[Composure]]
+** Resist supernatural abilities.
+* [[Occult]]/[[Science]] + [[Resolve]]
+** Hold back supernatural creatures.
+* [[Occult]]/[[Science]] + [[Wits]]
+** Detect the nearby presence of supernatural creatures.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Politics]]:''' Knowing the inner workings of the government, mortal or not.
-Politics is the knowledge of inner workings within forms of government, mortal or not.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 170-171</ref> 
+
+Politics covers diplomacy, both human and otherwise, as well as the bureaucracy of worldly institutions. Can work with, and possibly put pressure on, city government and perhaps higher levels.
+
 ==Dot values==
-● They know mortal politics in their area. 
+● They know mortal politics in their area.
 
 ● ● They have the ability to apply influence at a local scale, or know a guy who could.
 
@@ -813,75 +874,98 @@ Politics is the knowledge of inner workings within forms of government, mortal o
 
 ● ● ● ● They know the truth about the big names living and dead in the area.
 
-● ● ● ● ● They could guess at the amount of members within the [[Camarilla]]'s Inner Circle.<ref name=":0" />
-==Example specs==
-[[Anarch|Anarchs]], Camarilla, City Government, [[Clans|Clan]] (specific), Diplomacy, Media, National Politics, State/Provincial Politics. <ref name=":0" />
+● ● ● ● ● They could guess at the amount of members within the inner circle.
+
+==Example Specialties==
+Anarchs, Camarilla, City Government, Clan (specific), Diplomacy, Media, National Politics, State/Provincial Politics.
 
 ==Example pools==
-
 * [[Manipulation]] + Politics
-** Have their agents pull strings behind closed doors. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
-** Convince the city to use a design that fits their plans. <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
-{{GameConceptsNavbox}}
-==References==
+** Have their agents pull strings behind closed doors.
+** Convince the city to use a design that fits their plans.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Science]]:''' Scientific knowledge and theory of the real world.
-Science represents their science-oriented knowledge and theory of the real world. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 171</ref> 
 
-This is a skill that gives a free spec upon taking at least one dot. <ref>[[Vampire: The Masquerade Corebook]], page 136</ref> 
+Science is a broad remit, covering everything from basic principles of life to the understanding of universal entropy. The laws of science govern the physical world — mostly — and individuals who are a part of that world study them. Even creatures beyond the realm of "traditional" science may be well versed in the truths of the temporal world.
+
+This is a skill that gives a free spec upon taking at least one dot.
+
 ==Dot values==
-● They understand the basics principles of science. 
+● They understand the basics principles of science.
 
-● ● They can accurately explain the competing science-based theories of the [[Embrace]] to another.
+● ● They can accurately explain the competing science-based theories to another.
 
 ● ● ● They can run a lab, interpret results, and get up to speed on most science related fields. They can also repair scientific equipment.
 
 ● ● ● ● They are an expert in their field.
 
-● ● ● ● ● Few others match their understanding and they are sought out for guidance.<ref name=":0" />
-==Example specs==
-Astronomy, Biology, Chemistry, Demolitions, Engineering, Genetics, Geology, Mathematics, Physics. <ref name=":0" />
+● ● ● ● ● Few others match their understanding and they are sought out for guidance.
+
+==Example Specialties==
+Astronomy, Biology, Chemistry, Demolitions, Engineering, Genetics, Geology, Mathematics, Physics, Natural World.
 
 ==Example pools==
-
 * [[Resolve]] + Science
-** Example of a scrounging roll. <ref>[[Vampire: The Masquerade Corebook]], page 334</ref>
+** Example of a scrounging roll.
 * [[Intelligence]] + Science
-** Creating explosives. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 408</ref>
-** Controlled demolitions. <ref name=":1" />
-{{GameConceptsNavbox}}
-==References==
+** Creating explosives.
+** Controlled demolitions.
+** Researching/Understanding complex experimental processes.
+* [[Science]] + [[Composure]]
+** Keep and maintain ordnance.
+* [[Science]]/[[Occult]] + [[Composure]]
+** Resist supernatural abilities.
+* [[Science]]/[[Occult]] + [[Resolve]]
+** Hold back supernatural creatures.
+* [[Science]]/[[Occult]] + [[Wits]]
+** Detect the nearby presence of supernatural creatures.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]]
 
 '''[[Technology]]:''' Internet and computer comprehension, hacking and breaking into secure information through the use of technology.
-Technology is used for internet and computer comprehension, and hacking and breaking into secure information through the use of technology.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 171</ref> 
+
+As a Skill, Technology acts as something of a moving target; it governs the operation and understanding of "modern" technological developments, with a very impressionistic definition for "modern." A hundred years ago, Technology might have most often concerned itself with steam engines and electricity. Now, it governs computers and computer systems. Of course, now computers govern almost everything, including steam turbines in power plants and electrical systems in office buildings.
+
 ==Dot values==
-● They can upgrade a home PC and keep it safe. 
+● They can upgrade a home PC and keep it safe.
 
 ● ● They can conceal an IP, fly a drone, and use photo altering software.
 
 ● ● ● They can create and distribute viruses without detection.
 
-● ● ● ● The Prince might call them to handle the domain's cybersecurity.
+● ● ● ● The authorities might call them to handle the area's cybersecurity.
 
-● ● ● ● ● On the internet, no one knows they exist.<ref name=":0" />
-==Example specs==
-Artillery, Coding, Computer Building, Data Mining, Hacking, Networks, Phones, Surveillance Systems. <ref name=":0" />
+● ● ● ● ● On the internet, no one knows they exist.
+
+==Example Specialties==
+Artillery, Coding, Computer Building, Data Mining, Energy Systems, Hacking, Networks, Phones, Surveillance Systems.
 
 ==Example pools==
-
 * [[Intelligence]] + Technology
-** Hacking into a computer system. <ref>[[Vampire: The Masquerade Corebook]], page 407</ref>
-** Building clock part or colored wire bombs. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 408</ref>
-** Setting a car bomb.<ref name=":1" />
-** Penetrate electronic security systems. <ref>[[Vampire: The Masquerade Corebook]], page 410</ref>
-{{GameConceptsNavbox}}
-==References==
+** Hacking into a computer system.
+** Building clock part or colored wire bombs.
+** Setting a car bomb.
+** Penetrate electronic security systems.
+** Keep and maintain a fleet.
+** Obtain data on any subject or person in any database.
+** Setting up plastic explosives.
+** Hacking/Subverting a computer system.
+** Creating a bomb using sufficient explosives.
+** Employing a complex trigger detonation of a pre-made bomb/explosive.
+** Researching through computer files, internet forums, cloud servers/databases.
+* [[Technology]] + [[Resolve]]
+** Autonomous operations for complicated decision trees.
+* [[Technology]] + [[Wits]]
+** Operate drones.
+* [[Technology]]/[[Streetwise]] + [[Wits]]
+** Finding a GPS tracker on a vehicle.
+
 [[Category: Index]]
-[[Category:Mental]]
-[[Category:Skills]]
+[[Category: Mental]]
+[[Category: Skills]] 

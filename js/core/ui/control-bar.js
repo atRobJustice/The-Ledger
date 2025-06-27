@@ -91,7 +91,7 @@
  */
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
-import { bloodPotency as bpData } from "../../data/blood_potency.js";
+import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
 
 /**

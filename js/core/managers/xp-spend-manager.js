@@ -91,10 +91,10 @@ import { TraitManagerUtils } from './manager-utils.js';
 // Import references for trait lists
 import { attributes as ATTR_REF } from '../../data/attributes.js';
 import { skills as SKILL_REF } from '../../data/skills.js';
-import { disciplines as DISC_REF } from '../../data/disciplines.js';
-import { clans as CLAN_REF } from '../../data/clans.js';
-import { merits as MERIT_REF } from '../../data/merits.js';
-import { backgrounds as BG_REF } from '../../data/backgrounds.js';
+import { disciplines as DISC_REF } from '../../data/vampire/disciplines.js';
+import { clans as CLAN_REF } from '../../data/vampire/clans.js';
+import { merits as MERIT_REF } from '../../data/vampire/merits.js';
+import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
 
 (function () {
   // Wait until DOM & Bootstrap ready

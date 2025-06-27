@@ -1,0 +1,337 @@
+==Attributes==
+Attributes represent the character's innate abilities, with 1 being relatively bad, 2 being average, and up to 5 representing peak ability. The Attributes are divided into three separate categories: Physical, Social, and Mental.
+
+When building the sheet, the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots, with this being the Hunter's best trait. <ref name="CB57" />
+
+===Physical===
+The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character. Not all lethal Hunters appear muscle-bound, graceful, or meaty; instead, they may appear lanky and lean.
+
+'''[[Strength]]:''' How strong the character is, how hard they can hit, and how much force they can exert.
+
+Strength determines how strong the character is, how hard they can hit, and how much force they can exert.<hr/>
+
+(The rough amount they can deadlift without an Attribute test appears in parentheses below.)
+
+● They can easily crush a beer can. (20 kg: a Christmas tree, a stop sign)
+
+● ● They are physically average. (45 kg: a toilet)
+
+● ● ● They might be able to break open a wooden door. (115 kg: a large human, an empty coffin, a refrigerator)
+
+● ● ● ● They are a prime physical specimen and may have visible musculature. (180 kg: a full coffin, an empty dumpster)
+
+● ● ● ● ● They are a powerhouse and can likely break open a metal fire door, tear open a chain-link fence, or snap open a chained gate. (250 kg: a motorcycle, a piano)
+<ref name="CB57-58">[[Hunter: The Reckoning Corebook]], page 57-58</ref>
+
+==Uses==
+* [[Strength]] + [[Strength]]: Wedge open a door <ref name="CB111">[[Hunter: The Reckoning Corebook]], page 111</ref>
+* [[Strength]] + [[Athletics]]: Tearing self free from a net <ref name="CB106">[[Hunter: The Reckoning Corebook]], page 106</ref>
+* [[Strength]] + [[Athletics]] : Lifting or smashing things.<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Strength]]/[[Dexterity]] + [[Athletics]] : Throwing something heavy. (Choose worst attribute)<ref name="ST10"/>
+* [[Strength]] + [[Brawl]]: Punching, Kicking, Tackling, Grappling <ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Physical Attribute]]
+
+'''[[Dexterity]]:''' How agile a character is, how graceful they can be, or how nimble those fingers are.
+
+Dexterity determines how agile a character is, how graceful they can be, or how nimble those fingers are.
+<hr/>
+
+● They're a bit clumsy, balance and dodging are challenging for them.
+
+● ● Their sprint is natural, and on occasion they appear graceful.
+
+● ● ● Their agility is impressive and their coordination is as skilled as a trained amateur.
+
+● ● ● ● They excel at acrobatics and move in ways few people can.
+
+● ● ● ● ● Their movements are nearly superhuman and very fluid.
+<ref name="CB58">[[Hunter: The Reckoning Corebook]], page 58</ref>
+
+==Uses==
+* [[Dexterity]] + [[Wits]] : Breaking ties in turn order <ref name="CB120">[[Hunter: The Reckoning Corebook]], page 120</ref>
+
+* [[Dexterity]] + [[Athletics]] : Flee, Dodging, diving for cover <ref name="CB107">[[Hunter: The Reckoning Corebook]], page 107</ref><ref name="CB118-120">[[Hunter: The Reckoning Corebook]], page 118-120</ref>
+* [[Dexterity]] + [[Athletics]] : Climbing<ref name="ST9">[[Hunter The Reckoning Storytellers Toolkit]], page 9</ref>
+* [[Dexterity]] + [[Athletics]] : Falling on ones feet to negate fall damage with Difficulty equal to meters fallen.<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Dexterity]]/[[Strength]]  + [[Athletics]]: Throwing something heavy. (Choose worst attribute)<ref name="ST10">[[Hunter The Reckoning Storytellers Toolkit]], page 10</ref>
+* [[Dexterity]] + [[Driving]] : Driving at high speed, making complex maneuvers, evading traffic <ref name="ST9"/>
+* [[Dexterity]] + [[Larceny]] : Slipping free from handcuffs (Difficulty 4) <ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+* [[Dexterity]] + [[Larceny]]: Picking a lock<ref name="ST10"/>
+* [[Dexterity]] + [[Larceny]]: Dodging a laser sensor<ref name="ST10"/>
+* [[Dexterity]] + [[Stealth]] : Sneaking <ref name="CB117">[[Hunter: The Reckoning Corebook]], page 117</ref>
+* [[Dexterity]] + [[Survival]]: Escape without leaving tracks to avoid pursuit <ref name="ST9"/>
+
+==Related==
+* The [[Equipment#Armor|Tactical SWAT/Military Armor]] imposes a one-die penalty to [[Dexterity]] rolls.<ref name="CB101">[[Hunter: The Reckoning Corebook]], page 101</ref>
+* The [[Equipment#Lockpick_Gun|Lockpin Gun]] adds 4 dice to a [[Dexterity]] + [[Larceny]] roll to pick a lock <ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+* The [[Equipment#Net_Gun|Net Gun]] subtracts a target's [[Dexterity]] when entangled <ref name="CB106">[[Hunter: The Reckoning Corebook]], page 106</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Physical Attribute]]
+
+'''[[Stamina]]:''' The character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb. <ref name="CB57-58">[[Hunter: The Reckoning Corebook]], page 57-58</ref>
+
+Stamina represents the character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb. Their [[Stamina]] + 3 equals their [[Health]].<hr/>
+
+● They are easily winded on low exertion.
+
+● ● They can take a beating but would consider suing.
+
+● ● ● They can do several days of hard hiking with a pack.
+
+● ● ● ● They could win a marathon or take enormous amounts of physical pain.
+
+● ● ● ● ● They never break a sweat.
+<ref name="CB58">[[Hunter: The Reckoning Corebook]], page 58</ref>
+
+==Uses==
+* [[Stamina]] + 3: [[Health]] <ref name="CB54">[[Hunter: The Reckoning Corebook]], page 54</ref><ref name="CB58"/><ref name="CB60">[[Hunter: The Reckoning Corebook]], page 60</ref><ref name="CB112">[[Hunter: The Reckoning Corebook]], page 112</ref>
+* [[Stamina]]: At the start of the session, heal Superficial Health Damage amount equal to your [[Stamina]]<ref name="CB123">[[Hunter: The Reckoning Corebook]], page 123</ref>
+
+* [[Stamina]] + [[Etiquette]]: Overnight drinking session to gather information.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+
+* [[Stamina]] + [[Resolve]]: Holding Breath
+* [[Stamina]] + [[Resolve]]: Be able to move after an hour of extreme cold.<ref name="ST9">[[Hunter: The Reckoning Storytellers Toolkit]], page 9</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Physical Attribute]]
+
+===Social===
+The Social Attributes reflect first impressions and the character's ability to intrigue, encourage, or motivate others.
+
+'''[[Charisma]]:''' Determines the character's natural appeal, charm, and grace. With this attribute, they'll be able to draw people into them, although do not mistake this for good looks; that is a merit all on its own. ''See [[Advantages and Flaws#Looks|Looks]].''
+
+Charisma determines the character's natural appeal, charm, and grace. With this attribute, they'll be able to draw people into them, although do not mistake this for good looks; that is a merit all on its own. ''See [[Merits#Looks|Looks]].''
+<hr/>
+● They can speak clearly but people rarely care to listen.
+
+● ● They are generally likeable and may have friends.
+
+● ● ● They can easily make friends and people trust them easily.
+
+● ● ● ● They possess significant personal appeal and draw followers readily.
+
+● ● ● ● ● Pure animal magnetism.
+<ref name="CB58">[[Hunter: The Reckoning Corebook]], page 58</ref>
+
+==Uses==
+* [[Charisma]] + [[Animal Ken]]: [[Edges#Beast_Whisperer|Beast Whisperer Edge]] to issue commands to animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+* [[Charisma]]/[[Manipulation]] + [[Persuasion]]: Debate<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Social Attribute]]
+
+'''[[Manipulation]]:''' Showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are.
+
+Manipulation showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are.
+<hr/>
+● As long as they remain honest, they can convince others.
+
+● ● They can deceive the weak and simple-minded.
+
+● ● ● They never have to pay full price for anything.
+
+● ● ● ● They could be a cult leader or a successful lawyer.
+
+● ● ● ● ● They could convince people of utter nonsense.
+<ref name="CB58-59">[[Hunter: The Reckoning Corebook]], page 58-59</ref>
+
+==Uses==
+* [[Manipulation]]/[[Charisma]] + [[Etiquette]]: Debate<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+* [[Manipulation]] + [[Persuasion]]: [[Edges#Fleet|Fleet Edge]] for relying on contacts for a fleet.<ref name="CB90">[[Hunter: The Reckoning Corebook]], page 90</ref>
+* [[Manipulation]] + [[Persuasion]]: Get information by interviewing experts (Limited by dots in relevant fields such as [[Academics]], [[Finance]], [[Occult]], or [[Science]].<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Manipulation]] + [[Streetwise]]: [[Edges#Arsenal|Arsenal Edge]] for relying on contacts for an arsenal.<ref name="CB90"/>
+* [[Manipulation]] + [[Subterfuge]]: Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Social Attribute]]
+
+'''[[Composure]]:''' Reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights. <ref name="CB58-59">[[Hunter: The Reckoning Corebook]], page 58-59</ref>
+
+Composure reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights.
+Their Composure + [[Resolve]] equals their [[Willpower]].<hr />
+
+● The slightest insult or confrontation raises their hackles.
+
+● ● They can subdue their basic instincts in most non-hostile situations.
+
+● ● ● Others look to them for guidance when the blood spatter hits the fan.
+
+● ● ● ● They can effortlessly bluff at cards and negotiate multimillion-dollar deals without any tells.
+
+● ● ● ● ● Things would have been different had they captained the Titanic.
+<ref name="CB59">[[Hunter: The Reckoning Corebook]], page 59</ref>
+
+==Uses==
+*[[Composure]]/[[Resolve]]: At the start of the session, heal Superficial Willpower Damage amount equal to [[Composure]] or [[Resolve]] (pick higher)<ref name="CB123">[[Hunter: The Reckoning Corebook]], page 123</ref>
+*[[Composure]] + [[Resolve]]: [[Willpower]] <ref name="CB54">[[Hunter: The Reckoning Corebook]], page 54</ref><ref name="CB59"/><ref name="CB60">[[Hunter: The Reckoning Corebook]], page 60</ref><ref name="CB112">[[Hunter: The Reckoning Corebook]], page 112</ref>
+*[[Composure]] + [[Resolve]]: Resist supernatural effects like: Charm, Terrify.<ref name="CB111-112">[[Hunter: The Reckoning Corebook]], page 111-112</ref><ref name="CB167-168">[[Hunter: The Reckoning Corebook]], page 167-168</ref>
+*[[Composure]] + [[Wits]]: Deceive a prescient creature.<ref name="CB168">[[Hunter: The Reckoning Corebook]], page 168</ref>
+
+*[[Composure]] + [[Animal Ken]]: [[Edges#Beast_Whisperer|Beast Whisperer Edge]] to train animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+*[[Composure]] * [[Etiquette]]: Divert discussion <ref name="CB120">[[Hunter: The Reckoning Corebook]], page 120</ref>
+*[[Composure]] * [[Firearms]]: Shooting<ref name="CB118">[[Hunter: The Reckoning Corebook]], page 118</ref>
+*[[Composure]] + [[Occult]]/[[Science]]: [[Edges#Thwart_the_Unnatural|Thwart the Unnatural Edge]] to resist supernatural abilities.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+*[[Composure]] + [[Science]]: [[Edges#Ordnance|Ordnance Edge]] for keeping and maintaining ordnance.<ref name="CB92">[[Hunter: The Reckoning Corebook]], page 92</ref>
+*[[Composure]] + [[Streetwise]]: [[Edges#Ordnance|Ordnance Edge]] for relying on contacts for ordnance.<ref name="CB92"/>
+*[[Composure]] + [[Subterfuge]]: Remain calm in disguise<ref name="CB127-128">[[Hunter: The Reckoning Corebook]], page 127-128</ref>
+*[[Composure]] + [[Survival]]: Remove enough burning material from self to prevent further burns. (Difficulty 3)<ref name="CB106">[[Hunter: The Reckoning Corebook]], page 106</ref>
+
+==Related==
+* The [[Equipment#Tactical_Earbuds|Tactical Earbuds]] provides 1 die to [[Composure]] tests in combat situations.<ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Social Attribute]]
+
+===Mental===
+The Mental Attributes represent the character's natural intuition—the ability to learn quickly and react quickly with thoughts rather than their bodies. It also represents their determination and dedication to accomplishing something.
+
+'''[[Intelligence]]:''' Represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read.
+
+Intelligence represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read.<hr/>
+
+● They can read and write competently, though some terms confuse them.
+
+● ● They are smart enough to realize their own limitations.
+
+● ● ● they are able to piece together clues without difficulty.
+
+● ● ● ● They're not only knowledgeable, they have theories about how people come to know things and can improve that process.
+
+● ● ● ● ● Genius is a humble term for the depths and range of their intellect.
+<ref name="CB59">[[Hunter: The Reckoning Corebook]], page 59</ref>
+
+==Uses==
+* [[Intelligence]] + [[Resolve]]: Resist a Monster's Command/Compel action.<ref name="CB167">[[Hunter: The Reckoning Corebook]], page 167</ref>
+
+* [[Intelligence]] + [[Skill]]: Preparedness test: Check if the Hunter had brought along an uncommon item. Skill is based on what's most relevant to the item. <ref name="ST8"/>
+* [[Intelligence]] + [[Animal Ken]]: [[Edges#Beast_Whisperer|Complex Commands Perk for Beast Whisperer Edge]] to understand the animal companion.<ref name="CB96">[[Hunter: The Reckoning Corebook]], page 96</ref>
+* [[Intelligence]] + [[Awareness]]: Operate [[Equipment#Chaoscope|Chaoscope]] to reliably detect supernatural. (Difficulty 6)<ref name="CB102">[[Hunter: The Reckoning Corebook]], page 102</ref>
+* [[Intelligence]] + [[Awareness]]: Recognize something, e.g. spot a camouflaged ambush <ref name="ST8"/>
+* [[Intelligence]] + [[Craft]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] to repair or rebuild the drone. <ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Intelligence]] + [[Craft]]: [[Edges#Arsenal|Arsenal Edge]] for keeping and maintaining an arsenal.<ref name="CB91">[[Hunter: The Reckoning Corebook]], page 91</ref>
+* [[Intelligence]] + [[Craft]]: Creating a [[Equipment#Disguised_Weapon|Disguised Weapon]].<ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+* [[Intelligence]] + [[Craft]]: Creating an old-school bomb using with clock parts and colored wires.<ref name="ST8"/>
+* [[Intelligence]] + [[Craft|Craft (Interior Design)]]: Hide an item in plain sight.<ref name="ST7"/>
+* [[Intelligence]] + [[Craft|Craft (Carpentry)]]/[[Academics|Academics (Architecture)]]: Building false compartments or secret chambers.<ref name="ST7"/>
+* [[Intelligence]] + [[Craft]]/[[Technology]]/[[Science]]: [[Edges#Improvised_Gear|Improvised Gear Edge]] to create short-lived but useful tools.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+* [[Intelligence]] + [[Investigation]]: Searching a crime scene for clues/evidence. <ref name="ST8"/>
+* [[Intelligence]] + [[Larceny]]: Detonation of a pre-made bomb/explosive. <ref name="ST8"/>
+* [[Intelligence]] + [[Medicine]]: Identify disease symptoms<ref name="ST8"/>
+* [[Intelligence]] + [[Medicine]]: Over the course of a night, convert Aggravated Health Damage to Superficial Damage at a Difficulty equal to the total Aggravated Damage sustained by the patient. Attempts to heal oneself adds +1 to the Difficulty.<ref name="CB123">[[Hunter: The Reckoning Corebook]], page 123</ref>
+* [[Intelligence]] + [[Occult]]/[[Science]]: [[Edges#Artifact|Empower and Detection Perks for the Artifact Edge]].<ref name="CB99-100">[[Hunter: The Reckoning Corebook]], page 99-100</ref>
+* [[Intelligence]] + [[Science]]: Creating explosives.<ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Intelligence]] + [[Science]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] for how many days the drone can stay active.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Intelligence]] + [[Science]]:Researching/Understanding complex experimental processes.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Intelligence]] + [[Science|Science (Engineering)]]: Carefully controlled detonation of a pre-made bomb/explosive from a calculated safe distance. <ref name="ST8"/>
+* [[Intelligence]] + [[Streetwise]]: Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online.<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Intelligence]] + [[Streetwise]]: Camouflaging in urban settings. <ref name="ST7"/>
+* [[Intelligence]] + [[Survival]]: Camouflaging in nature, burying a body in nature. <ref name="ST7"/>
+* [[Intelligence]] + [[Technology]]: [[Edges#Global_Access|Global Access Edge]] to obtain data on any subject or person in any database.<ref name="CB94">[[Hunter: The Reckoning Corebook]], page 94</ref>
+* [[Intelligence]] + [[Technology]]: [[Edges#Fleet|Fleet Edge]] for keeping and maintaining a fleet.<ref name="CB91">[[Hunter: The Reckoning Corebook]], page 91</ref>
+* [[Intelligence]] + [[Technology]]: Setting up [[Equipment#Plastic_Explosives|Plastic Explosives]].<ref name="CB107">[[Hunter: The Reckoning Corebook]], page 107</ref>
+* [[Intelligence]] + [[Technology]]: Hacking/Subverting a computer system. (1 or 2 for a small, poorly secured network, 4 for decent corporate security, 6 for secure databases, 8+ for the NSA)<ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Intelligence]] + [[Technology]]: Creating a bomb using sufficient explosives.<ref name="ST8"/>
+* [[Intelligence]] + [[Technology]]: Employing a complex trigger detonation of a pre-made bomb/explosive. <ref name="ST8"/>
+* [[Intelligence]] + [[Technology]]: Researching through computer files, internet forums, cloud servers/databases.<ref name="AM25"/>
+
+* [[Intelligence]] + [[Advantages_and_Flaws#Linguistics|Linguistics]]: Decipher a scripts<ref name="CB70">[[Hunter: The Reckoning Corebook]], page 70</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Mental Attribute]]
+
+'''[[Wits]]:''' Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or on prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and ability to know what to say in the heat of the moment. Rather than mulling over it the next night and realizing they had the perfect response to that police officer the entire time.
+
+Wits represents the character's ability to think quickly on their feet and make decisions based on the information around them or on prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and ability to know what to say in the heat of the moment. Rather than mulling over it the next night and realizing they had the perfect response to that police officer the entire time.<hr/>
+
+● They get to the point eventually, but it may take some time and explaining.
+
+● ● They can bet the odds in poker or apply the emergency brakes in time. Usually.
+
+● ● ● They can analyze a situation and quickly work out the best escape route.
+
+● ● ● ● They're never caught flatfooted and always come up with a smart riposte.
+
+● ● ● ● ● They think and respond more quickly than most people can comprehend.
+<ref name="CB59">[[Hunter: The Reckoning Corebook]], page 59</ref>
+
+==Uses==
+* [[Wits]] + [[Composure]]: Deceive a prescient creature. <ref name="CB168">[[Hunter: The Reckoning Corebook]], page 168</ref>
+* [[Wits]] + [[Dexterity]]: Breaking ties in turn order <ref name="CB120">[[Hunter: The Reckoning Corebook]], page 120</ref>
+
+* [[Wits]] + [[Awareness]]: Notice Hidden Things, in the moment<ref name="CB117">[[Hunter: The Reckoning Corebook]], page 117</ref><ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Wits]] + [[Awareness]]: Spotting a [[Equipment#Disguised_Weapon|Disguised Weapon]]<ref name="CB104">[[Hunter: The Reckoning Corebook]], page 104</ref>
+* [[Wits]] + [[Investigation]]: Noticing Clues
+* [[Wits]] + [[Occult]]/[[Science]]: [[Edges#Sense_the_Unnatural|Sense the Unnatural Edge]] to  detect the nearby presence of supernatural creatures.<ref name="CB97">[[Hunter: The Reckoning Corebook]], page 97</ref>
+* [[Wits]] + [[Technology]]: [[Edges#Drone_Jockey|Drone Jockey Edge]] to operate the drone.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+* [[Wits]] + [[Streetwise]]/[[Technology]]: Finding a GPS tracker on a vehicle. (Difficulty 3)<ref name="CB103">[[Hunter: The Reckoning Corebook]], page 103</ref>
+* [[Wits]] + [[Survival]]: Tracking by following evidence like footprints <ref name="ST9>[[Hunter: The Reckoning Storytellers Toolkit]], page 9</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Mental Attribute]]
+
+'''[[Resolve]]:''' Measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.
+
+Measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.
+Their [[Composure]] + Resolve equals their [[Willpower]].<hr/>
+
+● They have minimal focus for all but the most pressing things.
+
+● ● They can settle in for the long haul, as long as it’s not too long.
+
+● ● ● Distracting them takes more effort than most other people want to spend.
+
+● ● ● ● They can brute-force your way to a deduction past any obstacles.
+
+● ● ● ● ● They can think in a gunfight or patrol the entirety of the perimeter and then clean up every shell casing or spilled bit of gore.
+<ref name="CB59-60">[[Hunter: The Reckoning Corebook]], page 59-60</ref>
+
+==Uses==
+* [[Resolve]]/[[Composure]] : At the start of the session, heal Superficial Willpower Damage amount equal to [[Composure]] or [[Resolve]] (pick higher)<ref name="CB123">[[Hunter: The Reckoning Corebook]], page 123</ref>
+* [[Resolve]] + [[Composure]] : [[Willpower]]<ref name="CB54">[[Hunter: The Reckoning Corebook]], page 54</ref><ref name="CB59-60"/><ref name="CB60">[[Hunter: The Reckoning Corebook]], page 60</ref>
+* [[Resolve]] + [[Composure]]: Resist supernatural effects like: Charm, Terrify.<ref name="CB111-112">[[Hunter: The Reckoning Corebook]], page 111-112</ref><ref name="CB167-168">[[Hunter: The Reckoning Corebook]], page 167-168</ref>
+* [[Resolve]] + [[Intelligence]]: Resist a Monster's Command/Compel action.<ref name="CB167">[[Hunter: The Reckoning Corebook]], page 167</ref>
+* [[Resolve]] + [[Stamina]]: Holding Breath
+* [[Resolve]] + [[Stamina]]: Be able to move after an hour of extreme cold.<ref name="ST9">[[Hunter: The Reckoning Storytellers Toolkit]], page 9</ref>
+
+* [[Resolve]] + [[Academics]]: Researching through books, ledgers and journals.<ref name="AM25">[[Hunter: The Reckoning Alma Maters]], page 25</ref>
+* [[Resolve]] + [[Awareness]]: Researching by digging through physical materials.</ref name="AM25">
+* [[Resolve]] + [[Awareness]]: Surveillance
+* [[Resolve]] + [[Awareness]]: Pick out key details out of a cloud of distractions, e.g. notice small blemish on large painting. <ref name="ST8">[[Hunter: The Reckoning Storytellers Toolkit]], page 8</ref>
+* [[Resolve]] + [[Academics]]: [[Edges#Library|Library Edge]] for researching their quarry.<ref name="CB93">[[Hunter: The Reckoning Corebook]], page 93</ref>
+* [[Resolve]] + [[Investigation]]: Questioning people <ref name="CB111">[[Hunter: The Reckoning Corebook]], page 111</ref>
+* [[Resolve]] + [[Larceny]]: Cleaning up a murder scene. <ref name="ST7">[[Hunter: The Reckoning Storytellers Toolkit]], page 7</ref>
+* [[Resolve]] + [[Occult]]/[[Science]]: [[Edges#Repel_the_Unnatural|Repel the Unnatural Edge]] to hold back supernatural creatures.<ref name="CB98">[[Hunter: The Reckoning Corebook]], page 98</ref>
+* [[Resolve]] + [[Technology]]: [[Edges#Drone_Jockey|Autonomous Perk for Drone Jockey Edge]] for complicated decision trees.<ref name="CB95">[[Hunter: The Reckoning Corebook]], page 95</ref>
+
+==References==
+<references />
+
+[[Category:Attribute]]
+[[Category:Mental Attribute]]

@@ -79,20 +79,20 @@
  */
 
 // Import all discipline data
-import { animalism } from '../../data/disciplines/animalism.js';
-import { auspex } from '../../data/disciplines/auspex.js';
-import { bloodSorcery } from '../../data/disciplines/blood_sorcery.js';
-import { celerity } from '../../data/disciplines/celerity.js';
-import { dominate } from '../../data/disciplines/dominate.js';
-import { fortitude } from '../../data/disciplines/fortitude.js';
-import { obfuscate } from '../../data/disciplines/obfuscate.js';
-import { oblivion } from '../../data/disciplines/oblivion.js';
-import { potence } from '../../data/disciplines/potence.js';
-import { presence } from '../../data/disciplines/presence.js';
-import { protean } from '../../data/disciplines/protean.js';
-import { thinBloodAlchemy } from '../../data/disciplines/thin_blood_alchemy.js';
-import { bloodSorceryRituals } from '../../data/disciplines/blood_sorcery_rituals.js';
-import { oblivionCeremonies } from '../../data/disciplines/oblivion_ceremonies.js';
+import { animalism } from '../../data/vampire/disciplines/animalism.js';
+import { auspex } from '../../data/vampire/disciplines/auspex.js';
+import { bloodSorcery } from '../../data/vampire/disciplines/blood_sorcery.js';
+import { celerity } from '../../data/vampire/disciplines/celerity.js';
+import { dominate } from '../../data/vampire/disciplines/dominate.js';
+import { fortitude } from '../../data/vampire/disciplines/fortitude.js';
+import { obfuscate } from '../../data/vampire/disciplines/obfuscate.js';
+import { oblivion } from '../../data/vampire/disciplines/oblivion.js';
+import { potence } from '../../data/vampire/disciplines/potence.js';
+import { presence } from '../../data/vampire/disciplines/presence.js';
+import { protean } from '../../data/vampire/disciplines/protean.js';
+import { thinBloodAlchemy } from '../../data/vampire/disciplines/thin_blood_alchemy.js';
+import { bloodSorceryRituals } from '../../data/vampire/disciplines/blood_sorcery_rituals.js';
+import { oblivionCeremonies } from '../../data/vampire/disciplines/oblivion_ceremonies.js';
 
 // Export combined discipline data
 export const disciplines = {

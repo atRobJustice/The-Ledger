@@ -1,0 +1,67 @@
+==Skills==
+Skills are the general fields of competency for the character or what they've been taught. Where Attributes are raw potential, Skills are what they've learned in order to use that potential. 
+
+The distribution of Skills is a choice between three different options;
+
+*'''Jack of All Trades:''' One Skill at 3 dots, eight Skills at 2 dots, and ten Skills at 1 dot.
+*'''Balanced:''' Three Skills at 3 dots, five Skills at 2 dots, and seven Skills at 1 dot.
+*'''Specialist:''' One Skill at 4 dots, three Skills at 3 dots, three Skills at 2 dots, and three Skills at 1 dot.
+
+Following this is Skill specialty, which is specific expertise in a given Skill. If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill. <ref> [[Werewolf: The Apocalypse Corebook]], page 88-89</ref>
+
+===Physical===
+'''Athletics:''' Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat, but the use of Athletics in combat means no damage is dealt.
+
+'''Brawl:''' Combat focused on using the body as a weapon rather than an item. For werewolves, the use of their claws or fangs when in some of the [[Forms|forms]] usually counts as Brawl.
+
+'''Craft:''' Creating, building, or shaping items such as artwork but also making a makeshift catapult. Some Garou Rites need this knowledge to be properly performed.
+
+'''Drive:''' Driving vehicles specifically under duress and adverse or difficult conditions.
+
+'''Firearms:''' Using ranged weaponry such as bows and guns as well as gunsmithing, reloading and repair of said items.
+
+'''Larceny:''' Lockpicking a locked door or breaking in other ways, pickpocketing and sleight of hand. 
+
+'''Melee:''' Combat focused around using handheld weaponry such as a lead pipe or a baseball bat.
+
+'''Stealth:''' Blending into surroundings to either not be seen or not be recognized, allows characters to move around without alerting anyone of their presence either by sight or sound.
+
+'''Survival:''' Using nature to find shelter, tracking animals or people, and general survival in the wilderness.<ref> [[Werewolf: The Apocalypse Corebook]], page 89-92</ref>
+
+=== Social ===
+'''Animal Ken:''' Understanding and reading animal behavior to handle them and work with them, as well as being able to have familiarity with animal markings.
+
+'''Etiquette:''' The ability to interact in social settings or blend into different groups. Some Rites benefit from this.
+
+'''Insight:''' Reading body language and other cues to discern emotions, thoughts, or motives.
+
+'''Intimidation:''' Using menacing presence or direct force to ensure compliance, submission, or fear from others.
+
+'''Leadership:''' Motivating, inspiring, or commanding the character's followers. 
+
+'''Performance:''' Showcasing the character's art in front of a crowd regardless of size. Singing, acting, and oration are all examples of this. Some Rites benefit from this Skill.
+
+'''Persuasion:''' Convincing or swaying others to do the character's will or at least agree with their stance. Some spirit-Rites require a good grasp of this Skill.
+
+'''Streetwise:''' Knowledge of the streets in criminal and urban societies, being able to understand graffiti tags, knowing which shortcut will be the fastest.
+
+'''Subterfuge:''' Deceiving others to complete the character's desires or agree with them or manipulating the truth to further their goals.<ref> [[Werewolf: The Apocalypse Corebook]], page 92-94</ref>
+
+===Mental===
+'''Academics:''' Topics surrounding the humanities and liberal arts.
+
+'''Awareness:''' Vigilant to their surroundings and the ability to understand/react to threats.
+
+'''Finance:''' Knowing how to move and make money legally or not, being able to handle finances and their taxes, as well as tracing the money of others.
+
+'''Investigation:''' Being able to find and follow clues, decipher their meaning and solve a mystery. Some Rites benefit from this Skill.
+
+'''Medicine:''' Handling injuries and diagnosing/treating diseases, as well as healing Aggravated [[Health]].
+
+'''Occult:''' Mystical knowledge of the supernatural and rituals.
+
+'''Politics:''' Knowing the inner workings of the government, Garou or not.
+
+'''Science:''' Scientific knowledge and theory of the real world.
+
+'''Technology:''' Internet and computer comprehension, hacking and breaking into secure information through the use of technology.<ref> [[Werewolf: The Apocalypse Corebook]], page 94-97</ref>

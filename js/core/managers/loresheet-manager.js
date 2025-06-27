@@ -63,7 +63,7 @@
  */
 
 // Loresheet Manager
-import { loresheets } from '../../data/loresheets.js';
+import { loresheets } from '../../data/vampire/loresheets.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class LoresheetManager {

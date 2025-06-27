@@ -1,16 +1,16 @@
 ==Attributes==
-Attributes represent the characters innate abilities, with 1 being relatively bad, 2 being average and up to 5 which represents peak ability. The Attributes are divided into three separate categories; Physical, Social and Mental. <ref>[[Vampire: The Masquerade Corebook]], page 155</ref>
+Attributes represent the character's innate abilities, with 1 being relatively bad, 2 being average, and up to 5 representing peak ability. The Attributes are divided into three separate categories: Physical, Social, and Mental.
 
-When building the sheet; the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots with this being the vampire's best trait. 
+When building the sheet, the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots, with this being the character's best trait.
 
-===[[Physical]] ===
-The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character. These Attributes represent the mortal prowess of a vampire's body. Though through the use of certain Disciplines, vampires often exceed the abilities of an otherwise frail-looking physique. 
+===Physical===
+The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character.
 
 '''[[Strength]]:''' How strong the character is, how much they can lift, and how much force they can exert.
 
-Strength represents the character's ability to deadlift, how hard they hit, and how much force they can exert with their body. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 155</ref>
+Strength represents the character's ability to deadlift, how hard they hit, and how much force they can exert with their body.
 
-== Dot values ==
+==Dot values==
 ● They can easily crush a beer can. (Deadlift 20kg)
 
 ● ● They are average physically. (Deadlift 45kg)
@@ -19,36 +19,28 @@ Strength represents the character's ability to deadlift, how hard they hit, and 
 
 ● ● ● ● A prime physical specimen. (Deadlift 180kg)
 
-● ● ● ● ● Break open a metal door or tear open a chain-link fence. (Deadlift 250kg) <ref name=":0" />
+● ● ● ● ● Break open a metal door or tear open a chain-link fence. (Deadlift 250kg)
 
-== Example pools ==
-
+==Example pools==
 * Strength + Strength
-** To lift a heavy beam. <ref>[[Vampire: The Masquerade Corebook]], page 118</ref>
+** To lift a heavy beam.
 * Strength + [[Brawl]]
-** Conflict pool for fighting or grappling. <ref>[[Vampire: The Masquerade Corebook]], page 124</ref>
+** Conflict pool for fighting or grappling.
 * Strength + [[Melee]]
-** Using a knife or other weapon such as a stake. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
+** Using a knife or other weapon.
 * Strength + [[Athletics]]
-** Fleeing to break conflict<ref>[[Vampire: The Masquerade Corebook]], page 130</ref> 
-** Throwing heavy things. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 410</ref>
+** Fleeing to break conflict
+** Throwing heavy things.
 * Strength + [[Stamina]]
-** Used by mortals to survive blood loss after a harmful drink. <ref>[[Vampire: The Masquerade Corebook]], page 212</ref>
+** Used to survive blood loss after a harmful drink.
 * Strength + [[Resolve]]
-** A roll made during Diablerie. <ref>[[Vampire: The Masquerade Corebook]], page 236</ref>
-* Strength + [[Blood Sorcery]]
-** Used by Blood Sorcerers who use powers like [[Blood Sorcery#Scorpion's Touch|Scorpion's Touch]] or [[Blood Sorcery#Baal's Caress|Baal's Caress]]. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref>
-* Strength + [[Alchemy]]
-** Used by alchemists who use powers such as Airborne Momentum. <ref>[[Vampire: The Masquerade Corebook]], page 287</ref>
+** A roll made during intense situations.
 * Strength + [[Firearms]]
-** For a firearm user who is engaging in close combat. <ref>[[Vampire: The Masquerade Corebook]], page 302</ref>
+** For a firearm user who is engaging in close combat.
 * Strength + [[Intimidation]]
-** Using physical strength to intimidate someone such as crunching a trashcan while staring them down. <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
+** Using physical strength to intimidate someone such as crunching a trashcan while staring them down.
 * Strength + [[Larceny]]
-** To break a lock cleanly. <ref name=":1" />
-{{GameConceptsNavbox}}
-
-== References ==
+** To break a lock cleanly.
 
 [[Category: Attributes]]
 [[Category: Physical]]
@@ -56,9 +48,9 @@ Strength represents the character's ability to deadlift, how hard they hit, and 
 
 '''[[Dexterity]]:''' How agile a character is, how graceful they can be, or how nimble those fingers are.
 
-Dexterity represents how agile a character is, how graceful they can be, or how nimble their fingers are.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 155</ref>
+Dexterity represents how agile a character is, how graceful they can be, or how nimble their fingers are.
 
-== Dot values ==
+==Dot values==
 ● They can run but struggle with balance and dodging.
 
 ● ● A solid sprint and sometimes can appear graceful.
@@ -67,36 +59,28 @@ Dexterity represents how agile a character is, how graceful they can be, or how 
 
 ● ● ● ● They move in a way few humans can and could excel at acrobatics.
 
-● ● ● ● ● Almost superhuman movements that are liquid and hypnotic. <ref name=":0" />
+● ● ● ● ● Almost superhuman movements that are liquid and hypnotic.
 
-== Example pools ==
-
+==Example pools==
 * Dexterity + [[Stealth]]
-** Sneaking up on another person.<ref>[[Vampire: The Masquerade Corebook]], page 123</ref>
+** Sneaking up on another person.
 * Dexterity + [[Athletics]]
-** Common defense pool often for dodging, throwing<ref name=":1">[[Vampire: The Masquerade Corebook]], page 301</ref> 
-** Climbing <ref name=":2">[[Vampire: The Masquerade Corebook]], page 409</ref> 
-** This roll also helps determine how much falling damage a character might take. <ref name=":2" /> 
+** Common defense pool often for dodging, throwing
+** Climbing
+** This roll also helps determine how much falling damage a character might take.
 * Dexterity + [[Etiquette]]
-** Pretend to eat and behave flawlessly at the governor's formal dinner. <ref name=":3">[[Vampire: The Masquerade Corebook]], page 128</ref> 
+** Pretend to eat and behave flawlessly at a formal dinner.
 * Dexterity + [[Larceny]]
-** Distract someone with one hand and hide a knife with the other. <ref name=":3" /> 
-** Breaking into a safe. <ref>[[Vampire: The Masquerade Corebook]], page 410</ref> 
-* Dexterity + [[Charisma]]
-** Faking sex per [[Humanity]] rules. <ref>[[Vampire: The Masquerade Corebook]], page 237</ref> 
-* Dexterity + [[Medicine]]
-** Remove a shattered stake splinter from the body per [[Blood Sorcery Rituals#Shaft of Belated Dissolution|Shaft of Belated Dissolution]]. <ref>[[Vampire: The Masquerade Corebook]], page 282</ref> 
+** Distract someone with one hand and hide a knife with the other.
+** Breaking into a safe.
 * Dexterity + [[Melee]]
-** One handed melee weapons. <ref name=":1" /> 
+** One handed melee weapons.
 * Dexterity + [[Firearms]]
-** Quick drawing a gun during a cowboy showdown. <ref name=":1" /> 
+** Quick drawing a gun during a showdown.
 * Dexterity + [[Performance]]
-** Dancing. <ref>[[Vampire: The Masquerade Corebook]], page 326</ref> 
+** Dancing.
 * Dexterity + [[Drive]]
-** High speed, complex, or evading traffic when driving. <ref name=":2" /> 
-{{GameConceptsNavbox}}
-
-== References ==
+** High speed, complex, or evading traffic when driving.
 
 [[Category: Attributes]]
 [[Category: Physical]]
@@ -104,9 +88,9 @@ Dexterity represents how agile a character is, how graceful they can be, or how 
 
 '''[[Stamina]]:''' The character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb.
 
-Dexterity represents the character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 155</ref> 
+Stamina represents the character's physical resistance, how long they can persevere through hazards and other strenuous activities, or how much damage they can absorb.
 
-Their [[Health]] is also equal to Stamina + 3.<ref>[[Vampire: The Masquerade Corebook]], page 119</ref> 
+Their [[Health]] is also equal to Stamina + 3.
 
 ==Dot values==
 ● They are winded by lesser exertions.
@@ -117,85 +101,54 @@ Their [[Health]] is also equal to Stamina + 3.<ref>[[Vampire: The Masquerade Cor
 
 ● ● ● ● They could win a marathon, or take a tremendous amount of physical pain.
 
-● ● ● ● ● They'd never break a sweat, if they were mortal. <ref name=":0" />
+● ● ● ● ● They'd never break a sweat.
 
 ==Example pools==
-
-*Stamina + [[Stealth]]
-**Remain motionless in bushes waiting with each success allowing them to maintain this for one hour. <ref>[[Vampire: The Masquerade Corebook]], page 128</ref>
-*Stamina + [[Athletics]]
-**Outrun pursuers. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref> 
-**Long distance swimming. <ref>[[Vampire: The Masquerade Corebook]], page 411</ref>
-*Stamina + [[Strength]]
-**Used by mortals to survive blood loss after a harmful drink. <ref>[[Vampire: The Masquerade Corebook]], page 212</ref>
-*Stamina + [[Composure]]
-**Consume food or drink for up to an hour and then make it outside or to a bathroom in time. <ref>[[Vampire: The Masquerade Corebook]], page 218</ref> 
-**Resist pool for powers such as [[Blood Sorcery#Extinguish Vitae|Extinguish Vitae]]. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref> 
-**Concealing non-Duskborn from XScopes while using [[Blush of Life]]. <ref>[[Vampire: The Masquerade Corebook]], page 379</ref>
-*Stamina + [[Occult]] or [[Fortitude]]
-**Used to resist many powers in [[Blood Sorcery]]. Such as [[Blood Sorcery#Scorpion's Touch|Scorpion's Touch]]. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref>
-*Stamina + [[Resolve]]
-**To keep moving after an hour of extreme cold (-30°C or below). <ref>[[Vampire: The Masquerade Corebook]], page 221</ref> 
-**Resistant rolls for powers such as [[Animalism#Quell the Beast|Quell the Beast]]. <ref>[[Vampire: The Masquerade Corebook]], page 246</ref> 
-**Also used to touch warded objects when affected. <ref>[[Vampire: The Masquerade Corebook]], page 275</ref> 
-**Part of the process for [[Thin-blood Alchemy#Profane Hieros Gamos|Profane Hieros Gamos]].<ref>[[Vampire: The Masquerade Corebook]], page 286</ref>
-*Stamina + [[Animalism]]
-**To imbue an animal with a power such as [[Animalism#Enduring Beasts|Enduring Beasts]]. <ref>[[Vampire: The Masquerade Corebook]], page 259</ref> 
-*Stamina + [[Alchemy]]
-**The distillation roll of Athanor Corporis. <ref>[[Vampire: The Masquerade Corebook]], page 284</ref>
-*Stamina + [[Survival]]
-**Resistance roll such as with [[Thin-blood Alchemy#Envelop|Envelop]]. <ref>[[Vampire: The Masquerade Corebook]], page 285</ref>
-
-{{GameConceptsNavbox}}
-==References==
+* Stamina + [[Stealth]]
+** Remain motionless in bushes waiting with each success allowing them to maintain this for one hour.
+* Stamina + [[Athletics]]
+** Outrun pursuers.
+** Long distance swimming.
+* Stamina + [[Strength]]
+** Used to survive blood loss after a harmful drink.
+* Stamina + [[Composure]]
+** Consume food or drink for up to an hour and then make it outside or to a bathroom in time.
+* Stamina + [[Resolve]]
+** To keep moving after an hour of extreme cold (-30°C or below).
 
 [[Category: Attributes]]
 [[Category: Physical]]
 [[Category: Index]]
 
-<references />
+===Social===
+The Social Attributes reflect how easily the character can communicate with others to achieve their goals. Through deception or charisma, some battles are easier won through words than combat. These attributes reflect that by determining how their interactions are shaped through their ability to charm, persuade and motivate others to help them; though it is not always as wholesome as it may seem.
 
-===[[Social]]===
-The Social Attributes reflect how easily the character can communicate with vampires and mortals alike to achieve their goals. Through deception or charisma, some battles are easier won through words than combat. These attributes reflect that by determining how their interactions are shaped through their ability to charm, persuade and motivate others to help them; though it is not always as wholesome as it may seem.
+'''[[Charisma]]:''' Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on its own.
 
-'''[[Charisma]]:''' Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on it's own. <ref>[[Vampire: The Masquerade Corebook]], page 179</ref>
+Charisma determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on its own.
 
-Charisma determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on it's own.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 156</ref> 
-
-''Refer to: [[Merits and Flaws#Looks|Looks Merits.]]''  
 ==Dot values==
-● They speak clearly but few people tend to listen. 
+● They speak clearly but few people tend to listen.
 
-● ● Generally likeable even if they are undead and may even have friends. 
+● ● Generally likeable and may even have friends.
 
-● ● ● People trust them and they make friends easily. 
+● ● ● People trust them and they make friends easily.
 
-● ● ● ● They possess significant personal magnetism and have an easy time drawing in followers. 
+● ● ● ● They possess significant personal magnetism and have an easy time drawing in followers.
 
-● ● ● ● ● They could lead a city in a rebellion if they wanted to.<ref name=":0" /> 
+● ● ● ● ● They could lead a city in a rebellion if they wanted to.
+
 ==Example pools==
-
-* Charisma + [[Dexterity]]
-** Faking sex per [[Humanity]] rules. <ref>[[Vampire: The Masquerade Corebook]], page 237</ref>
 * Charisma + [[Animal Ken]]
-** Used with [[Animalism]] powers such as [[Animalism#Bond Famulus|Bond Famulus]]. <ref>[[Vampire: The Masquerade Corebook]], page 245</ref>
-* Charisma + [[Dominate]]
-** Used with Dominate powers such as [[Dominate#Cloud Memory|Cloud Memory]]. <ref>[[Vampire: The Masquerade Corebook]], page 256</ref>
-* Charisma + [[Presence]]
-** Used with Presence powers such as [[Presence#Dread Gaze|Dread Gaze.]]<ref>[[Vampire: The Masquerade Corebook]], page 267</ref>
+** Used with animal-related abilities.
 * Charisma + [[Performance]]
-** Giving a speech to a council. <ref>[[Vampire: The Masquerade Corebook]], page 299</ref> 
-** Or have a rap battle using stage presence instead of rhyming. <ref>[[Vampire: The Masquerade Corebook]], page 305</ref>
+** Giving a speech to a council.
+** Or have a rap battle using stage presence instead of rhyming.
 * Charisma + [[Subterfuge]]
-** Attempting to convince others into [[Blood Bond|Blood Bo]]<nowiki/>[[Blood Bond|nd]]<nowiki/>s. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref> 
-** Feeding as a <nowiki/>[[Predator types#Siren|Siren]]. <ref>[[Vampire: The Masquerade Corebook]], page 308</ref> 
-** Used for fast-talking and conning others.<nowiki/> <ref>[[Vampire: The Masquerade Corebook]], page 413</ref>
-* Charisma + [[Insight|Insig]]<nowiki/>[[Insight|ht]]
-** Play into their rivals desires. <ref>[[Vampire: The Masquerade Corebook]], page 305</ref> 
-** Used for carousing to influence others. <ref>[[Vampire: The Masquerade Corebook]], page 412</ref>
-{{GameConceptsNavbox}}
-
-==References==
+** Used for fast-talking and conning others.
+* Charisma + [[Insight]]
+** Play into their rivals desires.
+** Used for carousing to influence others.
 
 [[Category: Attributes]]
 [[Category: Social]]
@@ -203,421 +156,254 @@ Charisma determines the character's natural appeal, charm and grace. With this a
 
 '''[[Manipulation]]:''' Showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are.
 
-Manipulation showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 156</ref> 
+Manipulation showcases how skilled the character is at being an effective liar, their ability to twist others to a winning point of view, and how deceptive they are.
+
 ==Dot values==
-● They can convince people to do what they want as long as they remain honest. 
+● They can convince people to do what they want as long as they remain honest.
 
-● ● Able to decieve the weak willed and simple minded. 
+● ● Able to deceive the weak willed and simple minded.
 
-● ● ● They never have to pay full price for anything. 
+● ● ● They never have to pay full price for anything.
 
-● ● ● ● They could be a cult leader or a politician. 
+● ● ● ● They could be a cult leader or a politician.
 
-● ● ● ● ● They could convince the Prince to invest in desert property. <ref name=":1" /> 
+● ● ● ● ● They could convince people of utter nonsense.
+
 ==Example pools==
-
 * Manipulation + [[Etiquette]]
-** Used in a debate. <ref>[[Vampire: The Masquerade Corebook]], page 124</ref> 
-** Gossip and undermine a rival rather than engaging them in public display. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 305</ref>
+** Used in a debate.
+** Gossip and undermine a rival rather than engaging them in public display.
 * Manipulation + [[Intimidation]]
-** To give veiled threats. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 128</ref> 
-** Violent interrogation. <ref name=":3">[[Vampire: The Masquerade Corebook]], page 413</ref> 
-** Subtle coercion that uses a percieved threat. <ref name=":4">[[Vampire: The Masquerade Corebook]], page 414</ref>
+** To give veiled threats.
+** Violent interrogation.
+** Subtle coercion that uses a perceived threat.
 * Manipulation + [[Animal Ken]]
-** Distract an animal. <ref name=":0" />
+** Distract an animal.
 * Manipulation + [[Finance]]
-** Convince the the clerk they are a IRS auditor. <ref>[[Vampire: The Masquerade Corebook]], page 129</ref>
+** Convince the clerk they are an IRS auditor.
 * Manipulation + [[Persuasion]]
-** Whose story will the Prince believe? <ref>[[Vampire: The Masquerade Corebook]], page 129</ref> 
-** Convince someone the other person is lying. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref> 
-** Taking blood through consent, under the guise of medical work or kink.<ref name=":5">[[Vampire: The Masquerade Corebook]], page 307</ref> 
-** Feeding from a subculture they have high status in. <ref>[[Vampire: The Masquerade Corebook]], page 308</ref>
+** Whose story will be believed?
+** Convince someone the other person is lying.
+** Taking something through consent, under the guise of medical work or kink.
+** Feeding from a subculture they have high status in.
 * Manipulation + [[Insight]]
-** Change the [[Resonance]] of a victim once a month. <ref>[[Vampire: The Masquerade Corebook]], page 190</ref>
-* Manipulation + [[Animalism]]
-** Used in Animalism powers such as [[Animalism#Feral Whispers|Feral Whispers]]. <ref>[[Vampire: The Masquerade Corebook]], page 246</ref>
+** Change the resonance of a victim once a month.
 * Manipulation + [[Performance]]
-** Used to impersonate the victim's manners in [[Auspex#Possession|Possession]]. <ref>[[Vampire: The Masquerade Corebook]], page 251</ref> 
-** Or with [[Obfuscate]] [[Obfuscate#Imposter's Guide|Imposter's Guide]]. <ref>[[Vampire: The Masquerade Corebook]], page 263</ref>
-* Manipulation + [[Dominate]]
-** Used in Dominate powers such as [[Dominate#Mesmerize|Mesmerize]].<ref>[[Vampire: The Masquerade Corebook]], page 256</ref>
-* Manipluation + [[Potence]]
-** Used in Potence powers such as [[Potence#Spark of Rage|Spark of Rage]]. <ref>[[Vampire: The Masquerade Corebook]], page 265</ref>
-* Manipulation + [[Presence]]
-** Used in Presence powers such as [[Presence#Awe|Awe]]. <ref>[[Vampire: The Masquerade Corebook]], page 267</ref>
-* Manipulation + [[Alchemy]]
-** Used in the distillation method Calcinatio. <ref>[[Vampire: The Masquerade Corebook]], page 284</ref>
+** Used to impersonate the victim's manners.
 * Manipulation + [[Politics]]
-** Convince the city that other designs fit their plans. <ref name=":2" />
+** Convince the city that other designs fit their plans.
 * Manipulation + [[Insight]]
-** Play on their rival's vanities and desires while involving third parties. <ref name=":2" /> 
-** Peaceful interrogation. <ref name=":3" />
+** Play on their rival's vanities and desires while involving third parties.
+** Peaceful interrogation.
 * Manipulation + [[Academics]]
-** Don't play chess to win; play to convince the Ventrue that their ruthless enough for a promotion.<ref name=":2" />
+** Don't play chess to win; play to convince someone that they're ruthless enough for a promotion.
 * Manipulation + [[Subterfuge]]
-** Taking blood covertly from their mortal friends and family. <ref name=":5" /> 
-** Feed from their fans or an adoring crowd.<ref name=":5" /> 
-** Conning someone or impersonating an official. <ref>[[Vampire: The Masquerade Corebook]], page 412</ref>
+** Taking something covertly from their friends and family.
+** Feed from their fans or an adoring crowd.
+** Conning someone or impersonating an official.
 * Manipulation + [[Athletics]]
-** Picking someone up at a gym. <ref name=":4" />
-{{GameConceptsNavbox}}
-
-==References==
+** Picking someone up at a gym.
 
 [[Category: Attributes]]
 [[Category: Social]]
 [[Category: Index]]
 
-'''[[Composure]]:''' Reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights. 
+'''[[Composure]]:''' Reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights.
 
-Composure reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 156</ref> 
+Composure reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights.
 
-Willpower is determined by the value of Composure + [[Resolve]]. <ref>[[Vampire: The Masquerade Corebook]], page 157</ref>
+Willpower is determined by the value of Composure + [[Resolve]].
 
-At the beginning of a session, characters heal Superficial Willpower damage up to the value of whichever is highest between [[Composure]] and Resolve. <ref>[[Vampire: The Masquerade Corebook]], page 127</ref>
+At the beginning of a session, characters heal Superficial Willpower damage up to the value of whichever is highest between [[Composure]] and Resolve.
+
 ==Dot values==
-● The slightest provocations can send them into a rage. 
+● The slightest provocations can send them into a rage.
 
-● ● They can subdue their predatory nature in most non-hostile enviroments. 
+● ● They can subdue their basic instincts in most non-hostile environments.
 
-● ● ● Others look to them for guidance when blood hits the fan. 
+● ● ● Others look to them for guidance when blood hits the fan.
 
-● ● ● ● They can manage their Beast to some extent and bluff their way through cards with ease. 
+● ● ● ● They can manage their instincts to some extent and bluff their way through cards with ease.
 
-● ● ● ● ● The Beast is their pet. <ref name=":0" /> 
+● ● ● ● ● Their instincts are their pet.
+
 ==Example pools==
-
 * Composure + [[Etiquette]]
-** To divert discussion and break off conflict. <ref>[[Vampire: The Masquerade Corebook]], page 130</ref> 
-** Increase their social positions at Elysium while dealing with a rival. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref> 
-** Finding the perfect dance at a ball. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 414</ref>
+** To divert discussion and break off conflict.
+** Increase their social positions while dealing with a rival.
+** Finding the perfect dance at a ball.
 * Composure + [[Stamina]]
-** To consume food or drink without [[Blush of Life]] and keep it down for one hour. <ref>[[Vampire: The Masquerade Corebook]], page 218</ref> 
-** The resistance pool for [[Blood Sorcery]] powers such as [[Blood Sorcery#Extinguish Vitae|Extinguish Vitae]]. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref> 
-** A non-[[Thin-blood|Duskborn]] concealing themselves with [[Blush of Life]] active against an XScope. <ref>[[Vampire: The Masquerade Corebook]], page 379</ref>
+** To consume food or drink and keep it down for one hour.
 * Composure + [[Subterfuge]]
-** The resistance pool for [[Animalism]] powers such as [[Animalism#Sense the Beast|Sense the Beast]].<ref>[[Vampire: The Masquerade Corebook]], page 245</ref> 
-** Resistance pool for [[Auspex]] powers such as [[Auspex#Scry the Soul|Scry the Soul]]. <ref>[[Vampire: The Masquerade Corebook]], page 250</ref> 
-** Fake a direct sip during a potential [[Blood Bond]]. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 310</ref>
+** The resistance pool for supernatural abilities.
+** Resistance pool for mind-reading abilities.
+** Fake a direct sip during a potential bonding.
 * Composure + [[Resolve]]
-** Used to resist many Disciplines. <ref>[[Vampire: The Masquerade Corebook]], page 118</ref> 
-** The resistance pool for [[Animalism]] powers such as [[Animalism#Drawing out the Beast|Drawing out the Beast]]. <ref>[[Vampire: The Masquerade Corebook]], page 247</ref> 
-** The resistance pool for [[Presence]] powers such as [[Presence#Dread Gaze|Dread Gaze]].<ref name=":3">[[Vampire: The Masquerade Corebook]], page 267</ref> 
-** Resisting violent interrogation. <ref name=":4">[[Vampire: The Masquerade Corebook]], page 413</ref> 
-** Resisting subtle intimidation and physical intimidation. <ref name=":1" />
+** Used to resist many supernatural effects.
+** The resistance pool for mind control abilities.
+** Resisting violent interrogation.
+** Resisting subtle intimidation and physical intimidation.
 * Composure + [[Intelligence]]
-** The resistance pool for [[Dominate]] powers such as [[Dominate#Dementation|Dementation]]. <ref>[[Vampire: The Masquerade Corebook]], page 256</ref> 
-** The resistance pool for [[Potence]] powers such as [[Potence#Spark of Rage|Spark of Rage]]. <ref>[[Vampire: The Masquerade Corebook]], page 265</ref> 
-** The resistance pool for [[Presence]] powers such as [[Presence#Awe|Awe]]. <ref name=":3" />
+** The resistance pool for mind control abilities.
+** The resistance pool for rage-inducing abilities.
+** The resistance pool for awe-inspiring abilities.
 * Composure + [[Wits]]
-** The resistance pool for [[Presence]] powers such as [[Presence#Entrancement|Entrancement]]. <ref>[[Vampire: The Masquerade Corebook]], page 268</ref> 
-** Resisting peaceful interrogation. <ref name=":4" />
-* Composure + [[Occult]] or [[Fortitude]]
-** The resistance pool for [[Blood Sorcery]] powers such as [[Blood Sorcery#Cauldron of Blood|Cauldron of Blood]]. <ref>[[Vampire: The Masquerade Corebook]], page 274</ref>
+** The resistance pool for entrancement abilities.
+** Resisting peaceful interrogation.
 * Composure + [[Occult]]
-** The resistance pool for [[Blood Sorcery]] powers such as [[Blood Sorcery#Truth of Blood|Truth of Blood]]. <ref>[[Vampire: The Masquerade Corebook]], page 277</ref>
+** The resistance pool for supernatural abilities.
 * Composure + [[Larceny]]
-** Extracting a relic from a laser field. <ref>[[Vampire: The Masquerade Corebook]], page 294</ref>
+** Extracting a relic from a laser field.
 * Composure + [[Firearms]]
-** Standard guns blazing firefight. <ref>[[Vampire: The Masquerade Corebook]], page 301</ref>
+** Standard guns blazing firefight.
 * Composure + [[Animal Ken]]
-** Find and catch an animal to feed from. <ref>[[Vampire: The Masquerade Corebook]], page 307</ref>
+** Find and catch an animal.
 * Composure + [[Insight]]
-** Avoid the [[Blood Bond]] by being careful. <ref name=":2" /> 
-** Detecting if someone is attempting to fast talk you. <ref name=":4" />
+** Avoid bonding by being careful.
+** Detecting if someone is attempting to fast talk you.
 * Composure + [[Survival]]
-** Remove the flaming materials from a molotov cocktail. <ref>[[Vampire: The Masquerade Corebook]], page 380</ref>
-{{GameConceptsNavbox}}
-
-==References==
+** Remove the flaming materials from a molotov cocktail.
 
 [[Category: Attributes]]
 [[Category: Social]]
 [[Category: Index]]
 
-=== [[Mental]]===
+===Mental===
 The Mental Attributes represent the character's natural intuition, the ability to learn quickly and react quickly with thoughts rather than their bodies. It also represents their determination and dedication to accomplishing something.
 
 '''[[Intelligence]]:''' Represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read.
 
-Intelligence represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 156</ref> 
+Intelligence represents the character's ability to gather knowledge through research or reason as well as apply logic to an ongoing problem. They have an easier time recalling information they have gathered before and can analyze information from the world around them or the books they've read.
+
 ==Dot values==
-● They can read and write, but some terms confuse them. 
+● They can read and write, but some terms confuse them.
 
-● ● They are smart enough to realize their own limitations. 
+● ● They are smart enough to realize their own limitations.
 
-● ● ● They are able to piece together clues without difficulty. 
+● ● ● They are able to piece together clues without difficulty.
 
-● ● ● ● Likely to be consulted by members of the [[Tremere]] for their intelligence. 
+● ● ● ● Likely to be consulted for their intelligence.
 
-● ● ● ● ● A genius. <ref name=":0" /> 
+● ● ● ● ● A genius.
+
 ==Example pools==
-
 * Intelligence + [[Medicine]]
-** Convert [[Health|Aggravated damage]] to Superficial damage for mortals. <ref>[[Vampire: The Masquerade Corebook]], page 127</ref> 
-** Spotting a disease in a human. <ref name=":1">[[Vampire: The Masquerade Corebook]], page 408</ref>
+** Convert aggravated damage to superficial damage.
+** Spotting a disease in a human.
 * Intelligence + [[Larceny]]
-** Gather information about an alarm system. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 129</ref> 
-** Getting past a roof alarm. <ref>[[Vampire: The Masquerade Corebook]], page 294</ref> 
-** Blowing a safe or breaching wall. <ref name=":1" />
+** Gather information about an alarm system.
+** Getting past a roof alarm.
+** Blowing a safe or breaching wall.
 * Intelligence + [[Occult]]
-** Reading a book that requires translation in the process. <ref name=":2" /> 
-** Impress a Tremere with their knowledge. <ref>[[Vampire: The Masquerade Corebook]], page 294</ref>
+** Reading a book that requires translation in the process.
+** Impress someone with their knowledge.
 * Intelligence + [[Linguistics]]
-** Decipher a papyrus. <ref>[[Vampire: The Masquerade Corebook]], page 179</ref>
+** Decipher a papyrus.
 * Intelligence + [[Investigation]]
-** Check a crime scene for clues. <ref>[[Vampire: The Masquerade Corebook]], page 205</ref>
+** Check a crime scene for clues.
 * Intelligence + [[Resolve]]
-** To resist [[Blood Bond|Blood Bonds]]. <ref>[[Vampire: The Masquerade Corebook]], page 234</ref> 
-** Used to resist [[Dominate]] powers such as Cloud Memory. <ref name=":3">[[Vampire: The Masquerade Corebook]], page 256</ref> 
-** Used to resist [[Potence]] powers such as Spark of Rage. <ref>[[Vampire: The Masquerade Corebook]], page 265</ref>
-* Intelligence + [[Auspex]]
-** Used for many Auspex powers such as Spirit's Touch and Scry the Soul. <ref>[[Vampire: The Masquerade Corebook]], page 250</ref>
-* Intelligence + [[Composure]]
-** Used to resist Dominate powers such as Dementation. <ref name=":3" /> 
-** Used to resist [[Presence]] powers such as Awe. <ref>[[Vampire: The Masquerade Corebook]], page 267</ref>
-* Intelligence + [[Obfuscate]]
-** Used to activate some Obfuscate powers such as Conceal. <ref>[[Vampire: The Masquerade Corebook]], page 262</ref>
-* Intelligence + [[Blood Sorcery]]
-** Used to activate Blood Sorcery such as Extinguish Vitae. <ref>[[Vampire: The Masquerade Corebook]], page 273</ref> 
-** Also used to activate [[Blood Sorcery Rituals]]. <ref>[[Vampire: The Masquerade Coteries of New York]], page 275</ref>
+** To resist bonds.
+** Used to resist mind control abilities.
+** Used to resist rage-inducing abilities.
 * Intelligence + [[Survival]]
-** Following tracks. <ref>[[Vampire: The Masquerade Corebook]], page 277</ref> 
-** Burying a body outside undetected. <ref name=":4">[[Vampire: The Masquerade Corebook]], page 407</ref>
-* Intelligence + [[Thin-blood Alchemy|Alchemy]]
-** Used for the Fixatio method. <ref>[[Vampire: The Masquerade Corebook]], page 284</ref>
+** Following tracks.
+** Burying a body outside undetected.
 * Intelligence + [[Craft]]
-** Win an architectural contest. <ref>[[Vampire: The Masquerade Corebook]], page 304</ref> 
-** Putting up Kindred Iconography posters, paintings or graffiti.<ref name=":5">[[Vampire: The Masquerade Corebook]], page 323</ref> 
-** Building false compartments or secret chambers. <ref name=":4" />
+** Win an architectural contest.
+** Building false compartments or secret chambers.
 * Intelligence + [[Academics]]
-** Playing chess. <ref name=":6">[[Vampire: The Masquerade Corebook]], page 305</ref> 
-** Building false compartments or secret chambers and relying on a team. <ref name=":1" />
+** Playing chess.
+** Building false compartments or secret chambers and relying on a team.
 * Intelligence + [[Persuasion]]
-** Convince the Prince that their opponent is lying through research instead of smooth talking. <ref name=":6" />
+** Convince someone that their opponent is lying through research instead of smooth talking.
 * Intelligence + [[Streetwise]]
-** Acquiring bloodbags through the [[Predator types#Bagger|Bagger Predator Type]]. <ref name=":12">[[Vampire: The Masquerade Corebook]], page 307</ref>
-** Spotting or otherwise understanding Kindred Iconography. <ref name=":5" /> 
-** Urban camouflage. <ref name=":4" />
+** Urban camouflage.
 * Intelligence + [[Awareness]]
-** For hunters to spot vampires reliably with a chaoscope. <ref>[[Vampire: The Masquerade Corebook]], page 378</ref>
+** For hunters to spot supernatural creatures reliably.
 * Intelligence + [[Technology]]
-** Hacking into a computer system. <ref name=":4" /> 
-** Used for old school wire and clock parts bombs. <ref name=":1" /> 
-** Setting a car bomb. <ref name=":1" />
+** Hacking into a computer system.
+** Used for old school wire and clock parts bombs.
+** Setting a car bomb.
 * Intelligence + [[Science]]
-** Building explosive. <ref name=":1" />
+** Building explosives.
 * Intelligence + [[Firearms]]
-** Preparedness roll of having bought a silencer. <ref name=":1" />
+** Preparedness roll of having bought a silencer.
 * Intelligence + [[Insight]]
-** Prepare an oration for a crowd. <ref>[[Vampire: The Masquerade Corebook]], page 414</ref>
-{{GameConceptsNavbox}}
-
-==References==
+** Prepare an oration for a crowd.
 
 [[Category: Attributes]]
 [[Category: Mental]]
 [[Category: Index]]
 
-'''[[Wits]]:''' Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback to that snobby harpy the entire time.
+'''[[Wits]]:''' Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback the entire time.
 
-Wits reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback to that snobby harpy the entire time. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 156-157</ref> 
+Wits reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback the entire time.
+
 ==Dot values==
-● They get to the point eventually, but need to be explained to. 
+● They get to the point eventually, but need to be explained to.
 
-● ● They can usually bet the odds in a game of poker or activate emergency breaks on time. 
+● ● They can usually bet the odds in a game of poker or activate emergency breaks on time.
 
-● ● ● They can analyze a situation quickly and get out of the situation with the best route. 
+● ● ● They can analyze a situation quickly and get out of the situation with the best route.
 
-● ● ● ● They are never caught on the back foot and find a comeback quickly. 
+● ● ● ● They are never caught on the back foot and find a comeback quickly.
 
-● ● ● ● ● They think and respond faster than most people can understand. <ref name=":0" /> 
+● ● ● ● ● They think and respond faster than most people can understand.
+
 ==Example pools==
-
-*
-{{GameConceptsNavbox}}
-
-==References==
+* Wits + [[Awareness]]
+** Notice hidden things, in the moment.
+* Wits + [[Investigation]]
+** Noticing clues.
+* Wits + [[Technology]]
+** Operating drones.
+* Wits + [[Streetwise]]
+** Finding a GPS tracker on a vehicle.
+* Wits + [[Survival]]
+** Tracking by following evidence like footprints.
 
 [[Category: Attributes]]
 [[Category: Mental]]
 [[Category: Index]]
 
-'''[[Resolve]]:''' Measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.  
-Resolve measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration. 
+'''[[Resolve]]:''' Measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.
 
-[[Willpower]] is determined by the value of [[Composure]] + Resolve.<ref>[[Vampire: The Masquerade Corebook]], page 157</ref>
+Resolve measures the raw determination of a character and how strong their focus truly is. This Attribute powers the all-night stakeouts. Allowing the character to create a mental block from any distractions, showcasing their mental fortitude and concentration.
 
-At the beginning of a session, characters heal Superficial Willpower damage up to the value of whichever is highest between [[Composure]] and Resolve. <ref name=":0">[[Vampire: The Masquerade Corebook]], page 127</ref> 
+[[Willpower]] is determined by the value of [[Composure]] + Resolve.
+
+At the beginning of a session, characters heal Superficial Willpower damage up to the value of whichever is highest between [[Composure]] and Resolve.
+
 ==Dot values==
-● They have minimal attention for anything that isn't pressing. 
+● They have minimal attention for anything that isn't pressing.
 
-● ● They can settle in for the short long haul. 
+● ● They can settle in for the short long haul.
 
-● ● ● Distracting them takes longer than most people are willing to attempt. 
+● ● ● Distracting them takes longer than most people are willing to attempt.
 
-● ● ● ● They can brute force a way to an answer. 
+● ● ● ● They can brute force a way to an answer.
 
-● ● ● ● ● They can think in a gunfight or watch the door and clean up whatever mess follows impeccably. <ref name=":0" /> 
+● ● ● ● ● They can think in a gunfight or watch the door and clean up whatever mess follows impeccably.
+
 ==Example pools==
-
 * Resolve + [[Composure]]
-** Used to resist many Disciplines. <ref>[[Vampire: The Masquerade Corebook]], page 118</ref>
-{{GameConceptsNavbox}}
-
-==References==
+** Used to resist many supernatural effects.
+* Resolve + [[Intelligence]]
+** Resist a monster's command/compel action.
+* Resolve + [[Stamina]]
+** Holding breath.
+** Be able to move after an hour of extreme cold.
+* Resolve + [[Academics]]
+** Researching through books, ledgers and journals.
+* Resolve + [[Awareness]]
+** Researching by digging through physical materials.
+** Surveillance.
+** Pick out key details out of a cloud of distractions, e.g. notice small blemish on large painting.
+* Resolve + [[Investigation]]
+** Questioning people.
+* Resolve + [[Larceny]]
+** Cleaning up a murder scene.
 
 [[Category: Attributes]]
 [[Category: Mental]]
-[[Category: Index]]
-
-From these players can derive a few more traits.
-
-*'''[[Health]]:''' Stamina+3
-==Overview==
-A character's health is derived from their Stamina + 3. In general, it is received during physical conflicts with a contest being made. The margin of the winner's roll against the losers is added to the loser's health tracker as damage. If the winner is using a weapon with a modifier, that is added to the total damage with the margin. There are two different types of damage that can fill a character's health tracker, Superficial damage and Aggravated damage.
-
-When tracking damage to their health tracker, Superficial damage is tracked with an "/" on one of the boxes per point taken, with Aggravated tracked using an "X" in each box per point taken. If a character manages to fill their entire tracker, either with one type or a mix of the two, they are now Impaired. Impairment causes a penalty of -2 from Physical pools. Following this impairment, any point of damage they take will convert any Superficial into Aggravated on a one-for-one basis. When a character's tracker is filled entirely with Aggravated damage they are out of the combat, if they are mortal they are either dead or comatose and if they are Kindred they fall into [[Torpor]].
-
-===Superficial damage===
-Superficial damage is bruising and small cuts, but nothing that is life-threatening. Kicking, punching, and any non-lethal weapon do Superficial damage to humans. Standard weapons do Superficial damage to vampires, this includes slashing, stabbing, and piercing weapons. In general, this type of damage is halved before adding it to the tracker and this includes when converting Superficial to Aggravated.
-
-===Aggravated damage===
-Aggravated damage is broken bones, serious wounds, and other life-threatening injuries. Sharp and piercing weapons do Aggravated damage to humans. Generally, only fire, sunlight and the claws or teeth of other supernatural creatures do Aggravated damage to Kindred.
-
-===Healing damage===
-Mortals may remove a number of Superficial damage equal to their Stamina rating at the beginning of a session. With Aggravated damage mortals can have their damage converted from Aggravated to Superficial with an Intelligence + Medicine test. The maximum amount able to be converted is equal to half of the character's Medicine rating rounded up with the healing happening over the course of the night. A mortal being hospitalized removes the need for rolls but takes the amount of Aggravated damage received as the total number of weeks required to heal fully. <ref>[[Vampire: The Masquerade Corebook]], page 126-127</ref>
-
-When healing Superficial damage Kindred can remove a number of Superficial damage levels from their Health tracker by making one [[Rouse Check]] per turn, with the number removed dependent on their [[Blood Potency]]. With Aggravated damage, Kindred may mend one level of Aggravated damage by making three Rouse Checks at the beginning of a session in addition to the wake-up Rouse Check. This will only heal one point of damage and will remove any Crippling Injury or similar impairments, this can only be done once per night.<ref>[[Vampire: The Masquerade Corebook]], page 218-219</ref>
-
-[[Category:Index]]
-{{Template:GameConceptsNavbox}}
-==References==
-
-*'''[[Willpower]]:''' Composure + Resolve <ref>[[Vampire: The Masquerade Corebook]], page 157</ref>
-==Overview==
-Willpower is a tracker, with both a maximum rating and a temporary amount of points to be used. It represents the character's confidence and determination to accomplish a task and is built from Composure + Resolve. It is not possible to purchase additional points of Willpower alone, instead, it is only increased by increasing either one of those stats.
-
-===Spending Willpower===
-Players may spend their character's Willpower in a variety of ways and when doing so, must mark the tracker with one Superficial damage. Should the character hit Willpower 0, they are left Impaired and receives a -2 dice penalty for Social and Mental tests. Superficial damage is tracked with an "/" on one of the boxes per point taken, with Aggravated tracked using an "X" in each box per point taken.
-* They may use Willpower to reroll up to three dice (the dice cannot be Hunger dice) in any pool, except when the rules specifically exclude Willpower such as tracker rolls ([[Humanity#Remorse|Remorse]] tests, [[Frenzy]] tests), or One-Roll Conflict), etc.
-* Willpower may be spent to take control of their character for one turn during a frenzy or when under the influence of certain [[Disciplines]].
-* To perform minor movements, such as movement of a finger while staked.
-* To ignore [[Health]] damage penalties, including Impairment, for one turn.
-
-===Recovering Superficial Willpower damage===
-* Characters may recover their Superficial Willpower damage at the beginning of a session equal to either their Composure or Resolve (whichever is highest between the two). Unless, the session ends on a cliffhanger where the dwindling supply of Willpower provides a strong dramatic tension.
-* At the [[Storyteller|Storyteller's]] discretion, once per session, a character who acts to fulfill their desire may immediately recover 1 point of damage.
-* At the Storyteller's discretion, a character who plays out a [[Hunger system#Messy Critical|messy critical]], [[Hunger system#Bestial Failure|bestial failure]], [[Frenzy|frenzy]], or [[Compulsion]] in a dramatic way can recover one or more Superficial Willpower damage.
-
-===Recovering Aggravated Willpower damage===
-* At the Storyteller's discretion, a character can recover one or more points of Aggravated Willpower damage when they have acted to significantly benefit a Touchstone, or by following a Conviction to their determent.
-* Characters can heal 1 point of Aggravated damage at the end of a session when the character has worked towards their Ambition.<ref>[[Vampire: The Masquerade Corebook]], page 158-159</ref>
-
-[[Category:Index]]
-{{Template:GameConceptsNavbox}}
-
-==References==
-
-*'''[[Humanity]]:''' The base Humanity for a neonate and lower is 7, not including any changes from their Predator types. It is possible for a fresh embrace to begin at Humanity 8. <ref>[[Vampire: The Masquerade Corebook]], page 149</ref> 
-The Humanity score represents how close a Kindred remains to their human nature, to specific people vital to them, and how easily they slip away from human concerns and instead towards the whims of the [[beast|Beast]].
-
-__TOC__
-
-==Overview==
-Most vampires will begin to drop in Humanity over time with neonates and ancillas sitting around Humanity 5.<ref name=":2">[[Vampire: The Masquerade Corebook]], page 238</ref> A vampire player character will start at Humanity 7 unless particular circumstances alter this such as [[predator types|Predator types]]. Those that are freshly [[Embrace|Embraced]] will begin at Humanity 8. Kindred are monsters, regardless of their rating and even the most saintly and highest of Humanity vampires can be morally corrupt. As their Humanity rating changes over the course of time, it's important to keep track of the changes that will occur. As their rating deteriorates over time, their connections alter and soon they might find themselves holding the corpse of a human they had originally never intended to kill.<ref name=":0">[[Vampire: The Masquerade Corebook]], page 236</ref>
-
-==The Humanity Track==
-[[File:Humanity 7 tracker.png|thumb|A Humanity 7 character's tracker]]
-The Humanity tracker contains 10 spaces, with the Humanity rating filled from left to right.
-
-=== Stains ===
-Stains are what damage Humanity and are caused by significant actions. Those actions may include embracing a new childe, harming a touchstone, breaching their own convictions or the chronicle tenets. Tenet Stains can be negated by a character's [[Conviction]] if it was broken in alignment of their Conviction, reducing the amount of Stains gained by one or more. The amount of Stains earned can vary from clear violations giving only 1 and with truly monstrous or egregious breaks netting 2 or more. Fill the amount of Stains exceeds the amount of empty spaces in the tracker ''degeneration'' is triggered.<ref name=":3" />
-[[File:Humanity 7 tracker 2 stains.png|thumb|A Humanity 7 character's tracker with two Stains]]
-When taking Stains, the tracker fills in from right to left with slash marks to differentiate the Stains from Humanity.
-
-=== Remorse ===
-When a character has Stains in their tracker at the end of a session they will make a Remorse test. The Remorse pool is composed of how many empty spaces are left between the Humanity and the amount of Stains taken. In the case of a Humanity 7 character with only one Stain, they'd roll two dice. However, in cases where there are no spaces left, such as a Humanity 7 character with three Stains, they'd still roll 1 die. Any amount of successes means that the character has felt enough guilt, shame and remorse than their Humanity will not drop. If they do not any successes, the beast has won and they must drop 1 Humanity. Once the remorse test is completed, all Stains are removed.<ref name=":3" />
-
-=== Degeneration ===
-In cases where they have taken more Stains than they have room for, the character becomes ''impaired''. This type of impairment removes two dice from all possible pools as they are racked with regret. In addition to this, they take one point of Aggravated [[Willpower]] damage for each Stain that did not fit onto the tracker. During this time, the character is unable of further intentional Tenet violations and upon being forced to commit one must test for a terror [[frenzy]] with Difficulty 4. This impairment will remain until they test for Remorse at the end of the session, alternatively they may choose to snap out of it by automatically dropping by one Humanity point and removing all Stains.<ref name=":3" />
-
-==Ratings==
-===Humanity 10===
-Humans with this score are rare, making vampires with this score even rarer.
-* [[Blush of Life]] is not needed to blend into mortal society as they appear as a pale and healthy mortal.
-* They heal [[Health#Superficial Damage|Superficial Damage]] as a mortal in addition to standard healing.
-* Food is able to be tasted, eaten, and digested as a human.
-* The ability to stay awake during the day as if human, though they still must sleep at some point.
-* Sunlight damage is halved.<ref name=":0" />
-===Humanity 9===
-Kindred with this rating tend to be more humane than most humans, acting and thinking as mortals would in the same unconscious way as a method actor.
-* Without Blush of Life they appear ill.
-* They heal Superficial Damage as a mortal in addition to standard healing.
-* Taste, eat and digest rare or raw meat and many liquids.
-* Rise from day-sleep up to an hour before sunset and stay awake an hour after dawn.<ref name=":0" />
-''[[Torpor]] length: Three days<ref name=":4">[[Vampire: The Masquerade Corebook]], page 241</ref>''
-
-===Humanity 8===
-They are still able to comprehend and feel the pain from the anguish they cause.
-* Two dice are used for the Blush of Life checks, taking the highest result between the two.
-* With Blush of Life, they can digest and taste wine.
-* Rise from day-sleep an hour before sunset.<ref name=":1">[[Vampire: The Masquerade Corebook]], page 237</ref>
-''Torpor length: One week<ref name=":4" />''
-
-===Humanity 7===
-Kindred with this rating can pass for mortal, still subscribing to the strongest of social norms of viewing murder as wrong but have no qualms about going faster than the speed limit or dodging taxes.
-* The rules for Humanity 7 are mostly the same for other kindred, with their changes noted in each section below.
-* Blush of Life requires a Rouse Check.
-* Can fake sexual intercourse by winning a Dexterity + Charisma test versus the partner's Composure or Wits.
-* Without Blush of Life, food and drink make them vomit and must make a Composure + Stamina against Difficulty 3 to find a safe place to vomit.<ref name=":1" />
-''Torpor length: Two week<ref name=":4" />''
-
-===Humanity 6===
-Those at this level are not horrific monsters, but will still do what they need to survive regardless if they must kill someone for it.
-* Rules work similar to that above unless otherwise noted.
-* Take a one die penalty to the pool for faking sexual intercourse.
-* Even with Blush of Life, they must make a Composure + Stamina test against Difficulty 3 to keep food and drink down for one hour.<ref name=":1" />
-''Torpor length: One month<ref name=":4" />''
-
-===Humanity 5===
-At this level most Kindred only care for their [[Touchstone|Touchstones]], and may manifest some minor physical eeriness or malformation.
-* Rules work similar to that above unless otherwise noted.
-* Take a one die penalty in rolls to interact with mortals. This applies to most Social dice pools, including insight, persuasion, and when interacting with Touchstones, but not to intimidation, hunting or killing a human, and supernatural Subterfuge (Seduction). The penalty also applies to creating art or other humanities such as poetry.
-* Take a two dice penalty to the pool for faking sexual intercourse.<ref name=":2" />
-* ''Torpor length: One year<ref name=":4" />''
-*
-
-===Humanity 4===
-At this level Kindred might have accepted the inevitable downwards spiral, seeing killing as acceptable and other normal social taboos are acceptable. Physically they've begun to appear more deathly up to even appearing corpse-like.
-* Rules work similar to that above unless otherwise noted.
-* Take a two dice penalty to interact with mortals.
-* Even with Blush of Life, they can no longer keep food and drink down.<ref name=":2" />
-* ''Torpor length: One decade<ref name=":4" />''
-*
-===Humanity 3===
-Scrapping near the bottom they take the safe route, the pragmatic route, whatever it takes to keep them safe.
-* Rules work similar to that above unless otherwise noted.
-* Take a four dice penalty to interact with mortals.
-* They can no longer fake sexual intercourse.<ref name=":2" />
-* ''Torpor length: Five decades<ref name=":4" />''
-*
-===Humanity 2===
-With twisted hobbies that please only them, Kindred at this level have no care for others.
-* Rules work similar to that above unless otherwise noted.
-* Take a six dice penalty to interact with mortals, but if using Blush of Life the penalty becomes four dice.<ref name=":2" />
-* ''Torpor length: One century<ref name=":4" />''
-*
-===Humanity 1===
-Teetering on the edge, they only care for their survival with even their own desires becoming nonexistent.
-* Rules work similar to that above unless otherwise noted.
-* Take an eight dice penalty on rolls to interact with mortals, but if using Blush of Life the penalty becomes five dice.<ref name=":2" />
-* ''Torpor length: Five centuries<ref name=":4" />''
-*
-===Humanity 0===
-The Beast has taken control; leaving the character in a final Rötschreck Frenzy called Wassail with their Physical Attributes all buffed to 5. If they survive this final scene, they become a wight and are taken control of by the [[Storyteller]] as a [[SPC]].<ref name=":3">[[Vampire: The Masquerade Corebook]], page 239</ref><ref name=":4" />
-{{Template:GameConceptsNavbox}}
-[[Category:Index]]
-
-== References ==
-
+[[Category: Index]] 

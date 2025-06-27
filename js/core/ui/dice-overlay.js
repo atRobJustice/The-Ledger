@@ -6,7 +6,7 @@
 
 import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, getCharacterName, createWebhookModal } from "../../integrations/discord-integration.js";
 import { initControlBar } from "./control-bar.js";
-import { bloodPotency as bpData } from "../../data/blood_potency.js";
+import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { disciplines } from "../utils/disciplines.js";
 
 // New flag: track whether the most recent roll used Blood Surge
@@ -1561,7 +1561,7 @@ let bonusMsg = null;
     // -------------------------------------------------------------
     (async () => {
       try {
-        const module = await import('../../data/resonances.js');
+        const module = await import('../../data/vampire/resonances.js');
         window.__resonancesData = module.resonances;
       } catch (err) {
         console.error('Failed to load resonance data:', err);

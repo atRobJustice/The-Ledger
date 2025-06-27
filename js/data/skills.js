@@ -1,6 +1,6 @@
 export const skills = {
   overview: {
-    description: "Similar to Attributes, Skills are defined as follows. No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.",
+    description: "Similar to Attributes, Skills are defined as follows: No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.",
     distribution: {
       jackOfAllTrades: {
         name: "Jack of All Trades",
@@ -16,7 +16,7 @@ export const skills = {
       }
     },
     specialties: {
-      description: "If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Don't forget to add in the spec from the Predator type and remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill. If the character gains a specialty from the Predator type but has no dots in the Skill, the specialty can instead be converted to the first dot of one Skill."
+      description: "If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill."
     }
   },
   physical: {
@@ -25,30 +25,25 @@ export const skills = {
       description: "Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat and throwing an item or weapon is also Athletics. Athletics can be used in place of any Physical combat skill in a conflict roll, but they never land any hits.",
       dotValues: {
         1: "They were attentive in gym class",
-        2: "They are as fit as a mortal doing regular exercise",
-        3: "Could play professional sports at night",
-        4: "Immense parkour ability, why even turn into a bat?",
-        5: "They could take Olympic records and Kindred mistake their skill for Disciplines"
+        2: "They are as fit as someone doing regular exercise",
+        3: "Could play professional sports",
+        4: "Immense parkour ability",
+        5: "They could take Olympic records"
       },
       specialties: ["Acrobatics", "Archery", "Climbing", "Endurance", "Jumping", "Parkour", "Swimming", "Throwing"],
       examplePools: {
         dexterity: [
           "Dodge both close combat and ranged attacks",
           "Fleeing a situation",
-          "Used in Celerity powers, such a Fleetness",
-          "Used to dodge an attack from a Potence power, such as Earthshock",
-          "Used in Blood Sorcery powers such as Scorpion's touch to spit acid",
           "Used to throw weapons",
           "Climbing",
           "Determining how much fall damage a character takes"
         ],
         stamina: [
-          "Out run pursuers in long distance",
+          "Outrun pursuers in long distance",
           "Swimming"
         ],
         strength: [
-          "Used in Blood Sorcery Rituals such as preventing being picked up by Essence of Air",
-          "Also used to resist Thin-blood Alchemy powers such as Far Reach",
           "Lifting or smashing things"
         ],
         manipulation: [
@@ -60,43 +55,43 @@ export const skills = {
       name: "Brawl",
       description: "Combat focused on using the body as a weapon rather than an item.",
       dotValues: {
-        1: "They had a tough upbringing and had to fight to survive, they still have some moved",
+        1: "They had a tough upbringing and had to fight to survive, they still have some moves",
         2: "They have been trained in hitting someone hard and well aimed",
         3: "They can hold more than their own in a fight",
         4: "They either were trained in the special forces or have spent decades fighting",
-        5: "They could win a MMA championship and not need their Disciplines to do it"
+        5: "They could win an MMA championship"
       },
-      specialties: ["Animals", "Armed Mortals", "Bar Fights", "Grappling", "Kindred", "Sporting Combat", "Unarmed Mortals", "Werewolves", "While in Protean Beast Form"],
+      specialties: ["Animals", "Armed Humans", "Bar Fights", "Grappling", "Sporting Combat", "Unarmed Humans"],
       examplePools: {
         strength: [
           "A conflict pool for a fight",
           "Escape a foe biting them",
-          "Grappling an opponent, but this doesn't cause damage regardless of successes",
-          "Hunting as an alleycat"
+          "Grappling an opponent, but this doesn't cause damage regardless of successes"
         ]
       }
     },
     craft: {
       name: "Craft",
-      description: "Creating, building, or shaping items such as artwork but also making a makeshift catapult. When taken this skill gains one spec, unlike other Skills, Craft can have more specs than dots.",
+      description: "Creating, building, or shaping items from beautiful to functional. When taken this skill gains one spec, unlike other Skills, Craft can have more specs than dots.",
       dotValues: {
         1: "They are an amateur artist",
-        2: "Their work is admired for it's usefulness",
+        2: "Their work is admired for its usefulness",
         3: "Their creations can be gorgeous or terrifying, but intent is always clear",
-        4: "Their skill is highly regarded among the kine and Kindred know this",
-        5: "They are often selected to create focal points for parties at Elysium"
+        4: "Their skill is highly regarded among those who are aware of it",
+        5: "They are often selected to create focal points for important events"
       },
-      specialties: ["Carpentry", "Carving", "Design", "Painting", "Sculpting", "Sewing", "Weaponsmith"],
+      specialties: ["Carpentry", "Carving", "Design", "Painting", "Sculpting", "Sewing", "Weaponsmithing", "Interior Design"],
       examplePools: {
         wits: [
           "Board up a door in record speed and it can hold"
         ],
         intelligence: [
-          "Convince the city to build something with magical geometry",
-          "Tagging something with graffiti, or making poster art/painting",
           "Build false compartments",
           "Create bombs with clock parts and wires",
           "Preparedness roll to remember a wrench"
+        ],
+        strength: [
+          "Figuring out how to correctly manipulate/open complex/uncommon structures"
         ]
       }
     },
@@ -115,13 +110,10 @@ export const skills = {
         wits: [
           "Swerve out of the way in time",
           "Pull alongside a vehicle so others can jump on",
-          "Keeping the pursuer insight and chasing"
+          "Keeping the pursuer in sight and chasing"
         ],
         resolve: [
           "Scrounging roll to find a vehicle"
-        ],
-        manipulation: [
-          "For a spectre to control a possessed human"
         ],
         dexterity: [
           "Evading traffic, high speed chases, or complex maneuvers"
@@ -130,7 +122,7 @@ export const skills = {
     },
     firearms: {
       name: "Firearms",
-      description: "Using ranged weaponry such as bows and guns as well as gunsmithing and repair of said items.",
+      description: "Using ranged weaponry such as bows and guns as well as cleaning, unjamming, and rapidly reloading these weapons.",
       dotValues: {
         1: "They've fired a gun a few times",
         2: "They know to keep their weapon clean and how to take it apart and put it back together",
@@ -138,7 +130,7 @@ export const skills = {
         4: "They can handle trick shots, called shots, running shots, any shots",
         5: "They've been practicing since the Winchester came out"
       },
-      specialties: ["Crossbows", "Gun Dealing", "Gunsmithing", "Handloading", "Ammunition", "Quick-Draw", "Sniper", "Trick Shooting"],
+      specialties: ["Crossbows", "Gun Dealing", "Gunsmithing", "Handloading Ammunition", "Quick-Draw", "Sniper", "Trick Shooting"],
       examplePools: {
         composure: [
           "Standard conflict pool"
@@ -160,18 +152,18 @@ export const skills = {
     },
     larceny: {
       name: "Larceny",
-      description: "Lockpicking a locked door or breaking in other ways, pickpocketing and sleight of hand.",
+      description: "Lockpicking a locked door, hotwiring a car, deactivating alarms, and other forms of breaking and entering.",
       dotValues: {
         1: "They can pick a simple lock or pocket",
         2: "They can hotwire a car or shoplift",
         3: "They can identify the location of security cameras and alarms to bypass them",
         4: "They can defeat a keypad, re-tool and ID card, or break into a safe",
-        5: "They can into or out of a multinational bank"
+        5: "They can get into or out of a multinational bank"
       },
       specialties: ["Alarms", "Forgery", "Grand Theft Auto", "Housebreaking", "Lockpicking", "Pickpocket", "Safecracking", "Security Analysis"],
       examplePools: {
         intelligence: [
-          "Determining what type of alarm is it",
+          "Determining what type of alarm it is",
           "Beating the roof alarm",
           "Controlled demolitions",
           "Bypassing an alarm circuit",
@@ -180,7 +172,10 @@ export const skills = {
         dexterity: [
           "Breaking in through the skylight",
           "Cracking a safe",
-          "Sleight of hand"
+          "Sleight of hand",
+          "Slipping free from handcuffs",
+          "Picking a lock",
+          "Dodging a laser sensor"
         ],
         composure: [
           "Extracting an item from a laser field"
@@ -202,14 +197,13 @@ export const skills = {
       dotValues: {
         1: "They can swing a bat or blade",
         2: "They have competence with weapon handling",
-        3: "Their skill with a weapon is known in the domain",
+        3: "Their skill with a weapon is known in the area",
         4: "The enemies brought a gun to a knife fight",
-        5: "They are the domain's weaponmaster"
+        5: "They are the area's weaponmaster"
       },
       specialties: ["Axes", "Chains", "Clubs", "Fencing", "Disarming Blows", "Garrotes", "Improvised Weapons", "Knives", "Stakes", "Swords"],
       examplePools: {
         strength: [
-          "Used when attempting to stake someone",
           "Two-handed melee weapons"
         ],
         dexterity: [
@@ -225,24 +219,22 @@ export const skills = {
         2: "They can sneak around casual observers and stalk the same",
         3: "They can evade patrolling guards",
         4: "They are subtle with silent movement",
-        5: "The Banu Haqim come to them for advise"
+        5: "The target doesn't even know there's a 'there' when the character is there, let alone presence"
       },
-      specialties: ["Ambushes", "Crowds", "Diguise", "Hiding", "Shadowing", "Silent Movement", "Urban", "Wilderness"],
+      specialties: ["Ambushes", "Crowds", "Disguise", "Hiding", "Shadowing", "Silent Movement", "Urban", "Wilderness"],
       examplePools: {
         dexterity: [
           "Sneaking",
-          "Surprise attacks",
-          "Break in and feed from the sleeping as a Sandman"
+          "Surprise attacks"
         ],
         stamina: [
           "Remain motionless while in hiding"
         ],
         wits: [
-          "Used with Obfuscate powers to hide from active searchers with Sense the Unseen",
           "Shake surveillance"
         ],
         resolve: [
-          "Wait in an alleyway to feed off an unsuspecting victim"
+          "Wait in an alleyway to ambush an unsuspecting victim"
         ]
       }
     },
@@ -250,29 +242,29 @@ export const skills = {
       name: "Survival",
       description: "Using nature to find shelter, tracking animals or people, and general survival in the wilderness.",
       dotValues: {
-        1: "They know the trails and wilderness around the domain",
+        1: "They know the trails and wilderness around the area",
         2: "They spend more time outside than inside",
-        3: "They can subsist outside the city, set ups traps, and shelter for themself",
+        3: "They can subsist outside the city, set up traps, and shelter for themselves",
         4: "They can thrive in the outside",
-        5: "Gangrel packs run alongside them"
+        5: "Their hardiness is a lesson to all"
       },
       specialties: ["Desert", "Hunting", "Jungle", "Tracking", "Traps", "Shelters", "Urban Exploration", "Woodlands"],
       examplePools: {
         wits: [
           "Find somewhere to sleep for the night",
-          "Used in Fortitude powers such as Defy Bane",
-          "Used in Protean powers such as Weight of the Feather",
           "Tracking something or someone"
         ],
         intelligence: [
-          "Used in Blood Sorcery Rituals such as Illuminate the Trail of Prey",
           "Camouflage in nature or burying a body outside undetected"
         ],
         stamina: [
-          "Used to defend against Thin-blood Alchemy powers such as Envelop"
+          "Used to defend against supernatural powers"
         ],
         composure: [
           "Remove flammable material from themselves from something like a Molotov cocktail"
+        ],
+        dexterity: [
+          "Escape without leaving tracks to avoid pursuit"
         ]
       }
     }
@@ -291,10 +283,10 @@ export const skills = {
       specialties: ["Attack Training", "Cats", "Dogs", "Falconry", "Horses", "Pacification", "Rats", "Snakes", "Stunt Training", "Wolves"],
       examplePools: {
         charisma: [
-          "Used in Animalism powers such as Bond Famulus to give commands to animals"
+          "Used with animal-related abilities to give commands to animals"
         ],
         composure: [
-          "To feed from animals through the Farmer Predator type"
+          "To train animal companions"
         ],
         manipulation: [
           "Distract guard dogs"
@@ -306,12 +298,12 @@ export const skills = {
       description: "The ability to interact in social settings or blend into different groups.",
       dotValues: {
         1: "They can address their ruler without a faux pas",
-        2: "They know the rules of the domain's popular hotspots",
+        2: "They know the rules of the area's popular hotspots",
         3: "They can impress others with their politeness, humble submission and respect",
         4: "Their behavior sets the trend, especially if they push against the norms",
-        5: "The Keeper of Elysium and Harpies use them to set the protocols"
+        5: "The social leaders use them to set the protocols"
       },
-      specialties: ["Anarch", "Camarilla", "Celebrities", "Corporate", "Elysium", "Feudal", "One-Percenter", "Secret Society"],
+      specialties: ["Celebrities", "Corporate", "Downtown", "Protocol", "One-Percenter", "Secret Society"],
       examplePools: {
         manipulation: [
           "In a debate",
@@ -319,11 +311,11 @@ export const skills = {
         ],
         composure: [
           "To divert a conversation",
-          "Seeking to increase social position against another during Elysium",
+          "Seeking to increase social position against another during formal events",
           "Getting a prime dance at a formal event"
         ],
-        wits: [
-          "To resolve initiative order in social conflict"
+        stamina: [
+          "Overnight drinking session to gather information"
         ]
       }
     },
@@ -332,7 +324,7 @@ export const skills = {
       description: "Reading body language and other cues to discern emotions, thoughts, or motives.",
       dotValues: {
         1: "They can see through empty boasts",
-        2: "They can pick up on hidden emotions in kine and sometimes Kindred",
+        2: "They can pick up on hidden emotions in people",
         3: "They can provide therapy",
         4: "They are able to detect lies easily, only the best con artists go undetected",
         5: "People are very easy to read, as if books with large printed text"
@@ -340,12 +332,11 @@ export const skills = {
       specialties: ["Ambitions", "Desires", "Detect Lies", "Emotions", "Empathy", "Interrogation", "Motives", "Phobias", "Vices"],
       examplePools: {
         manipulation: [
-          "Change the Resonance of a Herd",
           "Involving third parties to seduce their rivals vanities and desires",
           "Interrogating someone without violence"
         ],
         resolve: [
-          "After a scene to determine Resonance if it's not already known"
+          "After a scene to determine resonance if it's not already known"
         ],
         charisma: [
           "Seduce their rivals vanities and desires",
@@ -353,7 +344,7 @@ export const skills = {
           "Picking someone up at a bar"
         ],
         composure: [
-          "Avoiding or detecting something fishy going on when someone is risking a Blood Bond",
+          "Avoiding or detecting something fishy going on when someone is risking bonding",
           "Resisting fast talking"
         ],
         wits: [
@@ -372,9 +363,9 @@ export const skills = {
         2: "They can push humans around easily",
         3: "Their swagger and harsh behavior has given them a reputation",
         4: "They are beyond only physical threats",
-        5: "Other Kindred may step back if they get involved"
+        5: "Others may step back if they get involved"
       },
-      specialties: ["Extortion", "Insults", "Interrogation", "Physical Coercion", "Staredowns", "Veiled Threats"],
+      specialties: ["Extortion", "Insults", "Interrogation", "Physical Coercion", "Staredowns", "Veiled Threats", "Wordless"],
       examplePools: {
         charisma: [
           "Cow a gang leader into submission",
@@ -389,7 +380,7 @@ export const skills = {
           "Determine if something was a threat"
         ],
         resolve: [
-          "To catch someone's eyes to establish eye contact during the use of Dominate"
+          "To catch someone's eyes to establish eye contact during the use of mind control"
         ],
         strength: [
           "Using physical strength to showcase power while threatening someone"
@@ -404,7 +395,7 @@ export const skills = {
         2: "They can make their voices heard in council and sometimes their superiors listen",
         3: "They can command on a battlefield",
         4: "They can inspire those dying or near death into action",
-        5: "Their words fill a Kindred's heart to make it feel alive and beating once again"
+        5: "Their words fill a character's heart to make it feel alive and beating once again"
       },
       specialties: ["Command", "Inspiration", "Oratory", "Praxis", "Team Dynamics", "War Pack"],
       examplePools: {
@@ -415,12 +406,12 @@ export const skills = {
     },
     performance: {
       name: "Performance",
-      description: "Showcasing the character's art in front of a crowd regardless of size. Singing, acting, and oration are all examples of this.",
+      description: "Showcasing the character's art in front of a crowd, regardless of size. Singing, acting, and oration are all examples of this.",
       dotValues: {
         1: "They are the life of a party but can't take this act on stage",
         2: "They have performed for others, but reviews are mixed",
         3: "They are an expert student of their craft",
-        4: "They can perform their craft to exceptional success, that even the Toreador have interest",
+        4: "They can perform their craft to exceptional success",
         5: "They can improvise without issue; every night a different audience and a different show"
       },
       specialties: ["Comedy", "Dance", "Drama", "Drums", "Guitar", "Keyboards", "Poetry", "Public Speaking", "Rap", "Singing", "Violin", "Wind Instruments"],
@@ -460,13 +451,14 @@ export const skills = {
           "In a debate"
         ],
         manipulation: [
-          "Which story will the Prince believe?",
-          "Take blood by consent, by lying about the real reason via Consensualist",
-          "Feed from high or low-class society by isolating and gaslighting them into silence via Scene Queen",
-          "Convert onlookers in a mesage"
+          "Whose story will be believed?",
+          "Taking something through consent, under the guise of medical work or kink",
+          "Feed from high or low-class society by isolating and gaslighting them into silence",
+          "Convert onlookers in a message",
+          "Get information by interviewing experts"
         ],
         intelligence: [
-          "Convince the Prince the other is lying with ample research"
+          "Convince someone the other is lying with ample research"
         ]
       }
     },
@@ -474,7 +466,7 @@ export const skills = {
       name: "Streetwise",
       description: "Knowledge of the streets in criminal and urban societies, being able to locate a gang or dealer, knowing which shortcut will be the fastest.",
       dotValues: {
-        1: "They know where to score sex or drugs in the domain",
+        1: "They know where to score sex or drugs in the area",
         2: "They know which gangs are operating in the area, they may have their own graffiti tag",
         3: "They can tell the good product from the bad, get ahold of guns, and blend in with street people and gang members",
         4: "They are the person someone is referring to when they say 'I know a guy'",
@@ -490,13 +482,15 @@ export const skills = {
           "Locate someone"
         ],
         wits: [
-          "Find a criminal victim to feed upon via Alleycat",
+          "Find a criminal victim to feed upon",
           "Disguising marks as normal graffiti",
           "Shake someone shadowing"
         ],
         intelligence: [
-          "Acquire preserved blood instead of hunting, or feed from the dying or dead via Bagger",
-          "To spot, recognize or decipher street tags"
+          "Acquire preserved blood instead of hunting, or feed from the dying or dead",
+          "To spot, recognize or decipher street tags",
+          "Social Engineering, e.g. convincing someone to re-enter password, phishing, buying passwords online",
+          "Camouflaging in urban settings"
         ],
         resolve: [
           "For looking for something or someone through legwork",
@@ -521,23 +515,23 @@ export const skills = {
           "Distract someone to not notice a knife"
         ],
         composure: [
-          "Used to resist powers in Animalism such as Sense the Beast",
-          "Used to resist powers in Auspex such as Scry the Soul",
-          "Faking a direct sip during a Blood Bond"
+          "Used to resist supernatural abilities",
+          "Used to resist mind-reading abilities",
+          "Fake a direct sip during a potential bonding",
+          "Remain calm in disguise"
         ],
         wits: [
-          "Used to resist powers in Auspex such as Telepathy",
-          "Used to resist powers in Blood Sorcery such as Extinguish Vitae",
+          "Used to resist supernatural abilities",
           "Picking up someone at a coffee shop"
         ],
         charisma: [
-          "Convince another into a Blood Bond",
+          "Convince another into bonding",
           "Feeding from the guise of sex",
           "Fast talking"
         ],
         manipulation: [
-          "Feeding from their mortal friends and family via Cleaver",
-          "Feeding from their fans, church, or another adoring crowd via Osiris",
+          "Taking something covertly from their friends and family",
+          "Feed from their fans or an adoring crowd",
           "Sending a false message through markings",
           "Social engineering by tricking someone to give you their password",
           "Scamming someone and showing fake credentials"
@@ -556,17 +550,21 @@ export const skills = {
         4: "Advanced specializations outside of university on subjects very few know",
         5: "A refined and high level scholar likely to be requested for advice or teaching"
       },
-      specialties: ["Architecture", "English Literature", "History of art", "History (specific field or period)", "Journalism", "Philosophy", "Research", "Teaching", "Theology"],
+      specialties: ["Architecture", "English Literature", "History of Art", "History (specific field or period)", "Journalism", "Philosophy", "Research", "Teaching", "Theology"],
       examplePools: {
         charisma: [
-          "Convince the police that they need to release the Kindred before sunrise"
+          "Convince the police that they need to release someone before sunrise"
         ],
         intelligence: [
           "Playing chess, either the board game or with living pawns",
-          "Hide a building to make it look like another through architecture or creating false comparments"
+          "Hide a building to make it look like another through architecture or creating false compartments"
         ],
         manipulation: [
           "Playing chess not to win, but to show they are ruthless"
+        ],
+        resolve: [
+          "Researching through books, ledgers and journals",
+          "Researching their quarry"
         ]
       }
     },
@@ -583,21 +581,28 @@ export const skills = {
       specialties: ["Ambushes", "Camouflage", "Concealed Objects", "Hearing", "Instincts", "Smell", "Sight", "Traps", "Wilderness"],
       examplePools: {
         resolve: [
-          "Used for the Ventrue Bane to determine if a mortal has the blood they required",
-          "Used for the Bloodhound Merit to determine someone's Resonance",
-          "Vampires who have waited enough time in Torpor, make this roll when a potential victim enters the room"
+          "Used to determine if a mortal has the blood they required",
+          "Used to determine someone's resonance",
+          "Characters who have waited enough time in torpor, make this roll when a potential victim enters the room",
+          "Those actively searching for a character who drew attention on accident while using invisibility",
+          "Locating a building or something that doesn't move through legwork",
+          "Researching by digging through physical materials",
+          "Surveillance",
+          "Pick out key details out of a cloud of distractions"
         ],
         wits: [
           "Resistance roll against those actively hiding",
-          "Avoiding the gaze of someone attempting to use Dominate",
-          "If a vampire using Obfuscate draws attention to themself on accident, those nearby roll to detect them",
-          "Resisting surprise attacks"
+          "Avoiding the gaze of someone attempting to use mind control",
+          "If a character using invisibility draws attention to themselves on accident, those nearby roll to detect them",
+          "Resisting surprise attacks",
+          "Notice hidden things, in the moment"
         ],
         composure: [
           "Initiative rating for physical combat"
         ],
         intelligence: [
-          "Used by SI who are attempting to detect vampires through chaoscopes"
+          "Used by hunters to spot supernatural creatures reliably",
+          "Recognize something"
         ]
       }
     },
@@ -611,7 +616,7 @@ export const skills = {
         4: "Investments banks follow what they do and they have no issue concealing fraud",
         5: "They can make money doing anything anywhere"
       },
-      specialties: ["Appraisal", "Banking", "Black Markets", "Corporate Finance", "Currency Manipulation", "Forensic Accounting", "Money Laundering", "Stock Market"],
+      specialties: ["Appraisal", "Banking", "Black Markets", "Corporate Finance", "Currency Manipulation", "Fine Art", "Forensic Accounting", "Money Laundering", "Stock Market"],
       examplePools: {
         manipulation: [
           "Convince the clerk that they are an IRS auditor"
@@ -625,56 +630,74 @@ export const skills = {
         1: "An amateur sleuth",
         2: "Strong knowledge on criminology and signature acts of local issues",
         3: "They either are or could be a professional detective",
-        4: "The Sheriff reaches out when they need aid",
+        4: "The authorities reach out when they need aid",
         5: "They live an enigmatic existence and set riddles for others"
       },
       specialties: ["Criminology", "Deduction", "Forensics", "Missing Persons", "Murder", "Paranormal Mysteries", "Traffic Analysis"],
       examplePools: {
         resolve: [
           "Canvassing the neighborhood for information",
-          "Going through a heavy amount of paperwork"
+          "Going through a heavy amount of paperwork",
+          "Questioning people"
         ],
         intelligence: [
           "Check a crime scene for clues or pick up clues",
           "Noticing patterns in markings"
+        ],
+        wits: [
+          "Noticing clues"
+        ],
+        investigation: [
+          "Searching a crime scene for clues/evidence"
         ]
       }
     },
     medicine: {
       name: "Medicine",
-      description: "Handling mortal injuries and diagnosing/treating diseases.",
+      description: "Handling injuries and diagnosing and treating diseases in people and animals.",
       dotValues: {
         1: "They know basic anatomy and can perform basic first aid and CPR",
         2: "They can treat minor trauma and illnesses",
         3: "They can perform major operations and treat serious injuries",
         4: "They can diagnose and treat all but the most obscure diseases and illnesses",
-        5: "They are a medical expert, sought out for their knowledge by Kindred and mortals alike"
+        5: "They are a medical expert, sought out for their knowledge"
       },
-      specialties: ["First Aid", "Hematology", "Pathology", "Pharmacy", "Phlebotomy", "Surgery", "Trauma Care", "Veterinary", "Anesthetics"],
+      specialties: ["First Aid", "Hematology", "Pathology", "Pharmacy", "Phlebotomy", "Surgery", "Trauma Care", "Veterinary"],
       examplePools: {
         intelligence: [
-          "Used to convert Aggravated damage on a Mortal's Health tracker to Superficial damage",
-          "Spotting a disease symptom on a human"
+          "Used to convert aggravated damage on a mortal's health tracker to superficial damage",
+          "Spotting a disease symptom on a human",
+          "Identify disease symptoms",
+          "Over the course of a night, convert aggravated health damage to superficial damage at a difficulty equal to the total aggravated damage sustained by the patient. Attempts to heal oneself adds +1 to the difficulty"
         ],
         dexterity: [
-          "Remove a shattered stake splinter from the body per Shaft of Belated Dissolution"
+          "Remove a shattered splinter from the body"
         ]
       }
     },
     occult: {
       name: "Occult",
-      description: "Mystical knowledge of the supernatural and rituals, Kindred related or not.",
+      description: "Mystical knowledge of the supernatural and rituals.",
       dotValues: {
-        1: "They know the stories of Caine and the Antediluvians",
+        1: "They know a handful of the world's secrets at a rudimentary level",
         2: "They can find the truth in pop culture nonsense",
-        3: "They have experience with something unknown even by Kindred standards",
-        4: "They can name most of the Antediluvians",
-        5: "Tremere and Banu Haqim consult with them for rare lore"
+        3: "They have experience with something unknown even by expert standards",
+        4: "They can name most of the ancient beings",
+        5: "Sorcerers consult with them for rare lore"
       },
-      specialties: ["Alchemy", "Blood Magic", "Faeries", "Ghosts", "Grimoires", "Infernalism", "Magi", "Necromancy", "Noddism", "Parapsychology", "Voudun", "Werewolves", "Specific Tradition"],
+      specialties: ["Alchemy", "Blood Magic", "Faeries", "Ghosts", "Grimoires", "Infernalism", "Magi", "Necromancy", "Parapsychology", "Voudun"],
       examplePools: {
         intelligence: [
-          "Reading a different language version of the Book of Nod without losing anything"
+          "Reading a different language version of ancient texts without losing anything"
+        ],
+        occult: [
+          "Resist supernatural abilities"
+        ],
+        resolve: [
+          "Hold back supernatural creatures"
+        ],
+        wits: [
+          "Detect the nearby presence of supernatural creatures"
         ]
       }
     },
@@ -686,7 +709,7 @@ export const skills = {
         2: "They have the ability to apply influence at a local scale, or know a guy who could",
         3: "They can run a political campaign or machines",
         4: "They know the truth about the big names living and dead in the area",
-        5: "They could guess at the amount of members within the Camarilla's Inner Circle"
+        5: "They could guess at the amount of members within the inner circle"
       },
       specialties: ["Anarchs", "Camarilla", "City Government", "Clan (specific)", "Diplomacy", "Media", "National Politics", "State/Provincial Politics"],
       examplePools: {
@@ -701,19 +724,32 @@ export const skills = {
       description: "Scientific knowledge and theory of the real world.",
       dotValues: {
         1: "They understand the basics principles of science",
-        2: "They can accurately explain the competing science-based theories of the Embrace to another",
+        2: "They can accurately explain the competing science-based theories to another",
         3: "They can run a lab, interpret results, and get up to speed on most science related fields. They can also repair scientific equipment",
         4: "They are an expert in their field",
         5: "Few others match their understanding and they are sought out for guidance"
       },
-      specialties: ["Astronomy", "Biology", "Chemistry", "Demolitions", "Engineering", "Genetics", "Geology", "Mathematics", "Physics"],
+      specialties: ["Astronomy", "Biology", "Chemistry", "Demolitions", "Engineering", "Genetics", "Geology", "Mathematics", "Physics", "Natural World"],
       examplePools: {
         resolve: [
           "Example of a scrounging roll"
         ],
         intelligence: [
           "Creating explosives",
-          "Controlled demolitions"
+          "Controlled demolitions",
+          "Researching/Understanding complex experimental processes"
+        ],
+        science: [
+          "Keep and maintain ordnance"
+        ],
+        composure: [
+          "Resist supernatural abilities"
+        ],
+        resolve: [
+          "Hold back supernatural creatures"
+        ],
+        wits: [
+          "Detect the nearby presence of supernatural creatures"
         ]
       }
     },
@@ -724,16 +760,32 @@ export const skills = {
         1: "They can upgrade a home PC and keep it safe",
         2: "They can conceal an IP, fly a drone, and use photo altering software",
         3: "They can create and distribute viruses without detection",
-        4: "The Prince might call them to handle the domain's cybersecurity",
+        4: "The authorities might call them to handle the area's cybersecurity",
         5: "On the internet, no one knows they exist"
       },
-      specialties: ["Artillery", "Coding", "Computer Building", "Data Mining", "Hacking", "Networks", "Phones", "Surveillance Systems"],
+      specialties: ["Artillery", "Coding", "Computer Building", "Data Mining", "Energy Systems", "Hacking", "Networks", "Phones", "Surveillance Systems"],
       examplePools: {
         intelligence: [
           "Hacking into a computer system",
           "Building clock part or colored wire bombs",
           "Setting a car bomb",
-          "Penetrate electronic security systems"
+          "Penetrate electronic security systems",
+          "Keep and maintain a fleet",
+          "Obtain data on any subject or person in any database",
+          "Setting up plastic explosives",
+          "Hacking/Subverting a computer system",
+          "Creating a bomb using sufficient explosives",
+          "Employing a complex trigger detonation of a pre-made bomb/explosive",
+          "Researching through computer files, internet forums, cloud servers/databases"
+        ],
+        technology: [
+          "Autonomous operations for complicated decision trees"
+        ],
+        wits: [
+          "Operate drones"
+        ],
+        streetwise: [
+          "Finding a GPS tracker on a vehicle"
         ]
       }
     }

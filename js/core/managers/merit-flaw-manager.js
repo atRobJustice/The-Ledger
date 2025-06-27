@@ -72,7 +72,7 @@
  */
 
 // Merit and Flaw Manager
-import { merits } from '../../data/merits.js';
+import { merits } from '../../data/vampire/merits.js';
 import { TraitManagerUtils } from './manager-utils.js';
 
 class MeritFlawManager {
