@@ -865,8 +865,24 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
       case 'attribute': return ATTR_REF?.attributes?.[key] || {};
       case 'skill': return SKILL_REF?.[key] || {};
       case 'discipline': return DISC_REF?.types?.[key] || {};
-      case 'merit': return MERIT_REF?.[key] || {};
-      case 'background': return BG_REF?.[key] || {};
+      case 'merit': {
+        // Search through merit categories to find the trait
+        for (const [catKey, category] of Object.entries(MERIT_REF)) {
+          if (category?.merits && category.merits[key]) {
+            return category.merits[key];
+          }
+        }
+        return {};
+      }
+      case 'background': {
+        // Search through background categories to find the trait
+        for (const [catKey, category] of Object.entries(BG_REF)) {
+          if (category?.merits && category.merits[key]) {
+            return category.merits[key];
+          }
+        }
+        return {};
+      }
       default: return {};
     }
   }
