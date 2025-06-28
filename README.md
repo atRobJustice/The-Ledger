@@ -97,6 +97,13 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - Blood Potency bonus dice and Rouse rerolls
   - Conviction & Touchstone system (up to 3 active convictions)
 
+- 🔍 **Development & Debugging**
+  - Configurable console logging system
+  - Toggle logging on/off via settings
+  - Automatic environment detection (development vs production)
+  - Persistent logging preferences
+  - Comprehensive error tracking and debugging support
+
 ---
 
 ## Getting Started
@@ -140,6 +147,22 @@ All styling lives in `scss/` and is compiled to `css/` using [`sass`](https://sa
 | `npm run sass:build` | One-off, minified production build |
 
 For detailed technical documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
+
+### Logging System
+
+The Ledger includes a comprehensive logging system for development and debugging:
+
+- **Toggle Control**: Enable/disable logging via Settings → General → "Enable console logging"
+- **Environment Detection**: Automatically defaults to enabled in development, disabled in production
+- **Persistent Settings**: Logging preference is saved and restored between sessions
+- **Comprehensive Coverage**: All major operations are logged with appropriate levels (log, warn, error, info, debug)
+- **Testing**: Use `test-logger.html` to test the logging system functionality
+
+The logging system uses the `js/core/utils/logger.js` module and provides:
+- Timestamped log messages with consistent formatting
+- Support for all console methods (log, warn, error, info, debug, group, table, time)
+- Automatic environment detection based on hostname
+- localStorage persistence for user preferences
 
 ### Project Structure
 

@@ -8,6 +8,7 @@ import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, ge
 import { initControlBar } from "./control-bar.js";
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { disciplines } from "../utils/disciplines.js";
+import logger from "../utils/logger.js";
 
 // New flag: track whether the most recent roll used Blood Surge
 let lastRollHadBloodSurge = false;
@@ -618,7 +619,7 @@ let bonusMsg = null;
             }
           }
         } catch (e) {
-          console.error('Error applying Blood Potency Rouse reroll:', e);
+          logger.error('Error applying Blood Potency Rouse reroll:', e);
         }
       }
       const remorseSuccess = remorseLen > 0 ? countSuccesses(remorseRolls) > 0 : null;
@@ -685,14 +686,14 @@ let bonusMsg = null;
         };
         sendToDiscord(buildRollEmbed(rollData));
       } catch(e) {
-        console.error('Failed to send Discord webhook for roll', e);
+        logger.error('Failed to send Discord webhook for roll', e);
       }
 
       // Apply mechanical consequences
       if (rouseLen > 0 && !rouseWasRerolled) {
         // Count failed Rouse dice and increase Hunger by 1 for each failure
         const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
-        console.log('Rouse check (not rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
+        logger.log('Rouse check (not rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
         if (failedRouseDice > 0) {
           increaseHungerBy(failedRouseDice);
         }
@@ -700,7 +701,7 @@ let bonusMsg = null;
         // For rerolled Rouse checks, we need to count the new results
         // The new results are already in rouseRolls after the reroll
         const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
-        console.log('Rouse check (rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
+        logger.log('Rouse check (rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
         if (failedRouseDice > 0) {
           increaseHungerBy(failedRouseDice);
         }
@@ -725,14 +726,14 @@ let bonusMsg = null;
 
       // Enable click selection on canvasContainer
       canvasContainer.addEventListener('click', function selectHandler(ev) {
-        console.log('Dice click detected:', ev);
-        console.log('Mouse coordinates:', ev.clientX, ev.clientY);
-        console.log('currentRollCtx:', currentRollCtx);
-        console.log('box:', box);
-        console.log('Number of dice in box:', box.dices ? box.dices.length : 0);
+        logger.log('Dice click detected:', ev);
+        logger.log('Mouse coordinates:', ev.clientX, ev.clientY);
+        logger.log('currentRollCtx:', currentRollCtx);
+        logger.log('box:', box);
+        logger.log('Number of dice in box:', box.dices ? box.dices.length : 0);
         
         if (!currentRollCtx || currentRollCtx.box !== box) {
-          console.log('No currentRollCtx or box mismatch');
+          logger.log('No currentRollCtx or box mismatch');
           return;
         }
         
@@ -748,10 +749,10 @@ let bonusMsg = null;
         };
         
         const data = box.search_dice_by_mouse(adjustedEvent);
-        console.log('search_dice_by_mouse result:', data);
+        logger.log('search_dice_by_mouse result:', data);
         
         if (!data) {
-          console.log('No dice found at click position');
+          logger.log('No dice found at click position');
           return;
         }
         
@@ -760,10 +761,10 @@ let bonusMsg = null;
         const sLen = notation.set.length;
         const hLen = notation.hungerSet.length;
         
-        console.log('Dice index:', idx, 'Standard dice count:', sLen, 'Hunger dice count:', hLen);
+        logger.log('Dice index:', idx, 'Standard dice count:', sLen, 'Hunger dice count:', hLen);
         
         if (idx >= sLen) {
-          console.log('Dice index >= standard dice count, cannot reroll');
+          logger.log('Dice index >= standard dice count, cannot reroll');
           // Hunger or later dice cannot be rerolled
           return;
         }
@@ -773,15 +774,15 @@ let bonusMsg = null;
         if (sel.has(idx)) {
           sel.delete(idx);
           highlightDie(mesh, false);
-          console.log('Deselected die:', idx);
+          logger.log('Deselected die:', idx);
         } else {
           if (sel.size >= 3) {
-            console.log('Already selected 3 dice, cannot select more');
+            logger.log('Already selected 3 dice, cannot select more');
             return; // limit
           }
           sel.add(idx);
           highlightDie(mesh, true);
-          console.log('Selected die:', idx, 'Total selected:', sel.size);
+          logger.log('Selected die:', idx, 'Total selected:', sel.size);
         }
         
         // Re-render scene to reflect highlight changes
@@ -840,27 +841,27 @@ let bonusMsg = null;
   }
 
   function increaseHungerBy(delta) {
-    console.log('increaseHungerBy called with delta:', delta);
+    logger.log('increaseHungerBy called with delta:', delta);
     const row = findStatRow('Hunger');
     if (!row) {
-      console.error('Could not find Hunger stat row');
+      logger.error('Could not find Hunger stat row');
       return;
     }
     const dots = row.querySelector('.dots');
     if (!dots) {
-      console.error('Could not find dots element in Hunger row');
+      logger.error('Could not find dots element in Hunger row');
       return;
     }
     const maxDots = dots.querySelectorAll('.dot').length;
     let curr = parseInt(dots.dataset.value) || 0;
     const newVal = Math.min(maxDots, curr + delta);
-    console.log('Hunger update: current=', curr, 'delta=', delta, 'newVal=', newVal, 'maxDots=', maxDots);
+    logger.log('Hunger update: current=', curr, 'delta=', delta, 'newVal=', newVal, 'maxDots=', maxDots);
     dots.dataset.value = newVal;
     dots.setAttribute('data-value', newVal);
     dots.querySelectorAll('.dot').forEach((d, idx) => {
       d.classList.toggle('filled', idx < newVal);
     });
-    console.log('Hunger updated successfully');
+    logger.log('Hunger updated successfully');
   }
 
   function handleRemorseOutcome(success) {
@@ -1067,7 +1068,7 @@ let bonusMsg = null;
       };
       sendToDiscord(discordMessage);
     } catch (e) {
-      console.error('Failed to send Discord webhook for reroll', e);
+      logger.error('Failed to send Discord webhook for reroll', e);
     }
 
     // Reset roll context
@@ -1215,7 +1216,7 @@ let bonusMsg = null;
         if (window.toastManager) {
           window.toastManager.show(message, type, 'Dice Overlay');
         } else {
-          console.log(`${type.toUpperCase()}: ${message}`);
+          logger.log(`${type.toUpperCase()}: ${message}`);
         }
       };
     }
@@ -1433,7 +1434,7 @@ let bonusMsg = null;
           }
         }
       } catch (e) {
-        console.error('Error applying resonance temperament bonus:', e);
+        logger.error('Error applying resonance temperament bonus:', e);
       }
       // --------------------------------------------------------------
       //  (Temp) defer hunger/standard calculation until after all
@@ -1457,7 +1458,7 @@ let bonusMsg = null;
           }
         }
       } catch (e) {
-        console.error('Error applying Blood Potency discipline bonus:', e);
+        logger.error('Error applying Blood Potency discipline bonus:', e);
       }
 
       window.latestDisciplineBonusMessage = discBonusMsg;
@@ -1581,7 +1582,7 @@ let bonusMsg = null;
         const module = await import('../../data/vampire/resonances.js');
         window.__resonancesData = module.resonances;
       } catch (err) {
-        console.error('Failed to load resonance data:', err);
+        logger.error('Failed to load resonance data:', err);
         window.__resonancesData = null;
       }
     })();
@@ -1688,4 +1689,4 @@ let bonusMsg = null;
       }
     };
   });
-})(); 
+})();

@@ -41,6 +41,30 @@
  */
 
 (function(){
+    // Import logger
+    let logger;
+    import('../utils/logger.js').then(module => {
+        logger = module.default;
+    }).catch(() => {
+        // Fallback if logger is not available
+        logger = {
+            log: console.log,
+            warn: console.warn,
+            error: console.error,
+            info: console.info,
+            debug: console.debug
+        };
+    });
+
+    // Helper function for logging with fallback
+    function log(level, message, ...args) {
+        if (logger && logger[level]) {
+            logger[level](message, ...args);
+        } else {
+            console[level](message, ...args);
+        }
+    }
+
     // Wait for DOM and managers to be ready
     document.addEventListener('DOMContentLoaded', () => {
         // Give the page a short moment to finish dynamic rendering
@@ -94,7 +118,7 @@
                     window.toastManager.show('Character imported successfully','success', 'Backup Manager');
                     autoSave();
                 } catch(err){
-                    console.error(err);
+                    log('error', err);
                     window.toastManager.show('Failed to import character: invalid JSON','danger', 'Backup Manager');
                 }
             };
@@ -103,8 +127,8 @@
     }
 
     async function loadCharacterData(data){
-        console.log('loadCharacterData called with data:', data);
-        console.log('loadCharacterData: data.locked value:', data.locked);
+        log('log', 'loadCharacterData called with data:', data);
+        log('log', 'loadCharacterData: data.locked value:', data.locked);
         
         // Basic stats
         Object.entries(data).forEach(([key,val]) => {
@@ -171,7 +195,7 @@
                 }
             } else if($valueSpan.length && typeof val === 'number') {
                 // If we have a span but no dots, create dots first
-                console.log('[loadCharacterData] Converting span to dots for:', label, 'value:', val);
+                log('log', '[loadCharacterData] Converting span to dots for:', label, 'value:', val);
                 
                 // Determine if this should be dots, track boxes, or something else
                 const textFields = ['name', 'concept', 'chronicle', 'ambition', 'desire', 'sire'];
@@ -228,11 +252,11 @@
             if (lockedFromUrl !== null) {
                 // URL parameter takes precedence
                 const shouldLock = lockedFromUrl === 'true';
-                console.log('Setting lock state from URL parameter (overriding character data in loadCharacterData):', shouldLock);
+                log('log', 'Setting lock state from URL parameter (overriding character data in loadCharacterData):', shouldLock);
                 window.LockManager.init(shouldLock);
             } else {
                 // Use character data if no URL parameter
-                console.log('Setting lock state from character data in loadCharacterData:', data.locked ?? false);
+                log('log', 'Setting lock state from character data in loadCharacterData:', data.locked ?? false);
                 window.LockManager.init(data.locked ?? false);
             }
         }
@@ -252,9 +276,9 @@
                     document.body.setAttribute('data-theme', t);
                 }
                 window.databaseManager.setSetting('theme', t);
-                console.log('Restored theme from character data:', t);
+                log('log', 'Restored theme from character data:', t);
             } else {
-                console.log('Theme already set, not overriding with character data. Current:', currentTheme, 'Saved:', savedTheme);
+                log('log', 'Theme already set, not overriding with character data. Current:', currentTheme, 'Saved:', savedTheme);
             }
         }
 
@@ -263,7 +287,7 @@
             try {
                 evaluateImpairmentStatus();
             } catch(err) {
-                console.warn('Failed to evaluate impairment status after import', err);
+                log('warn', 'Failed to evaluate impairment status after import', err);
             }
         }
     }
@@ -453,7 +477,7 @@
                 throw new Error('No database manager available for autosave');
             }
         } catch (err) {
-            console.error('Auto-save failed', err);
+            log('error', 'Auto-save failed', err);
         }
     }
     const debouncedAutoSave = debounce(autoSave, 500);
@@ -477,9 +501,9 @@
                     }
                 }
                 
-                console.log('No character data found in IndexedDB');
+                log('log', 'No character data found in IndexedDB');
             } catch (err) {
-                console.error('Failed to restore character from IndexedDB', err);
+                log('error', 'Failed to restore character from IndexedDB', err);
             }
         }, 800); // allow time for other managers to init
     });

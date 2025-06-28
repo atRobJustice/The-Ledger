@@ -99,6 +99,9 @@
     document.head.appendChild(style);
 })();
 
+// Import logger
+import logger from '../utils/logger.js';
+
 function createDots(value, maxDots = 5) {
     const $dotsContainer = $('<div>', { 
         'class': 'dots lockable-dot',
@@ -733,8 +736,8 @@ $(document).ready(function() {
                          $previewTooltip.css({top: pos.top + $dropdown.outerHeight() + 5, left: pos.left});
                      });
             return; // skip legacy modal/button
-        } catch(error){
-            console.error('Error loading predator types:', error);
+        } catch (error) {
+            logger.error('Error loading predator types:', error);
             $(dropdown).append($('<option>', {'value':'error','text':'Error loading predator types'}));
         }
     }
@@ -756,7 +759,7 @@ $(document).ready(function() {
             });
             return; // handled by global utility
         } catch(error){
-            console.error('Error loading clans:', error);
+            logger.error('Error loading clans:', error);
             $(dropdown).append($('<option>', {'value':'error','text':'Error loading clans'}));
         }
     }
@@ -779,7 +782,7 @@ $(document).ready(function() {
             });
             return; // global utility handles details
         } catch(error){
-            console.error('Error loading generation data:', error);
+            logger.error('Error loading generation data:', error);
             $(dropdown).append($('<option>', {'value':'error','text':'Error loading generations'}));
         }
     }
@@ -801,7 +804,7 @@ $(document).ready(function() {
             });
             return; // skip legacy modal & button setup
         } catch(error){
-            console.error('Error loading blood potency:', error);
+            logger.error('Error loading blood potency:', error);
             $(dropdown).append($('<option>', {'value':'error','text':'Error loading blood potency'}));
         }
     }
@@ -846,7 +849,7 @@ $(document).ready(function() {
             // Global info-button utility now handles detailed info.
             return; // ⬅ Skip legacy modal & button setup
         } catch (err) {
-            console.error('Error loading resonances:', err);
+            logger.error('Error loading resonances:', err);
         }
     }
 
@@ -867,7 +870,7 @@ $(document).ready(function() {
             });
             return; // handled by global utility
         } catch (err) {
-            console.error('Error loading temperaments:', err);
+            logger.error('Error loading temperaments:', err);
         }
     }
 
@@ -929,7 +932,7 @@ $(document).ready(function() {
                 $dropdown.val(currentValue);
             }
         } catch (error) {
-            console.error('Error loading compulsion data:', error);
+            logger.error('Error loading compulsion data:', error);
             $(dropdown).append($('<option>', {
                 'value': 'error',
                 'text': 'Error loading compulsions'
@@ -988,7 +991,7 @@ async function populateClanDropdowns() {
                 
                 // Info buttons now handled centrally by info-buttons.js – legacy code removed.
             } catch (error) {
-                console.error('Error loading clans:', error);
+                logger.error('Error loading clans:', error);
                 $(dropdown).append($('<option>', {
                     'value': 'error',
                     'text': 'Error loading clans'
@@ -996,7 +999,7 @@ async function populateClanDropdowns() {
             }
         });
     } catch (error) {
-        console.error('Error importing clans module:', error);
+        logger.error('Error importing clans module:', error);
         clanDropdowns.forEach(dropdown => {
             $(dropdown).append($('<option>', {
                 'value': 'error',
@@ -1067,12 +1070,11 @@ async function loadCharacter(characterData) {
     if (lockedFromUrl !== null && window.LockManager) {
         // URL parameter takes precedence
         const shouldLock = lockedFromUrl === 'true';
-        console.log('Setting lock state from URL parameter (overriding character data):', shouldLock);
+        logger.log('Setting lock state from URL parameter (overriding character data):', shouldLock);
         window.LockManager.init(shouldLock);
-    } else {
-        // Use character data if no URL parameter
-        console.log('Setting lock state from character data:', characterData.locked ?? false);
-        window.LockManager.init(characterData.locked ?? false);
+    } else if (characterData.locked !== undefined) {
+        logger.log('Setting lock state from character data:', characterData.locked ?? false);
+        window.LockManager.init(characterData.locked);
     }
     // ... rest of existing loading logic ...
 }

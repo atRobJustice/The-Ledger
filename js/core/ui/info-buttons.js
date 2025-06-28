@@ -15,40 +15,309 @@
 // Import attribute and skill definitions
 import { attributes } from '../../data/attributes.js';
 import { skills } from '../../data/skills.js';
+import logger from '../utils/logger.js';
 import { TraitManagerUtils } from '../managers/manager-utils.js';
+
+function list(label, items) {
+  if (!items || !items.length) return '';
+  if (!Array.isArray(items)) items = Array.from(items);
+  let html = `<h6>${label}</h6><ul>`;
+  items.forEach(it => {
+    html += `<li>${it}</li>`;
+  });
+  html += '</ul>';
+  return html;
+}
+
+function badge(label, value) {
+  if (!value) return '';
+  return `<p><span class="badge bg-secondary me-2">${label}:</span> ${value}</p>`;
+}
+
+// Helper function to build content for dropdown items
+function buildDropdownContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const item = data[key];
+  if (!item) return '<p>Item not found.</p>';
+  
+  let html = '';
+  
+  if (item.description) {
+    html += `<p>${item.description}</p>`;
+  }
+  
+  if (item.effects && Array.isArray(item.effects)) {
+    html += list('Effects', item.effects);
+  }
+  
+  if (item.benefits && Array.isArray(item.benefits)) {
+    html += list('Benefits', item.benefits);
+  }
+  
+  if (item.drawbacks && Array.isArray(item.drawbacks)) {
+    html += list('Drawbacks', item.drawbacks);
+  }
+  
+  if (item.requirements && Array.isArray(item.requirements)) {
+    html += list('Requirements', item.requirements);
+  }
+  
+  // Add any other common fields
+  const commonFields = ['cost', 'duration', 'range', 'type', 'category'];
+  commonFields.forEach(field => {
+    if (item[field]) {
+      html += badge(field.charAt(0).toUpperCase() + field.slice(1), item[field]);
+    }
+  });
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+// Specialized content builders for different dropdown types
+function buildResonanceContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const item = data.types?.[key];
+  if (!item) return '<p>Resonance not found.</p>';
+  
+  let html = '';
+  
+  if (item.description) {
+    html += `<p>${item.description}</p>`;
+  }
+  
+  if (item.emotions && Array.isArray(item.emotions)) {
+    html += list('Associated Emotions', item.emotions);
+  }
+  
+  if (item.disciplines && Array.isArray(item.disciplines)) {
+    html += list('Associated Disciplines', item.disciplines);
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+function buildTemperamentContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const item = data.temperaments?.[key];
+  if (!item) return '<p>Temperament not found.</p>';
+  
+  let html = '';
+  
+  if (item.description) {
+    html += `<p>${item.description}</p>`;
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+function buildPredatorContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const item = data.types?.[key];
+  if (!item) return '<p>Predator type not found.</p>';
+  
+  let html = '';
+  
+  if (item.description) {
+    html += `<p>${item.description}</p>`;
+  }
+  
+  if (item.dicePools && Array.isArray(item.dicePools)) {
+    html += list('Dice Pools', item.dicePools);
+  }
+  
+  if (item.benefits && Array.isArray(item.benefits)) {
+    html += list('Benefits', item.benefits);
+  }
+  
+  if (item.drawbacks && Array.isArray(item.drawbacks)) {
+    html += list('Drawbacks', item.drawbacks);
+  }
+  
+  if (item.source) {
+    html += badge('Source', item.source);
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+function buildClanContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const item = data.types?.[key];
+  if (!item) return '<p>Clan not found.</p>';
+  
+  let html = '';
+  
+  // Clan name and nicknames
+  if (item.name) {
+    html += `<h5>${item.name}</h5>`;
+  }
+  
+  if (item.nicknames && Array.isArray(item.nicknames)) {
+    html += `<p><em>Also known as: ${item.nicknames.join(', ')}</em></p>`;
+  }
+  
+  // Background description
+  if (item.background?.description) {
+    html += `<p>${item.background.description}</p>`;
+  }
+  
+  // Disciplines
+  if (item.disciplines && Array.isArray(item.disciplines)) {
+    html += list('Disciplines', item.disciplines);
+  }
+  
+  // Detailed discipline descriptions
+  if (item.disciplines && typeof item.disciplines === 'object' && !Array.isArray(item.disciplines)) {
+    html += '<h6>Discipline Descriptions</h6>';
+    Object.entries(item.disciplines).forEach(([discipline, description]) => {
+      html += `<p><strong>${discipline.charAt(0).toUpperCase() + discipline.slice(1)}:</strong> ${description}</p>`;
+    });
+  }
+  
+  // Archetypes
+  if (item.archetypes && typeof item.archetypes === 'object') {
+    html += '<h6>Archetypes</h6>';
+    Object.entries(item.archetypes).forEach(([archetype, description]) => {
+      const archetypeName = archetype.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+      html += `<p><strong>${archetypeName}:</strong> ${description}</p>`;
+    });
+  }
+  
+  // Bane
+  if (item.bane) {
+    if (typeof item.bane === 'object' && item.bane.name && item.bane.description) {
+      html += `<hr><h6>${item.bane.name}</h6><p>${item.bane.description}</p>`;
+    } else {
+      html += badge('Bane', item.bane);
+    }
+  }
+  
+  // Variant Bane (if different from main bane)
+  if (item.variantBane && typeof item.variantBane === 'object' && item.variantBane.name && item.variantBane.description) {
+    html += `<h6>${item.variantBane.name} (Variant Bane)</h6><p>${item.variantBane.description}</p>`;
+  }
+  
+  // Compulsion
+  if (item.compulsion) {
+    if (typeof item.compulsion === 'object' && item.compulsion.name && item.compulsion.description) {
+      html += `<h6>${item.compulsion.name}</h6><p>${item.compulsion.description}</p>`;
+    } else {
+      html += badge('Compulsion', item.compulsion);
+    }
+  }
+  
+  // Culture - Embrace criteria
+  if (item.culture?.embrace?.criteria && Array.isArray(item.culture.embrace.criteria)) {
+    html += list('Embrace Criteria', item.culture.embrace.criteria);
+  }
+  
+  // Culture - Embrace description
+  if (item.culture?.embrace?.description) {
+    html += `<h6>Embrace</h6><p>${item.culture.embrace.description}</p>`;
+  }
+  
+  // Culture - Kindred Society
+  if (item.culture?.kindredSociety?.description) {
+    html += `<h6>In Kindred Society</h6><p>${item.culture.kindredSociety.description}</p>`;
+  }
+  
+  // Factional Differences
+  if (item.factionalDifferences) {
+    html += '<h6>Factional Differences</h6>';
+    Object.entries(item.factionalDifferences).forEach(([faction, info]) => {
+      if (typeof info === 'object' && info.description) {
+        const factionName = faction.charAt(0).toUpperCase() + faction.slice(1);
+        html += `<p><strong>${factionName}:</strong> ${info.description}</p>`;
+      }
+    });
+  }
+  
+  // Exclusive Loresheets
+  if (item.exclusiveLoresheets && Array.isArray(item.exclusiveLoresheets)) {
+    html += list('Exclusive Loresheets', item.exclusiveLoresheets);
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+function buildGenerationContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  let html = '';
+  
+  // Add overview
+  if (data.overview?.description) {
+    html += `<p>${data.overview.description}</p>`;
+  }
+  
+  if (data.overview?.note) {
+    html += `<p><em>${data.overview.note}</em></p>`;
+  }
+  
+  // Add generation-specific info
+  const tier = data.getGenerationTier?.(parseInt(key, 10));
+  if (tier) {
+    html += '<hr>';
+    if (tier.name) {
+      html += `<h6>${tier.name}</h6>`;
+    }
+    if (tier.description) {
+      html += `<p>${tier.description}</p>`;
+    }
+  }
+  
+  // Add blood potency limits
+  const limits = data.getBloodPotencyLimits?.(parseInt(key, 10));
+  if (limits) {
+    html += '<hr>';
+    html += `<h6>Blood Potency Limits</h6>`;
+    html += `<p>Range: ${limits.lowest} - ${limits.highest}</p>`;
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
+
+function buildCompulsionContent(data, key) {
+  if (!data || !key) return '<p>No data available.</p>';
+  
+  const [type, compKey] = key.split('.', 2);
+  let item = null;
+  
+  if (type === 'general') {
+    item = data.general?.[compKey];
+  } else {
+    item = data.clanCompulsions?.[compKey];
+  }
+  
+  if (!item) return '<p>Compulsion not found.</p>';
+  
+  let html = '';
+  
+  if (item.description) {
+    html += `<p>${item.description}</p>`;
+  }
+  
+  if (item.effects && Array.isArray(item.effects)) {
+    html += list('Effects', item.effects);
+  }
+  
+  return html || '<p>No detailed information available.</p>';
+}
 
 const mappings = [
   {
     selector: '.disciplines-container',
-    modulePath: '../data/vampire/disciplines.js',
+    modulePath: '../../data/vampire/disciplines.js',
     dataKey: 'disciplines',
-    title: 'Disciplines'
-  },
-  {
-    selector: '.merits-container',
-    modulePath: '../data/vampire/merits.js',
-    dataKey: 'merits',
-    title: 'Merits'
-  },
-  {
-    selector: '.merits-container',
-    modulePath: '../data/vampire/merits.js', // same file
-    dataKey: 'merits',
-    title: 'Merits'
-  },
-  {
-    selector: '.backgrounds-container',
-    modulePath: '../data/vampire/backgrounds.js',
-    dataKey: 'backgrounds',
-    title: 'Backgrounds'
-  },
-  {
-    selector: '.backgrounds-container',
-    modulePath: '../data/vampire/backgrounds.js',
-    dataKey: 'backgrounds',
+    title: 'Disciplines',
     key: 'disciplines',
     heading: 'Disciplines',
-    modulePath: '../data/vampire/disciplines.js',
+    titlePrefix: 'Disciplines',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -63,13 +332,16 @@ const mappings = [
         content += '</ul>';
       }
       return content;
-    },
-    titlePrefix: 'Disciplines'
+    }
   },
   {
+    selector: '.merits-container',
+    modulePath: '../../data/vampire/merits.js',
+    dataKey: 'merits',
+    title: 'Merits',
     key: 'merits',
     heading: 'Merits',
-    modulePath: '../data/vampire/merits.js',
+    titlePrefix: 'Merits',
     buildContent: (data) => {
       let content = '<p>Merits provide advantages that customise a character.</p>';
       const categories = Object.values(data || {});
@@ -79,14 +351,16 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Merits'
+    }
   },
   {
+    selector: '.merits-container',
+    modulePath: '../../data/vampire/merits.js', // same file
+    dataKey: 'merits',
+    title: 'Flaws',
     key: 'flaws',
     heading: 'Flaws',
-    modulePath: '../data/vampire/merits.js', // same file
-    dataKey: 'merits',
+    titlePrefix: 'Flaws',
     buildContent: (data) => {
       let content = '<p>Flaws represent disadvantages and weaknesses.</p>';
       const categories = Object.values(data || {});
@@ -98,13 +372,16 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Flaws'
+    }
   },
   {
+    selector: '.backgrounds-container',
+    modulePath: '../../data/vampire/backgrounds.js',
+    dataKey: 'backgrounds',
+    title: 'Backgrounds',
     key: 'backgrounds',
     heading: 'Backgrounds',
-    modulePath: '../data/vampire/backgrounds.js',
+    titlePrefix: 'Background Merits',
     buildContent: (data) => {
       let content = '<p>Background Merits grant social and material advantages.</p>';
       const categories = Object.values(data || {});
@@ -116,14 +393,16 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Background Merits'
+    }
   },
   {
+    selector: '.backgrounds-container',
+    modulePath: '../../data/vampire/backgrounds.js',
+    dataKey: 'backgrounds',
+    title: 'Background Flaws',
     key: 'backgroundFlaws',
     heading: 'Background Flaws',
-    modulePath: '../data/vampire/backgrounds.js',
-    dataKey: 'backgrounds',
+    titlePrefix: 'Background Flaws',
     buildContent: (data) => {
       let content = '<p>Background Flaws represent social or material hindrances.</p>';
       const categories = Object.values(data || {});
@@ -135,13 +414,16 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Background Flaws'
+    }
   },
   {
+    selector: '.loresheets-container',
+    modulePath: '../../data/vampire/loresheets.js',
+    dataKey: 'loresheets',
+    title: 'Loresheets',
     key: 'loresheets',
     heading: 'Loresheets',
-    modulePath: '../data/vampire/loresheets.js',
+    titlePrefix: 'Loresheets',
     buildContent: (data) => {
       let content = '';
       if (data.description) {
@@ -155,13 +437,16 @@ const mappings = [
         content += '</ul>';
       }
       return content;
-    },
-    titlePrefix: 'Loresheets'
+    }
   },
   {
+    selector: '.attributes-container',
+    modulePath: '../../data/attributes.js',
+    dataKey: 'attributes',
+    title: 'Attributes',
     key: 'attributes',
     heading: 'Attributes',
-    modulePath: '../data/attributes.js',
+    titlePrefix: 'Attributes',
     buildContent: (data) => {
       let content = '';
       if (data.overview?.description) {
@@ -181,13 +466,16 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Attributes'
+    }
   },
   {
+    selector: '.skills-container',
+    modulePath: '../../data/skills.js',
+    dataKey: 'skills',
+    title: 'Skills',
     key: 'skills',
     heading: 'Skills',
-    modulePath: '../data/skills.js',
+    titlePrefix: 'Skills',
     buildContent: (data) => {
       let content = '';
       if (data.overview?.description) {
@@ -204,8 +492,7 @@ const mappings = [
       });
       content += '</ul>';
       return content;
-    },
-    titlePrefix: 'Skills'
+    }
   }
 ];
 
@@ -214,43 +501,50 @@ const dropdownMappings = [
     selector : '.resonance-dropdown',
     module   : '../../data/vampire/resonances.js',
     dataKey: 'resonances',
-    title: 'Resonance'
+    title: 'Resonance',
+    buildContent: buildResonanceContent
   },
   {                // Temperament
     selector : '.temperament-dropdown',
     module   : '../../data/vampire/resonances.js',
     dataKey: 'resonances',
-    title: 'Temperament'
+    title: 'Temperament',
+    buildContent: buildTemperamentContent
   },
   {                // Predator Type
     selector : '.predator-dropdown',
     module   : '../../data/vampire/predator_types.js',
     dataKey: 'predatorTypes',
-    title: 'Predator Type'
+    title: 'Predator Type',
+    buildContent: buildPredatorContent
   },
   {                // Clan
     selector : '.clan-dropdown',
     module   : '../../data/vampire/clans.js',
     dataKey: 'clans',
-    title: 'Clan'
+    title: 'Clan',
+    buildContent: buildClanContent
   },
   {                // Generation
     selector : '.generation-dropdown',
     module   : '../../data/vampire/generation.js',
     dataKey: 'generation',
-    title: 'Generation'
+    title: 'Generation',
+    buildContent: buildGenerationContent
   },
   {                // Blood Potency
     selector : '.blood-potency-dropdown',
     module   : '../../data/vampire/blood_potency.js',
     dataKey: 'bloodPotency',
-    title: 'Blood Potency'
+    title: 'Blood Potency',
+    buildContent: buildDropdownContent
   },
   {                // Compulsion
     selector : '.compulsion-dropdown',
-    module   : '../../ data/vampire/compulsions.js',
+    module   : '../../data/vampire/compulsions.js',
     dataKey: 'compulsions',
-    title: 'Compulsion'
+    title: 'Compulsion',
+    buildContent: buildCompulsionContent
   }
 ];
 
@@ -268,22 +562,6 @@ function ensureModal(id, titleText) {
   // This function is no longer needed since modalManager handles modal creation
   // Return a dummy element for backward compatibility
   return document.createElement('div');
-}
-
-function list(label, items) {
-  if (!items || !items.length) return '';
-  if (!Array.isArray(items)) items = Array.from(items);
-  let html = `<h6>${label}</h6><ul>`;
-  items.forEach(it => {
-    html += `<li>${it}</li>`;
-  });
-  html += '</ul>';
-  return html;
-}
-
-function badge(label, value) {
-  if (!value) return '';
-  return `<p><span class="badge bg-secondary me-2">${label}:</span> ${value}</p>`;
 }
 
 function showModal(id, contentHtml, titleText = 'Info') {
@@ -312,17 +590,17 @@ function initInfoButtons() {
         const contentHtml = mapping.buildContent(data);
         showModal(`${mapping.key}-heading-info-modal`, contentHtml, mapping.titlePrefix);
       } catch (err) {
-        console.error(`Error loading ${mapping.key} info:`, err);
+        logger.error(`Error loading ${mapping.key} info:`, err);
       }
     });
   });
 
   dropdownMappings.forEach(async map => {
     try {
-      const mod = await import('../../data/vampire/' + map.module.split('/').pop());
+      const mod = await import(map.module);
       const data = mod[map.dataKey] || mod.default || mod;
       if (!data) {
-        console.error(`No data found for ${map.selector}`);
+        logger.error(`No data found for ${map.selector}`);
         return;
       }
 
@@ -343,30 +621,40 @@ function initInfoButtons() {
         infoBtn.addEventListener('click', () => {
           const key = dd.value;
           if (!key || !data) {
-            console.error('Invalid data or key:', { key, data });
+            logger.error('Invalid data or key:', { key, data });
             return;
           }
 
-          // Special handling for Generation
-          if (map.selector === '.generation-dropdown') {
-            const tierName = data.tierMap?.[key];
-            const tier = data.tiers?.[tierName];
-            const html = map.buildContent(data, key);
-            const title = (tier?.name || `Generation ${key}`);
-            showModal(`${baseClass}-modal`, html, title);
+          // Use the specialized content builder for each dropdown type
+          const html = map.buildContent ? map.buildContent(data, key) : '<p>No content available.</p>';
+          
+          // Determine title based on the data structure
+          let title = 'Info';
+          if (map.selector === '.resonance-dropdown') {
+            const item = data.types?.[key];
+            title = item?.name || `Resonance ${key}`;
+          } else if (map.selector === '.temperament-dropdown') {
+            const item = data.temperaments?.[key];
+            title = item?.name || `Temperament ${key}`;
+          } else if (map.selector === '.predator-dropdown') {
+            const item = data.types?.[key];
+            title = item?.name || `Predator Type ${key}`;
+          } else if (map.selector === '.clan-dropdown') {
+            const item = data.types?.[key];
+            title = item?.name || `Clan ${key}`;
+          } else if (map.selector === '.generation-dropdown') {
+            title = `Generation ${key}`;
           } else if (map.selector === '.compulsion-dropdown') {
-            // Special handling for Compulsions
-            const html = map.buildContent(data, key);
             const [type, compKey] = key.split('.', 2);
-            const comp = type === 'general' ? data.general[compKey] : data.clanCompulsions[compKey];
-            const title = (comp?.name || 'Compulsion');
-            showModal(`${baseClass}-modal`, html, title);
+            const item = type === 'general' ? data.general?.[compKey] : data.clanCompulsions?.[compKey];
+            title = item?.name || 'Compulsion';
           } else {
-            // Standard handling for other dropdowns
-            const html = map.buildContent(data[key]);
-            const title = (data[key].name || data[key].title || 'Info');
-            showModal(`${baseClass}-modal`, html, title);
+            // Fallback for other dropdowns
+            const item = data[key];
+            title = item?.name || item?.title || 'Info';
           }
+          
+          showModal(`${baseClass}-modal`, html, title);
         });
       }
 
@@ -389,7 +677,7 @@ function initInfoButtons() {
       });
       observer.observe(document.body, {childList:true, subtree:true});
     } catch (err) {
-      console.error(`Error setting up ${map.selector} info buttons:`, err);
+      logger.error(`Error setting up ${map.selector} info buttons:`, err);
     }
   });
 
@@ -412,7 +700,7 @@ function initInfoButtons() {
       const validCurrent = Math.min(Math.max(current, 0), 10);
 
       try {
-        const mod          = await import('../data/vampire/humanity.js');
+        const mod          = await import('../../data/vampire/humanity.js');
         const humanityData = mod?.humanity || mod?.default || mod || {};
 
         // Basic overview — always show if present
@@ -444,7 +732,7 @@ function initInfoButtons() {
         showModal('humanity-info-modal', html, `Humanity ${validCurrent}`);
 
       } catch (err) {
-        console.error('Error loading Humanity information:', err);
+        logger.error('Error loading Humanity information:', err);
         showModal('humanity-info-modal', '<p>Error loading Humanity information.</p>', 'Humanity');
       }
     });
@@ -493,7 +781,7 @@ function initInfoButtons() {
           html += badge('Mend per Rouse', bp.healingAmount && bp.healingAmount+' Superficial');
           html += badge('Discipline Bonus', bp.disciplineBonus && '+'+bp.disciplineBonus+' die');
           showModal('blood-potency-info-modal', html, `Blood Potency ${level}`);
-        } catch(err){ console.error('Error loading Blood Potency info:', err);} 
+        } catch(err){ logger.error('Error loading Blood Potency info:', err);}
       });
       bpProcessed.add(stat);
     }
@@ -591,7 +879,7 @@ function initInfoButtons() {
         // Special handling for Generation
         if (statName === 'generation') {
           try {
-            const mod = await import('../data/vampire/generation.js');
+            const mod = await import('../../data/vampire/generation.js');
             const genData = mod.generation;
             
             let content = `<p>${genData.overview.description}</p>`;
@@ -609,11 +897,9 @@ function initInfoButtons() {
               content += `<hr/><h6>Blood Potency Limits</h6><p>Range: ${limits.lowest} - ${limits.highest}</p>`;
             }
             
-            showModal(`stat-${statKey}-modal`, content, `Generation ${currentValue}`);
-            return;
+            showModal('generation-info-modal', content, `Generation ${currentValue}`);
           } catch (err) {
-            console.error('Error loading Generation info:', err);
-            showModal(`stat-${statKey}-modal`, '<p>Error loading Generation information.</p>', 'Generation');
+            logger.error('Error loading Generation info:', err);
           }
         }
         

@@ -107,6 +107,18 @@ const modalManager = window.modalManager;
 // Import Discord integration functions
 let sendToDiscord;
 
+// Import logger
+let logger;
+
+// Helper function for logging with fallback
+function log(level, message, ...args) {
+    if (logger) {
+        logger[level](message, ...args);
+    } else {
+        console[level](message, ...args);
+    }
+}
+
 // Initialize dashboard
 async function initDashboard() {
     try {
@@ -117,6 +129,10 @@ async function initDashboard() {
         // Import Discord integration
         const discordModule = await import('../../integrations/discord-integration.js');
         sendToDiscord = discordModule.sendToDiscord;
+        
+        // Import logger
+        const loggerModule = await import('../utils/logger.js');
+        logger = loggerModule.default;
         
         // Initialize database
         await databaseManager.init();
@@ -131,7 +147,7 @@ async function initDashboard() {
         updateDashboard();
         
     } catch (error) {
-        console.error('Failed to initialize dashboard:', error);
+        log('error', 'Failed to initialize dashboard:', error);
     }
 }
 
@@ -142,14 +158,14 @@ async function loadSavedTheme() {
             const savedTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'wod-dark';
             if (savedTheme && savedTheme !== 'wod-dark') {
                 document.body.setAttribute('data-theme', savedTheme);
-                console.log('Applied saved theme:', savedTheme);
+                log('log', 'Applied saved theme:', savedTheme);
             } else {
                 document.body.setAttribute('data-theme', 'wod-dark');
-                console.log('Using default World of Darkness dark theme');
+                log('log', 'Using default World of Darkness dark theme');
             }
         }
     } catch (error) {
-        console.error('Failed to load saved theme:', error);
+        log('error', 'Failed to load saved theme:', error);
     }
 }
 
@@ -157,11 +173,11 @@ async function loadSavedTheme() {
 async function loadCharacters() {
     try {
         characters = await databaseManager.getAllCharacters();
-        console.log('Loaded characters:', characters);
+        log('log', 'Loaded characters:', characters);
     } catch (error) {
-        console.error('Failed to load characters:', error);
-        characters = [];
+        log('error', 'Failed to load characters:', error);
     }
+    characters = [];
 }
 
 // Update dashboard display
@@ -380,10 +396,10 @@ async function deleteCharacter(characterId, characterName) {
             await databaseManager.deleteCharacter(characterId);
             characters = characters.filter(c => c.id !== characterId);
             updateDashboard();
-            toastManager.success(`Character "${characterName}" has been deleted successfully.`, 'Deleted');
+            toastManager.success('✅ Character deleted successfully!', 'Deleted');
         } catch (error) {
-            console.error('Failed to delete character:', error);
-            toastManager.error('Failed to delete character. Please try again.', 'Error');
+            log('error', 'Failed to delete character:', error);
+            toastManager.error('❌ Failed to delete character. Please try again.', 'Error');
         }
     }
 }
@@ -432,7 +448,7 @@ async function createNewCharacter() {
         const characterId = await databaseManager.saveCharacter(characterData);
         await loadCharacters();
         updateDashboard();
-        toastManager.success('Character created successfully!', 'Success');
+        toastManager.success('✅ Character created successfully!', 'Created');
         const openNow = await modalManager.confirm('Character Created', 'Would you like to open the character sheet now?', {
             confirmText: 'Open Sheet',
             cancelText: 'Stay on Dashboard',
@@ -442,8 +458,8 @@ async function createNewCharacter() {
             openCharacter(characterId);
         }
     } catch (error) {
-        console.error('Failed to create character:', error);
-        toastManager.error('Failed to create character. Please try again.', 'Error');
+        log('error', 'Failed to create character:', error);
+        toastManager.error('❌ Failed to create character. Please try again.', 'Error');
     }
 }
 
@@ -452,9 +468,9 @@ async function refreshDashboard() {
     try {
         await loadCharacters();
         updateDashboard();
-        console.log('Dashboard refreshed');
+        log('log', 'Dashboard refreshed');
     } catch (error) {
-        console.error('Failed to refresh dashboard:', error);
+        log('error', 'Failed to refresh dashboard:', error);
     }
 }
 
@@ -473,7 +489,7 @@ async function loadSettings() {
     try {
         // Ensure database manager is available
         if (!databaseManager) {
-            console.error('Database manager not available');
+            log('error', 'Database manager not available');
             return;
         }
         
@@ -483,14 +499,14 @@ async function loadSettings() {
         
         // Load theme setting (use 'theme' key from the theme system, fallback to 'defaultTheme')
         const currentTheme = await databaseManager.getSetting('theme') || await databaseManager.getSetting('defaultTheme') || 'wod-dark';
-        console.log('Loading theme setting:', currentTheme);
+        log('log', 'Loading theme setting:', currentTheme);
         
         const themeDropdown = document.getElementById('defaultTheme');
         if (themeDropdown) {
             themeDropdown.value = currentTheme;
-            console.log('Set theme dropdown value to:', currentTheme);
+            log('log', 'Set theme dropdown value to:', currentTheme);
         } else {
-            console.error('Theme dropdown not found');
+            log('error', 'Theme dropdown not found');
         }
         
         const confirmDeletions = await databaseManager.getSetting('confirmDeletions') !== 'false';
@@ -508,24 +524,33 @@ async function loadSettings() {
         const discordSystemMessages = await databaseManager.getSetting('discordSystemMessages') === 'true';
         document.getElementById('discordSystemMessages').checked = discordSystemMessages;
         
+        // Load logging setting
+        const enableLogging = await databaseManager.getSetting('enableLogging') === 'true';
+        document.getElementById('enableLogging').checked = enableLogging;
+        
+        // Update logger state if available
+        if (logger) {
+            logger.setLoggingEnabled(enableLogging);
+        }
+        
         // Add event listener for theme dropdown changes (only once)
         if (themeDropdown && !themeDropdown.hasAttribute('data-theme-listener-added')) {
             themeDropdown.setAttribute('data-theme-listener-added', 'true');
             themeDropdown.addEventListener('change', function() {
-                console.log('Theme dropdown changed to:', this.value);
+                log('log', 'Theme dropdown changed to:', this.value);
                 applyThemeFromDropdown(this.value);
             });
-            console.log('Added theme dropdown event listener');
+            log('log', 'Added theme dropdown event listener');
         }
         
     } catch (error) {
-        console.error('Failed to load settings:', error);
+        log('error', 'Failed to load settings:', error);
     }
 }
 
 // Function to apply theme from dropdown selection
 function applyThemeFromDropdown(themeKey) {
-    console.log('Applying theme from dropdown:', themeKey);
+    log('log', 'Applying theme from dropdown:', themeKey);
     
     if (themeKey === "wod-dark") {
         document.body.setAttribute("data-theme", "wod-dark");
@@ -536,7 +561,7 @@ function applyThemeFromDropdown(themeKey) {
     // Save to database using the 'theme' key (same as the existing theme system)
     if (window.databaseManager) {
         window.databaseManager.setSetting('theme', themeKey).catch(err => {
-            console.error('Failed to save theme to database:', err);
+            log('error', 'Failed to save theme to database:', err);
         });
     }
 }
@@ -555,11 +580,21 @@ async function saveSettings() {
         await databaseManager.setSetting('discordDiceRolls', document.getElementById('discordDiceRolls').checked.toString());
         await databaseManager.setSetting('discordCharacterUpdates', document.getElementById('discordCharacterUpdates').checked.toString());
         await databaseManager.setSetting('discordSystemMessages', document.getElementById('discordSystemMessages').checked.toString());
+        
+        // Save logging setting
+        const enableLogging = document.getElementById('enableLogging').checked;
+        await databaseManager.setSetting('enableLogging', enableLogging.toString());
+        
+        // Update logger state
+        if (logger) {
+            logger.setLoggingEnabled(enableLogging);
+        }
+        
         const modal = bootstrap.Modal.getInstance(document.getElementById('settingsModal'));
         modal.hide();
         toastManager.success('Settings saved successfully!', 'Success');
     } catch (error) {
-        console.error('Failed to save settings:', error);
+        log('error', 'Failed to save settings:', error);
         toastManager.error('Failed to save settings. Please try again.', 'Error');
     }
 }
@@ -590,7 +625,7 @@ async function testDiscordWebhook() {
         await sendToDiscord(testEmbed);
         toastManager.success('✅ Discord webhook test successful! Check your Discord channel.', 'Success');
     } catch (error) {
-        console.error('Discord webhook test failed:', error);
+        log('error', 'Discord webhook test failed:', error);
         toastManager.error('❌ Discord webhook test failed. Please check your webhook URL and try again.', 'Error');
     }
 }
@@ -623,7 +658,7 @@ async function exportAllData() {
         URL.revokeObjectURL(url);
         toastManager.success('✅ Data exported successfully!', 'Exported');
     } catch (error) {
-        console.error('Failed to export data:', error);
+        log('error', 'Failed to export data:', error);
         toastManager.error('❌ Failed to export data. Please try again.', 'Error');
     }
 }
@@ -659,7 +694,7 @@ async function handleImportFile(event) {
             toastManager.success(`Successfully imported ${importData.characters.length} characters and settings!`, 'Imported');
         }
     } catch (error) {
-        console.error('Failed to import data:', error);
+        log('error', 'Failed to import data:', error);
         toastManager.error('Failed to import data. Please check the file format and try again.', 'Error');
     }
     event.target.value = '';
@@ -680,10 +715,10 @@ async function clearAllData() {
                 await databaseManager.clearAllData();
                 characters = [];
                 updateDashboard();
-                toastManager.success('All data has been cleared.', 'Cleared');
+                toastManager.success('✅ All data cleared successfully!', 'Cleared');
             } catch (error) {
-                console.error('Failed to clear data:', error);
-                toastManager.error('Failed to clear data. Please try again.', 'Error');
+                log('error', 'Failed to clear data:', error);
+                toastManager.error('❌ Failed to clear data. Please try again.', 'Error');
             }
         }
     }
@@ -721,10 +756,10 @@ async function handleCharacterImport(event) {
         await loadCharacters();
         updateDashboard();
         
-        toastManager.success(`Successfully imported character: ${characterData.name || 'Unnamed Character'}`, 'Imported');
+        toastManager.success('✅ Character imported successfully!', 'Imported');
         
     } catch (error) {
-        console.error('Failed to import character:', error);
+        log('error', 'Failed to import character:', error);
         toastManager.error('Failed to import character. Please check the file format and try again.', 'Error');
     }
     
@@ -762,10 +797,10 @@ async function handleProgenyImport(event) {
         await loadCharacters();
         updateDashboard();
         
-        toastManager.success(`Successfully imported Progeny character: ${ledgerData.name || 'Unnamed Character'}`, 'Imported');
+        toastManager.success('✅ Progeny character imported successfully!', 'Imported');
         
     } catch (error) {
-        console.error('Failed to import Progeny character:', error);
+        log('error', 'Failed to import Progeny character:', error);
         toastManager.error('Failed to import Progeny character. Please check the file format and try again.', 'Error');
     }
     

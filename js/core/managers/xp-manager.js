@@ -64,6 +64,9 @@
 
 // XP Manager for Ledger
 
+// Use global logger (available from character-sheet.html)
+const logger = window.logger || console;
+
 (function(){
     // Wait for DOM ready
     document.addEventListener('DOMContentLoaded', () => {
@@ -94,8 +97,8 @@
             // No XP data found, use defaults
             xpData = {total:0, spent:0, history:[]};
         } catch(e) { 
-            console.error('Failed to load XP data from IndexedDB:', e);
-            xpData = {total:0, spent:0, history:[]}; 
+          logger.error('Failed to load XP data from IndexedDB:', e);
+          xpData = {total:0, spent:0, history:[]}; 
         }
         updateXPUI();
     }
@@ -111,7 +114,7 @@
             
             throw new Error('No database manager available for XP storage');
         } catch (err) {
-            console.error('Failed to save XP data to IndexedDB:', err);
+            logger.error('Failed to save XP data to IndexedDB:', err);
             throw err;
         }
     }
@@ -218,9 +221,9 @@
     // Spend XP
     async function spendXP(amount, note = '', meta=null) {
         // Prevent overspending
-        if (amount <= 0 || amount > (xpData.total - xpData.spent)) {
-            console.warn('Not enough available XP to spend');
-            return false;
+        if (getAvailableXP() < amount) {
+          logger.warn('Not enough available XP to spend');
+          return false;
         }
         xpData.spent += amount;
         xpData.history.push({type: 'spend', amount, date: new Date().toLocaleString(), note, meta});

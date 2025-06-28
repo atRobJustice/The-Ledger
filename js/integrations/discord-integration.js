@@ -82,6 +82,9 @@
  * These helpers were previously embedded in dice-overlay.js.
  */
 
+// Import logger
+import logger from '../core/utils/logger.js';
+
 // Retrieve the currently configured Discord webhook URL (or null if not set)
 export async function getDiscordWebhook() {
   try {
@@ -92,7 +95,7 @@ export async function getDiscordWebhook() {
     
     throw new Error('No database manager available for Discord webhook retrieval');
   } catch (err) {
-    console.error('Failed to get Discord webhook:', err);
+    logger.error('Failed to get Discord webhook:', err);
     return null;
   }
 }
@@ -105,7 +108,7 @@ export async function isDiscordEnabled() {
     }
     return false; // Default to disabled if no database manager
   } catch (err) {
-    console.error('Failed to check Discord enabled setting:', err);
+    logger.error('Failed to check Discord enabled setting:', err);
     return false; // Default to disabled on error
   }
 }
@@ -131,7 +134,7 @@ export async function setDiscordWebhook(url) {
       throw new Error('No database manager available for Discord webhook deletion');
     }
   } catch (err) {
-    console.error('Failed to set Discord webhook:', err);
+    logger.error('Failed to set Discord webhook:', err);
   }
 }
 
@@ -184,8 +187,7 @@ export async function sendToDiscord(contentOrEmbed) {
       body: JSON.stringify(payload)
     });
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to send Discord webhook', err);
+    logger.error('Failed to send Discord webhook', err);
   }
 }
 

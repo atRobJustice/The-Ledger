@@ -74,6 +74,7 @@
 // Merit and Flaw Manager
 import { merits } from '../../data/vampire/merits.js';
 import { TraitManagerUtils } from './manager-utils.js';
+import logger from '../utils/logger.js';
 
 class MeritFlawManager {
     constructor() {
@@ -93,7 +94,7 @@ class MeritFlawManager {
     renderMeritManager() {
         const meritContainer = $('.merits-container');
         if (meritContainer.length === 0) {
-            console.error('Merits container not found');
+            logger.error('Merits container not found');
             return;
         }
 
@@ -104,7 +105,7 @@ class MeritFlawManager {
     renderFlawManager() {
         const flawContainer = $('.flaws-container');
         if (flawContainer.length === 0) {
-            console.error('Flaws container not found');
+            logger.error('Flaws container not found');
             return;
         }
 

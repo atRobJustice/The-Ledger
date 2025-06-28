@@ -87,6 +87,7 @@
 
 import { getTotalPrice } from '../utils/xp-pricing.js';
 import { TraitManagerUtils } from './manager-utils.js';
+import logger from '../utils/logger.js';
 
 // Import references for trait lists
 import { attributes as ATTR_REF } from '../../data/attributes.js';
@@ -492,7 +493,7 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
       if(typeof window.gatherCharacterData==='function'){
         try{
           const data = window.gatherCharacterData();
-          console.debug('[XP] autosave data', data);
+          logger.debug('[XP] autosave data', data);
           
           // Use IndexedDB exclusively
           if (window.characterManager && window.characterManager.isInitialized) {
@@ -502,7 +503,9 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
           } else {
             throw new Error('No database manager available for autosave');
           }
-        }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
+        } catch (err) {
+          logger.warn('[XP] autosave after trait change failed', err);
+        }
       } else {
         // Backup manager not yet loaded – retry shortly
         let attempts = 0;
@@ -510,7 +513,7 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
           if(typeof window.gatherCharacterData==='function'){
             try{
               const data = window.gatherCharacterData();
-              console.debug('[XP] autosave data', data);
+              logger.debug('[XP] autosave data', data);
               
               // Use IndexedDB exclusively
               if (window.characterManager && window.characterManager.isInitialized) {
@@ -520,7 +523,9 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
               } else {
                 throw new Error('No database manager available for autosave');
               }
-            }catch(err){ console.warn('[XP] autosave after trait change failed', err); }
+            } catch (err) {
+              logger.warn('[XP] autosave after trait change failed', err);
+            }
           } else if(attempts < 10){
             attempts++;
             setTimeout(retry, 300);
@@ -581,7 +586,18 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
                 return { currentLevel: value, label };
               }
             } catch (err) {
-              console.warn('[XP] Failed to get level from character data, falling back to DOM:', err);
+              logger.warn('[XP] Failed to get level from character data, falling back to DOM:', err);
+              // Fallback to DOM
+              const row = Array.from(document.querySelectorAll('.stat')).find(r => 
+                r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase()
+              );
+              if (row) {
+                const dotsEl = row.querySelector('.dots');
+                if (dotsEl) {
+                  return parseInt(dotsEl.dataset.value || '0', 10);
+                }
+              }
+              return 0;
             }
           }
           
@@ -614,7 +630,18 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
                 return { currentLevel: value, label: 'Blood Potency' };
               }
             } catch (err) {
-              console.warn('[XP] Failed to get blood potency from character data, falling back to DOM:', err);
+              logger.warn('[XP] Failed to get blood potency from character data, falling back to DOM:', err);
+              // Fallback to DOM
+              const row = Array.from(document.querySelectorAll('.stat')).find(r => 
+                r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'blood potency'
+              );
+              if (row) {
+                const dotsEl = row.querySelector('.dots');
+                if (dotsEl) {
+                  return parseInt(dotsEl.dataset.value || '0', 10);
+                }
+              }
+              return 0;
             }
           }
           
@@ -661,19 +688,19 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
     }
 
     async function applyTraitChange(cat, traitKey, oldLevel, newLevel) {
-      console.debug('[XP] applyTraitChange start', {cat, traitKey, oldLevel, newLevel});
+      logger.debug('[XP] applyTraitChange start', {cat, traitKey, oldLevel, newLevel});
       switch (cat) {
         case 'attribute':
         case 'skill': {
           const label = findLabelByKey(cat, traitKey);
-          console.debug('[XP] attribute/skill label resolved', label);
+          logger.debug('[XP] attribute/skill label resolved', label);
           const row = Array.from(document.querySelectorAll('.stat')).find(r => r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === label.toLowerCase());
-          console.debug('[XP] row found for', label, row);
+          logger.debug('[XP] row found for', label, row);
           if (row) {
-            console.debug('[XP] dotsEl exists?', !!row.querySelector('.dots'));
+            logger.debug('[XP] dotsEl exists?', !!row.querySelector('.dots'));
             const dotsEl = row.querySelector('.dots');
             if (dotsEl) {
-              console.debug('[XP] current dataset value', dotsEl.dataset.value, 'updating to', newLevel);
+              logger.debug('[XP] current dataset value', dotsEl.dataset.value, 'updating to', newLevel);
               // update dots
               dotsEl.dataset.value = newLevel;
               dotsEl.setAttribute('data-value', newLevel);
@@ -681,13 +708,13 @@ import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
               if(window.jQuery){ window.jQuery(dotsEl).data('value', newLevel); }
               const dotEls = dotsEl.querySelectorAll('.dot');
               dotEls.forEach((d,i)=> d.classList.toggle('filled', i<newLevel));
-              console.debug('[XP] row dataset value set to', row.dataset.value);
+              logger.debug('[XP] row dataset value set to', row.dataset.value);
             } else {
-              console.warn('[XP] applyTraitChange: dots element not found for', label);
+              logger.warn('[XP] applyTraitChange: dots element not found for', label);
             }
             row.dataset.value = newLevel;
           } else {
-            console.warn('[XP] applyTraitChange: stat row not found for', label);
+            logger.warn('[XP] applyTraitChange: stat row not found for', label);
           }
           break;
         }

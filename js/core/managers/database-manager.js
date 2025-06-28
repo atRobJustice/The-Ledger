@@ -72,6 +72,8 @@
  * Handles IndexedDB operations for character data storage
  */
 
+import logger from '../utils/logger.js';
+
 class DatabaseManager {
     constructor() {
         this.dbName = 'LedgerDB';
@@ -90,14 +92,14 @@ class DatabaseManager {
             const request = indexedDB.open(this.dbName, this.dbVersion);
 
             request.onerror = () => {
-                console.error('Failed to open IndexedDB:', request.error);
+                logger.error('Failed to open IndexedDB:', request.error);
                 reject(request.error);
             };
 
             request.onsuccess = () => {
                 this.db = request.result;
                 this.isInitialized = true;
-                console.log('IndexedDB initialized successfully');
+                logger.log('IndexedDB initialized successfully');
                 resolve(this.db);
             };
 
@@ -116,7 +118,7 @@ class DatabaseManager {
                     const settingsStore = db.createObjectStore('settings', { keyPath: 'key' });
                 }
 
-                console.log('IndexedDB schema created/updated');
+                logger.log('IndexedDB schema created/updated');
             };
         });
     }
@@ -133,12 +135,12 @@ class DatabaseManager {
 
             request.onsuccess = () => {
                 const characters = request.result || [];
-                console.log('DatabaseManager: Retrieved all characters:', characters);
+                logger.log('DatabaseManager: Retrieved all characters:', characters);
                 resolve(characters);
             };
 
             request.onerror = () => {
-                console.error('DatabaseManager: Failed to retrieve characters:', request.error);
+                logger.error('DatabaseManager: Failed to retrieve characters:', request.error);
                 reject(request.error);
             };
         });
@@ -149,7 +151,7 @@ class DatabaseManager {
      */
     async getCharacter(id) {
         await this.init();
-        console.log('DatabaseManager: Attempting to get character with ID:', id, 'Type:', typeof id);
+        logger.log('DatabaseManager: Attempting to get character with ID:', id, 'Type:', typeof id);
         
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(['characters'], 'readonly');
@@ -157,12 +159,12 @@ class DatabaseManager {
             const request = store.get(id);
 
             request.onsuccess = () => {
-                console.log('DatabaseManager: Character retrieval result for ID:', id, request.result);
+                logger.log('DatabaseManager: Character retrieval result for ID:', id, request.result);
                 resolve(request.result || null);
             };
 
             request.onerror = () => {
-                console.error('DatabaseManager: Character retrieval failed for ID:', id, request.error);
+                logger.error('DatabaseManager: Character retrieval failed for ID:', id, request.error);
                 reject(request.error);
             };
         });
@@ -205,7 +207,7 @@ class DatabaseManager {
      */
     async deleteCharacter(id) {
         await this.init();
-        console.log('DatabaseManager: Attempting to delete character with ID:', id);
+        logger.log('DatabaseManager: Attempting to delete character with ID:', id);
         
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(['characters'], 'readwrite');
@@ -213,12 +215,12 @@ class DatabaseManager {
             const request = store.delete(id);
 
             request.onsuccess = () => {
-                console.log('DatabaseManager: Character deletion successful for ID:', id);
+                logger.log('DatabaseManager: Character deletion successful for ID:', id);
                 resolve();
             };
 
             request.onerror = () => {
-                console.error('DatabaseManager: Character deletion failed for ID:', id, request.error);
+                logger.error('DatabaseManager: Character deletion failed for ID:', id, request.error);
                 reject(request.error);
             };
         });

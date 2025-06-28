@@ -94,6 +94,7 @@
 
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
+import logger from '../utils/logger.js';
 
 /**
  * Initialize the character sheet toolbar
@@ -129,7 +130,7 @@ export function initCharacterToolbar() {
  */
 async function loadSavedTheme() {
     try {
-        console.log('Starting theme loading on character sheet...');
+        logger.info('Starting theme loading on character sheet...');
         
         // Wait for database manager to be available
         let attempts = 0;
@@ -139,29 +140,29 @@ async function loadSavedTheme() {
         }
         
         if (window.databaseManager) {
-            console.log('Database manager found, loading theme...');
+            logger.info('Database manager found, loading theme...');
             const savedTheme = await window.databaseManager.getSetting('theme') || await window.databaseManager.getSetting('defaultTheme') || 'wod-dark';
-            console.log('Retrieved theme from database:', savedTheme);
+            logger.info('Retrieved theme from database:', savedTheme);
             
             if (savedTheme && savedTheme !== 'wod-dark') {
                 document.body.setAttribute('data-theme', savedTheme);
-                console.log('Applied saved theme to character sheet:', savedTheme);
+                logger.info('Applied saved theme to character sheet:', savedTheme);
             } else {
                 document.body.setAttribute('data-theme', 'wod-dark');
-                console.log('Using default World of Darkness dark theme on character sheet');
+                logger.info('Using default World of Darkness dark theme on character sheet');
             }
             
             // Double-check that the theme was actually applied
             setTimeout(() => {
                 const currentTheme = document.body.getAttribute('data-theme');
-                console.log('Theme verification - current data-theme attribute:', currentTheme);
+                logger.info('Theme verification - current data-theme attribute:', currentTheme);
             }, 100);
             
         } else {
-            console.warn('Database manager not available for theme loading after 5 seconds');
+            logger.warn('Database manager not available for theme loading after 5 seconds');
         }
     } catch (error) {
-        console.error('Failed to load saved theme on character sheet:', error);
+        logger.error('Failed to load saved theme on character sheet:', error);
     }
 }
 
@@ -182,7 +183,7 @@ function initSaveButton() {
                 }
             }
         } catch (error) {
-            console.error('Failed to save character:', error);
+            logger.error('Failed to save character:', error);
             if (window.toastManager) {
                 window.toastManager.show('Failed to save character', 'error', 'Character Toolbar');
             }
@@ -217,7 +218,7 @@ function initExportButton() {
                 }
             }
         } catch (error) {
-            console.error('Failed to export character:', error);
+            logger.error('Failed to export character:', error);
             if (window.toastManager) {
                 window.toastManager.show('Failed to export character', 'error', 'Character Toolbar');
             }
@@ -258,7 +259,7 @@ function initImportButton() {
                 }
             }
         } catch (error) {
-            console.error('Failed to import character:', error);
+            logger.error('Failed to import character:', error);
             if (window.toastManager) {
                 window.toastManager.show('Failed to import character', 'error', 'Character Toolbar');
             }
@@ -420,7 +421,7 @@ function initClearButton() {
                     }
                 }
             } catch (error) {
-                console.error('Failed to clear character sheet:', error);
+                logger.error('Failed to clear character sheet:', error);
                 if (window.toastManager) {
                     window.toastManager.show('Failed to clear character sheet', 'error', 'Character Toolbar');
                 }
@@ -644,7 +645,7 @@ function showThemeModal() {
  * Apply theme and save to database
  */
 async function applyTheme(themeKey) {
-    console.log('Applying theme from character toolbar:', themeKey);
+    logger.log('Applying theme from character toolbar:', themeKey);
     
     if (themeKey === "wod-dark") {
         document.body.setAttribute("data-theme", "wod-dark");
@@ -652,16 +653,16 @@ async function applyTheme(themeKey) {
         document.body.setAttribute("data-theme", themeKey);
     }
     
-    // Save to database using the 'theme' key (same as the existing theme system)
+    // Save to database
     if (window.databaseManager) {
         try {
             await window.databaseManager.setSetting('theme', themeKey);
-            console.log('Theme saved to database:', themeKey);
+            logger.log('Theme saved to database:', themeKey);
         } catch (err) {
-            console.error('Failed to save theme to database:', err);
+            logger.error('Failed to save theme to database:', err);
         }
     } else {
-        console.error('No database manager available for theme storage');
+        logger.error('No database manager available for theme storage');
     }
 }
 

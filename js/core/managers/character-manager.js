@@ -15,6 +15,7 @@
  * @requires window.loadCharacterData - Function to load character data into the UI
  * @requires window.gatherCharacterData - Function to collect character data from the UI
  * @requires window.LockManager - Manages the lock state of the character sheet
+ * @requires logger.js - Provides logging functionality
  * 
  * @class CharacterManager
  * @classdesc Main class for managing multiple characters in the application
@@ -81,6 +82,7 @@
 
 import databaseManager from './database-manager.js';
 import { TraitManagerUtils } from './manager-utils.js';
+import logger from '../utils/logger.js';
 
 class CharacterManager {
     constructor() {
@@ -106,13 +108,13 @@ class CharacterManager {
             await this.setCurrentCharacter();
             
             this.isInitialized = true;
-            console.log('CharacterManager initialized');
+            logger.log('CharacterManager initialized');
             
             // Initialize UI
             this.initUI();
             
         } catch (err) {
-            console.error('Failed to initialize CharacterManager:', err);
+            logger.error('Failed to initialize CharacterManager:', err);
         }
     }
 
@@ -122,9 +124,9 @@ class CharacterManager {
     async loadCharacters() {
         try {
             this.characters = await databaseManager.getAllCharacters();
-            console.log(`CharacterManager: Loaded ${this.characters.length} characters:`, this.characters);
+            logger.log(`CharacterManager: Loaded ${this.characters.length} characters:`, this.characters);
         } catch (err) {
-            console.error('CharacterManager: Failed to load characters:', err);
+            logger.error('CharacterManager: Failed to load characters:', err);
             this.characters = [];
         }
     }
@@ -147,7 +149,7 @@ class CharacterManager {
                     const character = await databaseManager.getCharacter(characterId);
                     if (character) {
                         this.currentCharacterId = characterId;
-                        console.log('Loading character from URL parameter:', characterId);
+                        logger.log('Loading character from URL parameter:', characterId);
                         
                         // Set as active character in database
                         await databaseManager.setActiveCharacterId(characterId);
@@ -155,19 +157,19 @@ class CharacterManager {
                         // Initialize lock state from URL parameter if present
                         if (lockedFromUrl !== null && window.LockManager) {
                             const shouldLock = lockedFromUrl === 'true';
-                            console.log('Setting lock state from URL parameter:', shouldLock);
+                            logger.log('Setting lock state from URL parameter:', shouldLock);
                             window.LockManager.init(shouldLock);
                         }
                         
                         // Load the character data into the UI
                         if (window.loadCharacterData) {
-                            console.log('CharacterManager: Loading character data into UI from URL parameter');
+                            logger.log('CharacterManager: Loading character data into UI from URL parameter');
                             window.loadCharacterData(character);
                         }
                         
                         return;
                     } else {
-                        console.warn('Character not found for ID from URL:', characterId);
+                        logger.warn('Character not found for ID from URL:', characterId);
                     }
                 }
             }
@@ -185,14 +187,14 @@ class CharacterManager {
             if (this.currentCharacterId && window.loadCharacterData) {
                 const character = await databaseManager.getCharacter(this.currentCharacterId);
                 if (character) {
-                    console.log('CharacterManager: Loading character data into UI from database');
+                    logger.log('CharacterManager: Loading character data into UI from database');
                     window.loadCharacterData(character);
                 }
             }
             
-            console.log('Current character ID:', this.currentCharacterId);
+            logger.log('Current character ID:', this.currentCharacterId);
         } catch (err) {
-            console.error('Failed to set current character:', err);
+            logger.error('Failed to set current character:', err);
         }
     }
 
@@ -220,7 +222,7 @@ class CharacterManager {
             
             return savedId;
         } catch (err) {
-            console.error('Failed to save current character:', err);
+            logger.error('Failed to save current character:', err);
             throw err;
         }
     }
@@ -249,7 +251,7 @@ class CharacterManager {
             
             return characterId;
         } catch (err) {
-            console.error('Failed to create new character:', err);
+            logger.error('Failed to create new character:', err);
             throw err;
         }
     }
@@ -276,10 +278,10 @@ class CharacterManager {
             
             // Load the new character data
             if (window.loadCharacterData) {
-                console.log('CharacterManager: Calling loadCharacterData with character:', character);
+                logger.log('CharacterManager: Calling loadCharacterData with character:', character);
                 window.loadCharacterData(character);
             } else {
-                console.log('CharacterManager: loadCharacterData function not available');
+                logger.log('CharacterManager: loadCharacterData function not available');
             }
             
             // Update UI
@@ -289,10 +291,10 @@ class CharacterManager {
             // Refresh the character management modal if it's open
             this.refreshCharacterManagementModal();
             
-            console.log(`Switched to character: ${character.name}`);
+            logger.log(`Switched to character: ${character.name}`);
             
         } catch (err) {
-            console.error('Failed to switch character:', err);
+            logger.error('Failed to switch character:', err);
             throw err;
         }
     }
@@ -308,7 +310,7 @@ class CharacterManager {
                 throw new Error('Invalid character ID');
             }
             
-            console.log('Attempting to delete character with ID:', id);
+            logger.log('Attempting to delete character with ID:', id);
             
             // Check if character exists before deleting
             const character = await databaseManager.getCharacter(id);
@@ -316,10 +318,10 @@ class CharacterManager {
                 throw new Error('Character not found');
             }
             
-            console.log('Found character to delete:', character.name);
+            logger.log('Found character to delete:', character.name);
             
             await databaseManager.deleteCharacter(id);
-            console.log('Character deleted from database');
+            logger.log('Character deleted from database');
             
             // Reload characters list to get updated data
             await this.loadCharacters();
@@ -341,10 +343,10 @@ class CharacterManager {
             // Refresh the character management modal if it's open
             this.refreshCharacterManagementModal();
             
-            console.log('Character deletion completed successfully');
+            logger.log('Character deletion completed successfully');
             
         } catch (err) {
-            console.error('Failed to delete character:', err);
+            logger.error('Failed to delete character:', err);
             throw err;
         }
     }
@@ -418,7 +420,7 @@ class CharacterManager {
             }
             
             // Fallback clearing method if performClearSheet is not available
-            console.log('Using fallback sheet clearing method');
+            logger.log('Using fallback sheet clearing method');
             
             // Clear all input fields and textareas
             document.querySelectorAll('input[type="text"], textarea').forEach(input => {
@@ -510,11 +512,11 @@ class CharacterManager {
             const hist = document.getElementById('experience-history');
             if (hist) hist.innerHTML = '';
             
-            console.log('Sheet cleared successfully');
+            logger.log('Sheet cleared successfully');
             
         } catch (err) {
-            console.error('Error clearing sheet:', err);
-            throw new Error('Failed to clear character sheet: ' + err.message);
+            logger.error('Error clearing sheet:', err);
+            throw err;
         }
     }
 
@@ -522,18 +524,12 @@ class CharacterManager {
      * Set the character name in the sheet
      */
     setCharacterName(name) {
-        const nameRow = Array.from(document.querySelectorAll('.stat')).find(r => 
-            r.querySelector('.stat-label')?.textContent.trim().toLowerCase() === 'name'
-        );
-        if (nameRow) {
-            const input = nameRow.querySelector('input');
-            if (input) {
-                input.value = name;
-                input.dispatchEvent(new Event('input'));
-                console.log('Character name set to:', name);
-            }
+        const nameInput = document.querySelector('input[name="name"]');
+        if (nameInput) {
+            nameInput.value = name;
+            logger.log('Character name set to:', name);
         } else {
-            console.warn('Could not find name input field');
+            logger.warn('Could not find name input field');
         }
     }
 

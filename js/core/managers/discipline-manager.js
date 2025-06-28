@@ -86,6 +86,7 @@
 // Enhanced Discipline Manager with Powers
 import { disciplines } from '../utils/disciplines.js';
 import { TraitManagerUtils } from './manager-utils.js';
+import logger from '../utils/logger.js';
 
 class DisciplineManager {
     constructor() {
@@ -114,7 +115,7 @@ class DisciplineManager {
     renderDisciplineManager() {
         const disciplineContainer = $('.disciplines-container');
         if (disciplineContainer.length === 0) {
-            console.error('Disciplines container not found');
+            logger.error('Disciplines container not found');
             return;
         }
 
@@ -614,21 +615,26 @@ class DisciplineManager {
         }
 
         // Parse amalgam string like "Obfuscate ●●" or "Blood Sorcery ●●"
-        const amalgamMatch = amalgamString.match(/^(.+?)\s+(●+)$/);
-        if (!amalgamMatch) {
-            console.warn('Could not parse amalgam requirement:', amalgamString);
+        try {
+            const amalgamMatch = amalgamString.match(/^(.+?)\s+(●+)$/);
+            if (!amalgamMatch) {
+                logger.warn('Could not parse amalgam requirement:', amalgamString);
+                return false;
+            }
+
+            const [, disciplineName, dots] = amalgamMatch;
+            const requiredLevel = dots.length;
+
+            // Convert discipline name to key format
+            const disciplineKey = this.disciplineNameToKey(disciplineName);
+            
+            // Check if character has the required discipline at the required level
+            const disciplineData = this.selectedDisciplines.get(disciplineKey);
+            return disciplineData && disciplineData.level >= requiredLevel;
+        } catch (error) {
+            logger.warn('Could not parse amalgam requirement:', amalgamString);
             return false;
         }
-
-        const [, disciplineName, dots] = amalgamMatch;
-        const requiredLevel = dots.length;
-
-        // Convert discipline name to key format
-        const disciplineKey = this.disciplineNameToKey(disciplineName);
-        
-        // Check if character has the required discipline at the required level
-        const disciplineData = this.selectedDisciplines.get(disciplineKey);
-        return disciplineData && disciplineData.level >= requiredLevel;
     }
 
     disciplineNameToKey(disciplineName) {
@@ -721,10 +727,9 @@ class DisciplineManager {
 
     showFeedback(message, type = 'info') {
         if (window.toastManager) {
-            window.toastManager.show(message, type, 'Discipline Manager');
+            window.toastManager.show(message, type);
         } else {
-            // Fallback to simple alert if toastManager is not available
-            console.log(`${type.toUpperCase()}: ${message}`);
+            logger.log(`${type.toUpperCase()}: ${message}`);
         }
     }
 

@@ -93,6 +93,7 @@
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
+import logger from '../utils/logger.js';
 
 /**
  * Create the control bar and wire up all event handlers.
@@ -251,7 +252,7 @@ export function initControlBar(deps) {
           window.toastManager.show('Import logic unavailable', 'danger', 'Control Bar');
         }
       } catch (err) {
-        console.error(err);
+        logger.error(err);
         window.toastManager.show("Failed to import Progeny JSON", "danger");
       }
     };
@@ -566,7 +567,7 @@ export function initControlBar(deps) {
       // Clear the file input
       fileInput.value = '';
     } catch (err) {
-      console.error('Error clearing managers:', err);
+      logger.error('Error clearing managers:', err);
      window.toastManager.show("Error clearing some data. Please refresh the page.", "danger");
     }
 
@@ -579,13 +580,13 @@ export function initControlBar(deps) {
           // Use IndexedDB exclusively
           if (window.databaseManager) {
             window.databaseManager.setSetting('xpData', { total: 0, spent: 0, history: [] }).catch(err => {
-              console.warn('Failed to clear XP data from IndexedDB:', err);
+              logger.warn('Failed to clear XP data from IndexedDB:', err);
             });
           } else {
-            console.error('No database manager available for XP data clearing');
+            logger.error('No database manager available for XP data clearing');
           }
         } catch (e) {
-          console.warn('Failed to remove XP data from storage', e);
+          logger.warn('Failed to remove XP data from storage', e);
         }
         ['total-xp', 'spent-xp', 'available-xp'].forEach((id) => {
           const el = document.getElementById(id);
@@ -595,7 +596,7 @@ export function initControlBar(deps) {
         if (hist) hist.innerHTML = '';
       }
     } catch (xpErr) {
-      console.error('Error clearing XP data:', xpErr);
+      logger.error('Error clearing XP data:', xpErr);
     }
 
     window.toastManager.show("Character sheet cleared", "success");
@@ -720,7 +721,7 @@ export function initControlBar(deps) {
   // 8) Export / Import handlers --------------------------------------
   btnExport.addEventListener("click", () => {
     if (typeof window.gatherCharacterData !== "function") {
-      console.error("gatherCharacterData is not available");
+      logger.error("gatherCharacterData is not available");
       window.toastManager.show("Export failed: missing dependency", "danger");
       return;
     }
@@ -737,7 +738,7 @@ export function initControlBar(deps) {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (err) {
-      console.error(err);
+      logger.error(err);
       window.toastManager.show("Failed to export character", "danger");
     }
   });
@@ -758,7 +759,7 @@ export function initControlBar(deps) {
           window.toastManager.show('Import logic unavailable', 'danger', 'Control Bar');
         }
       } catch (err) {
-        console.error(err);
+        logger.error(err);
         window.toastManager.show("Failed to import character: invalid JSON", "danger");
       }
       // Clear the file input so it can be reused
@@ -996,10 +997,10 @@ export function initControlBar(deps) {
     // Use IndexedDB exclusively
     if (window.databaseManager) {
       window.databaseManager.setSetting('theme', themeKey).catch(err => {
-        console.error('Failed to save theme to IndexedDB:', err);
+        logger.error('Failed to save theme to IndexedDB:', err);
       });
     } else {
-      console.error('No database manager available for theme storage');
+      logger.error('No database manager available for theme storage');
     }
   }
 
@@ -1015,9 +1016,9 @@ export function initControlBar(deps) {
         }
       }
       
-      console.log('No theme found in IndexedDB, using default');
+      logger.log('No theme found in IndexedDB, using default');
     } catch (err) {
-      console.error('Failed to load theme from IndexedDB:', err);
+      logger.error('Failed to load theme from IndexedDB:', err);
     }
   }
 
@@ -1030,7 +1031,7 @@ export function initControlBar(deps) {
       }
       return false;
     } catch (err) {
-      console.error('Failed to check theme in IndexedDB:', err);
+      logger.error('Failed to check theme in IndexedDB:', err);
       return false;
     }
   }

@@ -65,6 +65,7 @@
 // Loresheet Manager
 import { loresheets } from '../../data/vampire/loresheets.js';
 import { TraitManagerUtils } from './manager-utils.js';
+import logger from '../utils/logger.js';
 
 class LoresheetManager {
     constructor() {
@@ -82,7 +83,7 @@ class LoresheetManager {
     renderLoresheetManager() {
         const loresheetContainer = $('.loresheets-container');
         if (loresheetContainer.length === 0) {
-            console.error('Loresheets container not found');
+            logger.error('Loresheets container not found');
             return;
         }
 

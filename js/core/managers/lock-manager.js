@@ -43,13 +43,23 @@
 const LockManager = (() => {
   let locked = false;
 
+  // Helper function for logging with fallback
+  function log(level, message, ...args) {
+    if (window.logger && window.logger[level]) {
+      window.logger[level](message, ...args);
+    } else {
+      // Fallback to console if logger not available
+      console[level](message, ...args);
+    }
+  }
+
   /* --------------------------------------------------
    * Public API
    * --------------------------------------------------*/
   function init(isLocked = false) {
-    console.log('LockManager.init called with:', isLocked, 'Current locked state was:', locked);
+    log('log', 'LockManager.init called with:', isLocked, 'Current locked state was:', locked);
     locked = !!isLocked;
-    console.log('LockManager.init: New locked state is:', locked);
+    log('log', 'LockManager.init: New locked state is:', locked);
     applyDOMState();
     emit();
   }
@@ -76,7 +86,7 @@ const LockManager = (() => {
    * Private helpers
    * --------------------------------------------------*/
   function applyDOMState() {
-    console.log('LockManager.applyDOMState: Applying locked state:', locked);
+    log('log', 'LockManager.applyDOMState: Applying locked state:', locked);
     document.body.classList.toggle('locked-sheet', locked);
     // Toggle class on dot controls
     document.querySelectorAll('.lockable-dot').forEach(el => {
@@ -87,7 +97,7 @@ const LockManager = (() => {
     document.querySelectorAll('[data-lockable="true"]').forEach(el => {
       el.disabled = locked;
     });
-    console.log('LockManager.applyDOMState: DOM updated, body has locked-sheet class:', document.body.classList.contains('locked-sheet'));
+    log('log', 'LockManager.applyDOMState: DOM updated, body has locked-sheet class:', document.body.classList.contains('locked-sheet'));
   }
 
   async function persist() {
@@ -100,7 +110,7 @@ const LockManager = (() => {
       
       throw new Error('No database manager available for lock persistence');
     } catch (e) {
-      console.error('LockManager persist error', e);
+      log('error', 'LockManager persist error', e);
     }
   }
 
@@ -121,6 +131,15 @@ const LockManager = (() => {
    * Self-initialisation on module load
    * --------------------------------------------------*/
   (async function bootstrap() {
+    // Wait for logger to be available (up to 2 seconds)
+    let attempts = 0;
+    const maxAttempts = 20; // 20 * 100ms = 2 seconds
+    
+    while (!window.logger && attempts < maxAttempts) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      attempts++;
+    }
+    
     try {
       // Use IndexedDB exclusively
       if (window.databaseManager) {
@@ -133,9 +152,9 @@ const LockManager = (() => {
         }
       }
       
-      console.log('No lock state found in IndexedDB, using default (unlocked)');
+      log('log', 'No lock state found in IndexedDB, using default (unlocked)');
     } catch (e) {
-      console.warn('LockManager bootstrap failed', e);
+      log('warn', 'LockManager bootstrap failed', e);
     }
   })();
 
