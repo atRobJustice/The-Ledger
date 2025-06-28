@@ -177,7 +177,6 @@ async function loadCharacters() {
     } catch (error) {
         log('error', 'Failed to load characters:', error);
     }
-    characters = [];
 }
 
 // Update dashboard display
@@ -190,12 +189,18 @@ function updateCharacterGrid() {
     const characterGrid = document.getElementById('character-grid');
     const emptyState = document.getElementById('empty-state');
     
+    log('log', 'updateCharacterGrid called with', characters.length, 'characters');
+    log('log', 'characterGrid element:', characterGrid);
+    log('log', 'emptyState element:', emptyState);
+    
     if (characters.length === 0) {
+        log('log', 'No characters, showing empty state');
         characterGrid.classList.add('d-none');
         if (emptyState) {
             emptyState.classList.add('d-block');
         }
     } else {
+        log('log', 'Characters found, showing character grid');
         characterGrid.classList.remove('d-none');
         characterGrid.classList.add('d-grid');
         if (emptyState) {
@@ -205,17 +210,24 @@ function updateCharacterGrid() {
     
     // Clear existing cards
     const existingCards = characterGrid.querySelectorAll('.character-card');
+    log('log', 'Clearing', existingCards.length, 'existing cards');
     existingCards.forEach(card => card.remove());
     
     // Add character cards
-    characters.forEach(character => {
+    log('log', 'Adding', characters.length, 'character cards');
+    characters.forEach((character, index) => {
+        log('log', 'Creating card for character', index, ':', character.name);
         const card = createCharacterCard(character);
         characterGrid.appendChild(card);
     });
+    
+    log('log', 'Character grid update complete');
 }
 
 // Create a character card element
 function createCharacterCard(character) {
+    log('log', 'createCharacterCard called for:', character.name);
+    
     const card = document.createElement('div');
     card.className = 'character-card';
     
@@ -223,6 +235,9 @@ function createCharacterCard(character) {
     const system = getCharacterSystem(character);
     const details = getCharacterDetails(character, system);
     const lastModified = formatLastModified(character.updatedAt);
+    
+    log('log', 'Character system:', system);
+    log('log', 'Character details:', details);
     
     card.innerHTML = `
         <div class="character-header">
@@ -257,6 +272,8 @@ function createCharacterCard(character) {
         </div>
     `;
     
+    log('log', 'Card HTML created, length:', card.innerHTML.length);
+    
     // Attach event listeners for action buttons
     card.querySelector('.btn-view').addEventListener('click', function(event) {
         event.stopPropagation();
@@ -275,6 +292,7 @@ function createCharacterCard(character) {
         deleteCharacter(character.id, character.name || 'Unnamed Character');
     });
     
+    log('log', 'Card created successfully for:', character.name);
     return card;
 }
 
