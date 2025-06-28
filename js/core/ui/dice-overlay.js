@@ -584,6 +584,12 @@ let bonusMsg = null;
               // perform a simple reroll (no visual dice) – generate new random results
               const newResults = Array.from({ length: rouseLen }, () => Math.floor(Math.random() * 10) + 1);
               const newSuccess = countSuccesses(newResults, 6) > 0;
+              
+              // Update the rouseRolls array with the new results for hunger calculation
+              for (let i = 0; i < rouseLen; i++) {
+                rouseRolls[i] = newResults[i];
+              }
+              
               // Remove existing Rouse dice meshes
               const start = rouseStart;
               const end = rouseStart + rouseLen; // exclusive
@@ -686,6 +692,7 @@ let bonusMsg = null;
       if (rouseLen > 0 && !rouseWasRerolled) {
         // Count failed Rouse dice and increase Hunger by 1 for each failure
         const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
+        console.log('Rouse check (not rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
         if (failedRouseDice > 0) {
           increaseHungerBy(failedRouseDice);
         }
@@ -693,6 +700,7 @@ let bonusMsg = null;
         // For rerolled Rouse checks, we need to count the new results
         // The new results are already in rouseRolls after the reroll
         const failedRouseDice = rouseRolls.filter((v) => (v === 0 ? 10 : v) < 6).length;
+        console.log('Rouse check (rerolled): rouseLen=', rouseLen, 'rouseRolls=', rouseRolls, 'failedRouseDice=', failedRouseDice);
         if (failedRouseDice > 0) {
           increaseHungerBy(failedRouseDice);
         }
@@ -832,18 +840,27 @@ let bonusMsg = null;
   }
 
   function increaseHungerBy(delta) {
+    console.log('increaseHungerBy called with delta:', delta);
     const row = findStatRow('Hunger');
-    if (!row) return;
+    if (!row) {
+      console.error('Could not find Hunger stat row');
+      return;
+    }
     const dots = row.querySelector('.dots');
-    if (!dots) return;
+    if (!dots) {
+      console.error('Could not find dots element in Hunger row');
+      return;
+    }
     const maxDots = dots.querySelectorAll('.dot').length;
     let curr = parseInt(dots.dataset.value) || 0;
     const newVal = Math.min(maxDots, curr + delta);
+    console.log('Hunger update: current=', curr, 'delta=', delta, 'newVal=', newVal, 'maxDots=', maxDots);
     dots.dataset.value = newVal;
     dots.setAttribute('data-value', newVal);
     dots.querySelectorAll('.dot').forEach((d, idx) => {
       d.classList.toggle('filled', idx < newVal);
     });
+    console.log('Hunger updated successfully');
   }
 
   function handleRemorseOutcome(success) {

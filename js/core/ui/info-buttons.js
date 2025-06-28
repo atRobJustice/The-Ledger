@@ -319,7 +319,7 @@ function initInfoButtons() {
 
   dropdownMappings.forEach(async map => {
     try {
-      const mod = await import('../../data/' + map.module.split('/').pop());
+      const mod = await import('../../data/vampire/' + map.module.split('/').pop());
       const data = mod[map.dataKey] || mod.default || mod;
       if (!data) {
         console.error(`No data found for ${map.selector}`);
