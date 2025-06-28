@@ -307,7 +307,7 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
 
     let boxValue = 10;
     if (type !== 'humanity') {
-        boxValue = currentValue;
+        boxValue = maxValue;  // Fixed: Use maxValue instead of currentValue
     }
     
     // Create boxes based on boxValue

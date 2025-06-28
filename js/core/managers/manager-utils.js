@@ -948,6 +948,20 @@ class TraitManagerUtils {
             })
             .join('');
     }
+
+    /**
+     * Show feedback message using toast notifications
+     * @param {string} message - Message to display
+     * @param {string} type - Type of notification (success, info, warning, danger)
+     * @param {string} title - Optional title for the toast
+     */
+    static showFeedback(message, type = 'info', title = null) {
+        if (window.toastManager) {
+            window.toastManager.show(message, type, title);
+        } else {
+            console.log(`${type.toUpperCase()}: ${message}`);
+        }
+    }
 }
 
 // Export the classes and instances
