@@ -74,7 +74,7 @@ export const predatorTypes = {
         "Manipulation + Persuasion (take blood by consent, under the guide of medical work or mutual kink)"
       ],
       benefits: [
-        "Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Vessels)",
+        "Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Victims)",
         "Gain one dot of Auspex or Fortitude",
         "Gain one dot of Humanity"
       ],

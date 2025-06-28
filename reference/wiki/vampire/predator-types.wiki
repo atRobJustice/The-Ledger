@@ -43,7 +43,7 @@ Manipulation + Subterfuge is used to condition the victims, socializing with the
 Consent is a dangerous thing to gather when they're a blood-sucking monster, but Consensualists make do. They never feed against the victim's free will, instead pretending to be a representative of a charity blood drive, someone with a blood kink within the kink community, or blatantly admitting to their victims what they are and getting their permission to feed. To the Camarilla, the last method is considered a masquerade breach but perhaps to a philosophical [[Anarch]], it might be an acceptable risk to take. <ref name=":2">[[Vampire: The Masquerade Corebook]], page 177</ref>
 
 Manipulation + Persuasion allows the kindred to take blood by consent, under the guide of medical work or mutual kink. <ref name=":0" />
-*Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Vessels)
+*Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Victims)
 *Gain one dot of [[Auspex]] or [[Fortitude]]
 *Gain one dot of [[Humanity]]
 *Gain the Dark Secret Flaw: (•) Masquerade Breacher
