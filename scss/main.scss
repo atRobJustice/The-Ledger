@@ -25,11 +25,13 @@
 @use 'components/dice-overlay';
 @use 'components/control-bar';
 @use 'components/js-utilities';
+@use 'components/character-type-selector';
 
 // Features
 @use 'features/disciplines';
 @use 'features/powers';
 @use 'features/predator';
+@use 'features/edges';
 
 // Responsive styles
 @use 'responsive';

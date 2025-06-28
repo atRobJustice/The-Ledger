@@ -1,0 +1,49 @@
+{{#ev:youtube |  id= DOTMevBU-M0
+| dimensions=400
+| alignment= right
+| container=frame
+}}
+==What are Drives==
+<section begin=summary/>These Drives motivate how Hunters act against the supernatural, and while they may complement their Creed, they don't have to. At character creation, each Hunter is given one Drive which has an influence on the character's outlook. It can suggest characterizations for the character, but it also decides certain consequences when using Desperation Dice. <section end=summary/>
+
+[[Redemption]] requirements depend on the Hunter's Drive. Redemption may be done by individual Hunter, but can also be treated as a group effort - if a cell mate fulfills requirements of another Hunter's Redemption, said Hunter can also leave [[Despair]].
+
+==List of Drives==
+This list is not exhaustive; players may work with their Storyteller to develop a new one. New drives, however, should be distinct from pre-existing ones.
+
+===Curiousity===
+The Hunter is motivated to discover everything about the quarry; learning about their target motivates them to dig deeper for each new fact.
+
+'''Redemption:''' The cell learns new information about their quarry.
+
+===Vengeance===
+The Hunter must balance the scale for the harm done to themselves or someone close to them by the supernatural.
+
+'''Redemption:''' The cell must directly or indirectly harm their quarry (or a creature similar).
+
+===Oath===
+The Hunter's words are their bond, and they must fulfill the pledge they made against the creatures of the night, stopping at nothing to achieve this.
+
+'''Redemption:''' The cell must aid the Hunter to either uphold their pledge or bring it closer to completion.
+
+===Greed===
+The Hunter wants what the supernatural creatures have, believing it unfair that they profit from their monstrosities.
+
+'''Redemption:''' Obtaining resources from the quarry or a creature like it.
+
+===Pride===
+The Hunter has a burning desire to prove themselves against supernatural creatures given powers that they've never deserved. Whether it represents the unbreakable human spirit or an overly competitive nature, the Hunter will take any chance to overcome their quarry.
+
+'''Redemption:''' Directly or indirectly beating the quarry at some type of challenge.
+
+===Envy===
+The Hunter wants to join the supernatural or die trying.
+
+'''Redemption:''' Either obtain samples of the source of the quarry's power or win their favor.
+
+===Atonement===
+The Hunter helped a monster in the past, knowingly or unknowingly, and now seeks restitution. They are aware that their acts have injured innocent people and are willing to put themselves in danger to repay this debt.
+
+'''Redemption:''' The cell must defend someone, directly or indirectly, from the quarry (or a similar creature) by putting themselves in danger and taking the hit for them. Alternately, the Hunter can atone for their transgression by helping a cellie. <ref>[[Hunter: The Reckoning Corebook]], page 128-129</ref> 
+[[Category:Index]]{{GameConceptsNavbox}}[[Category:Character creation]]
+==References==

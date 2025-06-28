@@ -1,0 +1,287 @@
+==Backgrounds and Flaws==
+Backgrounds describe advantages of relationship, circumstance, and opportunity: material possessions, social networks, and the like. Backgrounds are external Traits, not internal, and the player should always rationalize how the character came to possess them, as well as what they represent. Who are your Contacts? Why do your Allies support you? Where did you meet your Retainers? What investments do you possess that yield your four dots in Resources? You don’t have to do all of that at first – but be ready with an answer when the Storyteller asks during play, or be ready to suggest an answer that ties into the ongoing storyline. The implication here is that no small amount of a Hunter’s Background may be connected to a time when they had worked for an org. Certainly, a Hunter’s story doesn’t have to include a connection to orgs -- it’s perfectly possible to have Allies of one’s own -- but no few Hunters originally began in service to orgs and eventually grew disillusioned with them, leaving to go their own way and leave the orgs’ mechanisms of social control behind.
+
+Backgrounds are discrete, not progressive, Traits. The same Background can be acquired multiple times.<ref name="CB72"/>
+
+===Allies===
+Humans who are willing to help a Hunter or another human who has a vendetta against them. <ref>[[Hunter: The Reckoning Corebook]], page 72-73</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description 
+|-
+| id="Allies" |'''Allies'''
+|'''• - ••••••'''
+|A group who will support or aid the Hunter. Family, friends, or an organization that has loyalty. Build them between (• - ••••) Effectiveness and (•-•••) Reliability, the maximum amount of total points is 6. Effectiveness defines how proficient they are at a task. Reliability determines how dependable they are.
+| id="Enemy" |'''Enemy'''
+|'''(• +)'''
+|The opposite to Allies, and are rated two dots less than their effectiveness.
+|}
+
+===Contacts===
+A way to obtain items otherwise much more difficult to obtain on one's own. <ref>[[Hunter: The Reckoning Corebook]], page 74</ref>
+{| class="mw-collapsible mildtable" style="width:50%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+|-
+| id="Contacts" |'''Contacts''' 
+| '''• - •••'''
+|These are people who can get the character information, items or other things of value. 
+|}
+===Fame===
+The public notoriety of a character, for good or bad. <ref>[[Hunter: The Reckoning Corebook]], page 74-75</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value 
+! style="width: 35%;" |Description 
+|-
+| id="Fame" |'''Fame''' 
+|'''• - •••••'''
+|The character might be a pop singer, actress, or other celebrity. The level of fame can subtract from tests against fans and can be used inplace of a another Trait in Social tests as allowed by the Storyteller. However, this can also be a dangerous trait as tailing a target unnoticed may become difficult with fans spotting the character.
+| id="Infamy" |'''Infamy'''
+|'''(••)'''
+|They've done something atrocious and others know.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Dark Secret" | '''Dark Secret'''
+|'''(•)'''
+|What they've done is still a secret, except to one or two very motivated enemies.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Infamous Partner" | '''Infamous Partner'''
+|'''(•)'''
+|A spouse, lover or someone else significant to the character has Infamy that will sometimes tarnish the reputation of the Hunter by association.
+|}
+===Influence===
+The ability they have to influence how other groups react or act. <ref>[[Hunter: The Reckoning Corebook]], page 75</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description 
+|-
+| id="Influence" |'''Influence'''
+|'''• - •••••'''
+|They have sway in communities, be they political, through financial status and prestige, or manipulation. By default, this merit usually applies to a specific group or region of the city.
+| id="Disliked" |'''Disliked''' 
+|'''(•)'''
+|Subtract one die from Social tests involving groups outside of the character's loyal followers.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Despised" |'''Despised'''
+|'''(••)'''
+|One group/region of the city goes out of its way to thwart the character's plans.
+|}
+===Mask===
+The status of the Hunter's identification. <ref>[[Hunter: The Reckoning Corebook]], page 76</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description 
+|- id="Mask" 
+|'''Mask''' 
+|'''• - ••'''
+|A fake identity that allows the Hunter to keep their true selves away from the law or rival orgs, this might include bank accounts, a birth certificate and everything else a Hunter might need to hide their identity.
+| id="Serial Error" |'''Serial Error'''
+|'''(•)'''
+|A mistake has been made in the characters background checks showing that they'd recently died, are on a dangerous watchlist, or otherwise likely to be called or detained by the police. This also applies to any database lookups on their identity.
+|- id="Zeroed"
+|'''Zeroed'''
+| '''•'''
+|All of the character's past self has been purged from all systems as if they never existed. The character must have a 2-dot mask in order to take this.
+| id="Person of Interest" |'''Person of Interest'''
+|'''(••)'''
+|The Hunter has become a person of interest and with their biometrics and information having been logged as a potential terrorist in agency databases.
+|- id="Cobbler" 
+|'''Cobbler'''
+|'''•'''
+|The ability to create or source out masks. Making a mask takes 3 days per dot. The character must have a 2-dot mask in order to take this.
+|-
+|'''Faked Death'''
+|'''••'''
+|As long as you keep a low profile and a new identity nobody from your old life is going to be looking for yo including Enemies, Stalkers, and orgs. You do maintain a limited relationship with any Contacts. The character must have a 2-dot mask in order to take this. Unless you buy a separate Mask Merit you have the same penalties as the Serial Error Flaw .<ref name=":4">Hunter: The Reckoning Apostates, page 15</ref>
+|}
+===Mentor===
+Their relationship with either one or a group of Hunters who look out for them, offer them guidance, information, or aid in other ways once in awhile. Generally a group costs one more dot than a single mentor of the equivalent level, for example, a cell of three experienced Hunters might be a four dot group. <ref>[[Hunter: The Reckoning Corebook]], page 76-77</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" | Description 
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Mentor" |'''Mentor'''
+|'''• - •••••'''
+|Another Hunter or group of Hunters who has taken the character under their wing.
+| id="Adversary" | '''Adversary'''
+|'''(• - •••)'''
+|A rival Hunter who wants to do the Hunter or their cell harm.
+|-
+|'''Generous'''
+|'''• - •••'''
+|You can call upon your mentor for a valuable favor once per story. This does not run the usual risk of offending your mentor but you lose a dot from this background each time you do.<ref name=":4" />
+|'''Credit Hungry (Arcanum)'''
+|'''(•)''' 
+|On any Hunt where you call upon your mentor for aid, they will take credit for all achievements but not negative consequences.<ref name=":4" />
+|-
+|'''Spirit Guide (Arcanum)'''
+|'''••'''
+|Your mentor is some kind of ghost or unearthly being that you studied and formed a rapport with. You have the ability to summon them. They are unable to aid with corporeal matters like law enforcement or politics but they do have reliable knowledge on ghosts.<ref name=":4" />
+|}
+===Resources===
+Resources represents the income of a Hunter, be it physical cash, items or places. The source of the income must be defined when obtained. <ref>[[Hunter: The Reckoning Corebook]], page 77</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" | Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Resources" |'''Resources'''
+|'''• - •••••'''
+|Cash flow, be it from stock trading or equipment to working as a barista at night. 
+| id="Destitute" |'''Destitute'''
+|'''(•)'''
+|No money and no home.
+|}
+=== Retainers===
+A loyal servant or assistant; they can be paid employees, longtime stewards of the Hunter or the Hunter's family, or a victim of some type of scheme that keeps them reliant on the Hunter. <ref name=":2">[[Hunter: The Reckoning Corebook]], page 77-78</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Retainers" |'''Retainers'''
+|'''• - •••'''
+|Loyal followers who will accomplish a request for the Hunter.
+| id="Stalkers" |'''Stalkers'''
+|'''(•)'''
+|Something about the character tends to attract others who get a little bit too attached and just won't let go. Be it a former retainer or a past lover, should they get rid of them, another soon appears.
+|}
+===Safe House===
+A Safe House represents the degree of security and distinction beyond a place to sleep and eat. Hunters without dots in this background can still have a place to resides and remain safe, and other Backgrounds can be used as justification for safe houses such as Resources, Status and Influence. However, if these Backgrounds disappear, so does the safe house. <ref>[[Hunter: The Reckoning Corebook]], page 78-79</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" | Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value 
+! style="width: 35%;" |Description
+|-
+| id="Safe House" |'''Safe House''' 
+|'''• - •••'''
+| Each dot adds +1 to the Difficulty or 1 die to the pools for resisting spotting, penetrating and surveilling the Hunter's home. Also add one dice per dot to notice danger while in the Safe House. 
+| id="No Safe House" |'''No Safe House'''
+|'''(•)'''
+|The character has no expectation of security while at home.
+|-
+| id="Safe House: Hidden Armory" |'''Hidden Armory'''
+|'''• +'''
+| Each dot adds one pistol and one long firearm inside the safe house, safely concealed. These aren't as strong as those earned from the Arsenal Edge, nor do they automatically replenish if misplaced.
+| id="Creepy" |'''Creepy'''
+|'''(•)'''
+|Take a two-dice penalty on Social pools in the safe house with human guests.
+|-
+| id="Safe House: Panic Room" |'''Panic Room'''
+|'''• +'''
+|The ability to house to individuals and breaching this requires a base Difficulty of 5, this can also be applied to those held captive. Each extra dot allows either twice as many individuals with a cap of 32 in large safe houses or adds +1 to the breach/escape Difficulty. This is not available to 1 dot safe houses.
+| id="Haunted" |'''Haunted'''
+|'''(• +)'''
+|There is a supernatural manifestation taking hold over the safe house with the penalties defined by the Storyteller. It should at least give a one-die penalty or bonus to affected pools used in the safe house per dot of Haunted.
+|-
+| id="Safe House: Watchmen" |'''Watchmen'''
+|'''• +'''
+|Each dot supplies 4 Average Mortals and one Gifted Mortal to watch over the safe house.
+| id="Compromised" |'''Compromised'''
+|'''(••)'''
+|This safe house is on a watchlist and may have been raided at some point, adding two dice to pools to penetrate or watch the safe house.
+|-
+| id="Safe House: Laboratory" |'''Laboratory'''
+|'''• +'''
+|Each dot of this merit contributes to dice rolls related to one Science or Technology specialty. Not available in one dot safe houses.
+|'''Interfering Roommate'''
+|'''(•)'''
+|The safe house isn't private, with someone else also using it for legitimate purpose, keeping an eye on the character. Suspicious or outright criminal activity will be reported to relevant authorities.<ref name=":3">Hunter: The Reckoning Alma Maters, page 35</ref>
+|-
+| id="Safe House: Luxury" |'''Luxury'''
+|'''•'''
+|Rich and full of value, the safe house is well decorated with high-end décor and items. +2 dice bonus to Social tests when mortals are inside the safe house. Without at least 3 dots in Resources, these items are stolen or illegally obtained.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Safe House: Postern" |'''Postern'''
+|'''• +'''
+|The safe house has some kind of secret exit that allows them a safe passage out. For each dot of this merit add one die to pools of evasion or escaping surveillance near the safe house.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Safe House: Security System" |'''Security System'''
+|'''• +'''
+|For each dot of this merit, add one die to pools to resist (or to alert the Hunter to) unwelcome guests into the safe house.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+| id="Safe House: Surgery" |'''Surgery'''
+|'''•'''
+|Add two die to relevant pools for relevant tests performed in safe houses.
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+|-
+|'''Bolt Hole'''
+|'''•'''
+|Whenever hiding or attempting to move from one safe place to another undetected, receive a 2 dice bonus.<ref name=":3" />
+|
+|
+|
+|}
+===Status===
+Reputation and standing within a specific local community of Hunters. <ref>[[Hunter: The Reckoning Corebook]], page 79-80</ref>
+{| class="mw-collapsible mildtable" style="width:100%" ;
+! style="width: 10%;" |Merits
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+! style="width: 10%;" |Flaws
+! style="width: 5%;" |Dot Value
+! style="width: 35%;" |Description
+|-
+| id="Status" |'''Status'''
+|'''• - •••••'''
+|The character has built a name for themselves with a group of Hunters.
+| id="Suspect" |'''Suspect'''
+|'''(•)'''
+|Breaking the rules or weaseling out of something owed has netted this character the ire of this Hunter group. Stay out of sight and mind and nothing will happen until they prove their worth again but until then take a 2 dice penalty to Social tests with the offended Hunters.
+|-
+| style="border:none;" |
+| style="border:none;" |
+| style="border:none;" |
+| id="Shunned" |'''Shunned'''
+|'''(••)'''
+|Despised by a Hunter group, a line was crossed that never should have been, and now members of this group actively work against them at any opportunity.
+|}

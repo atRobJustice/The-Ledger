@@ -1,0 +1,21 @@
+Using [[Desperation]] dice may cause the Hunter to enter the state of [[Despair|Despair,]] in which they are unable to call upon their [[Drive]] until they’ve redeemed themselves in their own eyes. Each [[Drive]] has a different condition for redemption listed below. The condition for redemption doesn’t have to be met by any specific individual in the cell; instead, it can be treated as a group effort.<ref>[[Hunter: The Reckoning Corebook]], page 128</ref>
+
+'''[[Drives#Curiosity|Curiosity]]:''' The cell learns new information about their quarry.
+
+'''[[Drives#Vengeance|Vengeance]]:''' The cell must directly or indirectly harm their quarry (or a creature similar).
+
+'''[[Drives#Oath|Oath]]:''' The cell must aid the Hunter to either uphold their pledge or bring it closer to completion.
+
+'''[[Drives#Greed|Greed]]:''' Obtaining resources from the quarry or a creature like it.
+
+'''[[Drives#Pride|Pride]]:''' Directly or indirectly beating the quarry at some type of challenge.
+
+'''[[Drives#Envy|Envy]]:''' Either obtain samples of the source of the quarry's power or win their favor.
+
+'''[[Drives#Atonement|Atonement]]:''' The cell must defend someone, directly or indirectly, from the quarry (or a similar creature) by putting themselves in danger and taking the hit for them. Alternately, the Hunter can atone for their transgression by helping a cellie. <ref>[[Hunter: The Reckoning Corebook]], page 128-129</ref> 
+
+Note that [[Drives]] and their conditions for redemption are in-game terms. A Hunter might admit that they "feel the motivation to hunt again”, but wouldn’t say “I've redeemed my [[Drive]].”
+
+{{GameConceptsNavbox}}
+[[Category:Index]]
+==References==

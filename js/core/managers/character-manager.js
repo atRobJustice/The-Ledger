@@ -111,6 +111,9 @@ class CharacterManager {
             // Initialize UI
             this.initUI();
             
+            // Trigger character manager ready event
+            $(document).trigger('characterManagerReady');
+            
         } catch (err) {
             console.error('Failed to initialize CharacterManager:', err);
         }

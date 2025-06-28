@@ -15,15 +15,32 @@
     <body class="p-3 m-0">
         <h1 class="mt-2"><img src="assets/TheLedger.png" alt="The Ledger" class="logo"> The Ledger</h1>
         
+        <!-- Character Type Selector -->
+        <div class="character-type-selector mb-3">
+            <div class="btn-group" role="group" aria-label="Character Type">
+                <input type="radio" class="btn-check" name="characterType" id="vampireType" value="vampire" checked>
+                <label class="btn btn-outline-primary" for="vampireType">
+                    <i class="bi bi-droplet-fill"></i> Vampire
+                </label>
+                
+                <input type="radio" class="btn-check" name="characterType" id="hunterType" value="hunter">
+                <label class="btn btn-outline-primary" for="hunterType">
+                    <i class="bi bi-shield-fill"></i> Hunter
+                </label>
+            </div>
+        </div>
+        
         <!-- Modern Character Sheet Toolbar -->
         <nav class="character-toolbar-glass" aria-label="Character Sheet Toolbar">
             <div class="toolbar-group" aria-label="Dice & Quick Rolls">
                 <button class="toolbar-btn" id="btn-roll" title="Roll Dice" aria-label="Roll Dice"><i class="bi bi-dice-6"></i></button>
-                <button class="toolbar-btn" id="btn-rouse" title="Rouse Check" aria-label="Rouse Check"><i class="bi bi-droplet"></i></button>
-                <button class="toolbar-btn" id="btn-remorse" title="Remorse Check" aria-label="Remorse Check"><i class="bi bi-heartbreak"></i></button>
-                <button class="toolbar-btn" id="btn-frenzy" title="Frenzy Check" aria-label="Frenzy Check"><i class="bi bi-activity "></i></button>
+                <button class="toolbar-btn vampire-only" id="btn-rouse" title="Rouse Check" aria-label="Rouse Check"><i class="bi bi-droplet"></i></button>
+                <button class="toolbar-btn vampire-only" id="btn-remorse" title="Remorse Check" aria-label="Remorse Check"><i class="bi bi-heartbreak"></i></button>
+                <button class="toolbar-btn vampire-only" id="btn-frenzy" title="Frenzy Check" aria-label="Frenzy Check"><i class="bi bi-activity "></i></button>
                 <button class="toolbar-btn" id="btn-wp-reroll" title="Willpower Reroll" aria-label="Willpower Reroll"><i class="bi bi-bootstrap-reboot"></i></button>
-                <button class="toolbar-btn" id="btn-mend" title="Mend Damage" aria-label="Mend Damage"><i class="bi bi-bandaid"></i></button>
+                <button class="toolbar-btn vampire-only" id="btn-mend" title="Mend Damage" aria-label="Mend Damage"><i class="bi bi-bandaid"></i></button>
+                <button class="toolbar-btn hunter-only" id="btn-desperation" title="Desperation Check" aria-label="Desperation Check"><i class="bi bi-exclamation-triangle"></i></button>
+                <button class="toolbar-btn hunter-only" id="btn-overreach" title="Overreach Check" aria-label="Overreach Check"><i class="bi bi-arrow-up-circle"></i></button>
                 <button class="toolbar-btn" id="btn-wipe" title="Wipe Overlay" aria-label="Wipe Overlay"><i class="bi bi-eraser"></i></button>
             </div>
             <div class="toolbar-divider"></div>
@@ -64,12 +81,20 @@
                             <span class="stat-label">Chronicle</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Resonance</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Temperament</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Drive</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Creed</span>
                             <span></span>
                         </div>
                     </div>
@@ -82,16 +107,24 @@
                             <span class="stat-label">Concept</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Ambition</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Desire</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Predator</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Cell</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Archetype</span>
                             <span></span>
                         </div>
                     </div>
@@ -100,20 +133,28 @@
                 <!-- Right Column -->
                 <div class="col-md-4 d-flex flex-column">
                     <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Sire</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Clan</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Generation</span>
                             <span></span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Compulsion</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Danger</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between stat hunter-only">
+                            <span class="stat-label">Desperation</span>
                             <span></span>
                         </div>
                     </div>
@@ -133,7 +174,7 @@
                             <span class="stat-label">Health</span>
                             <span>4</span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Blood Potency</span>
                             <span>1</span>
                         </div>
@@ -147,7 +188,7 @@
                             <span class="stat-label">Willpower</span>
                             <span>2</span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Hunger</span>
                             <span>1</span>
                         </div>
@@ -157,7 +198,7 @@
                 <!-- Right Column -->
                 <div class="col-md-4 d-flex flex-column">
                     <div class="ledger p-3 my-3">
-                        <div class="d-flex justify-content-between stat">
+                        <div class="d-flex justify-content-between stat vampire-only">
                             <span class="stat-label">Humanity</span>
                             <span>7</span>
                         </div>
@@ -202,8 +243,8 @@
                             <span class="stat-label">Manipulation</span>
                             <span>1</span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label" data-stat="composure">Composure</span>
+                        <div class="d-flex justify-content-between stat" data-stat="composure">
+                            <span class="stat-label">Composure</span>
                             <span>1</span>
                         </div>
                     </div>
@@ -221,8 +262,8 @@
                             <span class="stat-label">Wits</span>
                             <span>1</span>
                         </div>
-                        <div class="d-flex justify-content-between stat">
-                            <span class="stat-label" data-stat="resolve">Resolve</span>
+                        <div class="d-flex justify-content-between stat" data-stat="resolve">
+                            <span class="stat-label">Resolve</span>
                             <span>1</span>
                         </div>
                     </div>
@@ -373,10 +414,16 @@
                 
                 <!-- Left Column -->
                 <div class="col-md-4 d-flex flex-column">
-                    <h5 class="mb-2">Disciplines</h5>
-                    <div class="ledger p-3 my-3">
+                    <h5 class="mb-2 vampire-only">Disciplines</h5>
+                    <div class="ledger p-3 my-3 vampire-only">
                         <div class="disciplines-container">
                             <!-- Discipline manager will be rendered here -->
+                        </div>
+                    </div>
+                    <h5 class="mb-2 hunter-only">Edges</h5>
+                    <div class="ledger p-3 my-3 hunter-only">
+                        <div class="edges-container">
+                            <!-- Edge manager will be rendered here -->
                         </div>
                     </div>
                 </div>
@@ -395,8 +442,8 @@
                             <!-- Background manager will be rendered here -->
                         </div>
                     </div>
-                    <h5 class="mb-2">Loresheets</h5>
-                    <div class="ledger p-3 my-3">
+                    <h5 class="mb-2 vampire-only">Loresheets</h5>
+                    <div class="ledger p-3 my-3 vampire-only">
                         <div class="loresheets-container">
                             <!-- Loresheet manager will be rendered here -->
                         </div>
@@ -419,8 +466,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Convictions & Touchstones Section -->
-            <div class="row mb-4">
+            
+            <!-- Convictions & Touchstones Section (Vampire) / Touchstones Section (Hunter) -->
+            <div class="row mb-4 vampire-only">
                 <div class="col-12">
                     <h3 class="mb-3">Convictions & Touchstones</h3>
                 </div>
@@ -443,6 +491,32 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Touchstones Section (Hunter) -->
+            <div class="row mb-4 hunter-only">
+                <div class="col-12">
+                    <h3 class="mb-3">Touchstones</h3>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4" id="touchstone-column-1">
+                            <!-- Touchstones will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="touchstone-column-2">
+                            <!-- Touchstones will be added here dynamically -->
+                        </div>
+                        <div class="col-md-4" id="touchstone-column-3">
+                            <!-- Touchstones will be added here dynamically -->
+                        </div>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button type="button" id="add-touchstone" class="btn btn-sm theme-btn-outline-danger">
+                            <i class="bi bi-plus-circle"></i> Add Touchstone
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Experience Section -->
             <div class="row mb-4">
                 <div class="col-12">
@@ -480,6 +554,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- Lock Character Modal -->
         <div class="modal fade" id="lockModal" tabindex="-1" aria-labelledby="lockModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -545,6 +620,10 @@
         <script type="module" src="js/core/managers/conviction-manager.js"></script>
         <!-- Character toolbar -->
         <script type="module" src="js/core/ui/character-toolbar.js"></script>
+        <!-- Character type manager -->
+        <script type="module" src="js/core/managers/character-type-manager.js"></script>
+        <!-- Edge manager for hunter characters -->
+        <script type="module" src="js/core/managers/edge-manager.js"></script>
         <script>
             // Initialize character manager after all modules are loaded
             document.addEventListener('DOMContentLoaded', async () => {
