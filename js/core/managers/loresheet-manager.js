@@ -180,8 +180,8 @@ class LoresheetManager {
                     <div class="loresheet-item mb-3" data-loresheet="${loresheetKey}" data-instance="${instanceIndex}">
                         <div class="loresheet-header d-flex justify-content-between align-items-center stat">
                             <div class="loresheet-info">
-                                <span class="stat-label">${loresheet.name}${instances.length > 1 ? ` #${instanceIndex + 1}` : ''}</span>
-                                <small class="d-block">${category.name}</small>
+                                <span class="trait-name">${loresheet.name}${instances.length > 1 ? ` #${instanceIndex + 1}` : ''}</span>
+                                <span class="type-label">${category.name}</span>
                                 ${loresheet.restrictions !== 'N/A' ? `<small class="d-block">${loresheet.restrictions}</small>` : ''}
                             </div>
                             <div class="loresheet-controls d-flex align-items-center gap-2">

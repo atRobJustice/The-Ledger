@@ -27,6 +27,20 @@ h1, h2, h3, h4, h5, h6 {
 .stat-label {
     font-variant: small-caps;
     padding-right: $spacing-md;
+    color: var($color-gray-light);
+}
+
+.type-label {
+    font-size: 0.8rem;
+    color: $color-primary;
+    font-weight: normal;
+}
+
+.trait-name {
+    font-variant: small-caps;
+    font-weight: 700;
+    color: var(--text-muted, $color-gray-light);
+    font-size: 1rem;
 }
 
 .predator-info-description {

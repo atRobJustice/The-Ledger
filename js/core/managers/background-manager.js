@@ -183,8 +183,8 @@ class BackgroundManager {
                     <div class="${type}-item mb-3" data-${type}="${traitKey}" data-instance="${instanceIndex}">
                         <div class="${type}-header d-flex justify-content-between align-items-center stat">
                             <div class="${type}-info">
-                                <span class="stat-label">${displayName}${instances.length > 1 ? ` #${instanceIndex + 1}` : ''}</span>
-                                <small class="d-block">${category.name}</small>
+                                <span class="trait-name">${displayName}${instances.length > 1 ? ` #${instanceIndex + 1}` : ''}</span>
+                                <span class="type-label">${category.name}</span>
                             </div>
                             <div class="${type}-controls d-flex align-items-center gap-2">
                                 ${this.renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo)}
