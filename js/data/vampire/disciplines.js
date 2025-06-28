@@ -1,18 +1,18 @@
 // Import all discipline data
-import { animalism } from '../disciplines/animalism.js';
-import { auspex } from '../disciplines/auspex.js';
-import { bloodSorcery } from '../disciplines/blood_sorcery.js';
-import { celerity } from '../disciplines/celerity.js';
-import { dominate } from '../disciplines/dominate.js';
-import { fortitude } from '../disciplines/fortitude.js';
-import { obfuscate } from '../disciplines/obfuscate.js';
-import { oblivion } from '../disciplines/oblivion.js';
-import { potence } from '../disciplines/potence.js';
-import { presence } from '../disciplines/presence.js';
-import { protean } from '../disciplines/protean.js';
-import { thinBloodAlchemy } from '../disciplines/thin_blood_alchemy.js';
-import { bloodSorceryRituals } from '../disciplines/blood_sorcery_rituals.js';
-import { oblivionCeremonies } from '../disciplines/oblivion_ceremonies.js';
+import { animalism } from './disciplines/animalism.js';
+import { auspex } from './disciplines/auspex.js';
+import { bloodSorcery } from './disciplines/blood_sorcery.js';
+import { celerity } from './disciplines/celerity.js';
+import { dominate } from './disciplines/dominate.js';
+import { fortitude } from './disciplines/fortitude.js';
+import { obfuscate } from './disciplines/obfuscate.js';
+import { oblivion } from './disciplines/oblivion.js';
+import { potence } from './disciplines/potence.js';
+import { presence } from './disciplines/presence.js';
+import { protean } from './disciplines/protean.js';
+import { thinBloodAlchemy } from './disciplines/thin_blood_alchemy.js';
+import { bloodSorceryRituals } from './disciplines/blood_sorcery_rituals.js';
+import { oblivionCeremonies } from './disciplines/oblivion_ceremonies.js';
 
 // Export combined discipline data
 export const disciplines = {
