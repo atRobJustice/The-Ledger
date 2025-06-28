@@ -366,8 +366,16 @@ function initWPRerollButton() {
         if (window.isWPRerollAllowed) {
             const allowed = window.isWPRerollAllowed();
             btn.disabled = !allowed;
-            btn.classList.toggle('theme-btn-outline-primary', allowed);
-            btn.classList.toggle('theme-btn-outline-secondary', !allowed);
+            
+            // Remove any theme classes that don't apply to toolbar buttons
+            btn.classList.remove('theme-btn-outline-primary', 'theme-btn-outline-secondary');
+            
+            // Add a custom class for disabled state that we can style
+            if (!allowed) {
+                btn.classList.add('toolbar-btn-disabled');
+            } else {
+                btn.classList.remove('toolbar-btn-disabled');
+            }
         }
     }
     
