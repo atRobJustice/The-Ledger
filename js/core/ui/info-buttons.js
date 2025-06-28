@@ -212,43 +212,43 @@ const mappings = [
 const dropdownMappings = [
   {                // Resonance
     selector : '.resonance-dropdown',
-    module   : '../data/vampire/resonances.js',
+    module   : '../../data/vampire/resonances.js',
     dataKey: 'resonances',
     title: 'Resonance'
   },
   {                // Temperament
     selector : '.temperament-dropdown',
-    module   : '../data/vampire/resonances.js',
+    module   : '../../data/vampire/resonances.js',
     dataKey: 'resonances',
     title: 'Temperament'
   },
   {                // Predator Type
     selector : '.predator-dropdown',
-    module   : '../data/vampire/predator_types.js',
+    module   : '../../data/vampire/predator_types.js',
     dataKey: 'predatorTypes',
     title: 'Predator Type'
   },
   {                // Clan
     selector : '.clan-dropdown',
-    module   : '../data/vampire/clans.js',
+    module   : '../../data/vampire/clans.js',
     dataKey: 'clans',
     title: 'Clan'
   },
   {                // Generation
     selector : '.generation-dropdown',
-    module   : '../data/vampire/generation.js',
+    module   : '../../data/vampire/generation.js',
     dataKey: 'generation',
     title: 'Generation'
   },
   {                // Blood Potency
     selector : '.blood-potency-dropdown',
-    module   : '../data/vampire/blood_potency.js',
+    module   : '../../data/vampire/blood_potency.js',
     dataKey: 'bloodPotency',
     title: 'Blood Potency'
   },
   {                // Compulsion
     selector : '.compulsion-dropdown',
-    module   : '../data/vampire/compulsions.js',
+    module   : '../../ data/vampire/compulsions.js',
     dataKey: 'compulsions',
     title: 'Compulsion'
   }
