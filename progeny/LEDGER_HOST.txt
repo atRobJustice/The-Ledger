@@ -1,0 +1,4 @@
+This directory is a creator-only static build of Progeny
+(https://github.com/Odin94/Progeny-vtm-v5-character-creator),
+hosted by The Ledger with permission. Rebuild via:
+  npm run progeny:build

@@ -79,11 +79,6 @@ export const backgrounds = {
         name: "Influence",
         dots: "• - •••••",
         description: "They have sway in mortal communities, be they political, through financial status and prestige, or manipulation. By default, this merit only applies to a specific group or region of the city."
-      },
-      citySecrets: {
-        name: "City Secrets",
-        dots: "• - •••",
-        description: "This grants knowledge about the city's Kindred power structure. If this secret is about mortal business it's only a way to explain Influence. This information can be sold at a high price, but its value lies in protection as the people involved may not want this information sold off and will do their best to keep you happy, for a time anyway. This can only be taken at a maximum of three times with each being a different secret."
       }
     },
     flaws: {
@@ -187,6 +182,26 @@ export const backgrounds = {
         name: "Machine Shop",
         dots: "• +",
         description: "Each dot of this merit adds one dice to the pool for Craft rolls. It also adds this to other tests related to building, repairing, or disassembling machinery or equipment."
+      },
+      mobile: {
+        name: "Mobile",
+        dots: "• - •••",
+        description: "Mobile haven (car, van, boat, plane, etc.). Size equals the number of dots. Coterie dots may be used for this merit."
+      },
+      armored: {
+        name: "Armored",
+        dots: "•",
+        description: "Requires Mobile Haven merit. Mobile Haven has reinforced panels, locks, tires, and glass. Can sustain 10 points of damage, requiring Critical hits to sufficiently affect passengers."
+      },
+      smugglersStash: {
+        name: "Smugglers Stash",
+        dots: "• - ••",
+        description: "Requires Mobile Haven merit. A secret stash within the haven to hide contraband. Any searches done to inspect the haven are made with +2 difficulty. Size of the stash equals the number of dots."
+      },
+      sparePlates: {
+        name: "Spare Plates",
+        dots: "••",
+        description: "Requires Mobile Haven merit. A spare set of plates, stickers, and other identifiers that can be switched out within a turn to avoid all but the most invasive searches."
       }
     },
     flaws: {
@@ -214,6 +229,16 @@ export const backgrounds = {
         name: "Shared",
         dots: "(•) or (••)",
         description: "The haven is not entirely owned by the character, instead being shared with other Kindred or having a Kindred landlord. This does not need to be taken by Coteries, as that only has as many problems as they make mutually in play."
+      },
+      onTheRails: {
+        name: "On the Rails",
+        dots: "(•)",
+        description: "Requires Mobile Haven merit. Haven's movement isn't under Player control, such as a ship or a train, as destinations are likely scheduled and fixed."
+      },
+      temperamental: {
+        name: "Temperamental",
+        dots: "(•)",
+        description: "Requires Mobile Haven merit. Vehicle is mechanically unreliable; any failed Drive tests sees the vehicle grind to a halt, requiring a successful repair test to restart. The flaw follows the Player even if they switch to another vehicle, unless bought off with experience."
       }
     }
   },
@@ -345,6 +370,11 @@ export const backgrounds = {
         name: "Status",
         dots: "• - •••••",
         description: "The character has built a name for themselves in their Faction."
+      },
+      citySecrets: {
+        name: "City Secrets",
+        dots: "• - •••",
+        description: "This grants knowledge about the city's Kindred power structure. If this secret is about mortal business it's only a way to explain Influence. This information can be sold at a high price, but its value lies in protection as the people involved may not want this information sold off and will do their best to keep you happy, for a time anyway. This can only be taken at a maximum of three times with each being a different secret."
       }
     },
     flaws: {
@@ -357,6 +387,11 @@ export const backgrounds = {
         name: "Shunned",
         dots: "(••)",
         description: "Despised by a Sect, a line was crossed that never should have been, and now members of this group actively work against them at any opportunity."
+      },
+      mortalPretender: {
+        name: "Mortal Pretender",
+        dots: "(•)",
+        description: "The player character goes out of their way to lead a mortal life, unsettling their vampiric peers. Suffer a two-dice penalty to all Social tests against vampires that are specifically dedicated to upholding the Masquerade."
       }
     }
   }

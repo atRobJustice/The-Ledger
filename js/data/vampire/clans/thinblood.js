@@ -48,7 +48,12 @@ export const thinblood = {
     liveOne: "Due to their closer resemblance to mortals, they are still deeply ingrained in the mortal world. Maintaining a family and, attempting to keep a job, this thin-blood strives to pay the bills rather than deal with a Primogen they've only heard of in passing.",
     alchemist: "Some thin-bloods embrace their abilities rather than hide in the dark, this one does as much. Perfecting their art in private they strive to accomplish things no other alchemist let alone Kindred has done.",
     redemptionSeeker: "Stripped of their previous life, they seek a way to return to their human life. Through seeds of Golconda and rumors about those who have done it in the past; they seek out the legends detailing the steps to leave vampiric life behind.",
-    abandoned: "Being groomed for the Kindred life was something they experienced with their sire, or at least until that fateful night. The embrace went south quickly and their sire quickly did as well. Leaving them to take the information they had and survive."
+    abandoned: "Being groomed for the Kindred life was something they experienced with their sire, or at least until that fateful night. The embrace went south quickly and their sire quickly did as well. Leaving them to take the information they had and survive.",
+    bloodChemist: "In their previous life they made designer drugs, sought chemical romance, or psychedelic highs. After the Embrace they've shifted their interest into Thin-blood Alchemy, but one foot remains in the drug scene to keep the money flowing.",
+    caretaker: "They take it upon themselves to help those in dire situations, they provide shelter, blood and, knowledge around their survival. Community and family are important to them.",
+    paranormalist: "They are eager to see what else could be in the world, gathering information and making contact with any or all supernatural contactees or the supernatural themselves.",
+    streetRat: "They sometimes don't even realize what they are, instead blaming the issues on a lousy drug trip, medical ailment left untreated, or a bad dream. They scavenge for trinkets for valuable items that could earn them some cash.",
+    sunSeeker: "They don't seek too change their state, instead they want to develop a way to see the sun without harming their vampiric powers."
   },
   notableCharacters: {
     kirinTaunk: {

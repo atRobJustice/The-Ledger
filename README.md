@@ -25,7 +25,7 @@
 
 **The Ledger** is an offline-first, responsive web application for building and tracking characters in *Vampire: The Masquerade* 5th Edition (V5). Think of it as the digital equivalent of the classic paper character sheet—always at hand, version-controlled, and ready to print.
 
-The project started as a small experiment based on the 3D dice roller from [@prncc/vampire-dice-roller](https://github.com/prncc/vampire-dice-roller), and quickly grew after importing rules logic, data files, and plenty of inspiration from the fantastic [@Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/). Huge thanks to both projects for lighting the way!
+The project started as a small experiment based on the 3D dice roller from [@prncc/vampire-dice-roller](https://github.com/prncc/vampire-dice-roller), and quickly grew after importing rules logic, data files, and plenty of inspiration from the fantastic [@Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/). The Ledger now also hosts a creator-only static build of Progeny under `/progeny/` (with permission). Huge thanks to both projects for lighting the way!
 
 ---
 
@@ -55,6 +55,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - 100% client-side – nothing is sent to a server
   - **Multiple character support** with IndexedDB storage
   - JSON export/import for backups
+  - **Guided V5 creator** via a self-hosted, creator-only build of Progeny (`/progeny/`)
   - Progeny VTM character import compatibility
   - Automatic data persistence and recovery
 
@@ -108,13 +109,17 @@ Clone the repository and open `index.html`, or visit the [live version](https://
 
 ## Getting Started
 
-1. **Clone** the repo
+1. **Clone** the repo (include the Progeny submodule if you plan to rebuild the creator)
    ```bash
-   git clone https://github.com/atrobjustice/Ledger.git
-   cd Ledger
+   git clone --recurse-submodules https://github.com/atRobJustice/The-Ledger.git
+   cd The-Ledger
+   ```
+   If you already cloned without submodules:
+   ```bash
+   git submodule update --init --recursive
    ```
 
-2. **Install** dev dependencies (only needed if you want to re-compile SCSS)
+2. **Install** Ledger’s own npm deps (only needed to re-compile SCSS)
    ```bash
    npm install
    ```
@@ -124,7 +129,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
    npm run sass
    ```
 
-4. **Open** `index.html` in your favorite browser – that's it! No build step required.
+4. **Open** `index.html` in your favorite browser – that's it for the sheet/dashboard. Prebuilt creator assets live in `progeny/` for GitHub Pages.
 
 ### Multiple Character Support
 
@@ -145,6 +150,20 @@ All styling lives in `scss/` and is compiled to `css/` using [`sass`](https://sa
 | -------------- | ----------------------------------------- |
 | `npm run sass` | Watch `scss/` and re-compile on changes |
 | `npm run sass:build` | One-off, minified production build (prefer this when committing `css/`; no source maps) |
+| `npm run progeny:build` | Rebuild the hosted Progeny creator into `progeny/` (needs Node ≥ 22 + pnpm; see below) |
+
+### Hosted Progeny creator
+
+The guided creator at `/progeny/` is a **creator-only** static build of [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator), vendored as a git submodule under `vendor/progeny`. Cloud accounts, WorkOS auth, and PostHog are disabled for this host. Export JSON from Progeny, then use **Import from Progeny** on the Ledger dashboard.
+
+To rebuild after updating the submodule:
+
+```bash
+git submodule update --remote vendor/progeny   # optional: pull upstream
+npm run progeny:build
+```
+
+Overlay patches applied at build time live in `scripts/progeny-overlay/` and `scripts/build-progeny.mjs`.
 
 For detailed technical documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
 
@@ -189,6 +208,9 @@ Ledger/
 │   ├── data/         # game rules and reference data
 │   ├── integrations/ # external integrations
 │   └── lib/          # third-party libraries
+├── progeny/          # static Progeny creator build (GitHub Pages)
+├── vendor/progeny/   # Progeny git submodule (source for rebuilds)
+├── scripts/          # build helpers (incl. progeny:build)
 ├── data/             # JSON character data
 ├── reference/        # additional reference materials
 ├── index.html        # main entry point
@@ -216,7 +238,7 @@ For detailed instructions on using The Ledger, see [USER_GUIDE.md](USER_GUIDE.md
 ## Acknowledgements
 
 - **Dice Roller:** [prncc/vampire-dice-roller](https://github.com/prncc/vampire-dice-roller)
-- **Inspiration:** [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/)
+- **Guided creator (hosted under `/progeny/`):** [Odin94/Progeny-vtm-v5-character-creator](https://github.com/Odin94/Progeny-vtm-v5-character-creator/) by Odin — self-hosted with permission as a creator-only static build. Official app: [progeny.odin-matthias.de](https://progeny.odin-matthias.de/). Upstream credits apply (including Nerdbert’s PDF/icons and other third-party assets listed in Progeny’s README).
 - **Reference Data:** [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki) – thank you to the community for curating the *Vampire: The Masquerade* knowledge base.
 - *Vampire: The Masquerade* and the World of Darkness are properties of Paradox Interactive AB. This project is a non-commercial fan work under the Dark Pack guidelines.
 
@@ -224,4 +246,6 @@ For detailed instructions on using The Ledger, see [USER_GUIDE.md](USER_GUIDE.md
 
 ## License
 
-Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information. 
+Ledger-owned code is distributed under the MIT License. See [LICENSE.md](LICENSE.md).
+
+The vendored Progeny sources under `vendor/progeny` and the built assets under `progeny/` remain subject to the author’s grant of redistributable permission (and any LICENSE the upstream project adds later). Do not treat that tree as MIT by default. 

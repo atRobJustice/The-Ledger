@@ -88,7 +88,9 @@ export const coterieBackgrounds = {
             name: "Community Outreach",
             dots: 1,
             description: "Adds one bonus die to all Manipulation and Subterfuge rolls when dealing with mortals in the domain."
-          },
+          }
+        },
+        flaws: {
           visibility: {
             name: "Visibility",
             dots: 2,

@@ -1,0 +1,3 @@
+[submodule "vendor/progeny"]
+	path = vendor/progeny
+	url = https://github.com/Odin94/Progeny-vtm-v5-character-creator.git

@@ -51,8 +51,9 @@ The dashboard is your central hub for managing multiple characters and accessing
 
 ### Dashboard Features
 - **Character Grid**: View all your created characters with key information
-- **Create Character**: Start a new character with guided setup
-- **Import Options**: Import characters from The Ledger or Progeny VTM
+- **Guided Creator (Progeny)**: Open the hosted step-by-step V5 creator at `/progeny/`
+- **Blank Vampire Sheet**: Start an empty sheet without the wizard
+- **Import Options**: Import characters from The Ledger or Progeny JSON
 - **Settings**: Configure app preferences and Discord integration
 - **Data Management**: Export/import all data, clear storage
 
@@ -536,8 +537,9 @@ The control bar at the bottom of the screen provides quick access to essential f
 4. Any existing data will be replaced
 
 ### Progeny Import
-- Import characters created in Progeny VTM character creator
-- Click the Progeny icon in the control bar
+- Use **Guided Creator (Progeny)** on the dashboard to build a character in the hosted creator (`/progeny/`), download the Progeny JSON (**Save File**), then import it below
+- Or import a JSON file from [official Progeny](https://progeny.odin-matthias.de/)
+- Click the Progeny icon in the control bar (or **Import from Progeny** on the dashboard)
 - Select a Progeny JSON export file
 - Character data will be converted and loaded
 
@@ -551,8 +553,9 @@ The dashboard includes additional import options accessible from the main dashbo
 - Existing characters are not affected
 
 **Import Progeny Character:**
-- Click the "Import Progeny" button in the dashboard header
-- Select a JSON file exported from Progeny VTM character creator
+- Finish the guided creator (or official Progeny), download the JSON save file
+- Click **Import from Progeny** on the dashboard
+- Select that JSON file
 - The character will be converted to The Ledger format and added to your collection
 - All character data including disciplines, merits, and backgrounds will be preserved
 

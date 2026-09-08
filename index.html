@@ -50,14 +50,28 @@
                 <p class="create-character-subtitle">Choose a game system to get started</p>
                 
                 <div class="system-cards">
+                    <div class="system-card" onclick="location.href='progeny/'">
+                        <div class="system-icon progeny">
+                            <img src="assets/progeny-icon.svg" alt="" style="width: 2.5rem; height: 2.5rem;">
+                        </div>
+                        <h3 class="system-name">Guided Creator (Progeny)</h3>
+                        <p class="system-description">
+                            Walk through V5 character creation step by step.<br>
+                            Export JSON, then import it into The Ledger when you're done.
+                        </p>
+                        <div class="mt-2">
+                            <span class="badge bg-secondary">Hosted Progeny</span>
+                        </div>
+                    </div>
+
                     <div class="system-card" onclick="createCharacter('vampire')">
                         <div class="system-icon">
                             <i class="bi bi-droplet-half"></i>
                         </div>
-                        <h3 class="system-name">Vampire: The Masquerade</h3>
+                        <h3 class="system-name">Blank Vampire Sheet</h3>
                         <p class="system-description">
-                            You are a vampire trapped between hunger and Humanity.<br>
-                            You'll navigate undead politics, feed carefully, and fight to stay yourself.
+                            Start with an empty V5 sheet and fill it in yourself.<br>
+                            Best when you already know your character build.
                         </p>
                     </div>
                     
@@ -122,7 +136,7 @@
                             <div class="import-content">
                                 <h4 class="import-option-title">Import from Progeny</h4>
                                 <p class="import-option-description">
-                                    Import a character created in Progeny VTM character creator
+                                    Import a Progeny JSON export (from the guided creator above or <a href="https://progeny.odin-matthias.de/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">official Progeny</a>)
                                 </p>
                             </div>
                             <div class="import-arrow">

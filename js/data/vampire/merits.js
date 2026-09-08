@@ -55,6 +55,11 @@ export const merits = {
         name: "Up All Night",
         dots: "•• or ••••",
         description: "Treat Humanity as one higher (Max 10), or two dots higher if taken at four dots when using Blush of Life, eating, drinking, or sexual intercourse."
+      },
+      sceneKid: {
+        name: "Scene Kid",
+        dots: "•",
+        description: "The player's style embodies that of a particular subculture. Add one die to all appropriate Social pools when dealing with that subculture."
       }
     },
     flaws: {
@@ -537,6 +542,11 @@ export const merits = {
         name: "Untouchable",
         dots: "•••••",
         description: "Once per story they are able to escape all official punishment for a crime that would otherwise see them destroyed."
+      },
+      mysticOfTheVoid: {
+        name: "Mystic of the Void",
+        dots: "• or ••",
+        description: "Choose a single Oblivion Power they do not know. They count as knowing that power for the purpose of prerequisites to learning Oblivion Ceremonies. For two dots in this merit, Hecata and Lasombra can choose three Oblivion Powers they do not know instead of just one."
       }
     },
     flaws: {

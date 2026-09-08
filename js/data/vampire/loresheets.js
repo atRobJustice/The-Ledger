@@ -164,10 +164,10 @@ export const loresheets = {
           description: "Connected to Karl Schrekt. Different levels grant the character information regarding House Tremere, bonuses for working towards Schrekt's goals, reduce the effort needed for a ritual, find aid in an unlikely ally, or gain information on those same allies.",
           sourcePage: 405
         },
-        descendantOfXavier: {
-          name: "Descendant of Xavier",
+        descendantOfXaviar: {
+          name: "Descendant of Xaviar",
           restrictions: "Gangrel only",
-          description: "Connected to Xavier. Different levels grant the character respect from other Gangrel, detect other vampires in the ground, gain benefits with the Camarilla, turn into a man-sized bat, or have experience with the Antediluvian.",
+          description: "Connected to Xaviar. Different levels grant the character respect from other Gangrel, detect other vampires in the ground, gain benefits with the Camarilla, turn into a man-sized bat, or have experience with the Antediluvian.",
           sourcePage: 406
         }
       }

@@ -25,7 +25,7 @@ export const sabbat = {
     }
   },
   goals: {
-    description: "When getting to the core of the modern Sabbat, they are as they have ever been, uncompromising. This has left the nuance of their agenda shrouded to the other factions. At the core they want unbridled freedom. They see their goal of unbridled personal freedom hampered by the Antediluvians who they see as not only cannibalistic gods, but as the antithesis of their beliefs. To fight gods they fear will end their existence they see fanatical deviation as the only way. They see any lack of total devotion as tools, collaborators, and idiots; thus the Anarchs, Camarilla, and Autakris are seen as such.",
+    description: "When getting to the core of the modern Sabbat, they are as they have ever been, uncompromising. This has left the nuance of their agenda shrouded to the other factions. At the core they want unbridled freedom. They see their goal of unbridled personal freedom hampered by the Antediluvians who they see as not only cannibalistic gods, but as the antithesis of their beliefs. To fight gods they fear will end their existence they see fanatical deviation as the only way. They see any lack of total devotion as tools, collaborators, and idiots; thus the Anarchs, Camarilla, and Autarkis are seen as such.",
     currentObjectives: {
       camarilla: "They see either subjugation or destruction of their age-old enemy, the Camarilla, as high importance.",
       anarchs: "For the Anarchs, they want to bring their 'estranged siblings' the Anarchs into the fold by the sword.",
@@ -114,7 +114,7 @@ export const sabbat = {
     forsakenPaths: {
       pathOfBeast: "A violent path that sees their Beast as their true selves rather than a separate entity, seeing their human minds as an obstacle. While they become powerful quickly, it's hard for them to avoid drinking in excess over time, whether that be mortals or each other.",
       pathOfHonorableAccord: "It is rumored that this philosophy has been practiced since before the founding of the Sabbat. They are known as 'paladins of Caine,' sacrificing their personal desires to become one with the Beast, but this has fallen out of practice.",
-      pathOfLilith: "The Dark Mother,' and 'the Mother of Monsters,' are a couple of titles for Lilith. Followers of her path may believe her to be the true creator of vampires, among other kinds of supernatural creatures, but the Caine-centric Sabbat see this as heresy."
+      pathOfLilith: "\"The Dark Mother,\" and \"the Mother of Monsters,\" are a couple of titles for Lilith. Followers of her path may believe her to be the true creator of vampires, among other kinds of supernatural creatures, but the Caine-centric Sabbat see this as heresy."
     }
   },
   ritae: {
