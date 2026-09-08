@@ -6,7 +6,7 @@ export const sabbat = {
     "Lasombra (some)",
     "Many other Clan antitribu"
   ],
-  description: "The Sabbat are monstrous creatures; vampire supremacists who see themselves above mortals and do not care for them. They are a sect that evokes fear at its mention with their ideologies being met with loathing. The Sword of Caine wages a war against the Antediluvians, a Gehenna War, seeking to claim revenge for Caine and the ancient betrayal done to him by his childer. Their goal is to destroy the Antediluvians and subject the mortal world to a world with vampires at the top.",
+  description: "The Sabbat are monstrous creatures; vampire supremacists who see themselves above mortals and do not care for them. They are a sect that evokes fear at its mention with their ideologies being met with loathing. The Sword of Caine wages a war against the Antediluvians, a Gehenna War, seeking to claim revenge for Caine and the ancient betrayal done to him by his childer. Their goal is to destroy the Antediluvians and subject the mortal world to a world with vampires at the top. In their effort to make themselves the ultimate predators they have ironically shackled themselves to the beast. The sect deindividualized, indoctrinated, and collectively Blood Bound each Cainite in an effort to make fanatical members of their organization. With all that said, the Sabbat are far from a monolith. With many faces and takes on inhumane, it is easy to run into a variety of Cainites from faction.",
   source: ["Vampire: The Masquerade Sabbat: The Black Hand"],
   sourcePage: [6],
   currentStatus: {
@@ -23,6 +23,7 @@ export const sabbat = {
     problemSolving: "When it comes to problem solving the sect solves problems, the way 'a real vampire' would. Using disciplines with ruthlessness to silence victims and hunt down witnesses. Of course such blatant supernatural powers attract hunters and the SI, but the Sword of Caine ignores these side effects.",
     beliefs: {
       caine: "The Sect holds the Dark Father, Caine, as the progenitor and idol of all vampires. This is where their hate and war of the antediluvians stem from, the Sabbat's fanatical belief the childer of Caine betrayed his will and started the struggle of ages and elder manipulation that is still waged millennia later. Such a struggle once born from medieval rebellion against elders has descended into endless fighting and constant violence, as brutality is the way of the world in their worldview as their enemies are simply pawns of the antediluvians.",
+      domains: "Many domains have emptied either by the SI burning the Sabbat from their recklessness or willingly abandoning domains. The ones they do hold are either strategic domains or warfront domains. The sect wages the Gehenna War as they willingly follow the Beckoning. The secret unknown to other Sects, the Gehenna War isn't just in the Middle East, but global. Antediluvians and ancient Methuselah have traveled over thousands of years, so their locations are scattered further and wider.",
       posthuman: "The Sabbat sees themselves as posthuman in the most extreme way. Caine is the conquering blood god and they are beyond mortals, deserving to treat them as predators treat prey. They want to bring down the Masquerade as they only view it as a trick of the antediluvians, and the Camarilla as the blatant will of the antediluvians.",
       relationships: {
         camarilla: "They have the most enmity with the Tower being overall suspicious and hostile of the organization.",
@@ -56,12 +57,12 @@ export const sabbat = {
       }
     },
     packStructure: {
-      description: "Packs are not only adapted to one path, but to one purpose as well. This is mandated by the Bishop, Archbishop, or other leading figure. Though some packs are their own authorities depending on the region, and how well Bishops can back up a line of command. Nonetheless packs can be infiltrators, soldiers, body-snatchers, saboteurs, etc. The pack's unity is the Sabbat's greatest strength, even becoming infamous for being almost creepily like-minded in goals in modern nights.",
+      description: "Packs are not only adapted to one path, but to one purpose as well. This is mandated by the Bishop, Archbishop, or other leading figure. Though some packs are their own authorities depending on the region, and how well Bishops can back up a line of command. Nonetheless packs can be infiltrators, soldiers, body-snatchers, saboteurs, etc. The pack's unity is the Sabbat's greatest strength, even becoming infamous for being almost creepily like-minded in goals in modern nights. While Packs have one overarching, though broad, mission they break down roles by ability there within. None of them are formal and easily fluid as needed by the pack. Good packs capitalize on their member's affinity and good Pack Priests know how to manage their pack members. Some Cainites may find they play multiple roles. Some roles like Cleaner are looked down upon, but useful.",
       roles: {
         warrior: "Assassins, brutes, commanders, Guards",
         liaison: "Fast talkers, tempters, seducers, silver-tongued devils",
         scout: "Spies, radicalizers, gossip seekers",
-        cleaner: "silencing victims, cleaning massacres, covering tracks",
+        cleaner: "Silencing victims, cleaning massacres, covering tracks",
         scholar: "Researcher, strategists, translators",
         procurer: "Smugglers, Plunderers, thieves, traffickers"
       }
@@ -69,10 +70,10 @@ export const sabbat = {
   },
   pathsOfEnlightenment: {
     description: "The Pack priest influences and guides new Cainties on the Paths of Enlightenment. The path compliments the pack's purpose. Their path replaces a Kindred's Humanity. While Humanity denies the beast and keeps it bay, the Paths allow the beast to have some sway over the Cainite, a relationship to the Beast is sought since they believe denying the beast is denying part of who the Cainite is. The beast and the Cainite walk side by side in unlife. To mortals and other Kindred, such thoughts and morals are alien.",
-    changingPaths: "Once on a Path of Enlightenment it is rare to change, as it requires being broken down again to near wassail and finding a new teether to the Beast. Many shy away from such a practice, a select few may see it as an experience to help with transcendence.",
+    changingPaths: "Once on a Path of Enlightenment it is rare to change, as it requires being broken down again to near wassail and finding a new teether to the Beast. Many shy away from such a practice, a select few may see it as an experience to help with transcendence. Leaving a path has all the aforementioned risk of changing a path along with most True Sabbat being repulsed by the notion to their core. Most attempts will fail converting one's conditioning from thinking like an animalistic predator to something vaguely mortal in values. Also the road is lonely and dangerous; other pack members will try to reeducate a wayward pack member and other sects will greatly distrust the converted Kindred. Usually a mentor to help guide is needed, but there have been exceptions; the Sabbat are suspicious how the Lasombra pulled off their exodus. Accusing many of having \"Humanity adjacent\" paths like the seldom used Honorable Accord path, which reinforced their dislike of such paths.",
     activePaths: {
       pathOfCaine: {
-        description: "The premise of this path is to cultivate power in order to emulate the first vampire, Caine. Blood is everything to Noddist, who will rarely pass up a chance for it. They view the beast as a servant and not one to be denied, instead considering it as an eternal conflict that must be nourished and respected.",
+        description: "The premise of this path is to cultivate power in order to emulate the first vampire, Caine. Blood is everything to Noddist, who will rarely pass up a chance for it. They view the beast as a servant and not one to be denied, instead considering it as an eternal conflict that must be nourished and respected. Their obsession with power makes them eager to grow and even overconfident as they desire to prove its value. They seek to challenge themselves, making them invaluable assets in the Gehenna War. This tendency, however, can have them overreach after the thrill of a feeding. Only their ideals of righteousness prevent them from being impulsive as they emulate the Dark Father. Noddists are viewed as a dangerous ally as they do not suffer from sunken costs and when one tactic doesn't work, they will change to another. This change can include turning on their own allies without warning in order to bolster their own personal gain.",
         ethics: [
           "Lower one's generation and concentration on one's Blood to become closer to Caine and delight in the power it yields.",
           "Partake in all blood to understand and build wisdom from the power contained.",
@@ -81,7 +82,7 @@ export const sabbat = {
         disciplines: ["Blood Sorcery", "Blood Sorcery Rituals", "Animalism", "Obfuscate", "Potence", "Protean"]
       },
       pathOfCathari: {
-        description: "This path is one of excess, indulgence, and giving in to every desire no mater how atrocious, but it usually serves a purpose. To outsiders looking in, the Albigensians may seem selfish, immature, and hedonistic. But if they are Damned, why not act the part? They revel in their wicked nature, doing whatever their Beast drives them to do.",
+        description: "This path is one of excess, indulgence, and giving in to every desire no mater how atrocious, but it usually serves a purpose. To outsiders looking in, the Albigensians may seem selfish, immature, and hedonistic. But if they are Damned, why not act the part? They revel in their wicked nature, doing whatever their Beast drives them to do. This path has the most members. It's the easiest to follow, especially for young shovelheads, because the philosophy not only justifies, but encourages them to do whatever they want whenever they want to. They spoil their Beast, and they aren't subtle about it. In the Gehenna War, the Albigensians are often used as fodder, and they don't even argue it, they can just make more. Away from the war, they tempt, deal, and ruin the virtuous, or anyone they want, really.",
         ethics: [
           "Experience every vice that being undead affords.",
           "Accept being a creature outside of mortal morality and lead others into damnation or destruction.",
@@ -90,7 +91,7 @@ export const sabbat = {
         disciplines: ["Physical disciplines", "Auspex", "Obfuscate", "Presence"]
       },
       pathOfDeathAndSoul: {
-        description: "This is the most studious of paths, with their main subject being death. Necronomists aim to study it, understand it, and master it, so that their enemies stay dead. They fight the Gehenna War from a distance as strategists or engineers, and keep their Beasts at arms length unlike most other paths.",
+        description: "This is the most studious of paths, with their main subject being death. Necronomists aim to study it, understand it, and master it, so that their enemies stay dead. They fight the Gehenna War from a distance as strategists or engineers, and keep their Beasts at arms length unlike most other paths. And unlike other paths, they tend to Embrace traditionally rather than during a Mass shovelhead Embrace. It's not that they are any less violent, but they are smarter about it, planning ahead and leaving little to luck or chance and with no interest in a fair fight or honor. Do not mistake them as a path that can be reasoned with, as interacting with Necronomists can be chilling and detached, as if they are looking at you like a science experiment, because they are. They plot how to best use you, or how your death can be turned to their advantage.",
         ethics: [
           "Leave no survivors at the conclusion of violent conflict.",
           "Investigate the relics and remains of death – personal, historical, occult – in order to discern the details of how the conflict ended and its existential outcomes.",
@@ -99,7 +100,7 @@ export const sabbat = {
         disciplines: ["Oblivion", "Oblivion Ceremonies", "Auspex", "Blood Sorcery", "Dominate"]
       },
       pathOfPowerAndInnerVoice: {
-        description: "This path's main goal is to subjugate and impose their will upon the world around them. Sometimes even the Beast itself is enslaved by the most accomplished of Unifiers. To them, the Beast is a tool, knowing when to use it is key to mastering it.",
+        description: "This path's main goal is to subjugate and impose their will upon the world around them. Sometimes even the Beast itself is enslaved by the most accomplished of Unifiers. To them, the Beast is a tool, knowing when to use it is key to mastering it. Unifiers use their force of personality to exert their will upon mortals and reign with tyranny. Within their own packs, a delicate balance of dependence must be maintained between its members, lest they diablerize their priest and/or screw each other over for their own personal gain. They are ironically the least likely to kill each other, instead the ones deemed weaker simply serve the strong. In the Gehenna War, they are natural leaders, front-line fighters, and specialists. In the mortal world, they aim to be served by those they deem lesser.",
         ethics: [
           "Reward success and excoriate failure, including one's own.",
           "The world around the Cainite exists to be exploited to their benefit: The enlightened Cainite bends it to their will.",

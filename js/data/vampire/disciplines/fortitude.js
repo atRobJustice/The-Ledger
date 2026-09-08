@@ -1,7 +1,16 @@
 export const fortitude = {
   name: "Fortitude",
-  nicknames: ["Bricking Up", "Stone Flesh", "Resistentia"],
-  affinity: ["Gangrel", "Hecata", "Salubri", "Ventrue"],
+  nicknames: [
+    "Bricking Up",
+    "Stone Flesh",
+    "Resistentia"
+  ],
+  affinity: [
+    "Gangrel",
+    "Hecata",
+    "Salubri",
+    "Ventrue"
+  ],
   type: "Physical",
   threat: "Medium",
   resonance: "Melancholic",
@@ -10,7 +19,7 @@ export const fortitude = {
     level1: [
       {
         name: "Fluent Endurance",
-        effect: "Reroll the Blood Surge rouse check on a Stamina or Fortitude test",
+        effect: "Reroll the Blood Surge rouse check on a Stamina or Fortitude test.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -18,11 +27,11 @@ export const fortitude = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Gehenna War, page 46"
+        source: "Vampire: The Masquerade Gehenna War, page 46"
       },
       {
         name: "Resilience",
-        effect: "Add their Fortitude rating to the health track",
+        effect: "Add their Fortitude rating to the health track.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -34,7 +43,7 @@ export const fortitude = {
       },
       {
         name: "Unswayable Mind",
-        effect: "Add Fortitude rating to rolls to resist methods to sway the character's mind against their will including supernatural",
+        effect: "Add Fortitude rating to rolls to resist methods to sway the character's mind against their will including supernatural.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -58,7 +67,6 @@ export const fortitude = {
         notes: "If the damage is Aggravated Willpower damage, they can use the remaining benefit of the power to negate that damage, but it cannot be renewed in the same scene after this",
         source: "Vampire: The Masquerade Live from the Succubus Club, pages 27-28"
       },
-
       {
         name: "Earth's Perseverance",
         effect: "Become impossible to move from that spot",
@@ -123,63 +131,62 @@ export const fortitude = {
     level3: [
       {
         name: "Calloused Soul",
-        effect: "Pre-emptively gain stains to prevent/reduce further stain gains",
-        cost: "Two Stains",
+        effect: "Pre-emptively gain stains to prevent/reduce further stain gains.",
+        cost: "Two stains",
         prerequisite: "None",
         amalgam: "None",
         duration: "One night",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "A vampire actually gains three stains doing this, but one can be mitigated by a Conviction",
-        source: "Vampire: The Masquerade Tattered Façade, page 97-98"
+        notes: "A vampire actually gains three stains doing this, but one can be mitigated by a Conviction.",
+        source: "Vampire: The Masquerade Tattered Facade, page 97-98"
       },
-
       {
         name: "Defy Bane",
-        effect: "Convert Aggravated Damage to Superficial Damage",
+        effect: "Convert Aggravated Damage to Superficial Damage.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene or until expired",
         dicePool: "Wits + Survival",
         opposingPool: "N/A",
-        notes: "They may not heal the superficial damage for the rest of the scene",
+        notes: "They may not heal the superficial damage for the rest of the scene.",
         source: "Vampire: The Masquerade Corebook, page 259"
       },
       {
         name: "Fortify the Inner Façade",
-        effect: "Increasing the Difficulty of mental powers to read or pierce the mind by half of the Fortitude Rating",
+        effect: "Increasing the Difficulty of mental powers to read or pierce the mind by half of the Fortitude Rating.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "If the rules allow them to resist, they add their Fortitude rating to their pool instead",
+        notes: "If the rules allow them to resist, they add their Fortitude rating to their pool instead.",
         source: "Vampire: The Masquerade Corebook, page 259"
       },
       {
         name: "Seal the Beast's Maw",
-        effect: "A vampire can ignore the effects of hunger, but reduce their dice pools as a result",
+        effect: "A vampire can ignore the effects of hunger, but reduce their dice pools as a result.",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "If a dice pool reduces to 0, a Fury Frenzy test is made",
+        notes: "If a dice pool reduces to 0, a Fury Frenzy test is made.",
         source: "Vampire: The Masquerade Forbidden Religions, page 44"
       },
       {
         name: "Valeren",
-        effect: "Mend an injured vampire",
+        effect: "Mend an injured vampire.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Auspex ●",
         duration: "N/A",
         dicePool: "Intelligence + Fortitude",
         opposingPool: "N/A",
-        notes: "A subject can be affected by the power only once a night",
+        notes: "A subject can be affected by the power only once a night.",
         source: "Vampire: The Masquerade Companion, page 25"
       }
     ],
@@ -231,32 +238,31 @@ export const fortitude = {
         duration: "One scene, or when the caster leaves targets",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Maximum of 5 dots",
-        source: "Vampire: The Masquerade Tattered Façade, page 98"
+        notes: "Maximum of 5 dots.",
+        source: "Vampire: The Masquerade Tattered Facade, page 98"
       },
-
       {
         name: "Flesh of Marble",
-        effect: "Ignore the first source of physical damage each turn unless sunlight",
+        effect: "Ignore the first source of physical damage each turn unless sunlight.",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "A critical win on an attack bypasses this power",
+        notes: "A critical win on an attack bypasses this power.",
         source: "Vampire: The Masquerade Corebook, page 259"
       },
       {
         name: "Prowess from Pain",
-        effect: "No longer suffers penalty from Health damage and can increase one Attribute per level of damage on their tracker",
+        effect: "No longer suffers penalty from Health damage and can increase one Attribute per level of damage on their tracker.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The Attributes may not exceed their Blood Surge value + 6",
+        notes: "The Attributes may not exceed their Blood Surge value + 6.",
         source: "Vampire: The Masquerade Corebook, page 260"
       }
     ]
@@ -280,7 +286,7 @@ export const fortitude = {
       effect: "Those already underneath Dominate find it easier to resist other Kindred's Dominate",
       cost: "Free",
       dicePool: "N/A",
-      source: "Vampire: The Masquerade Players Guide, page 73"
+      source: "Vampire: The Masquerade Cults of the Blood Gods, page 104"
     },
     {
       name: "Heart of Darkness",
@@ -301,6 +307,16 @@ export const fortitude = {
       cost: "Free",
       dicePool: "Resolve + Oblivion",
       source: "Vampire: The Masquerade Cults of the Blood Gods, page 206"
+    },
+    {
+      name: "Leash the Beast",
+      discipline: "Animalism",
+      level: "●●",
+      fortitudeLevel: "●",
+      effect: "Channel their Blood to prevent the Beast from awakening.",
+      cost: "One or Two Rouse Checks",
+      dicePool: "N/A",
+      source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
     }
   ]
-}; 
+};

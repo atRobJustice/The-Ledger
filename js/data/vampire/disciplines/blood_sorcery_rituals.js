@@ -7,10 +7,14 @@ export const bloodSorceryRituals = {
     difficulty: "Ritual Level + 1",
     learningTime: "Square of ritual level in weeks",
     additionalNotes: [
-      "Rituals that benefit the recipient can only be cast onto the sorcerer themselves unless otherwise stated",
-      "Many call for necessary ingredients, but may only require blood and concentration",
-      "Good teacher or a good grimoire may lessen the time needed to learn a ritual",
-      "It is possible to create new rituals through an extended test that may take in game months to complete"
+      "Unless otherwise marked all Rituals cost one Rouse Check, five minutes per level to cast, and winning an Intelligence + Blood Sorcery Difficulty (Ritual Level + 1).",
+      "Rituals that benefit the recipient can only be cast onto the sorcerer themselves unless otherwise stated.",
+      "Many call for necessary ingredients, but may only require blood and concentration.",
+      "Learning new rituals in play take time and experience.",
+      "Learning new ritual is at least the square of the its level in weeks.",
+      "A whole redworking scene has sprung up with desperate kindred of the aforementioned clans looking to find ingredients or knowledge, while other Kindred see an opportunity to learn or profit off this new market.",
+      "Good teacher or a good grimoire may lessen the time needed to learn a ritual.",
+      "It is possible to create new rituals through an extended test that may take in game months to complete."
     ]
   },
   rituals: {
@@ -22,16 +26,16 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "If you know the correct Birth or Embrace date, you can add 1 die to the Ritual pool. This does not stack if you know both.",
-        source: "Blood Sigils, page 59"
+        source: "Vampire: The Masquerade Blood Sigils, page 59"
       },
       {
         name: "Beelzebeatit",
-        effect: "Animals avoid the area",
+        effect: "Animals avoid the area.",
         cost: "One Rouse Check",
         origin: "Sabbat",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Nothing prevents directed or controlled creatures from entering.",
-        source: "Sabbat, page 50"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 50"
       },
       {
         name: "Bind the Accusing Tongue",
@@ -40,97 +44,97 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Victim can break free by rolling Composure + Resolve.",
-        source: "Blood Sigils, page 60"
+        source: "Vampire: The Masquerade Blood Sigils, page 60"
       },
       {
         name: "Blood Apocrypha",
-        effect: "Embed messages into Blood or vessels",
+        effect: "Embed messages into Blood or vessels.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The first person receives the message if they are the intended recipient or if they have A Taste For Blood.",
-        source: "Book of Nod Apocrypha, page 34"
+        source: "Vampire: The Masquerade Book of Nod Apocrypha, page 34"
       },
       {
         name: "Blood Walk",
-        effect: "Learn characters generation, name, and sire",
+        effect: "Learn characters generation, name, and sire.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Requires one Rouse Check from the subject to be performed.",
-        source: "Corebook, page 276"
+        source: "Vampire: The Masquerade Corebook, page 276"
       },
       {
         name: "Bloody Message",
-        effect: "Make a message appear to a specific type of person then disappear once read",
+        effect: "Make a message appear to a specific type of person then disappear once read.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Make the Ritual Roll when enchanting the surface.",
-        source: "Let the Streets Run Red, page 77"
+        source: "Vampire: The Masquerade Let the Streets Run Red, page 77"
       },
       {
         name: "Blood to Water",
-        effect: "Turn blood into water",
+        effect: "Turn blood into water.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Removes all traces of blood.",
-        source: "Gehenna War, page 48"
+        source: "Vampire: The Masquerade Gehenna War, page 48"
       },
       {
         name: "Clinging of the Insect",
-        effect: "Cling to walls like an insect",
+        effect: "Cling to walls like an insect.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The user must cling with both their hands and feet.",
-        source: "Corebook, page 276"
+        source: "Vampire: The Masquerade Corebook, page 276"
       },
       {
         name: "Coax the Garden",
-        effect: "Use plant life to defend",
+        effect: "Use plant life to defend.",
         cost: "One Rouse Check",
         origin: "Bahari",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The plants will target anyone who isn't the caster.",
-        source: "Cults of the Blood Gods, page 55"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 55"
       },
       {
         name: "Craft Bloodstone",
-        effect: "Craft a tracking stone",
+        effect: "Craft a tracking stone.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "A caster may have up to as many stones as they have Resolve.",
-        source: "Corebook, page 276"
+        source: "Vampire: The Masquerade Corebook, page 276"
       },
       {
         name: "Douse the Fear",
-        effect: "Remove their fear of fire temporarily",
+        effect: "Remove their fear of fire temporarily.",
         cost: "One Rouse Check",
         origin: "Church of Caine",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The power wears off once the scene ends.",
-        source: "Cults of the Blood Gods, page 67"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 67"
       },
       {
         name: "Enrich the Blood",
-        effect: "Make a mortal more nourishing",
+        effect: "Make a mortal more nourishing.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "This does not work on Kindred vitae.",
-        source: "Forbidden Religions, page 76"
+        source: "Vampire: The Masquerade Forbidden Religions, page 76"
       },
       {
         name: "Herd Ward (Minor)",
-        effect: "Ward a single kine of a herd to prevent unauthorized feeding",
+        effect: "Ward a single kine of a herd to prevent unauthorized feeding.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Make the Ritual Roll when someone else feeds off the herd.",
-        source: "Let the Streets Run Red, page 77"
+        source: "Vampire: The Masquerade Let the Streets Run Red, page 77"
       },
       {
         name: "Letter Ward",
@@ -139,16 +143,16 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Make the Ritual Roll if anyone other than the intended recipient opens it.",
-        source: "Let the Streets Run Red, page 77"
+        source: "Vampire: The Masquerade Let the Streets Run Red, page 77"
       },
       {
         name: "Revealing the Crimson Trail",
-        effect: "Reveal traces of spilled blood",
+        effect: "Reveal traces of spilled blood.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Very old traces require a Resolve + Awareness test.",
-        source: "Gehenna War, page 48"
+        source: "Vampire: The Masquerade Gehenna War, page 48"
       },
       {
         name: "Seal the Brand",
@@ -157,70 +161,70 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The process inflicts 1 Superficial damage",
-        source: "Players Guide, page 99"
+        source: "Vampire: The Masquerade Players Guide, page 99"
       },
       {
         name: "Shared Memory",
-        effect: "Observe another's Memoriam",
+        effect: "Observe another's Memoriam.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Participants observe the events and can offer advice but cannot directly influence the events.",
-        source: "In Memoriam, page 145"
+        source: "Vampire: The Masquerade In Memoriam, page 145"
       },
       {
-        name: "Wake with Evening's Freshness",
-        effect: "Awakens the caster at any signs of danger during day sleep",
+        name: "Wake with Evening’s Freshness",
+        effect: "Awakens the caster at any signs of danger during day sleep.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Do not make the Ritual roll until true danger appears.",
-        source: "Corebook, page 276"
+        source: "Vampire: The Masquerade Corebook, page 276"
       },
       {
         name: "Ward Against Ghouls",
-        effect: "Protect themselves against Ghouls",
+        effect: "Protect themselves against Ghouls.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Uses standard rules for Wards.",
-        source: "Corebook, page 277"
+        source: "Vampire: The Masquerade Corebook, page 277"
       },
       {
         name: "Blood Missive",
-        effect: "Send messages through blood",
+        effect: "Send messages through blood.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
-        notes: "The first person to taste the blood receives it as if it was intended for them or they possess A Taste for Blood.",
-        source: "Live from the Succubus Club, page 29"
+        notes: "The first person to taste the blood, receives it as if it was intended for them or they possess A Taste for Blood.",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 29"
       },
       {
         name: "Sanguine Tidings",
-        effect: "Make a message appear on a mirror when a type of person comes nearby",
+        effect: "Make a message appear on a mirror when a type of person comes nearby.",
         cost: "N/A",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "It disappears from the mirror once it's been read once.",
-        source: "Live from the Succubus Club, page 29"
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 29"
       },
       {
         name: "Preservation",
-        effect: "Preserve an item from the passage of time",
+        effect: "Preserve an item from the passage of time.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
-        notes: "Only preserves the item from age, ambient elements, and minor accidents. Intentional damage still affects the item.",
-        source: "Courts of the Damned, pages 215-216"
+        notes: "Only preserves the item from age, ambient elements, and minor accidents. Intentional damage still effects the item.",
+        source: "Vampire: The Masquerade Courts of the Damned, page 215-216"
       },
       {
         name: "Rite of Introduction",
-        effect: "Magically broadcast an introduction and identification to any caster of the Foundation of the Chantry Ritual in the same city",
+        effect: "Magically broadcast an introduction and identification to any caster of the Foundation of the Chantry Ritual in the same city.",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Caster can withhold but not alter elements of their broadcast.",
-        source: "Courts of the Damned, page 216"
+        source: "Vampire: The Masquerade Courts of the Damned, page 216"
       }
     ],
     level2: [
@@ -431,7 +435,7 @@ export const bloodSorceryRituals = {
         origin: "Milwaukee",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Treated as a light piercing Brawl weapon with a +2 modifier.",
-        source: "Chicago Folios, page 174"
+        source: "Vampire: The Masquerade Chicago Folios, page 174"
       },
       {
         name: "Bloodless Feast",
@@ -440,7 +444,7 @@ export const bloodSorceryRituals = {
         origin: "The Bloodless Pilgrims",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Those who consume the clear vitae enough are weaker to diablerie.",
-        source: "Forbidden Religions, page 67"
+        source: "Vampire: The Masquerade Forbidden Religions, page 67"
       },
       {
         name: "Blood Sigil",
@@ -449,7 +453,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Can read the message with a Resolve + Occult roll or by Sense the Unseen (Auspex ●). Caster can remove the Blood Sigil by spending Willpower and touching the tattoo.",
-        source: "Blood Sigils, page 66"
+        source: "Vampire: The Masquerade Blood Sigils, page 66"
       },
       {
         name: "Communal Vigor",
@@ -458,16 +462,16 @@ export const bloodSorceryRituals = {
         origin: "Sabbat",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The Priest gains three bonus dice on Dominate and Presence tests against packmates.",
-        source: "Sabbat, page 50"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 50"
       },
       {
-        name: "Dagon's Call",
+        name: "Dagon’s Call",
         effect: "The caster can rupture the blood vessels of a victim from afar",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Resolve + Blood Sorcery",
         notes: "The caster can use this up to two additional times, each costing an additional Rouse Check. The opposing roll is Stamina + Resolve.",
-        source: "Corebook, page 278"
+        source: "Vampire: The Masquerade Corebook, page 278"
       },
       {
         name: "Deflection of Wooden Doom",
@@ -476,7 +480,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Do not roll the Ritual Roll until staked.",
-        source: "Corebook, page 278"
+        source: "Vampire: The Masquerade Corebook, page 278"
       },
       {
         name: "Elemental Shelter",
@@ -485,7 +489,7 @@ export const bloodSorceryRituals = {
         origin: "Koldunic Sorcery",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Fire Kolduns must resist terror frenzy before casting this ritual. Koldun's form can be seen with a Wits + Awareness roll or by Sense the Unseen (Auspex ●). If bonded element is removed, such as the fire going out, the Koldun enters torpor.",
-        source: "Blood Sigils, page 66"
+        source: "Vampire: The Masquerade Blood Sigils, page 66"
       },
       {
         name: "Essence of Air",
@@ -494,7 +498,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The Camarilla frowns upon this Ritual due to its Masquerade dangers.",
-        source: "Corebook, page 278"
+        source: "Vampire: The Masquerade Corebook, page 278"
       },
       {
         name: "Eyes of the Past",
@@ -503,7 +507,7 @@ export const bloodSorceryRituals = {
         origin: "Chicago",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "It only holds events within the last five years.",
-        source: "Chicago Folios, page 172"
+        source: "Vampire: The Masquerade Chicago Folios, page 172"
       },
       {
         name: "Fire in the Blood",
@@ -512,7 +516,7 @@ export const bloodSorceryRituals = {
         origin: "Church of Caine",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "A victim can only be affected by this Ritual once per night.",
-        source: "Cults of the Blood Gods, page 67"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 67"
       },
       {
         name: "Firewalker",
@@ -521,7 +525,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "This ritual can be performed on others, but the fingertip removal must all come from the caster.",
-        source: "Corebook, page 279"
+        source: "Vampire: The Masquerade Corebook, page 279"
       },
       {
         name: "Galvanic Ruination",
@@ -530,7 +534,7 @@ export const bloodSorceryRituals = {
         origin: "Sabbat",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Generally, it only affects the range of a warehouse or three-story building, but can be extended by adding 1 Difficulty per additional building.",
-        source: "Sabbat, page 51"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 51"
       },
       {
         name: "Gentle Mind",
@@ -539,7 +543,7 @@ export const bloodSorceryRituals = {
         origin: "Chicago",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The caster must share blood with another and cannot cast it upon themselves.",
-        source: "Chicago Folios, page 172"
+        source: "Vampire: The Masquerade Chicago Folios, page 172"
       },
       {
         name: "Grim Chrysalis",
@@ -548,7 +552,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The cocoon itself is hard and protects the user from outside damage to some extent.",
-        source: "Tattered Facade, page 93"
+        source: "/ Vampire: The Masquerade Tattered FaçadeVampire: The Masquerade Tattered Façadepage 93"
       },
       {
         name: "Haunted House",
@@ -557,7 +561,7 @@ export const bloodSorceryRituals = {
         origin: "Milwaukee",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The effects last for 10 years.",
-        source: "Chicago Folios, page 175"
+        source: "Vampire: The Masquerade Chicago Folios, page 175"
       },
       {
         name: "Herd Ward (Major)",
@@ -566,7 +570,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Make the Ritual Roll when someone else feeds off the herd.",
-        source: "Let the Streets Run Red, page 77"
+        source: "Vampire: The Masquerade Let the Streets Run Red, page 77"
       },
       {
         name: "Illusion of Peaceful Death",
@@ -575,7 +579,7 @@ export const bloodSorceryRituals = {
         origin: "Chicago",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The body must have at least half of the body's blood to succeed.",
-        source: "Chicago Folios, page 172"
+        source: "Vampire: The Masquerade Chicago Folios, page 172"
       },
       {
         name: "Illusion of Perfection",
@@ -584,7 +588,7 @@ export const bloodSorceryRituals = {
         origin: "Milwaukee",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Similar to the ability Mask of a Thousand Faces.",
-        source: "Chicago Folios, page 174"
+        source: "Vampire: The Masquerade Chicago Folios, page 174"
       },
       {
         name: "Nepenthe",
@@ -593,7 +597,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Using Nepenthe two sessions in a row causes one Stain to become permanent. This is cumulative, e.g. four sessions gives two permanent Stains.",
-        source: "Blood Sigils, page 66"
+        source: "Vampire: The Masquerade Blood Sigils, page 66"
       },
       {
         name: "One with the Blade",
@@ -602,7 +606,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Only one weapon can hold this ritual at a time.",
-        source: "Camarilla, page 168"
+        source: "Vampire: The Masquerade Camarilla, page 168"
       },
       {
         name: "Sanguine Watcher",
@@ -611,7 +615,7 @@ export const bloodSorceryRituals = {
         origin: "Milwaukee",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The caster can send the rat to go where they instruct to observe or steal, but the instructions must be very explicit.",
-        source: "Chicago Folios, page 174"
+        source: "Vampire: The Masquerade Chicago Folios, page 174"
       },
       {
         name: "Seeing with the Sky's Eyes",
@@ -620,7 +624,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Player can ask one question about location and surrounding per success roll. Critical Wins give 3 extra questions and can gain information about Ambitions, Desires, Convictions and Humanity.",
-        source: "Blood Sigils, page 67"
+        source: "Vampire: The Masquerade Blood Sigils, page 67"
       },
       {
         name: "Seeking Tiamat",
@@ -629,7 +633,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Critical wins discover the closest vein and points towards 2 Furcae on that vein",
-        source: "Blood Sigils, page 68"
+        source: "Vampire: The Masquerade Blood Sigils, page 68"
       },
       {
         name: "Sleep of Judas",
@@ -638,7 +642,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Make the Ritual Roll when the target is drugged.",
-        source: "Let the Streets Run Red, page 77"
+        source: "Vampire: The Masquerade Let the Streets Run Red, page 77"
       },
       {
         name: "Soul of the Hemonculus",
@@ -647,7 +651,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Immune to the sun but cannot be Embraced, made into a ghoul or have a Blood Bond. Vampires slake no Hunger if they drink from it.",
-        source: "Blood Sigils, page 68"
+        source: "Vampire: The Masquerade Blood Sigils, page 68"
       },
       {
         name: "Stone of the True Form",
@@ -656,7 +660,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Must throw the stone with Dexterity + Athletics. The target resists the Ritual with Resolve + Occult. On a win, illusions are dispelled, shapeshifters are painfully returned to their original form and beings made through Disciplines, like a Vozhd, are separated to their original components.",
-        source: "Blood Sigils, page 68"
+        source: "Vampire: The Masquerade Blood Sigils, page 68"
       },
       {
         name: "The Unseen Change",
@@ -665,7 +669,7 @@ export const bloodSorceryRituals = {
         origin: "Chicago",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "If they do not succeed on the Ritual Roll against a contested Willpower test, they enter in Lupus Form.",
-        source: "Chicago Folios, page 172"
+        source: "Vampire: The Masquerade Chicago Folios, page 172"
       },
       {
         name: "Trespass",
@@ -674,7 +678,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Unlike Incorporeal Passage, the caster can be attacked providing they are able to notice the caster.",
-        source: "Blood Sigils, page 69"
+        source: "Vampire: The Masquerade Blood Sigils, page 69"
       },
       {
         name: "Viral Haruspex",
@@ -683,7 +687,7 @@ export const bloodSorceryRituals = {
         origin: "Plague Oracles",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Caster must drink from someone with the disease within 24 hours before casting this Ritual.",
-        source: "Blood Sigils, page 69"
+        source: "Vampire: The Masquerade Blood Sigils, page 69"
       },
       {
         name: "Ward against Lupines",
@@ -692,7 +696,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Uses standard rules for Wards.",
-        source: "Corebook, page 279"
+        source: "Vampire: The Masquerade Corebook, page 279"
       },
       {
         name: "Warding Circle against Spirits",
@@ -701,7 +705,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Uses standard rules for Wards.",
-        source: "Corebook, page 279"
+        source: "Vampire: The Masquerade Corebook, page 279"
       }
     ],
     level4: [
@@ -876,7 +880,7 @@ export const bloodSorceryRituals = {
         origin: "Church of Caine",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The user is only resistant to fire on their arms.",
-        source: "Cults of the Blood Gods, page 67"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 67"
       },
       {
         name: "Atrocity's Release",
@@ -885,7 +889,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Can be resisted with a Resolve + Blood Sorcery test.",
-        source: "Gehenna War, page 49"
+        source: "Vampire: The Masquerade Gehenna War, page 49"
       },
       {
         name: "Dominion",
@@ -894,16 +898,16 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The area of effect is determined by the amount of Rouse Checks.",
-        source: "Players Guide, page 103"
+        source: "Vampire: The Masquerade Players Guide, page 103"
       },
       {
-        name: "Eden's Bounty",
+        name: "Eden’s Bounty",
         effect: "Drain blood from nearby creatures",
         cost: "One Rouse Check, possible Stains",
         origin: "Bahari",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "For the remainder of the chapter, mortals suffer 1 die penalty to Physical rolls and take 1 Aggravated health damage.",
-        source: "Cults of the Blood Gods, page 56"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 56"
       },
       {
         name: "Elemental Attack",
@@ -912,7 +916,7 @@ export const bloodSorceryRituals = {
         origin: "Koldunic Sorcery",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "If their element is already active, like Air during a storm, they get an extra die to their Ritual pool. If Chained with Elemental Grasp and Tiamat Glistens, the Ritual becomes a natural disaster, e.g. Tornado, Magma Flow or Tsunami",
-        source: "Blood Sigils, page 71"
+        source: "Vampire: The Masquerade Blood Sigils, page 71"
       },
       {
         name: "Escape to True Sanctuary",
@@ -921,7 +925,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "A caster may only have one set of these circles active at a time.",
-        source: "Corebook, page 280"
+        source: "Vampire: The Masquerade Corebook, page 280"
       },
       {
         name: "Fisher King",
@@ -930,7 +934,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Can make a Wits + Streetwise or Survival roll to ask questions about the land. The caster can ask one extra question per session. This Ritual lasts until the end of the story. If Chained with Land's Sustenance and Compel the Inanimate, the casters gain complete control over the land and the casters can heal a total of 5 Aggravated damage each night",
-        source: "Blood Sigils, page 72"
+        source: "Vampire: The Masquerade Blood Sigils, page 72"
       },
       {
         name: "Heart of Stone",
@@ -939,7 +943,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "They are unable to use Presence during this ritual's use but gain a bonus when resisting its use on them.",
-        source: "Corebook, page 281"
+        source: "Vampire: The Masquerade Corebook, page 281"
       },
       {
         name: "Reawakened Vigor",
@@ -948,7 +952,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Inflicts aggravated damage to anyone other than the caster.",
-        source: "Gehenna War, page 49"
+        source: "Vampire: The Masquerade Gehenna War, page 49"
       },
       {
         name: "Shaft of Belated Dissolution",
@@ -957,7 +961,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Even if an attack with this stake fails to hit the heart, if it hits, a splinter will break and move towards the heart to eradicate the victim.",
-        source: "Corebook, page 281"
+        source: "Vampire: The Masquerade Corebook, page 281"
       },
       {
         name: "Simulacrum Gate",
@@ -966,7 +970,7 @@ export const bloodSorceryRituals = {
         origin: "Sabbat",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "There is only one of these known to exist currently.",
-        source: "Sabbat, page 51"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 51"
       },
       {
         name: "Transferring the Soul",
@@ -975,7 +979,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery and Intelligence + Oblivion",
         notes: "This ritual requires another Kindred who knows Oblivion ●●●●●. It is possible to be done by one Kindred who possess level 5 in both powers.",
-        source: "Fall of London, page 11-13"
+        source: "Vampire: The Masquerade Fall of London, page 11-13"
       },
       {
         name: "Warding Circle against Cainites",
@@ -984,7 +988,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Uses standard rules for Wards.",
-        source: "Corebook, page 282"
+        source: "Vampire: The Masquerade Corebook, page 282"
       },
       {
         name: "Foundation of the Chantry",
@@ -993,7 +997,7 @@ export const bloodSorceryRituals = {
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Foundation is linked to a Vein of the Earth. Designees must be present to also receive messages. Responses may withhold, but not alter information.",
-        source: "Courts of the Damned, pages 216-217"
+        source: "Vampire: The Masquerade Courts of the Damned, page 216-217"
       }
     ]
   },

@@ -47,7 +47,7 @@ export const loresheets = {
         circulatorySystem: {
           name: "The Circulatory System",
           restrictions: "N/A",
-          description: "Connected to the Circulatory System and their mortal trafficking. Different levels grant vessels to feed from, it aids in learning alchemy, securing safe travel for kindred, or learning the resonance properties of blood.",
+          description: "Connected to the Circulatory System and their mortal trafficking. Different levels grant vessels to feed from, it aids in learning alchemy, securing safe travel for Kindred, or learning the resonance properties of blood.",
           sourcePage: 386
         },
         conventionOfThorns: {
@@ -71,7 +71,7 @@ export const loresheets = {
         descendantOfHardestadt: {
           name: "Descendant of Hardestadt",
           restrictions: "Ventrue only",
-          description: "Connected to Hardestadt and his descendants. Different levels grant the ability to speak over any noise, strengthen the pools when sending others into danger, grant status due to lineage, contact one of the Camarilla's founders, or take on the name of Hardestadt and be his successor.",
+          description: "Connected to the Hardestadt and his descendants. Different levels grant the ability to speak over any noise, strengthen the pools when sending others into danger, grant status due to lineage, contact one of the Camarilla's founders, or take on the name of Hardestadt and be his successor.",
           sourcePage: 390
         },
         descendantOfHelena: {
@@ -114,7 +114,7 @@ export const loresheets = {
           name: "Descendant of Tyler",
           restrictions: "Brujah only",
           description: "Connected to Tyler. Different levels grant the character varying abilities to channel the ambition of Tyler in their blood when persuading others, the skill to redirect a frenzy into a compulsion, having contact with the Furores, or the back-history of taking down a sect figurehead.",
-          sourcePage: 397
+          sourcePage: 195
         },
         descendantOfZelios: {
           name: "Descendant of Zelios",
@@ -130,13 +130,13 @@ export const loresheets = {
         },
         highClan: {
           name: "High Clan",
-          restrictions: "N/A",
+          restrictions: "Must be a member of the High Clans. Lasombra, Toreador, Tzimisce, and Ventrue are historically high. Brujah and some Hecata are also considered high. Occasionally Banu Haqim, The Ministry, and very rarely Tremere are also high depending on the Domain.",
           description: "Connected to the clans regarded as high in the hierarchy. Different levels grant the character the ability to command others, gain an advantage over both Low and High Clan Kindred, or ignore the burden of the clan bane.",
           sourcePage: 400
         },
         lowClan: {
           name: "Low Clan",
-          restrictions: "N/A",
+          restrictions: "Must be a member of the Low Clans which is defined by their geographical region. Gangrel, Malkavian, and Nosferatu are almost always low. Occasionally Brujah and Tremere are also low depending on the Domain.",
           description: "Connected to the clans regarded as low in the hierarchy. Different levels grant the character the ability to shrug off provocations, use their bane to their advantage, work with other Low Clans, learn another Low Clan's Discipline, or bring down a High Clan Kindred in a coup.",
           sourcePage: 401
         },
@@ -150,13 +150,13 @@ export const loresheets = {
           name: "Carmelita Neillson",
           restrictions: "N/A",
           description: "Connected to Carmelita Neillson. Different levels grant the character varying abilities of storytelling, meditating on an object for benefits, the allowance to run one of her libraries, secrets from her interviews, or the privilege to guard one of the character's ancestors.",
-          sourcePage: 403
+          sourcePage: 184
         },
         fiorenzaSavona: {
           name: "Fiorenza Savona",
           restrictions: "N/A",
           description: "Connected to Fiorenza Savona. Different levels grant the character varying levels of relationship with Fiorenza and gain benefits from her, be it a ghoul or other benefits.",
-          sourcePage: 404
+          sourcePage: 186
         },
         descendantOfKarlSchrekt: {
           name: "Descendant of Karl Schrekt",
@@ -168,7 +168,7 @@ export const loresheets = {
           name: "Descendant of Xaviar",
           restrictions: "Gangrel only",
           description: "Connected to Xaviar. Different levels grant the character respect from other Gangrel, detect other vampires in the ground, gain benefits with the Camarilla, turn into a man-sized bat, or have experience with the Antediluvian.",
-          sourcePage: 406
+          sourcePage: 194
         }
       }
     },
@@ -190,7 +190,7 @@ export const loresheets = {
         },
         heshaRuhadze: {
           name: "Hesha Ruhadze",
-          restrictions: "••••+ Ministry characters only",
+          restrictions: "(••••) and (•••••) are Ministry characters only.",
           description: "Connected to Hesha Ruhadze. Different levels grant the character ownership of one of Hesha's treatises, knowledge about what Hesha is seeking or ownership of it already, the rare privilege of membership to one of the Ministry's museums, having been taught by Hesha himself, or hearing the voice of Sutekh for guidance and aid.",
           sourcePage: 192
         },
@@ -227,19 +227,19 @@ export const loresheets = {
         fatimaAlFaqadi: {
           name: "Fatima Al-Faqadi",
           restrictions: "N/A",
-          description: "Connected to Fatima al-Faqadi. Different levels grant the character access to a weapons locker, connection to the Extended Web, survive a hit by Fatima, the ability to execute a kindred without retaliation from the Camarilla, or a relationship with Fatima in such she'll eliminate an enemy for the character.",
+          description: "Connected to Fatima al-Faqadi. Different levels grant the character access to a weapons locker, connection to the Extended Web, survive a hit by Fatima, the ability to execute a Kindred without retaliation from the Camarilla, or a relationship with Fatima in such she'll eliminate an enemy for the character.",
           sourcePage: 185
         },
         pureVentrueLineage: {
           name: "Pure Ventrue Lineage",
           restrictions: "Ventrue only",
-          description: "Connected to the lineage of the Ventrue and the importance they find in their history. Different levels grant the character different lineages, either as a nobility or Prince or clear to Methusulah's as well as later levels giving the option to select between three different lines.",
+          description: "Connected to the lineage of the Ventrue and the importance they find in their history. Different levels grant the character different lineages, either as a nobility or Prince or clear to Methuselah's as well as later levels giving the option to select between three different lines.",
           sourcePage: 187
         },
         cultOfMithras: {
           name: "The Cult of Mithras",
           restrictions: "N/A",
-          description: "Connected to the cult of Mithras. Different levels grant the character varying levels of relationship and knowledge of the cult and its functions with bonuses related.",
+          description: "Connected to the Cult of Mithras. Different levels grant the character varying levels of relationship and knowledge of the cult and its functions with bonuses related.",
           sourcePage: 188
         },
         pyramid: {
@@ -269,7 +269,7 @@ export const loresheets = {
         descendantOfBaronVollgirre: {
           name: "Descendant of Baron Vollgirre",
           restrictions: "Toreador only",
-          description: "Connected to the Baron Vollgirre. Levels give access to Protean for Fleshcrafting and Vicissitude. Other benefits include bonuses to social or artistic pursuits, benefits from sadism, and connection to distrusted Kindred.",
+          description: "Connected to the Baron Vollgirre. Levels gives access to Protean for Fleshcrafting and Vicissitude. Other benefits include bonuses to social or artistic pursuits, benefits form sadism, and connection to distrusted Kindred.",
           sourcePage: 172
         },
         descendantOfMontano: {
@@ -293,7 +293,7 @@ export const loresheets = {
         annabelle: {
           name: "Annabelle",
           restrictions: "N/A",
-          description: "Connected to Annabelle Triabell. Different levels grant the character varying levels of relationship with Annabelle with her ability to pull strings for specific requests or aid them in other ways.",
+          description: "Connected to Annabelle. Different levels grant the character varying levels of relationship with Annabelle with her ability to pull strings for specific requests or aid them in other ways.",
           sourcePage: 262
         },
         ballardIndustries: {
@@ -568,13 +568,13 @@ export const loresheets = {
       loresheets: {
         bankersOfDunsirn: {
           name: "Bankers of Dunsirn",
-          restrictions: "Hecata only",
+          restrictions: "| Hecata only",
           description: "Connected to the Dunsirn bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as access to money and making it.",
           sourcePage: 220
         },
         childrenOfTenochtitlan: {
           name: "Children of Tenochtitlan",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Pisanob bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as Necromancy with Oblivion and surviving.",
           sourcePage: 221
         },
@@ -586,43 +586,43 @@ export const loresheets = {
         },
         fleshEaters: {
           name: "Flesh-Eaters",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Nagaraja bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as their extended fangs and ability to eat corpses.",
           sourcePage: 223
         },
         harbingersOfAshur: {
           name: "Harbingers of Ashur",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Harbinger bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as their masks that denote their strengths and standing.",
           sourcePage: 224
         },
         laFamigliaGiovanni: {
           name: "La Famiglia Giovanni",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Giovanni bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as nepotism to access certain information and generational wealth being accessible.",
           sourcePage: 225
         },
         criminalPuttanesca: {
           name: "The Criminal Puttanesca",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Puttanesca bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as ties to the criminal underworld and the allies it contains.",
           sourcePage: 226
         },
         gorgons: {
           name: "The Gorgons",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Lamia bloodline. Different levels grant the character connections to the lineage and the skills the line generally possesses such as diseases and Resonances.",
           sourcePage: 227
         },
         callingTheFamilyReunion: {
           name: "Calling the Family Reunion",
-          restrictions: "Hecata only",
+          restrictions: "|Hecata only",
           description: "Connected to the Family Reunion, an event where elders of the bloodlines were removed and the bloodlines were reunited. Different levels grant the character varying connections to the details of that night each giving bonuses related to the actions taken such as bonus dice against other Hecata, the ability to call upon favors, a mawla, or bonuses against antagonistic ghosts in ceremonies.",
           sourcePage: 228
         },
         childOfTheAngelMichael: {
           name: "Child of the Angel Michael",
-          restrictions: "Nosferatu cannot take this",
+          restrictions: "|Nosferatu cannot take this",
           description: "Connected to a cult dedicated to bringing the idea of Constantinople to reality once more. Different levels grant the character merits to represent their followers, beauty beyond compare, bonuses towards vices, or remove stains from another Kindred.",
           sourcePage: 229
         },

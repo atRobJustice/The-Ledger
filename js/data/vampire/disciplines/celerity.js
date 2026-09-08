@@ -1,28 +1,36 @@
 export const celerity = {
   name: "Celerity",
-  nicknames: ["Bolting", "Slipping", "Velocitas"],
-  affinity: ["Banu Haqim", "Brujah", "Toreador"],
+  nicknames: [
+    "Bolting",
+    "Slipping",
+    "Velocitas"
+  ],
+  affinity: [
+    "Banu Haqim",
+    "Brujah",
+    "Toreador"
+  ],
   type: "Physical",
   threat: "Medium to High",
   resonance: "Choleric",
-  overview: "Celerity allows the kindred to defy the constraints of the human body. Dodging, running and general movements outside of the natural ability come easily when using these powers. With this, kindred become even stronger predators or strategists, able to make moves or think faster than most can.",
+  overview: "Celerity allows the kindred to defy the constraints of the human body. Dodging, running and general movements outside of the natural ability come easily when using these powers. With this, kindred become even stronger predators or strategists, able to make moves or think faster than most can. To the Banu Haqim this is sometimes the Discipline they learn first. The ability to remove hesitation keeps them alive in their nights and Celerity allows the movement they need. It also enhances their abilities to feed, being able to dart from their favored vessel and to safety without being spotted. Brujah, in a similar fashion, use this power to strike fast and escape conflicts they've started as well as bolster their ability to snatch and feed aggressively from lone mortals. While the Toreador may not claim to be fighters, they use Celerity to cut their opponents into ribbons before they have a chance to fight back with deadly accuracy using Unerring Aim. They also use this power to enhance their artistic and performative pursuits as well as expedite their feeding.",
   powers: {
     level1: [
       {
-        name: "Cat's Grace",
-        effect: "Automatically pass balance tests",
+        name: "Cat’s Grace",
+        effect: "Automatically pass balance tests.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Does not work on objects that cannot support their weight",
+        notes: "Does not work on objects that cannot support their weight.",
         source: "Vampire: The Masquerade Corebook, page 252"
       },
       {
         name: "Fluent Swiftness",
-        effect: "Reroll Blood Surge on a Dexterity or Celerity test",
+        effect: "Reroll Blood Surge on a Dexterity or Celerity test.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -30,18 +38,18 @@ export const celerity = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Gehenna War, page 46"
+        source: "Vampire: The Masquerade Gehenna War, page 46"
       },
       {
         name: "Rapid Reflexes",
-        effect: "Faster reactions and minor actions",
+        effect: "Faster reactions and minor actions.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power also prevents them from taking a penalty when they have no cover during a firefight",
+        notes: "This power also prevents them from taking a penalty when they have no cover during a firefight.",
         source: "Vampire: The Masquerade Corebook, page 253"
       }
     ],
@@ -81,25 +89,24 @@ export const celerity = {
         duration: "One action",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Only usable with Claws or Edged Weaponry",
-        source: "Vampire: The Masquerade Tattered Façade, page 96"
+        notes: "Only usable with Claws or Edged Weaponry.",
+        source: "Vampire: The Masquerade Tattered Facade, page 96"
       },
-
       {
         name: "Blink",
-        effect: "Closes the distance as if teleporting",
+        effect: "Closes the distance as if teleporting.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One turn",
         dicePool: "Dexterity + Athletics",
         opposingPool: "N/A",
-        notes: "The user moves in a straight line and may need to make checks against difficult terrain",
+        notes: "The user moves in a straight line and may need to make checks against difficult terrain.",
         source: "Vampire: The Masquerade Corebook, page 253"
       },
       {
         name: "Traversal",
-        effect: "Move fast enough to move up vertical surfaces or liquid surfaces",
+        effect: "Move fast enough to move up vertical surfaces or liquid surfaces.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
@@ -111,14 +118,14 @@ export const celerity = {
       },
       {
         name: "Weaving",
-        effect: "Remove the penalty from dodging multiple ranged opponents",
+        effect: "Remove the penalty from dodging multiple ranged opponents.",
         cost: "One Rouse Check",
         prerequisite: "Rapid Reflexes",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The user can all add their Celerity rating to ranged dodging attempts",
+        notes: "The user can all add their Celerity rating to ranged dodging attempts.",
         source: "Vampire: The Masquerade Players Guide, page 72"
       }
     ],
@@ -135,7 +142,6 @@ export const celerity = {
         notes: "This does not negate other impacts from daylight or fire, such as Frenzy checks, awakening rolls, or dice pools",
         source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
       },
-
       {
         name: "Blurred Momentum",
         effect: "Attacks against the user with fewer successes than their Celerity rating miss",
@@ -195,7 +201,7 @@ export const celerity = {
         duration: "A single attack",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Those with Celerity 5 may nullify this power with a Rouse Check and defend",
+        notes: "Those with Celerity 5 may nullify this power with a Rouse Check and defend.",
         source: "Vampire: The Masquerade Corebook, page 254"
       },
       {
@@ -207,9 +213,9 @@ export const celerity = {
         duration: "One action, as determined by ST",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The action should be reasonable and accomplished within a few seconds in real-time",
+        notes: "The action should be reasonable and accomplished within a few seconds in real-time.",
         source: "Vampire: The Masquerade Corebook, page 254"
       }
     ]
   }
-}; 
+};

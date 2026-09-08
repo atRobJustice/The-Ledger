@@ -1,52 +1,65 @@
 export const oblivion = {
   name: "Oblivion",
-  nicknames: ["Obtenebration", "Necromancy", "Shadow-boxing", "Abyssal Mastery", "Tenebrae Imperium", "Mortis", "the Dark Arts", "Black Magic", "Entropy"],
-  affinity: ["Hecata", "Lasombra"],
+  nicknames: [
+    "Obtenebration",
+    "Necromancy",
+    "Shadow-boxing",
+    "Abyssal Mastery",
+    "Tenebrae Imperium",
+    "Mortis",
+    "the Dark Arts",
+    "Black Magic",
+    "Entropy"
+  ],
+  affinity: [
+    "Hecata",
+    "Lasombra"
+  ],
   type: "Mental",
   threat: "Medium to High",
-  resonance: "Empty",
-  overview: "Oblivion is a power rarely used by those outside of the Hecata and Lasombra. The power itself extends into two different styles, one focusing on the more ceremonial and necromancy side as seen with the Hecata and the other reaching into the darkness to utilize shadows as seen with the Lasombra. The power itself originates from a plane of death and nothingness, letting its users reach into it and touch something more supernatural than not. Similar to Blood Sorcery, the possession of Oblivion gives access to Oblivion Ceremonies. Ceremonies all require pre-requisite powers from the Oblivion branch which alters it from Blood Sorcery. Still, ghouls of Necromancers or Thin-bloods gaining temporary access through Resonance do not have access to Ceremonies and only to Oblivion powers. At creation a character may take 1 Oblivion Ceremony should they have at least one dot of Oblivion and the pre-requisite power. Characters can later obtain more Ceremonies at the cost of experience and time. Ceremonies generally take at least the square rating in weeks to learn as well as a teacher who already knows the Ceremony.",
+  resonance: "\"Empty\"",
+  overview: "Oblivion is a power rarely used by those outside of the Hecata and Lasombra. The power itself extends into two different styles, one focusing on the more ceremonial and necromancy side as seen with the Hecata and the other reaching into the darkness to utilize shadows as seen with the Lasombra. The power itself originates from a plane of death and nothingness, letting its users reach into it and touch something more supernatural than not. Similar to Blood Sorcery, the possession of Oblivion gives access to Oblivion Ceremonies. Ceremonies all require pre-requisite powers from the Oblivion branch which alters it from Blood Sorcery. Still, ghouls of Necromancers or Thin-bloods gaining temporary access through Resonance do not have access to Ceremonies and only to Oblivion powers. At creation a character may take 1 Oblivion Ceremony should they have at least one dot of Oblivion and the pre-requisite power. Characters can later obtain more Ceremonies at the cost of experience and time. Ceremonies generally take at least the square rating in weeks to learn as well as a teacher who already knows the Ceremony. Oblivion projects a two-dimensional shadow against the three-dimensional world in which we live, making most attacks against them futile as bullets ricochet off the surface rather than the shadow itself. These projections and spirits take damage from bright, direct lights and may be damaged by blessed weapons depending on various factors. A well-lit room is a danger to any shadow wielder looking to rely solely on the Discipline as rooms without shadows are limiting. When Oblivion is used, if a 1 or a 10 is a result of the Rouse Check the user takes one stain in addition to any Hunger gained, and in cases where their Blood Potency allows for a reroll, they can pick either of the two results. As for the Hecata, the power takes a different path towards the undead and Necromancy. With the ability to locate and speak to the dead as seen with Binding Fetter and Oblivion Sight, or by manipulating and controlling the energies of death itself as displayed with Aura of Decay. Through these uses, the Hecata may set a spirit to attack their targets or rot everything around them in a show of power or simply to horrify meddling mortals.",
   powers: {
     level1: [
       {
         name: "Ashes to Ashes",
-        effect: "Destroy a corpse by dissolving it",
+        effect: "Destroy a corpse by dissolving it.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "Variable",
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Medicine/Fortitude",
-        notes: "If the body is not animated it will dissolve throughout three turns with no test needed",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204 / Players Guide, page 85"
+        notes: "If the body is not animated it will dissolve throughout three turns with no test needed.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204"
       },
       {
         name: "Binding Fetter",
-        effect: "Allow users to be able to identify a fetter by use of their senses",
+        effect: "Allow users to be able to identify a fetter by use of their senses.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "Wits + Oblivion",
         opposingPool: "N/A",
-        notes: "During its use the user receives a -2 penalty to all Awareness, Wits, and Resolve rolls",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204 / Players Guide, page 85"
+        notes: "During its use the user receives a -2 penalty to all Awareness, Wits, and Resolve rolls.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204"
       },
       {
         name: "Oblivion Sight",
-        effect: "See in darkness clearly and see ghosts present",
+        effect: "See in darkness clearly and see ghosts present.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "While in use there is a two-dice penalty to social interactions with mortals",
-        source: "Vampire: The Masquerade Chicago by Night, page 293 / Players Guide, page 85"
+        notes: "While in use there is a two-dice penalty to social interactions with mortals.",
+        source: "Vampire: The Masquerade Chicago by Night, page 293"
       },
       {
         name: "Shadow Cloak",
-        effect: "+2 bonus to stealth rolls and intimidation against mortals",
+        effect: "+2 bonus to stealth rolls and intimidation against mortals.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -54,7 +67,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Vampire: The Masquerade Chicago by Night, page 293 / Players Guide, page 85 / Fall of London, page 264"
+        source: "Vampire: The Masquerade Chicago by Night, page 293"
       }
     ],
     level2: [
@@ -122,63 +135,63 @@ export const oblivion = {
     level3: [
       {
         name: "Aura of Decay",
-        effect: "Harnessing their connection to Oblivion can make plants wilt, animals and humans sick, and food spoil",
+        effect: "Harnessing their connection to Oblivion can make plants wilt, animals and humans sick, and food spoil.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Medicine/Fortitude",
-        notes: "All social rolls the vampire makes when this power is active takes a two dice penalty. Any contaminated food eaten gives two Superficial Damage",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 205 / Players Guide, page 88"
+        notes: "All social rolls the vampire makes when this power is active takes a two dice penalty. Any contaminated food eaten gives two Superficial Damage.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 205"
       },
       {
         name: "Passion Feast",
-        effect: "Allows a vampire to slake Hunger on the passion of wraiths",
+        effect: "Allows a vampire to slake Hunger on the passion of wraiths.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "Fortitude ●●",
         duration: "Passive",
         dicePool: "Resolve + Oblivion",
         opposingPool: "Resolve + Composure",
-        notes: "The hunger consumed does not return the following night",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 206 / Players Guide, page 89"
+        notes: "The hunger consumed does not return the following night.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 206"
       },
       {
         name: "Shadow Perspective",
-        effect: "Projects their senses into a shadow within line of sight",
+        effect: "Projects their senses into a shadow within line of sight.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "Up to one scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The use of this power is undetectable in the shadow other than by supernatural means such as Sense the Unseen",
-        source: "Vampire: The Masquerade Chicago by Night, page 294 / Players Guide, page 89"
+        notes: "The use of this power is undetectable in the shadow other than by supernatural means such as Sense the Unseen.",
+        source: "Vampire: The Masquerade Chicago by Night, page 294"
       },
       {
         name: "Shadow Servant",
-        effect: "Use a shadow to spy on or scare others",
+        effect: "Use a shadow to spy on or scare others.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Auspex ●",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The servant has no mind of its own and cannot endure bright lights able to be destroyed by them",
+        notes: "The servant has no mind of its own and cannot endure bright lights able to be destroyed by them.",
         source: "Vampire: The Masquerade Players Guide, page 89"
       },
       {
         name: "Touch of Oblivion",
-        effect: "Withers a body part on touch",
+        effect: "Withers a body part on touch.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One turn",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Inflicting such damage may warrant Stains up to Storyteller discretion. The user must grip the target",
-        source: "Vampire: The Masquerade Chicago by Night, page 294 / Players Guide, page 89"
+        notes: "Inflicting such damage may warrant Stains up to Storyteller discretion. The user must grip the target.",
+        source: "Vampire: The Masquerade Chicago by Night, page 294"
       }
     ],
     level4: [
@@ -194,7 +207,6 @@ export const oblivion = {
         notes: "Can be used repeatedly without any additional Rouse Checks, but does not continue to stun after the first turn",
         source: "Vampire: The Masquerade Tattered Façade, page 100"
       },
-
       {
         name: "Necrotic Plague",
         effect: "Manifest illness in victims",
@@ -242,55 +254,55 @@ export const oblivion = {
         duration: "One Scene, or until the entity or its host is destroyed",
         dicePool: "Manipulation + Oblivion",
         opposingPool: "Composure + Resolve",
-        notes: "The Entity has the same skills and disciplines as its host and takes damage like a vampire",
+        notes: "The Entity has the same skills and disciplines as its host and takes damage like a vampire.",
         source: "Vampire: The Masquerade Tattered Façade, page 100"
       },
       {
         name: "Shadow Step",
-        effect: "The user can step into one shadow and appear in another within their sight",
+        effect: "The user can step into one shadow and appear in another within their sight.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One turn",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "A willing person may be taken through the Shadow Step but should the user stain, so does the passenger",
-        source: "Vampire: The Masquerade Chicago by Night, page 295 / Players Guide, page 90"
+        notes: "A willing person may be taken through the Shadow Step but should the user stain, so does the passenger.",
+        source: "Vampire: The Masquerade Chicago by Night, page 295"
       },
       {
         name: "Skuld Fulfilled",
-        effect: "Reintroduce illnesses someone has recovered from",
+        effect: "Reintroduce illnesses someone has recovered from.",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",
         duration: "Variable, depending on if the condition is treatable",
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Stamina/Fortitude",
-        notes: "If the victim is a ghoul their immunity to aging is removed and eliminates any vitae in their system",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 207 / Players Guide, page 91"
+        notes: "If the victim is a ghoul their immunity to aging is removed and eliminates any vitae in their system.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 207"
       },
       {
         name: "Tenebrous Avatar",
-        effect: "Changes their body into a shadow able to move over any surface or through small spaces",
+        effect: "Changes their body into a shadow able to move over any surface or through small spaces.",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene or until ended",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The user takes no damage except sunlight and fire while in this form",
-        source: "Vampire: The Masquerade Chicago by Night, page 295 / Players Guide, page 91"
+        notes: "The user takes no damage except sunlight and fire while in this form.",
+        source: "Vampire: The Masquerade Chicago by Night, page 295"
       },
       {
         name: "Withering Spirit",
-        effect: "Erode a victim's spirit till they are a husk",
+        effect: "Erode a victim's spirit till they are a husk.",
         cost: "Two Rouse Checks, Stains",
         prerequisite: "None",
         amalgam: "No",
         duration: "One turn",
         dicePool: "Resolve + Oblivion",
         opposingPool: "Resolve + Occult/Fortitude",
-        notes: "If the target is Impaired, they will not return as a wraith",
+        notes: "If the target is Impaired, they will not return as a wraith.",
         source: "Vampire: The Masquerade Cults of the Blood Gods, page 208"
       }
     ]
@@ -311,10 +323,10 @@ export const oblivion = {
       discipline: "Protean",
       level: "●●●",
       oblivionLevel: "●●",
-      effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage",
+      effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage.",
       cost: "One Rouse Check",
       dicePool: "N/A",
       source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
     }
   ]
-}; 
+};

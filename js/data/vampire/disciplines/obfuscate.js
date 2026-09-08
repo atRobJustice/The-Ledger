@@ -1,60 +1,70 @@
 export const obfuscate = {
   name: "Obfuscate",
-  nicknames: ["Stealth Mode", "Cloaking", "Veiling", "Occulto"],
-  affinity: ["Banu Haqim", "Malkavian", "The Ministry", "Nosferatu", "Ravnos"],
+  nicknames: [
+    "Stealth Mode",
+    "Cloaking",
+    "Veiling",
+    "Occulto"
+  ],
+  affinity: [
+    "Banu Haqim",
+    "Malkavian",
+    "The Ministry",
+    "Nosferatu",
+    "Ravnos"
+  ],
   type: "Mental",
   threat: "Low",
   resonance: "Melancholic",
-  overview: "Obfuscate is a power that allows the Kindred to hide easily, move without being noticed, and cast illusions. It gives users the ability to get close to victims or disguise themselves as well as give them an out when a situation gets too complicated. The power itself is not invisibility, instead, it works through mental magic, tricking the mind of others to ignore the kindred presence or see a mundane face instead. Unless otherwise stated Obfuscate affects all five senses and coaxes victims to step out of the way to the point of rationalizing to themselves about why they are avoiding that particular corner. However, there are limitations to this power. The power will fail if the victim cannot ignore the user such as being backed into a corner or being blocked from a doorway they wish to walk through. As well as violent actions, loud noises or failed rolls to tamper with items. Without Ghost in the Machine, the kindred is easily recognized by machine surveillance. Users of Sense the Unseen, are able to roll against these powers, as well as those about to be struck by a sneak attack. Without the use of Vanish, users are unable to use Obfuscate while under observation from others.",
+  overview: "Obfuscate is a power that allows the Kindred to hide easily, move without being noticed, and cast illusions. It gives users the ability to get close to victims or disguise themselves as well as give them an out when a situation gets too complicated. The power itself is not invisibility, instead, it works through mental magic, tricking the mind of others to ignore the kindred presence or see a mundane face instead. Unless otherwise stated Obfuscate affects all five senses and coaxes victims to step out of the way to the point of rationalizing to themselves about why they are avoiding that particular corner. However, there are limitations to this power. The power will fail if the victim cannot ignore the user such as being backed into a corner or being blocked from a doorway they wish to walk through. As well as violent actions, loud noises or failed rolls to tamper with items. Without Ghost in the Machine, the kindred is easily recognized by machine surveillance. Users of Sense the Unseen, are able to roll against these powers, as well as those about to be struck by a sneak attack. Without the use of Vanish, users are unable to use Obfuscate while under observation from others. The Banu Haqim stalk prey from the shadows and deliver cloaked judgment to those they feel need it. Many forget that the Malkavians possess this ability and use it in a variety of ways, most notably in conjunction with Dominate to mentally torture their opponents. Meanwhile, Ministers use this skill to discover vice or lure victims to a secluded spot and use that information against them. Setites use obfuscate to mentally tear down opponents known as Mental Maze and True Love's Face. The Nosferatu are most known for mastering this Discipline to remain hidden or disguised while collecting information on others, later to be used against them or sold to others as boons. Members of the Ravnos clan are known to utilize this power to conjure illusions called Chimestry to shape reality or strike fear into others.",
   powers: {
     level1: [
       {
         name: "Mask of Ages",
-        effect: "Appear as an older or younger version of themselves",
+        effect: "Appear as an older or younger version of themselves.",
         cost: "One Rouse Check",
-        prerequisite: "None",
+        prerequisite: "No",
         amalgam: "No",
         duration: "Until sunrise or ended by user",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Storytellers may limit the amount of bonus dice dependent on the number of decades between their projected and real age",
+        notes: "Storytellers may limit the amount of bonus dice dependent on the number of decades between their projected and real age.",
         source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
       },
-
       {
         name: "Cloak of Shadows",
-        effect: "As long as the user stands still they blend into their surroundings",
+        effect: "As long as the user stands still they blend into their surroundings.",
         cost: "Free",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "|None",
+        amalgam: "|No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Follows the general rules for Obfuscate",
+        notes: "Follows the general rules for Obfuscate.",
         source: "Vampire: The Masquerade Corebook, page 261"
       },
       {
         name: "Ensconce",
-        effect: "Make others ignore small objects that are held on the vampire's body",
+        effect: "Make others ignore small objects that are held on the vampire's body.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Sense Unseen can pierce this power",
-        source: "Gehenna War, page 46"
+        notes: "Sense Unseen can pierce this power.",
+        source: "Vampire: The Masquerade Gehenna War, page 46"
       },
       {
         name: "Silence of Death",
-        effect: "Nullifies the sounds a user makes",
+        effect: "Nullifies the sounds a user makes.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power does not eliminate powers made outside of the user's personal space",
+        notes: "This power does not eliminate powers made outside of the user's personal space.",
         source: "Vampire: The Masquerade Corebook, page 261"
       }
     ],
@@ -135,7 +145,7 @@ export const obfuscate = {
     level3: [
       {
         name: "Guise of the Departed",
-        effect: "Copy appearance and mannerism of a recently dead mortal",
+        effect: "Copy appearance and mannerism of a recently dead mortal.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Oblivion ●",
@@ -143,79 +153,78 @@ export const obfuscate = {
         dicePool: "Wits + Obfuscate",
         opposingPool: "N/A",
         notes: "Sense the Unseen (Auspex 1) can pierce the mask",
-        source: "Vampire: The Masquerade Tattered Façade, pages 98-99"
+        source: "Vampire: The Masquerade Tattered Facade, page 98-99"
       },
-
       {
         name: "Fata Morgana",
-        effect: "Elaborate hallucinations",
+        effect: "Elaborate hallucinations.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Presence ●●",
         duration: "One scene, unless let to lapse",
         dicePool: "Manipulation + Obfuscate",
         opposingPool: "N/A",
-        notes: "If the hallucination can trigger Frenzy, give the test at 1 diff lower than the real thing",
-        source: "Vampire: The Masquerade Companion, page 26 / Players Guide, page 77"
+        notes: "If the hallucination can trigger Frenzy, give the test at 1 diff lower than the real thing.",
+        source: "Vampire: The Masquerade Companion, page 26"
       },
       {
         name: "Ghost in the Machine",
-        effect: "Allows the effects of Obfuscate to be transmitted through technology when viewed on a live screen",
+        effect: "Allows the effects of Obfuscate to be transmitted through technology when viewed on a live screen.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "As power used",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "If viewed later the image seems blurred, making identification harder",
+        notes: "If viewed later the image seems blurred, making identification harder.",
         source: "Vampire: The Masquerade Corebook, page 262"
       },
       {
         name: "Mask of a Thousand Faces",
-        effect: "Make themselves appear as a mundane face rather than disappear allowing interaction and communication",
+        effect: "Make themselves appear as a mundane face rather than disappear allowing interaction and communication.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power allows them to interact and speak to others around them",
+        notes: "This power allows them to interact and speak to others around them.",
         source: "Vampire: The Masquerade Corebook, page 262"
       },
       {
         name: "Mask of Isolation",
-        effect: "Force Mask of a Thousand Faces onto a victim",
+        effect: "Force Mask of a Thousand Faces onto a victim.",
         cost: "One Rouse Check",
         prerequisite: "Mask of a Thousand Faces",
         amalgam: "Dominate ●",
         duration: "One night plus one additional night per margin of success",
         dicePool: "Manipulation + Obfuscate",
         opposingPool: "Charisma + Insight",
-        notes: "Should the user be made aware of the power being used on them the effects end",
+        notes: "Should the user be made aware of the power being used on them the effects end.",
         source: "Vampire: The Masquerade Sabbat: The Black Hand, page 48"
       },
       {
         name: "Mental Maze",
-        effect: "Remove all sense of direction and location from a victim in a location",
+        effect: "Remove all sense of direction and location from a victim in a location.",
         cost: "One or Three Rouse Checks",
         prerequisite: "None",
         amalgam: "Dominate ●",
         duration: "One night",
         dicePool: "Charisma + Obfuscate",
         opposingPool: "Wits + Resolve",
-        notes: "Eye contact is required to active the power",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 85 / Players Guide, page 77"
+        notes: "Eye contact is required to active the power.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 85"
       },
       {
         name: "Mind Masque",
-        effect: "Hide and replace emotions and thoughts against those who wish to read them through supernatural means",
+        effect: "Hide and replace emotions and thoughts against those who wish to read them through supernatural means.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Dominate ●●",
         duration: "One scene",
         dicePool: "Intelligence + Obfuscate",
         opposingPool: "N/A",
-        notes: "The difficulty to mask their emotion depends on how complicated they want the ruse to be",
+        notes: "The difficulty to mask their emotion depends on how complicated they want the ruse to be.",
         source: "Vampire: The Masquerade Players Guide, page 78"
       }
     ],
@@ -232,7 +241,6 @@ export const obfuscate = {
         notes: "Physical harm done unto target causes an additional Discipline test for target to resist effect",
         source: "Tattered Facade, page 99"
       },
-
       {
         name: "Conceal",
         effect: "Cloak an inanimate object",
@@ -261,26 +269,26 @@ export const obfuscate = {
     level5: [
       {
         name: "Cloak the Gathering",
-        effect: "Shelter companions under Obfuscate",
+        effect: "Shelter companions under Obfuscate.",
         cost: "One Rouse Check in additional to the cost of the power extended",
         prerequisite: "None",
         amalgam: "No",
         duration: "As per power extended",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power extends to a number of people equal to the user's Wits, plus additional Rouse Checks",
+        notes: "This power extends to a number of people equal to the user's Wits, plus additional Rouse Checks.",
         source: "Vampire: The Masquerade Corebook, page 263"
       },
       {
         name: "Impostor's Guise",
-        effect: "Appear as someone else",
+        effect: "Appear as someone else.",
         cost: "One Rouse Check",
         prerequisite: "Mask of a Thousand Faces",
         amalgam: "No",
         duration: "One scene",
         dicePool: "Wits + Obfuscate",
         opposingPool: "Manipulation + Performance",
-        notes: "The face they wish to copy must be studied for at least five minutes from multiple angles",
+        notes: "The face they wish to copy must be studied for at least five minutes from multiple angles.",
         source: "Vampire: The Masquerade Corebook, page 263"
       }
     ]
@@ -327,4 +335,4 @@ export const obfuscate = {
       source: "Vampire: The Masquerade Players Guide, page 73"
     }
   ]
-}; 
+};

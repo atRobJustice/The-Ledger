@@ -1,19 +1,19 @@
 export const humanity = {
   overview: {
     description:
-      "Most vampires will begin to drop in Humanity over time with neonates and ancillas sitting around Humanity 5. A vampire player character will start at Humanity 7 unless particular circumstances alter this such as Predator Types. Those that are freshly Embraced will begin at Humanity 8. Kindred are monsters, regardless of their rating and even the most saintly and highest of Humanity vampires can be morally corrupt. As their Humanity rating changes over time, it's important to keep track of the changes that will occur. As their rating deteriorates over time, their connections alter and soon they might find themselves holding the corpse of a human they had originally never intended to kill."
+      "Most vampires will begin to drop in Humanity over time with neonates and ancillas sitting around Humanity 5. A vampire player character will start at Humanity 7 unless particular circumstances alter this such as Predator Types. Those that are freshly Embraced will begin at Humanity 8. Kindred are monsters, regardless of their rating and even the most saintly and highest of Humanity vampires can be morally corrupt. As their Humanity rating changes over the course of time, it's important to keep track of the changes that will occur. As their rating deteriorates over time, their connections alter and soon they might find themselves holding the corpse of a human they had originally never intended to kill."
   },
   track: {
     description: "The Humanity tracker contains 10 spaces, with the Humanity rating filled from left to right.",
     stains: {
-      description: "Stains damage Humanity and are caused by significant actions such as Embracing a new childe, harming a Touchstone, or breaching Convictions or chronicle Tenets. Tenet Stains can be negated by a Conviction aligned with the break, reducing Stains gained by one or more. Clear violations typically give 1 Stain; monstrous breaks may give 2 or more.",
-      tracking: "When taking Stains, the tracker fills from right to left with slash marks to differentiate Stains from Humanity. If Stains exceed empty spaces, degeneration is triggered."
+      description: "Stains are what damage Humanity and are caused by significant actions. Those actions may include embracing a new childe, harming a touchstone, breaching their own convictions or the chronicle tenets. Tenet Stains can be negated by a character's Conviction if it was broken in alignment of their Conviction, reducing the amount of Stains gained by one or more. The amount of Stains earned can vary from clear violations giving only 1 and with truly monstrous or egregious breaks netting 2 or more. Fill the amount of Stains exceeds the amount of empty spaces in the tracker degeneration is triggered.",
+      tracking: "When taking Stains, the tracker fills in from right to left with slash marks to differentiate the Stains from Humanity."
     },
     remorse: {
-      description: "At the end of a session, if the character has Stains, they make a Remorse test. The Remorse pool equals empty spaces between Humanity and Stains (minimum 1 die). Any successes mean Humanity does not drop; zero successes means Humanity drops by 1. After the test, all Stains are removed."
+      description: "When a character has Stains in their tracker at the end of a session they will make a Remorse test. The Remorse pool is composed of how many empty spaces are left between the Humanity and the amount of Stains taken. In the case of a Humanity 7 character with only one Stain, they'd roll two dice. However, in cases where there are no spaces left, such as a Humanity 7 character with three Stains, they'd still roll 1 die. Any amount of successes means that the character has felt enough guilt, shame and remorse than their Humanity will not drop. If they do not any successes, the beast has won and they must drop 1 Humanity. Once the remorse test is completed, all Stains are removed."
     },
     degeneration: {
-      description: "If Stains exceed empty tracker spaces, the character becomes impaired: −2 dice to all pools, plus one Aggravated Willpower damage per overflow Stain. They cannot intentionally violate Tenets further; being forced to do so requires a terror frenzy test at Difficulty 4. Impairment lasts until Remorse at session end, or they may snap out by dropping 1 Humanity and clearing all Stains."
+      description: "In cases where they have taken more Stains than they have room for, the character becomes impaired. This type of impairment removes two dice from all possible pools as they are racked with regret. In addition to this, they take one point of Aggravated Willpower damage for each Stain that did not fit onto the tracker. During this time, the character is unable of further intentional Tenet violations and upon being forced to commit one must test for a terror frenzy with Difficulty 4. This impairment will remain until they test for Remorse at the end of the session, alternatively they may choose to snap out of it by automatically dropping by one Humanity point and removing all Stains."
     }
   },
   ratings: {
@@ -23,8 +23,8 @@ export const humanity = {
       effects: [
         "Blush of Life is not needed to blend into mortal society as they appear as a pale and healthy mortal.",
         "They heal Superficial Damage as a mortal in addition to standard healing.",
-        "Food can be tasted, eaten and digested as a human.",
-        "Able to stay awake during the day as if human, though they still must sleep at some point.",
+        "Food is able to be tasted, eaten, and digested as a human.",
+        "The ability to stay awake during the day as if human, though they still must sleep at some point.",
         "Sunlight damage is halved."
       ]
     },
@@ -34,7 +34,7 @@ export const humanity = {
       effects: [
         "Without Blush of Life they appear ill.",
         "They heal Superficial Damage as a mortal in addition to standard healing.",
-        "Can taste, eat and digest rare or raw meat and many liquids.",
+        "Taste, eat and digest rare or raw meat and many liquids.",
         "Rise from day-sleep up to an hour before sunset and stay awake an hour after dawn."
       ],
       torporLength: "Three days"
@@ -58,7 +58,7 @@ export const humanity = {
         "Can fake sexual intercourse by winning a Dexterity + Charisma test versus the partner's Composure or Wits.",
         "Without Blush of Life, food and drink make them vomit and must make a Composure + Stamina against Difficulty 3 to find a safe place to vomit."
       ],
-      torporLength: "Two weeks"
+      torporLength: "Two week"
     },
     6: {
       description:
@@ -75,14 +75,14 @@ export const humanity = {
         "At this level most Kindred only care for their Touchstones, and may manifest some minor physical eeriness or malformation.",
       effects: [
         "Rules work similar to that above unless otherwise noted.",
-        "Take a one die penalty in rolls to interact with mortals. This applies to most Social dice pools, including Insight, Persuasion, and when interacting with Touchstones, but not Intimidation, hunting or killing a human, and supernatural Subterfuge (Seduction). The penalty also applies to creating art or other humanities such as poetry.",
+        "Take a one die penalty in rolls to interact with mortals. This applies to most Social dice pools, including insight, persuasion, and when interacting with Touchstones, but not to intimidation, hunting or killing a human, and supernatural Subterfuge (Seduction). The penalty also applies to creating art or other humanities such as poetry.",
         "Take a two dice penalty to the pool for faking sexual intercourse."
       ],
       torporLength: "One year"
     },
     4: {
       description:
-        "At this level Kindred might have accepted the inevitable downwards spiral, seeing killing as acceptable and other normal social taboos acceptable. Physically they've begun to appear more deathly up to even appearing corpse-like.",
+        "At this level Kindred might have accepted the inevitable downwards spiral, seeing killing as acceptable and other normal social taboos are acceptable. Physically they've begun to appear more deathly up to even appearing corpse-like.",
       effects: [
         "Rules work similar to that above unless otherwise noted.",
         "Take a two dice penalty to interact with mortals.",
@@ -124,4 +124,4 @@ export const humanity = {
       effects: []
     }
   }
-}; 
+};

@@ -12,7 +12,7 @@ export const thinBloodAlchemy = {
   type: "Varied",
   threat: "Varied",
   resonance: "Varied",
-  overview: "Thin-blood Alchemy is a unique Discipline for Thin-bloods, created through ingredients composed of random items, Resonances, and their own vitae. Alchemy is a young Discipline, thought to be born through the street drug scene or of alchemists of the past. Certain thin-bloods have managed to utilize their weak blood to awaken powers unique to them and even create counterfeit versions of the other Disciplines.",
+  overview: "Thin-blood Alchemy is a unique Discipline for Thin-bloods, created through ingredients composed of random items, Resonances, and their own vitae. Alchemy is a young Discipline, thought to be born through the street drug scene or of alchemists of the past. Certain thin-bloods have managed to utilize their weak blood to awaken powers unique to them and even create counterfeit versions of the other Disciplines. Rumors spread through kindred about these powers, speculation spreading as much truth as it does misinformation. However, the alchemists do their best to stay out of the way when plenty of elders view this new Discipline as nothing but watered-down diablerie. All formulae require a cost to distill and then a separate cost to activate which is the same as using other Disciplines (Free or additional Rouse Checks). The cost when creating represents the vitae of the Alchemist being used. Once the power is activated they then roll their distillation pool, defined by which method they use to determine how effective their alchemy is. Some powers might require additional rolls to use, and in cases where a power calls for a Discipline rating, they use their Alchemy Rating instead. Learning further formulae has the Alchemist's pouring through old libraries or going on tasting expeditions to learn more. A character receives one formulae for free for each dot in Thin-Blood Alchemy and more can be purchased with experience and experimentation. Distillation methods vary from Alchemist to Alchemist, when they first begin they select which style they'd like. To learn additional styles, later on, means treating it as a separate Discipline where each formula needs to be learned or relearned in order to be used in the new style. The three styles are Athanor Corporis, Calcinatio and Fixatio. Athanor Corporis is the name for alchemy created through their own body by consuming the ingredients they make a distillation roll of Stamina + Alchemy together with a Rouse Check. Only one power can be activated at a time and a new power must be distilled before being activated. Distillation takes around three turns of concentrations where the Alchemist can do nothing else. They can tap themselves for another dose once per night without another Distillation roll, as long as they haven't fed on a different Resonance or hit Hunger 5. Calcinatio is the method where a human body is used to host the alchemy by introductions of incantations and their own blood. The alchemist feeds their vitae to the mortal and makes a Rouse Check, then a distillation roll of Manipulation + Alchemy. The entire host distills the formula and the blood of the mortal can be drunk to use the power, where the hunger slaked is equal to the power level minus 1. However, they can only distill one power per victim and the current power remains as long as they are kept in the same emotional state. Each power takes as long to activate as it takes to slake the amount of blood required. Tapping for elixirs does 1 Aggravated Health damage per Formula level per dose, but does not require another Distillation unless the mortal's mental state or food intake has significant changes. Fixatio is the final method, in a style similar to what most think of when they think of Alchemy. In a kiln, a meth lab, or a repurposed propane tank, the alchemist uses a conventional athanor to brew. They pour their vitae with a Rouse Check into the system with the other ingredients, then makes the distillation roll with Intelligence + Alchemy (Make the distillation roll upon use rather than upon production). The resulting formula is then able to be carried with the amount carried equal to their Wits or Dexterity. They can store a number of formulae equal to Alchemy rating * 2 plus the haven rating. Creating their alchemy requires a lab and without one they at best can only create a level 3 or less formula, and using unsuitable equipment reduces their distillation dice pool by 2. They can activate one power per turn.",
   distillationMethods: {
     athanorCorporis: {
       description: "Alchemy created through their own body by consuming the ingredients",
@@ -58,7 +58,7 @@ export const thinBloodAlchemy = {
         dicePool: "Dexterity + Craft",
         opposingPool: "None",
         notes: "After a week, the roll to alter the tattoo is Stamina + Resolve",
-        source: "Blood Sigils, page 73"
+        source: "Vampire: The Masquerade Blood Sigils, page 73"
       },
       {
         name: "Checkout Time",
@@ -70,7 +70,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Coming out of this Torpor does not require a Rouse Check. In this state, they have no aura, require no rouse checks and take no damage from sunlight or other banes",
-        source: "Blood Sigils, page 74"
+        source: "Vampire: The Masquerade Blood Sigils, page 74"
       },
       {
         name: "Elevate",
@@ -82,11 +82,11 @@ export const thinBloodAlchemy = {
         dicePool: "Stamina + Alchemy",
         opposingPool: "N/A",
         notes: "Badly made Elevate still feels great but degrades Dexterity",
-        source: "Blood Sigils, page 74"
+        source: "Vampire: The Masquerade Blood Sigils, page 74"
       },
       {
         name: "Far Reach",
-        effect: "Push, pull, hold or grab objects or people with their mind",
+        effect: "Push, pull, hold or grab objects or people with their mind.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Choleric",
@@ -94,7 +94,7 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "Strength + Athletics",
         notes: "Keeping something held in the air requires a check each turn of Resolve + Alchemy Difficulty 3.",
-        source: "Corebook, page 284"
+        source: "Vampire: The Masquerade Corebook, page 284"
       },
       {
         name: "Food Stain",
@@ -106,11 +106,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "If the alchemist has Auspex 2, they become aware as soon as the feeding occurs",
-        source: "Blood Sigils, page 74"
+        source: "Vampire: The Masquerade Blood Sigils, page 74"
       },
       {
         name: "Gaoler's Bane",
-        effect: "Receive a 2-dice bonus when freeing themselves from physical restraints or grapples",
+        effect: "Receive a 2-dice bonus when freeing themselves from physical restraints or grapples.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Sanguine",
@@ -118,11 +118,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Winter's Teeth, page 10"
+        source: "Vampire: The Masquerade Winter's Teeth, Page 10"
       },
       {
         name: "Haze",
-        effect: "Create a mist that follows the user, making it harder to shoot them or identify them",
+        effect: "Create a mist that follows the user, making it harder to shoot them or identify them.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Phlegmatic",
@@ -130,11 +130,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "This can be extended to encompass up to five people with an additional Rouse Check.",
-        source: "Corebook, page 285"
+        source: "Vampire: The Masquerade Corebook, page 285"
       },
       {
         name: "Mercurian Tongue",
-        effect: "Speak other languages than their own",
+        effect: "Speak other languages than their own.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "N/A",
@@ -142,11 +142,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The alchemist can spend Willpower and feed from another person to swap the language the alchemist currently knows.",
-        source: "Players Guide, page 103"
+        source: "Vampire: The Masquerade Players Guide, page 103"
       },
       {
         name: "Plug-In",
-        effect: "Produce low-level electrical current from their body",
+        effect: "Produce low-level electrical current from their body.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Sanguine",
@@ -154,11 +154,11 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "N/A",
         notes: "It powers through touch and will stop if the connection is lost.",
-        source: "Players Guide, page 103"
+        source: "Vampire: The Masquerade Players Guide, page 103"
       },
       {
         name: "Portable Shade",
-        effect: "Withstand the effects of Sunlight and walk in the sun",
+        effect: "Withstand the effects of Sunlight and walk in the sun.",
         cost: "One Rouse Check",
         origin: "Sabbat",
         resonance: "Sanguine",
@@ -166,7 +166,7 @@ export const thinBloodAlchemy = {
         dicePool: "Stamina + Alchemy",
         opposingPool: "N/A",
         notes: "This formula was developed by the Path of the Sun Thin-bloods.",
-        source: "Sabbat, page 53"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 53"
       },
       {
         name: "Speak From the Heart",
@@ -178,7 +178,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Different drinks used in the creation affect the message",
-        source: "Blood Sigils, page 75"
+        source: "Vampire: The Masquerade Blood Sigils, page 75"
       }
     ],
     level2: [
@@ -314,11 +314,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Only thin-bloods can feed from the liquefied corpse. Drinkers gain at least 1 Stain.",
-        source: "Tattered Facade, page 107"
+        source: "Vampire: The Masquerade Tattered Façade, page 107"
       },
       {
         name: "Chemically-Induced Flashback",
-        effect: "Imbue and experience a Memorium of another vampire",
+        effect: "Imbue and experience a Memorium of another vampire.",
         cost: "One Rouse Check in addition to the use of Ashe",
         origin: "Ashfinders",
         resonance: "N/A",
@@ -326,11 +326,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Must use the Fixatio method. The Thin-bloods develop this formula within the Ashfinders. Concoct Ashe is a pre-requisite.",
-        source: "Cults of the Blood Gods, page 45"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 45"
       },
       {
         name: "Concoct Ashe",
-        effect: "Create Ashe from the remains of a vampire",
+        effect: "Create Ashe from the remains of a vampire.",
         cost: "Free",
         origin: "Ashfinders",
         resonance: "N/A",
@@ -338,7 +338,7 @@ export const thinBloodAlchemy = {
         dicePool: "Intelligence + Alchemy",
         opposingPool: "N/A",
         notes: "Must use the Fixatio method. The Thin-bloods develop this formula within the Ashfinders.",
-        source: "Cults of the Blood Gods, page 45"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 45"
       },
       {
         name: "Diamond Skin",
@@ -350,26 +350,23 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Does not affect fire, acid, sunlight or sorcery",
-        source: "Blood Sigils, page 76"
+        source: "Vampire: The Masquerade Blood Sigils, page 76"
       },
       {
         name: "Defractionate",
-        effect: "Turn preserved blood into something palatable by any kindred",
+        effect: "Turn preserved blood into something palatable by any kindred.",
         cost: "Free",
         origin: "None",
-        resonance: [
-          "Melancholic",
-          "Sanguine"
-        ],
+        resonance: "Melancholic, Sanguine",
         duration: "N/A",
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Each Distillation style has a unique method of tapping for this elixir.",
-        source: "Corebook, page 286"
+        source: "Vampire: The Masquerade Corebook, page 286"
       },
       {
         name: "Fang-Stinger",
-        effect: "Introduce blood into a mortal that causes no harm to them but harms vampire's that feed from them",
+        effect: "Introduce blood into a mortal that causes no harm to them but harms vampire's that feed from them.",
         cost: "One Rouse Check",
         origin: "Second Inquisition",
         resonance: "Choleric",
@@ -377,7 +374,7 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "Stamina + Resolve",
         notes: "Thin-bloods develop this formula within the Second Inquisition.",
-        source: "Second Inquisition, page 47"
+        source: "Vampire: The Masquerade Second Inquisition, page 47"
       },
       {
         name: "Fireskin",
@@ -389,22 +386,19 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "They gain +1 additional fire damage with strikes with their body. They are immune to fire but cold hurts more",
-        source: "Blood Sigils, page 76"
+        source: "Vampire: The Masquerade Blood Sigils, page 76"
       },
       {
         name: "Freezer Fluid",
-        effect: "Freeze a vampire's body",
+        effect: "Freeze a vampire's body.",
         cost: "One Rouse Check",
         origin: "Second Inquisition",
-        resonance: [
-          "Melancholic",
-          "Phlegmatic"
-        ],
+        resonance: "Melancholic, Phlegmatic",
         duration: "One scene",
         dicePool: "Resolve + Alchemy",
         opposingPool: "Stamina + Resolve",
         notes: "Thin-bloods develop this formula within the Second Inquisition.",
-        source: "Second Inquisition, page 47"
+        source: "Vampire: The Masquerade Second Inquisition, page 47"
       },
       {
         name: "Hospital Chains",
@@ -416,11 +410,11 @@ export const thinBloodAlchemy = {
         dicePool: "Distillation roll vs Stamina",
         opposingPool: "N/A",
         notes: "Critical wins last 2 days per success",
-        source: "Blood Sigils, page 76"
+        source: "Vampire: The Masquerade Blood Sigils, page 76"
       },
       {
         name: "Mandagloire",
-        effect: "Emit a gas that causes rigid paralysis in mortals and supernatural creatures",
+        effect: "Emit a gas that causes rigid paralysis in mortals and supernatural creatures.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Phlegmatic",
@@ -428,7 +422,7 @@ export const thinBloodAlchemy = {
         dicePool: "Stamina + Alchemy",
         opposingPool: "Stamina + Resolve",
         notes: "For Fixatio alchemists this can be slipped into a drink or burned.",
-        source: "Players Guide, page 104"
+        source: "Vampire: The Masquerade Players Guide, page 104"
       },
       {
         name: "Martian Purity",
@@ -440,26 +434,23 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Deals 2 Aggravated Health damage",
-        source: "Blood Sigils, page 77"
+        source: "Vampire: The Masquerade Blood Sigils, page 77"
       },
       {
         name: "Mask Off",
         effect: "Creates an explosion of gas that causes no damage but negates the Blush of Life",
         cost: "One Rouse Check",
         origin: "None",
-        resonance: [
-          "Choleric",
-          "Melancholic"
-        ],
+        resonance: "Choleric, Melancholic",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "Stamina + Resolve",
         notes: "Those affected cannot use Blush of Life for rest of the night. The opposing pool is rolled against the Distillation pool",
-        source: "Blood Sigils, page 77"
+        source: "Vampire: The Masquerade Blood Sigils, page 77"
       },
       {
         name: "On-Demand Sunburn",
-        effect: "Become a sun battery and harm vampires they touch",
+        effect: "Become a sun battery and harm vampires they touch.",
         cost: "One Rouse Check",
         origin: "Sabbat",
         resonance: "Choleric",
@@ -467,34 +458,31 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "This formula was developed by the Path of the Sun Thin-bloods.",
-        source: "Sabbat, page 53"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 53"
       },
       {
         name: "Profane Hieros Gamos",
-        effect: "Change their form into their ideal human shape",
+        effect: "Change their form into their ideal human shape.",
         cost: "One Rouse Check or One point of Aggravated Damage for mortals",
         origin: "None",
-        resonance: [
-          "Melancholic",
-          "Phlegmatic"
-        ],
+        resonance: "Melancholic, Phlegmatic",
         duration: "Permanent.",
         dicePool: "Stamina + Resolve",
         opposingPool: "N/A",
         notes: "This cannot spare the Nosferatu from their bane.",
-        source: "Corebook, page 286"
+        source: "Vampire: The Masquerade Corebook, page 286"
       },
       {
         name: "Rumor",
-        effect: "Make a statement and convince one person to agree",
+        effect: "Make a statement and convince one person to agree.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Phlegmatic",
         duration: "One scene",
         dicePool: "Manipulation + Alchemy",
         opposingPool: "Wits + Awareness",
-        notes: "It lingers till something contradicts the target's agreement.",
-        source: "Players Guide, page 105"
+        notes: "It lingers till something contradicts the target’s agreement.",
+        source: "Vampire: The Masquerade Players Guide, page 105"
       },
       {
         name: "Stay the Falling Sand",
@@ -506,7 +494,7 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "N/A",
         notes: "Cannot be used on living creatures or kindred.",
-        source: "Winter's Teeth, page 10"
+        source: "Vampire: The Masquerade Winter's Teeth, Page 10"
       },
       {
         name: "Saraimu",
@@ -518,7 +506,7 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "N/A",
         notes: "Can only be created using Fixatio.",
-        source: "Tattered Facade, page 107"
+        source: "Vampire: The Masquerade Tattered Façade, page 107"
       },
       {
         name: "Tank",
@@ -530,22 +518,19 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The first damage they take is reduced by five.",
-        source: "Players Guide, page 105"
+        source: "Vampire: The Masquerade Players Guide, page 105"
       },
       {
         name: "TLC",
         effect: "Enhances the blood of animals so it slakes the same as mortal blood",
         cost: "One Rouse Check",
         origin: "None",
-        resonance: [
-          "Animal",
-          "Choleric"
-        ],
+        resonance: "Animal, Choleric",
         duration: "Permanent",
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Killing an animal cannot slake Hunger to zero",
-        source: "Blood Sigils, page 77"
+        source: "Vampire: The Masquerade Blood Sigils, page 77"
       },
       {
         name: "Troll the Pious",
@@ -557,7 +542,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Gives one-dice penalty to most dice pools. Those with True Faith take a two-dice penalty instead and suffer hallucinations",
-        source: "Blood Sigils, page 78"
+        source: "Vampire: The Masquerade Blood Sigils, page 78"
       }
     ],
     level4: [
@@ -705,7 +690,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Each Distillation style has a unique method of tapping for this elixir.",
-        source: "Corebook, page 287"
+        source: "Vampire: The Masquerade Corebook, page 287"
       },
       {
         name: "Beast Mode",
@@ -717,7 +702,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The alchemist must succeed on a Willpower test to avoid Frenzy when consuming this",
-        source: "Gehenna War, page 51"
+        source: "Vampire: The Masquerade Gehenna War, Page 51"
       },
       {
         name: "Da Bomb",
@@ -729,11 +714,11 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Only works when imbibed into mortals.",
-        source: "Tattered Facade, page 108"
+        source: "Vampire: The Masquerade Tattered Façade, page 108"
       },
       {
         name: "Flowering Amaranth",
-        effect: "Share diablerie with other thin-bloods",
+        effect: "Share diablerie with other thin-bloods.",
         cost: "One Rouse Check made by each participant",
         origin: "None",
         resonance: "N/A",
@@ -741,11 +726,11 @@ export const thinBloodAlchemy = {
         dicePool: "Resolve + Alchemy",
         opposingPool: "Willpower + Blood Potency",
         notes: "Upon a win they gain a Discipline as if a full-blooded though they cannot level it, they do no gain generation and still lose 1 Humanity. They also gain the black-veined aura of Diablerie.",
-        source: "Players Guide, page 106"
+        source: "Vampire: The Masquerade Players Guide, page 106"
       },
       {
         name: "Moment of Clarity",
-        effect: "Harness the power of the Beast to support them",
+        effect: "Harness the power of the Beast to support them.",
         cost: "One Rouse Check",
         origin: "None",
         resonance: "Phlegmatic",
@@ -753,7 +738,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Add four dice to Mental Skill pools, Discipline Skill pools, and to Mental resistance checks when Disciplines are used on them. Immune to Messy Criticals and Frenzy.",
-        source: "Players Guide, page 106"
+        source: "Vampire: The Masquerade Players Guide, page 106"
       },
       {
         name: "Saturn's Flux",
@@ -765,7 +750,7 @@ export const thinBloodAlchemy = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Removing the Blood-bond is painful but Mortals take no damage. Kindred have to take Aggravated damage to expel.",
-        source: "Blood Sigils, page 80"
+        source: "Vampire: The Masquerade Blood Sigils, page 80"
       }
     ]
   },
@@ -787,13 +772,13 @@ export const thinBloodAlchemy = {
       source: "Corebook, page 287"
     },
     level3: {
-      effect: "Counterfeit a three-dot Discipline",
+      effect: "Counterfeit a two-dot Discipline",
       cost: "The same as the power channeled",
       duration: "The same as the power channeled",
       dicePool: "The same as the power channeled",
       opposingPool: "The same as the power channeled",
-      notes: "Requires a drop of vitae from a vampire of a matching clan or who possesses the Discipline.",
-      source: "Corebook, page 287"
+      notes: "The same as the power channeled",
+      source: "Vampire: The Masquerade Corebook, page 287"
     },
     level4: {
       effect: "Counterfeit a four-dot Discipline",

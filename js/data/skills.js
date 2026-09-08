@@ -1,6 +1,6 @@
 export const skills = {
   overview: {
-    description: "Similar to Attributes, Skills are defined as follows: No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.",
+    description: "Similar to Attributes, Skills are defined as follows. No dots means they have no knowledge or formal training, one being that they have basic knowledge, two is general knowledge, three is a professional Skill level, four means they've specialized in this, and five is mastery of the Skill.",
     distribution: {
       jackOfAllTrades: {
         name: "Jack of All Trades",
@@ -22,7 +22,7 @@ export const skills = {
   physical: {
     athletics: {
       name: "Athletics",
-      description: "Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat and throwing an item or weapon is also Athletics. Athletics can be used in place of any Physical combat skill in a conflict roll, but they never land any hits.",
+      description: "Running, jumping, and climbing are all actions within Athletics. Dodging a well-thrown punch in the heat of combat and throwing an item or weapon is also Athletics.",
       dotValues: {
         1: "They were attentive in gym class",
         2: "They are as fit as a mortal doing regular exercise",
@@ -72,7 +72,7 @@ export const skills = {
     },
     craft: {
       name: "Craft",
-      description: "Creating, building, or shaping items such as artwork but also making a makeshift catapult. When taken this skill gains one spec, unlike other Skills, Craft can have more specs than dots.",
+      description: "Creating, building, or shaping items such as artwork but also making a makeshift catapult.",
       dotValues: {
         1: "They are an amateur artist",
         2: "Their work is admired for its usefulness",
@@ -406,7 +406,7 @@ export const skills = {
     },
     performance: {
       name: "Performance",
-      description: "Showcasing the character's art in front of a crowd, regardless of size. Singing, acting, and oration are all examples of this.",
+      description: "Showcasing the character's art in front of a crowd regardless of size. Singing, acting, and oration are all examples of this.",
       dotValues: {
         1: "They are the life of a party but can't take this act on stage",
         2: "They have performed for others, but reviews are mixed",

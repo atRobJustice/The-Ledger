@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "policyVersion": 2,
+  "policyName": "full_wiki_dump",
+  "description": "Per consumption-manifest page: last applied mirror sha under the completeness contract. Full review only opens pages that are missing, policyVersion < 2, or sha mismatch.",
+  "pages": {
+    "character-creation": {
+      "wikiTitle": "Character creation",
+      "mirrorSha256": "8faa47ad264a1b535c440c0dfe3506fe70bc6ae299b15a6719794c2c6535eecd",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "blood-potency": {
+      "wikiTitle": "Blood Potency",
+      "mirrorSha256": "12b3c3c813d65160787b9eba4141745d4bdeb0bf182a89824874eb175b9c70e0",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "generation": {
+      "wikiTitle": "Generation",
+      "mirrorSha256": "aec56178a831b88bc472c36a96c1ea760ecfb012fb4d250d05a2ca20b3bf6653",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "humanity": {
+      "wikiTitle": "Humanity",
+      "mirrorSha256": "42114d33ead2b959d47a07398f37bda432cc8db283c44beefb281b8600d4923d",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "compulsions": {
+      "wikiTitle": "Compulsion",
+      "mirrorSha256": "8aec07a9ceeef2a3586ec77c73e47b3f53ea5ea983fb5a90bf39533684deb7d6",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "resonance": {
+      "wikiTitle": "Resonance",
+      "mirrorSha256": "86e76a60e3a88a2964e68abce06c7da1c52800f82a4d659687696888f9e8ec8b",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:09:08.186Z"
+    },
+    "clan-banu-haqim": {
+      "wikiTitle": "Banu Haqim",
+      "mirrorSha256": "b85c762fb94bce2743334c967b834c2436205b743959f07a71a692fe9f7254b0",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-brujah": {
+      "wikiTitle": "Brujah",
+      "mirrorSha256": "57e22473d787546fd1b2ae4277dc1b3f0763bf8e0ea74e8599381ee88bc44975",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-caitiff": {
+      "wikiTitle": "Caitiff",
+      "mirrorSha256": "8bfa871efba328d68e14cfa43c9a484479e95f745fb18bf060c14a7a324a5b1e",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-gangrel": {
+      "wikiTitle": "Gangrel",
+      "mirrorSha256": "4cdbcb6cd8ddc2edcdc4aac27922ef98fc835a21b20cd3451884fe28c9db4c75",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-hecata": {
+      "wikiTitle": "Hecata",
+      "mirrorSha256": "cb7c5bde9edba8782e3bdf5b901a60abd1ea42df2e30d8e29c677c898b595596",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-lasombra": {
+      "wikiTitle": "Lasombra",
+      "mirrorSha256": "eac5e34480af0bacfc67af5fe86d9b5638000a8cd1563c573ae2daa0604e5078",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-malkavian": {
+      "wikiTitle": "Malkavian",
+      "mirrorSha256": "75af3abe65d929db97854eb364dc33ef6e40450789b7b4ca74db6f062d8a0874",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-ministry": {
+      "wikiTitle": "The Ministry",
+      "mirrorSha256": "e8cf98c48835c0524624fa5d7555b2f9b35adfa759abf4e9d018530a34bc76c9",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-nosferatu": {
+      "wikiTitle": "Nosferatu",
+      "mirrorSha256": "5bff5ba50fb03975046eb4e752ced305cdef8d6714937d9b1b393933fef70851",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-ravnos": {
+      "wikiTitle": "Ravnos",
+      "mirrorSha256": "1ee3ab2bf592c691d449d8f6e5f7aece71d8d75de5664f918947adcc21aebd52",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-salubri": {
+      "wikiTitle": "Salubri",
+      "mirrorSha256": "2db5df12a19b1be7985a09b9a71c33b507d2e67676e6e93d23967a8a04990ad6",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-thinblood": {
+      "wikiTitle": "Thin-blood",
+      "mirrorSha256": "72b89c24b6257cf91b1ec05a71a8117da439e532298337a4db9df82a34140e94",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-toreador": {
+      "wikiTitle": "Toreador",
+      "mirrorSha256": "690dd391d9ea41d7a553c67837f56dcb0cc759c0e3589f63daba621d2411abbf",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-tremere": {
+      "wikiTitle": "Tremere",
+      "mirrorSha256": "03f376e037ee02ce3c3367b4c061a1a9cbc91980173986f3f6871001ecc0b082",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-tzimisce": {
+      "wikiTitle": "Tzimisce",
+      "mirrorSha256": "44e4c6cfcf8ca78a2bcff5e8ccf1611aa989a80b9fec6f5ef8d38cade3d03232",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "clan-ventrue": {
+      "wikiTitle": "Ventrue",
+      "mirrorSha256": "0812fb240c91db887c07d8a69269ba16da69a631ff638b5051511c2b9e0660ca",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:12:52.011Z"
+    },
+    "discipline-animalism": {
+      "wikiTitle": "Animalism",
+      "mirrorSha256": "49150f25831a5fcb9436e560e1ddc14988cb604037a8fe2114b561ec70922bcc",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-auspex": {
+      "wikiTitle": "Auspex",
+      "mirrorSha256": "48862fb67fb11f391ac9fc32849fd7f981ae2bc8477b649a20e618204337e639",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-blood-sorcery": {
+      "wikiTitle": "Blood Sorcery",
+      "mirrorSha256": "01f437e2df706c3ac56c0e4339812546ea383767ffa96f89fbe2d58b673131b3",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-blood-sorcery-rituals": {
+      "wikiTitle": "Blood Sorcery Rituals",
+      "mirrorSha256": "bdb75eee348888fb8f4a58a6a863db0e0328e00060fd93e8c0e9e86a166178f9",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-celerity": {
+      "wikiTitle": "Celerity",
+      "mirrorSha256": "6ef478bc693d08a491956ddb08a79e24844d294aea81ee755183da75236107fd",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-dominate": {
+      "wikiTitle": "Dominate",
+      "mirrorSha256": "519ae5ef34da5334c5ad34e258d0d6db4f9215a0d214cb27527ae54aebf5cfec",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-fortitude": {
+      "wikiTitle": "Fortitude",
+      "mirrorSha256": "92402ff375cb3ee8d026d0949f36f42d159b8ed3f8bff1e9902569719b92502b",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-obfuscate": {
+      "wikiTitle": "Obfuscate",
+      "mirrorSha256": "3c291163d5112cf8dce52d12f53a3e71f166a82179a699a3ee449906b9beb9c8",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-oblivion": {
+      "wikiTitle": "Oblivion",
+      "mirrorSha256": "a2110b8136938d12071da3b94ac26241e13910233395e6750dcbc0c22c0a69fc",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-oblivion-ceremonies": {
+      "wikiTitle": "Oblivion Ceremonies",
+      "mirrorSha256": "7569ba66eb31664e71901ab3c34869912aaaa387c5454b52414e4ca251f7fcd2",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-potence": {
+      "wikiTitle": "Potence",
+      "mirrorSha256": "eaa69ba397bb7fdf62ee327675a712f6f958491f5d2543f8000b5ade358c8e34",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-presence": {
+      "wikiTitle": "Presence",
+      "mirrorSha256": "020d0670e7253c7c448562beb2c6b483c322076cd4fd6e4aac59d99e638771f5",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-protean": {
+      "wikiTitle": "Protean",
+      "mirrorSha256": "5305b36ebd03cab7359c42adc6076bafc103039f88f4f0defd3478c0e5736d23",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "discipline-thin-blood-alchemy": {
+      "wikiTitle": "Thin-blood Alchemy",
+      "mirrorSha256": "62aeeb7de35493650573d433f44d7d858d0fcc00307e9738cb70c6594b1ede2d",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:44.989Z"
+    },
+    "merits-flaws": {
+      "wikiTitle": "Advantages and Flaws",
+      "mirrorSha256": "f7ebd37ca0b76a6b4174688d36e2a7bf66b0141be869426283f28ec95882910f",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "predator-types": {
+      "wikiTitle": "Predator types",
+      "mirrorSha256": "79f78da780fbf2dbf0ffd2d04a9226106534b2d75edf1794ce6f9a5ddb2a09cb",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "coterie-types": {
+      "wikiTitle": "Coterie types",
+      "mirrorSha256": "f497653cf1c3a2c7ce5d27d2055d376b7a4637fcad2f6cdc9262afb6b9640131",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "coterie-backgrounds": {
+      "wikiTitle": "Coterie Backgrounds and Merits",
+      "mirrorSha256": "e03ac23bf1145bb6305e1e0b0e9f8b043b367f797c4d0cd8eb6475d7acb9ac43",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "faction-anarch": {
+      "wikiTitle": "Anarch",
+      "mirrorSha256": "d931591af7292e424079b20c0eeeebcca9b5798b6f2a7a16be8bcdd34fe6b8aa",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "faction-camarilla": {
+      "wikiTitle": "Camarilla",
+      "mirrorSha256": "d71febdb7d4af7941af1fc1fbc73daac43cf5de1f297e166dea7520646484b60",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "faction-sabbat": {
+      "wikiTitle": "Sabbat",
+      "mirrorSha256": "fab85d5c5e36b60af54712a5cec58c1bd3218e7d743bfcf3257867f65f657a33",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    },
+    "loresheets": {
+      "wikiTitle": "Loresheets",
+      "mirrorSha256": "6fbe62ccf1f0f7aeaf6b18a0cd142f9b61dcb74c9de97fec1c4f678145dcec9a",
+      "policyVersion": 2,
+      "appliedAt": "2026-09-08T21:15:15.631Z"
+    }
+  }
+}

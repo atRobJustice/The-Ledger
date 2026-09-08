@@ -6,47 +6,50 @@ export const oblivionCeremonies = {
     ritualRoll: "Resolve + Oblivion",
     difficulty: "Ceremony Level + 1",
     additionalNotes: [
-      "Ceremonies that benefit the recipient can only be cast onto the user themselves unless otherwise stated",
-      "They usually require additional components in order to cast"
+      "Unless otherwise marked all ceremonies cost one rouse check, five minutes per level to cast and winning an Resolve + Oblivion Difficulty (Ceremony Level + 1).",
+      "Ceremonies that benefit the recipient can only be cast onto the user themselves unless otherwise stated.",
+      "They also usually require additional components in order to cast.",
+      "Learning new rituals in play take time and experience.",
+      "Learning new ritual is at least the square of the its level in weeks."
     ]
   },
   ceremonies: {
     level1: [
       {
         name: "Gift of False Life",
-        effect: "Raise either a single corpse or a group to perform simple single or repetitive tasks",
+        effect: "Raise either a single corpse or a group to perform simple single or repetitive tasks.",
         cost: "One Rouse Check",
         prerequisite: "Ashes to Ashes",
         ritualRoll: "Resolve + Oblivion",
         notes: "Corpses are mindless creatures and do not defend themselves from attacks, decaying as normal for the duration of the ceremony.",
-        source: "Cults of the Blood Gods, page 208"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 208"
       },
       {
         name: "Knowing Stone",
-        effect: "Identify the locations and existences of specific ghosts",
+        effect: "Identify the locations and existences of specific ghosts.",
         cost: "One Rouse Check",
         prerequisite: "Ashes to Ashes, Binding Fetter",
         ritualRoll: "Resolve + Oblivion",
         notes: "They must know the ghost's name.",
-        source: "Fall of London, page 264"
+        source: "Vampire: The Masquerade Fall of London, page 264"
       },
       {
         name: "Summon Spirit",
-        effect: "Summon a spirit from the Underworld",
+        effect: "Summon a spirit from the Underworld.",
         cost: "One Rouse Check",
         prerequisite: "Binding Fetter",
         ritualRoll: "Resolve + Oblivion",
         notes: "The wraith will disappear at the end of the scene unless a ceremony is used to keep them there such as Compel Spirit.",
-        source: "Cults of the Blood Gods, page 209"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 209"
       },
       {
         name: "Traveler's Call",
-        effect: "Summon another Shalimite",
+        effect: "Summon another Shalimite.",
         cost: "One Rouse Check",
         prerequisite: "Oblivion Sight",
         ritualRoll: "Resolve + Oblivion",
         notes: "The victim can choose to ignore it, taking -2 to all pools in relation to concentration for one scene. This ceremony is connected to the Cult of Shalim.",
-        source: "Cults of the Blood Gods, page 93"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 93"
       }
     ],
     level2: [
@@ -103,8 +106,8 @@ export const oblivionCeremonies = {
         cost: "One Rouse Check",
         prerequisite: "Shadow Perspective or Touch of Oblivion",
         ritualRoll: "Resolve + Oblivion",
-        notes: "The garment is semi-sentient and needs to be persuaded with a test. While worn, the wearer gains a Folkloric Bane and Folkloric Block of the Storyteller's choice.",
-        source: "Tattered Facade, page 101"
+        notes: "The garment is semi-sentient and needs to be persuaded with a test. While worn, the wearer gains a Folkoric Bane and Folkloric Block of the Storyteller's Choice",
+        source: "Vampire: The Masquerade Tattered Façade, page 101"
       },
       {
         name: "Create Flesh Golem",
@@ -112,80 +115,80 @@ export const oblivionCeremonies = {
         cost: "One Rouse Check",
         prerequisite: "Aura of Decay or Necrotic Plague",
         ritualRoll: "Resolve + Oblivion",
-        notes: "Can be assembled manually or with the help of Fleshcrafting.",
-        source: "Tattered Facade, page 101"
+        notes: "Can be assembled manually or with the help of Fleshcrafting",
+        source: "Vampire: The Masquerade Tattered Façade, page 101"
       },
       {
         name: "Fortezza Sindonica",
-        effect: "Create a barrier that harms wraiths",
+        effect: "Create a barrier that harms wraiths.",
         cost: "Three Rouse Checks",
         prerequisite: "Where the Shroud Thins",
         ritualRoll: "Resolve + Oblivion",
         notes: "Do not make the Ritual Roll until a wraith attempts to pass. This ceremony is connected to the Hecata.",
-        source: "Trails of Ash and Bone, page 173"
+        source: "Vampire: The Masquerade Trails of Ash and Bone, page 173"
       },
       {
         name: "Harrowhaunt",
-        effect: "Keep unwanted visitors from their haven",
+        effect: "Keep unwanted visitors from their haven.",
         cost: "One Rouse Check, possible Stains",
         prerequisite: "Aura of Decay",
         ritualRoll: "Resolve + Oblivion",
         notes: "Vampires are able to enter making a fear Frenzy check each turn while inside. This ceremony is connected to the Sabbat.",
-        source: "Sabbat, page 51"
+        source: "Vampire: The Masquerade Sabbat: The Black Hand, page 51"
       },
       {
         name: "Host Spirit",
-        effect: "Allows the user to open their body to a ghost for possession",
+        effect: "Allows the user to open their body to a ghost for possession.",
         cost: "One Rouse Check",
         prerequisite: "Aura of Decay",
         ritualRoll: "Resolve + Oblivion",
-        notes: "Alongside the bonus of +2 to Physical Attribute rolls and +2 health, the wraiths Skills can be substituted for the vampire's own at Storyteller discretion.",
-        source: "Cults of the Blood Gods, page 211"
+        notes: "Alongside the bonus of +2 to Physical Attribute rolls and +2 health, the wraiths Skills can be substituted for the vampire’s own at Storyteller discretion.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 211"
       },
       {
         name: "Knit the Veil",
-        effect: "Turn a shroud impenetrable",
+        effect: "Turn a shroud impenetrable.",
         cost: "One Rouse Check",
         prerequisite: "Where the Shroud Thins",
         ritualRoll: "Resolve + Oblivion",
         notes: "When not disturbed this effect does not change for as many nights as the user's Oblivion rating.",
-        source: "Trails of Ash and Bone, page 174"
+        source: "Vampire: The Masquerade Trails of Ash and Bone, page 174"
       },
       {
         name: "Name of the Father",
-        effect: "Strike a victim's mind with the empty void of Oblivion, leaving them paralyzed",
+        effect: "Strike a victim's mind with the empty void of Oblivion, leaving them paralyzed.",
         cost: "One Rouse Check",
         prerequisite: "Shadow Perspective",
         ritualRoll: "Resolve + Oblivion",
         notes: "The victim can spend willpower equal to the number of turns they would remain paralyzed to free themselves. This ceremony is connected to the Cult of Shalim.",
-        source: "Cults of the Blood Gods, page 94"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 94"
       },
       {
         name: "Shallow Slumber",
-        effect: "Reduces time spent in torpor",
+        effect: "Reduces time spent in torpor.",
         cost: "One Rouse Check",
         prerequisite: "Passion Feast or Touch of Oblivion",
         ritualRoll: "Resolve + Oblivion",
         notes: "Can be used on self on others even when not in torpor.",
-        source: "Gehenna War, page 50"
+        source: "Vampire: The Masquerade Gehenna War, page 50"
       },
       {
         name: "Shambling Hordes",
-        effect: "Raise a group of aggressive walking dead",
+        effect: "Raise a group of aggressive walking dead.",
         cost: "One Rouse Check, possible Stains",
         prerequisite: "Aura of Decay",
         ritualRoll: "Resolve + Oblivion",
         notes: "If left without commands, they attack anyone around them other than their master.",
-        source: "Cults of the Blood Gods, page 212"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 212"
       },
       {
         name: "Wisdom of the Dead",
-        effect: "Gain information from a corpse skull or head",
+        effect: "Gain information from a corpse skull or head.",
         cost: "One Rouse Check",
         prerequisite: "Where the Shroud Thins or Oblivion's Sight",
         ritualRoll: "Resolve + Oblivion",
         notes: "Add two dice to their dice pool if they are still carrying the skull/head for the rest of the night.",
-        source: "Book of Nod Apocrypha, page 35"
+        source: "Vampire: The Masquerade Book of Nod Apocrypha, page 35"
       },
       {
         name: "Misfortune's Hand",
@@ -193,8 +196,8 @@ export const oblivionCeremonies = {
         cost: "One Rouse Check",
         prerequisite: "Shadow Servant or Touch of Oblivion",
         ritualRoll: "Resolve + Oblivion",
-        notes: "A target can only be affected by one casting of this Ceremony at a time.",
-        source: "Courts of the Damned, page 217"
+        notes: "A target can only be affect by one casting of this Ceremony at a time.",
+        source: "Vampire: The Masquerade Courts of the Damned, page 217"
       }
     ],
     level4: [
@@ -252,7 +255,7 @@ export const oblivionCeremonies = {
         prerequisite: "Withering Spirit",
         ritualRoll: "Resolve + Oblivion",
         notes: "The Shadowlands have several rules that do not exist in the world of the living.",
-        source: "Cults of the Blood Gods, page 213"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 213"
       },
       {
         name: "Gift of True Life",
@@ -261,7 +264,7 @@ export const oblivionCeremonies = {
         prerequisite: "Necrotic Plague or Passion Feast",
         ritualRoll: "Resolve + Oblivion",
         notes: "The receiving mortal ages half as quickly until the extra lifespan granted has been spent, after which, they begin to age normally.",
-        source: "Tattered Facade, page 102"
+        source: "Vampire: The Masquerade Tattered Façade, page 102"
       },
       {
         name: "Lazarene Blessing",
@@ -270,16 +273,16 @@ export const oblivionCeremonies = {
         prerequisite: "Skuld Fulfilled",
         ritualRoll: "Resolve + Oblivion",
         notes: "This lasts until the body dies again or the wraith is exorcised from the host.",
-        source: "Cults of the Blood Gods, page 214"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 214"
       },
       {
         name: "Pit of Contemplation",
-        effect: "Cast an enemy into Oblivion itself",
+        effect: "Cast an enemy into Oblivion itself.",
         cost: "One Rouse Check, possible Stains",
         prerequisite: "Tenebrous Avatar",
         ritualRoll: "Resolve + Oblivion",
         notes: "Mortals sucked in are instantly killed. This ceremony is connected to the Cult of Shalim.",
-        source: "Cults of the Blood Gods, page 94"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 94"
       }
     ]
   },

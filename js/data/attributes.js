@@ -1,7 +1,7 @@
 export const attributes = {
   overview: {
-    description: "Attributes represent the character's innate abilities, with 1 being relatively bad, 2 being average, and up to 5 representing peak ability. The Attributes are divided into three separate categories: Physical, Social, and Mental.",
-    distribution: "When building the sheet, the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots, with this being the character's best trait."
+    description: "Attributes represent the characters innate abilities, with 1 being relatively bad, 2 being average and up to 5 which represents peak ability. The Attributes are divided into three separate categories; Physical, Social and Mental.",
+    distribution: "When building the sheet; the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots with this being the vampire's best trait."
   },
   physical: {
     description: "The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character. These Attributes represent the mortal prowess of a vampire's body. Though through the use of certain Disciplines, vampires often exceed the abilities of an otherwise frail-looking physique.",
@@ -74,7 +74,7 @@ export const attributes = {
     attributes: {
       charisma: {
         name: "Charisma",
-        description: "Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on its own.",
+        description: "Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on it's own.",
         dotValues: {
           1: "They speak clearly but few people tend to listen",
           2: "Generally likeable even if they are undead and may even have friends",
@@ -280,7 +280,7 @@ export const attributes = {
   },
   derivedTraits: {
     health: {
-      description: "A character's health is derived from their Stamina + 3",
+      description: "Stamina+3",
       damageTypes: {
         superficial: {
           description: "Superficial damage is bruising and small cuts, but nothing that is life-threatening. Kicking, punching, and any non-lethal weapon do Superficial damage to humans. Standard weapons do Superficial damage to supernatural creatures, this includes slashing, stabbing, and piercing weapons. In general, this type of damage is halved before adding it to the tracker and this includes when converting Superficial to Aggravated.",
@@ -299,7 +299,7 @@ export const attributes = {
       }
     },
     willpower: {
-      description: "Willpower is determined by the value of Composure + Resolve",
+      description: "Composure + Resolve",
       spending: {
         description: "Players may spend their character's Willpower in a variety of ways and when doing so, must mark the tracker with one Superficial damage. Should the character hit Willpower 0, they are left Impaired and receives a -2 dice penalty for Social and Mental tests.",
         uses: [

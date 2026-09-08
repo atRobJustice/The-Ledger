@@ -1,7 +1,15 @@
 export const protean = {
   name: "Protean",
-  nicknames: ["Morphing", "Shapeshifting", "Mutatio"],
-  affinity: ["Gangrel", "The Ministry", "Tzimisce"],
+  nicknames: [
+    "Morphing",
+    "Shapeshifting",
+    "Mutatio"
+  ],
+  affinity: [
+    "Gangrel",
+    "The Ministry",
+    "Tzimisce"
+  ],
   type: "Physical",
   threat: "High",
   resonance: "Animal Blood",
@@ -17,32 +25,31 @@ export const protean = {
         duration: "As long as desired",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "If a Rouse Check is spent, the user can fit into even impossibly tight spaces about two inches in diameter",
+        notes: "If a rouse check is spent, the user can fit into even impossibly tight spaces about two inches in diameter.",
         source: "Vampire: The Masquerade Tattered Façade, page 105"
       },
-
       {
         name: "Eyes of the Beast",
-        effect: "Allows the user to see in total darkness",
+        effect: "Allows the user to see in total darkness.",
         cost: "Free",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "As long as desired",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "+2 bonus dice to intimidation against mortals when active",
+        notes: "+2 bonus dice to intimidation against mortals when active.",
         source: "Vampire: The Masquerade Corebook, page 269"
       },
       {
         name: "Weight of the Feather",
-        effect: "The user can make themselves almost weightless",
+        effect: "The user can make themselves almost weightless.",
         cost: "Free",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "As long as desired",
         dicePool: "Wits + Survival",
         opposingPool: "N/A",
-        notes: "Wits + Survival is only used when activated as a reaction",
+        notes: "Wits + Survival is only used when activated as a reaction.",
         source: "Vampire: The Masquerade Corebook, page 269"
       }
     ],
@@ -99,62 +106,62 @@ export const protean = {
     level3: [
       {
         name: "Earth Meld",
-        effect: "Sink into the earth and become one with the soil",
+        effect: "Sink into the earth and become one with the soil.",
         cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "One day or more, or until disturbed",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power only works on natural surfaces and not artificial such as concrete",
+        notes: "This power only works on natural surfaces and not artificial such as concrete.",
         source: "Vampire: The Masquerade Corebook, page 270"
       },
       {
         name: "Fleshcrafting",
-        effect: "Extends the mastery over the flesh to be used on others",
+        effect: "Extends the mastery over the flesh to be used on others.",
         cost: "One Rouse Check",
-        prerequisite: "Vicissitude",
-        amalgam: "Dominate ●●",
+        prerequisite: "class=\"hidem\" |Vicissitude",
+        amalgam: "class=\"hidem\" |Dominate ●●",
         duration: "Permanent",
         dicePool: "Resolve + Protean",
         opposingPool: "Stamina + Resolve",
-        notes: "An unwilling subject may resist with the margin of the user's role counting as the number of changes able to be made",
+        notes: "An unwilling subject may resist with the margin of the user's role counting as the number of changes able to be made.",
         source: "Vampire: The Masquerade Companion, page 27"
       },
       {
         name: "Shapechange",
-        effect: "Change into an animal with a similar body mass",
+        effect: "Change into an animal with a similar body mass.",
         cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "One scene unless voluntarily ended",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Users gain the Physical Attributes and other traits of the animal they've changed into",
+        notes: "Users gain the Physical Attributes and other traits of the animal they've changed into.",
         source: "Vampire: The Masquerade Corebook, page 270"
       },
       {
         name: "Visceral Absorption",
-        effect: "Draw in the remains of blood and body to the vampire to clean a scene",
+        effect: "Draw in the remains of blood and body to the vampire to clean a scene.",
         cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "Blood Sorcery ●●",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |Blood Sorcery ●●",
         duration: "One turn per body",
         dicePool: "Strength + Protean",
         opposingPool: "N/A",
-        notes: "Hunger can be reduced by one per body, up to the level of their Blood Sorcery rating but cannot reduce to 0",
+        notes: "Hunger can be reduced by one per body, up to the level of their Blood Sorcery rating but cannot reduce to 0.",
         source: "Vampire: The Masquerade Sabbat: The Black Hand, page 49"
       },
       {
         name: "Masque of Death",
-        effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage",
+        effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Oblivion ●●",
         duration: "Until ended by user, or user wakes from Torpor, or until sunrise",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Disciplines can be used at ST discretion",
+        notes: "Disciplines can be used at ST discretion.",
         source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
       }
     ],
@@ -194,10 +201,9 @@ export const protean = {
         duration: "Until Hunger 5 or using the power again",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Must be activated in the same scene where they've slaked at least 1 Hunger from either a mortal or Kindred",
-        source: "Vampire: The Masquerade Live from the Succubus Club, pages 28-29"
+        notes: "Must be activated in the same scene where they've slaked at least 1 Hunger from either a mortal of Kindred.",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 28-29"
       },
-
       {
         name: "Swarm",
         effect: "Allows the user to shapechange into a swarm of insects, reptiles, or other vermin",
@@ -207,80 +213,79 @@ export const protean = {
         duration: "One scene, or until ended voluntarily",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "As a swarm, the user can attack a number of individuals equal to their Blood Potency per turn",
+        notes: "As a swarm, the user can attack a number of individuals equal to their Blood Potency per turn.",
         source: "Vampire: The Masquerade Tattered Façade, page 106"
       },
-
       {
         name: "Blood Form",
-        effect: "Turn into an amorphous mass of blood",
+        effect: "Turn into an amorphous mass of blood.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Blood Sorcery ●●",
-        duration: "One scene, or until the effect is voluntarily ended",
+        duration: "One scene, or until the effect is voluntarily ended.",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Can be consumed, creating blood bonds as normal",
-        source: "Gehenna War, page 47"
+        notes: "Can be consumed, creating blood bonds as normal.",
+        source: "Vampire: The Masquerade Gehenna War, page 47"
       },
       {
         name: "The Heart of Darkness",
-        effect: "Allows a vampire to remove their own heart and store it outside of their body",
+        effect: "Allows a vampire to remove their own heart and store it outside of their body.",
         cost: "Free",
-        prerequisite: "None",
-        amalgam: "Fortitude ●●",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |Fortitude ●●",
         duration: "Permanent or until the heart is destroyed or returned to the host's body",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "If the heart is dealt aggravated damage equal to or greater than the user's health tracker, they fall into torpor. It can only be destroyed through fire or sunlight",
+        notes: "If the heart is dealt aggravated damage equal to or greater than the user's health tracker, they fall into torpor. It can only be destroyed through fire or sunlight.",
         source: "Vampire: The Masquerade Cults of the Blood Gods, page 85"
       },
       {
         name: "Master of Forms",
-        effect: "Allows the vampire to take on any animal shape, rather than just one",
-        cost: "None, but rouse for Shapechange as normal",
+        effect: "Allows the vampire to take on any animal shape, rather than just one.",
+        cost: "None, but rouse for Shapechange as normal.",
         prerequisite: "Shapechange",
         amalgam: "No",
         duration: "As Shapechange or Metamorphosis",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "All other limitations of Shapechange and Metamorphosis apply",
-        source: "Gehenna War, page 48"
+        notes: "All other limitations of Shapechange and Metamorphosis apply.",
+        source: "Vampire: The Masquerade Gehenna War, page 48"
       },
       {
         name: "Mist Form",
-        effect: "Turn into a cloud of mist",
+        effect: "Turn into a cloud of mist.",
         cost: "One to three Rouse Checks",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "One scene unless voluntarily ended",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This power takes three turns to use and may be sped up with additional Rouse Checks on a one-for-one trade",
+        notes: "This power takes three turns to use and may be sped up with additional Rouse Checks on a one-for-one trade.",
         source: "Vampire: The Masquerade Corebook, page 271"
       },
       {
         name: "One with the Land",
-        effect: "Sink into the earth of their Domain",
+        effect: "Sink into the earth of their Domain.",
         cost: "Two Rouse Checks",
-        prerequisite: "Earth Meld",
-        amalgam: "Animalism ●●",
+        prerequisite: "class=\"hidem\" |Earth Meld",
+        amalgam: "class=\"hidem\" |Animalism ●●",
         duration: "One day or more, or until physically disturbed",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Same system as Earth Meld however they are not limited by the material",
+        notes: "Same system as Earth Meld however they are not limited by the material.",
         source: "Vampire: The Masquerade Companion, page 28"
       },
       {
         name: "The Unfettered Heart",
-        effect: "The heart of the vampire can move freely within the chest, making staking more difficult",
+        effect: "The heart of the vampire can move freely within the chest, making staking more difficult.",
         cost: "Free",
-        prerequisite: "None",
-        amalgam: "No",
+        prerequisite: "class=\"hidem\" |None",
+        amalgam: "class=\"hidem\" |No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Only upon a critical win does the stake penetrate when in melee combat",
+        notes: "Only upon a critical win does the stake penetrate when in melee combat.",
         source: "Vampire: The Masquerade Corebook, page 271"
       }
     ]
@@ -297,4 +302,4 @@ export const protean = {
       source: "Vampire: The Masquerade Anarch, page 185"
     }
   ]
-}; 
+};

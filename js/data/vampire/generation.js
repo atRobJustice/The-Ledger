@@ -80,7 +80,7 @@ export const generation = {
   },
   effects: {
     dominate: "Vampires with lower generation can spend a willpower point to completely negate Dominate from a higher (weaker) generation vampire.",
-    diablerie: "If a higher generation vampire diablerizes a lower generation vampire, then the attacker's generation lowers by one. After diablerie, the black veins stay in the attackers aura for each generation difference in years if the diablerist had a higher generation."
+    diablerie: "If a higher generation vampire commits diablerie a lower generation vampire, then the attacker's generation lowers by one. After diablerie, the black veins stay in the attackers aura for each generation difference in years if the diablerist had a higher generation."
   },
   bloodPotencyLimits: {
     4: { lowest: 5, highest: 10 },

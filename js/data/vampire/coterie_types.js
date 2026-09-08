@@ -8,7 +8,7 @@ export const coterieTypes = {
     source: "Vampire: The Masquerade Corebook",
     sourcePage: 197,
     domainBonus: {
-      note: "At the Storytellers discretion some coterie types grant a single dot bonus to one of the domain traits if the coterie meets all the pre-requisites listed. This bonus does not raise a domain trait above five, if a coterie changes types or otherwise changes to receive a bonus that would increase the trait above five either refund a coterie dot or the experience spent by a player character.",
+      note: "At the Storytellers discretion some coterie types grant a single dot bonus to one of the domain traits if the coterie meets all the pre-requisites listed. This bonus does not raise a domain trait above five, if a coterie changes types or otherwise changes to receive a bonus that would increase the trait above five either refund a coterie dot or the experience spent by a player character. Coteries without domains such as Fugitive or Nomad can add their extra dot to Contacts or Retainers.",
       eligibleTypes: {
         chasse: ["Blood Cult", "Envoy", "Fang Gang", "Hunting Party", "Plumaire", "Questari", "Regency", "Sbirri"],
         lien: ["Champions", "Corporate", "Family", "Gatekeeper", "Vehme"],

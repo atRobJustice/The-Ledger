@@ -1,7 +1,23 @@
 export const ventrue = {
   name: "Ventrue",
-  nicknames: ["The Clan of Kings", "Blue Bloods", "Tyrants", "Warlords", "Patricians", "Borgias"],
-  disciplines: ["Dominate", "Fortitude", "Presence"],
+  nicknames: [
+    "The Clan of Kings",
+    "Blue Bloods",
+    "Tyrants",
+    "Warlords",
+    "Patricians",
+    "Borgias"
+  ],
+  disciplines: [
+    "Dominate",
+    "Fortitude",
+    "Presence"
+  ],
+  disciplines: {
+    dominate: "Is used to guide the masses they lead, be it Kindred or mortal. It also serves its purpose when hunting to force a mortal to show their neck or to protect the Masquerade in a situation gone wrong.",
+    fortitude: "Keeps the Ventrue able to withstand the storms when their lesser fight against them. This power has its use for them to stand against adversity and feed, where others might struggle with blood, they take their fill.",
+    presence: "Is the alternative to mind control. Used to sway their courts and loyal followers to adore them regardless of their less than ethical approaches. With their value of conservation, this aids them in easily finding prey to take their fill upon."
+  },
   bane: {
     name: "Rarefied Tastes",
     description: "When the Ventrue drinks the blood of a mortal who does not fall within their preference, they must spend Willpower equal to their Bane Severity else they will vomit the blood from their bodies unable to slake their hunger. Their preferences range within the clan, some looking for descendants of a certain nationality to soldiers suffering from PTSD. With a Resolve + Awareness test, they can sense if a mortal they seek to feed from fits within their preference. At character creation, their preference should be selected."
@@ -15,14 +31,9 @@ export const ventrue = {
     description: "Fueled by the beast and their natural desire for power, the Ventrue must force someone to obey a command given. The order cannot be given through supernatural means such as Dominate. Until they satisfy the requirements, they receive a two-dice penalty for any actions not directly related to leadership."
   },
   background: {
-    description: "The Ventrue are not called the Clan of Kings for nothing. Carefully choosing their progeny from mortals familiar with power, wealth, and influence, the Ventrue style themselves the aristocrats of the vampire world. Their members are expected to assume command wherever possible, and they're willing to endure storms for the sake of leading from the front.",
-    currentStatus: "Though in recent nights their status has begun to slip, many Ventrue feel their time is running out and as their privileges slip through their fingers, most Ventrue tighten their grasp, willing to fight fang and claw to keep hold.",
+    description: "The Ventrue are not called the Clan of Kings for nothing. Carefully choosing their progeny from mortals familiar with power, wealth, and influence, the Ventrue style themselves the aristocrats of the vampire world. Their members are expected to assume command wherever possible, and they’re willing to endure storms for the sake of leading from the front.",
+    currentStatus: "To them, they are the rightful heirs of power and command. The Ventrue have held more positions of power than any other clan; as god-kings in ancient Babylon to majority shareholders and campaign fund backers in the modern age, they've held their footing as long as they could. Though in recent nights their status has begun to slip, many Ventrue feel their time is running out and as their privileges slip through their fingers, most Ventrue tighten their grasp, willing to fight fang and claw to keep hold.",
     camarillaRole: "Clan Ventrue has long been the leader of the Camarilla, even after losing their most prominent representative, Hardestat, to a Brujah assassination. A majority of the clan believes that the strength of tradition and lineage is what holds them above the rest."
-  },
-  disciplines: {
-    dominate: "Used to guide the masses they lead, be it Kindred or mortal. It also serves its purpose when hunting to force a mortal to show their neck or to protect the Masquerade in a situation gone wrong.",
-    fortitude: "Keeps the Ventrue able to withstand the storms when their lesser fight against them. This power has its use for them to stand against adversity and feed, where others might struggle with blood, they take their fill.",
-    presence: "The alternative to mind control. Used to sway their courts and loyal followers to adore them regardless of their less than ethical approaches. With their value of conservation, this aids them in easily finding prey to take their fill upon."
   },
   archetypes: {
     mobBoss: "Through organized crime and manipulation, they've risen through the mortal underworld. Some of their clan might turn their nose to this path, but this Ventrue knows how to get things done, whether blood is spilled or not.",
@@ -32,29 +43,65 @@ export const ventrue = {
   },
   notableCharacters: {
     hardestadt: {
-      description: "The name of a sire and childe. Hardestadt the Elder met Final Death at the hands of the Brujah, Tyler. This left Hardestadt the Younger room to run the Camarilla with the foundation his sire laid while impersonating him. Until his destruction at the hands of Brujah rebels lead by Theo Bell during the Convention of Prague in 2012, he was the most important Ventrue for eight centuries.",
-      achievements: "He, alongside six others, was a founder of the Camarilla. Hardestadt did not Embrace many mortals and never confirmed his lineage to a Fourth Generation methuselah. None who have come before or after could stand to the power and influence he held and as far as he was concerned he was the be-all end-all of the clan."
+      description: "The name of a sire and childe. Hardestadt the Elder met Final Death at the hands of the Brujah, Tyler. This left Hardestadt the Younger room to run the Camarilla with the foundation his sire laid while impersonating him. Until his destruction at the hands of Brujah rebels lead by Theo Bell during the Convention of Prague in 2012, he was the most important Ventrue for eight centuries. He, alongside six others, was a founder of the Camarilla. Hardestadt did not Embrace many mortals and never confirmed his lineage to a Fourth Generation methuselah. None who have come before or after could stand to the power and influence he held and as far as he was concerned he was the be-all end-all of the clan."
     },
     fiorenzaSavona: "With her global political control she managed to keep the clan relevant and dangerous as the center of global power. Fiorenza worked has as a mortal and continues to do so in her unlife to secure that wealthy and powerful vampires remain in power.",
     lodin: "Once Prince of Chicago he systematically eradicated anyone who challenged his claim of the throne. He ruthlessness destroyed anyone in his path, including his own clan who was viewed as a primary threat rather than allies. He's gone in the modern nights but his legacy lives on in his bloodline.",
     horatioBallard: {
-      description: "Business mogul with millions from his investments, banks, real estate, and construction companies collectively known as Ballard Industries. A childe of Lodin with a large sum of wealth and political power which he used to support his sire's rule.",
+      description: "Business mogul with millions from his investments, banks, real estate, and construction companies collectively known as Ballard Industries. A childe of Lodin with a large sum of wealth and political power which he used to support his sire’s rule. After Lodin’s supposed death, he backed Kevin Jackson’s bid for Prince in Chicago. The crash of the housing market didn’t hurt his companies due to keen business acumen, but his personal wealth and reputation took a massive hit. This leaves the Ventrue ready for an ambitious rebuilding effort.",
       currentStatus: "After Lodin's supposed death, he backed Kevin Jackson's bid for Prince in Chicago. The crash of the housing market didn't hurt his companies due to keen business acumen, but his personal wealth and reputation took a massive hit. This leaves the Ventrue ready for an ambitious rebuilding effort."
     },
     lucinde: {
-      description: "A prominent member of clan Ventrue and current Justicar, reaching many ranks in the Camarilla. She first worked as an Archons and later an Alastor the first of its kind.",
-      role: "Alastor is a role where she hunts down the Camarilla's most dangerous and most wanted on the 'Red List'. The role is also tasked with hunting down illegal diablerists. She specializes in deep undercover investigations and biding her time to strike her enemies.",
-      achievements: "Her background has allowed her to raise to the role of Justicar and be named Justicar for life. Her Archons often work out of Chicago conducting investigations."
+      description: "A prominent member of clan Ventrue and current Justicar, reaching many ranks in the Camarilla. She first worked as an Archons and later an Alastor the first of its kind. Alastor is a role where she hunts down the Camarilla's most dangerous and most wanted on the \"Red List\". The role is also tasked with hunting down illegal diablerists. She specializes in deep undercover investigations and biding her time to strike her enemies. Her background has allowed her to raise to the role of Justicar and be named Justicar for life. Her Archons often work out of Chicago conducting investigations."
+    },
+    mithras: {
+      description: "Mithras"
+    },
+    tiamat: {
+      description: "Tiamat"
+    },
+    anneBowesley: {
+      description: "Anne Bowesley"
+    },
+    valerius: {
+      description: "Valerius"
+    },
+    hazelIversen: {
+      description: "Hazel Iversen"
+    },
+    galebBazory: {
+      description: "Galeb Bazory"
+    },
+    berelUnderwood: {
+      description: "Berel Underwood"
+    },
+    kevinJackson: {
+      description: "Kevin Jackson"
+    },
+    louGraham: {
+      description: "Lou Graham"
+    },
+    ryongChoi: {
+      description: "Ryong Choi"
+    },
+    fletcher: {
+      description: "Fletcher"
+    },
+    alanSovereign: {
+      description: "Alan Sovereign"
+    },
+    naomiStewart: {
+      description: "Naomi Stewart"
     }
   },
   culture: {
     embrace: {
-      description: "Ventrue are typically very selective in their Embraces, as they see lineage and traditions to be of the utmost importance. The Embrace is an important ritual for the Blueblood for the aforementioned reasons, going so far as the selection impacting the sire's standing in the clan.",
+      description: "Ventrue are typically very selective in their Embraces, as they see lineage and traditions to be of the utmost importance. The Embrace is an important ritual for the Blueblood for the aforementioned reasons, going so far as the selection impacting the sire’s standing in the clan. The usual stock of Ventrue childers come from overachievers, powerful Kindred be it financially or politically, and those with talents that puts them above others in the world. Childers are usually taught to admire their vampiric lineage and the importance of the clan. When they greet each other they not only say their sire, grand sire, great grand sire, etc. but also their ancestors' feats. Many of the sire put their new charges through tests to make sure they are worthy of Clan of Kings; the clan is not known to tolerate failure.",
       criteria: "The usual stock of Ventrue childers come from overachievers, powerful Kindred be it financially or politically, and those with talents that puts them above others in the world. Childers are usually taught to admire their vampiric lineage and the importance of the clan.",
       traditions: "When they greet each other they not only say their sire, grand sire, great grand sire, etc. but also their ancestors' feats. Many of the sire put their new charges through tests to make sure they are worthy of Clan of Kings; the clan is not known to tolerate failure."
     },
     mortalSociety: {
-      description: "Pioneers in terms of power and wealth, having well placed pawns in politics, finance, and exclusive clubs. Most Ventrue are no longer able to lead the human world like they did in nights of old.",
+      description: "Pioneers in terms of power and wealth, having well placed pawns in politics, finance, and exclusive clubs. Most Ventrue are no longer able to lead the human world like they did in nights of old. Many shy from being, leader of the board, or open heads of their community. For safety reasons many have begrudgingly taken to influence from the shadows. They take on the role of bankers, silent partners, shadow directors, and reclusive CEOs. Though not all Ventrue takes this warning, some still openly lead unbothered by the changing times. They all know a breach is a troubling thing to have to bear. When it comes to being around mortals the Ventrue keep a formality about themselves; meeting in private booths or across boardroom tables. Some go as far as to own their kine, shaping them to fit their needs and keeping them on the leash through wage slavery or keeping them in the Blood Bond. Mortals who don’t have use or sentiment to Tyrants, are often ignored, for the Kindred knows they are better than them. The mortals who do fall under the Ventrue leadership are usually infected with this arrogance and distaste for other mortals who mean little to them. The clan is among the best customers of the Circulatory System. Their bane has made them need to look carefully at their victims. Sometimes the Childe and Sire share the same restriction or the restriction is linked to a Ventrue’s past. They can be all over the place factoring in employment, gender, place of birth, blood quality, or even events in the victims life. Examples are Kevin Jackson only feeding on gang members while Hardestadt could only feed on those with military experience. The Ventrue will do anything to get the blood they desire, even if they need to manipulate and corral their palates. Cultivate board members, groups, or entourages so they always can feed is never below the Blue Bloods.",
       currentApproach: "Many shy from being, leader of the board, or open heads of their community. For safety reasons many have begrudgingly taken to influence from the shadows. They take on the role of bankers, silent partners, shadow directors, and reclusive CEOs.",
       feeding: {
         description: "The clan is among the best customers of the Circulatory System. Their bane has made them need to look carefully at their victims.",
@@ -63,7 +110,7 @@ export const ventrue = {
       }
     },
     kindredSociety: {
-      description: "To many Ventrue without them there is no Camarilla. They see themselves as the leaders of the Kindred and it is not just a notion to them, but their destiny.",
+      description: "To many Ventrue without them there is no Camarilla. They see themselves as the leaders of the Kindred and it is not just a notion to them, but their destiny. To them no other clan has the wisdom, restraint, control, and lineage to take on such a mantle. The Ventrue also know they have some of the most influence in the sect and even with the exodus of the Brujah and the incoming of the Lasombra and the Banu Haqim. The group of self-interested motivated Kindred are said to be the wealthiest Kindred. They don’t share their wealth freely, but put it to use to buy influence, quiet opponents, gain followers, and live the high life. The clan itself looks at the lineage and the human societies they have influenced: Sparta, Rome, Francia, old Italia, and the British Empire. The feats of their past influence their future. They are confident they are a cut above the Kindred of the night. No matter the sect or faction, something the Ventrue usually strive for is expanding their power, finding new connections and making themselves ideal allies. While the Blue Bloods may view other lowly Kindred as obstacles or rivals, those who are allies often benefit from the proximity to power. Their allies benefit from the open doors the Blue Blood offers and the Ventrue in turns benefits from their allies falling in line under them.",
       influence: "The Ventrue also know they have some of the most influence in the sect and even with the exodus of the Brujah and the incoming of the Lasombra and the Banu Haqim. The group of self-interested motivated Kindred are said to be the wealthiest Kindred.",
       lineage: "The clan itself looks at the lineage and the human societies they have influenced: Sparta, Rome, Francia, old Italia, and the British Empire. The feats of their past influence their future."
     },
@@ -74,7 +121,7 @@ export const ventrue = {
   },
   factionalDifferences: {
     camarilla: {
-      description: "The Ventrue seem themselves as the embodiment of the Camarilla and the ones destined to lead Kindred. Camarilla Ventrue hold the most Princedoms of any clan.",
+      description: "Camarilla and the ones destined to lead Kindred. Camarilla Ventrue hold the most Princedoms of any clan. The are strong enforcers of the Traditions and believe in legacy. Their strong views on legacy shape the Camarilla Ventrue, they judge each other on who they Embrace. Their sires teach their vampiric lineage with great tutelage to their childers. When they greet each other they not only say their sire, grand sire, great grand sire, etc. but also their ancestors' feats. They call Ventrue who break away from the Tower Caitiff, as an insult. Some Princes go as far as to call a blood hunt on such Ventrue.",
       beliefs: "They are strong enforcers of the Traditions and believe in legacy. Their strong views on legacy shape the Camarilla Ventrue, they judge each other on who they Embrace.",
       traditions: "Their sires teach their vampiric lineage with great tutelage to their childers. When they greet each other they not only say their sire, grand sire, great grand sire, etc. but also their ancestors' feats."
     },
@@ -85,11 +132,11 @@ export const ventrue = {
     }
   },
   exclusiveLoresheets: [
+    "High Clan",
     "Descendant of Hardestadt",
     "Pure Ventrue Lineage",
     "Descendant of Lodin",
     "Spear of Orthia",
-    "High Clan",
     "The Vanderbilt Ventrue"
   ]
-}; 
+};

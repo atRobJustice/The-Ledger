@@ -1,66 +1,72 @@
-// Animalism Discipline Data
 export const animalism = {
     name: "Animalism",
-    nicknames: ["Doolittling", "Taming", "Bestiae Sermo"],
-    affinity: ["Gangrel", "Nosferatu", "Ravnos", "Tzimisce"],
+    nicknames: [
+        "Doolittling",
+        "Taming",
+        "Bestiae Sermo"
+    ],
+    affinity: [
+        "Gangrel",
+        "Nosferatu",
+        "Ravnos",
+        "Tzimisce"
+    ],
     type: "Mental",
     threat: "Low to Medium",
     resonance: "Animal Blood",
-    overview: "Animalism allows Kindred to communicate with, control, or feed more efficiently on animals. It also lets them act on the inner Beast of other vampires. Animalism only works on vertebrates unless the user has Unliving Hive, which extends the power to swarms of insects. The power is most effective on predators, and in cases where it's being used on herbivores increases the Difficulty of skills rolls by one.",
+    overview: "Animalism allows Kindred to communicate with, control, or feed more efficiently on animals. It also lets them act on the inner Beast of other vampires. Although stereotypically used by those who are social outcasts, struggling to fit into mortal society (or simply lacking the interest to), it's not a rule - example being Lettow Kaminsky, Gangrel Prince of Tucson, Arizona. Their ability to control animals lets them gather information in secret or unleash devastating attacks with their minions. Animalism only works on vertebrates unless the user has Unliving Hive, which extends the power to swarms of insects. The power is most effective on predators, and in cases where it's being used on herbivores increases the Difficulty of skills rolls by one. As example uses, Clan Gangrel may employ an animal companion using Bond Famulus, some of which they use for spying on others or attacking victims. Other Gangrel may even turn the pets on their owners using powers such as Feral Whispers or Atavism. To the Nosferatu Animalism is an incredibly useful tool that allows them to extend their influence in both information gathering and sharing. It also allows them to approach combat in a different way than other Disciplines as they swarm their opponents with hordes of creatures. With the occasional companion at their side, the Ravnos, are less alone as they travel. They may also utilize animals as spies or distractions when needed. Tzimisce may use animals to flex their power over their domain.",
     powers: {
         level1: [
             {
                 name: "Bond Famulus",
-                effect: "Create an enhanced animal companion",
+                effect: "Create an enhanced animal companion.",
                 cost: "Feed the animal a Rouse Check of the vampire's blood on three different nights, if this is purchased at character creation it is considered already done and the player may select an animal to be the famulus.",
                 prerequisite: "None",
                 amalgam: "No",
-                duration: "Only death releases the famulus",
+                duration: "Only death releases the famulus.",
                 dicePool: "Charisma + Animal Ken",
                 opposingPool: "N/A",
-                notes: "Vampires may only have one famulus but you can make animal ghouls without this",
+                notes: "Vampires may only have one famulus but you can make animal ghouls without this.",
                 source: "Vampire: The Masquerade Corebook, page 245"
             },
             {
                 name: "Sense the Beast",
-                effect: "Sense hostility and supernatural traits",
+                effect: "Sense hostility and supernatural traits.",
                 cost: "Free",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "Passive",
                 dicePool: "Resolve + Animalism",
                 opposingPool: "Composure + Subterfuge",
-                notes: "This power can also be used actively",
+                notes: "This power can also be used actively.",
                 source: "Vampire: The Masquerade Corebook, page 245"
             }
         ],
         level2: [
-      {
-        name: "Tracing the Blood",
-        effect: "Understand how others Rouse the Blood detecting Blood Surges, Blush of Life, or Disciplines",
-        cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "No",
-        duration: "One scene",
-        dicePool: "Resolve + Animalism",
-        opposingPool: "N/A",
-        notes: "Must be in sensory range. Margin determines amount of info obtained. Normal win gives general direction, crit gives precise target",
-        source: "Vampire: The Masquerade Courts of the Damned, page 214"
-      },
-
-      {
-        name: "Leash the Beast",
-        effect: "Channel their Blood to prevent the Beast from awakening",
-        cost: "One or Two Rouse Checks",
-        prerequisite: "None",
-        amalgam: "Fortitude ●",
-        duration: "N/A",
-        dicePool: "N/A",
-        opposingPool: "N/A",
-        notes: "This can also be used to turn one die's failure into a success with Frenzy tests",
-        source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
-      },
-
+            {
+                name: "Tracing the Blood",
+                effect: "Understand how others Rouse the Blood detecting Blood Surges, Blush of Life, or Disciplines",
+                cost: "One Rouse Check",
+                prerequisite: "None",
+                amalgam: "No",
+                duration: "One scene",
+                dicePool: "Resolve + Animalism",
+                opposingPool: "N/A",
+                notes: "Must be in sensory range. Margin determines amount of info obtained. Normal win gives general direction, crit gives precise target",
+                source: "Vampire: The Masquerade Courts of the Damned, page 214"
+            },
+            {
+                name: "Leash the Beast",
+                effect: "Channel their Blood to prevent the Beast from awakening",
+                cost: "One or Two Rouse Checks",
+                prerequisite: "None",
+                amalgam: "Fortitude ●",
+                duration: "N/A",
+                dicePool: "N/A",
+                opposingPool: "N/A",
+                notes: "This can also be used to turn one die's failure into a success with Frenzy tests",
+                source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
+            },
             {
                 name: "Animal Messenger",
                 effect: "Use a Famulus to send a message to someone",
@@ -99,102 +105,100 @@ export const animalism = {
             }
         ],
         level3: [
-      {
-        name: "Awaken the Parasite",
-        effect: "Awaken bugs within the body of a victim",
-        cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "No",
-        duration: "One Scene",
-        dicePool: "Resolve + Animalism",
-        opposingPool: "Composure + Resolve or Stamina + Wits (if mortal)",
-        notes: "Vampires can use this power on themselves to instill fear or disgust, they suffer a two-dice penalty for the duration of this scene",
-        source: "Vampire: The Masquerade Tattered Façade, page 90"
-      },
-
-      {
-        name: "Augury",
-        effect: "Force a swarm to form an answer to a question",
-        cost: "One Rouse Check",
-        prerequisite: "None",
-        amalgam: "Auspex ●",
-        duration: "A few minutes",
-        dicePool: "Manipulation + Animalism",
-        opposingPool: "N/A",
-        notes: "Animalism tests increase in Difficulty by 1 for rest of the session",
-        source: "Vampire: The Masquerade Tattered Façade, page 89-90"
-      },
-
+            {
+                name: "Awaken the Parasite",
+                effect: "Awaken bugs within the body of a victim.",
+                cost: "One Rouse Check",
+                prerequisite: "None",
+                amalgam: "No",
+                duration: "One Scene",
+                dicePool: "Resolve + Animalism",
+                opposingPool: "Composure + Resolve or Stamina + Wits (If mortal)",
+                notes: "Vampires can use this power on themselves to instill fear or disgust, they suffer a two-dice penalty for the duration of this scene.",
+                source: "Vampire: The Masquerade Tattered Façade, page 90"
+            },
+            {
+                name: "Augury",
+                effect: "Force a swarm to form an answer to a question.",
+                cost: "One Rouse Check",
+                prerequisite: "None",
+                amalgam: "Auspex ●",
+                duration: "A few minutes",
+                dicePool: "Manipulation + Animalism",
+                opposingPool: "N/A",
+                notes: "Animalism tests increase in Difficulty by 1 for rest of the session.",
+                source: "Vampire: The Masquerade Tattered Façade, page 89-90"
+            },
             {
                 name: "Messenger's Command",
-                effect: "Use Compel or Mesmerize through a Famulus",
+                effect: "Use Compel or Mesmerize through a Famulus.",
                 cost: "None",
                 prerequisite: "Animal Messenger and Compel or Mesmerize",
                 amalgam: "Dominate ●",
                 duration: "See Animal Messenger",
                 dicePool: "See Compel or Mesmerize",
                 opposingPool: "See Compel or Mesmerize",
-                notes: "Dominate rating cannot exceed the Animalism rating",
+                notes: "Dominate rating cannot exceed the Animalism rating.",
                 source: "Vampire: The Masquerade Players Guide, page 69"
             },
             {
                 name: "Animal Succulence",
-                effect: "Slake additional hunger from animals and counts Blood Potency as 2 levels lower in regards to slaking penalties",
+                effect: "Slake additional hunger from animals and counts Blood Potency as 2 levels lower in regards to slaking penalties.",
                 cost: "Free",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "Passive",
                 dicePool: "N/A",
                 opposingPool: "N/A",
-                notes: "This will never let the character slake to 0",
+                notes: "This will never let the character slake to 0.",
                 source: "Vampire: The Masquerade Corebook, page 246"
             },
             {
                 name: "Plague of Beasts",
-                effect: "Mark an individual as a target of animal attention",
+                effect: "Mark an individual as a target of animal attention.",
                 cost: "One Rouse Check",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "One Night",
                 dicePool: "Manipulation + Animalism",
                 opposingPool: "Composure + Animal Ken",
-                notes: "The target takes the margin of the win as a penalty against Skill pools except Physical, this also makes them easier to track down",
+                notes: "The target takes the margin of the win as a penalty against Skill pools except Physical, this also makes them easier to track down.",
                 source: "Vampire: The Masquerade Players Guide, page 69"
             },
             {
                 name: "Quell the Beast",
-                effect: "Force a vampire's beast to slumber or make a mortal lethargic",
+                effect: "Force a vampire's beast to slumber or make a mortal lethargic.",
                 cost: "One Rouse Check",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "One scene",
                 dicePool: "Charisma + Animalism",
                 opposingPool: "Stamina + Resolve",
-                notes: "Against Vampires this lasts several turns equal to test margin +1",
+                notes: "Against Vampires this lasts several turns equal to test margin +1.",
                 source: "Vampire: The Masquerade Corebook, page 246"
             },
             {
                 name: "Scent of Prey",
-                effect: "Track a mortal down who has witnessed a masquerade breach",
+                effect: "Track a mortal down who has witnessed a masquerade breach.",
                 cost: "One Rouse Check",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "One scene",
                 dicePool: "Resolve + Animalism",
                 opposingPool: "N/A",
-                notes: "It lasts one night if Critical Win",
+                notes: "It lasts one night if Critical Win.",
                 source: "Vampire: The Masquerade Sabbat: The Black Hand, page 47"
             },
             {
                 name: "Unliving Hive",
-                effect: "Extends Animalism influence to swarms of insects",
+                effect: "Extends Animalism influence to swarms of insects.",
                 cost: "None",
                 prerequisite: "None",
                 amalgam: "Obfuscate ●●",
                 duration: "Passive",
                 dicePool: "N/A",
                 opposingPool: "N/A",
-                notes: "Swarms are treated as single creatures",
+                notes: "Swarms are treated as single creatures.",
                 source: "Vampire: The Masquerade Corebook, page 246"
             }
         ],
@@ -227,19 +231,19 @@ export const animalism = {
         level5: [
             {
                 name: "Animal Dominion",
-                effect: "Command flocks or packs of animals",
+                effect: "Command flocks or packs of animals.",
                 cost: "Two Rouse Checks",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "One scene or when the directive is fulfilled",
                 dicePool: "Charisma + Animalism",
                 opposingPool: "N/A",
-                notes: "This power does not summon animals, instead utilizing those already present",
+                notes: "This power does not summon animals, instead utilizing those already present.",
                 source: "Vampire: The Masquerade Corebook, page 247"
             },
             {
                 name: "Coax the Bestial Temper",
-                effect: "Either increase or decrease the Difficulty to resist Frenzy for vampires nearby",
+                effect: "Either increase or decrease the Difficulty to resist Frenzy for vampires nearby.",
                 cost: "One Rouse Check",
                 prerequisite: "None",
                 amalgam: "No",
@@ -251,27 +255,27 @@ export const animalism = {
             },
             {
                 name: "Drawing Out the Beast",
-                effect: "Transfer their terror or fury frenzy to a nearby victim",
+                effect: "Transfer their terror or fury frenzy to a nearby victim.",
                 cost: "One Rouse Check",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "Frenzy Duration",
                 dicePool: "Wits + Animalism",
                 opposingPool: "Composure + Resolve",
-                notes: "This power cannot transfer Hunger Frenzy",
+                notes: "This power cannot transfer Hunger Frenzy.",
                 source: "Vampire: The Masquerade Corebook, page 247"
             },
             {
                 name: "Spirit Walk",
-                effect: "Extends Subsume the Spirit to transfer the vampire's consciousness from one animal to another without retreating to their own body",
+                effect: "Extends Subsume the Spirit to transfer the vampire's consciousness from one animal to another without retreating to their own body.",
                 cost: "None",
                 prerequisite: "Subsume the Spirit",
                 amalgam: "No",
                 duration: "Indefinite",
                 dicePool: "N/A",
                 opposingPool: "N/A",
-                notes: "The duration is as though a critical success was rolled",
-                source: "Gehenna War, page 46"
+                notes: "The duration is as though a critical success was rolled.",
+                source: "Vampire: The Masquerade Gehenna War, page 46"
             }
         ]
     },
@@ -317,4 +321,4 @@ export const animalism = {
             source: "Vampire: The Masquerade Companion, page 28"
         }
     ]
-}; 
+};

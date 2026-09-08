@@ -10,7 +10,8 @@ export const coterieBackgrounds = {
       optional: "There exists an optional rule, however, that allows the use of Coterie Bonuses or just an increase to the starting free coterie pool by two or three dots. This rule is useful for older legacy coteries or for those simply wishing to play with more starting dots.",
       smallGroup: "A group with three or fewer players may be allowed to begin with two free dots per character as determined by their Storyteller.",
       contributions: "Players may contribute their character's advantage dots to the coterie's pool. The pool is spent collectively, however, in some groups the players may choose to control how their contributions are spent.",
-      flaws: "It is also possible to purchase coterie flaws in order to obtain more dots for the coterie during creation. Every player must agree to the flaw in order for it to be taken."
+      flaws: "It is also possible to purchase coterie flaws in order to obtain more dots for the coterie during creation. Every player must agree to the flaw in order for it to be taken.",
+      domainMerits: "If the Storyteller permits for Domain Merits to be used, players can purchase these with their Coterie Pool points. These dots count as both Merits and Traits, for a coterie that has a two-dot Chasse Domain Merit they do not need to purchase 2 dots in Chasse."
     }
   },
   domain: {

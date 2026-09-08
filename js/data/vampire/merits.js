@@ -127,7 +127,7 @@ export const merits = {
       livingInThePast: {
         name: "Living in the Past",
         dots: "(•)",
-        description: "Unable to grasp modern society's mindset, one or more of the character's Convictions reflect outdated views."
+        description: "Unable to grasp modern society's mindset, one or more of the character's convictions reflect outdated views."
       },
       archaic: {
         name: "Archaic",
@@ -148,12 +148,12 @@ export const merits = {
   },
   bonding: {
     name: "Bonding",
-    description: "These can be used together to change how the Blood Bond works.",
+    description: "These can be used together to change how the Blood Bond works. Some were introduced in Gehenna War",
     merits: {
       bondResistance: {
         name: "Bond Resistance",
         dots: "• - •••",
-        description: "Add one die to resist Blood Bonds per level of this merit."
+        description: "Add one die to resist Blood Bonds per level of this Merit."
       },
       shortBond: {
         name: "Short Bond",
@@ -168,12 +168,12 @@ export const merits = {
       bondsOfFealty: {
         name: "Bonds of Fealty",
         dots: "•••",
-        description: "Your Dominate powers do not require eye contacts on those bound to you. The character must have Dominate in order to take this."
+        description: "Their Dominate powers do not require eye contacts on those bound to them. The character must have Dominate in order to take this."
       },
       enduringBond: {
         name: "Enduring Bond",
         dots: "•",
-        description: "The bonds you create last longer, only weakening every other month"
+        description: "The bonds they create last longer, only weakening every other month"
       }
     },
     flaws: {
@@ -190,7 +190,7 @@ export const merits = {
       bondslave: {
         name: "Bondslave",
         dots: "(••)",
-        description: "Bond instantly to another kindred with just one drink, not three."
+        description: "Bond instantly to another Kindred with just one drink, not three."
       }
     }
   },
@@ -201,7 +201,7 @@ export const merits = {
       bloodhound: {
         name: "Bloodhound",
         dots: "•",
-        description: "Able to sniff out Resonance without tasting them."
+        description: "Able to sniff out resonances without tasting them."
       },
       ironGullet: {
         name: "Iron Gullet",
@@ -216,7 +216,7 @@ export const merits = {
       driveThru: {
         name: "Drive-thru",
         dots: "•",
-        description: "The character has mastered the art of feeding while on the move. Safely complete a hunt within minutes by increasing the Difficulty by 1."
+        description: "The character has mastered the art of feeding while on the move. Safely complete a hunt within minutes by increasing the difficulty by 1."
       }
     },
     flaws: {
@@ -248,12 +248,12 @@ export const merits = {
       outdatedPreference: {
         name: "Outdated Preference",
         dots: "(••)",
-        description: "Either capture and force mortals to adhere to their wanted preference, or always spend 1 Willpower to feed."
+        description: "Either capture and force mortals to adhere to their wanted preference, or always spend 1 WP to feed."
       },
       resonanceSensitivity: {
         name: "Resonance Sensitivity",
         dots: "(•)",
-        description: "One Resonance really messes with the character, causing a unique Compulsion."
+        description: "One resonance really messes with the character, causing a unique compulsion."
       },
       resonanceMimic: {
         name: "Resonance Mimic",
@@ -274,7 +274,7 @@ export const merits = {
       eatFood: {
         name: "Eat Food",
         dots: "••",
-        description: "Can consume food but still with no nourishment."
+        description: "Can consume food but still with no nourishment. It must be expelled before resting for the day."
       },
       coldDeadHunger: {
         name: "Cold Dead Hunger",
@@ -294,17 +294,17 @@ export const merits = {
       nuitMode: {
         name: "Nuit Mode",
         dots: "••",
-        description: "The Kindred's body does not automatically revert to its death-state each night, enabling them to keep new haircuts and body modifications if they choose. They can mend any changes after a death-state reset anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1."
+        description: "The Kindred's body does not automatically revert to it's death-state each night, enabling them to keep new haircuts and body modifications if they choose. They can mend any changes after a death-state reset anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1."
       },
       objectOfPower: {
         name: "Object of Power",
         dots: "• - •••",
-        description: "Rare but powerful items: • Reroll one die per story, excluding Hunger. •• Gain one bonus die to all Level 1 Ritual tests. ••• Free premonition warning once per session when someone will cause them harm."
+        description: "Rare but powerful items:"
       },
       leyLineLeach: {
         name: "Ley Line Leach",
         dots: "•",
-        description: "The character follows ancient paths of power while traveling. After spending more than a few hours traveling to a different city or locale, negate the need for a Rouse Check for the next night."
+        description: "The player follows ancient paths of power while traveling. After spending more than a few hours traveling to a different city or locale, negate the need for a Rouse Check for the next night."
       },
       persistentBlush: {
         name: "Persistent Blush",
@@ -331,7 +331,7 @@ export const merits = {
       stakeBait: {
         name: "Stake Bait",
         dots: "(••)",
-        description: "When staked they meet Final Death."
+        description: "When staked they meet final death."
       },
       starvingDecay: {
         name: "Starving Decay",
@@ -341,7 +341,7 @@ export const merits = {
       twiceCursed: {
         name: "Twice Cursed",
         dots: "(••)",
-        description: "Take the Clan's variant Bane in addition to the regular Bane. The Storyteller can prohibit this flaw if the second Bane wouldn't mesh with the chronicle."
+        description: "Take the Clan's variant Bane in addition to the regular Bane. The Storyteller can prohibit this Flaw if the second Bane wouldn't mesh with the chronicle."
       },
       cursedObject: {
         name: "Cursed Object",
@@ -356,7 +356,7 @@ export const merits = {
       landLocked: {
         name: "Land Locked",
         dots: "(•)",
-        description: "Unable to leave the land, the character must make a Fear Frenzy test at Difficulty 3 to board a boat or plane."
+        description: "Unable to leave the land, the player must make a Fear Frenzy test as Difficulty 3 to board a boat or plane."
       },
       corpseFlesh: {
         name: "Corpse Flesh",
@@ -429,7 +429,7 @@ export const merits = {
   },
   psychological: {
     name: "Psychological",
-    description: "Some of these merits are related to cults or other beliefs.",
+    description: "Some of these Merits are related to cults or other beliefs. Some were introduced in Blood Stained Love.",
     merits: {
       unholyWill: {
         name: "Unholy Will",
@@ -439,7 +439,7 @@ export const merits = {
       zealotry: {
         name: "Zealotry",
         dots: "• - •••",
-        description: "For each dot in this merit, once per session when succeeding with a normal roll that relates or aligns to the character's Conviction, turn it into a messy critical."
+        description: "For each dot in this Merit, once per session when succeeding with a normal roll that relates or aligns to the character's Conviction, turn it into a messy critical."
       },
       penitence: {
         name: "Penitence",
@@ -471,7 +471,7 @@ export const merits = {
       horribleScarsOfPenitence: {
         name: "Horrible Scars of Penitence",
         dots: "(•)",
-        description: "This flaw is equivalent to Repulsive when around those not within the cult."
+        description: "This Flaw is equivalent to Repulsive when around those not within the cult."
       },
       grovelingWorm: {
         name: "Groveling Worm",
@@ -482,7 +482,7 @@ export const merits = {
   },
   bloodTies: {
     name: "Blood Ties",
-    description: "Related to your vampiric lineage. Caitiff and Thin-bloods have lineages, however their Blood is not a cohesive enough group to be considered a clan in relation to these Merits.",
+    description: "Related to your vampiric lineage. Caitiff and Duskborn have lineages, however, their Blood is not cohesive group to be considered a clan in relation to these Merits.",
     merits: {
       consanguineousSense: {
         name: "Consanguineous Sense",
@@ -492,7 +492,7 @@ export const merits = {
       consanguineousInfluence: {
         name: "Consanguineous Influence",
         dots: "••",
-        description: "You gain a bonus die when using Mental Disciplines on a vampire of your own Clan, or a direct descendant or ancestor. You gain 2 bonus dice instead on those within 2 Generations of you such as your grandsire."
+        description: "You gain a bonus die when using Mental Disciplines on a vampire of your own Clan, or a direct descendant or ancestor. You gain 2 bonus dice instead on those within 2 generations of you such as your grandsire."
       },
       sinsOfTheFather: {
         name: "Sins of the Father",
@@ -504,7 +504,7 @@ export const merits = {
   },
   diablerie: {
     name: "Diablerie",
-    description: "Unless otherwise noted, they can only be taken if the character has committed Diablerie at least once.",
+    description: "Unless otherwise noted, they can only be taken if the character has committed Diablerie at least once",
     merits: {},
     flaws: {
       blatantDiablerist: {
@@ -515,7 +515,7 @@ export const merits = {
       inheritedBane: {
         name: "Inherited Bane",
         dots: "(••)",
-        description: "You gain another Clan's Bane in addition to your own. Tremere can use this Flaw to gain the Salubri's Bane without committing Diablerie."
+        description: "You gain another Clan's Bane in addition to your own. Tremere can use this Flaw to gain the Salubri's Bane without commiting Diablerie."
       }
     }
   },
@@ -882,17 +882,17 @@ export const merits = {
       ashfindersMemoriesOfTheFallenThinBloods: {
         name: "Memories of the Fallen (Thin-bloods)",
         dots: "••",
-        description: "Ashfinders. On Blood Alchemy rolls related to Ashe, one rolled 10 counts as two 10s. Two rolled 10s still count as four."
+        description: "On Blood Alchemy rolls related to Ashe, one rolled 10 counts as two 10s. Two rolled 10s still count as four."
       },
       ashfindersStreamer: {
         name: "Streamer",
         dots: "••",
-        description: "Ashfinders. Once per story, the character can call upon their fanbase to perform something simple and nonviolent for them."
+        description: "Once per story, the character can call upon their fanbase to perform something simple and nonviolent for them."
       },
       bahariGardener: {
         name: "Gardener",
         dots: "• - •••••",
-        description: "Bahari. Being selected members from the faith, this Merit is equivalent to Herd for the Bahari religion."
+        description: "Being selected members from the faith, this Merit is equivalent to Herd for the Bahari religion."
       },
       bahariDarkMothersSong: {
         name: "Dark Mother's Song",
@@ -902,42 +902,42 @@ export const merits = {
       churchOfCaineFireResistant: {
         name: "Fire Resistant",
         dots: "•",
-        description: "Church of Caine. Convert Aggravated Health damage from fire to Superficial Health damage equal to their Blood Potency for one Rouse Check instead of three during daysleep."
+        description: "Convert Aggravated Health damage from fire to Superficial Health damage equal to their Blood Potency for one Rouse Check instead of three during daysleep."
       },
       churchOfSetVigilant: {
         name: "Vigilant",
         dots: "••",
-        description: "Church of Set. The character knows when they are being watched unless it's through supernatural means, they still must roll to know who and where from."
+        description: "The character knows when they are being watched unless it's through supernatural means, they still must roll to know who and where from."
       },
       churchOfSetFixer: {
         name: "Fixer",
         dots: "••",
-        description: "Church of Set. Once per story, call in a favor or threaten a former client."
+        description: "Once per story, call in a favor or threaten a former client."
       },
       churchOfSetGoToGround: {
         name: "Go to Ground",
         dots: "•",
-        description: "Church of Set. Add two dice on rolls when evading pursuit."
+        description: "Add two dice on rolls when evading pursuit."
       },
       cultOfShalimInsidiousWhispers: {
         name: "Insidious Whispers",
         dots: "••",
-        description: "Cult of Shalim. When making a Social roll to undermine a Conviction, one rolled 10 counts as two 10s. Two rolled 10s still count as four."
+        description: "When making a Social roll to undermine a Conviction, one rolled 10 counts as two 10s. Two rolled 10s still count as four."
       },
       cultOfShalimGematria: {
         name: "Gematria",
         dots: "•",
-        description: "Cult of Shalim. The ability to understand a coded cipher allowing both encrypting and decrypting messages."
+        description: "The ability to understand a coded cipher allowing both encrypting and decrypting messages."
       },
       mithraicMysteriesBullSlayer: {
         name: "Bull-Slayer",
         dots: "•••",
-        description: "Mithraic Mysteries. During Extended Tests, The character can reroll up to three regular dice without spending Willpower once per scene."
+        description: "During Extended Tests, The character can reroll up to three regular dice without spending Willpower once per scene."
       },
       mithraicMysteriesBargainer: {
         name: "Bargainer",
         dots: "•",
-        description: "Mithraic Mysteries. Reduce the Difficulty to assess a transaction by 1."
+        description: "Reduce the Difficulty to assess a transaction by 1."
       },
       nephilimArchangelsGrace: {
         name: "Archangel's Grace",
@@ -959,32 +959,32 @@ export const merits = {
       ashfindersAsheAddiction: {
         name: "Ashe Addiction",
         dots: "(••)",
-        description: "Ashfinders. In addition to the Ashe rules in Cults of the Blood Gods, after a failed Blood Alchemy roll, take a two dice penalty for all actions till the session ends"
+        description: "In addition to the Ashe rules in Cults of the Blood Gods, after a failed Blood Alchemy roll, take a two dice penalty for all actions till the session ends"
       },
       churchOfCaineSchismLasombra: {
         name: "Schism (Lasombra)",
         dots: "(•)",
-        description: "Church of Caine. Suffer a two-dice penalty on Social rolls with members of your cult."
+        description: "Suffer a two-dice penalty on Social rolls with members of your cult."
       },
       churchOfSetFalseAlarm: {
         name: "False Alarm",
         dots: "(•)",
-        description: "Church of Set. Every failed Awareness roll counts as a total failure."
+        description: "Every failed Awareness roll counts as a total failure."
       },
       cultOfShalimEmpty: {
         name: "Empty",
         dots: "(•)",
-        description: "Cult of Shalim. People attempt to remove themselves from the character's unnerving presence. Subtract two dice from Social rolls"
+        description: "People attempt to remove themselves from the character's unnerving presence. Subtract two dice from Social rolls"
       },
       mithraicMysteriesFailedInitiate: {
         name: "Failed Initiate",
         dots: "(•)",
-        description: "Mithraic Mysteries. The character faltered during the process of becoming a member, being assigned a guide who will interrupt plans, offer instruction, or demand the character prove themselves at any time."
+        description: "The character faltered during the process of becoming a member, being assigned a guide who will interrupt plans, offer instruction, or demand the character prove themselves at any time."
       },
       nephilimYearning: {
         name: "Yearning",
         dots: "(•)",
-        description: "Nephilim. Missing their master, they must spend two Willpower to work against their master's wishes."
+        description: "Missing their master, they must spend two Willpower to work against their master's wishes."
       }
     }
   }

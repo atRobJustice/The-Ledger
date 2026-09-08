@@ -1,48 +1,59 @@
 export const dominate = {
   name: "Dominate",
-  nicknames: ["Snake Charming", "Mesmerism", "Mentis Imperium"],
-  affinity: ["Lasombra", "Malkavian", "Salubri", "Tremere", "Tzimisce", "Ventrue"],
+  nicknames: [
+    "Snake Charming",
+    "Mesmerism",
+    "Mentis Imperium"
+  ],
+  affinity: [
+    "Lasombra",
+    "Malkavian",
+    "Salubri",
+    "Tremere",
+    "Tzimisce",
+    "Ventrue"
+  ],
   type: "Mental",
   threat: "Low",
   resonance: "Phlegmatic",
-  overview: "Dominate gives Kindred the ability to control the actions of others, alter their memories and force others to act not of their own volition. From erasing the memories of a recent feed to enslaving mortals for the vampire to do with them as they please. Dominate gives the feeling of power, although wiser Kindred know this is only a guise from the Blood. At most levels, it requires eye contact with a single victim unless otherwise stated. At the base levels, it can wipe superficial memories or command small immediate actions of their victims and in turn, higher levels allow for more sophisticated uses. The victim needs to understand the Kindred and the Kindred needs to speak their commands. Exceptions exist with Irresistible Voice and Telepathy, the former allows commands without eye contact, and the latter without spoken words. While Dominated, victims are mindless puppets who cannot be interrogated and can only do things they could do on demand. Commands that cause social backlash or cause minor injury are always contested with the victim. The victim cannot be commanded to directly cause serious injury or death to themselves without Terminal Decree. When used against other vampires they must contest this and those with a lower generation may use Willpower to shirk off the attempt. Once Dominate has totally failed against a target, the user will not be able to use it against them for the rest of the story.",
+  overview: "Dominate gives Kindred the ability to control the actions of others, alter their memories and force others to act not of their own volition. From erasing the memories of a recent feed to enslaving mortals for the vampire to do with them as they please. Dominate gives the feeling of power, although wiser Kindred know this is only a guise from the Blood. At most levels, it requires eye contact with a single victim unless otherwise stated. At the base levels, it can wipe superficial memories or command small immediate actions of their victims and in turn, higher levels allow for more sophisticated uses. The victim needs to understand the Kindred and the Kindred needs to speak their commands. Exceptions exist with Irresistible Voice and Telepathy, the former allows commands without eye contact, and the latter without spoken words. While Dominated, victims are mindless puppets who cannot be interrogated and can only do things they could do on demand. Commands that cause social backlash or cause minor injury are always contested with the victim. The victim cannot be commanded to directly cause serious injury or death to themselves without Terminal Decree. When used against other vampires they must contest this and those with a lower generation may use Willpower to shirk off the attempt. Once Dominate has totally failed against a target, the user will not be able to use it against them for the rest of the story. The Lasombra are shameless in their use of Dominate, enjoying crushing wills and commanding obedience callously. Some Malkavians use Dominate to lift victims' minds from distraction or hide a messy feed, but the clan is infamous for Dementation, used to shatter mortal and kindred minds alike. The Salubri use Dominate to soothe others by removing troubling memories or fortify another kindred against their darker nature. Rumor has it the Tremere use Dominate to hide their ruthless pursuits of knowledge. In contrast, Tzimisce uses Dominate to acquire their possession, but also conditions servitors to never question their will. Ventrue consider their mastery of Dominate to be absolute; bending victims, enemies, and followers to will as well as maintaining the Masquerade.",
   powers: {
     level1: [
       {
         name: "Cloud Memory",
-        effect: "Make someone forget the current moment",
+        effect: "Make someone forget the current moment.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Indefinitely",
         dicePool: "Charisma + Dominate",
         opposingPool: "Wits + Resolve",
-        notes: "No rolls are needed when the target is an unprepared mortal",
+        notes: "No rolls are needed when the target is an unprepared mortal.",
         source: "Vampire: The Masquerade Corebook, page 256"
       },
       {
         name: "Compel",
-        effect: "Issue a single command",
+        effect: "Issue a single command.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "No more than one scene",
         dicePool: "Charisma + Dominate",
         opposingPool: "Intelligence + Resolve",
-        notes: "No rolls are needed when the target is an unprepared mortal. However, mortals who have been Dominated in this scene already or this goes against their nature may roll to resist",
+        notes: "No rolls are needed when the target is an unprepared mortal. However, mortals who have been Dominated in this scene already or this goes against their nature may roll to resist.",
         source: "Vampire: The Masquerade Corebook, page 256"
       },
       {
         name: "Slavish Devotion",
-        effect: "Those already underneath Dominate find it easier to resist other kindred's Dominate",
+        effect: "Those already underneath Dominate find it easier to resist other kindred's Dominate.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "Fortitude ●",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Attempts by a third party take a dice penalty equal to the other vampire's Fortitude rating",
-        source: "Vampire: The Masquerade Cults of the Blood Gods, page 104 / Players Guide, page 73"
+        notes: "Attempts by a third party take a dice penalty equal to the other vampire’s Fortitude rating.",
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 104"
       }
     ],
     level2: [
@@ -58,7 +69,6 @@ export const dominate = {
         notes: "No need to test to activate against mortals",
         source: "Vampire: The Masquerade Tattered Façade, page 96-97"
       },
-
       {
         name: "Mesmerize",
         effect: "Issue complex commands",
@@ -99,39 +109,38 @@ export const dominate = {
     level3: [
       {
         name: "Chain of Command",
-        effect: "Deliver a Mesmerize command, then invoke this power to allow the target to follow more complex commands with awareness and gains a bonus to convince others to help in fulfilling their directive",
+        effect: "Deliver a Mesmerize command, then invoke this power to allow the target to follow more complex commands with awareness and gains a bonus to convince others to help in fulfilling their directive.",
         cost: "One Rouse Check",
         prerequisite: "Mesmerize",
         amalgam: "No",
         duration: "Until the command is carried out or the scene ends",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Still pay a Rouse and roll for Mesmerize. This power doesn't let the dominated target supernaturally compel others, but allows them to better convince others to aid them",
+        notes: "Still pay a Rouse and roll for Mesmerize. This power doesn't let the dominated target supernaturally compel others, but allows them to better convince others to aid them.",
         source: "Vampire: The Masquerade Courts of the Damned, page 215"
       },
-
       {
         name: "Forgetful Mind",
-        effect: "Rewrite someone's memory",
+        effect: "Rewrite someone's memory.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "Indefinitely",
         dicePool: "Manipulation + Dominate",
         opposingPool: "Intelligence + Resolve",
-        notes: "Each point of margin on the test allows one additional memory to be altered",
+        notes: "Each point of margin on the test allows one additional memory to be altered.",
         source: "Vampire: The Masquerade Corebook, page 257"
       },
       {
         name: "Submerged Directive",
-        effect: "Implant Dominate orders as suggestions for victims",
+        effect: "Implant Dominate orders as suggestions for victims.",
         cost: "Free",
         prerequisite: "Mesmerize",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "These orders never expire until completed and targets can only have one at a time",
+        notes: "These orders never expire until completed and targets can only have one at a time.",
         source: "Vampire: The Masquerade Corebook, page 257"
       }
     ],
@@ -188,38 +197,38 @@ export const dominate = {
     level5: [
       {
         name: "Lethe's Call",
-        effect: "Erase weeks' worth of memory",
+        effect: "Erase weeks' worth of memory.",
         cost: "One Rouse Check",
         prerequisite: "Cloud Memory or Forgetful Mind",
         amalgam: "No",
         duration: "Indefinitely",
         dicePool: "Manipulation + Dominate",
         opposingPool: "Intelligence + Resolve",
-        notes: "Unprepared mortals cannot test to resist the power. With a verbal command only memories surrounding the spoken subject will be erased",
-        source: "Gehenna War, page 46"
+        notes: "Unprepared mortals cannot test to resist the power. With a verbal command only memories surrounding the spoken subject will be erased.",
+        source: "Vampire: The Masquerade Gehenna War, page 46"
       },
       {
         name: "Mass Manipulation",
-        effect: "Extend effects of Dominate to multiple targets",
+        effect: "Extend effects of Dominate to multiple targets.",
         cost: "One Rouse Check in addition to power it's added to",
         prerequisite: "None",
         amalgam: "No",
         duration: "As per power amplified",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The victims need to see the eyes of the user. The user makes the roll against the strongest of the group",
+        notes: "The victims need to see the eyes of the user. The user makes the roll against the strongest of the group.",
         source: "Vampire: The Masquerade Corebook, page 257"
       },
       {
         name: "Terminal Decree",
-        effect: "Bolster effects of Dominate to be able to circumvent victims' self-preservation",
+        effect: "Bolster effects of Dominate to be able to circumvent victims' self-preservation.",
         cost: "Free but will give Stains",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Terminal commands are always resisted instead of auto failing",
+        notes: "Terminal commands are always resisted instead of auto failing.",
         source: "Vampire: The Masquerade Corebook, page 257"
       }
     ]
@@ -230,7 +239,7 @@ export const dominate = {
       discipline: "Animalism",
       level: "●",
       dominateLevel: "●",
-      effect: "Use a Famulus to send a message to someone",
+      effect: "Use a Famulus to send a message to someone.",
       cost: "One Rouse Check per night",
       dicePool: "None",
       source: "Vampire: The Masquerade Players Guide, page 69"
@@ -280,7 +289,7 @@ export const dominate = {
       discipline: "Obfuscate",
       level: "●●●",
       dominateLevel: "●●",
-      effect: "Hide and replace emotions and thoughts against those who wish to read them, be it through mundane or supernatural means",
+      effect: "Hide and replace emotions and thoughts against those who wish to read them, be it through mundane or supernatural means.",
       cost: "One Rouse Check",
       dicePool: "Intelligence + Obfuscate",
       source: "Vampire: The Masquerade Players Guide, page 78"
@@ -346,4 +355,4 @@ export const dominate = {
       source: "Vampire: The Masquerade Companion, page 24"
     }
   ]
-}; 
+};

@@ -1,7 +1,15 @@
 export const potence = {
   name: "Potence",
-  nicknames: ["Hulking", "Blood's Might", "Percutio"],
-  affinity: ["Brujah", "Nosferatu", "Lasombra"],
+  nicknames: [
+    "Hulking",
+    "Blood’s Might",
+    "Percutio"
+  ],
+  affinity: [
+    "Brujah",
+    "Nosferatu",
+    "Lasombra"
+  ],
   type: "Physical",
   threat: "Medium to High",
   resonance: "Choleric",
@@ -10,7 +18,7 @@ export const potence = {
     level1: [
       {
         name: "Fluent Strength",
-        effect: "Reroll Blood Surge rouse checks on Strength or Potence rolls",
+        effect: "Reroll Blood Surge rouse checks on Strength or Potence rolls.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
@@ -18,30 +26,30 @@ export const potence = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Gehenna War, page 47"
+        source: "Vampire: The Masquerade Gehenna War, page 47"
       },
       {
         name: "Lethal Body",
-        effect: "Unarmed attacks do Aggravated Health damage to mortals when used and ignore one level of armor per Potence rating of user",
+        effect: "Unarmed attacks do Aggravated Health damage to mortals when used and ignore one level of armor per Potence rating of user.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
-        opposingPool: "N/A",
-        notes: "N/A",
+        opposingPool: "N/A |N/A",
+        notes: "/ Corebook, page 264",
         source: "Vampire: The Masquerade Corebook, page 264"
       },
       {
         name: "Soaring Leap",
-        effect: "Leap higher and further than usual",
+        effect: "Leap higher and further than usual.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "They can move as many meters as three times their Potence rating",
+        notes: "They can move as many meters as three times their Potence rating.",
         source: "Vampire: The Masquerade Corebook, page 264"
       }
     ],
@@ -74,50 +82,50 @@ export const potence = {
     level3: [
       {
         name: "Brutal Feed",
-        effect: "Turn feeding into a violent and messy affair that only lasts seconds to Slake the user's Hunger",
+        effect: "Turn feeding into a violent and messy affair that only lasts seconds to Slake the user's Hunger.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "One feeding",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Against vampires the number of feeding actions is halved (rounded down)",
+        notes: "Against vampires the number of feeding actions is halved (rounded down).",
         source: "Vampire: The Masquerade Corebook, page 264"
       },
       {
         name: "Exuberance",
-        effect: "Treat Potence rating as two levels higher when using Potence powers",
+        effect: "Treat Potence rating as two levels higher when using Potence powers.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This can take the relative discipline above the limit of 5. But when a critical or failure is rolled, take Aggravated Damage",
+        notes: "This can take the relative discipline above the limit of 5. But when a critical or failure is rolled, take Aggravated Damage.",
         source: "Vampire: The Masquerade Tattered Façade, page 103"
       },
       {
         name: "Spark of Rage",
-        effect: "The user can add their Potence rating to rile or incite a person or crowd to violent actions",
+        effect: "The user can add their Potence rating to rile or incite a person or crowd to violent actions.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Presence ●●●",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Against vampires, the user will roll Manipulation + Potence vs Intelligence + Composure",
+        notes: "Against vampires, the user will roll Manipulation + Potence vs Intelligence + Composure.",
         source: "Vampire: The Masquerade Corebook, page 265"
       },
       {
         name: "Uncanny Grip",
-        effect: "Strengthens their grip on most surfaces, allowing them to climb or hang unsupported",
+        effect: "Strengthens their grip on most surfaces, allowing them to climb or hang unsupported.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One scene",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "The use of this power leaves obvious traces from the damage caused",
+        notes: "The use of this power leaves obvious traces from the damage caused.",
         source: "Vampire: The Masquerade Corebook, page 265"
       },
       {
@@ -129,7 +137,7 @@ export const potence = {
         duration: "Refer Prowess",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "It cannot be used against living targets",
+        notes: "It cannot be used against living targets.",
         source: "Vampire: The Masquerade Players Guide, page 79"
       }
     ],
@@ -162,19 +170,19 @@ export const potence = {
     level5: [
       {
         name: "Earth Shock",
-        effect: "Create a shockwave to throw opponents prone",
+        effect: "Create a shockwave to throw opponents prone.",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",
         duration: "One use",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "This can only be used once per scene",
+        notes: "This can only be used once per scene.",
         source: "Vampire: The Masquerade Corebook, page 265"
       },
       {
         name: "Fist of Caine",
-        effect: "Inflict Aggravated Health damage to mortals and supernatural creatures alike",
+        effect: "Inflict Aggravated Health damage to mortals and supernatural creatures alike.",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
@@ -186,14 +194,14 @@ export const potence = {
       },
       {
         name: "Subtle Hammer",
-        effect: "Project the vampire's power in a specific body part",
+        effect: "Project the vampire’s power in a specific body part.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "You cannot make another attack in the same move, but body parts that have limited movement receive a four-dice bonus or more",
+        notes: "You cannot make another attack in the same move, but body parts that have limited movement receive a four-dice bonus or more.",
         source: "Vampire: The Masquerade Players Guide, page 79"
       }
     ]
@@ -220,4 +228,4 @@ export const potence = {
       source: "Vampire: The Masquerade Winter's Teeth #3"
     }
   ]
-}; 
+};

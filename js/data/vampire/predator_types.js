@@ -1,13 +1,13 @@
 export const predatorTypes = {
   name: "Predator Types",
-  description: "Each vampire has their preferred method of hunting, which affects their starting specializations, Disciplines, Merits and Flaws, as their experience hunting blood shapes their skillset.",
+  description: "Each vampire has their preferred method; be it stalking their prey in a dark alley or seducing a mortal to follow them into a dimly lit bathroom at a club. What they choose will affect starting specializations, Disciplines, Merits and Flaws, as their experience hunting blood shapes their skillset. When selecting a Predator type consider what led them to take this approach, what shaped them in their unlife or even mortal life, and into being comfortable with this style as their methodology of quenching their thirst. As opportunities present themselves, Kindred may attempt to change up their feeding styles even when their instincts drive them towards a default pattern. The Attribute and Skill combination is dependent on their approach which is guided by the method which they pick and in some cases, Disciplines or Merits and Flaws might also alter the pool. In an improvisational moment players may suggest alternative pools to those suggested below. The Storyteller is able to decide if it will work or give complications.",
   types: {
     alleycat: {
       name: "Alleycat",
-      description: "Those who find violence to be the quickest way to get what they want might gravitate towards this hunting style. Alleycats are a vampire who feeds by brute force and outright attack and feeds from whomever they can when they can.",
+      description: "Those who find violence to be the quickest way to get what they want might gravitate towards this hunting style. Alleycats are a vampire who feeds by brute force and outright attack and feeds from whomever they can when they can. Intimidation is a route easily taken to make their victims cower or even Dominating the victims to not report the attack or mask it as something else entirely.",
       dicePools: [
-        "Strength + Brawl (take blood by force or threat)",
-        "Wits + Streetwise (find criminals as if a vigilante figure)"
+        "Strength + Brawl is to take blood by force or threat",
+        "Wits + Streetwise can be used to find criminals as if a vigilante figure"
       ],
       benefits: [
         "Gain one specialty in either Intimidation (Stickups) or Brawl (Grappling)",
@@ -21,9 +21,9 @@ export const predatorTypes = {
     },
     bagger: {
       name: "Bagger",
-      description: "Sometimes the best blood doesn't come from a live body. Baggers are kindred who take an approach most are unable to with their ability to consume preserved, defractionated or rancid blood through Iron Gullet, allowing them to feed from unusual sources such as blood bags or corpses.",
+      description: "Sometimes the best blood doesn't come from a live body. Baggers are kindred who take an approach most are unable to with their ability to consume preserved, defractionated or rancid blood through (•••) Iron Gullet, allowing them to feed from unusual sources such as blood bags or corpses. Perhaps they work in a hospital or blood bank or they might even have enough knowledge about the black market to obtain their blood. Ventrue are unable to pick this Predator type.",
       dicePools: [
-        "Intelligence + Streetwise (find, gain access and purchase the goods)"
+        "Intelligence + Streetwise can be used to find, gain access and purchase the goods"
       ],
       benefits: [
         "Gain one specialty in either Larceny (Lock Picking) or Streetwise (Black Market)",
@@ -38,7 +38,10 @@ export const predatorTypes = {
     },
     bloodLeech: {
       name: "Blood Leech",
-      description: "Some Kindred might see feeding from mortals as inherently wrong or disgusting regardless of others' rationale. Blood Leech is a feeding style that is not looked upon kindly by many vampires.",
+      description: "Some Kindred might see feeding from mortals as inherently wrong or disgusting regardless of others' rationale. Blood Leech is a feeding style that is not looked upon kindly by many vampires making it risky unless the Kindred has a position of power and can keep their little secret secure. Regardless, with their rejection of mortal blood, they instead feed upon the vitae of other vampires through hunting those weaker than them, coercion, or taking Blood as payment.",
+      dicePools: [
+        "This Predator Type is suggested to not be abstracted down to a dice pool"
+      ],
       benefits: [
         "Gain one specialty in either Brawl (Kindred) or Stealth (Against Kindred)",
         "Gain one dot of Celerity or Protean",
@@ -53,9 +56,9 @@ export const predatorTypes = {
     },
     cleaver: {
       name: "Cleaver",
-      description: "The sweetest blood might be from those closest to them, the Cleaver takes advantage of that idea while taking blood from either their own close family and friends or even those close to someone else.",
+      description: "The sweetest blood might be from those closest to them, the Cleaver takes advantage of that idea while taking blood from either their own close family and friends or even those close to someone else. Covertly stealing the blood from their victims while still maintaining ties to them. Cleavers will go to extreme lengths to keep their condition a secret from their victims but some may instead take a less than pleasant route. The Camarilla forbids the practice of taking a human family in this fashion, as it's a breach waiting to happen.",
       dicePools: [
-        "Manipulation + Subterfuge (condition the victims, socializing with them and feeding from them without the cover being blown)"
+        "Manipulation + Subterfuge is used to condition the victims, socializing with them and feeding from them without the cover being blown"
       ],
       benefits: [
         "Gain one specialty in either Persuasion (Gaslighting) or Subterfuge (Coverups)",
@@ -70,9 +73,9 @@ export const predatorTypes = {
     },
     consensualist: {
       name: "Consensualist",
-      description: "Consent is a dangerous thing to gather when they're a blood-sucking monster, but Consensualists make do. They never feed against the victim's free will.",
+      description: "Consent is a dangerous thing to gather when they're a blood-sucking monster, but Consensualists make do. They never feed against the victim's free will, instead pretending to be a representative of a charity blood drive, someone with a blood kink within the kink community, or blatantly admitting to their victims what they are and getting their permission to feed. To the Camarilla, the last method is considered a masquerade breach but perhaps to a philosophical Anarch, it might be an acceptable risk to take.",
       dicePools: [
-        "Manipulation + Persuasion (take blood by consent, under the guide of medical work or mutual kink)"
+        "Manipulation + Persuasion allows the kindred to take blood by consent, under the guide of medical work or mutual kink"
       ],
       benefits: [
         "Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Vessels)",
@@ -88,9 +91,9 @@ export const predatorTypes = {
     },
     farmer: {
       name: "Farmer",
-      description: "Perhaps this vampire was once someone who worked as an activist or an aid worker, regardless of their reasoning the Farmer only feed from animals as their primary source of blood.",
+      description: "Perhaps this vampire was once someone who worked as an activist or an aid worker, regardless of their reasoning the Farmer only feed from animals as their primary source of blood. The beast may gnaw at them with its throes of hunger, but they've successfully managed to avoid killing mortals except on the occasional bad night. Ventrue may not pick this Predator type and it cannot be taken on characters with Blood Potency 3 or higher.",
       dicePools: [
-        "Composure + Animal Ken (find and catch the chosen animal)"
+        "Composure + Animal Ken is the roll to find and catch the chosen animal"
       ],
       benefits: [
         "Gain one specialty in either Animal Ken (specific animal) or Survival (Hunting)",
@@ -107,9 +110,9 @@ export const predatorTypes = {
     },
     osiris: {
       name: "Osiris",
-      description: "More than not, Osiris are celebrities within mortal society. Musicians, writers, priests, and even cult leaders may find an easy time finding their blood by utilizing those already around them.",
+      description: "More than not, Osiris are celebrities within mortal society. Musicians, writers, priests, and even cult leaders may find an easy time finding their blood by utilizing those already around them. They tend to feed from their fans or worshippers which means they have easy access to blood, but followers tend to attract their own problems with the local authority or worse.",
       dicePools: [
-        "Manipulation + Subterfuge or Intimidation + Fame (feed from the adoring fans)"
+        "Manipulation + Subterfuge or Intimidation + Fame are both used to feed from the adoring fans"
       ],
       benefits: [
         "Gain one specialty in either Occult (specific tradition) or Performance (specific entertainment field)",
@@ -123,9 +126,9 @@ export const predatorTypes = {
     },
     sandman: {
       name: "Sandman",
-      description: "If they never wake during the feed it never happened, right? Sandman prefers to hunt on sleeping mortals than anyone else by using stealth or Disciplines to feed from their victims.",
+      description: "If they never wake during the feed it never happened, right? Sandman prefers to hunt on sleeping mortals than anyone else by using stealth or Disciplines to feed from their victims they are rarely caught in the act, though when they are, problems are sure to occur. Maybe they were anti-social in life or perhaps they find the route of seduction or violence too much for them and find comfort in the silence of this feeding style.",
       dicePools: [
-        "Dexterity + Stealth (casing a location, breaking in and feeding without leaving a trace)"
+        "Dexterity + Stealth is for casing a location, breaking in and feeding without leaving a trace"
       ],
       benefits: [
         "Gain one specialty in either Medicine (Anesthetics) or Stealth (Break-in)",
@@ -136,9 +139,9 @@ export const predatorTypes = {
     },
     sceneQueen: {
       name: "Scene Queen",
-      description: "Similar to Osiris these Kindred find comfort in a particular subculture rather than a wider audience. Hunting in or around a subculture they likely belonged to in their previous life.",
+      description: "Similar to Osiris these Kindred find comfort in a particular subculture rather than a wider audience. Hunting in or around a subculture they likely belonged to in their previous life, their victims adore them for their status, and those who have an inkling of what they are disbelieved. The scene itself could be anything, from street culture to high fashion, and the unifying trait is the use of those around them.",
       dicePools: [
-        "Manipulation + Persuasion (feed from those within the Kindred's subgroup, through conditioning and isolation to gain blood or gaslighting or forced silence)"
+        "Manipulation + Persuasion aids in feeding from those within the Kindred's subgroup, through conditioning and isolation to gain blood or gaslighting or forced silence"
       ],
       benefits: [
         "Gain one specialty in either Etiquette (specific scene), Leadership (specific scene), or Streetwise (specific scene)",
@@ -153,9 +156,9 @@ export const predatorTypes = {
     },
     siren: {
       name: "Siren",
-      description: "Everyone knows that sex sells and the Siren uses this to their advantage. Almost exclusively feeding while feigning sex or sexual interest, they utilize Disciplines and seduction to lure away a possible meal.",
+      description: "Everyone knows that sex sells and the Siren uses this to their advantage. Almost exclusively feeding while feigning sex or sexual interest, they utilize Disciplines and seduction to lure away a possible meal. Moving through clubs and one-night stands are skills they've mastered and regardless of how sexy they feel, deep in their darkest moments, they realize at best they are problematic and at worst a serial sexual assaulter. In life, they might have been a scriptwriter, a small time actor who never reached the big screen, a well-known kinkster or even a virgin looking to make up for the lost time.",
       dicePools: [
-        "Charisma + Subterfuge (feed under the guise of sexual acts)"
+        "Charisma + Subterfuge is how sirens feed under the guise of sexual acts"
       ],
       benefits: [
         "Gain one specialty in either Persuasion (Seduction) or Subterfuge (Seduction)",
@@ -169,9 +172,9 @@ export const predatorTypes = {
     },
     extortionist: {
       name: "Extortionist",
-      description: "On the surface, Extortionists acquire their blood in exchange for services such as protection, security, or surveillance. Though, for as many times as the service might be genuine, there are many more times when the service has been offered from fabricated information.",
+      description: "On the surface, Extortionists acquire their blood in exchange for services such as protection, security, or surveillance. Though, for as many times as the service might be genuine, there are many more times when the service has been offered from fabricated information to make the deal feel that much sweeter.",
       dicePools: [
-        "Strength/Manipulation + Intimidation (feed through coercion)"
+        "Strength/Manipulation + Intimidation to feed through coercion"
       ],
       benefits: [
         "Gain one specialty in either Intimidation(Coercion) or Larceny(Security)",
@@ -187,8 +190,8 @@ export const predatorTypes = {
       name: "Graverobber",
       description: "Similar to Baggers these kindred understand there's no good in wasting good blood, even if others cannot consume it. Often they find themselves digging up corpses or working for mortuaries to obtain their bodies, yet regardless of what the name suggests, they prefer feeding from mourners at a gravesite or a hospital. This Predator Type often requires a haven or other connections to a church, hospital, or morgue as a way to obtain the bodies.",
       dicePools: [
-        "Resolve + Medicine (sifting through the dead for a body with blood)",
-        "Manipulation + Insight (moving among miserable mortals)"
+        "Resolve + Medicine for sifting through the dead for a body with blood",
+        "Manipulation + Insight for moving among miserable mortals"
       ],
       benefits: [
         "Gain one in specialty either Occult (Grave Rituals) or Medicine (Cadavers)",
@@ -203,9 +206,9 @@ export const predatorTypes = {
     },
     roadsideKiller: {
       name: "Roadside Killer",
-      description: "These Kindred never stay in one spot for too long and are always on the move, hunting those who won't be missed if they disappear alongside the road.",
+      description: "These Kindred never stay in one spot for too long and are always on the move, hunting those who won't be missed if they disappear alongside the road. Roadside Killers know the risk is just as worth as the reward. Perhaps this Kindred was once a truck driver themselves or maybe they met their fate alongside the road as well.",
       dicePools: [
-        "Dexterity/Charisma + Drive (feed by picking up down and outs with no other options)"
+        "Dexterity/Charisma + Drive to feed by picking up down and outs with no other options"
       ],
       benefits: [
         "Gain one in specialty either Survival (the road) or Investigation (vampire cant)",
@@ -219,9 +222,9 @@ export const predatorTypes = {
     },
     grimReaper: {
       name: "Grim Reaper",
-      description: "Hunting inside hospice care facilities, assisted living homes, and other places where those who are near death reside. Grim Reapers are constantly on the move in an effort to locate new victims near the end of their lives to feed from.",
+      description: "Hunting inside hospice care facilities, assisted living homes, and other places where those who are near death reside. Grim Reapers are constantly on the move in an effort to locate new victims near the end of their lives to feed from. Hunting in this style may also earn a taste for specific diseases making them easier to identify.",
       dicePools: [
-        "Intelligence + Awareness/Medicine (find victims)"
+        "Intelligence + Awareness/Medicine in order to find victims"
       ],
       benefits: [
         "Gain one specialty in either Awareness (Death) or Larceny (Forgery)",
@@ -236,10 +239,10 @@ export const predatorTypes = {
     },
     montero: {
       name: "Montero",
-      description: "Montero carry on a tradition held by aristocratic Spaniards where they hunted deer and used teams to drive them into the huntsman. Retainers drive the victims towards the vampire for them to feed.",
+      description: "Montero carry on a tradition held by aristocratic Spaniards where they hunted deer and used teams to drive them into the huntsman. Retainers drive the victims towards the vampire for them to feed. This is not always done in the traditional style but in the forms of long cons, flash mobs, or gang pursuits.",
       dicePools: [
-        "Intelligence + Stealth (expert planning of well-trained Retainers)",
-        "Resolve + Stealth (well-practiced plan and patient waiting)"
+        "Intelligence + Stealth represents the expert planning of well-trained Retainers",
+        "Resolve + Stealth represents a well-practiced plan and patient waiting"
       ],
       benefits: [
         "Gain one specialty in either Leadership (Hunting Pack) or Stealth (Stakeout)",
@@ -255,8 +258,8 @@ export const predatorTypes = {
       name: "Pursuer",
       description: "For those who prefer to stalk their victim, learning their habits and routines, determining if they will cause an outcry if they disappear or not. The Pursuer strikes when the time is right and when hunger is at a perfect balance.",
       dicePools: [
-        "Intelligence + Investigation (locate and find a victim no one will notice is gone)",
-        "Stamina + Stealth (long stalking of unaware urban victims)"
+        "Intelligence + Investigation to locate and find a victim no one will notice is gone",
+        "Stamina + Stealth for long stalking of unaware urban victims"
       ],
       benefits: [
         "Gain one specialty in either Investigation (Profiling) or Stealth (Shadowing)",
@@ -271,11 +274,11 @@ export const predatorTypes = {
     },
     trapdoor: {
       name: "Trapdoor",
-      description: "Much like the spider, this vampire builds a nest and lures their prey inside. Be it an amusement park, an abandoned house, or an underground club, the victim comes to them.",
+      description: "Much like the spider, this vampire builds a nest and lures their prey inside. Be it an amusement park, an abandoned house, or an underground club, the victim comes to them. There the trapdoor might only play with their mind and terrorize them, imprison them to drain them slowly, or take a deep drink and then send them home.",
       dicePools: [
-        "Charisma + Stealth (the victims that enter expecting a fun-filled night)",
-        "Dexterity + Stealth (feed upon trespassers)",
-        "Wits + Awareness + Haven dots (navigate the maze of the den itself)"
+        "Charisma + Stealth for the victims that enter expecting a fun-filled night",
+        "Dexterity + Stealth to feed upon trespassers",
+        "Wits + Awareness + Haven dots is used to navigate the maze of the den itself"
       ],
       benefits: [
         "Gain one specialty in either Persuasion (Marketing) or Stealth (Ambushes or Traps)",
@@ -290,7 +293,7 @@ export const predatorTypes = {
     },
     titheCollector: {
       name: "Tithe Collector",
-      description: "Intended for ancilla characters. They hold enough power that other Kindred around them pay tribute in the form of specially selected vessels, who are delivered regularly or upon request. The vessels must be kept in reasonable condition and returned, but otherwise the Masquerade is everyone else's problem.",
+      description: "This predator type is intended for ancilla characters. They hold enough power that other Kindred around them pay tribute in the form of specially selected vessels, who are delivered regularly, or upon request. The vessels must be kept in reasonable condition and returned, but otherwise the Masquerade is everyone else's problem.",
       dicePools: [],
       benefits: [
         "Gain one specialty in either Intimidation (Kindred) or Leadership (Kindred)",
@@ -304,4 +307,4 @@ export const predatorTypes = {
       source: "Vampire: The Masquerade In Memoriam, pages 17-18"
     }
   }
-}; 
+};

@@ -1,35 +1,45 @@
 export const auspex = {
   name: "Auspex",
-  nicknames: ["Voyeurism", "Scrying", "Anima Visus"],
-  affinity: ["Hecata", "Malkavian", "Salubri", "Toreador", "Tremere"],
+  nicknames: [
+    "Voyeurism",
+    "Scrying",
+    "Anima Visus"
+  ],
+  affinity: [
+    "Hecata",
+    "Malkavian",
+    "Salubri",
+    "Toreador",
+    "Tremere"
+  ],
   type: "Mental",
   threat: "Low",
   resonance: "Phlegmatic",
-  overview: "Considered a potent double sword, Auspex allows Kindred to sift out the truth from lies and read the minds around them, able to feel emotions from others beyond mortal skill and receive horrifying flashes of the future. Reality can be perceived differently by the Auspex user, giving them information that they may wish to never know and, in turn, opens the gateway to paranoia. Those able to master this volatile Discipline make excellent spies, detectives, and seers in courts and factions.",
+  overview: "Considered a potent double sword, Auspex allows Kindred to sift out the truth from lies and read the minds around them, able to feel emotions from others beyond mortal skill and receive horrifying flashes of the future. Reality can be perceived differently by the Auspex user, giving them information that they may wish to never know and, in turn, opens the gateway to paranoia. Those able to master this volatile Discipline make excellent spies, detectives, and seers in courts and factions. Certain Auspex powers can be used to foil supernatural stealth such as Sense the Unseen or to determine those under supernatural manipulation with abilities like Scry the Soul. Higher levels of this power can be used to survey and invade minds. Visions are potent but unreliable seeing flashes of the past, future, or imminent death. The Hecata have used Auspex to see spirits remaining in this realm and to power their necromancy. They love to see fate's grand design to plan grand schemes and meddle with fate's design as seen with Fatal Precognition. Malkavians are known for their potent foresight and supernatural senses to determine what makes mortals tick and deep dive into their psyche. The Salubri uses Auspex to see the hidden truth of the world and to see the often overlooked. Auspex is important when it comes to their ability to aid or hinder another kindred as displayed with Panacea and Unburdening the Bestial Soul. Toreador typically use Auspex to find susceptible victims and experience new sensations from mortals. They also manipulate kindred with their discovered secrets and desires. Practical Tremere use Auspex to see deeper into the unseen, mystical information gathering, and find pliable mortals to manipulate.",
   powers: {
     level1: [
       {
         name: "Heightened Senses",
-        effect: "Enhance vampiric senses and add Auspex rating to all perception rolls",
+        effect: "Enhance vampiric senses and add Auspex rating to all perception rolls.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Until Deactivated",
         dicePool: "Wits + Resolve",
         opposingPool: "N/A",
-        notes: "Having the power activated for long periods might require the use of Willpower",
+        notes: "Having the power activated for long periods might require the use of Willpower.",
         source: "Vampire: The Masquerade Corebook, page 249"
       },
       {
         name: "Sense the Unseen",
-        effect: "Sense supernatural activity",
+        effect: "Sense supernatural activity.",
         cost: "Free",
         prerequisite: "None",
         amalgam: "No",
         duration: "Passive",
         dicePool: "Wits/Resolve + Auspex",
-        opposingPool: "N/A",
-        notes: "If the target is using Obfuscate they oppose using Wits + Obfuscate vs the user's Wits + Auspex, normal searches use Resolve",
+        opposingPool: "N/A |If the target is using Obfuscate they oppose using Wits + Obfuscate vs the user's Wits + Auspex, normal searches use Resolve.",
+        notes: "/ Corebook, page 249",
         source: "Vampire: The Masquerade Corebook, page 249"
       }
     ],
@@ -90,7 +100,7 @@ export const auspex = {
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
-        duration: "Instantaneous or one scene on crit",
+        duration: "Instantaneous or one scene on crit.",
         dicePool: "Intelligence + Auspex",
         opposingPool: "N/A",
         notes: "ST discretion on if a question is too complex. Difficulty lessens with more people present",
@@ -102,7 +112,7 @@ export const auspex = {
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
-        duration: "As long as vampire touches target",
+        duration: "As long as vampire tocuhes target.",
         dicePool: "Intelligence + Auspex",
         opposingPool: "Composure + Resolve",
         notes: "Most immediate superiors are detected first, margin may give more superiors",
@@ -120,7 +130,6 @@ export const auspex = {
         notes: "Requires a mortal body who died within the scene",
         source: "Vampire: The Masquerade Tattered Façade, page 91"
       },
-
       {
         name: "Vermin Vision",
         effect: "Share the senses with animals",
@@ -183,7 +192,6 @@ export const auspex = {
         notes: "N/A",
         source: "Vampire: The Masquerade Tattered Façade, pages 91-92"
       },
-
       {
         name: "Spirit's Touch",
         effect: "Gathering emotional residue from an object or location",
@@ -244,7 +252,7 @@ export const auspex = {
         dicePool: "Composure + Auspex",
         opposingPool: "N/A",
         notes: "This power only works on vampires with a lower Humanity rating",
-        source: "Vampire: The Masquerade Companion, page 24 / Players Guide, page 71"
+        source: "Vampire: The Masquerade Companion, page 24"
       }
     ]
   },
@@ -254,7 +262,7 @@ export const auspex = {
       discipline: "Fortitude",
       level: "●●",
       auspexRequired: "●",
-      effect: "Heal mortals faster with the Blood",
+      effect: "Heal mortals faster with the Blood.",
       cost: "None other than the Rouse Checks to give Blood",
       dicePool: "N/A",
       source: "Vampire: The Masquerade Players Guide, page 75"
@@ -274,7 +282,7 @@ export const auspex = {
       discipline: "Presence",
       level: "●●●",
       auspexRequired: "●",
-      effect: "Throw their voice from any point within sight and leave the voice there",
+      effect: "Throw their voice from any point within sight and leave the voice there.",
       cost: "One Rouse Check",
       dicePool: "N/A",
       source: "Vampire: The Masquerade Players Guide, page 80"
@@ -284,7 +292,7 @@ export const auspex = {
       discipline: "Oblivion",
       level: "●●",
       auspexRequired: "●●",
-      effect: "Increase the chances of a mortal being harmed by exterior forces",
+      effect: "Increase the chances of a mortal being harmed by exterior forces.",
       cost: "One Rouse Check",
       dicePool: "Resolve + Oblivion",
       source: "Vampire: The Masquerade Players Guide, page 87"
@@ -338,6 +346,16 @@ export const auspex = {
       cost: "One or more Rouse Check",
       dicePool: "Charisma/Manipulation + Craft",
       source: "Vampire: The Masquerade Winter's Teeth #3"
+    },
+    {
+      name: "Doubletalk",
+      discipline: "Obfuscate",
+      level: "●●",
+      auspexRequired: "●",
+      effect: "Say one thing but convey something else in secret.",
+      cost: "One Rouse Check",
+      dicePool: "Composure + Obfuscate",
+      source: "Vampire: The Masquerade Blood Stained Love, page 152"
     }
   ]
-}; 
+};

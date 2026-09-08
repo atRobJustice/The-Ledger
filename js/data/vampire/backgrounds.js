@@ -1,7 +1,7 @@
 export const backgrounds = {
   allies: {
     name: "Allies",
-    description: "Groups of mortals who aid a vampire. The higher the rating, the more effective and reliable the allies.",
+    description: "Groups of mortals who are willing to give aid to a vampire or mortals who have a vendetta.",
     merits: {
       effectiveness: {
         name: "Effectiveness",
@@ -24,7 +24,7 @@ export const backgrounds = {
   },
   contacts: {
     name: "Contacts",
-    description: "Mortals who can provide valuable information or items.",
+    description: "A way to obtain items otherwise much more difficult to obtain on one's own.",
     merits: {
       contacts: {
         name: "Contacts",
@@ -35,7 +35,7 @@ export const backgrounds = {
   },
   fame: {
     name: "Fame",
-    description: "Public notoriety of a character. Fame can be both a blessing and a curse.",
+    description: "The public notoriety of a character, for good or bad.",
     merits: {
       fame: {
         name: "Fame",
@@ -45,12 +45,12 @@ export const backgrounds = {
       influencer: {
         name: "Influencer",
         dots: "•",
-        description: "Requires Fame ••+. People idolize the character to the point they take the character's words as gospel. Have the equivalent Influence rating equal to your Fame minus one towards a fan or related field once per story."
+        description: "(Requires Fame ••+)People idolize the character to the point they take the character's words as gospel. Have the equivalent Influence rating equal to your Fame minus one towards a fan or related field once per story."
       },
       enduringFame: {
         name: "Enduring Fame",
         dots: "•",
-        description: "Requires Fame •••+. The character is so beloved that fame and stardom can never leave them. Fame lost during the story fully recovers at the start of the next story."
+        description: "(Requires Fame •••+)The character is so beloved that fame and stardom can never leave them. Fame lost during the story fully recovers at the start of the next story."
       }
     },
     flaws: {
@@ -73,7 +73,7 @@ export const backgrounds = {
   },
   influence: {
     name: "Influence",
-    description: "Ability to sway mortal communities.",
+    description: "The ability they have to influence how other groups react or act.",
     merits: {
       influence: {
         name: "Influence",
@@ -96,7 +96,7 @@ export const backgrounds = {
   },
   haven: {
     name: "Haven",
-    description: "The vampire's residence during the day.",
+    description: "The place where a vampire resides during the day. Havens have additional addon Merits that can change the function of the location, aid in certain actions or even hinder certain interactions. Some Kindred turn their Havens into sacred grounds, as seen with the Holy Ground and Shrine Merits.",
     merits: {
       haven: {
         name: "Haven",
@@ -121,7 +121,7 @@ export const backgrounds = {
       laboratory: {
         name: "Laboratory",
         dots: "• +",
-        description: "Each dot of this merit contributes to dice rolls related to one Science or Technology specialty or for Alchemy pools when using Fixatio. Not available in one dot havens."
+        description: "Each dot of this Merit contributes to dice rolls related to one Science or Technology specialty or for Alchemy pools when using Fixatio. Not available in one dot havens."
       },
       library: {
         name: "Library",
@@ -131,7 +131,7 @@ export const backgrounds = {
       location: {
         name: "Location",
         dots: "•",
-        description: "The place in which this haven resides gives a +2 dice bonus (or +2 enemies Difficulty) on relevant rolls from either Chasse or base Haven rating. If this does not work, with the Storyteller the player can craft a custom bonus."
+        description: "The place in which this haven resides gives a +2 dice bonus (or +2 enemies Difficulty) on relevant rolls from either Chasse or base Haven rating. If this does not work, with the Storyteller the player can craft a custom bonus. Example, living in the heart of downtown allows the character to have a +2 bonus to etiquette rolls to pick up local rumors."
       },
       luxury: {
         name: "Luxury",
@@ -141,12 +141,12 @@ export const backgrounds = {
       postern: {
         name: "Postern",
         dots: "• +",
-        description: "The haven has some kind of secret exit that allows them a safe passage out. For each dot of this merit add one die to pools of evasion or escaping surveillance near the haven."
+        description: "The haven has some kind of secret exit that allows them a safe passage out. For each dot of this Merit add one die to pools of evasion or escaping surveillance near the haven."
       },
       securitySystem: {
         name: "Security System",
         dots: "• +",
-        description: "For each dot of this merit, add one die to pools to resist unwelcome guests into the haven."
+        description: "For each dot of this Merit, add one die to pools to resist unwelcome guests into the haven."
       },
       surgery: {
         name: "Surgery",
@@ -156,7 +156,7 @@ export const backgrounds = {
       warding: {
         name: "Warding",
         dots: "• +",
-        description: "This haven possesses some type of magic warding that repels supernatural entities. Each dot of this merit adds one die to pools to resist supernatural scrying and whatever else the Storyteller allows."
+        description: "This haven possesses some type of magic warding that repels supernatural entities. Each dot of this Merit adds one die to pools to resist supernatural scrying and whatever else the Storyteller allows."
       },
       holyGround: {
         name: "Holy Ground",
@@ -171,22 +171,22 @@ export const backgrounds = {
       businessEstablishment: {
         name: "Business Establishment",
         dots: "•• - •••",
-        description: "The haven is rented out to a business or is run as a business by the Kindred themselves. This gives both benefits and drawbacks, such as a ready stream of income but also being very much on the grid and local enforcement being aware of the location. This reduces the Haven's base dots by one for pools involving the Haven's privacy and defenses against either (pick one) financial or criminal intrusions. Dots in this merit roughly equal Resources but do not stack onto existing Resources for the character."
+        description: "The haven is rented out to a business or is run as a business by the Kindred themselves. This gives both benefits and drawbacks, such as a ready stream of income but also being very much on the grid and local enforcement being aware of the location. This reduces the Haven's base dots by one for pools involving the Haven's privacy and defenses against either (pick one) financial or criminal intrusions. Dots in this Merit roughly equal Resources but do not stack onto existing Resources for the character."
       },
       furcus: {
         name: "Furcus",
         dots: "• - •••",
-        description: "The haven is located on veins of the earth or a frayed spot in the Veil. Each dot in this merit adds one die to Rituals or Ceremony dice pools used at the furcus."
+        description: "The haven is located on veins of the earth or a frayed spot in the Veil. Each dot in this Merit adds one die to Rituals or Ceremony dice pools used at the furcus."
       },
       machineShop: {
         name: "Machine Shop",
         dots: "• +",
-        description: "Each dot of this merit adds one dice to the pool for Craft rolls. It also adds this to other tests related to building, repairing, or disassembling machinery or equipment."
+        description: "Each dot of this Merit adds one dice to the pool for Craft rolls. It also adds this to other tests related to building, repairing, or disassembling machinery or equipment."
       },
       mobile: {
         name: "Mobile",
         dots: "• - •••",
-        description: "Mobile haven (car, van, boat, plane, etc.). Size equals the number of dots. Coterie dots may be used for this merit."
+        description: "Mobile haven (car, van, boat, plane, etc.). Size equals the number of dots. (Coterie dots may be used for this merit)."
       },
       armored: {
         name: "Armored",
@@ -238,13 +238,13 @@ export const backgrounds = {
       temperamental: {
         name: "Temperamental",
         dots: "(•)",
-        description: "Requires Mobile Haven merit. Vehicle is mechanically unreliable; any failed Drive tests sees the vehicle grind to a halt, requiring a successful repair test to restart. The flaw follows the Player even if they switch to another vehicle, unless bought off with experience."
+        description: "Requires Mobile Haven merit. Vehicle is mechanically unreliable; Any failed Drive tests sees the vehicle grind to a halt, requiring a successful repair test to restart. The flaw follows the Player even if they switch to another vehicle, unless bought off with experience."
       }
     }
   },
   herd: {
     name: "Herd",
-    description: "A group of willing vessels for feeding.",
+    description: "Merits and Flaws pertaining to the vampire's ability to have free access to mortal blood through forming a group of willing vessels.",
     merits: {
       herd: {
         name: "Herd",
@@ -262,7 +262,7 @@ export const backgrounds = {
   },
   mask: {
     name: "Mask",
-    description: "The vampire's fake identity.",
+    description: "The status of the Kindred's identification.",
     merits: {
       mask: {
         name: "Mask",
@@ -277,7 +277,7 @@ export const backgrounds = {
       cobbler: {
         name: "Cobbler",
         dots: "•",
-        description: "The ability to create or source out masks. Making a mask takes 3 days per dot. The character must have a 2-dot mask in order to take this."
+        description: "The ability to create or source out masks. Making a Mask takes 3 days per dot. The character must have a 2-dot mask in order to take this."
       }
     },
     flaws: {
@@ -295,7 +295,7 @@ export const backgrounds = {
   },
   mawla: {
     name: "Mawla",
-    description: "Relationship with another kindred, including mentorship.",
+    description: "Their relationship with another Kindred.",
     merits: {
       mawla: {
         name: "Mawla",
@@ -312,7 +312,7 @@ export const backgrounds = {
       adversary: {
         name: "Adversary",
         dots: "(• +)",
-        description: "Another kindred who perhaps liked the character, but now goes out of their way to ruin their lives in any way they can. Rated two levels higher than the Mawla value."
+        description: "Another Kindred who perhaps liked the character, but now goes out of their way to ruin their lives in any way they can. Rated two levels higher than the Mawla value."
       },
       shamefulChilde: {
         name: "Shameful Childe",
@@ -328,7 +328,7 @@ export const backgrounds = {
   },
   resources: {
     name: "Resources",
-    description: "The vampire's cash flow.",
+    description: "The cashflow of the Kindred.",
     merits: {
       resources: {
         name: "Resources",
@@ -346,7 +346,7 @@ export const backgrounds = {
   },
   retainers: {
     name: "Retainers",
-    description: "Loyal followers, sometimes Ghouls or Blood Bonded.",
+    description: "The relationship with mortals who follow the character.",
     merits: {
       retainers: {
         name: "Retainers",
@@ -364,7 +364,7 @@ export const backgrounds = {
   },
   status: {
     name: "Status",
-    description: "The character's reputation within their faction.",
+    description: "The Kindred's name in the faction and how it affects them.",
     merits: {
       status: {
         name: "Status",
