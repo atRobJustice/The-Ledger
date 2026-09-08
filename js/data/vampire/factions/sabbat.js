@@ -152,6 +152,18 @@ export const sabbat = {
         },
         wildHunt: {
           description: "The Wild Hunt is the closest thing the Sabbat has to a Bloodhunt because this time they are hunting a traitor within their ranks, or a particularly hated foe."
+        },
+        theBinding: {
+          description: "An oath of loyalty to the Sabbat. It's short and sweet, a simple statement and it's over. The words used depend on the pack and where they reside, or even how young or old the members are. Not everyone remembers the original wording."
+        },
+        gamesOfInstinct: {
+          description: "Essentially sports for the Sabbat. They play together to blow off steam, but they are not subtle. Examples include Demolition Derby (vehicles on fire with captives; last to leave wins) and Boarding Party (hold up an inescapable vehicle and kill everyone inside)."
+        },
+        sermonsOfCaine: {
+          description: "A mockery of a religious service such as a Catholic mass. A Pack Priest delivers a sermon while referencing the Book of Nod. Many packs no longer have access to the book, so it has fallen out of practice."
+        },
+        pallaGrande: {
+          description: "Also known as a Dance of the Dead, this is a mockery of Camarilla Court. As numbers lowered, this practice is mostly abandoned."
         }
       },
       ignoblis: {
@@ -167,6 +179,13 @@ export const sabbat = {
           pathOfCathari: "They like to play with their food, hiding their nature until the last second, and teasing their desperate victims to try to escape.",
           pathOfDeathAndSoul: "They tend to feed from the recently dead or close to dying. Sometimes they even feed from the energy of ghosts.",
           pathOfPowerAndInnerVoice: "The members of packs within this path usually keep around a large number of herd members or blood dolls, like actual cattle."
+        },
+        contritionRitae: {
+          description: "Punishments and consequences given to packmates whenever they do wrong in the eyes of their peers.",
+          pathOfCaine: "Punishments are both painful and a teaching moment. They recite the Book of Nod while subjecting packmates of lesser crimes to torturous punishments.",
+          pathOfCathari: "Albigensians see little use in guilt or forgiveness. Sometimes a pack may humiliate someone for not being loyal or depraved enough, but Contrition Ritae are rare on this path.",
+          pathOfDeathAndSoul: "Reapers punish disloyalty, cowardice, and sympathy for the enemy quickly. They correct spirituality with academic and metaphysical interrogations and creative punishments such as burial or daysleep with a victim's remains.",
+          pathOfPowerAndInnerVoice: "If a packmate is still deemed correctable, they are put to menial, tedious, often lowly tasks to serve the strong, such as tending ghouls and blood dolls, until they prove themselves again."
         }
       }
     }

@@ -230,7 +230,7 @@ export const obfuscate = {
         dicePool: "Manipulation + Obfuscate",
         opposingPool: "Resolve + Awareness",
         notes: "Physical harm done unto target causes an additional Discipline test for target to resist effect",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Tattered Facade, page 99"
       },
 
       {
@@ -254,7 +254,7 @@ export const obfuscate = {
         duration: "As per power augmented",
         dicePool: "Wits + Obfuscate",
         opposingPool: "Wits + Awareness",
-        notes: "This power makes the memory of the Kindred foggy and indistinct, but it will not affect the memories of vampires",
+        notes: "This power makes the memory of mortals foggy and indistinct, but it will not affect the memories of vampires",
         source: "Vampire: The Masquerade Corebook, page 262"
       }
     ],

@@ -1,0 +1,453 @@
+{
+  "version": 1,
+  "description": "Ledger consumption map: only these V5 VTM pages may be translated into js/data.",
+  "pages": [
+    {
+      "id": "character-creation",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Character creation",
+      "mirrorPath": "reference/vtm/pages/Character_creation.wiki",
+      "jsData": [
+        "js/data/attributes.js",
+        "js/data/skills.js"
+      ],
+      "notes": "Live home for Attributes/Skills sections after wiki redirects."
+    },
+    {
+      "id": "blood-potency",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Blood Potency",
+      "mirrorPath": "reference/vtm/pages/Blood_Potency.wiki",
+      "jsData": [
+        "js/data/vampire/blood_potency.js"
+      ]
+    },
+    {
+      "id": "compulsions",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Compulsion",
+      "mirrorPath": "reference/vtm/pages/Compulsion.wiki",
+      "jsData": [
+        "js/data/vampire/compulsions.js"
+      ],
+      "notes": "Wiki title is singular Compulsion."
+    },
+    {
+      "id": "coterie-backgrounds",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Coterie Backgrounds and Merits",
+      "mirrorPath": "reference/vtm/pages/Coterie_Backgrounds_and_Merits.wiki",
+      "jsData": [
+        "js/data/vampire/backgrounds-coterie.js"
+      ]
+    },
+    {
+      "id": "coterie-types",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Coterie types",
+      "mirrorPath": "reference/vtm/pages/Coterie_types.wiki",
+      "jsData": [
+        "js/data/vampire/coterie_types.js"
+      ]
+    },
+    {
+      "id": "generation",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Generation",
+      "mirrorPath": "reference/vtm/pages/Generation.wiki",
+      "jsData": [
+        "js/data/vampire/generation.js"
+      ]
+    },
+    {
+      "id": "humanity",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Humanity",
+      "mirrorPath": "reference/vtm/pages/Humanity.wiki",
+      "jsData": [
+        "js/data/vampire/humanity.js"
+      ]
+    },
+    {
+      "id": "loresheets",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Loresheets",
+      "mirrorPath": "reference/vtm/pages/Loresheets.wiki",
+      "jsData": [
+        "js/data/vampire/loresheets.js"
+      ]
+    },
+    {
+      "id": "merits-flaws",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Advantages and Flaws",
+      "mirrorPath": "reference/vtm/pages/Advantages_and_Flaws.wiki",
+      "jsData": [
+        "js/data/vampire/merits.js",
+        "js/data/vampire/backgrounds.js"
+      ],
+      "notes": "Renamed from Merits and Flaws; also includes Backgrounds content."
+    },
+    {
+      "id": "predator-types",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Predator types",
+      "mirrorPath": "reference/vtm/pages/Predator_types.wiki",
+      "jsData": [
+        "js/data/vampire/predator_types.js"
+      ]
+    },
+    {
+      "id": "resonance",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Resonance",
+      "mirrorPath": "reference/vtm/pages/Resonance.wiki",
+      "jsData": [
+        "js/data/vampire/resonances.js"
+      ]
+    },
+    {
+      "id": "clan-banu-haqim",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Banu Haqim",
+      "mirrorPath": "reference/vtm/pages/Banu_Haqim.wiki",
+      "jsData": [
+        "js/data/vampire/clans/banu_haqim.js"
+      ]
+    },
+    {
+      "id": "clan-brujah",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Brujah",
+      "mirrorPath": "reference/vtm/pages/Brujah.wiki",
+      "jsData": [
+        "js/data/vampire/clans/brujah.js"
+      ]
+    },
+    {
+      "id": "clan-caitiff",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Caitiff",
+      "mirrorPath": "reference/vtm/pages/Caitiff.wiki",
+      "jsData": [
+        "js/data/vampire/clans/caitiff.js"
+      ]
+    },
+    {
+      "id": "clan-gangrel",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Gangrel",
+      "mirrorPath": "reference/vtm/pages/Gangrel.wiki",
+      "jsData": [
+        "js/data/vampire/clans/gangrel.js"
+      ]
+    },
+    {
+      "id": "clan-hecata",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Hecata",
+      "mirrorPath": "reference/vtm/pages/Hecata.wiki",
+      "jsData": [
+        "js/data/vampire/clans/hecata.js"
+      ]
+    },
+    {
+      "id": "clan-lasombra",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Lasombra",
+      "mirrorPath": "reference/vtm/pages/Lasombra.wiki",
+      "jsData": [
+        "js/data/vampire/clans/lasombra.js"
+      ]
+    },
+    {
+      "id": "clan-malkavian",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Malkavian",
+      "mirrorPath": "reference/vtm/pages/Malkavian.wiki",
+      "jsData": [
+        "js/data/vampire/clans/malkavian.js"
+      ]
+    },
+    {
+      "id": "clan-ministry",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "The Ministry",
+      "mirrorPath": "reference/vtm/pages/The_Ministry.wiki",
+      "jsData": [
+        "js/data/vampire/clans/ministry.js"
+      ],
+      "notes": "If title 404s, try Ministry."
+    },
+    {
+      "id": "clan-nosferatu",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Nosferatu",
+      "mirrorPath": "reference/vtm/pages/Nosferatu.wiki",
+      "jsData": [
+        "js/data/vampire/clans/nosferatu.js"
+      ]
+    },
+    {
+      "id": "clan-ravnos",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Ravnos",
+      "mirrorPath": "reference/vtm/pages/Ravnos.wiki",
+      "jsData": [
+        "js/data/vampire/clans/ravnos.js"
+      ]
+    },
+    {
+      "id": "clan-salubri",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Salubri",
+      "mirrorPath": "reference/vtm/pages/Salubri.wiki",
+      "jsData": [
+        "js/data/vampire/clans/salubri.js"
+      ]
+    },
+    {
+      "id": "clan-thinblood",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Thin-blood",
+      "mirrorPath": "reference/vtm/pages/Thin-blood.wiki",
+      "jsData": [
+        "js/data/vampire/clans/thinblood.js"
+      ]
+    },
+    {
+      "id": "clan-toreador",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Toreador",
+      "mirrorPath": "reference/vtm/pages/Toreador.wiki",
+      "jsData": [
+        "js/data/vampire/clans/toreador.js"
+      ]
+    },
+    {
+      "id": "clan-tremere",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Tremere",
+      "mirrorPath": "reference/vtm/pages/Tremere.wiki",
+      "jsData": [
+        "js/data/vampire/clans/tremere.js"
+      ]
+    },
+    {
+      "id": "clan-tzimisce",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Tzimisce",
+      "mirrorPath": "reference/vtm/pages/Tzimisce.wiki",
+      "jsData": [
+        "js/data/vampire/clans/tzimisce.js"
+      ]
+    },
+    {
+      "id": "clan-ventrue",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Ventrue",
+      "mirrorPath": "reference/vtm/pages/Ventrue.wiki",
+      "jsData": [
+        "js/data/vampire/clans/ventrue.js"
+      ]
+    },
+    {
+      "id": "discipline-animalism",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Animalism",
+      "mirrorPath": "reference/vtm/pages/Animalism.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/animalism.js"
+      ]
+    },
+    {
+      "id": "discipline-auspex",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Auspex",
+      "mirrorPath": "reference/vtm/pages/Auspex.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/auspex.js"
+      ]
+    },
+    {
+      "id": "discipline-blood-sorcery",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Blood Sorcery",
+      "mirrorPath": "reference/vtm/pages/Blood_Sorcery.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/blood_sorcery.js"
+      ]
+    },
+    {
+      "id": "discipline-blood-sorcery-rituals",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Blood Sorcery Rituals",
+      "mirrorPath": "reference/vtm/pages/Blood_Sorcery_Rituals.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/blood_sorcery_rituals.js"
+      ]
+    },
+    {
+      "id": "discipline-celerity",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Celerity",
+      "mirrorPath": "reference/vtm/pages/Celerity.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/celerity.js"
+      ]
+    },
+    {
+      "id": "discipline-dominate",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Dominate",
+      "mirrorPath": "reference/vtm/pages/Dominate.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/dominate.js"
+      ]
+    },
+    {
+      "id": "discipline-fortitude",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Fortitude",
+      "mirrorPath": "reference/vtm/pages/Fortitude.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/fortitude.js"
+      ]
+    },
+    {
+      "id": "discipline-obfuscate",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Obfuscate",
+      "mirrorPath": "reference/vtm/pages/Obfuscate.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/obfuscate.js"
+      ]
+    },
+    {
+      "id": "discipline-oblivion",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Oblivion",
+      "mirrorPath": "reference/vtm/pages/Oblivion.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/oblivion.js"
+      ]
+    },
+    {
+      "id": "discipline-oblivion-ceremonies",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Oblivion Ceremonies",
+      "mirrorPath": "reference/vtm/pages/Oblivion_Ceremonies.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/oblivion_ceremonies.js"
+      ]
+    },
+    {
+      "id": "discipline-potence",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Potence",
+      "mirrorPath": "reference/vtm/pages/Potence.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/potence.js"
+      ]
+    },
+    {
+      "id": "discipline-presence",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Presence",
+      "mirrorPath": "reference/vtm/pages/Presence.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/presence.js"
+      ]
+    },
+    {
+      "id": "discipline-protean",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Protean",
+      "mirrorPath": "reference/vtm/pages/Protean.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/protean.js"
+      ]
+    },
+    {
+      "id": "discipline-thin-blood-alchemy",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Thin-blood Alchemy",
+      "mirrorPath": "reference/vtm/pages/Thin-blood_Alchemy.wiki",
+      "jsData": [
+        "js/data/vampire/disciplines/thin_blood_alchemy.js"
+      ]
+    },
+    {
+      "id": "faction-anarch",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Anarch",
+      "mirrorPath": "reference/vtm/pages/Anarch.wiki",
+      "jsData": [
+        "js/data/vampire/factions/anarch.js"
+      ]
+    },
+    {
+      "id": "faction-camarilla",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Camarilla",
+      "mirrorPath": "reference/vtm/pages/Camarilla.wiki",
+      "jsData": [
+        "js/data/vampire/factions/camarilla.js"
+      ]
+    },
+    {
+      "id": "faction-sabbat",
+      "line": "vtm",
+      "edition": "v5",
+      "wikiTitle": "Sabbat",
+      "mirrorPath": "reference/vtm/pages/Sabbat.wiki",
+      "jsData": [
+        "js/data/vampire/factions/sabbat.js"
+      ],
+      "notes": "Local filename is historically misspelled sabbot.wiki; keep path stable."
+    }
+  ]
+}

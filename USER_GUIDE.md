@@ -537,10 +537,9 @@ The control bar at the bottom of the screen provides quick access to essential f
 4. Any existing data will be replaced
 
 ### Progeny Import
-- Use **Guided Creator (Progeny)** on the dashboard to build a character in the hosted creator (`/progeny/`), download the Progeny JSON (**Save File**), then import it below
-- Or import a JSON file from [official Progeny](https://progeny.odin-matthias.de/)
-- Click the Progeny icon in the control bar (or **Import from Progeny** on the dashboard)
-- Select a Progeny JSON export file
+- Use **Guided Creator (Progeny)** on the dashboard. At the end of creation, choose **Open in The Ledger** to import automatically and open the sheet
+- Or download a JSON save file and use **Import from Progeny** (dashboard or control bar), including exports from [official Progeny](https://progeny.odin-matthias.de/)
+- Manual file import: click the Progeny icon in the control bar (or **Import from Progeny** on the dashboard), then select a Progeny JSON export
 - Character data will be converted and loaded
 
 ### Dashboard Import Features
@@ -553,9 +552,8 @@ The dashboard includes additional import options accessible from the main dashbo
 - Existing characters are not affected
 
 **Import Progeny Character:**
-- Finish the guided creator (or official Progeny), download the JSON save file
-- Click **Import from Progeny** on the dashboard
-- Select that JSON file
+- Prefer **Open in The Ledger** at the end of the guided creator for a one-click handoff
+- Or download the JSON save file and click **Import from Progeny** on the dashboard
 - The character will be converted to The Ledger format and added to your collection
 - All character data including disciplines, merits, and backgrounds will be preserved
 

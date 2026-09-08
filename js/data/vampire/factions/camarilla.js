@@ -99,7 +99,31 @@ export const camarilla = {
       }
     },
     seneschal: {
-      description: "Sometimes a prince will select a seneschal, or personal advisor, to sit with them and in some cases act as a replacement when the Prince is unavailable. Order is held by the domain's Sheriff, a Kindred who acts more of a hitman than a policing force. As the Camarilla frowns upon modern ideas like due process, most executions take place without a trial or the victim's ability to speak against the crimes they've been blamed for."
+      description: "Sometimes a prince will select a seneschal, or personal advisor, to sit with them and in some cases act as a replacement when the Prince is unavailable. It is a role that excels for administrators, advisors, and tacticians as the Prince's right hand. Though influential, it is a precarious position; Princes are careful not to be overthrown, and many Seneschals have the start of a Blood Bond to the Prince for this reason."
+    },
+    clanWhip: {
+      description: "Occasionally a Primogen member may appoint a second in command. The Clan Whip primarily collects the opinions of the clan or faction the Primogen presides over, and also serves as advisor and enforcer to their Primogen."
+    },
+    sheriff: {
+      description: "Order is held by the domain's Sheriff, a Kindred who acts more of a hitman than a policing force. As the Camarilla frowns upon modern ideas like due process, most executions take place without a trial or the victim's ability to speak against the crimes they've been blamed for. A Sheriff hunts down violators and doles out punishment to those who go against the Traditions or the Prince's decrees. They may work with the Seneschal on intelligence in some domains. Indulging in wiping out illegal Embraces or Duskborn may earn them the title Scourge, either officially or unofficially."
+    },
+    hounds: {
+      description: "The chosen attendants of a Sheriff. Usually they patrol domains to remind Kindred of the Prince's power and that the city is under the eye of the Sheriff. They are often younger Kindred under the Sheriff who have an information network to keep the Sheriff in the loop or handle lesser issues."
+    },
+    herald: {
+      description: "The voice of the Prince who proclaims the Prince's edicts to Kindred subjects as well as carries messages to other rulers. Some domains treat this as an official position; others have Kindred informally take it. Well-connected gossips are de facto Heralds. A Herald who keeps the prestation system in a city is called a Chancellor."
+    },
+    keeperOfElysium: {
+      description: "The Keeper is often appointed by the Prince and usually works closely with the Heralds. They are the domain's event coordinator: hosting ceremonies, organizing social gatherings, and maintaining Elysium sanctuaries where violence is not allowed. Keepers must account for the Masquerade when planning gatherings and venues."
+    },
+    principalOfFaith: {
+      description: "This ancient position has returned in certain domains. It covers courtly advisors on matters of the soul: reminding Kindred of their Humanity, advising on cultural diplomacy, or teaching respect for Kindred ancestors. Some are intolerant fanatics seeking heresy; others represent a broader congregation searching for deeper meaning within undead government."
+    },
+    courtRitualist: {
+      description: "A Kindred Blood Sorcerer who uses their abilities for the local Camarilla. The job depends on the domain's needs: Kindred ceremonies, bolstering court defense, or performing tricks at court. A city may have multiple sorcerers but usually designates one main Court Ritualist."
+    },
+    shadow: {
+      description: "A formal advisor to a coterie, appointed by the Prince to shepherd them through Kindred politics. Shadows are either wise older Kindred or Kindred the Prince punished with a thankless job. They may advise and offer guidance but usually cannot discipline, punish, or lead the coterie."
     }
   },
   traditions: {

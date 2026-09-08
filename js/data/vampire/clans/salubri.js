@@ -47,5 +47,8 @@ export const salubri = {
       "Plenty of Salubri seems to want to help others rather than cause strife",
       "Others seek to protect them in other ways by hunting down wights and other low humanity monsters that plague Kindred and cause nothing but problems"
     ]
-  }
+  },
+  exclusiveLoresheets: [
+    "Descendent of the Fallen Lord"
+  ]
 }; 

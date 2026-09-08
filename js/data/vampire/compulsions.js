@@ -93,79 +93,55 @@ export const compulsions = {
     },
     gangrel: {
       name: "Feral Impulses",
-      description: "The Gangrel's Beast becomes more prominent, driving them to act on animalistic instincts.",
-      penalty: "They suffer a -2 penalty to all Social rolls.",
-      resolution: "This ends when they have successfully hunted and fed from a living creature."
+      description: "Unleash the animal hidden in their Blood. This urges the Gangrel to regress into an animalistic state where speech becomes difficult, clothes become too constrictive and arguments and best settled with claws and teeth. For one scene the Gangrel suffers a -3 dice penalty to all rolls involving Manipulation and Intelligence as they are only able to speak one word sentences during this Compulsion."
     },
     caitiff: {
       name: "None",
       description: "Caitiff do not have a clan-specific compulsion."
     },
     hecata: {
-      name: "Morbid Fascination",
-      description: "The Hecata becomes obsessed with death and the dead.",
-      penalty: "They suffer a -2 penalty to all rolls not related to death, the dead, or necromancy.",
-      resolution: "This ends when they have spent a scene interacting with or studying the dead."
+      name: "Morbidity",
+      description: "The vampire must move something from life to death or vice versa, any action not taken to end or resurrect something suffers a two-dice penalty. The subject does not have to be a living thing and can instead be an object or more abstract such as ideas or conversation points. This Compulsion lasts until they manage to kill or return something to life."
     },
     lasombra: {
       name: "Ruthlessness",
-      description: "The Lasombra must prove their dominance and power.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at establishing or maintaining control.",
-      resolution: "This ends when they have successfully dominated or destroyed a significant threat."
+      description: "The next time the vampire fails an action they receive a two-dice penalty to all rolls until a future attempt at the same action succeeds. This penalty applies to future attempts of the same action still."
     },
     malkavian: {
       name: "Delusion",
-      description: "The Malkavian becomes convinced of a particular delusion.",
-      penalty: "They suffer a -2 penalty to all rolls not related to their delusion.",
-      resolution: "This ends when they have acted out their delusion in a significant way."
+      description: "Whether it's figments of their imagination or extrasensory perception of the truths. For one scene, the Malkavian suffers a 2 dice penalty to rolls involving Dexterity, Manipulation, Composure, and Wits. As well as rolls to resist terror Frenzy."
     },
     ministry: {
       name: "Transgression",
-      description: "The Ministry must corrupt or tempt others.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at corruption or temptation.",
-      resolution: "This ends when they have successfully corrupted someone's morals or beliefs."
+      description: "The Minister suffers a burning desire to influence those around them to shatter the chains of their own making. They suffer a two-dice penalty to all dice pools that do not relate to enticing someone or themselves to break a Chronicle or personal Conviction. The Compulsion ends once the Minister causes someone, or themselves, at least one stain."
     },
     nosferatu: {
       name: "Cryptophilia",
-      description: "The Nosferatu becomes obsessed with secrets and hidden things.",
-      penalty: "They suffer a -2 penalty to all rolls not related to uncovering or protecting secrets.",
-      resolution: "This ends when they have discovered a significant secret or hidden something important."
+      description: "Consumed by a hunger for private secrets, the Nosferatu seeks to obtain knowledge no matter big or small as long as it's not a well-known bit of information. During this, they also refuse to give up their secrets except in strict trade for something greater than their own. Any action not actively working towards gaining them a secret they take a two-dice penalty. This Compulsion does not end till they learn a secret they deem to be useful, sharing this secret is entirely optional."
     },
     ravnos: {
-      name: "Wanderlust",
-      description: "The Ravnos must keep moving and avoid staying in one place.",
-      penalty: "They suffer a -2 penalty to all rolls when staying in one location for too long.",
-      resolution: "This ends when they have moved to a new location or begun a new journey."
+      name: "Tempting Fate",
+      description: "When faced with their next problem, the Daredevil must attempt the solution with the most dangerous or daring of actions, anything less incurs a two-dice penalty. Context appropriate flashy or risky attempts may even net bonus dice. They are free to convince others to follow them in their actions but may as well go it alone. This Compulsion persists until the problem is solved or further attempts become impossible to accomplish."
     },
     salubri: {
-      name: "Healing",
-      description: "The Salubri must heal others, even at their own expense.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at healing or helping others.",
-      resolution: "This ends when they have successfully healed someone or prevented harm."
+      name: "Affective Empathy",
+      description: "Overwhelmed with empathy for a personal problem of someone else, any action not taken to help the person mitigate their suffering is at a two-dice penalty. This Compulsion continues until the sufferer's burden is eased, a more critical problem arises, or the scene ends."
     },
     toreador: {
-      name: "Aesthetic",
-      description: "The Toreador becomes obsessed with beauty and art.",
-      penalty: "They suffer a -2 penalty to all rolls not related to art, beauty, or aesthetics.",
-      resolution: "This ends when they have created or experienced something beautiful."
+      name: "Obsession",
+      description: "Utterly obsessed with a single thing, the Toreador cannot speak of anything but that object. Be it a person, a piece of artwork, a blood splatter in the right lighting, or the sunrise itself, they cannot take their attention from it. Any other actions receive a two-dice penalty. This Compulsion lasts until they can no longer perceive the object or the scene ends."
     },
     tremere: {
-      name: "Perfection",
-      description: "The Tremere must maintain perfect control and order.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at maintaining control or order.",
-      resolution: "This ends when they have successfully imposed their will or restored order."
+      name: "Perfectionism",
+      description: "Nothing but the best will satisfy them, anything less than exceptional still instills a profound sense of failure. When afflicted by this, the Warlock suffers a two-dice penalty to all dice pools. The penalty is reduced to one die when actions are being repeated and removed entirely on a second repeat. This does not end till they managed to score a critical win on a Skill roll or the scene ends."
     },
     tzimisce: {
-      name: "Possession",
-      description: "The Tzimisce must claim and control territory or people.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at claiming or controlling something.",
-      resolution: "This ends when they have successfully claimed something as their own."
+      name: "Covetousness",
+      description: "When afflicted with this compulsion they become obsessed with owning something in the scene, be it an object, or property to a living person. Whatever it is, they must add it to their collection and any action taken not towards this purpose incurs a two-dice penalty. This penalty continues until ownership is established or the object of their desire is unobtainable."
     },
     ventrue: {
       name: "Arrogance",
-      description: "The Ventrue must assert their superiority and authority.",
-      penalty: "They suffer a -2 penalty to all rolls not aimed at demonstrating their superiority.",
-      resolution: "This ends when they have successfully asserted their authority over others."
+      description: "Fueled by the beast and their natural desire for power, the Ventrue must force someone to obey a command given. The order cannot be given through supernatural means such as Dominate. Until they satisfy the requirements, they receive a two-dice penalty for any actions not directly related to leadership."
     },
     thinBlood: {
       name: "None",

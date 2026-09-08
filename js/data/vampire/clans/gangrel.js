@@ -81,6 +81,7 @@ export const gangrel = {
   exclusiveLoresheets: [
     "Low Clan",
     "Descendant of Xaviar",
-    "Mark Decker"
+    "Mark Decker",
+    "Descendant of Kerwiya"
   ]
 }; 

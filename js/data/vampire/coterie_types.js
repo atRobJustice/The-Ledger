@@ -22,7 +22,7 @@ export const coterieTypes = {
       description: "A coterie that entices mortals into supernatural rituals or schemes. Take their blood and possibly enslave them.",
       requirements: {
         domain: {
-          chasse: 1,
+          lien: 1,
           portillon: 2
         },
         herd: 3,

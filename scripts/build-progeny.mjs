@@ -274,8 +274,49 @@ const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"`,
         `import { motion, useReducedMotion } from "framer-motion"
 import LedgerReturnLink from "~/components/LedgerReturnLink"
 
-const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"`,
+const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"
+const LEDGER_PENDING_PROGENY_KEY = "ledger:pendingProgenyImport"`,
         "Final import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Final.tsx"),
+        `    const handleDownloadJSON = () => {
+        updateHealthAndWillpowerAndBloodPotencyAndHumanity(character)
+        downloadJson(character).catch((e) => {
+            console.error(e)
+            setDownloadError(e as Error)
+        })
+        trackEvent({
+            action: "JSON downloaded (progeny)",
+            category: "downloads",
+            label: JSON.stringify(character)
+        })
+    }`,
+        `    const handleDownloadJSON = () => {
+        updateHealthAndWillpowerAndBloodPotencyAndHumanity(character)
+        downloadJson(character).catch((e) => {
+            console.error(e)
+            setDownloadError(e as Error)
+        })
+        trackEvent({
+            action: "JSON downloaded (progeny)",
+            category: "downloads",
+            label: JSON.stringify(character)
+        })
+    }
+
+    const handleOpenInLedger = () => {
+        try {
+            updateHealthAndWillpowerAndBloodPotencyAndHumanity(character)
+            sessionStorage.setItem(LEDGER_PENDING_PROGENY_KEY, JSON.stringify(character))
+            window.location.assign("/?progenyImport=1")
+        } catch (e) {
+            console.error(e)
+            setDownloadError(e as Error)
+        }
+    }`,
+        "Final open-in-ledger handler"
     )
 
     replaceOnce(
@@ -301,15 +342,51 @@ const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"`,
                                 fontWeight: 600
                             }}
                         >
-                            Download the Progeny JSON (Save File), then{" "}
-                            <LedgerReturnLink /> and choose{" "}
-                            <strong>Import from Progeny</strong> on the dashboard.
+                            Ready for The Ledger? Use <strong>Open in The Ledger</strong> below to
+                            import automatically, or <LedgerReturnLink /> anytime.
                         </p>
                     )}
                 </motion.div>
 
                 {/* Action cards grid */}`,
-        "Final ledger handoff"
+        "Final ledger handoff copy"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Final.tsx"),
+        `                    <ActionCard
+                        icon={<IconDownload size={20} />}
+                        label="Save File"
+                        description="JSON save file to load later"
+                        onClick={handleDownloadJSON}
+                    />
+                    <ActionCard
+                        icon={<IconShare size={20} />}
+                        label="Export"
+                        description="Foundry VTT, Inconnu & more"
+                        onClick={openExportModal}
+                    />`,
+        `                    <ActionCard
+                        icon={<IconDownload size={20} />}
+                        label="Save File"
+                        description="JSON save file to load later"
+                        onClick={handleDownloadJSON}
+                    />
+                    {ledgerCreatorMode && (
+                        <ActionCard
+                            icon={<IconHeart size={20} />}
+                            label="Open in The Ledger"
+                            description="Import this character into your sheet"
+                            onClick={handleOpenInLedger}
+                        />
+                    )}
+                    <ActionCard
+                        icon={<IconShare size={20} />}
+                        label="Export"
+                        description="Foundry VTT, Inconnu & more"
+                        onClick={openExportModal}
+                    />`,
+        "Final open-in-ledger card"
     )
 
     writeFileSync(

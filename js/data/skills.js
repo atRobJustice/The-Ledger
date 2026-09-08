@@ -16,7 +16,7 @@ export const skills = {
       }
     },
     specialties: {
-      description: "If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill."
+      description: "If the players have allotted dots into the Skills Academics, Craft, Performance, and/or Science they will need to choose a free specialty for those with dots. Then they will have one more additional free specialty to place in any Skill. Don't forget to add in the specialty from the Predator type and remember that characters can only have a specialty in a Skill for as many dots as they have except in specific cases such as the Craft Skill. If the character gains a specialty from the Predator type but has no dots in the Skill, the specialty can instead be converted to the first dot of one Skill."
     }
   },
   physical: {

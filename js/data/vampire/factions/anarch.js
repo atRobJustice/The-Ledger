@@ -34,6 +34,14 @@ export const anarch = {
       ventrue: {
         name: "Free Ventrue",
         description: "Many considers themselves free from the traditions, taboos, and hierarchy of the clan."
+      },
+      hecata: {
+        name: "Emancipated Hecata",
+        description: ""
+      },
+      tzimisce: {
+        name: "Enlightened Tzimisce",
+        description: "Theoretical name."
       }
     }
   },
@@ -56,6 +64,24 @@ export const anarch = {
     },
     cells: {
       description: "Cells are underground coteries of Anarchs who work similar to a political cabal or criminal syndicate. Cells do not usually get into as much open conflict as gangs, as they prefer working with clandestine tactics and emphasize security. They may operate in Camarilla territory making their secrecy even more important."
+    },
+    commonRoles: {
+      description: "As work is needed in a domain, many step up and fill a role as needed. Anarchs lack official titles, but these common roles appear with higher frequency.",
+      gangBoss: {
+        description: "While some Anarch gangs are more egalitarian, others designate a leader that others look to for guidance when trouble happens."
+      },
+      lieutenant: {
+        description: "A leader's second in command. Back up the gang boss or stand in for them."
+      },
+      secretary: {
+        description: "These Anarchs keep track of agreements."
+      },
+      treasurer: {
+        description: "The Anarch who organizes, cleans, and bankrolls the money for the Movement."
+      },
+      tailGunner: {
+        description: "Taken from biker vocabulary. This Anarch looks after the youngest and weakest members of a gang on missions and fights."
+      }
     }
   },
   history: {

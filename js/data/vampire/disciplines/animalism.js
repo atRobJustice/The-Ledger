@@ -12,7 +12,7 @@ export const animalism = {
             {
                 name: "Bond Famulus",
                 effect: "Create an enhanced animal companion",
-                cost: "Feed the animal a Rouse Check of the vampire's blood on three different nights",
+                cost: "Feed the animal a Rouse Check of the vampire's blood on three different nights, if this is purchased at character creation it is considered already done and the player may select an animal to be the famulus.",
                 prerequisite: "None",
                 amalgam: "No",
                 duration: "Only death releases the famulus",

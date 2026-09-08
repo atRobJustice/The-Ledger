@@ -98,6 +98,7 @@ export const banuHaqim = {
   exclusiveLoresheets: [
     "High Clan",
     "Occult Artifacts",
-    "Descendant of Al-Ashrad"
+    "Descendant of Al-Ashrad",
+    "Descendant of Idder"
   ]
 }; 

@@ -100,6 +100,7 @@ export const malkavian = {
     "Descendant of Vasantasena",
     "The Cobweb",
     "Malkavian Family",
-    "Starfall Ranch"
+    "Starfall Ranch",
+    "Descendant of the Ankou"
   ]
 }; 

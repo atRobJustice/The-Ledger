@@ -31,7 +31,7 @@ export const predatorTypes = {
         "Gain the Feeding Merit (•••) Iron Gullet"
       ],
       drawbacks: [
-        "Gain an Enemy Flaw (••) of someone who believes this vampire owes them something",
+        "Gain an Enemy Flaw (••) of someone who believes this vampire owes them something or there's another reason to hunt them down",
         "Ventrue are unable to pick this Predator type"
       ],
       source: "Vampire: The Masquerade Corebook, page 176"

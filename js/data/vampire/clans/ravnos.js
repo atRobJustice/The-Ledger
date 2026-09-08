@@ -85,5 +85,8 @@ export const ravnos = {
     factionalDifferences: {
       description: "There are no difference observed between Camarilla and Anarch. Most opt for Autarkis operate for the highest bidder."
     }
-  }
+  },
+  exclusiveLoresheets: [
+    "Descendant of Phaedyme"
+  ]
 }; 

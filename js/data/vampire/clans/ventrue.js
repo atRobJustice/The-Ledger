@@ -88,6 +88,8 @@ export const ventrue = {
     "Descendant of Hardestadt",
     "Pure Ventrue Lineage",
     "Descendant of Lodin",
-    "Spear of Orthia"
+    "Spear of Orthia",
+    "High Clan",
+    "The Vanderbilt Ventrue"
   ]
 }; 

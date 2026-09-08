@@ -76,5 +76,9 @@ export const tzimisce = {
       description: "Some Tzimisce overfond of tradition find the neofeudalism of the Camarilla attractive.",
       challenges: "A rare group they are at odds with the distrust the Tower has for their greed and the Tzimisce question if their personal investment will yield returns."
     }
-  }
+  },
+  exclusiveLoresheets: [
+    "High Clan",
+    "Descendant of Dracula"
+  ]
 }; 

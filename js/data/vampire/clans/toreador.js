@@ -90,6 +90,8 @@ export const toreador = {
     conflicts: "The Camarilla Toreadors and Abstracts often use their minions in contests against each other. Retainers are sent to fight at times, but more often they compete in various battle fields: arts, performance, and other tests of skill. Humans used as pawns in the grand games of the Toreadors in the war of ages is a common sight."
   },
   exclusiveLoresheets: [
-    "Descendant of Helena"
+    "Descendant of Helena",
+    "High Clan",
+    "Descendant of Baron Vollgirre"
   ]
 }; 

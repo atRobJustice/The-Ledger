@@ -700,10 +700,7 @@ export const thinBloodAlchemy = {
         effect: "Awaken a vampire from torpor",
         cost: "One Rouse Check",
         origin: "None",
-        resonance: [
-          "Choleric",
-          "Sanguine"
-        ],
+        resonance: "Choleric or Sanguine",
         duration: "N/A",
         dicePool: "N/A",
         opposingPool: "N/A",

@@ -268,7 +268,7 @@ export const fortitude = {
       level: "●●",
       fortitudeLevel: "●",
       effect: "Heals Willpower calms nerves",
-      cost: "Free",
+      cost: "One Rouse Check",
       dicePool: "Composure + Auspex",
       source: "Vampire: The Masquerade Companion, page 24"
     },

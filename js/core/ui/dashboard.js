@@ -1,5 +1,6 @@
 // Dashboard functionality
 import { convertProgenyToLedger } from '../utils/progeny-import.js';
+import { LEDGER_PENDING_PROGENY_KEY } from '../utils/progeny-handoff.js';
 
 let databaseManager;
 let characters = [];
@@ -22,6 +23,71 @@ function log(level, message, ...args) {
     }
 }
 
+/**
+ * Persist a Progeny character export into Ledger IndexedDB.
+ * @param {Object} progenyData
+ * @param {{ openSheet?: boolean }} [options]
+ * @returns {Promise<number|null>} New character id, or null on failure
+ */
+async function importProgenyData(progenyData, options = {}) {
+    const { openSheet = false } = options;
+    const ledgerData = convertProgenyToLedger(progenyData);
+    const newId = Date.now();
+    ledgerData.id = newId;
+    ledgerData.createdAt = new Date().toISOString();
+    ledgerData.updatedAt = new Date().toISOString();
+
+    await databaseManager.saveCharacter(ledgerData, newId);
+
+    if (openSheet) {
+        window.location.href = `character-sheet.html?id=${newId}`;
+        return newId;
+    }
+
+    await loadCharacters();
+    updateDashboard();
+    toastManager.success('✅ Progeny character imported successfully!', 'Imported');
+    return newId;
+}
+
+/** Consume a pending Progeny handoff written by the hosted creator at /progeny/. */
+async function consumePendingProgenyImport() {
+    let raw;
+    try {
+        raw = sessionStorage.getItem(LEDGER_PENDING_PROGENY_KEY);
+    } catch (error) {
+        log('warn', 'Could not read pending Progeny import:', error);
+        return false;
+    }
+    if (!raw) return false;
+
+    try {
+        sessionStorage.removeItem(LEDGER_PENDING_PROGENY_KEY);
+    } catch (_) {
+        /* ignore */
+    }
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('progenyImport')) {
+        url.searchParams.delete('progenyImport');
+        window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    try {
+        const progenyData = JSON.parse(raw);
+        toastManager.info('Importing character from Progeny…', 'Import');
+        await importProgenyData(progenyData, { openSheet: true });
+        return true;
+    } catch (error) {
+        log('error', 'Failed to import pending Progeny character:', error);
+        toastManager.error(
+            'Failed to import character from the guided creator. You can still use Import from Progeny with a JSON file.',
+            'Error'
+        );
+        return false;
+    }
+}
+
 async function initDashboard() {
     try {
         // Import database manager
@@ -40,6 +106,10 @@ async function initDashboard() {
         
         // Load and apply saved theme
         await loadSavedTheme();
+
+        // Guided creator handoff (same-origin /progeny/ → dashboard)
+        const handedOff = await consumePendingProgenyImport();
+        if (handedOff) return;
         
         // Load characters
         await loadCharacters();
@@ -690,25 +760,7 @@ async function handleProgenyImport(event) {
     try {
         const text = await file.text();
         const progenyData = JSON.parse(text);
-        
-        // Convert progeny data to ledger format
-        const ledgerData = convertProgenyToLedger(progenyData);
-        
-        // Generate a new ID for the imported character
-        const newId = Date.now();
-        ledgerData.id = newId;
-        ledgerData.createdAt = new Date().toISOString();
-        ledgerData.updatedAt = new Date().toISOString();
-        
-        // Save the character
-        await databaseManager.saveCharacter(ledgerData, newId);
-        
-        // Reload dashboard
-        await loadCharacters();
-        updateDashboard();
-        
-        toastManager.success('✅ Progeny character imported successfully!', 'Imported');
-        
+        await importProgenyData(progenyData);
     } catch (error) {
         log('error', 'Failed to import Progeny character:', error);
         toastManager.error('Failed to import Progeny character. Please check the file format and try again.', 'Error');
