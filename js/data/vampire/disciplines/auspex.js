@@ -96,7 +96,18 @@ export const auspex = {
         notes: "ST discretion on if a question is too complex. Difficulty lessens with more people present",
         source: "Vampire: The Masquerade Courts of the Damned, page 214"
       },
-
+      {
+        name: "Reveal the Invisible Leash",
+        effect: "With physical contact, detect who a target considers themselves politically subordinate to",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "As long as vampire touches target",
+        dicePool: "Intelligence + Auspex",
+        opposingPool: "Composure + Resolve",
+        notes: "Most immediate superiors are detected first, margin may give more superiors",
+        source: "Vampire: The Masquerade Courts of the Damned, page 214"
+      },
       {
         name: "Haruspex",
         effect: "Use the recent dead to reroll dice before night's end",

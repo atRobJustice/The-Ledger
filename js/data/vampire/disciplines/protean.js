@@ -144,6 +144,18 @@ export const protean = {
         opposingPool: "N/A",
         notes: "Hunger can be reduced by one per body, up to the level of their Blood Sorcery rating but cannot reduce to 0",
         source: "Vampire: The Masquerade Sabbat: The Black Hand, page 49"
+      },
+      {
+        name: "Masque of Death",
+        effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Oblivion ●●",
+        duration: "Until ended by user, or user wakes from Torpor, or until sunrise",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Disciplines can be used at ST discretion",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
       }
     ],
     level4: [
@@ -161,7 +173,7 @@ export const protean = {
       },
       {
         name: "Metamorphosis",
-        effect: "Extends shape change to be able to change into a larger animal than the vampire's mass",
+        effect: "Extends shape change by granting it an additional form. The size of their new form isn't restricted by the vampire's mass",
         cost: "One Rouse Check",
         prerequisite: "Shapechange",
         amalgam: "No",

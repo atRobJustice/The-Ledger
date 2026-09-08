@@ -65,10 +65,22 @@ export const presence = {
         prerequisite: "None",
         amalgam: "No",
         duration: "N/A",
-        dicePool: "N/A",
+        dicePool: "Charisma + Presence",
         opposingPool: "N/A",
         notes: "This works with Awe, Daunt, Dread Gaze, Entrance, and Majesty",
         source: "Vampire: The Masquerade Players Guide, page 80"
+      },
+      {
+        name: "Predator's Lure",
+        effect: "Use Presence to instill intense curiosity in a target and compel them to approach the user",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One scene, or until target is within 10 feet/3 meters",
+        dicePool: "Charisma + Leadership",
+        opposingPool: "Composure + Resolve",
+        notes: "Automatically works on mortals. Target will not risk danger or immediately drop everything. Cannot be used in a fight",
+        source: "Vampire: The Masquerade Courts of the Damned, page 215"
       }
     ],
     level3: [
@@ -263,7 +275,7 @@ export const presence = {
   },
   amalgams: [
     {
-      name: "Chimestry",
+      name: "Chimerstry",
       discipline: "Obfuscate",
       level: "●●",
       presenceLevel: "●",

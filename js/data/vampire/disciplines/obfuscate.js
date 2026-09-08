@@ -72,7 +72,7 @@ export const obfuscate = {
         source: "Gehenna War, page 47"
       },
       {
-        name: "Chimestry",
+        name: "Chimerstry",
         effect: "Create brief but realistic hallucinations",
         cost: "One Rouse Check",
         prerequisite: "None",

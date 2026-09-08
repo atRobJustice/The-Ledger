@@ -160,7 +160,7 @@ export const fortitude = {
       },
       {
         name: "Seal the Beast's Maw",
-        effect: "A vampire can ignore the effects of hunger if they do not increase hunger from the two Rouse Checks, but reduce their dice pools",
+        effect: "A vampire can ignore the effects of hunger, but reduce their dice pools as a result",
         cost: "Two Rouse Checks",
         prerequisite: "None",
         amalgam: "No",

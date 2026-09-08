@@ -144,7 +144,7 @@ export const dominate = {
         amalgam: "Blood Sorcery ●●",
         duration: "Until the command is carried out or the scene ends",
         dicePool: "Manipulation + Dominate",
-        opposingPool: "Intelligence + Resolve",
+        opposingPool: "Resolve + Occult",
         notes: "For each generation separating them, the target gains an additional die to resist",
         source: "Vampire: The Masquerade Players Guide, page 74"
       },

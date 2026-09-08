@@ -234,6 +234,18 @@ export const oblivion = {
     ],
     level5: [
       {
+        name: "The Darkness Within",
+        effect: "Summon a dark entity from a victim whose only goal is to destroy its host",
+        cost: "Two Rouse Checks",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One Scene, or until the entity or its host is destroyed",
+        dicePool: "Manipulation + Oblivion",
+        opposingPool: "Composure + Resolve",
+        notes: "The Entity has the same skills and disciplines as its host and takes damage like a vampire",
+        source: "Vampire: The Masquerade Tattered Façade, page 100"
+      },
+      {
         name: "Shadow Step",
         effect: "The user can step into one shadow and appear in another within their sight",
         cost: "One Rouse Check",
@@ -293,6 +305,16 @@ export const oblivion = {
       cost: "One Rouse Check",
       dicePool: "Intelligence + Auspex",
       source: "Vampire: The Masquerade Players Guide, page 71"
+    },
+    {
+      name: "Masque of Death",
+      discipline: "Protean",
+      level: "●●●",
+      oblivionLevel: "●●",
+      effect: "Take on the appearance of a corpse, and while unable to move or communicate, they take any damage only if it deals Aggravated damage",
+      cost: "One Rouse Check",
+      dicePool: "N/A",
+      source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
     }
   ]
 }; 
