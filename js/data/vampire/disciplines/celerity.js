@@ -73,6 +73,19 @@ export const celerity = {
     ],
     level3: [
       {
+        name: "A Thousand Cuts",
+        effect: "Add Celerity to Brawl/Melee to automatically impair mortals and make Kindred a Masquerade violation risk",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One action",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Only usable with claws or edged weaponry",
+        source: "Vampire: The Masquerade Tattered Façade, page 96"
+      },
+
+      {
         name: "Blink",
         effect: "Closes the distance as if teleporting",
         cost: "One Rouse Check",
@@ -110,6 +123,19 @@ export const celerity = {
       }
     ],
     level4: [
+      {
+        name: "Faster than Light",
+        effect: "While using Blink, make an additional Rouse Check to pass through areas of sunlight or fire without damage or their effect",
+        cost: "One Rouse Check",
+        prerequisite: "Blink",
+        amalgam: "No",
+        duration: "One Action",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "This does not negate other impacts from daylight or fire, such as Frenzy checks, awakening rolls, or dice pools",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
+      },
+
       {
         name: "Blurred Momentum",
         effect: "Attacks against the user with fewer successes than their Celerity rating miss",

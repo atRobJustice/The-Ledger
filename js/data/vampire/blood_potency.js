@@ -1,6 +1,6 @@
 export const bloodPotency = {
   overview: {
-    description: "As time passes the kindred's blood thickens from age within the boundaries of their Generation's limit. While the stronger they become with age, there is a downside that it will take more blood to satisfy the vampire.",
+    description: "As time passes the Kindred's Blood thickens from age within the boundaries of their Generation's limit. While the stronger they become with age, there is a downside that it will take more blood to satisfy the vampire.",
     progression: "Kindred generally raise Blood Potency by 1 every 100 years while active but even intense or dangerous experiences can expedite the process.",
     regression: "On the reverse side, Kindred in torpor loses one point for every 50 years inactive. It can never rise nor lower beyond the cap determined by their Generation."
   },
@@ -29,7 +29,7 @@ export const bloodPotency = {
         "Add two dice to your dice pool when utilizing Blood Surge",
         "Able to mend two Superficial damage per Rouse Check",
         "When making a Rouse Check for a level one Discipline, they can reroll once if they fail",
-        "Animal and bagged blood slake half as less",
+        "Animal and bagged blood slake half as much hunger",
         "Gain a one-die bonus when using Disciplines",
         "Bane Severity is 2"
       ]
@@ -49,7 +49,7 @@ export const bloodPotency = {
         "Add three dice to your dice pool when utilizing Blood Surge",
         "Able to mend 3 Superficial damage per Rouse Check",
         "When making a Rouse Check for a level two or below Discipline, they can reroll once if they fail",
-        "Animal and bagged blood slake nothing. Human blood slakes less",
+        "Animal and bagged blood slake nothing. Slakes 1 less per human",
         "Gain a two-dice bonus when using Disciplines",
         "Bane Severity is 3"
       ]
@@ -59,14 +59,66 @@ export const bloodPotency = {
         "Add four dice to your dice pool when utilizing Blood Surge",
         "Able to mend three Superficial damage per Rouse Check",
         "When making a Rouse Check for a level three or below Discipline, they can reroll once if they fail",
-        "Animal and bagged blood slake nothing. Human blood slakes less and must drain a human to go below Hunger 2",
+        "Animal and bagged blood slake nothing. Slakes 1 less per human and must drain a human to go below Hunger 2",
         "Gain a two-dice bonus when using Disciplines",
         "Bane Severity is 4"
       ]
     },
     6: {
       description: "The Beckoning is pulling the elders away, making these levels of potency much rarer than they once were. Vampires with this level of potency are alien in both mind and body and are not intended for player characters. Still, their potency information is included for the Storyteller to utilize in chronicles.",
-      note: "This level and higher are not intended for player characters"
+      note: "This level and higher are not intended for player characters",
+      effects: [
+        "Add four dice to your dice pool when utilizing Blood Surge",
+        "Able to mend three Superficial damage per Rouse Check",
+        "When making a Rouse Check for a level three or below Discipline, they can reroll once if they fail",
+        "Animal and bagged blood slake nothing. Slakes 2 less per human and must drain a human to go below Hunger 2",
+        "Gain a three-dice bonus when using Disciplines",
+        "Bane Severity is 4"
+      ]
+    },
+    7: {
+      note: "Not intended for player characters",
+      effects: [
+        "Add five dice to your dice pool when utilizing Blood Surge",
+        "Able to mend three Superficial damage per Rouse Check",
+        "When making a Rouse Check for a level four or below Discipline, they can reroll once if they fail",
+        "Animal and bagged blood slake nothing. Slakes 2 less per human and must drain a human to go below Hunger 2",
+        "Gain a three-dice bonus when using Disciplines",
+        "Bane Severity is 4"
+      ]
+    },
+    8: {
+      note: "Not intended for player characters",
+      effects: [
+        "Add five dice to your dice pool when utilizing Blood Surge",
+        "Able to mend four Superficial damage per Rouse Check",
+        "When making a Rouse Check for a level four or below Discipline, they can reroll once if they fail",
+        "Animal and bagged blood slake nothing. Slakes 2 less per human and must drain a human to go below Hunger 3",
+        "Gain a four-dice bonus when using Disciplines",
+        "Bane Severity is 5"
+      ]
+    },
+    9: {
+      note: "Not intended for player characters",
+      effects: [
+        "Add six dice to your dice pool when utilizing Blood Surge",
+        "Able to mend four Superficial damage per Rouse Check",
+        "When making a Rouse Check for a level five or below Discipline, they can reroll once if they fail",
+        "Animal and bagged blood slake nothing. Slakes 2 less per human and must drain a human to go below Hunger 3",
+        "Gain a four-dice bonus when using Disciplines",
+        "Bane Severity is 6"
+      ]
+    },
+    10: {
+      note: "Not intended for player characters",
+      effects: [
+        "Add six dice to your dice pool when utilizing Blood Surge",
+        "Able to mend five Superficial damage per Rouse Check",
+        "When making a Rouse Check for a level five or below Discipline, they can reroll once if they fail",
+        "Animal and bagged blood slake nothing. Slakes 3 less per human and must drain a human to go below Hunger 3",
+        "Gain a five-dice bonus when using Disciplines",
+        "Bane Severity is 6"
+      ]
     }
   },
   getEffects: function(potency) {
@@ -79,7 +131,12 @@ export const bloodPotency = {
       2: 2,
       3: 3,
       4: 3,
-      5: 4
+      5: 4,
+      6: 4,
+      7: 4,
+      8: 5,
+      9: 6,
+      10: 6
     };
     return severities[potency] || null;
   },
@@ -90,7 +147,12 @@ export const bloodPotency = {
       2: 2,
       3: 3,
       4: 3,
-      5: 4
+      5: 4,
+      6: 4,
+      7: 5,
+      8: 5,
+      9: 6,
+      10: 6
     };
     return bonuses[potency] || null;
   },
@@ -99,7 +161,12 @@ export const bloodPotency = {
       2: 1,
       3: 1,
       4: 2,
-      5: 2
+      5: 2,
+      6: 3,
+      7: 3,
+      8: 4,
+      9: 4,
+      10: 5
     };
     return bonuses[potency] || 0;
   },
@@ -110,7 +177,12 @@ export const bloodPotency = {
       2: 2,
       3: 2,
       4: 3,
-      5: 3
+      5: 3,
+      6: 3,
+      7: 3,
+      8: 4,
+      9: 4,
+      10: 5
     };
     return healing[potency] || null;
   },
@@ -120,8 +192,13 @@ export const bloodPotency = {
       2: 1,
       3: 2,
       4: 2,
-      5: 3
+      5: 3,
+      6: 3,
+      7: 4,
+      8: 4,
+      9: 5,
+      10: 5
     };
     return levels[potency] || null;
   }
-}; 
+};

@@ -74,7 +74,7 @@ export const predatorTypes = {
         "Manipulation + Persuasion (take blood by consent, under the guide of medical work or mutual kink)"
       ],
       benefits: [
-        "Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Victims)",
+        "Gain one specialty in either Medicine (Phlebotomy) or Persuasion (Vessels)",
         "Gain one dot of Auspex or Fortitude",
         "Gain one dot of Humanity"
       ],
@@ -284,6 +284,21 @@ export const predatorTypes = {
         "Gain one Haven Flaw, either (•) Creepy or (•) Haunted"
       ],
       source: "Vampire: The Masquerade Players Guide, page 109"
+    },
+    titheCollector: {
+      name: "Tithe Collector",
+      description: "Intended for ancilla characters. They hold enough power that other Kindred around them pay tribute in the form of specially selected vessels, who are delivered regularly or upon request. The vessels must be kept in reasonable condition and returned, but otherwise the Masquerade is everyone else's problem.",
+      dicePools: [],
+      benefits: [
+        "Gain one specialty in either Intimidation (Kindred) or Leadership (Kindred)",
+        "Gain one dot of Dominate or Presence",
+        "Gain three dots of Domain or Status, to represent a large enough domain to share or a specific location within the community"
+      ],
+      drawbacks: [
+        "Gain a (••) Adversary"
+      ],
+      note: "Found in Vampire: The Masquerade In Memoriam; intended for ancilla characters.",
+      source: "Vampire: The Masquerade In Memoriam, pages 17-18"
     }
   }
 }; 

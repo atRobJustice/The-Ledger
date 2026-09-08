@@ -92,6 +92,30 @@ export const thinBloodAlchemy = {
         opposingPool: "N/A",
         notes: "Does not affect fire, acid, sunlight or sorcery",
         source: "Blood Sigils, page 76"
+      },
+      {
+        name: "Bleed Out",
+        effect: "Liquefy a victim's internal organs into blood enough to feed an entire coterie of Thin-bloods",
+        cost: "One Rouse Check",
+        origin: "None",
+        resonance: "Melancholic",
+        duration: "N/A",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Only thin-bloods can feed from the liquefied corpse. Drinkers gain at least 1 Stain.",
+        source: "Tattered Facade, page 107"
+      },
+      {
+        name: "Saraimu",
+        effect: "Create a sentient blob of slime that acts as a familiar",
+        cost: "One Rouse Check",
+        origin: "None",
+        resonance: "N/A",
+        duration: "1 - 3 weeks",
+        dicePool: "Resolve + Alchemy",
+        opposingPool: "N/A",
+        notes: "Can only be created using Fixatio.",
+        source: "Tattered Facade, page 107"
       }
     ],
     level4: [
@@ -120,6 +144,18 @@ export const thinBloodAlchemy = {
         opposingPool: "N/A",
         notes: "Each Distillation style has a unique method of tapping for this elixir.",
         source: "Corebook, page 287"
+      },
+      {
+        name: "Da Bomb",
+        effect: "Turn a mortal into a walking time bomb",
+        cost: "One Rouse Check",
+        origin: "None",
+        resonance: "Sanguine",
+        duration: "One week, or until activated",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Only works when imbibed into mortals.",
+        source: "Tattered Facade, page 108"
       }
     ]
   },

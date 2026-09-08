@@ -85,6 +85,18 @@ export const potence = {
         source: "Vampire: The Masquerade Corebook, page 264"
       },
       {
+        name: "Exuberance",
+        effect: "Treat Potence rating as two levels higher when using Potence powers",
+        cost: "Free",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "Passive",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "This can take the relative discipline above the limit of 5. But when a critical or failure is rolled, take Aggravated Damage",
+        source: "Vampire: The Masquerade Tattered Façade, page 103"
+      },
+      {
         name: "Spark of Rage",
         effect: "The user can add their Potence rating to rile or incite a person or crowd to violent actions",
         cost: "One Rouse Check",

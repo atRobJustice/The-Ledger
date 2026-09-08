@@ -32,6 +32,42 @@ export const bloodSorceryRituals = {
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Nothing prevents directed or controlled creatures from entering.",
         source: "Sabbat, page 50"
+      },
+      {
+        name: "Blood Missive",
+        effect: "Send messages through blood",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "The first person to taste the blood receives it as if it was intended for them or they possess A Taste for Blood.",
+        source: "Live from the Succubus Club, page 29"
+      },
+      {
+        name: "Sanguine Tidings",
+        effect: "Make a message appear on a mirror when a type of person comes nearby",
+        cost: "N/A",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "It disappears from the mirror once it's been read once.",
+        source: "Live from the Succubus Club, page 29"
+      },
+      {
+        name: "Preservation",
+        effect: "Preserve an item from the passage of time",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "Only preserves the item from age, ambient elements, and minor accidents. Intentional damage still affects the item.",
+        source: "Courts of the Damned, pages 215-216"
+      },
+      {
+        name: "Rite of Introduction",
+        effect: "Magically broadcast an introduction and identification to any caster of the Foundation of the Chantry Ritual in the same city",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "Caster can withhold but not alter elements of their broadcast.",
+        source: "Courts of the Damned, page 216"
       }
     ],
     level2: [
@@ -72,6 +108,15 @@ export const bloodSorceryRituals = {
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Can read the message with a Resolve + Occult roll or by Sense the Unseen (Auspex ●). Caster can remove the Blood Sigil by spending Willpower and touching the tattoo.",
         source: "Blood Sigils, page 66"
+      },
+      {
+        name: "Grim Chrysalis",
+        effect: "Create a cocoon out of hardened vitae that heals damage taken",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "The cocoon itself is hard and protects the user from outside damage to some extent.",
+        source: "Tattered Facade, page 93"
       }
     ],
     level4: [
@@ -92,6 +137,24 @@ export const bloodSorceryRituals = {
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "The Ritual roll is made once the sun rises.",
         source: "Corebook, page 279"
+      },
+      {
+        name: "Balm of Bathory",
+        effect: "Make a balm from the blood of a young mortal to make the user appear younger",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "The balm gives the user a temporary Stunning (••••) Merit. However, each subsequent use takes double the amount of mortal blood as the last batch.",
+        source: "Tattered Facade, page 94"
+      },
+      {
+        name: "Seek the Gathered Vitae",
+        effect: "Discover gatherings of Kindred with a collective Blood Potency of 13 or higher",
+        cost: "N/A",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "Ghouls count as 1/4th and Duskborn count as 1/2.",
+        source: "Live from the Succubus Club, page 29"
       }
     ],
     level5: [
@@ -112,6 +175,15 @@ export const bloodSorceryRituals = {
         ritualRoll: "Intelligence + Blood Sorcery",
         notes: "Can be resisted with a Resolve + Blood Sorcery test.",
         source: "Gehenna War, page 49"
+      },
+      {
+        name: "Foundation of the Chantry",
+        effect: "Make a point of Foundation so the caster and designees can retrieve broadcasts from Rite of Introduction and send responses back",
+        cost: "One Rouse Check",
+        origin: "None",
+        ritualRoll: "Intelligence + Blood Sorcery",
+        notes: "Foundation is linked to a Vein of the Earth. Designees must be present to also receive messages. Responses may withhold, but not alter information.",
+        source: "Courts of the Damned, pages 216-217"
       }
     ]
   },

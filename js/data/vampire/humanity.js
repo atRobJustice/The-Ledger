@@ -3,6 +3,19 @@ export const humanity = {
     description:
       "Most vampires will begin to drop in Humanity over time with neonates and ancillas sitting around Humanity 5. A vampire player character will start at Humanity 7 unless particular circumstances alter this such as Predator Types. Those that are freshly Embraced will begin at Humanity 8. Kindred are monsters, regardless of their rating and even the most saintly and highest of Humanity vampires can be morally corrupt. As their Humanity rating changes over time, it's important to keep track of the changes that will occur. As their rating deteriorates over time, their connections alter and soon they might find themselves holding the corpse of a human they had originally never intended to kill."
   },
+  track: {
+    description: "The Humanity tracker contains 10 spaces, with the Humanity rating filled from left to right.",
+    stains: {
+      description: "Stains damage Humanity and are caused by significant actions such as Embracing a new childe, harming a Touchstone, or breaching Convictions or chronicle Tenets. Tenet Stains can be negated by a Conviction aligned with the break, reducing Stains gained by one or more. Clear violations typically give 1 Stain; monstrous breaks may give 2 or more.",
+      tracking: "When taking Stains, the tracker fills from right to left with slash marks to differentiate Stains from Humanity. If Stains exceed empty spaces, degeneration is triggered."
+    },
+    remorse: {
+      description: "At the end of a session, if the character has Stains, they make a Remorse test. The Remorse pool equals empty spaces between Humanity and Stains (minimum 1 die). Any successes mean Humanity does not drop; zero successes means Humanity drops by 1. After the test, all Stains are removed."
+    },
+    degeneration: {
+      description: "If Stains exceed empty tracker spaces, the character becomes impaired: −2 dice to all pools, plus one Aggravated Willpower damage per overflow Stain. They cannot intentionally violate Tenets further; being forced to do so requires a terror frenzy test at Difficulty 4. Impairment lasts until Remorse at session end, or they may snap out by dropping 1 Humanity and clearing all Stains."
+    }
+  },
   ratings: {
     10: {
       description:

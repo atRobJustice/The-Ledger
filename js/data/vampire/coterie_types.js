@@ -44,7 +44,7 @@ export const coterieTypes = {
       },
       possibleExtras: ["Allies", "Herd (Fans)", "Resources"],
       source: "Vampire: The Masquerade Chicago by Night",
-      sourcePage: 300
+      sourcePage: 260
     },
     cerberus: {
       name: "Cerberus",
@@ -585,6 +585,63 @@ export const coterieTypes = {
       commonAdvantages: ["Transportation (2)", "Territorial (1)", "Under Siege (2)"],
       source: "Vampire: The Masquerade Corebook",
       sourcePage: 199
+    },
+    archonium: {
+      name: "Archonium",
+      description: "Justicars recruit their own coteries, comprised of expendable enforcers to look into potential threats. Half of the Archonium is generally made of the same clan as the Justicar, though many hide or lie about their clan. They operate as diplomats and spies in Anarch and Ashirra domains, usually recruited locally for a specific task and do not always get a choice if they want to serve.",
+      requirements: {
+        domain: "Max 1 when arriving in a new city",
+        status: 4,
+        mawla: 3,
+        adversary: 4
+      },
+      possibleExtras: [],
+      source: "Vampire: The Masquerade In Memoriam",
+      sourcePage: 14
+    },
+    primogensCouncil: {
+      name: "Primogen's Council",
+      description: "Comprised of the Primogen Council, this type of coterie is constantly engaging in covert war with each other, but must unite to deal with the Prince's whims or other threats to the city.",
+      requirements: {
+        domain: "Usually they do not share domain, instead each holding their own. They may add one free dot to Chasse or Portillon.",
+        haven: 3
+      },
+      possibleExtras: [],
+      note: "Shared Haven starts at 3 dots; members are expected to donate personal Advantage dots to the shared pool.",
+      source: "Vampire: The Masquerade In Memoriam",
+      sourcePage: 14
+    },
+    princesCourt: {
+      name: "Prince's Court",
+      description: "This coterie has risen to power to rule a smaller city or major domain within a larger megacity.",
+      requirements: {
+        domain: {
+          chasse: 3,
+          portillon: 3
+        },
+        haven: 3,
+        status: 3,
+        adversary: "3 to 5"
+      },
+      possibleExtras: [],
+      note: "The Prince typically has individual Status; shared Status should be at least 4 in a Camarilla domain. Haven typically starts at 3 or 4.",
+      source: "Vampire: The Masquerade In Memoriam",
+      sourcePage: "14-15"
+    },
+    decadeClub: {
+      name: "The Decade Club",
+      description: "An informal club of Kindred who share a bond of history. Beyond sharing an important decade or era, they often maintain ideological values and holdings from that period.",
+      requirements: {
+        domain: {
+          chasse: "maximum 2",
+          portillon: "maximum 3"
+        },
+        library: 3,
+        mythicFlaw: "Pick something suitable to the group or a Supernatural Flaw worth 1 or 2 dots"
+      },
+      possibleExtras: [],
+      source: "Vampire: The Masquerade In Memoriam",
+      sourcePage: 15
     }
   }
 }; 

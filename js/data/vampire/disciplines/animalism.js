@@ -35,6 +35,32 @@ export const animalism = {
             }
         ],
         level2: [
+      {
+        name: "Tracing the Blood",
+        effect: "Understand how others Rouse the Blood, detecting Blood Surges, Blush of Life, or Disciplines",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One scene",
+        dicePool: "Resolve + Animalism",
+        opposingPool: "N/A",
+        notes: "Must be in sensory range. Margin determines amount of info obtained. Normal win gives general direction, crit gives precise target",
+        source: "Vampire: The Masquerade Courts of the Damned, page 214"
+      },
+
+      {
+        name: "Leash the Beast",
+        effect: "Channel their Blood to prevent the Beast from awakening",
+        cost: "One or Two Rouse Checks",
+        prerequisite: "None",
+        amalgam: "Fortitude ●",
+        duration: "N/A",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "This can also be used to turn one die's failure into a success with Frenzy tests",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 27"
+      },
+
             {
                 name: "Animal Messenger",
                 effect: "Use a Famulus to send a message to someone",
@@ -73,6 +99,32 @@ export const animalism = {
             }
         ],
         level3: [
+      {
+        name: "Awaken the Parasite",
+        effect: "Awaken bugs within the body of a victim",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One Scene",
+        dicePool: "Resolve + Animalism",
+        opposingPool: "Composure + Resolve or Stamina + Wits (if mortal)",
+        notes: "Vampires can use this power on themselves to instill fear or disgust; they suffer a two-dice penalty for the duration of this scene",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
+      {
+        name: "Augury",
+        effect: "Force a swarm to form an answer to a question",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Auspex ●",
+        duration: "A few minutes",
+        dicePool: "Manipulation + Animalism",
+        opposingPool: "N/A",
+        notes: "Animalism tests increase in Difficulty by 1 for the rest of the session",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
             {
                 name: "Messenger's Command",
                 effect: "Use Compel or Mesmerize through a Famulus",

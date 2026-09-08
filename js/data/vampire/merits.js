@@ -108,6 +108,39 @@ export const merits = {
       }
     }
   },
+  archaic: {
+    name: "Archaic",
+    description: "May only be taken by Ancilla or older vampires.",
+    merits: {
+      custodianOfHistory: {
+        name: "Custodian of History",
+        dots: "•",
+        description: "Grants +1 to all relevant Skill tests pertaining to a chosen period or character in Kindred lore."
+      }
+    },
+    flaws: {
+      livingInThePast: {
+        name: "Living in the Past",
+        dots: "(•)",
+        description: "Unable to grasp modern society's mindset, one or more of the character's Convictions reflect outdated views."
+      },
+      archaic: {
+        name: "Archaic",
+        dots: "(••)",
+        description: "Cannot use computers, cellphones, and the character's Technology rating is always 0."
+      },
+      griefPhobia: {
+        name: "Grief Phobia",
+        dots: "(•)",
+        description: "Lose one die to all tests made while in the presence of a phobic stimulus linked to a traumatically lost Touchstone."
+      },
+      oldTricks: {
+        name: "Old Tricks",
+        dots: "(•)",
+        description: "All specialties are required to be Archaic."
+      }
+    }
+  },
   bonding: {
     name: "Bonding",
     description: "These can be used together to change how the Blood Bond works.",
@@ -174,6 +207,11 @@ export const merits = {
         name: "Vessel Recognition",
         dots: "•",
         description: "With a Resolve + Awareness test at Difficulty 2 they can tell if a mortal has been fed on recently. A critical win lets them sense if the feed is recurring, meaning there is a chance it's a herd member."
+      },
+      driveThru: {
+        name: "Drive-thru",
+        dots: "•",
+        description: "The character has mastered the art of feeding while on the move. Safely complete a hunt within minutes by increasing the Difficulty by 1."
       }
     },
     flaws: {
@@ -201,6 +239,26 @@ export const merits = {
         name: "Vein Tapper",
         dots: "(•)",
         description: "Finding the act of feeding to be personal, they go out of their way to feed from the unaware, drugged or unconscious victims."
+      },
+      outdatedPreference: {
+        name: "Outdated Preference",
+        dots: "(••)",
+        description: "Either capture and force mortals to adhere to their wanted preference, or always spend 1 Willpower to feed."
+      },
+      resonanceSensitivity: {
+        name: "Resonance Sensitivity",
+        dots: "(•)",
+        description: "One Resonance really messes with the character, causing a unique Compulsion."
+      },
+      resonanceMimic: {
+        name: "Resonance Mimic",
+        dots: "(••)",
+        description: "The character gets influenced and penalized from the memories of their victim."
+      },
+      sloppyFeeder: {
+        name: "Sloppy Feeder",
+        dots: "(••)",
+        description: "The pattern of attacks when feeding is telltale enough to identify. One attack can be linked to previous attacks."
       }
     }
   },
@@ -232,6 +290,21 @@ export const merits = {
         name: "Nuit Mode",
         dots: "••",
         description: "The Kindred's body does not revert to it's death-state each night, enabling them to keep new haircuts and body modifications. They can mend these changes anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1."
+      },
+      objectOfPower: {
+        name: "Object of Power",
+        dots: "• - •••",
+        description: "Rare but powerful items: • Reroll one die per story, excluding Hunger. •• Gain one bonus die to all Level 1 Ritual tests. ••• Free premonition warning once per session when someone will cause them harm."
+      },
+      leyLineLeach: {
+        name: "Ley Line Leach",
+        dots: "•",
+        description: "The character follows ancient paths of power while traveling. After spending more than a few hours traveling to a different city or locale, negate the need for a Rouse Check for the next night."
+      },
+      persistentBlush: {
+        name: "Persistent Blush",
+        dots: "•••",
+        description: "A single activation of Blush of Life lasts 1 week."
       }
     },
     flaws: {
@@ -264,6 +337,88 @@ export const merits = {
         name: "Twice Cursed",
         dots: "(••)",
         description: "Take the Clan's variant Bane in addition to the regular Bane. The Storyteller can prohibit this flaw if the second Bane wouldn't mesh with the chronicle."
+      },
+      cursedObject: {
+        name: "Cursed Object",
+        dots: "(•)",
+        description: "Once per session, a successful test must be rerolled, as determined by the Storyteller."
+      },
+      resistantBlush: {
+        name: "Resistant Blush",
+        dots: "(•)",
+        description: "When rolling a Rouse Check for Blush of Life, roll twice and take the lowest result."
+      },
+      landLocked: {
+        name: "Land Locked",
+        dots: "(•)",
+        description: "Unable to leave the land, the character must make a Fear Frenzy test at Difficulty 3 to board a boat or plane."
+      },
+      corpseFlesh: {
+        name: "Corpse Flesh",
+        dots: "(••)",
+        description: "Unable to use Blush of Life."
+      }
+    }
+  },
+  ingrainedDiscipline: {
+    name: "Ingrained Discipline Flaws",
+    description: "These increase the amount of Discipline powers that a character can purchase by trading off for a drawback. The more they draw on the Blood, the deeper it cuts them. These Flaws have no assigned Dot Value.",
+    merits: {},
+    flaws: {
+      untamed: {
+        name: "Untamed",
+        dots: "",
+        description: "Animalism. When in Frenzy, failing to Ride the Wave inflicts two Stains, which cannot be mitigated by Convictions."
+      },
+      daymares: {
+        name: "Daymares",
+        dots: "",
+        description: "Auspex. When awakening from the night, make two Rouse Checks instead of one."
+      },
+      sanguinaryAnimism: {
+        name: "Sanguinary Animism",
+        dots: "",
+        description: "Blood Sorcery. The vampire suffers a two-dice penalty to Social and Mental pools in the scene following a feeding."
+      },
+      breakdown: {
+        name: "Breakdown",
+        dots: "",
+        description: "Celerity. Take 1 point of Aggravated Health Damage when failing a Rouse Check for a Celerity power."
+      },
+      blunt: {
+        name: "Blunt",
+        dots: "",
+        description: "Dominate. The vampire cannot spend Willpower to reroll any Social test."
+      },
+      scarTissue: {
+        name: "Scar Tissue",
+        dots: "",
+        description: "Fortitude. When rousing the Blood to restore Health, the physical appearance of the injuries remain for a day."
+      },
+      faded: {
+        name: "Faded",
+        dots: "",
+        description: "Obfuscate. When making a Remorse test, roll one fewer die (the total number of dice cannot go below 1)."
+      },
+      monstrous: {
+        name: "Monstrous",
+        dots: "",
+        description: "Oblivion. The vampire's Humanity rating is treated as three levels lower (affects Blush of Life, Social dice pools, Physical appearance, etc.)."
+      },
+      killerInstinct: {
+        name: "Killer Instinct",
+        dots: "",
+        description: "Potence. Roll for Fury Frenzy when failing a Rouse Check for activating a Potence power."
+      },
+      egomaniac: {
+        name: "Egomaniac",
+        dots: "",
+        description: "Presence. Roll for Fury Frenzy when rolling a Messy Critical or failing in a contest when using Presence powers."
+      },
+      stasis: {
+        name: "Stasis",
+        dots: "",
+        description: "Protean. When failing a Rouse Check to activate a Protean power, reverting to their normal form results in an incomplete change."
       }
     }
   },
@@ -317,6 +472,45 @@ export const merits = {
         name: "Groveling Worm",
         dots: "(••)",
         description: "The character must find the time to scourge their own flesh once per session for two points of Superficial Health damage or they suffer one point of Aggravated Willpower damage at the next session. Cannot be taken with Penitence Merit."
+      }
+    }
+  },
+  bloodTies: {
+    name: "Blood Ties",
+    description: "Related to your vampiric lineage. Caitiff and Thin-bloods have lineages, however their Blood is not a cohesive enough group to be considered a clan in relation to these Merits.",
+    merits: {
+      consanguineousSense: {
+        name: "Consanguineous Sense",
+        dots: "••",
+        description: "You can detect whether another Kindred is in your direct bloodline. This does not tell you their Generation."
+      },
+      consanguineousInfluence: {
+        name: "Consanguineous Influence",
+        dots: "••",
+        description: "You gain a bonus die when using Mental Disciplines on a vampire of your own Clan, or a direct descendant or ancestor. You gain 2 bonus dice instead on those within 2 Generations of you such as your grandsire."
+      },
+      sinsOfTheFather: {
+        name: "Sins of the Father",
+        dots: "•• or •••",
+        description: "You show no signs if you commit Diablerie on a direct descendant or ancestor. This extends to all members of your clan if taken at three dots."
+      }
+    },
+    flaws: {}
+  },
+  diablerie: {
+    name: "Diablerie",
+    description: "Unless otherwise noted, they can only be taken if the character has committed Diablerie at least once.",
+    merits: {},
+    flaws: {
+      blatantDiablerist: {
+        name: "Blatant Diablerist",
+        dots: "(•)",
+        description: "Powers and Merits capable of sensing Diablerie will always reveal evidence of Diablerie even if the test would otherwise fail to show any information."
+      },
+      inheritedBane: {
+        name: "Inherited Bane",
+        dots: "(••)",
+        description: "You gain another Clan's Bane in addition to your own. Tremere can use this Flaw to gain the Salubri's Bane without committing Diablerie."
       }
     }
   },

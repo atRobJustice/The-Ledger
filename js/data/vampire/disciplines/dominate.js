@@ -47,6 +47,19 @@ export const dominate = {
     ],
     level2: [
       {
+        name: "The Stolen Voice",
+        effect: "Remove a target's ability to express; unable to speak, write, or gesture",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One scene",
+        dicePool: "Composure + Dominate",
+        opposingPool: "Resolve + Performance",
+        notes: "No need to test to activate against mortals",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
+      {
         name: "Mesmerize",
         effect: "Issue complex commands",
         cost: "One Rouse Check",
@@ -84,6 +97,19 @@ export const dominate = {
       }
     ],
     level3: [
+      {
+        name: "Chain of Command",
+        effect: "Deliver a Mesmerize command, then invoke this power to allow the target to follow more complex commands with awareness and gain a bonus to convince others to help fulfill their directive",
+        cost: "One Rouse Check",
+        prerequisite: "Mesmerize",
+        amalgam: "No",
+        duration: "Until the command is carried out or the scene ends",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Still pay a Rouse and roll for Mesmerize. This power doesn't let the dominated target supernaturally compel others, but allows them to better convince others to aid them",
+        source: "Vampire: The Masquerade Courts of the Damned, page 215"
+      },
+
       {
         name: "Forgetful Mind",
         effect: "Rewrite someone's memory",

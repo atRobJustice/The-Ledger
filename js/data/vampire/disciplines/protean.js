@@ -9,6 +9,19 @@ export const protean = {
   powers: {
     level1: [
       {
+        name: "Squirm",
+        effect: "Turn flesh and bones rubbery, allowing the user to squeeze and fit through tight spaces",
+        cost: "Free or One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "As long as desired",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "If a Rouse Check is spent, the user can fit into even impossibly tight spaces about two inches in diameter",
+        source: "Vampire: The Masquerade Tattered Façade, page 105"
+      },
+
+      {
         name: "Eyes of the Beast",
         effect: "Allows the user to see in total darkness",
         cost: "Free",
@@ -160,6 +173,32 @@ export const protean = {
       }
     ],
     level5: [
+      {
+        name: "Face of the Victim",
+        effect: "Assume the shape of someone they last fed from",
+        cost: "One Rouse Check",
+        prerequisite: "Vicissitude",
+        amalgam: "No",
+        duration: "Until Hunger 5 or using the power again",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Must be activated in the same scene where they have slaked at least 1 Hunger from either a mortal or Kindred",
+        source: "Vampire: The Masquerade Live from the Succubus Club, pages 28-29"
+      },
+
+      {
+        name: "Swarm",
+        effect: "Shapechange into a swarm of insects, reptiles, or other vermin",
+        cost: "Two Rouse Checks",
+        prerequisite: "Shapechange",
+        amalgam: "No",
+        duration: "One scene, or until ended voluntarily",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "As a swarm, the user can attack a number of individuals equal to their Blood Potency per turn",
+        source: "Vampire: The Masquerade Tattered Façade, page 106"
+      },
+
       {
         name: "Blood Form",
         effect: "Turn into an amorphous mass of blood",

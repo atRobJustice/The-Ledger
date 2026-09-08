@@ -85,6 +85,32 @@ export const auspex = {
     ],
     level3: [
       {
+        name: "Read the Room",
+        effect: "Mentally pose a question and receive the general sentiment of a crowd",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "Instantaneous or one scene on crit",
+        dicePool: "Intelligence + Auspex",
+        opposingPool: "N/A",
+        notes: "ST discretion on if a question is too complex. Difficulty lessens with more people present",
+        source: "Vampire: The Masquerade Courts of the Damned, page 214"
+      },
+
+      {
+        name: "Haruspex",
+        effect: "Use the recent dead to reroll dice before night's end",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Oblivion ●",
+        duration: "One night",
+        dicePool: "Resolve + Auspex",
+        opposingPool: "N/A",
+        notes: "Requires a mortal body who died within the scene",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
+      {
         name: "Vermin Vision",
         effect: "Share the senses with animals",
         cost: "One Rouse Check",
@@ -134,6 +160,19 @@ export const auspex = {
       }
     ],
     level4: [
+      {
+        name: "Heart Laid Bare",
+        effect: "Know target's deepest fear or desire",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "N/A",
+        dicePool: "Intelligence + Auspex",
+        opposingPool: "Composure + Subterfuge",
+        notes: "N/A",
+        source: "Vampire: The Masquerade Tattered Façade, pages 91-92"
+      },
+
       {
         name: "Spirit's Touch",
         effect: "Gathering emotional residue from an object or location",

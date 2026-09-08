@@ -69,6 +69,33 @@ export const oblivionCeremonies = {
         ritualRoll: "Resolve + Oblivion",
         notes: "Alongside the bonus of +2 to Physical Attribute rolls and +2 health, the wraiths Skills can be substituted for the vampire's own at Storyteller discretion.",
         source: "Cults of the Blood Gods, page 211"
+      },
+      {
+        name: "Create Corpse Suit",
+        effect: "Sew a garment made out of mortal flesh that warns the wearer of subtle signs of danger",
+        cost: "One Rouse Check",
+        prerequisite: "Shadow Perspective or Touch of Oblivion",
+        ritualRoll: "Resolve + Oblivion",
+        notes: "The garment is semi-sentient and needs to be persuaded with a test. While worn, the wearer gains a Folkloric Bane and Folkloric Block of the Storyteller's choice.",
+        source: "Tattered Facade, page 101"
+      },
+      {
+        name: "Create Flesh Golem",
+        effect: "Build a flesh golem from parts of a corpse",
+        cost: "One Rouse Check",
+        prerequisite: "Aura of Decay or Necrotic Plague",
+        ritualRoll: "Resolve + Oblivion",
+        notes: "Can be assembled manually or with the help of Fleshcrafting.",
+        source: "Tattered Facade, page 101"
+      },
+      {
+        name: "Misfortune's Hand",
+        effect: "Use the power of entropy to call ruin on an enemy's Backgrounds",
+        cost: "One Rouse Check",
+        prerequisite: "Shadow Servant or Touch of Oblivion",
+        ritualRoll: "Resolve + Oblivion",
+        notes: "A target can only be affected by one casting of this Ceremony at a time.",
+        source: "Courts of the Damned, page 217"
       }
     ],
     level4: [
@@ -89,6 +116,15 @@ export const oblivionCeremonies = {
         ritualRoll: "Resolve + Oblivion",
         notes: "This Ceremony reduces the density of the veil and can reduce it to absent, allowing wraiths to come through. The veil increased to frayed after the session ends, stopping any more wraiths.",
         source: "Cults of the Blood Gods, page 213"
+      },
+      {
+        name: "Bind to Mortal Form",
+        effect: "Extend the life of a mortal without ghouling them",
+        cost: "One Rouse Check",
+        prerequisite: "Necrotic Plague or Skuld Fulfilled",
+        ritualRoll: "Resolve + Oblivion",
+        notes: "The ceremony does not keep the mortal young, and continues to age both physically and mentally, albeit past their natural lifespan.",
+        source: "Tattered Facade, page 102"
       }
     ],
     level5: [
@@ -109,6 +145,15 @@ export const oblivionCeremonies = {
         ritualRoll: "Resolve + Oblivion",
         notes: "This lasts until the body dies again or the wraith is exorcised from the host.",
         source: "Cults of the Blood Gods, page 214"
+      },
+      {
+        name: "Gift of True Life",
+        effect: "Extend a mortal's life by shortening the life of another",
+        cost: "One Rouse Check",
+        prerequisite: "Necrotic Plague or Passion Feast",
+        ritualRoll: "Resolve + Oblivion",
+        notes: "The receiving mortal ages half as quickly until the extra lifespan granted has been spent, after which they begin to age normally.",
+        source: "Tattered Facade, page 102"
       }
     ]
   },

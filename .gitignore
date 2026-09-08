@@ -9,6 +9,10 @@ build/
 # IDE
 .vscode/
 .idea/
+.cursor/skills/
+
+# Local wiki dumps (source for js/data refresh skill; not used at runtime)
+reference/
 
 # OS
 .DS_Store

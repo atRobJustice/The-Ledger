@@ -41,6 +41,16 @@ export const backgrounds = {
         name: "Fame",
         dots: "• - •••••",
         description: "Mortal fame is a dangerous game, the character might have once been a pop singer, actress, or other celebrity. The level of fame can subtract from tests against fans or hunting. There is a downside as people may remember the character as their face is plastered on a nearby billboard. Fame can be bought to apply in Vampire society as well."
+      },
+      influencer: {
+        name: "Influencer",
+        dots: "•",
+        description: "Requires Fame ••+. People idolize the character to the point they take the character's words as gospel. Have the equivalent Influence rating equal to your Fame minus one towards a fan or related field once per story."
+      },
+      enduringFame: {
+        name: "Enduring Fame",
+        dots: "•",
+        description: "Requires Fame •••+. The character is so beloved that fame and stardom can never leave them. Fame lost during the story fully recovers at the start of the next story."
       }
     },
     flaws: {
@@ -53,6 +63,11 @@ export const backgrounds = {
         name: "Infamy",
         dots: "(• +)",
         description: "They've done something atrocious and others know."
+      },
+      bannedFrom: {
+        name: "Banned From",
+        dots: "(• - •••)",
+        description: "Small cities are one dot, medium cities are two dots, large cities are three dots."
       }
     }
   },
@@ -273,6 +288,16 @@ export const backgrounds = {
         name: "Adversary",
         dots: "(• +)",
         description: "Another kindred who perhaps liked the character, but now goes out of their way to ruin their lives in any way they can. Rated two levels higher than the Mawla value."
+      },
+      shamefulChilde: {
+        name: "Shameful Childe",
+        dots: "(•)",
+        description: "Embraced a childe but abandoned them."
+      },
+      touchstoneEmbracedByYourEnemies: {
+        name: "Touchstone Embraced by your Enemies",
+        dots: "(••)",
+        description: "A former Touchstone didn't die or change as a person, someone Embraced them. This is a single Neonate, but they have allies and confrontation carries the risk of Stains."
       }
     }
   },

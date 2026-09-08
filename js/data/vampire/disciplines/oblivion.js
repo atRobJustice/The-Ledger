@@ -183,6 +183,19 @@ export const oblivion = {
     ],
     level4: [
       {
+        name: "Profane the Sanctified",
+        effect: "Stun opponents with True Faith and negate its effects, or corrode holy symbols",
+        cost: "One Rouse Check",
+        prerequisite: "Aura of Decay or Touch of Oblivion",
+        amalgam: "No",
+        duration: "One Turn on opponents, permanent on holy symbols",
+        dicePool: "Resolve + Oblivion",
+        opposingPool: "Willpower Test",
+        notes: "Can be used repeatedly without any additional Rouse Checks, but does not continue to stun after the first turn",
+        source: "Vampire: The Masquerade Tattered Façade, page 100"
+      },
+
+      {
         name: "Necrotic Plague",
         effect: "Manifest illness in victims",
         cost: "One Rouse Check",

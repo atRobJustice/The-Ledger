@@ -73,6 +73,32 @@ export const presence = {
     ],
     level3: [
       {
+        name: "Invigorating Display",
+        effect: "After interacting with a crowd, inhale the energy of the crowd to experience a unique Resonance",
+        cost: "One Rouse Check",
+        prerequisite: "Awe",
+        amalgam: "No",
+        duration: "One scene",
+        dicePool: "Composure + Presence",
+        opposingPool: "N/A",
+        notes: "The Resonance is usually intense, but can also be acute on a critical win as determined by the Storyteller",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
+      },
+
+      {
+        name: "Passion Leech",
+        effect: "Leech the passion from a mortal target, gaining the benefits of Humanity 10 temporarily",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Auspex ●●",
+        duration: "Until sunset for the vampire, 3 nights for the victim",
+        dicePool: "Composure + Auspex",
+        opposingPool: "N/A",
+        notes: "The benefit can be gained only once per night",
+        source: "Vampire: The Masquerade Tattered Façade, page 104"
+      },
+
+      {
         name: "Clear the Field",
         effect: "Clear a space in a calm and orderly manner",
         cost: "One Rouse Check",
@@ -134,6 +160,19 @@ export const presence = {
       }
     ],
     level4: [
+      {
+        name: "Inflame Desire",
+        effect: "Boost a victim's current desire, seeking only to satisfy it",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Obfuscate ●",
+        duration: "One scene",
+        dicePool: "Manipulation + Presence",
+        opposingPool: "Composure + Resolve",
+        notes: "Inflicts the Need Compulsion on the victim",
+        source: "Vampire: The Masquerade Tattered Façade, page 104"
+      },
+
       {
         name: "Irresistible Voice",
         effect: "The user's voice alone is enough to use Dominate on a target",

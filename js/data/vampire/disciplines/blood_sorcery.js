@@ -59,6 +59,19 @@ export const bloodSorcery = {
     ],
     level2: [
       {
+        name: "Vinculum Magnum",
+        effect: "Raises the limit of Blood Bonds held over other Kindred",
+        cost: "Free",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "Passive",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Tremere and Duskborn cannot benefit from this",
+        source: "Vampire: The Masquerade Courts of the Damned, pages 214-215"
+      },
+
+      {
         name: "Blood's Curse",
         effect: "Temporary increase another vampire's Bane Severity",
         cost: "One Rouse Check",
@@ -146,6 +159,32 @@ export const bloodSorcery = {
       }
     ],
     level4: [
+      {
+        name: "Marionette",
+        effect: "Control the blood within a body, either living or dead",
+        cost: "One Rouse Check",
+        prerequisite: "Shape the Sanguine Sacrament",
+        amalgam: "No",
+        duration: "One turn per point of margin",
+        dicePool: "Manipulation + Blood Sorcery",
+        opposingPool: "Stamina + Occult or Fortitude",
+        notes: "Dead bodies test against Difficulty 2",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
+      {
+        name: "Fulminating Vitae",
+        effect: "Bomb made from jar of vitae",
+        cost: "Two Rouse Checks",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "Until dawn",
+        dicePool: "Stamina + Blood Sorcery",
+        opposingPool: "Wits + Athletics",
+        notes: "Deals Aggravated to Kindred, Superficial to mortals",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
       {
         name: "Theft of Vitae",
         effect: "Manipulate blood from a victim through the air to feed",

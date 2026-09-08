@@ -47,6 +47,19 @@ export const fortitude = {
     ],
     level2: [
       {
+        name: "Self-Assurance",
+        effect: "Take Superficial Willpower damage reduced by their level of Fortitude when in Social Combat",
+        cost: "One Rouse Check",
+        prerequisite: "Unswayable Mind",
+        amalgam: "No",
+        duration: "One scene, or until depleted, or until end of social combat",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "If the damage is Aggravated Willpower damage, they can use the remaining benefit of the power to negate that damage, but it cannot be renewed in the same scene after this",
+        source: "Vampire: The Masquerade Live from the Succubus Club, pages 27-28"
+      },
+
+      {
         name: "Earth's Perseverance",
         effect: "Become impossible to move from that spot",
         cost: "One Rouse Check",
@@ -108,6 +121,19 @@ export const fortitude = {
       }
     ],
     level3: [
+      {
+        name: "Calloused Soul",
+        effect: "Pre-emptively gain Stains to prevent or reduce further Stain gains",
+        cost: "Two Stains",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One night",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "A vampire actually gains three Stains doing this, but one can be mitigated by a Conviction",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
       {
         name: "Defy Bane",
         effect: "Convert Aggravated Damage to Superficial Damage",
@@ -196,6 +222,19 @@ export const fortitude = {
       }
     ],
     level5: [
+      {
+        name: "Meat Shields",
+        effect: "Increase Fortitude by a number equal to half the weak mortals present (rounded down)",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "One scene, or when the caster leaves targets",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Maximum of 5 dots",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
       {
         name: "Flesh of Marble",
         effect: "Ignore the first source of physical damage each turn unless sunlight",

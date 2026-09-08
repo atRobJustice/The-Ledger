@@ -9,6 +9,19 @@ export const obfuscate = {
   powers: {
     level1: [
       {
+        name: "Mask of Ages",
+        effect: "Appear as an older or younger version of themselves",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "No",
+        duration: "Until sunrise or ended by user",
+        dicePool: "N/A",
+        opposingPool: "N/A",
+        notes: "Storytellers may limit the amount of bonus dice dependent on the number of decades between their projected and real age",
+        source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
+      },
+
+      {
         name: "Cloak of Shadows",
         effect: "As long as the user stands still they blend into their surroundings",
         cost: "Free",
@@ -121,6 +134,19 @@ export const obfuscate = {
     ],
     level3: [
       {
+        name: "Guise of the Departed",
+        effect: "Copy appearance and mannerisms of a recently dead mortal",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Oblivion ●",
+        duration: "Until Dawn",
+        dicePool: "Wits + Obfuscate",
+        opposingPool: "N/A",
+        notes: "Sense the Unseen (Auspex 1) can pierce the mask",
+        source: "Vampire: The Masquerade Tattered Façade, pages 98-99"
+      },
+
+      {
         name: "Fata Morgana",
         effect: "Elaborate hallucinations",
         cost: "One Rouse Check",
@@ -194,6 +220,19 @@ export const obfuscate = {
       }
     ],
     level4: [
+      {
+        name: "Seclusion",
+        effect: "Target is unable to see or hear any other being, living or unliving",
+        cost: "One Rouse Check",
+        prerequisite: "None",
+        amalgam: "Dominate ●",
+        duration: "Margin number of scenes or nights, or until broken",
+        dicePool: "Manipulation + Obfuscate",
+        opposingPool: "Resolve + Awareness",
+        notes: "Physical harm done unto target causes an additional Discipline test for target to resist effect",
+        source: "Vampire: The Masquerade Players Guide"
+      },
+
       {
         name: "Conceal",
         effect: "Cloak an inanimate object",

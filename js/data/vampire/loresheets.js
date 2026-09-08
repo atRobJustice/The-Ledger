@@ -249,6 +249,36 @@ export const loresheets = {
           sourcePage: 190
         }
       }
+    },
+    tatteredFacade: {
+      name: "Tattered Façade",
+      source: "Vampire: The Masquerade Tattered Façade",
+      loresheets: {
+        descendantOfTheAnkou: {
+          name: "Descendant of the Ankou",
+          restrictions: "Malkavian only",
+          description: "Connected to the Ankou, a Malkavian connected to visions and death. Levels grant abilities or bonuses in Oblivion, Occult, Auspex, and leveraging occult expertise.",
+          sourcePage: 171
+        },
+        descendantOfBaronVollgirre: {
+          name: "Descendant of Baron Vollgirre",
+          restrictions: "Toreador only",
+          description: "Connected to the Baron Vollgirre. Levels give access to Protean for Fleshcrafting and Vicissitude. Other benefits include bonuses to social or artistic pursuits, benefits from sadism, and connection to distrusted Kindred.",
+          sourcePage: 172
+        },
+        descendantOfMontano: {
+          name: "Descendant of Montano",
+          restrictions: "Lasombra only",
+          description: "Connected to Montano. Different levels grant the character varying levels of relationship with Montano to learn from him or status within the Lasombra as a whole regardless of sect.",
+          sourcePage: 173
+        },
+        littleSiblings: {
+          name: "Little Siblings",
+          restrictions: "Hecata only",
+          description: "Connected to the Rossellini and the Giovanni. Different levels grant the character experience with commanding wraiths and other dealings with them, or Oblivion Ceremonies benefits.",
+          sourcePage: 174
+        }
+      }
     }
   }
 }; 

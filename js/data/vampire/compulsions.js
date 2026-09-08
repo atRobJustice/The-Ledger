@@ -37,6 +37,45 @@ export const compulsions = {
           resolution: "They can spend a level of Willpower to end the Compulsion early."
         }
       }
+    },
+    uncontrollableFleshChange: {
+      name: "Uncontrollable Flesh Change",
+      description: "Habitual use of Vicissitude or other powers requiring Vicissitude as a prerequisite can lead to this Compulsion. They feel an overwhelming urge to use these powers.",
+      penalty: "Take a two-dice penalty for any other actions until they've satisfied the urge.",
+      source: "Vampire: The Masquerade Tattered Façade, page 105"
+    },
+    dependency: {
+      name: "Dependency",
+      description: "Characters with this Compulsion find themselves unable to risk failure, even with minor tasks.",
+      resolution: "They must Blood Surge for every action until they fail their test or reach Hunger 5.",
+      source: "Vampire: The Masquerade Tattered Façade, page 118"
+    },
+    masochism: {
+      name: "Masochism",
+      description: "This Compulsion appears when Kindred are most exposed or where those they respect are present to judge them, when failure would be dramatic, or when they risk doing damage to their unlife or Humanity.",
+      penalty: "Suffer a 2-dice penalty on all tests until they intentionally humiliate themselves, cause a far-reaching or monumental failure, gain a Stain, or the scene ends.",
+      source: "Vampire: The Masquerade Tattered Façade, page 118"
+    },
+    overkill: {
+      name: "Overkill",
+      description: "The power that courses through Kindred is dangerously addictive. This Compulsion does not care for optics, the Masquerade, or appropriateness.",
+      penalty: "Suffer a 4-dice penalty on all tests where a Discipline could definitively solve the problem in one move.",
+      resolution: "Resolved when they use a Discipline to solve a problem in an egregious manner. Storytellers are encouraged to deny trivial uses of Disciplines.",
+      source: "Vampire: The Masquerade Tattered Façade, page 118"
+    },
+    repetition: {
+      name: "Repetition",
+      description: "While in exceptionally harrowing or traumatic circumstances, they can gain this Compulsion to repeat the thing that happened when they obtained the Compulsion.",
+      penalty: "They cannot rest until they do so, heal no damage during day-sleep, and cannot be roused. Unmoving, they think of what they must do.",
+      resolution: "The Compulsion remains the same for the character until they find peace with what they did or until their story ends.",
+      source: "Vampire: The Masquerade Tattered Façade, page 119"
+    },
+    need: {
+      name: "Need",
+      description: "Only gained through Presence: Inflame Desire. The victim becomes obsessed with satisfying a desire in a scene.",
+      penalty: "Any action not taken toward this purpose suffers a two-dice penalty.",
+      resolution: "Ends when the need is satisfied or the object of desire becomes unattainable.",
+      source: "Vampire: The Masquerade Tattered Façade, page 105"
     }
   },
   clanCompulsions: {
