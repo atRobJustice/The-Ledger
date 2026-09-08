@@ -4,7 +4,7 @@ export const attributes = {
     distribution: "When building the sheet, the player will place one attribute at 1 dot, four attributes at 2 dots, three attributes at 3 dots, and one final attribute at 4 dots, with this being the character's best trait."
   },
   physical: {
-    description: "The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character.",
+    description: "The Physical Attributes measure the general Strength, Dexterity, and Stamina of a character. These Attributes represent the mortal prowess of a vampire's body. Though through the use of certain Disciplines, vampires often exceed the abilities of an otherwise frail-looking physique.",
     attributes: {
       strength: {
         name: "Strength",
@@ -57,7 +57,7 @@ export const attributes = {
           2: "They can take a beating, but consider suing for peace",
           3: "They can hike for several days with a backpack without an issue",
           4: "They could win a marathon, or take a tremendous amount of physical pain",
-          5: "They'd never break a sweat"
+          5: "They'd never break a sweat, if they were mortal"
         },
         examplePools: {
           stealth: "Remain motionless in bushes waiting with each success allowing them to maintain this for one hour",
@@ -70,14 +70,14 @@ export const attributes = {
     }
   },
   social: {
-    description: "The Social Attributes reflect how easily the character can communicate with others to achieve their goals. Through deception or charisma, some battles are easier won through words than combat. These attributes reflect that by determining how their interactions are shaped through their ability to charm, persuade and motivate others to help them; though it is not always as wholesome as it may seem.",
+    description: "The Social Attributes reflect how easily the character can communicate with vampires and mortals alike to achieve their goals. Through deception or charisma, some battles are easier won through words than combat. These attributes reflect that by determining how their interactions are shaped through their ability to charm, persuade and motivate others to help them; though it is not always as wholesome as it may seem.",
     attributes: {
       charisma: {
         name: "Charisma",
         description: "Determines the character's natural appeal, charm and grace. With this attribute they'll be able to draw people into them although do not mistake this for good looks, that is a merit all on its own.",
         dotValues: {
           1: "They speak clearly but few people tend to listen",
-          2: "Generally likeable and may even have friends",
+          2: "Generally likeable even if they are undead and may even have friends",
           3: "People trust them and they make friends easily",
           4: "They possess significant personal magnetism and have an easy time drawing in followers",
           5: "They could lead a city in a rebellion if they wanted to"
@@ -97,7 +97,7 @@ export const attributes = {
           2: "Able to deceive the weak willed and simple minded",
           3: "They never have to pay full price for anything",
           4: "They could be a cult leader or a politician",
-          5: "They could convince people of utter nonsense"
+          5: "They could convince the Prince to invest in desert property"
         },
         examplePools: {
           etiquette: ["Used in a debate", "Gossip and undermine a rival rather than engaging them in public display"],
@@ -127,10 +127,10 @@ export const attributes = {
         description: "Reflects how well the character can maintain and command their own emotions. As well as how easily they can calm nerves and the anxieties of others. It also represents their ability to stay calm-headed in heated situations such as verbal fights and even firefights.",
         dotValues: {
           1: "The slightest provocations can send them into a rage",
-          2: "They can subdue their basic instincts in most non-hostile environments",
-          3: "Others look to them for guidance when things hit the fan",
-          4: "They can manage their instincts to some extent and bluff their way through cards with ease",
-          5: "Their instincts are their pet"
+          2: "They can subdue their predatory nature in most non-hostile environments",
+          3: "Others look to them for guidance when blood hits the fan",
+          4: "They can manage their Beast to some extent and bluff their way through cards with ease",
+          5: "The Beast is their pet"
         },
         examplePools: {
           etiquette: [
@@ -182,7 +182,7 @@ export const attributes = {
           1: "They can read and write, but some terms confuse them",
           2: "They are smart enough to realize their own limitations",
           3: "They are able to piece together clues without difficulty",
-          4: "Likely to be consulted for their intelligence",
+          4: "Likely to be consulted by members of the Tremere for their intelligence",
           5: "A genius"
         },
         examplePools: {
@@ -233,7 +233,7 @@ export const attributes = {
       },
       wits: {
         name: "Wits",
-        description: "Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback the entire time.",
+        description: "Reflects the character's ability to think quickly on their feet and make decisions based on the information around them or from prior knowledge. Wits allow the character to pick up sounds and smells around them, perhaps preventing a possible ambush from happening without warning. It is also representative of a character's street smarts and know what to say in the heat of the moment. Rather than mulling on it the next night and realizing they had the perfect comeback to that snobby harpy the entire time.",
         dotValues: {
           1: "They get to the point eventually, but need to be explained to",
           2: "They can usually bet the odds in a game of poker or activate emergency breaks on time",

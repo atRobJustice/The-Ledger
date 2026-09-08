@@ -123,15 +123,15 @@ export const fortitude = {
     level3: [
       {
         name: "Calloused Soul",
-        effect: "Pre-emptively gain Stains to prevent or reduce further Stain gains",
+        effect: "Pre-emptively gain stains to prevent/reduce further stain gains",
         cost: "Two Stains",
         prerequisite: "None",
-        amalgam: "No",
+        amalgam: "None",
         duration: "One night",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "A vampire actually gains three Stains doing this, but one can be mitigated by a Conviction",
-        source: "Vampire: The Masquerade Players Guide"
+        notes: "A vampire actually gains three stains doing this, but one can be mitigated by a Conviction",
+        source: "Vampire: The Masquerade Tattered Façade, page 97-98"
       },
 
       {
@@ -224,7 +224,7 @@ export const fortitude = {
     level5: [
       {
         name: "Meat Shields",
-        effect: "Increase Fortitude by a number equal to half the weak mortals present (rounded down)",
+        effect: "Increase Fortitude by a number equal to half the weak mortals present. (Rounded down)",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
@@ -232,7 +232,7 @@ export const fortitude = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Maximum of 5 dots",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Vampire: The Masquerade Tattered Façade, page 98"
       },
 
       {

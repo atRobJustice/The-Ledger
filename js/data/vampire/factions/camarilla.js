@@ -16,7 +16,7 @@ export const camarilla = {
   source: ["Vampire: The Masquerade Corebook"],
   sourcePage: 49,
   ashirra: {
-    description: "The Ashirra are the Middle Eastern equivalent of the Camarilla, entirely based on Islam to counter their vampiric impulses. Instead of traditions they use the five pillars of Islam as their code of conduct.",
+    description: "The Ashirra are the Middle Eastern equivalent of the Camarilla, entirely based on Islam to counter their vampiric impulses. Said to have first consolidated in 632 CE, they are said to be the first to show Kindred can form ties that somewhat unite domains. This sect is said to be modeled after the Islamic Caliphate and successor state, similar to the Camarilla's relation to ancient Rome. Their domains are typically in the Middle East and North Africa. Their leader is the ancient Lasombra Suleiman ibn Abdullah. The sect has a stronger emphasis on following dictates of clan elders than the Camarilla. Instead of traditions they use the five pillars of Islam as their code of conduct. Their diversity is sometimes underestimated by other Kindred. As their domains stretch so far there are a variety of cultures a Kindred may find in the Ashirra including decadent Princes, tech millionaires, nationalists, freedom fighters, nobles, and many of different stripes and styles. Even though Islam is the basis of their code, the sect possesses Kindred of many religions. People of the Book are free to follow their religious codes. The sect sees religion as having many answers to Kindred existence.",
     source: ["Vampire: The Masquerade Corebook", "Vampire: The Masquerade Camarilla"],
     sourcePage: [51, 23]
   },

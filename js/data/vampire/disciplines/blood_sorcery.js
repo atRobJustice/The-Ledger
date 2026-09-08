@@ -169,7 +169,7 @@ export const bloodSorcery = {
         dicePool: "Manipulation + Blood Sorcery",
         opposingPool: "Stamina + Occult or Fortitude",
         notes: "Dead bodies test against Difficulty 2",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Vampire: The Masquerade Tattered Façade, page 93"
       },
 
       {
@@ -182,7 +182,7 @@ export const bloodSorcery = {
         dicePool: "Stamina + Blood Sorcery",
         opposingPool: "Wits + Athletics",
         notes: "Deals Aggravated to Kindred, Superficial to mortals",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Vampire: The Masquerade Tattered Façade, page 92-93"
       },
 
       {
@@ -221,7 +221,7 @@ export const bloodSorcery = {
         dicePool: "Strength + Blood Sorcery",
         opposingPool: "Stamina + Occult/Fortitude",
         notes: "If a mortal takes one point of damage they die instantly",
-        source: "Vampire: The Masquerade Corebook, page 251"
+        source: "Vampire: The Masquerade Corebook, page 274"
       },
       {
         name: "Cauldron of Blood",
@@ -233,7 +233,7 @@ export const bloodSorcery = {
         dicePool: "Resolve + Blood Sorcery",
         opposingPool: "Composure + Occult/Fortitude",
         notes: "If a mortal takes one point of damage they die screaming",
-        source: "Vampire: The Masquerade Corebook, page 251"
+        source: "Vampire: The Masquerade Corebook, page 274"
       },
       {
         name: "Reclamation of Vitae",

@@ -21,7 +21,7 @@ export const predatorTypes = {
     },
     bagger: {
       name: "Bagger",
-      description: "Kindred who take an approach most are unable to with their ability to consume preserved, defractionated or rancid blood through Iron Gullet, allowing them to feed from unusual sources such as blood bags or corpses.",
+      description: "Sometimes the best blood doesn't come from a live body. Baggers are kindred who take an approach most are unable to with their ability to consume preserved, defractionated or rancid blood through Iron Gullet, allowing them to feed from unusual sources such as blood bags or corpses.",
       dicePools: [
         "Intelligence + Streetwise (find, gain access and purchase the goods)"
       ],
@@ -65,6 +65,7 @@ export const predatorTypes = {
       drawbacks: [
         "Gain the Dark Secret Flaw (•) Cleaver"
       ],
+      note: "This hunting style is typically rare for ancilla or older characters due to inherent risk or becoming otherwise unsustainable over time.",
       source: "Vampire: The Masquerade Corebook, page 176"
     },
     consensualist: {
@@ -82,6 +83,7 @@ export const predatorTypes = {
         "Gain the Dark Secret Flaw: (•) Masquerade Breacher",
         "Gain the Feeding Flaw: (•) Prey Exclusion (Non-consenting)"
       ],
+      note: "This hunting style is typically rare for ancilla or older characters due to inherent risk or becoming otherwise unsustainable over time.",
       source: "Vampire: The Masquerade Corebook, page 177"
     },
     farmer: {
@@ -100,6 +102,7 @@ export const predatorTypes = {
         "Ventrue may not pick this Predator type",
         "Cannot be taken on characters with Blood Potency 3 or higher"
       ],
+      note: "This hunting style is typically rare for ancilla or older characters due to inherent risk or becoming otherwise unsustainable over time.",
       source: "Vampire: The Masquerade Corebook, page 177"
     },
     osiris: {
@@ -182,7 +185,7 @@ export const predatorTypes = {
     },
     graverobber: {
       name: "Graverobber",
-      description: "Similar to Baggers these kindred understand there's no good in wasting good blood, even if others cannot consume it. Often they find themselves digging up corpses or working or mortuaries to obtain their bodies.",
+      description: "Similar to Baggers these kindred understand there's no good in wasting good blood, even if others cannot consume it. Often they find themselves digging up corpses or working for mortuaries to obtain their bodies, yet regardless of what the name suggests, they prefer feeding from mourners at a gravesite or a hospital. This Predator Type often requires a haven or other connections to a church, hospital, or morgue as a way to obtain the bodies.",
       dicePools: [
         "Resolve + Medicine (sifting through the dead for a body with blood)",
         "Manipulation + Insight (moving among miserable mortals)"
@@ -212,7 +215,7 @@ export const predatorTypes = {
       drawbacks: [
         "Gain the Feeding Flaw: Prey Exclusion (locals)"
       ],
-      source: "Vampire: The Masquerade Let the Streets Run Red, page 76"
+      source: "Vampire: The Masquerade Let the Streets Run Red, page 76; Vampire: The Masquerade Live from the Succubus Club, pages 26-27"
     },
     grimReaper: {
       name: "Grim Reaper",

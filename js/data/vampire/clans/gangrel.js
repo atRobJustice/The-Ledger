@@ -16,7 +16,7 @@ export const gangrel = {
   },
   background: {
     description: "Often closer to beasts than other vampires, and so the Gangrel style themselves apex predators. These Ferals prowl the wilds as easily as the urban jungle, and no clan of vampires can match their ability to endure, survive, and thrive in any environment. Often fiercely territorial, their shapeshifting abilities even give the undead pause.",
-    culture: "Gangrels are generally embraced from prospects who show the ability to survive and fighters. Due to this their customs encourage fights for dominance but not to final death as they push for a culture of healthy rivalry rather than taking competition personally. They are usually the outcasts of Kindred society, learning to live in undesirable areas and yet thrive without bending the knee to a Prince or Baron. Gangrels tend to care less about appearances and status than they do about action and accomplishments."
+    culture: "Gangrel are generally embraced from prospects who show the ability to survive and fighters. Due to this their customs encourage fights for dominance but not to final death as they push for a culture of healthy rivalry rather than taking competition personally. They are usually the outcasts of Kindred society, learning to live in undesirable areas and yet thrive without bending the knee to a Prince or Baron. Gangrel tend to care less about appearances and status than they do about action and accomplishments."
   },
   disciplines: {
     animalism: "Gives the Gangrel the ability to make an animal their companion.",

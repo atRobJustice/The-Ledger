@@ -18,7 +18,7 @@ export const oblivion = {
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Medicine/Fortitude",
         notes: "If the body is not animated it will dissolve throughout three turns with no test needed",
-        source: "Vampire: The Masquerade Players Guide, page 85"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204 / Players Guide, page 85"
       },
       {
         name: "Binding Fetter",
@@ -30,7 +30,7 @@ export const oblivion = {
         dicePool: "Wits + Oblivion",
         opposingPool: "N/A",
         notes: "During its use the user receives a -2 penalty to all Awareness, Wits, and Resolve rolls",
-        source: "Vampire: The Masquerade Players Guide, page 85"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 204 / Players Guide, page 85"
       },
       {
         name: "Oblivion Sight",
@@ -42,7 +42,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "While in use there is a two-dice penalty to social interactions with mortals",
-        source: "Vampire: The Masquerade Players Guide, page 85"
+        source: "Vampire: The Masquerade Chicago by Night, page 293 / Players Guide, page 85"
       },
       {
         name: "Shadow Cloak",
@@ -54,7 +54,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "N/A",
-        source: "Vampire: The Masquerade Players Guide, page 85"
+        source: "Vampire: The Masquerade Chicago by Night, page 293 / Players Guide, page 85 / Fall of London, page 264"
       }
     ],
     level2: [
@@ -68,7 +68,7 @@ export const oblivion = {
         dicePool: "Wits + Oblivion",
         opposingPool: "N/A",
         notes: "Arms do not have a health tracker and do not require Composure + Resolve to escape",
-        source: "Vampire: The Masquerade Players Guide, page 86"
+        source: "Vampire: The Masquerade Chicago by Night, page 294 / Players Guide, page 86"
       },
       {
         name: "Fatal Prediction",
@@ -104,7 +104,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The shadow can be extended up to twice the user's Oblivion rating in yards/meters. Those standing in the shadow take more Willpower damage from social conflict",
-        source: "Vampire: The Masquerade Players Guide, page 87"
+        source: "Vampire: The Masquerade Chicago by Night, page 293 / Players Guide, page 87"
       },
       {
         name: "Where the Veil Thins",
@@ -116,7 +116,7 @@ export const oblivion = {
         dicePool: "Intelligence + Oblivion",
         opposingPool: "N/A",
         notes: "The book lists a chart stating the possible different densities and causes, as well as their effects",
-        source: "Vampire: The Masquerade Players Guide, page 87"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 205 / Players Guide, page 87"
       }
     ],
     level3: [
@@ -130,7 +130,7 @@ export const oblivion = {
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Medicine/Fortitude",
         notes: "All social rolls the vampire makes when this power is active takes a two dice penalty. Any contaminated food eaten gives two Superficial Damage",
-        source: "Vampire: The Masquerade Players Guide, page 88"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 205 / Players Guide, page 88"
       },
       {
         name: "Passion Feast",
@@ -142,7 +142,7 @@ export const oblivion = {
         dicePool: "Resolve + Oblivion",
         opposingPool: "Resolve + Composure",
         notes: "The hunger consumed does not return the following night",
-        source: "Vampire: The Masquerade Players Guide, page 89"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 206 / Players Guide, page 89"
       },
       {
         name: "Shadow Perspective",
@@ -154,7 +154,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The use of this power is undetectable in the shadow other than by supernatural means such as Sense the Unseen",
-        source: "Vampire: The Masquerade Players Guide, page 89"
+        source: "Vampire: The Masquerade Chicago by Night, page 294 / Players Guide, page 89"
       },
       {
         name: "Shadow Servant",
@@ -178,7 +178,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Inflicting such damage may warrant Stains up to Storyteller discretion. The user must grip the target",
-        source: "Vampire: The Masquerade Players Guide, page 89"
+        source: "Vampire: The Masquerade Chicago by Night, page 294 / Players Guide, page 89"
       }
     ],
     level4: [
@@ -205,7 +205,7 @@ export const oblivion = {
         dicePool: "Intelligence + Oblivion",
         opposingPool: "Stamina + Medicine/Fortitude",
         notes: "This illness cannot be treated in a medical setting as it's supernaturally inflicted, instead only healed by drinking vitae. There is no outcome on Total Failures",
-        source: "Vampire: The Masquerade Players Guide, page 89"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 206 / Players Guide, page 89"
       },
       {
         name: "Stygian Shroud",
@@ -217,7 +217,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The shadow can be extended up to twice the user's Oblivion rating in yards/meters",
-        source: "Vampire: The Masquerade Players Guide, page 90"
+        source: "Vampire: The Masquerade Chicago by Night, page 295 / Players Guide, page 90"
       },
       {
         name: "Umbrous Clutch",
@@ -255,7 +255,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "A willing person may be taken through the Shadow Step but should the user stain, so does the passenger",
-        source: "Vampire: The Masquerade Players Guide, page 90"
+        source: "Vampire: The Masquerade Chicago by Night, page 295 / Players Guide, page 90"
       },
       {
         name: "Skuld Fulfilled",
@@ -267,7 +267,7 @@ export const oblivion = {
         dicePool: "Stamina + Oblivion",
         opposingPool: "Stamina + Stamina/Fortitude",
         notes: "If the victim is a ghoul their immunity to aging is removed and eliminates any vitae in their system",
-        source: "Vampire: The Masquerade Players Guide, page 91"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 207 / Players Guide, page 91"
       },
       {
         name: "Tenebrous Avatar",
@@ -279,7 +279,7 @@ export const oblivion = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "The user takes no damage except sunlight and fire while in this form",
-        source: "Vampire: The Masquerade Players Guide, page 91"
+        source: "Vampire: The Masquerade Chicago by Night, page 295 / Players Guide, page 91"
       },
       {
         name: "Withering Spirit",

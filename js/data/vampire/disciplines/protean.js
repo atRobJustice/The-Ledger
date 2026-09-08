@@ -194,13 +194,13 @@ export const protean = {
         duration: "Until Hunger 5 or using the power again",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Must be activated in the same scene where they have slaked at least 1 Hunger from either a mortal or Kindred",
+        notes: "Must be activated in the same scene where they've slaked at least 1 Hunger from either a mortal or Kindred",
         source: "Vampire: The Masquerade Live from the Succubus Club, pages 28-29"
       },
 
       {
         name: "Swarm",
-        effect: "Shapechange into a swarm of insects, reptiles, or other vermin",
+        effect: "Allows the user to shapechange into a swarm of insects, reptiles, or other vermin",
         cost: "Two Rouse Checks",
         prerequisite: "Shapechange",
         amalgam: "No",

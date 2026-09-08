@@ -44,7 +44,7 @@ export const auspex = {
         dicePool: "Composure + Auspex",
         opposingPool: "N/A",
         notes: "If the user uses this on more than one subject on the same night, the cost increases to spend Willpower equal to half the number of successes in the margin per additional target",
-        source: "Vampire: The Masquerade Players Guide, page 70"
+        source: "Vampire: The Masquerade Companion, page 24 / Players Guide, page 70"
       },
       {
         name: "Premonition",
@@ -118,7 +118,7 @@ export const auspex = {
         dicePool: "Resolve + Auspex",
         opposingPool: "N/A",
         notes: "Requires a mortal body who died within the scene",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Vampire: The Masquerade Tattered Façade, page 91"
       },
 
       {
@@ -244,7 +244,7 @@ export const auspex = {
         dicePool: "Composure + Auspex",
         opposingPool: "N/A",
         notes: "This power only works on vampires with a lower Humanity rating",
-        source: "Vampire: The Masquerade Players Guide, page 71"
+        source: "Vampire: The Masquerade Companion, page 24 / Players Guide, page 71"
       }
     ]
   },

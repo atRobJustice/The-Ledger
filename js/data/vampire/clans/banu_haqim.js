@@ -16,7 +16,7 @@ export const banuHaqim = {
   },
   background: {
     description: "The Judges of the Banu Haqim are torn between their hereditary thirst for vampiric Blood and their passion for justice. Stern adjudicators, they are fiercely devoted to upholding a moral code, and Embrace mortals capable of assessing and handling threats, enforcing laws and traditions, and punishing transgressors.",
-    characteristics: "Regardless of the individual Banu Haqim's stance, they all adhere to some type of strict code, be it blood laws, personal ethics, governmental or religious rules. Nevertheless, that doesn't mean they are free of self-interest, and often such codes of conduct are a self-regulation method to keep in check their desire for Kindred blood."
+    characteristics: "Regardless of the individual Banu Haqim's stance, they all adhere to some type of strict code, be it blood laws, personal ethics, governmental or religious rules. Nevertheless, that doesn't mean they are free of self-interest, and often such codes of conduct are a self-regulation method to keep in check their desire for Kindred blood. The Banu Haqim's instinct to find the guilty is intrinsic to the Blood and not bound by religion; those guilty of whatever transgression a Child of Haqim deems unforgivable must be punished, and punishment might even include taking their unlife from their veins through diablerie. They are also not tied to a specific cultural or geographical background, and modern Banu Haqim hail from all over the world, representing various beliefs. Their individual code is also not necessarily tied to a faith, and may come from personal convictions rather than religion."
   },
   disciplines: {
     bloodSorcery: "Used to poison their blades and use their blood as a weapon against others, as well as sift out the truth in blood. They keep their secrets of Blood Sorcery close.",
@@ -40,7 +40,7 @@ export const banuHaqim = {
     },
     urShulgi: {
       description: "A methuselah of the clan, potentially direct a childe of Haqim, and perhaps one of the greatest sorcerers in the clan.",
-      currentStatus: "Having awaken from Torpor after thousands of years, broke the clan blood curse, but was horrified to find his clan follow a human religion. He now leads a schism in his clan with his cult claiming to be the true followers of Haqim at odds with those who follow human religions or challenge his claims."
+      currentStatus: "Having awakened from Torpor after thousands of years, he was horrified to find his clan follow a human religion. He now leads a schism in his clan with his cult claiming to be the true followers of Haqim at odds with those who follow human religions or challenge his claims."
     },
     alAshrad: {
       description: "The Amr, the most learned and respected of the clan's sorcerers, of the Banu Haqim.",

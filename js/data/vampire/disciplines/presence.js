@@ -86,14 +86,14 @@ export const presence = {
     level3: [
       {
         name: "Invigorating Display",
-        effect: "After interacting with a crowd, inhale the energy of the crowd to experience a unique Resonance",
+        effect: "After interacting with a crowd, a vampire can inhale the energy of the crowd to experience a unique Resonance",
         cost: "One Rouse Check",
         prerequisite: "Awe",
         amalgam: "No",
         duration: "One scene",
         dicePool: "Composure + Presence",
         opposingPool: "N/A",
-        notes: "The Resonance is usually intense, but can also be acute on a critical win as determined by the Storyteller",
+        notes: "The Resonance is usually intense, but can be also acute on a critical win as determined by the Storyteller",
         source: "Vampire: The Masquerade Live from the Succubus Club, page 28"
       },
 

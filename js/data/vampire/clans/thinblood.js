@@ -57,7 +57,7 @@ export const thinblood = {
   },
   notableCharacters: {
     kirinTaunk: {
-      description: "An alchemist who has met Final Death. She is one of the celebrated alchemist of the 1990s, whose work pioneered techniques used in formulas to this day"
+      description: "One of the celebrated alchemists from the 1990s, she pioneered formulae techniques that are still used today. Her work has served as a source of stability for the growing Duskborn community, and it remains untouched by the alchemist purges in other domains and the horrors of the North American Sect Wars. Her guile made her a role model and a folk legend for those who hid from their local scourge. Furthermore, her brewing speed was legendary, and she was a social force of nature, capable of fitting in within the Camarilla and Anarch. Taunk also had a mysterious benefactor. Final Death took her in 1998, but her legacy continues through alchemist groups founded by her apprentices. She created the It's All in the Fire Now book."
     }
   },
   exclusiveLoresheets: [

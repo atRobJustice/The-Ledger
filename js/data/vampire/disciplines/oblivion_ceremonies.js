@@ -260,7 +260,7 @@ export const oblivionCeremonies = {
         cost: "One Rouse Check",
         prerequisite: "Necrotic Plague or Passion Feast",
         ritualRoll: "Resolve + Oblivion",
-        notes: "The receiving mortal ages half as quickly until the extra lifespan granted has been spent, after which they begin to age normally.",
+        notes: "The receiving mortal ages half as quickly until the extra lifespan granted has been spent, after which, they begin to age normally.",
         source: "Tattered Facade, page 102"
       },
       {

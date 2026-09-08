@@ -6,7 +6,7 @@ export const animalism = {
     type: "Mental",
     threat: "Low to Medium",
     resonance: "Animal Blood",
-    overview: "Animalism allows Kindred to communicate with, control, or feed more efficiently on animals. It also lets them act on the inner Beast of other vampires. The power is most effective on predators, and in cases where it's being used on herbivores increases the Difficulty of skills rolls by one.",
+    overview: "Animalism allows Kindred to communicate with, control, or feed more efficiently on animals. It also lets them act on the inner Beast of other vampires. Animalism only works on vertebrates unless the user has Unliving Hive, which extends the power to swarms of insects. The power is most effective on predators, and in cases where it's being used on herbivores increases the Difficulty of skills rolls by one.",
     powers: {
         level1: [
             {
@@ -37,7 +37,7 @@ export const animalism = {
         level2: [
       {
         name: "Tracing the Blood",
-        effect: "Understand how others Rouse the Blood, detecting Blood Surges, Blush of Life, or Disciplines",
+        effect: "Understand how others Rouse the Blood detecting Blood Surges, Blush of Life, or Disciplines",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
@@ -108,8 +108,8 @@ export const animalism = {
         duration: "One Scene",
         dicePool: "Resolve + Animalism",
         opposingPool: "Composure + Resolve or Stamina + Wits (if mortal)",
-        notes: "Vampires can use this power on themselves to instill fear or disgust; they suffer a two-dice penalty for the duration of this scene",
-        source: "Vampire: The Masquerade Players Guide"
+        notes: "Vampires can use this power on themselves to instill fear or disgust, they suffer a two-dice penalty for the duration of this scene",
+        source: "Vampire: The Masquerade Tattered Façade, page 90"
       },
 
       {
@@ -121,8 +121,8 @@ export const animalism = {
         duration: "A few minutes",
         dicePool: "Manipulation + Animalism",
         opposingPool: "N/A",
-        notes: "Animalism tests increase in Difficulty by 1 for the rest of the session",
-        source: "Vampire: The Masquerade Players Guide"
+        notes: "Animalism tests increase in Difficulty by 1 for rest of the session",
+        source: "Vampire: The Masquerade Tattered Façade, page 89-90"
       },
 
             {

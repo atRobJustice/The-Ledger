@@ -276,13 +276,13 @@ export const loresheets = {
           name: "Descendant of Montano",
           restrictions: "Lasombra only",
           description: "Connected to Montano. Different levels grant the character varying levels of relationship with Montano to learn from him or status within the Lasombra as a whole regardless of sect.",
-          sourcePage: 173
+          sourcePage: "173 (or Chicago by Night page 274)"
         },
         littleSiblings: {
           name: "Little Siblings",
           restrictions: "Hecata only",
           description: "Connected to the Rossellini and the Giovanni. Different levels grant the character experience with commanding wraiths and other dealings with them, or Oblivion Ceremonies benefits.",
-          sourcePage: 174
+          sourcePage: "174 (or Children of the Blood page 101)"
         }
       }
     },
@@ -293,7 +293,7 @@ export const loresheets = {
         annabelle: {
           name: "Annabelle",
           restrictions: "N/A",
-          description: "Connected to Annabelle. Different levels grant the character varying levels of relationship with Annabelle with her ability to pull strings for specific requests or aid them in other ways.",
+          description: "Connected to Annabelle Triabell. Different levels grant the character varying levels of relationship with Annabelle with her ability to pull strings for specific requests or aid them in other ways.",
           sourcePage: 262
         },
         ballardIndustries: {
@@ -822,31 +822,31 @@ export const loresheets = {
           name: "Wolves in Sheep's Clothing",
           restrictions: "N/A",
           description: "Forsaken ghouls aren't a novel concept among the dead. What is new, and what makes some vampires weary, is the growing populace of a group which calls themselves Wolves in Sheeps Clothing. These hungry ghouls found a way to harness power of the dead, using unknown forms of magic, and won't stop, for the hunger grows.",
-          sourcePage: 3
+          sourcePage: "Issue 3, pages 32-33"
         },
         nictuku: {
           name: "The Nictuku",
           restrictions: "Nosferatu only",
           description: "In the darkness of their warren, Nosferatu tell gruesome tales about their mad with fury offspring, the Nictuku. Some of the Nosferatu clan would later decide that these stories are just that. But others know that what they saw deep below the city was not just a rat. It was a warning.",
-          sourcePage: 3
+          sourcePage: "Issue 3, page 34"
         },
         minneapolis: {
           name: "Minneapolis",
           restrictions: "N/A",
           description: "Younger, but bigger and louder of the Twin Cities, Minneapolis used to be the Domain of local Anarchs, standing in opposition to Prince Merrain's court, on the other side of river Mississippi. Nowadays, the Anarch population lays low, wondering if what was achieved in Berlin, could be replicated on their turf.",
-          sourcePage: 2
+          sourcePage: "Issue 2, page 32"
         },
         stPaul: {
           name: "St. Paul",
           restrictions: "N/A",
           description: "Older, although less famous of the Twin Cities, St. Paul is the heart of the local Camarilla. Its artistic soul being the main reason for Prince Samantha Merrain of clan Toreador to make the older sibling her preferred domain.",
-          sourcePage: 2
+          sourcePage: "Issue 2, page 33"
         },
         morticiansArmy: {
           name: "The Mortician's Army",
           restrictions: "N/A",
           description: "A pathologist working for the Medical Examiner's office in downtown Minneapolis, Rafael DeLuna's personal mission of revenge against vampires eventually gave rise to a well equipped and connected network of hunters popular with local law enforcements and prepper communities, who all carry a mortician's hammer as a signature weapon and as an insignia.",
-          sourcePage: 9
+          sourcePage: "Issue 9, page 32"
         }
       }
     },

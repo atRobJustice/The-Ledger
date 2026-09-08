@@ -41,7 +41,7 @@ export const coterieBackgrounds = {
             name: "Apartment Towers",
             dots: 2,
             resonances: ["All"],
-            description: "Extortionist Predator Type vampires receives one bonus die on their hunts in the domain. Subtract one die from the domain's Portillion pools."
+            description: "Extortionist Predator Type vampires receives one bonus die on their hunts in the domain. Subtract one die from the domain's Portillon pools."
           },
           backAlleys: {
             name: "Back Alleys",
@@ -179,7 +179,7 @@ export const coterieBackgrounds = {
             name: "Transit",
             dots: 2,
             resonances: ["Phlegmatic"],
-            description: "Any haven within this area receives two dots in the Postern Merit. Add two dice to pools to evade pursuit on transit, summon rats with Animalism, or any other tests relevant to transit. On the opposite End, Nosferatu and others who know the terrain can bypass these two dots of Portillion when infiltrating."
+            description: "Any haven within this area receives two dots in the Postern Merit. Add two dice to pools to evade pursuit on transit, summon rats with Animalism, or any other tests relevant to transit. On the opposite End, Nosferatu and others who know the terrain can bypass these two dots of Portillon when infiltrating."
           }
         }
       }
@@ -319,7 +319,7 @@ export const coterieBackgrounds = {
       toreador: {
         name: "All Access",
         dots: 1,
-        description: "One per session, they can get past bouncers to get into a mortal event by being on the list or knowing the right connections."
+        description: "Once per session, they can get past bouncers to get into a mortal event by being on the list or knowing the right connections."
       },
       tremere: {
         name: "Multi-Level Lorekeeping",

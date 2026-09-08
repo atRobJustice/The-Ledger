@@ -81,7 +81,7 @@ export const obfuscate = {
         dicePool: "Manipulation + Obfuscate",
         opposingPool: "Composure + Wits",
         notes: "This can be used in combat but can only affect targets once per conflict",
-        source: "Vampire: The Masquerade Players Guide, page 76"
+        source: "Vampire: The Masquerade Companion, page 25 / Players Guide, page 76"
       },
       {
         name: "Ghost's Passing",
@@ -117,7 +117,7 @@ export const obfuscate = {
         dicePool: "Wits + Obfuscate",
         opposingPool: "Resolve + Composure",
         notes: "Can be used on anyone in line of sight",
-        source: "Vampire: The Masquerade Fall of London, page 148"
+        source: "Vampire: The Masquerade Fall of London, page 31"
       },
       {
         name: "Doubletalk",
@@ -135,7 +135,7 @@ export const obfuscate = {
     level3: [
       {
         name: "Guise of the Departed",
-        effect: "Copy appearance and mannerisms of a recently dead mortal",
+        effect: "Copy appearance and mannerism of a recently dead mortal",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Oblivion ●",
@@ -156,7 +156,7 @@ export const obfuscate = {
         dicePool: "Manipulation + Obfuscate",
         opposingPool: "N/A",
         notes: "If the hallucination can trigger Frenzy, give the test at 1 diff lower than the real thing",
-        source: "Vampire: The Masquerade Players Guide, page 77"
+        source: "Vampire: The Masquerade Companion, page 26 / Players Guide, page 77"
       },
       {
         name: "Ghost in the Machine",
@@ -204,7 +204,7 @@ export const obfuscate = {
         dicePool: "Charisma + Obfuscate",
         opposingPool: "Wits + Resolve",
         notes: "Eye contact is required to active the power",
-        source: "Vampire: The Masquerade Players Guide, page 77"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 85 / Players Guide, page 77"
       },
       {
         name: "Mind Masque",
@@ -222,7 +222,7 @@ export const obfuscate = {
     level4: [
       {
         name: "Seclusion",
-        effect: "Target is unable to see or hear any other being, living or unliving",
+        effect: "Target is unable to see or hear from any other being, living or unliving",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "Dominate ●",

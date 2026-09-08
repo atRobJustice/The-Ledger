@@ -59,7 +59,7 @@ export const brujah = {
     },
     jeremyMacNeil: {
       description: "An Anarch who galvanized the Kindred of LA for the revolution of 1943 which led to the founding of the Anarch Free States.",
-      history: "He along with Garcia fought against the old Prince of Los Angelos. MacNeil was the one to coin the term Baron, though he never took he title.",
+      history: "He along with Garcia fought against the old Prince of Los Angeles. MacNeil was the one to coin the term Baron, though he never took the title.",
       currentStatus: "Currently he keeps a low profile, working as a sweeper of the area."
     },
     anitaWainwright: {

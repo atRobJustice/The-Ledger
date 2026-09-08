@@ -860,7 +860,7 @@ export const bloodSorceryRituals = {
       },
       {
         name: "Seek the Gathered Vitae",
-        effect: "Discover gatherings of Kindred with a collective Blood Potency of 13 or higher",
+        effect: "Discovered gatherings of Kindred with a collective Blood Potency of 13 or higher",
         cost: "N/A",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",
@@ -988,7 +988,7 @@ export const bloodSorceryRituals = {
       },
       {
         name: "Foundation of the Chantry",
-        effect: "Make a point of Foundation so the caster and designees can retrieve broadcasts from Rite of Introduction and send responses back",
+        effect: "Make a point of Foundation so the caster and designees can retrieve broadcasts from Rite of Introduction and send response back",
         cost: "One Rouse Check",
         origin: "None",
         ritualRoll: "Intelligence + Blood Sorcery",

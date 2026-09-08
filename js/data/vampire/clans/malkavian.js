@@ -15,7 +15,7 @@ export const malkavian = {
     description: "Whether it's figments of their imagination or extrasensory perception of the truths. For one scene, the Malkavian suffers a 2 dice penalty to rolls involving Dexterity, Manipulation, Composure, and Wits. As well as rolls to resist terror Frenzy."
   },
   background: {
-    description: "Derided as Lunatics by other vampires, the Blood of the Malkavians lets them perceive and foretell truths hidden from others. Like the 'wise madmen' of poetry their fractured perspective stems from seeing too much of the world at once, from understanding too deeply, and feeling emotions that are just too strong to bear.",
+    description: "Derided as Lunatics by other vampires, the Blood of the Malkavian clan lets them perceive and foretell truths hidden from others. Like the 'wise madmen' of poetry their fractured perspective stems from seeing too much of the world at once, from understanding too deeply, and feeling emotions that are just too strong to bear.",
     embrace: "Their Embraces come from all walks of life and age, with most Embraces carries something that was only visible to the sire.",
     gifts: {
       secondSight: "The ability to understand dreams, perceive spirits or predict the future to some successful degree.",

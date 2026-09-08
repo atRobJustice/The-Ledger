@@ -201,7 +201,7 @@ export const merits = {
       bloodhound: {
         name: "Bloodhound",
         dots: "•",
-        description: "Able to sniff out resonances without tasting them."
+        description: "Able to sniff out Resonance without tasting them."
       },
       ironGullet: {
         name: "Iron Gullet",
@@ -238,7 +238,7 @@ export const merits = {
       organovore: {
         name: "Organovore",
         dots: "(••)",
-        description: "Slake only by consuming human flesh and organs."
+        description: "Slake Hunger only by consuming human flesh and organs."
       },
       veinTapper: {
         name: "Vein Tapper",
@@ -294,7 +294,7 @@ export const merits = {
       nuitMode: {
         name: "Nuit Mode",
         dots: "••",
-        description: "The Kindred's body does not revert to it's death-state each night, enabling them to keep new haircuts and body modifications. They can mend these changes anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1."
+        description: "The Kindred's body does not automatically revert to its death-state each night, enabling them to keep new haircuts and body modifications if they choose. They can mend any changes after a death-state reset anytime as if they were Aggravated damage. This does not work for characters with BP higher than 1."
       },
       objectOfPower: {
         name: "Object of Power",

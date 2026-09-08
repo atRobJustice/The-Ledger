@@ -91,7 +91,7 @@ export const coterieTypes = {
         status: 1,
         enemies: 2
       },
-      possibleExtras: ["Adversary", "Haven (Base of operations)", "Mask", "Retainers (NCOs/Troops)", "Haven: Hidden Armor"],
+      possibleExtras: ["Adversary", "Haven (Base of operations)", "Mask", "Retainers (NCOs/Troops)", "Haven: Hidden Armory"],
       preferredResonances: ["Choleric"],
       commonAdvantages: ["Transportation (2)", "Bullies (1)"],
       source: "Vampire: The Masquerade Corebook",
@@ -108,7 +108,7 @@ export const coterieTypes = {
         resources: 2,
         status: "Notorious (1)"
       },
-      possibleExtras: ["Herd", "Allies", "Contracts"],
+      possibleExtras: ["Herd", "Allies", "Contacts"],
       source: "Vampire: The Masquerade Winter's Teeth",
       sourcePage: "vol 2"
     },
@@ -131,7 +131,7 @@ export const coterieTypes = {
     },
     dayWatch: {
       name: "Day Watch",
-      description: "A coterie that is built to protect someone or something during the day. (Thin-bloods with the Day Drinker merit usually)",
+      description: "A coterie that is built to protect someone or something during the day. (Thin-blood with the Day Drinker merit usually)",
       requirements: {
         domain: {
           chasse: 1,
@@ -431,8 +431,8 @@ export const coterieTypes = {
           chasse: 2,
           portillon: 3
         },
-        mawla: 2,
-        status: 4
+        mawla: "2 (Major-domo or Zampolit)",
+        status: "4 (or 3 for Anarch regencies)"
       },
       advantages: "Select up to 10 dots shared between Haven, Herd, Influence, Resources, Retainers, Status: City Secrets, and/or Coterie Advantages.",
       flaws: "Select the same amount of dots worth of Flaws (Adversaries, Compromised Haven, Despised, Enemies, Stalkers, and/or Coterie Flaws)",
@@ -462,7 +462,7 @@ export const coterieTypes = {
       description: "A coterie posing as another type, but are actually spies for a rival faction or sect.",
       requirements: {
         domain: "Coterie is being mimicked, can spend one less dot overall",
-        mawla: 2,
+        mawla: "2 (Handler or messenger)",
         mask: 1
       },
       possibleExtras: ["Adversaries on the target city's Primogen", "Status: City Secrets", "and other Advantages from the coterie's supposed cover type", "Adversaries", "Dark Secret (2)"],
@@ -591,7 +591,7 @@ export const coterieTypes = {
       description: "Justicars recruit their own coteries, comprised of expendable enforcers to look into potential threats. Half of the Archonium is generally made of the same clan as the Justicar, though many hide or lie about their clan. They operate as diplomats and spies in Anarch and Ashirra domains, usually recruited locally for a specific task and do not always get a choice if they want to serve.",
       requirements: {
         domain: "Max 1 when arriving in a new city",
-        status: 4,
+        status: "4 Camarilla (mainly useful when breaking cover or calling on Justicar authority)",
         mawla: 3,
         adversary: 4
       },
@@ -630,7 +630,7 @@ export const coterieTypes = {
     },
     decadeClub: {
       name: "The Decade Club",
-      description: "An informal club of Kindred who share a bond of history. Beyond sharing an important decade or era, they often maintain ideological values and holdings from that period.",
+      description: "This coterie type is more of an informal club, made up of Kindred who have a shared bond of history. Beyond all sharing an important decade or era, they often maintain ideological values and holdings from that period.",
       requirements: {
         domain: {
           chasse: "maximum 2",

@@ -42,21 +42,21 @@ export const dominate = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Attempts by a third party take a dice penalty equal to the other vampire's Fortitude rating",
-        source: "Vampire: The Masquerade Players Guide, page 73"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 104 / Players Guide, page 73"
       }
     ],
     level2: [
       {
         name: "The Stolen Voice",
-        effect: "Remove a target's ability to express; unable to speak, write, or gesture",
+        effect: "Remove a target's ability to express. Unable to speak, write or gesture",
         cost: "One Rouse Check",
         prerequisite: "None",
-        amalgam: "No",
+        amalgam: "None",
         duration: "One scene",
         dicePool: "Composure + Dominate",
         opposingPool: "Resolve + Performance",
         notes: "No need to test to activate against mortals",
-        source: "Vampire: The Masquerade Players Guide"
+        source: "Vampire: The Masquerade Tattered Façade, page 96-97"
       },
 
       {
@@ -93,13 +93,13 @@ export const dominate = {
         dicePool: "N/A",
         opposingPool: "N/A",
         notes: "Total fail on defiance rolls means the bond does not weaken that month",
-        source: "Vampire: The Masquerade Players Guide, page 74"
+        source: "Vampire: The Masquerade Companion, page 25 / Players Guide, page 74"
       }
     ],
     level3: [
       {
         name: "Chain of Command",
-        effect: "Deliver a Mesmerize command, then invoke this power to allow the target to follow more complex commands with awareness and gain a bonus to convince others to help fulfill their directive",
+        effect: "Deliver a Mesmerize command, then invoke this power to allow the target to follow more complex commands with awareness and gains a bonus to convince others to help in fulfilling their directive",
         cost: "One Rouse Check",
         prerequisite: "Mesmerize",
         amalgam: "No",
@@ -146,7 +146,7 @@ export const dominate = {
         dicePool: "Manipulation + Dominate",
         opposingPool: "Resolve + Occult",
         notes: "For each generation separating them, the target gains an additional die to resist",
-        source: "Vampire: The Masquerade Players Guide, page 74"
+        source: "Vampire: The Masquerade Cults of the Blood Gods, page 104 / Players Guide, page 74"
       },
       {
         name: "Implant Suggestion",

@@ -38,20 +38,20 @@ export const lasombra = {
   },
   notableCharacters: {
     montano: {
-      description: "With the clan having shifted towards the Camarilla in the modern night they now sing his praises. Some claim that it was by his will that Christianity rose to its prominence.",
-      history: "When the vampire society originally split, he was one of the few to not abandon the newly formed Camarilla and join the Sabbat."
+      description: "Lasombra methuselah, who walked with the Lasombra antediluvian. Some claim that it was by his will that Christianity rose to its prominence. With the clan having shifted towards the Camarilla in the modern night they now sing his praises.",
+      history: "When vampire society originally split, he was one of the few to not join the Sabbat, but join the newly formed Camarilla."
     },
     talley: {
       description: "The cold, professional hitman and former high ranking Sabbat member possesses mastery of Oblivion.",
-      currentStatus: "Though he usually resides in Washington DC defending major Lasombra powerbases. Soon the elders of the clan approached him with a special job. The brutal Shadow began to work on facilitating the Lasombra's entry into the Chicago Camarilla. In this efforts, he is said to have defeated Lucita in battle and brought her final death."
+      currentStatus: "Though he usually resides in Washington DC defending major Lasombra powerbases. Soon the elders of the clan approached him with a special job. The brutal Shadow began to work on facilitating the Lasombra's entry into the Chicago Camarilla. In these efforts, he is said to have defeated Lucita in battle and brought her Final Death."
     },
     lucita: {
       description: "Lasombra Antitribu, and Archbishop of Madrid and follower of the Path of Night, a variant of the Path of Cathari.",
-      history: "The once-rival and lover of Fatima, Lucita is high profile Sabbat member who still uses her human name; Madrid was usually her domain, but it is now contested with the Camarilla. it is said Talley succeeded in killing the Archbishop, but her pack of over a hundred is still being directed in Spain."
+      history: "The once-rival and lover of Fatima, Lucita is a high-profile Sabbat member who still uses her human name; Madrid was usually her domain, but it is now contested with the Camarilla. It is said Talley succeeded in killing the Archbishop, but rumors state her pack of over a hundred is still being directed in Spain."
     },
     sierra: {
-      description: "Childe of Talley, her strong skills as a negotiator and businessperson person impressed Talley, as did her calm in cleaning a murder scene.",
-      history: "Even during her tenure as antitribu, she showed restraint rather than follow other Lasombra in degeneration, increasing her resources and influence. Even while bound to a pack, she still showed loyalty to her sire and the Amici Noctis. For this she and her brother-in-vitae were eventually selected for the Lasombra delegation to Chicago Camarilla. With this offer on the table she sent her pack on a suicide mission so she can be free pursue her new duties as ambassador."
+      description: "Childe of Talley, her strong skills as a negotiator and businessperson impressed Talley as much as her calm in cleaning a murder scene.",
+      history: "Even during her tenure as antitribu, she showed restraint rather than follow other Lasombra in degeneration, increasing her resources and influence. Even while bound to a pack, she still showed loyalty to her sire and the Amici Noctis. For this she and her brother-in-vitae were eventually selected for the Lasombra delegation to the Chicago Camarilla. With this offer on the table she sent her pack on a suicide mission so she can be free to pursue her new duties as ambassador."
     },
     malenkov: {
       description: "Childe of Talley and war hero of the Sabbat for his service in the Sect war.",

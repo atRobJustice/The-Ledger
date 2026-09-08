@@ -38,7 +38,7 @@ export const ministry = {
     marcel: {
       description: "A war profiteering drug trafficker and gun runner in his mortal life for Algerian Independence, he almost died when the French secret service discovered his operations.",
       history: "His future sire was able to turn him and connect him to the heroin trade, based in Haiti, where he flourished. Then embraced, and left the Caribbean for Chicago, noting the power vacuum after Lodin's death.",
-      currentStatus: "While not an official member of the Primogen he has worked his way as a sort of advisor and ambassador that many outsiders approach if they need access to court. Under the façade, he is playing the long game until his ambitions can be met."
+      currentStatus: "While not an official member of the Primogen he has worked his way as a sort of advisor and ambassador that many outsiders approach if they need access to court. Under the façade, he is playing the long game until his ambitions can be met, where Prince Jackson or the Primogen will owe him a large boon. Some Orthodox Setites see him as a heretic that needs to go."
     },
     reverendTwosret: {
       description: "Her full name is Sarah P. Donnadieu, and she is an orthodox Setite operating inside of Chicago.",

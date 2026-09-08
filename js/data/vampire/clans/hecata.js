@@ -34,43 +34,43 @@ export const hecata = {
   bloodlines: {
     giovanni: {
       name: "La Famiglia Giovanni",
-      description: "Also known as Clan Giovanni, they occupy the leadership role within the Hecata, though will not refer to themselves as Hecata outside the clan. 'La Famiglia' also contains other smaller families who have not earned their own bloodline yet."
+      description: "They occupy the leadership role and face within the Hecata, though will not refer to themselves as Hecata outside the clan. 'La Famiglia' also contains other smaller families who have not earned their own bloodline yet. They are known for necromancy, financial prowess, politicking, and directing operations. The Giovanni and their offspring families are the most populous in the Hecata."
     },
     dunsirn: {
       name: "Bankers of Dunsirn",
-      description: "A family of Scottish bankers whom indulge in wealth, cannibalism, and family secrets."
+      description: "A family of Scottish bankers who indulge in wealth, cannibalism, and family secrets. Their reach is felt in the United Kingdom and pockets of the New World. They originated from the Giovanni line."
     },
     tenochtitlan: {
       name: "Children of Tenochtitlan",
-      description: "Aztec necromancers known by the Giovanni as the Pisanob, 'ghosts of the dead that walk the Earth'."
+      description: "Known as the Pisanob. A bloodline of talented Aztec necromancers, the Giovanni gave them the exonym 'Pisanob', Mayan for 'ghosts of the dead that walk the Earth'. They were brought into the Giovanni family during the invasion of the New World. The Pisanob are most prevalent in Latin America though their numbers were dwindled by the Harbingers of Skulls attacks. After their leader, Potchli, sacrificed himself to calm hostilities, the bloodline is rebuilding."
     },
     samedi: {
       name: "Samedi (Nasyon San An/Nation of Blood)",
-      description: "Kindred from Baron Samedi's bloodline, associated with Vodou practices, along with their decaying flesh."
+      description: "Kindred with holdings all over the Atlantic from the Caribbean to Central America to West Africa. They are led by Doc San, often confused for Baron Samedi. The line is associated with Vodou practices, along with their decaying flesh. In actuality they commune with loa and gedes and their former curse was an obligation to those who gifted them in good faith. They operated as necromantic spies and mercenaries. They have a relationship with the Ministry; some have even joined the Setites over the Hecata. In the Hecata they bring wisdom and ceremonial knowledge to the alliance."
     },
     nagaraja: {
       name: "Flesh-Eaters",
-      description: "Nagaraja whom sought after a new home within Clan Hecata. They're mostly known for their necromantic and cannibalistic prowess."
+      description: "The Nagaraja are a mysterious branch with an ambiguous origin. Their greatest presence is in Asia where they often guard places of death. Nagaraja sought a new home within Clan Hecata. They're mostly known for their necromantic prowess, shark-like teeth, and cannibalism. Initially reluctant to join the Hecata until a calamity struck, some have finally joined and proven to be useful serial killers for the Clan of Death."
     },
     harbingers: {
       name: "Harbingers of Ashur",
-      description: "Remnants of Clan Cappadocian after being usurped by the Giovanni, captivated with the secrets of death and the soul. The synthesis of the Harbingers and Cappadocians."
+      description: "Remnants of Clan Cappadocian after being usurped by the Giovanni, captivated with the secrets of death and the soul. They are the synthesis of the Harbingers of the Skull and Cappadocians. This bloodline still wears masks to show their hierarchy with one another. They are known to be excellent spies, chamberlains, and advisors. They know not only how to kill, but the ripple effects of a kill."
     },
     puttanesca: {
       name: "The Criminal Puttanesca",
-      description: "A family of Sicilian mobsters known for their talents in crime and street hustling."
+      description: "A family of Sicilian mobsters known for their talents in organized crime and street hustling. Brought into the family by the Giovanni in the 1600s. After the Reunion the family has gotten the bulk of organized crime operations."
     },
     gorgons: {
       name: "The Gorgons",
-      description: "Remnants of the Lamia who are devoted to the Bahari faith, whom the curse of the Painful Kiss originates."
+      description: "Bloodline of Lamia, childer of the ancient Cappadocian Lazarus. Named for their ancestor, they are remnants of the very Lamia bloodline who were devoted to the Bahari faith, from whom the curse of the Painful Kiss originates. Formerly warrior protectors of Cappadocians, this line was thought to have been killed off. They emerge as Bahari followers and warriors in the new Clan of Death, though operate more as mercenaries than unquestioning bodyguards. They are generally lower in number, but ideal for inroads to the Anarchs and House Carna."
     },
     rossellini: {
       name: "Little Siblings",
-      description: "The Rossellini, once a rival family of the Giovanni with a talent for necromancy, are known for their brutal exploitation of Wraiths."
+      description: "The Rossellini, once a rival family of the Giovanni with a similar talent for necromancy. They are known for their brutal exploitation of wraiths. After the Giovanni ascended to vampirism, they eventually took in the Rossellini as a minor family."
     },
     milliners: {
       name: "Grudge Masters",
-      description: "The Milliners, a family of American bankers with connections to law enforcement."
+      description: "The Milliners, family of American bankers with connections to law enforcement originating from Boston. The Giovanni brought them into the family during the 1950s to settle a grudge the family had. In the late 20th century, they aided in a multi-sided, complicated war for influence in New England before the Reunion disrupted their plans."
     }
   },
   archetypes: {
@@ -91,7 +91,7 @@ export const hecata = {
     },
     mora: {
       description: "A mysterious Harbinger, who feigned acceptance of the Family Reunion.",
-      history: "They had murdered many members of the Family in times past, but seemed to want to make amends. This was a ruse for them to get close to their enemy and strike. They leave a Honeysuckle twig in the ashes of those slain. They lead a faction to help carry out their work."
+      history: "They had murdered many members of the Family in times past, but seemed to want to make amends. This was a ruse for them to get close to their enemy and strike. They leave a Honeysuckle twig in the ashes of those slain. They lead a faction, the Death Seers, to help carry out their work."
     }
   },
   culture: {

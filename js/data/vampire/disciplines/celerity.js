@@ -74,14 +74,14 @@ export const celerity = {
     level3: [
       {
         name: "A Thousand Cuts",
-        effect: "Add Celerity to Brawl/Melee to automatically impair mortals and make Kindred a Masquerade violation risk",
+        effect: "Add Celerity to Brawl/Melee to automatically impair Mortals and make Kindred a Masquerade Violation",
         cost: "One Rouse Check",
         prerequisite: "None",
         amalgam: "No",
         duration: "One action",
         dicePool: "N/A",
         opposingPool: "N/A",
-        notes: "Only usable with claws or edged weaponry",
+        notes: "Only usable with Claws or Edged Weaponry",
         source: "Vampire: The Masquerade Tattered Façade, page 96"
       },
 
