@@ -225,6 +225,12 @@ Backgrounds represent your character's connections and resources:
 - **Resources**: Wealth and material possessions
 - **Retainers**: Loyal servants and assistants
 
+**Multiple Backgrounds:**
+- All backgrounds can be purchased multiple times
+- Each instance is tracked separately with a number (e.g., "Allies #1", "Allies #2")
+- This allows for multiple different sources or types of the same background
+- Each instance can have its own level and description
+
 ### Merits and Flaws
 - **Merits**: Positive traits that provide benefits
 - **Flaws**: Negative traits that provide experience points
@@ -236,6 +242,7 @@ Backgrounds represent your character's connections and resources:
 2. Select from the available options
 3. Set the level using dots
 4. Add any required details or descriptions
+5. **For Backgrounds**: You can add the same background multiple times for different sources or types
 
 ---
 
@@ -403,7 +410,41 @@ The Experience Points section helps you track character advancement:
 3. Add an optional note describing why it was awarded
 4. Click "Award" to add it to your total
 
-### Spending XP
+### Spending XP - New Mode-Based System
+The Ledger uses an intuitive mode-based XP spending system that integrates with your character sheet:
+
+#### **Activating XP Spend Mode**
+1. Click the **XP Spend Mode** button (💰) in the character toolbar
+2. The interface will enter "Spend XP Mode" with an overlay showing:
+   - Available XP
+   - Current cost of changes
+   - Remaining XP after changes
+   - List of pending changes
+
+#### **Making Changes in XP Mode**
+1. **Use the normal character sheet interface** - click dots, add traits, etc.
+2. **Real-time cost tracking** - see XP costs update as you make changes
+3. **Visual feedback** - elements highlight when hovered in XP mode
+4. **Change list** - all pending changes are listed with their individual costs
+
+#### **Confirming XP Spend**
+1. **Review changes** - check the list of pending changes and total cost
+2. **Click "Confirm Changes"** - only enabled if you have enough XP
+3. **Confirm in modal** - review the final summary and confirm
+4. **XP is spent** - all changes are applied and XP is deducted
+
+#### **Canceling XP Spend**
+- Click "Cancel" to exit XP mode without spending XP
+- All pending changes are cleared
+
+#### **Key Features**
+- **Intuitive interface** - use familiar character sheet controls
+- **Real-time feedback** - see costs as you make changes
+- **Batch operations** - make multiple changes and confirm all at once
+- **Safety checks** - prevents overspending XP
+- **Clear summaries** - detailed breakdown of all changes and costs
+
+### Traditional XP Spending (Legacy)
 - XP is automatically spent when you increase attributes, skills, or disciplines
 - The system tracks what you've spent and when
 - You can only spend available XP (total - spent)

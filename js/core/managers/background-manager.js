@@ -325,30 +325,20 @@ class BackgroundManager {
         const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
         const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
         
-        if (dotsInfo.canRepeat) {
-            // Handle repeatable traits (with +)
-            if (selectedTraits.has(traitKey)) {
-                // Add another instance
-                const traitData = selectedTraits.get(traitKey);
-                traitData.instances.push({ level: dotsInfo.min });
+        // Allow all backgrounds to be purchased multiple times
+        if (selectedTraits.has(traitKey)) {
+            // Add another instance
+            const traitData = selectedTraits.get(traitKey);
+            let initialLevel;
+            if (dotsInfo.hasOr) {
+                // For "or" traits, start with the minimum value
+                initialLevel = dotsInfo.orValues[0];
             } else {
-                // First instance
-                selectedTraits.set(traitKey, {
-                    category: categoryKey,
-                    level: dotsInfo.min,
-                    instances: [{ level: dotsInfo.min }]
-                });
+                initialLevel = dotsInfo.min;
             }
-            
-            const instanceCount = selectedTraits.get(traitKey).instances.length;
-            TraitManagerUtils.showFeedback(`Added ${displayName} (Instance #${instanceCount})`, 'success');
+            traitData.instances.push({ level: initialLevel });
         } else {
-            // Handle non-repeatable traits
-            if (selectedTraits.has(traitKey)) {
-                TraitManagerUtils.showFeedback(`${displayName} is already selected`, 'warning');
-                return;
-            }
-            
+            // First instance
             let initialLevel;
             if (dotsInfo.hasOr) {
                 // For "or" traits, start with the minimum value
@@ -362,9 +352,10 @@ class BackgroundManager {
                 level: initialLevel,
                 instances: [{ level: initialLevel }]
             });
-            
-            TraitManagerUtils.showFeedback(`Added ${displayName}`, 'success');
         }
+        
+        const instanceCount = selectedTraits.get(traitKey).instances.length;
+        TraitManagerUtils.showFeedback(`Added ${displayName} (Instance #${instanceCount})`, 'success');
         
         this.updateDisplay();
     }
@@ -381,10 +372,10 @@ class BackgroundManager {
         const traitsKey = type === 'background' ? 'merits' : 'flaws';
         const trait = category[traitsKey][traitKey];
         const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-        const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
 
-        if (dotsInfo.canRepeat && instanceIndex !== null && traitData.instances.length > 1) {
-            // Remove specific instance of repeatable trait
+        // Allow removal of specific instances for all backgrounds
+        if (instanceIndex !== null && traitData.instances.length > 1) {
+            // Remove specific instance
             traitData.instances.splice(instanceIndex, 1);
             TraitManagerUtils.showFeedback(`Removed ${displayName} instance`, 'info');
         } else {
@@ -552,12 +543,28 @@ class BackgroundManager {
 
     getBackgroundLevel(backgroundKey) {
         const backgroundData = this.selectedBackgrounds.get(backgroundKey);
-        return backgroundData ? backgroundData.level : 0;
+        if (!backgroundData) return 0;
+        
+        // Sum up all instance levels
+        if (backgroundData.instances && backgroundData.instances.length > 0) {
+            return backgroundData.instances.reduce((total, instance) => total + (instance.level || 0), 0);
+        }
+        
+        // Fallback to the main level for backward compatibility
+        return backgroundData.level || 0;
     }
 
     getBackgroundFlawLevel(flawKey) {
         const flawData = this.selectedBackgroundFlaws.get(flawKey);
-        return flawData ? flawData.level : 0;
+        if (!flawData) return 0;
+        
+        // Sum up all instance levels
+        if (flawData.instances && flawData.instances.length > 0) {
+            return flawData.instances.reduce((total, instance) => total + (instance.level || 0), 0);
+        }
+        
+        // Fallback to the main level for backward compatibility
+        return flawData.level || 0;
     }
 
     // Calculate total background/flaw points

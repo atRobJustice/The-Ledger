@@ -902,11 +902,11 @@ class TraitManagerUtils {
         } else if (dotsInfo.min !== dotsInfo.max) {
             traitTypeClass = 'range';
             maxDots = dotsInfo.max;
-            tooltipText = `Can be taken at ${dotsInfo.min}-${dotsInfo.max} dots. Click dots to set level.`;
+            tooltipText = `Can be taken at ${dotsInfo.min}-${dotsInfo.max} dots. Click dots to set level. Can be purchased multiple times.`;
         } else {
             traitTypeClass = 'fixed';
             maxDots = dotsInfo.max;
-            tooltipText = `Fixed cost: ${dotsInfo.min} dot${dotsInfo.min !== 1 ? 's' : ''}. Cannot be changed.`;
+            tooltipText = `Fixed cost: ${dotsInfo.min} dot${dotsInfo.min !== 1 ? 's' : ''}. Can be purchased multiple times.`;
         }
 
         return { maxDots, traitTypeClass, tooltipText };
@@ -926,20 +926,13 @@ class TraitManagerUtils {
         if (!traits || Object.keys(traits).length === 0) return '';
 
         return Object.keys(traits)
-            .filter(traitKey => {
-                const trait = traits[traitKey];
-                const dotsInfo = this.parseDotsNotation(trait.dots);
-
-                if (dotsInfo.canRepeat) return true; // always allow repeatables
-                return !selectedTraitsMap.has(traitKey);
-            })
             .map(traitKey => {
                 const trait = traits[traitKey];
                 const displayName = trait.name || this.camelToTitle(traitKey);
                 const dotsInfo = this.parseDotsNotation(trait.dots);
 
                 let suffix = '';
-                if (dotsInfo.canRepeat && selectedTraitsMap.has(traitKey)) {
+                if (selectedTraitsMap.has(traitKey)) {
                     const instances = selectedTraitsMap.get(traitKey).instances || [];
                     suffix = ` (${instances.length} taken)`;
                 }

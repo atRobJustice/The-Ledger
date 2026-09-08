@@ -120,6 +120,7 @@ export function initCharacterToolbar() {
     initDiscordButton();
     initInfoModeButton();
     initHelpButton();
+    initXPSpendButton();
     
     // Initialize tooltips
     initTooltips();
@@ -764,11 +765,105 @@ function initHelpButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Show Dice Symbols modal
-        if (window.showDiceSymbolsModal) {
-            window.showDiceSymbolsModal();
+        // Show dice symbols guide
+        if (window.modalManager) {
+            window.modalManager.showModal('Dice Symbols Guide', `
+                <div class="dice-symbols-guide">
+                    <h5>Dice Pool Symbols</h5>
+                    <div class="symbol-list">
+                        <div class="symbol-item">
+                            <span class="dot">•</span> = 1 die
+                        </div>
+                        <div class="symbol-item">
+                            <span class="dot">••</span> = 2 dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="dot">•••</span> = 3 dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="dot">••••</span> = 4 dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="dot">•••••</span> = 5 dice
+                        </div>
+                    </div>
+                    <h5>Hunger Dice</h5>
+                    <div class="symbol-list">
+                        <div class="symbol-item">
+                            <span class="hunger-dot">🩸</span> = 1 hunger die
+                        </div>
+                        <div class="symbol-item">
+                            <span class="hunger-dot">🩸🩸</span> = 2 hunger dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="hunger-dot">🩸🩸🩸</span> = 3 hunger dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="hunger-dot">🩸🩸🩸🩸</span> = 4 hunger dice
+                        </div>
+                        <div class="symbol-item">
+                            <span class="hunger-dot">🩸🩸🩸🩸🩸</span> = 5 hunger dice
+                        </div>
+                    </div>
+                </div>
+            `, 'Close');
         }
     });
+}
+
+/**
+ * Initialize XP Spend button
+ */
+function initXPSpendButton() {
+    console.log('[Toolbar] Initializing XP Spend button...');
+    
+    // Try to find the toolbar
+    const toolbar = document.querySelector('.character-toolbar-glass');
+    if (!toolbar) {
+        console.error('[Toolbar] Could not find character toolbar');
+        return;
+    }
+    
+    // Try to find the last toolbar group or create one
+    let xpGroup = toolbar.querySelector('.toolbar-group:last-child');
+    if (!xpGroup) {
+        xpGroup = toolbar.querySelector('.toolbar-group');
+    }
+    if (!xpGroup) {
+        // Create a new group if none exists
+        xpGroup = document.createElement('div');
+        xpGroup.className = 'toolbar-group';
+        xpGroup.setAttribute('aria-label', 'Experience Points');
+        toolbar.appendChild(xpGroup);
+    }
+    
+    // Check if button already exists
+    if (document.getElementById('btn-xp-spend')) {
+        console.log('[Toolbar] XP Spend button already exists');
+        return;
+    }
+    
+    // Create the XP spend button
+    const xpButton = document.createElement('button');
+    xpButton.className = 'toolbar-btn';
+    xpButton.id = 'btn-xp-spend';
+    xpButton.title = 'Spend XP Mode';
+    xpButton.setAttribute('aria-label', 'Spend XP Mode');
+    xpButton.innerHTML = '<i class="bi bi-currency-dollar"></i>';
+    
+    // Add click handler
+    xpButton.addEventListener('click', () => {
+        console.log('[Toolbar] XP Spend button clicked');
+        // Call the XP spend manager's toggle function if it exists
+        if (window.XPSpendManager && window.XPSpendManager.toggleXPSpendMode) {
+            window.XPSpendManager.toggleXPSpendMode();
+        } else {
+            console.error('[Toolbar] XP Spend Manager not available');
+        }
+    });
+    
+    xpGroup.appendChild(xpButton);
+    console.log('[Toolbar] XP Spend button added successfully');
 }
 
 /**
