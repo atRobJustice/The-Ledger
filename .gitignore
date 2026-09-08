@@ -4,6 +4,7 @@ node_modules/
 # Build output
 dist/
 build/
+*.css.map
 
 # IDE
 .vscode/
@@ -17,4 +18,4 @@ Thumbs.db
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log* 
+yarn-error.log*

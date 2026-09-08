@@ -1,88 +1,3 @@
-/**
- * @fileoverview Character Sheet UI for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Provides the core UI functionality for the character sheet. Handles the creation
- *             and management of interactive elements including dots, track boxes, dropdowns, and
- *             form inputs, as well as impairment status evaluation and character data persistence.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires jQuery - Used for DOM manipulation and event handling
- * @requires Bootstrap - Used for UI components and styling
- * @requires clans.js - Reference data for clans
- * @requires predator_types.js - Reference data for predator types
- * @requires compulsions.js - Reference data for compulsions
- * @requires window.LockManager - For sheet lock state management
- * @requires window.convictionManager - For conviction data management
- * 
- * @namespace CharacterSheetUI
- * @description Main namespace for character sheet UI functionality
- * 
- * @function createDots - Creates interactive dot displays for attributes/skills
- * @function createTextInput - Creates auto-resizing textarea inputs
- * @function createPredatorDropdown - Creates predator type selection dropdown
- * @function capitalizeFirst - Capitalizes first letter of a string
- * @function createClanDropdown - Creates clan selection dropdown
- * @function createGenerationDropdown - Creates generation selection dropdown
- * @function createBloodPotencyDropdown - Creates blood potency selection dropdown
- * @function createCompulsionDropdown - Creates compulsion selection dropdown
- * @function createTrackBoxes - Creates track boxes for health/willpower/humanity
- * @function updateRelatedTrackBoxes - Updates dependent track boxes when attributes change
- * @function updateTrackBoxesMax - Updates maximum value for track boxes
- * @function evaluateImpairmentStatus - Evaluates and applies impairment status to tracks
- * @function assessTrack - Assesses individual track for impairment status
- * @function updateCurrentValue - Updates current value display for track boxes
- * @function populatePredatorDropdown - Populates predator dropdown with data
- * @function populateClanDropdown - Populates clan dropdown with data
- * @function populateGenerationDropdown - Populates generation dropdown with data
- * @function populateBloodPotencyDropdown - Populates blood potency dropdown with data
- * @function createResonanceDropdown - Creates resonance selection dropdown
- * @function createTemperamentDropdown - Creates temperament selection dropdown
- * @function populateResonanceDropdown - Populates resonance dropdown with data
- * @function populateTemperamentDropdown - Populates temperament dropdown with data
- * @function populateCompulsionDropdown - Populates compulsion dropdown with data
- * @function populateClanDropdowns - Populates all clan dropdowns with data
- * @function normalizeKey - Normalizes keys for data matching
- * @function saveConvictionsAndTouchstones - Saves conviction data
- * @function loadConvictionsAndTouchstones - Loads conviction data
- * @function saveCharacter - Saves character data
- * @function loadCharacter - Loads character data
- * 
- * @typedef {Object} TrackBoxConfig
- * @property {number} maxValue - Maximum value for the track
- * @property {number} currentValue - Current value
- * @property {number} superficial - Superficial damage (for health/willpower)
- * @property {number} aggravated - Aggravated damage (for health/willpower)
- * @property {string} type - Track type ('health', 'willpower', 'humanity')
- * 
- * @typedef {Object} DotConfig
- * @property {number} value - Current dot value
- * @property {number} maxDots - Maximum number of dots
- * @property {string} className - Additional CSS classes
- * 
- * @typedef {Object} DropdownConfig
- * @property {string} value - Selected value
- * @property {string} type - Dropdown type ('clan', 'predator', 'generation', etc.)
- * @property {Array} options - Available options
- * 
- * @example
- * // Create dots for an attribute
- * const dots = createDots(3, 5);
- * 
- * // Create track boxes for health
- * const trackBoxes = createTrackBoxes(10, 8, 2, 0, 'health');
- * 
- * // Create text input
- * const input = createTextInput('Character name');
- * 
- * // Create dropdown
- * const dropdown = createClanDropdown('brujah');
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 // Inject styles for visual impairment indication
 (function(){
     const style = document.createElement('style');
@@ -152,7 +67,6 @@ function createDots(value, maxDots = 5) {
                 $parent.attr('data-value', clickedValue);
             }
 
-            // Update related track boxes if this is a relevant attribute
             updateRelatedTrackBoxes($this);
         });
         
@@ -196,7 +110,6 @@ function createPredatorDropdown(value) {
         'aria-label': 'Select predator type'
     });
     
-    // Add empty option
     $select.append($('<option>', {
         'value': '',
         'text': 'Select Predator Type'
@@ -222,7 +135,6 @@ function createClanDropdown(value) {
         'aria-label': 'Select clan'
     });
     
-    // Add empty option
     $select.append($('<option>', {
         'value': '',
         'text': 'Select Clan'
@@ -259,7 +171,6 @@ function createBloodPotencyDropdown(value) {
     }
     $select.attr('data-lockable', 'true');
 
-    // Add empty option
     $select.append($('<option>', {
         'value': '',
         'text': 'Select Blood Potency'
@@ -279,7 +190,6 @@ function createCompulsionDropdown(value) {
     if (value !== undefined && value !== null && value !== '') {
         $select.attr('data-value', value);
     }
-    // Add empty option
     $select.append($('<option>', {
         'value': '',
         'text': 'Select Compulsion'
@@ -310,7 +220,6 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
         boxValue = maxValue;  // Fixed: Use maxValue instead of currentValue
     }
     
-    // Create boxes based on boxValue
     for (let i = 0; i < boxValue; i++) {
         const $box = $('<div>', {
             'class': 'track-box'
@@ -397,7 +306,6 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
                     }
                 }
                 
-                // Update the data-value based on the filled count after changes
                 const newFilledCount = $parent.find('.filled').length;
                 $parent.data('value', newFilledCount);
                 $container.data('value', newFilledCount);
@@ -411,7 +319,6 @@ function createTrackBoxes(maxValue, currentValue = 0, superficial = 0, aggravate
                     $this.addClass('superficial');
                 }
                 
-                // Update the data-value based on unmarked boxes
                 const superficialCount = $parent.find('.superficial').length;
                 const aggravatedCount = $parent.find('.aggravated').length;
                 const newValue = maxValue - (superficialCount + aggravatedCount);
@@ -464,10 +371,8 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
     const $currentBoxes = $boxes.find('.track-box');
     const currentMax = $currentBoxes.length;
     
-    // Update max value display
     $header.find('span:last-child').text(`Max: ${newMax}`);
     
-    // Add or remove boxes as needed
     if (newMax > currentMax) {
         for (let i = currentMax; i < newMax; i++) {
             const $box = $('<div>', {
@@ -496,7 +401,6 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
                         });
                     }
                     
-                    // Update data-value for humanity
                     const newFilledCount = $parent.find('.filled').length;
                     $parent.data('value', newFilledCount);
                     $trackBoxes.data('value', newFilledCount);
@@ -509,7 +413,6 @@ function updateTrackBoxesMax(trackBoxes, newMax) {
                         $this.addClass('superficial');
                     }
                     
-                    // Update data-value for health/willpower
                     const $boxes = $parent.children();
                     const superficialCount = $boxes.filter('.superficial').length;
                     const aggravatedCount = $boxes.filter('.aggravated').length;
@@ -605,7 +508,6 @@ function updateCurrentValue(trackBoxes) {
         const stainedCount = $boxes.find('.track-box.stained').length;
         $header.find('span:first-child').text(`Current: ${filledCount}`);
         
-        // Update data-value to reflect the current state
         $trackBoxes.data('value', filledCount);
         $boxes.data('value', filledCount);
     } else {
@@ -614,7 +516,6 @@ function updateCurrentValue(trackBoxes) {
         const currentValue = maxValue - (superficialCount + aggravatedCount);
         $header.find('span:first-child').text(`Current: ${currentValue}`);
         
-        // Update data-value to reflect the current state
         $trackBoxes.data('value', currentValue);
         $boxes.data('value', currentValue);
     }
@@ -809,7 +710,6 @@ $(document).ready(function() {
         }
     }
 
-    // Create dropdown for Resonance
     function createResonanceDropdown(value) {
         const dropdown = $('<select>', { 'class': 'form-select resonance-dropdown' });
         dropdown.append($('<option>', { 'value': '', 'text': 'Select Resonance' }));
@@ -820,7 +720,6 @@ $(document).ready(function() {
         return dropdown;
     }
 
-    // Create dropdown for Temperament
     function createTemperamentDropdown(value) {
         const dropdown = $('<select>', { 'class': 'form-select temperament-dropdown' });
         dropdown.append($('<option>', { 'value': '', 'text': 'Select Temperament' }));
@@ -885,7 +784,6 @@ $(document).ready(function() {
             // Remove existing non-placeholder options before repopulating
             $dropdown.find('option:not(:first)').remove();
 
-            // Add General compulsions first
             const generalEntries = Object.entries(compulsionData.general || {});
             generalEntries.forEach(([key, comp]) => {
                 $dropdown.append($('<option>', {
@@ -896,7 +794,6 @@ $(document).ready(function() {
                 }));
             });
 
-            // Add Clan compulsions
             const selectedClanKey = ($('.clan-dropdown').val() || '');
             if (selectedClanKey) {
                 let compKey = null;
@@ -961,14 +858,12 @@ async function populateClanDropdowns() {
             try {
                 const clans = module.clans;
                 
-                // Get the clan types and sort them by name
                 const $dropdown = $(dropdown);
                 const clanEntries = Object.entries(clans.types);
                 
                 // Sort by name
                 clanEntries.sort((a, b) => a[1].name.localeCompare(b[1].name));
                 
-                // Add each clan to the dropdown
                 clanEntries.forEach(([key, clan]) => {
                     $dropdown.append($('<option>', {
                         'value': key,
@@ -1009,7 +904,6 @@ async function populateClanDropdowns() {
     }
 }
 
-// Set up event handlers and initialize components when the page loads
 document.addEventListener('DOMContentLoaded', function() {
     // This is now handled by our accessibility-fix.js
 });
@@ -1079,7 +973,6 @@ async function loadCharacter(characterData) {
     // ... rest of existing loading logic ...
 }
 
-// Handle "Back to Dashboard" button
 const btnDashboard = document.getElementById('btn-dashboard');
 if (btnDashboard) {
     btnDashboard.addEventListener('click', () => {

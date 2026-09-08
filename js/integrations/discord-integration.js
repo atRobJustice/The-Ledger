@@ -1,81 +1,3 @@
-/**
- * @fileoverview Discord Integration for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Centralized Discord webhook utilities for sharing dice rolls, character actions,
- *             and game events to Discord channels. Provides webhook management, message formatting,
- *             and embed creation for VtM-specific content.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires databaseManager - Global database manager for webhook storage
- * @requires teal.min.js - Core utility library ($t) for VtM dice colors
- * @requires modalManager - Global modal dialog manager
- * @requires Bootstrap - For UI components and styling
- * 
- * @namespace DiscordIntegration
- * @description Main namespace for Discord integration functionality
- * 
- * @function getDiscordWebhook - Retrieves configured Discord webhook URL
- * @function isDiscordEnabled - Checks if Discord integration is enabled
- * @function setDiscordWebhook - Saves or clears Discord webhook URL
- * @function getCharacterName - Extracts character name from character sheet
- * @function sendToDiscord - Sends message or embed to Discord webhook
- * @function buildRollEmbed - Builds Discord embed for dice roll results
- * @function createWebhookModal - Creates webhook configuration modal
- * 
- * @typedef {Object} DiscordWebhook
- * @property {string} url - Webhook URL
- * @property {boolean} enabled - Whether integration is enabled
- * 
- * @typedef {Object} DiscordEmbed
- * @property {string} title - Embed title
- * @property {string} description - Embed description
- * @property {number} color - Embed color (hex)
- * @property {Array<Object>} fields - Embed fields
- * @property {Object} [footer] - Embed footer
- * @property {string} [timestamp] - Embed timestamp
- * 
- * @typedef {Object} RollData
- * @property {number} regularDice - Number of regular dice
- * @property {number} hungerDice - Number of hunger dice
- * @property {number} rouseDice - Number of rouse dice
- * @property {number} remorseDice - Number of remorse dice
- * @property {number} frenzyDice - Number of frenzy dice
- * @property {number} difficulty - Difficulty threshold
- * @property {number} successes - Number of successes
- * @property {string} resultPlain - Plain text result
- * @property {boolean} [rouseSuccess] - Rouse check success
- * @property {boolean} [remorseSuccess] - Remorse check success
- * @property {boolean} [frenzySuccess] - Frenzy check success
- * 
- * @typedef {Object} DiscordField
- * @property {string} name - Field name
- * @property {string} value - Field value
- * @property {boolean} [inline] - Whether field is inline
- * 
- * @typedef {Object} DiscordPayload
- * @property {string} [content] - Plain text content
- * @property {Array<DiscordEmbed>} [embeds] - Array of embeds
- * 
- * @example
- * // Get webhook URL
- * const webhook = await getDiscordWebhook();
- * 
- * // Send plain text message
- * await sendToDiscord('Character performed an action');
- * 
- * // Send dice roll embed
- * const embed = buildRollEmbed(rollData);
- * await sendToDiscord(embed);
- * 
- * // Set webhook URL
- * await setDiscordWebhook('https://discord.com/api/webhooks/...');
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 /*
  * discord-integration.js
  * Centralised Discord webhook utilities for Ledger.
@@ -100,7 +22,6 @@ export async function getDiscordWebhook() {
   }
 }
 
-// Check if Discord integration is enabled
 export async function isDiscordEnabled() {
   try {
     if (window.databaseManager) {
@@ -162,7 +83,6 @@ export function getCharacterName() {
 
 // Send either a plain text message or an embed object to Discord via webhook
 export async function sendToDiscord(contentOrEmbed) {
-  // Check if Discord integration is enabled
   const discordEnabled = await isDiscordEnabled();
   if (!discordEnabled) {
     return; // Discord integration is disabled, don't send any messages
@@ -305,7 +225,6 @@ export function createWebhookModal() {
     size: 'default',
     centered: true
   }, (element, instance) => {
-    // Set up event handlers
     element.querySelector('#saveDiscordWebhook').addEventListener('click', async () => {
       const url = element.querySelector('#discordWebhookInput').value.trim();
       await setDiscordWebhook(url);

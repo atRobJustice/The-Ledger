@@ -1,98 +1,7 @@
-/**
- * @fileoverview Control Bar for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Bottom-left floating control bar providing quick access to common functions
- *             including info mode toggle, Discord webhook configuration, Progeny import,
- *             dice symbols help, quick roll buttons, and theme management.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires discord-integration.js - For Discord webhook management
- * @requires blood_potency.js - For blood potency data and calculations
- * @requires manager-utils.js - For trait management utilities
- * @requires modalManager - Global modal dialog manager
- * @requires toastManager - Global toast notification manager
- * @requires Bootstrap - For UI components and styling
- * @requires jQuery - For DOM manipulation and event handling
- * 
- * @namespace ControlBar
- * @description Main namespace for control bar functionality
- * 
- * @function initControlBar - Initializes the control bar with all components
- * @function createQuickBtn - Creates a quick action button
- * @function refreshWPRerollButton - Refreshes willpower reroll button state
- * @function ensureClearSheetModal - Ensures clear sheet confirmation modal exists
- * @function performClearSheet - Performs character sheet clearing
- * @function disciplineNameToKey - Converts discipline name to key
- * @function convertProgenyToLedger - Converts Progeny format to Ledger format
- * @function ensureThemeModal - Ensures theme selection modal exists
- * @function applyTheme - Applies selected theme
- * @function loadTheme - Loads saved theme from storage
- * @function isThemeSet - Checks if theme is set
- * @function initTheme - Initializes theme system
- * @function makeGroup - Creates a button group
- * @function makeDivider - Creates a visual divider
- * @function adjustBodyPadding - Adjusts body padding for control bar
- * @function updateLockButtonUI - Updates lock button UI state
- * 
- * @typedef {Object} ControlBarDeps
- * @property {Function} disableAllTooltips - Function to disable all tooltips
- * @property {Function} setTooltipEnabled - Function to enable/disable tooltips
- * @property {Function} quickRoll - Function to perform quick dice roll
- * @property {Function} computeRemorseDice - Function to compute remorse dice
- * @property {Function} computeFrenzyDice - Function to compute frenzy dice
- * @property {Function} isWPRerollAllowed - Function to check WP reroll availability
- * @property {Function} handleWPRerollClick - Function to handle WP reroll clicks
- * @property {Function} clearOverlay - Function to clear dice overlay
- * 
- * @typedef {Object} QuickButton
- * @property {string} id - Button identifier
- * @property {string} text - Button text
- * @property {string} hexColor - Button color in hex
- * @property {string} tooltip - Button tooltip text
- * @property {Function} onClick - Click handler function
- * 
- * @typedef {Object} ThemeConfig
- * @property {string} key - Theme key identifier
- * @property {string} name - Theme display name
- * @property {string} description - Theme description
- * @property {string} preview - Theme preview image path
- * 
- * @typedef {Object} ProgenyData
- * @property {Object} character - Character data from Progeny
- * @property {Object} attributes - Attribute data
- * @property {Object} skills - Skill data
- * @property {Object} disciplines - Discipline data
- * @property {Object} merits - Merit data
- * @property {Object} backgrounds - Background data
- * 
- * @example
- * // Initialize control bar
- * initControlBar({
- *   disableAllTooltips,
- *   setTooltipEnabled,
- *   quickRoll,
- *   computeRemorseDice,
- *   computeFrenzyDice,
- *   isWPRerollAllowed,
- *   handleWPRerollClick,
- *   clearOverlay
- * });
- * 
- * // Create a quick button
- * const button = createQuickBtn('strength', 'Strength', '#ff0000', 'Roll Strength');
- * 
- * // Apply a theme
- * applyTheme('wod-dark');
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
+import { convertProgenyToLedger } from '../utils/progeny-import.js';
 import logger from '../utils/logger.js';
 
 /**
@@ -193,14 +102,12 @@ export function initControlBar(deps) {
       size: 'default',
       centered: true
     }, (element, instance) => {
-      // Handle save
       element.querySelector("#saveDiscordWebhook").addEventListener("click", async () => {
         const url = element.querySelector("#discordWebhookInput").value.trim();
         await setDiscordWebhook(url);
         instance.hide();
       });
 
-      // Handle delete
       element.querySelector("#deleteDiscordWebhook").addEventListener("click", async () => {
         await setDiscordWebhook(null);
         instance.hide();
@@ -632,7 +539,6 @@ export function initControlBar(deps) {
     if (container) {
       const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
       
-      // Check if there's any damage to heal
       if (superficialBoxes.length === 0) {
         window.toastManager.show('No superficial damage to mend', 'warning');
         return;
@@ -642,7 +548,6 @@ export function initControlBar(deps) {
       // Heal starting from the rightmost (last) superficial box
       superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
 
-      // Update displayed current health value
       const total = container.querySelectorAll('.track-box').length;
       const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
       const newVal = total - damagedNow;
@@ -691,7 +596,6 @@ export function initControlBar(deps) {
     if (container) {
       const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
       
-      // Check if there's any damage to heal
       if (superficialBoxes.length === 0) {
         window.toastManager.show('No superficial damage to mend', 'warning');
         return;
@@ -701,7 +605,6 @@ export function initControlBar(deps) {
       // Heal starting from the rightmost (last) superficial box
       superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
 
-      // Update displayed current health value
       const total = container.querySelectorAll('.track-box').length;
       const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
       const newVal = total - damagedNow;
@@ -767,126 +670,6 @@ export function initControlBar(deps) {
     };
     reader.readAsText(file);
   });
-
-  // --- Progeny mapping helpers ---------------------------------------
-  function disciplineNameToKey(name) {
-    if (!name) return "";
-    const lower = name.toLowerCase();
-    const specialMap = {
-      "blood sorcery": "bloodSorcery",
-      "thin-blood alchemy": "thinBloodAlchemy",
-    };
-    return specialMap[lower] || lower.replace(/[^a-z]/g, "");
-  }
-
-  function convertProgenyToLedger(src) {
-    const dst = {};
-    // Helpers
-    const toSnake = (str="")=> str.toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_+|_+$/g,"");
-    const toCamel = (str="")=>{
-        const parts = str.toLowerCase().replace(/[^a-z0-9]+/g," ").trim().split(/\s+/);
-        return parts[0] + parts.slice(1).map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join("");
-    };
-
-    // Identity
-    if(src.name) dst.name = src.name;
-    if(src.sire) dst.sire = src.sire;
-    if(src.clan) dst.clan = toSnake(src.clan);
-    if(Object.prototype.hasOwnProperty.call(src,"generation")) dst.generation = src.generation;
-    if(src.ambition) dst.ambition = src.ambition;
-    if(src.desire) dst.desire = src.desire;
-    if(src.predatorType && src.predatorType.name) dst.predator = toCamel(src.predatorType.name);
-
-    // Attributes
-    if(src.attributes && typeof src.attributes==='object'){
-        Object.entries(src.attributes).forEach(([k,v])=> dst[k.toLowerCase()] = v);
-    }
-
-    // Skills
-    if(src.skills && typeof src.skills==='object'){
-        Object.entries(src.skills).forEach(([k,v])=> dst[k.toLowerCase()] = v);
-    }
-
-    // Specialties
-    const specialtiesMap = {};
-    const addSpec = (skill,name)=>{
-        if(!skill || !name) return;
-        const key = skill.toLowerCase();
-        if(!specialtiesMap[key]) specialtiesMap[key] = new Set();
-        specialtiesMap[key].add(name);
-    };
-    (Array.isArray(src.skillSpecialties)?src.skillSpecialties:[]).forEach(sp=>addSpec(sp.skill,sp.name));
-    if(src.predatorType && Array.isArray(src.predatorType.pickedSpecialties)){
-        src.predatorType.pickedSpecialties.forEach(sp=>addSpec(sp.skill,sp.name));
-    }
-    Object.entries(specialtiesMap).forEach(([k,set])=>{ if(set.size) dst[`${k.replace(/\s+/g,'_')}_specialties`] = Array.from(set); });
-
-    // Disciplines
-    const discMap = {};
-    const ensureDisc = (k)=>{ if(k && !discMap[k]) discMap[k] = {level:0,powers:[]}; };
-    if(Array.isArray(src.disciplines)){
-        src.disciplines.forEach(p=>{
-            const dKey = disciplineNameToKey(p.discipline||"");
-            ensureDisc(dKey);
-            if(discMap[dKey]){
-                if(p.level > discMap[dKey].level) discMap[dKey].level = p.level;
-                discMap[dKey].powers.push(p.name);
-            }
-        });
-    }
-    if(src.predatorType && src.predatorType.pickedDiscipline){
-        const dKey = disciplineNameToKey(src.predatorType.pickedDiscipline);
-        ensureDisc(dKey);
-        if(discMap[dKey] && discMap[dKey].level < 1) discMap[dKey].level = 1;
-    }
-    if(Object.keys(discMap).length) dst.disciplines = discMap;
-
-    // Merits & Backgrounds
-    const meritsObj={}, flawsObj={}, backgroundsObj={}, backgroundFlawsObj={};
-    const addTrait = (col,key,lvl)=>{ if(!col[key]) col[key]={level:lvl, instances:[{level:lvl}]}; };
-    const allTraits=[];
-    if(Array.isArray(src.merits)) allTraits.push(...src.merits);
-    if(Array.isArray(src.flaws)) allTraits.push(...src.flaws);
-    if(src.predatorType && Array.isArray(src.predatorType.pickedMeritsAndFlaws)) allTraits.push(...src.predatorType.pickedMeritsAndFlaws);
-    allTraits.forEach(t=>{
-        if(!t||!t.name) return;
-        const keySnake = toSnake(t.name);
-        const keyCamel = toCamel(t.name);
-        const lvl = t.level||1;
-        if(t.type==='flaw'){
-            addTrait(flawsObj,keyCamel,lvl);
-            addTrait(backgroundFlawsObj,keySnake,lvl);
-        }else{
-            addTrait(meritsObj,keyCamel,lvl);
-            addTrait(backgroundsObj,keySnake,lvl);
-        }
-    });
-    if(Object.keys(meritsObj).length) dst.merits = meritsObj;
-    if(Object.keys(flawsObj).length) dst.flaws = flawsObj;
-    if(Object.keys(backgroundsObj).length) dst.backgrounds = backgroundsObj;
-    if(Object.keys(backgroundFlawsObj).length) dst.backgroundFlaws = backgroundFlawsObj;
-
-    // Track objects
-    const staminaVal = src.attributes?.stamina || 0;
-    const resolveVal = src.attributes?.resolve || 0;
-    const composureVal = src.attributes?.composure || 0;
-
-    const healthMax = staminaVal + 3;
-    dst.health = {max: healthMax, current: healthMax, superficial: 0, aggravated: 0, type: 'health'};
-
-    const wpMax = resolveVal + composureVal;
-    dst.willpower = {max: wpMax, current: wpMax, superficial: 0, aggravated: 0, type: 'willpower'};
-
-    const humanityCurrent = (src.humanity && src.humanity>0)? src.humanity : 7;
-    dst.humanity = {max: 10, current: humanityCurrent, superficial: 0, aggravated: 0, type: 'humanity'};
-
-    // Misc track scores
-    if(Object.prototype.hasOwnProperty.call(src,'bloodPotency')) dst.blood_potency = src.bloodPotency;
-    if(Object.prototype.hasOwnProperty.call(src,'humanity')) dst.humanity_score = src.humanity;
-    if(Object.prototype.hasOwnProperty.call(src,'willpower')) dst.willpower_score = src.willpower;
-
-    return dst;
-  }
 
   // Initial state and periodic refresh
   refreshWPRerollButton();
@@ -973,7 +756,6 @@ export function initControlBar(deps) {
       size: 'default',
       centered: true
     }, (element, instance) => {
-      // Set up event handler
       element.querySelector('#saveThemeChoice').addEventListener('click', () => {
         const selected = element.querySelector('input[name="schemeRadios"]:checked');
         if (selected) {
@@ -1036,7 +818,6 @@ export function initControlBar(deps) {
     }
   }
 
-  // Initialize theme
   (async function initTheme() {
     const themeSet = await isThemeSet();
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches && !themeSet) {

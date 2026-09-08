@@ -1,140 +1,43 @@
 /**
- * @fileoverview XP Spend Manager for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Manages the spending of experience points. Provides a comprehensive interface for
- *             purchasing character improvements including attributes, skills, disciplines, merits,
- *             backgrounds, blood potency, and specialties with proper pricing calculations and
- *             undo functionality.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires xp-pricing.js - Provides pricing calculations for different trait types
- * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
- * @requires attributes.js - Reference data for attributes
- * @requires skills.js - Reference data for skills
- * @requires disciplines.js - Reference data for disciplines
- * @requires clans.js - Reference data for clans
- * @requires merits.js - Reference data for merits
- * @requires backgrounds.js - Reference data for backgrounds
- * @requires window.modalManager - For displaying XP spending modals
- * @requires window.xpManager - For XP operations
- * @requires window.disciplineManager - For discipline management
- * @requires window.specialtyManager - For specialty management
- * 
- * @namespace XPSpendManager
- * @description Main namespace for managing XP spending
- * 
- * @function bindClick - Sets up event listener for the spend XP button
- * @function showSpendXPModal - Shows the modal for spending XP
- * @function populateCategoryOptions - Populates category dropdown options
- * @function getTraitOptions - Gets available traits for a category
- * @function extractAttributes - Extracts available attributes from reference data
- * @function extractSkills - Extracts available skills from reference data
- * @function normaliseKey - Normalizes trait keys to consistent format
- * @function extractDisciplines - Extracts available disciplines with clan restrictions
- * @function extractMerits - Extracts available merits from reference data
- * @function extractBackgrounds - Extracts available backgrounds from reference data
- * @function attachDynamicHandlers - Sets up dynamic event handlers for the modal
- * @function updateCost - Updates the cost display based on current selections
- * @function getCurrentLevel - Gets the current level of a trait
- * @function applyTraitChange - Applies trait level changes
- * @function findLabelByKey - Finds display label for a trait key
- * @function buildPricingContext - Builds context for pricing calculations
- * @function addSpecialtyToSkill - Adds a specialty to a skill
- * @function getTraitMeta - Gets metadata for a trait
- * @function parseDots - Parses dot notation strings
- * @function revertTraitChange - Reverts trait changes for undo functionality
- * @function removeSpecialtyFromSkill - Removes a specialty from a skill
- * @function minimalTraitRevert - Reverts trait level changes
- * @function calcMeritBackgroundCost - Calculates merit/background costs
- * 
- * @typedef {Object} TraitOption
- * @property {string} key - Trait key identifier
- * @property {string} label - Display label for the trait
- * 
- * @typedef {Object} PricingContext
- * @property {string} pricingCat - Category for pricing calculations
- * @property {Object} pricingOpts - Pricing options and parameters
- * 
- * @typedef {Object} UndoMetadata
- * @property {string} cat - Category of the trait
- * @property {string} traitKey - Trait key identifier
- * @property {number} from - Previous level
- * @property {number} to - New level
- * @property {string} [specialty] - Specialty name if applicable
- * 
- * @example
- * // Show the XP spending modal
- * showSpendXPModal();
- * 
- * // Apply a trait change
- * await applyTraitChange('attribute', 'strength', 2, 3);
- * 
- * // Parse dot notation
- * const level = parseDots('•••'); // Returns 3
- * 
- * @since 1.0.0
- * @updated 1.3.1
+ * Spend-XP mode: edit the sheet, see costs, confirm to spend (or cancel to restore).
  */
-
-/**
- * XP Spending Manager - Mode-Based Approach
- * 
- * This provides a "Spend XP" mode that integrates with the existing character sheet UI
- * instead of using complex modals. Players can make changes normally and see real-time
- * XP costs, then confirm all changes at once.
- */
-
-// Import reference data
 import { attributes as ATTR_REF } from '../../data/attributes.js';
 import { skills as SKILL_REF } from '../../data/skills.js';
 import { disciplines as DISC_REF } from '../../data/vampire/disciplines.js';
 import { merits as MERIT_REF } from '../../data/vampire/merits.js';
 import { backgrounds as BG_REF } from '../../data/vampire/backgrounds.js';
 import { clans as CLAN_REF } from '../../data/vampire/clans.js';
+import { TraitManagerUtils } from './manager-utils.js';
+import { getTotalPrice } from '../utils/xp-pricing.js';
+import logger from '../utils/logger.js';
 
-(function() {
+(function () {
   'use strict';
 
   let spendMode = false;
-  let originalStates = new Map();
+  let snapshot = null;
   let pendingChanges = new Map();
   let xpDisplay = null;
 
-  // Initialize when DOM is ready
-  $(document).ready(function() {
-    // Wait a bit for all components to load
-    setTimeout(function() {
-      initializeXPSpendMode();
-    }, 1000);
+  $(document).ready(function () {
+    setTimeout(initializeXPSpendMode, 1000);
   });
 
   function initializeXPSpendMode() {
-    console.log('[XP] Initializing XP Spend Mode...');
-    
-    // Create XP display element
     createXPDisplay();
-    
-    // Bind events
     bindXPSpendEvents();
-    
-    // Expose toggle function globally for toolbar integration
-    window.XPSpendManager = {
-      toggleXPSpendMode: toggleXPSpendMode
+    const api = {
+      toggleXPSpendMode: toggleXPSpendMode,
+      toggleMode: toggleXPSpendMode,
+      isActive: () => spendMode,
+      getPendingChanges: () => Array.from(pendingChanges.values()),
+      getTotalCost: () => Array.from(pendingChanges.values()).reduce((sum, c) => sum + c.cost, 0)
     };
-    
-    console.log('[XP] XP Spend Mode initialized');
-  }
-
-  function addXPSpendButton() {
-    // This function is now handled by the character toolbar
-    // Keeping it for backward compatibility but it won't do anything
-    console.log('[XP] Button creation is now handled by character toolbar');
+    window.XPSpendManager = api;
+    window.xpSpendManager = api;
   }
 
   function createXPDisplay() {
-    // Create XP display overlay
     xpDisplay = document.createElement('div');
     xpDisplay.id = 'xp-spend-display';
     xpDisplay.className = 'xp-spend-overlay d-none';
@@ -166,260 +69,374 @@ import { clans as CLAN_REF } from '../../data/vampire/clans.js';
   }
 
   function bindXPSpendEvents() {
-    // Confirm button
     $(document).on('click', '#btn-confirm-xp', confirmXPSpend);
-    
-    // Cancel button
-    $(document).on('click', '#btn-cancel-xp', cancelXPSpend);
-    
-    // Close button
-    $(document).on('click', '#btn-close-xp', cancelXPSpend);
-    
-    // Track changes to character sheet elements
+    $(document).on('click', '#btn-cancel-xp, #btn-close-xp', cancelXPSpend);
     $(document).on('click', '.dot', handleDotClick);
-    $(document).on('click', '#addBackgroundBtn, #addBackgroundFlawBtn, #addMeritBtn, #addFlawBtn', handleAddTrait);
-    $(document).on('click', '.remove-trait-btn', handleRemoveTrait);
+    $(document).on(
+      'click',
+      '#addBackgroundBtn, #addBackgroundFlawBtn, #addMeritBtn, #addFlawBtn',
+      handleAddTrait
+    );
+    $(document).on('click', '.remove-trait-btn, .remove-merit-btn, .remove-flaw-btn', handleRemoveTrait);
+  }
+
+  function toast(message, type = 'info', title = 'XP Mode') {
+    if (window.toastManager) {
+      window.toastManager.show(message, type, title);
+    } else {
+      logger.log(message);
+    }
   }
 
   function toggleXPSpendMode() {
-    console.log('[XP] Toggle XP Spend Mode called, current state:', spendMode);
-    
     spendMode = !spendMode;
     const button = document.getElementById('btn-xp-spend');
-    
-    console.log('[XP] New spend mode state:', spendMode);
-    console.log('[XP] Button found:', button);
-    
+
     if (spendMode) {
-      // Enter spend mode
       if (button) {
         button.classList.add('active');
         button.title = 'Exit XP Spend Mode';
       }
       xpDisplay.classList.remove('d-none');
       xpDisplay.classList.add('d-block');
-      
-      // Store original states
-      captureOriginalStates();
-      
-      // Update display
+      ensureStatDotMeta();
+      snapshot = captureSnapshot();
+      pendingChanges.clear();
       updateXPDisplay();
-      
-      // Show feedback
-      if (window.toastManager) {
-        window.toastManager.show('XP Spend Mode activated. Make changes to your character to see costs.', 'info', 'XP Mode');
-      } else {
-        console.log('[XP] XP Spend Mode activated. Make changes to your character to see costs.');
-      }
+      toast('XP Spend Mode activated. Make changes to see costs.');
     } else {
-      // Exit spend mode
       if (button) {
         button.classList.remove('active');
         button.title = 'Spend XP Mode';
       }
       xpDisplay.classList.add('d-none');
       xpDisplay.classList.remove('d-block');
-      
-      // Clear pending changes
       pendingChanges.clear();
-      
-      // Show feedback
-      if (window.toastManager) {
-        window.toastManager.show('XP Spend Mode deactivated.', 'info', 'XP Mode');
-      } else {
-        console.log('[XP] XP Spend Mode deactivated.');
-      }
+      snapshot = null;
+      updateXPDisplay();
     }
   }
 
-  function captureOriginalStates() {
-    originalStates.clear();
-    
-    // Capture attribute levels
-    $('.stat').each(function() {
+  function ensureStatDotMeta() {
+    $('.stat').each(function () {
       const $stat = $(this);
-      const label = $stat.find('.stat-label').text().trim();
-      const $dots = $stat.find('.dots');
-      if ($dots.length) {
-        const level = parseInt($dots.data('value') || '0');
-        originalStates.set(`attribute:${label}`, level);
+      const $dots = $stat.find('.dots').first();
+      if (!$dots.length) return;
+      if ($dots.data('trait-key')) return;
+
+      const $label = $stat.find('.stat-label');
+      const labelText = ($label.text() || '').trim().toLowerCase();
+      const dataStat = ($label.attr('data-stat') || '').toLowerCase();
+      const key = normaliseKey(dataStat || labelText);
+      if (!key) return;
+
+      const skip = new Set([
+        'name', 'concept', 'chronicle', 'ambition', 'desire', 'sire',
+        'health', 'willpower', 'humanity', 'hunger', 'predator', 'clan',
+        'generation', 'bloodpotency', 'resonance', 'temperament', 'compulsion'
+      ]);
+      if (skip.has(key)) return;
+
+      let category = null;
+      if (findAttributeKey(key) || findAttributeByLabel(labelText)) {
+        category = 'attribute';
+      } else if (findSkillKey(key) || findSkillByLabel(labelText)) {
+        category = 'skill';
+      }
+      if (!category) return;
+
+      const traitKey = category === 'attribute'
+        ? (findAttributeKey(key) || findAttributeByLabel(labelText))
+        : (findSkillKey(key) || findSkillByLabel(labelText));
+
+      $dots.attr('data-trait-key', traitKey);
+      $dots.attr('data-trait-category', category);
+      $dots.data('trait-key', traitKey);
+      $dots.data('trait-category', category);
+    });
+  }
+
+  function eachAttribute(fn) {
+    for (const group of Object.values(ATTR_REF || {})) {
+      const attrs = group?.attributes;
+      if (!attrs) continue;
+      for (const [k, v] of Object.entries(attrs)) {
+        if (fn(k, v) === true) return true;
+      }
+    }
+    return false;
+  }
+
+  function findAttributeKey(key) {
+    let found = null;
+    eachAttribute((k) => {
+      if (normaliseKey(k) === key) {
+        found = k;
+        return true;
       }
     });
-    
-    // Capture background levels
-    if (window.backgroundManager) {
-      const backgrounds = window.backgroundManager.getSelectedBackgrounds();
-      Object.entries(backgrounds).forEach(([key, data]) => {
-        originalStates.set(`background:${key}`, data.level || 0);
-      });
+    return found;
+  }
+
+  function findAttributeByLabel(label) {
+    let found = null;
+    eachAttribute((k, v) => {
+      if ((v.name || TraitManagerUtils.camelToTitle(k)).toLowerCase() === label) {
+        found = k;
+        return true;
+      }
+    });
+    return found;
+  }
+
+  function eachSkill(fn) {
+    for (const group of Object.values(SKILL_REF || {})) {
+      if (!group || typeof group !== 'object') continue;
+      for (const [k, v] of Object.entries(group)) {
+        if (!v || typeof v !== 'object' || !v.name) continue;
+        if (fn(k, v) === true) return true;
+      }
     }
-    
-    // Capture merit levels
+    return false;
+  }
+
+  function findSkillKey(key) {
+    let found = null;
+    eachSkill((k) => {
+      if (normaliseKey(k) === key) {
+        found = k;
+        return true;
+      }
+    });
+    return found;
+  }
+
+  function findSkillByLabel(label) {
+    let found = null;
+    eachSkill((k, v) => {
+      if ((v.name || TraitManagerUtils.camelToTitle(k)).toLowerCase() === label) {
+        found = k;
+        return true;
+      }
+    });
+    return found;
+  }
+
+  function captureSnapshot() {
+    const dots = {};
+    $('.dots[data-trait-key][data-trait-category]').each(function () {
+      const $d = $(this);
+      const cat = $d.data('trait-category');
+      const key = $d.data('trait-key');
+      const instance = $d.data('instance');
+      const changeKey = instance != null && instance !== ''
+        ? `${cat}:${key}:${instance}`
+        : `${cat}:${key}`;
+      dots[changeKey] = parseInt($d.attr('data-value') || $d.data('value') || '0', 10);
+    });
+
+    return {
+      dots,
+      merits: window.meritFlawManager ? structuredClone(window.meritFlawManager.getSelectedMerits()) : {},
+      flaws: window.meritFlawManager ? structuredClone(window.meritFlawManager.getSelectedFlaws()) : {},
+      backgrounds: window.backgroundManager ? structuredClone(window.backgroundManager.getSelectedBackgrounds()) : {},
+      backgroundFlaws: window.backgroundManager ? structuredClone(window.backgroundManager.getSelectedBackgroundFlaws()) : {}
+    };
+  }
+
+  function restoreSnapshot() {
+    if (!snapshot) return;
+
     if (window.meritFlawManager) {
-      const merits = window.meritFlawManager.getSelectedMerits();
-      Object.entries(merits).forEach(([key, data]) => {
-        originalStates.set(`merit:${key}`, data.level || 0);
-      });
+      window.meritFlawManager.loadMeritsAndFlaws(snapshot.merits, snapshot.flaws);
     }
+    if (window.backgroundManager) {
+      window.backgroundManager.loadBackgroundsAndFlaws(snapshot.backgrounds, snapshot.backgroundFlaws);
+    }
+
+    Object.entries(snapshot.dots).forEach(([changeKey, level]) => {
+      const parts = changeKey.split(':');
+      const cat = parts[0];
+      const key = parts[1];
+      const instance = parts[2];
+      let $dots = $(`.dots[data-trait-category="${cat}"][data-trait-key="${key}"]`);
+      if (instance != null) {
+        $dots = $dots.filter(`[data-instance="${instance}"]`);
+      }
+      if (!$dots.length && (cat === 'attribute' || cat === 'skill')) {
+        $dots = $(`.dots[data-trait-category="${cat}"][data-trait-key="${key}"]`);
+      }
+      $dots.each(function () {
+        TraitManagerUtils.refreshDots($(this), level);
+      });
+    });
   }
 
   function handleDotClick(e) {
     if (!spendMode) return;
-    
-    const $dot = $(e.currentTarget);
-    const $dots = $dot.parent();
-    const traitKey = $dots.data('trait-key');
-    const traitCategory = $dots.data('trait-category');
-    
-    if (traitKey && traitCategory) {
-      // Calculate the new level based on which dot was clicked
-      const clickedValue = parseInt($dot.data('value'));
-      const currentValue = parseInt($dots.data('value') || '0');
-      let newValue = clickedValue;
-      
-      // If clicking the same dot, decrease by 1
-      if (clickedValue === currentValue) {
-        newValue = Math.max(currentValue - 1, 0);
+
+    setTimeout(() => {
+      const $dot = $(e.currentTarget);
+      const $dots = $dot.parent();
+      let traitKey = $dots.data('trait-key');
+      let traitCategory = $dots.data('trait-category');
+
+      if (!traitKey || !traitCategory) {
+        const merit = $dots.data('merit');
+        const flaw = $dots.data('flaw');
+        if (merit) {
+          traitKey = merit;
+          traitCategory = 'merit';
+        } else if (flaw) {
+          traitKey = flaw;
+          traitCategory = 'flaw';
+        }
       }
-      
-      // Track the change
-      trackChange(traitCategory, traitKey, currentValue, newValue);
-    }
+
+      if (!traitKey || !traitCategory) return;
+      if (['hunger'].includes(String(traitCategory))) return;
+
+      const instance = $dots.data('instance');
+      const changeKey = instance != null && instance !== ''
+        ? `${traitCategory}:${traitKey}:${instance}`
+        : `${traitCategory}:${traitKey}`;
+      const original = snapshot?.dots?.[changeKey] ?? snapshot?.dots?.[`${traitCategory}:${traitKey}`] ?? 0;
+      const current = parseInt($dots.attr('data-value') || $dots.data('value') || '0', 10);
+
+      if (current === original) {
+        pendingChanges.delete(changeKey);
+      } else {
+        trackChange(traitCategory, traitKey, original, current, false, false, changeKey);
+      }
+      updateXPDisplay();
+    }, 0);
   }
 
   function handleAddTrait(e) {
     if (!spendMode) return;
-    
-    const $btn = $(e.currentTarget);
-    const traitType = $btn.attr('id');
-    let category, key;
-    
-    // Determine what type of trait is being added
-    if (traitType === 'addBackgroundBtn') {
-      category = 'background';
-      key = $('#backgroundSelect').val();
-    } else if (traitType === 'addBackgroundFlawBtn') {
-      category = 'backgroundFlaw';
-      key = $('#backgroundFlawSelect').val();
-    } else if (traitType === 'addMeritBtn') {
-      category = 'merit';
-      key = $('#meritSelect').val();
-    } else if (traitType === 'addFlawBtn') {
-      category = 'flaw';
-      key = $('#flawSelect').val();
-    }
-    
-    if (category && key) {
-      // Get trait info for costing
+
+    setTimeout(() => {
+      const id = e.currentTarget.id;
+      let category;
+      let key;
+      if (id === 'addBackgroundBtn') {
+        category = 'background';
+        key = $('#backgroundSelect').val();
+      } else if (id === 'addBackgroundFlawBtn') {
+        category = 'backgroundFlaw';
+        key = $('#backgroundFlawSelect').val();
+      } else if (id === 'addMeritBtn') {
+        category = 'merit';
+        key = $('#meritSelect').val();
+      } else if (id === 'addFlawBtn') {
+        category = 'flaw';
+        key = $('#flawSelect').val();
+      }
+      if (!category || !key) return;
+
       const meta = getTraitMeta(category, key);
       const info = TraitManagerUtils.parseDotsNotation(meta?.dots || '•');
-      const baseLevel = info.min || 1;
-      
-      // Track the addition
-      trackChange(category, key, 0, baseLevel, true);
-    }
+      const baseLevel = info.hasOr ? (info.orValues[0] || info.min || 1) : (info.min || 1);
+      const changeKey = `${category}:${key}`;
+      const original = levelFromSnapshot(category, key);
+      trackChange(category, key, original, Math.max(original, baseLevel) || baseLevel, true, false, changeKey);
+      updateXPDisplay();
+    }, 50);
   }
 
   function handleRemoveTrait(e) {
     if (!spendMode) return;
-    
-    const $btn = $(e.currentTarget);
-    const traitType = $btn.data('trait-type');
-    const traitKey = $btn.data('trait-key');
-    const instanceIndex = $btn.data('instance');
-    
-    if (traitType && traitKey) {
-      // Get current level
-      let currentLevel = 0;
-      if (traitType === 'background' && window.backgroundManager) {
-        currentLevel = window.backgroundManager.getBackgroundLevel(traitKey);
-      } else if (traitType === 'merit' && window.meritFlawManager) {
-        currentLevel = window.meritFlawManager.getMeritLevel(traitKey);
-      }
-      
-      // Track the removal
-      trackChange(traitType, traitKey, currentLevel, 0, false, true);
-    }
-  }
 
-  function trackChange(category, key, fromLevel, toLevel, isAddition = false, isRemoval = false) {
-    const changeKey = `${category}:${key}`;
-    const originalLevel = originalStates.get(changeKey) || 0;
-    
-    // Calculate the effective change
-    let effectiveFrom, effectiveTo;
-    if (isAddition) {
-      effectiveFrom = originalLevel;
-      effectiveTo = originalLevel + toLevel;
-    } else if (isRemoval) {
-      effectiveFrom = originalLevel;
-      effectiveTo = 0;
-    } else {
-      effectiveFrom = originalLevel;
-      effectiveTo = originalLevel + (toLevel - fromLevel);
+    const $btn = $(e.currentTarget);
+    let traitType = $btn.data('trait-type');
+    let traitKey = $btn.data('trait-key');
+    if (!traitType || !traitKey) {
+      if ($btn.hasClass('remove-merit-btn') || $btn.data('merit')) {
+        traitType = 'merit';
+        traitKey = $btn.data('merit');
+      } else if ($btn.hasClass('remove-flaw-btn') || $btn.data('flaw')) {
+        traitType = 'flaw';
+        traitKey = $btn.data('flaw');
+      }
     }
-    
-    // Calculate cost
-    let cost = 0;
-    if (category === 'background') {
-      cost = calcMeritBackgroundCost(getTraitMeta(category, key)?.dots || '•', effectiveFrom, effectiveTo, true);
-    } else if (category === 'merit') {
-      cost = calcMeritBackgroundCost(getTraitMeta(category, key)?.dots || '•', effectiveFrom, effectiveTo, false);
-    } else if (category === 'attribute' || category === 'skill') {
-      const { pricingCat, pricingOpts } = buildPricingContext(category, key);
-      cost = getTotalPrice(pricingCat, effectiveFrom, effectiveTo, pricingOpts);
-    }
-    
-    // Store the change
-    pendingChanges.set(changeKey, {
-      category,
-      key,
-      from: effectiveFrom,
-      to: effectiveTo,
-      cost,
-      description: getChangeDescription(category, key, effectiveFrom, effectiveTo, isAddition, isRemoval)
-    });
-    
-    // Update display
+    if (!traitType || !traitKey) return;
+
+    const changeKey = `${traitType}:${traitKey}`;
+    const original = levelFromSnapshot(traitType, traitKey);
+    trackChange(traitType, traitKey, original, 0, false, true, changeKey);
     updateXPDisplay();
   }
 
-  function getChangeDescription(category, key, from, to, isAddition, isRemoval) {
-    const label = TraitManagerUtils.camelToTitle(key);
-    
-    if (isAddition) {
-      return `Add ${label}`;
-    } else if (isRemoval) {
-      return `Remove ${label}`;
-    } else if (from === 0 && to > 0) {
-      return `Add ${label} at level ${to}`;
-    } else if (to === 0) {
-      return `Remove ${label}`;
-    } else {
-      return `${label} ${from} → ${to}`;
+  function levelFromSnapshot(category, key) {
+    if (!snapshot) return 0;
+    if (category === 'merit') return snapshot.merits?.[key]?.level || sumInstances(snapshot.merits?.[key]) || 0;
+    if (category === 'flaw') return snapshot.flaws?.[key]?.level || sumInstances(snapshot.flaws?.[key]) || 0;
+    if (category === 'background') {
+      return sumInstances(snapshot.backgrounds?.[key]) || snapshot.backgrounds?.[key]?.level || 0;
     }
+    if (category === 'backgroundFlaw') {
+      return sumInstances(snapshot.backgroundFlaws?.[key]) || snapshot.backgroundFlaws?.[key]?.level || 0;
+    }
+    return snapshot.dots?.[`${category}:${key}`] || 0;
+  }
+
+  function sumInstances(data) {
+    if (!data) return 0;
+    if (data.instances?.length) {
+      return data.instances.reduce((t, i) => t + (i.level || 0), 0);
+    }
+    return data.level || 0;
+  }
+
+  function trackChange(category, key, fromLevel, toLevel, isAddition, isRemoval, changeKey) {
+    const ck = changeKey || `${category}:${key}`;
+    let cost = 0;
+    if (toLevel > fromLevel) {
+      if (category === 'background' || category === 'backgroundFlaw') {
+        cost = calcMeritBackgroundCost(getTraitMeta(category, key)?.dots || '•', fromLevel, toLevel, true);
+      } else if (category === 'merit' || category === 'flaw') {
+        cost = calcMeritBackgroundCost(getTraitMeta(category, key)?.dots || '•', fromLevel, toLevel, false);
+      } else if (category === 'attribute' || category === 'skill' || category === 'discipline') {
+        const { pricingCat, pricingOpts } = buildPricingContext(category, key);
+        cost = getTotalPrice(pricingCat, fromLevel, toLevel, pricingOpts);
+      }
+    }
+
+    if (fromLevel === toLevel && !isAddition && !isRemoval) {
+      pendingChanges.delete(ck);
+      return;
+    }
+
+    pendingChanges.set(ck, {
+      category,
+      key,
+      from: fromLevel,
+      to: toLevel,
+      cost,
+      description: getChangeDescription(category, key, fromLevel, toLevel, isAddition, isRemoval)
+    });
+  }
+
+  function getChangeDescription(category, key, from, to, isAddition, isRemoval) {
+    const label = TraitManagerUtils.camelToTitle(String(key));
+    if (isAddition) return `Add ${label}`;
+    if (isRemoval || to === 0) return `Remove ${label}`;
+    if (from === 0 && to > 0) return `Add ${label} at level ${to}`;
+    return `${label} ${from} → ${to}`;
   }
 
   function updateXPDisplay() {
     if (!xpDisplay) return;
-    
+
     const availableXP = window.xpManager?.getAvailableXP() || 0;
     const totalCost = Array.from(pendingChanges.values()).reduce((sum, change) => sum + change.cost, 0);
     const remainingXP = availableXP - totalCost;
-    
-    // Update amounts
+
     $('#xp-available-amount').text(availableXP);
     $('#xp-total-cost').text(totalCost);
     $('#xp-remaining-amount').text(remainingXP);
-    
-    // Update confirm button
-    const confirmBtn = $('#btn-confirm-xp');
-    confirmBtn.prop('disabled', totalCost === 0 || totalCost > availableXP);
-    
-    // Update changes list
+    $('#btn-confirm-xp').prop('disabled', totalCost === 0 || totalCost > availableXP);
     updateChangesList();
-    
-    // Update styling based on remaining XP
     $('#xp-remaining-amount').removeClass('text-danger text-success').addClass(
       remainingXP < 0 ? 'text-danger' : 'text-success'
     );
@@ -427,110 +444,109 @@ import { clans as CLAN_REF } from '../../data/vampire/clans.js';
 
   function updateChangesList() {
     const changesList = $('#xp-changes-list');
-    
     if (pendingChanges.size === 0) {
       changesList.html('<p class="text-muted">Make changes to your character to see XP costs here...</p>');
       return;
     }
-    
     const changesHtml = Array.from(pendingChanges.values()).map(change => `
       <div class="xp-change-item">
         <span class="change-description">${change.description}</span>
         <span class="change-cost">${change.cost} XP</span>
       </div>
     `).join('');
-    
     changesList.html(changesHtml);
   }
 
   async function confirmXPSpend() {
     const totalCost = Array.from(pendingChanges.values()).reduce((sum, change) => sum + change.cost, 0);
     const availableXP = window.xpManager?.getAvailableXP() || 0;
-    
+
+    if (totalCost <= 0) return;
     if (totalCost > availableXP) {
-      if (window.toastManager) {
-        window.toastManager.show('Not enough XP available.', 'warning', 'XP Spend');
-      }
+      toast('Not enough XP available.', 'warning', 'XP Spend');
       return;
     }
-    
-    // Create summary for confirmation
-    const changesSummary = Array.from(pendingChanges.values()).map(change => 
-      `${change.description} (${change.cost} XP)`
-    ).join('\n');
-    
+
+    const changesSummary = Array.from(pendingChanges.values())
+      .map(change => `${change.description} (${change.cost} XP)`)
+      .join('\n');
+
     const confirmed = await showConfirmModal(
       'Confirm XP Spend',
       `Spend ${totalCost} XP on the following changes?\n\n${changesSummary}`,
       'Confirm Spend',
       'btn-primary'
     );
-    
     if (!confirmed) return;
-    
-    // Apply all changes
-    for (const [key, change] of pendingChanges) {
-      await applyTraitChange(change.category, change.key, change.from, change.to);
-    }
-    
-    // Spend the XP
+
+    // Sheet already reflects edits; only spend XP.
     const note = `XP Spend: ${Array.from(pendingChanges.values()).map(c => c.description).join(', ')}`;
-    const ok = window.xpManager?.spendXP(totalCost, note, { changes: Array.from(pendingChanges.values()) });
-    
+    const ok = await window.xpManager?.spendXP(totalCost, note, {
+      changes: Array.from(pendingChanges.values())
+    });
+
     if (!ok) {
-      if (window.toastManager) {
-        window.toastManager.show('Failed to spend XP.', 'error', 'XP Spend');
-      }
+      toast('Failed to spend XP.', 'error', 'XP Spend');
       return;
     }
-    
-    // Exit spend mode
+
+    pendingChanges.clear();
+    snapshot = null;
+    spendMode = true;
     toggleXPSpendMode();
-    
-    // Show success message
-    if (window.toastManager) {
-      window.toastManager.show(`Successfully spent ${totalCost} XP.`, 'success', 'XP Spend');
-    }
+    toast(`Successfully spent ${totalCost} XP.`, 'success', 'XP Spend');
   }
 
   function cancelXPSpend() {
-    // Revert all changes
-    for (const [key, change] of pendingChanges) {
-      // This would need to revert the changes made to the UI
-      // For now, just clear the pending changes
-    }
-    
-    // Exit spend mode
+    restoreSnapshot();
+    pendingChanges.clear();
+    spendMode = true;
     toggleXPSpendMode();
-    
-    if (window.toastManager) {
-      window.toastManager.show('XP spend cancelled. Changes reverted.', 'info', 'XP Mode');
-    }
+    toast('XP spend cancelled. Changes reverted.');
   }
 
-  // Helper functions
   function getTraitMeta(category, key) {
-    switch(category) {
-      case 'attribute': return ATTR_REF?.attributes?.[key] || {};
-      case 'skill': return SKILL_REF?.[key] || {};
-      case 'discipline': return DISC_REF?.types?.[key] || {};
-      case 'merit': {
-        for (const [catKey, category] of Object.entries(MERIT_REF)) {
-          if (category?.merits && category.merits[key]) {
-            return category.merits[key];
+    switch (category) {
+      case 'attribute': {
+        let meta = {};
+        eachAttribute((k, v) => {
+          if (k === key) {
+            meta = v;
+            return true;
           }
+        });
+        return meta;
+      }
+      case 'skill': {
+        let meta = {};
+        eachSkill((k, v) => {
+          if (k === key) {
+            meta = v;
+            return true;
+          }
+        });
+        return meta;
+      }
+      case 'discipline':
+        return DISC_REF?.types?.[key] || {};
+      case 'merit':
+      case 'flaw': {
+        const bucket = category === 'merit' ? 'merits' : 'flaws';
+        for (const cat of Object.values(MERIT_REF || {})) {
+          if (cat?.[bucket]?.[key]) return cat[bucket][key];
         }
         return {};
       }
-      case 'background': {
-        for (const [catKey, category] of Object.entries(BG_REF)) {
-          if (category?.merits && category.merits[key]) {
-            return category.merits[key];
-          }
+      case 'background':
+      case 'backgroundFlaw': {
+        const bucket = category === 'background' ? 'merits' : 'flaws';
+        for (const cat of Object.values(BG_REF || {})) {
+          if (cat?.[bucket]?.[key]) return cat[bucket][key];
         }
         return {};
       }
-      default: return {};
+      default:
+        return {};
     }
   }
 
@@ -568,103 +584,39 @@ import { clans as CLAN_REF } from '../../data/vampire/clans.js';
   }
 
   function normaliseKey(str) {
-    return str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-  }
-
-  function getTotalPrice(category, fromLevel, toLevel, options = {}) {
-    const levelDiff = toLevel - fromLevel;
-    if (levelDiff <= 0) return 0;
-    
-    switch (category) {
-      case 'attribute':
-        return levelDiff * 5;
-      case 'skill':
-        return levelDiff * 3;
-      case 'discipline':
-        const baseCost = options.clanMatched ? 7 : 10;
-        return levelDiff * baseCost;
-      default:
-        return levelDiff * 3;
-    }
+    return String(str || '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
   }
 
   function calcMeritBackgroundCost(dotsString, currentLevel, desiredLevel, isBackground = false) {
     const info = TraitManagerUtils.parseDotsNotation(dotsString || '•');
-    
+
     if (info.canRepeat || isBackground) {
       const baseDots = info.min || 1;
-      return (desiredLevel - currentLevel) * baseDots * 3;
+      return Math.max(0, desiredLevel - currentLevel) * baseDots * 3;
     }
-    
+
     if (info.hasOr) {
       const sorted = [...info.orValues].sort((a, b) => a - b);
       let cost = 0;
       for (const lvl of sorted) {
-        if (lvl > currentLevel && lvl <= desiredLevel) { cost += lvl * 3; }
+        if (lvl > currentLevel && lvl <= desiredLevel) cost += lvl * 3;
       }
       return cost;
     }
-    
+
     if (info.min !== info.max) {
       let cost = 0;
       for (let lvl = currentLevel + 1; lvl <= desiredLevel; lvl++) cost += lvl * 3;
       return cost;
     }
-    
+
     return currentLevel > 0 ? 0 : info.max * 3;
   }
 
   async function showConfirmModal(title, message, confirmText = 'Confirm', confirmClass = 'btn-primary') {
-    return new Promise((resolve) => {
-      const modalId = 'xp-confirm-modal';
-      const modalHtml = `
-        <div class="modal fade" id="${modalId}" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content bg-dark text-light">
-              <div class="modal-header">
-                <h5 class="modal-title">${title}</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <pre style="white-space: pre-wrap; font-family: inherit;">${message}</pre>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn ${confirmClass}" id="confirm-btn">${confirmText}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Remove existing modal if any
-      $(`#${modalId}`).remove();
-      
-      // Add new modal
-      $('body').append(modalHtml);
-      
-      const modal = new bootstrap.Modal(document.getElementById(modalId));
-      
-      $(`#${modalId} #confirm-btn`).on('click', () => {
-        modal.hide();
-        resolve(true);
-      });
-      
-      $(`#${modalId}`).on('hidden.bs.modal', () => {
-        resolve(false);
-        $(`#${modalId}`).remove();
-      });
-      
-      modal.show();
-    });
+    if (window.modalManager?.confirm) {
+      return window.modalManager.confirm(title, message, { confirmText, confirmClass });
+    }
+    return TraitManagerUtils.showConfirmModal(title, message, confirmText, confirmClass);
   }
-
-  // Export functions for external use
-  window.xpSpendManager = {
-    toggleMode: toggleXPSpendMode,
-    isActive: () => spendMode,
-    getPendingChanges: () => Array.from(pendingChanges.values()),
-    getTotalCost: () => Array.from(pendingChanges.values()).reduce((sum, change) => sum + change.cost, 0)
-  };
-
-})(); 
+})();

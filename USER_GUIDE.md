@@ -1,5 +1,5 @@
 # The Ledger - User Guide
-*A comprehensive guide to using The Ledger for Vampire: The Masquerade 5th Edition*
+*A full guide to using The Ledger for Vampire: The Masquerade 5th Edition*
 
 ---
 

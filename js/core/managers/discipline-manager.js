@@ -1,88 +1,3 @@
-/**
- * @fileoverview Discipline Manager for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Manages character disciplines and their associated powers. Provides functionality for
- *             selecting, leveling, and managing discipline powers with support for amalgam requirements,
- *             prerequisites, and power selection modals.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires disciplines.js - Contains all discipline data and power definitions
- * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
- * @requires jQuery - Used for DOM manipulation and event handling
- * @requires Bootstrap - Used for UI components, modals, and styling
- * @requires window.toastManager - For displaying feedback messages
- * 
- * @class DisciplineManager
- * @classdesc Main class for managing character disciplines and powers
- * 
- * @property {Map} selectedDisciplines - Map of disciplineKey -> { level: number, powers: Set<string> }
- * @property {Array} availableDisciplines - Array of available discipline keys
- * 
- * @method constructor - Initializes the manager with discipline data and power containers
- * @method init - Sets up the UI and binds events
- * @method renderDisciplineManager - Creates the main discipline management interface
- * @method renderDisciplineSelector - Creates the discipline selection dropdown
- * @method renderSelectedDisciplines - Creates the selected disciplines display
- * @method getAvailableDisciplineOptions - Generates HTML options for available disciplines
- * @method getSelectedDisciplinesHtml - Creates HTML representation of selected disciplines
- * @method renderDisciplinePowers - Renders powers for a discipline
- * @method renderSelectedPower - Renders an individual power display
- * @method bindEvents - Sets up event listeners for user interactions
- * @method addDiscipline - Adds a new discipline to the character
- * @method removeDiscipline - Removes a discipline and its powers
- * @method handleDotClick - Handles clicks on discipline level dots
- * @method changeDisciplineLevel - Changes discipline level with validation
- * @method updateDisciplineDisplay - Updates the visual display of a discipline
- * @method getPowersAboveLevel - Gets powers above a certain level
- * @method confirmPowerRemoval - Confirms power removal
- * @method showPowerSelectionModal - Shows modal for power selection
- * @method getAvailablePowersAtLevel - Gets available powers at a specific level
- * @method getAvailablePowersUpToLevel - Gets all available powers up to a level
- * @method checkPrerequisites - Checks if prerequisites are met
- * @method checkAmalgamRequirements - Checks if amalgam requirements are met
- * @method disciplineNameToKey - Converts discipline name to key
- * @method addPower - Adds a power to a discipline
- * @method removePower - Removes a power from a discipline
- * @method findPowerByName - Finds a power by name in a discipline
- * @method getPowerLevel - Gets the level of a specific power
- * @method updateDisplay - Refreshes the entire discipline display
- * @method getDisciplineName - Gets the display name of a discipline
- * @method capitalizeFirst - Capitalizes the first letter of a string
- * @method showFeedback - Shows feedback messages
- * @method getSelectedDisciplines - Returns the map of selected disciplines
- * @method getDisciplineLevel - Gets the level of a specific discipline
- * @method getDisciplinePowers - Gets the powers of a specific discipline
- * @method loadDisciplines - Loads saved discipline data
- * @method exportDisciplines - Exports current discipline data for saving
- * 
- * @typedef {Object} DisciplineData
- * @property {number} level - Current discipline level (0-5)
- * @property {Set<string>} powers - Set of selected power names
- * 
- * @typedef {Object} Power
- * @property {string} name - Power name
- * @property {string} effect - Power description
- * @property {string} cost - Blood cost
- * @property {string} duration - Power duration
- * @property {string} dicePool - Dice pool for activation
- * @property {string} opposingPool - Opposing dice pool
- * @property {string} notes - Additional notes
- * @property {string} prerequisite - Prerequisite requirements
- * @property {string} amalgam - Amalgam discipline requirements
- * @property {string} source - Source book reference
- * 
- * @example
- * const disciplineManager = new DisciplineManager();
- * disciplineManager.addDiscipline('auspex');
- * disciplineManager.changeDisciplineLevel('auspex', 0, 2);
- * disciplineManager.addPower('auspex', 'Heightened Senses');
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 // Enhanced Discipline Manager with Powers
 import { disciplines } from '../utils/disciplines.js';
 import { TraitManagerUtils } from './manager-utils.js';
@@ -121,10 +36,8 @@ class DisciplineManager {
 
         disciplineContainer.empty();
 
-        // Add discipline selector
         this.renderDisciplineSelector(disciplineContainer);
         
-        // Add selected disciplines list
         this.renderSelectedDisciplines(disciplineContainer);
     }
 
@@ -377,7 +290,6 @@ class DisciplineManager {
             newValue = clickedValue;
         }
 
-        // Handle level changes
         this.changeDisciplineLevel(disciplineKey, currentValue, newValue);
     }
 
@@ -430,7 +342,6 @@ class DisciplineManager {
         const disciplineData = this.selectedDisciplines.get(disciplineKey);
         if (!disciplineData) return;
 
-        // Update dots
         const $dots = $(`.dots[data-discipline="${disciplineKey}"]`);
         $dots.find('.dot').each(function(index) {
             $(this).toggleClass('filled', index < disciplineData.level);
@@ -438,7 +349,6 @@ class DisciplineManager {
         $dots.data('value', disciplineData.level);
         $dots.attr('data-value', disciplineData.level);
 
-        // Update the entire discipline display
         this.updateDisplay();
     }
 
@@ -541,12 +451,10 @@ class DisciplineManager {
             // Skip if already selected
             if (disciplineData.powers.has(power.name)) return false;
             
-            // Check prerequisites
             if (power.prerequisite && power.prerequisite !== 'None') {
                 if (!this.checkPrerequisites(disciplineKey, power.prerequisite)) return false;
             }
             
-            // Check amalgam requirements
             if (power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None') {
                 if (!this.checkAmalgamRequirements(power.amalgam)) return false;
             }
@@ -572,17 +480,14 @@ class DisciplineManager {
                 // Skip if already selected
                 if (disciplineData.powers.has(power.name)) return;
                 
-                // Check prerequisites
                 if (power.prerequisite && power.prerequisite !== 'None') {
                     if (!this.checkPrerequisites(disciplineKey, power.prerequisite)) return;
                 }
                 
-                // Check amalgam requirements
                 if (power.amalgam && power.amalgam !== 'No' && power.amalgam !== 'None') {
                     if (!this.checkAmalgamRequirements(power.amalgam)) return;
                 }
                 
-                // Add level information to the power object for display
                 availablePowers.push({
                     ...power,
                     level: level
@@ -628,7 +533,6 @@ class DisciplineManager {
             // Convert discipline name to key format
             const disciplineKey = this.disciplineNameToKey(disciplineName);
             
-            // Check if character has the required discipline at the required level
             const disciplineData = this.selectedDisciplines.get(disciplineKey);
             return disciplineData && disciplineData.level >= requiredLevel;
         } catch (error) {
@@ -699,7 +603,6 @@ class DisciplineManager {
     }
 
     updateDisplay() {
-        // Update the dropdown options
         $('#disciplineSelect').html(`
             <option value="">Select a Discipline</option>
             ${this.getAvailableDisciplineOptions()}
@@ -708,7 +611,6 @@ class DisciplineManager {
         // Disable add button
         $('#addDisciplineBtn').prop('disabled', true);
         
-        // Update the selected disciplines list
         $('#disciplinesList').html(
             this.selectedDisciplines.size === 0 ? 
                 '<div class="fst-italic">No disciplines selected</div>' : 

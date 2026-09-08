@@ -8,6 +8,7 @@ import { getDiscordWebhook, setDiscordWebhook, sendToDiscord, buildRollEmbed, ge
 import { initControlBar } from "./control-bar.js";
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { disciplines } from "../utils/disciplines.js";
+import { disciplineNameToKey } from "../utils/progeny-import.js";
 import logger from "../utils/logger.js";
 
 // New flag: track whether the most recent roll used Blood Surge
@@ -124,7 +125,6 @@ let bonusMsg = null;
       centered: false,
       showCloseButton: true
     }, (element, instance) => {
-      // Add keyboard event listener for Enter key
       element.querySelector("#diceRollForm").addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -185,7 +185,6 @@ let bonusMsg = null;
         // Ensure libs loaded
         await ensureDiceEngineLoaded();
 
-        // Create overlay & roll
         const canvasContainer = createOverlay();
         if (latestImpairmentMessage) {
           const banner = document.createElement('div');
@@ -194,7 +193,6 @@ let bonusMsg = null;
           canvasContainer.appendChild(banner);
         }
         rollVtmDice(canvasContainer, pools, () => {});
-        // Update WP reroll availability after roll
         if (typeof window.refreshWPRerollButtonLocal === "function") {
           window.refreshWPRerollButtonLocal();
         }
@@ -394,7 +392,6 @@ let bonusMsg = null;
       return;
     }
 
-    // Handle second stat selection
     if (!secondStatName) {
       if (!isValidSecondStat(name)) {
         // Must pick a valid second stat (attribute, skill, or discipline)
@@ -427,7 +424,6 @@ let bonusMsg = null;
       return;
     }
 
-    // Handle third stat selection
     if (!thirdStatName) {
       // Only allow third stat if second stat is a skill or discipline
       if (!isSkill(secondStatName) && !isDiscipline(secondStatName)) {
@@ -591,7 +587,6 @@ let bonusMsg = null;
                 rouseRolls[i] = newResults[i];
               }
               
-              // Remove existing Rouse dice meshes
               const start = rouseStart;
               const end = rouseStart + rouseLen; // exclusive
               box.dices.forEach((d) => {
@@ -603,7 +598,6 @@ let bonusMsg = null;
               });
               box.dices = box.dices.filter(d=> !(d.userData.rollIndex>=start && d.userData.rollIndex<end));
 
-              // Add new Rouse dice visually
               const beforeCount = box.dices.length;
               addRouseDiceToBox(box, rouseLen);
               // assign rollIndex sequentially for newly added dice
@@ -868,7 +862,6 @@ let bonusMsg = null;
     const container = document.querySelector('.track-container[data-type="humanity"]');
     if (!container) return;
     const boxes = container.querySelectorAll('.track-box');
-    // Remove stains always
     boxes.forEach((b) => b.classList.remove('stained'));
 
     if (!success) {
@@ -879,7 +872,6 @@ let bonusMsg = null;
       }
     }
 
-    // Update data-value counts
     const filledCount = container.querySelectorAll('.track-box.filled').length;
     container.setAttribute('data-value', filledCount);
     const header = container.querySelector('.track-header span:first-child');
@@ -1012,7 +1004,6 @@ let bonusMsg = null;
       }
     }
 
-    // Update remaining WP count display
     const damagedNow = wpContainer.querySelectorAll('.superficial, .aggravated').length;
     const newVal = total - damagedNow;
     wpContainer.setAttribute('data-value', newVal);
@@ -1038,7 +1029,6 @@ let bonusMsg = null;
     if (!spendWillpower()) return; // abort if cannot spend WP
 
     const box = currentRollCtx.box;
-    // Remove selected dice from the scene so they disappear
     box.dices.forEach((d) => {
       if (currentRollCtx.selected.has(d.userData.rollIndex)) {
         box.scene.remove(d);
@@ -1053,7 +1043,6 @@ let bonusMsg = null;
     // Clear highlights on remaining dice
     box.dices.forEach((d) => highlightDie(d, false));
 
-    // Add replacement dice
     addStandardDiceToBox(box, selCount);
 
     // Discord notification
@@ -1118,7 +1107,6 @@ let bonusMsg = null;
     window.handleWPRerollClick = handleWPRerollClick;
     window.clearOverlay = clearOverlay;
     
-    // Add mendHealth function globally
     window.mendHealth = function() {
       // Helper to find the Blood Potency value from the sheet (0–5)
       function getBloodPotency() {
@@ -1145,7 +1133,6 @@ let bonusMsg = null;
       if (container) {
         const superficialBoxes = Array.from(container.querySelectorAll('.track-box.superficial'));
         
-        // Check if there's any damage to heal
         if (superficialBoxes.length === 0) {
           if (window.toastManager) {
             window.toastManager.show('No superficial damage to mend', 'warning');
@@ -1157,7 +1144,6 @@ let bonusMsg = null;
         // Heal starting from the rightmost (last) superficial box
         superficialBoxes.slice(-toHeal).forEach(box => box.classList.remove('superficial'));
 
-        // Update displayed current health value
         const total = container.querySelectorAll('.track-box').length;
         const damagedNow = container.querySelectorAll('.track-box.superficial, .track-box.aggravated').length;
         const newVal = total - damagedNow;
@@ -1180,7 +1166,6 @@ let bonusMsg = null;
       }
     };
     
-    // Add showDiceSymbolsModal function globally
     window.showDiceSymbolsModal = function() {
       const content = `
         <div class="dice-symbols-guide">
@@ -1231,17 +1216,6 @@ let bonusMsg = null;
     // Expose refreshWPRerollButton globally so it can be called from other functions
     window.refreshWPRerollButtonLocal = refreshWPRerollButton;
 
-    // Helper used by computeDicePools further below (kept here because the overlay
-    // still owns the dice-pool logic).
-    function disciplineNameToKey(name = "") {
-      const lower = name.toLowerCase();
-      const special = {
-        "blood sorcery": "bloodSorcery",
-        "thin-blood alchemy": "thinBloodAlchemy",
-      };
-      return special[lower] || lower.replace(/[^a-z]/g, "");
-    }
-
     // Modal lazy creation
     let modalEl; // will be lazily created
 
@@ -1276,7 +1250,6 @@ let bonusMsg = null;
       } else {
         document.querySelectorAll('.specialty-badge.selected-specialty').forEach(el=>el.classList.remove('selected-specialty', 'second-stat', 'third-stat'));
         badge.classList.add('selected-specialty');
-        // Add appropriate class based on whether this is second or third stat
         badge.classList.add(skill === secondStatName ? 'second-stat' : 'third-stat');
         selectedSpecialty = {skill, name: badge.textContent};
       }
@@ -1587,7 +1560,6 @@ let bonusMsg = null;
       }
     })();
 
-    // Add dice overlay access
     window.diceOverlay = {
       show: async function() {
         // Wipe overlay before showing modal
@@ -1606,7 +1578,6 @@ let bonusMsg = null;
           modalEl.querySelector("#frenzyInput").value = computed.frenzy;
         }
 
-        // Update impairment note visibility
         const noteBox = modalEl.querySelector('#impairmentNote');
         if (noteBox) {
           if (latestImpairmentMessage) {
@@ -1617,7 +1588,6 @@ let bonusMsg = null;
           }
         }
 
-        // Update bonus note visibility (resonance & blood potency)
         const bonusBox = modalEl.querySelector('#bonusNote');
         const bonusMessages = [];
         if (window.latestResonanceBonusMessage) bonusMessages.push(window.latestResonanceBonusMessage);
@@ -1674,7 +1644,6 @@ let bonusMsg = null;
             if (surgeBonus) surgeBonus.textContent = "+0 Standard, +0 Rouse";
           } else {
             surgeInput.disabled = false;
-            // Update bonus display based on Blood Potency
             const bpVal = getStatValueByName("Blood Potency");
             const bonus = (typeof bpData?.getBloodSurgeBonus === "function") ? (bpData.getBloodSurgeBonus(bpVal) || 0) : 0;
             if (surgeBonus) surgeBonus.textContent = `+${bonus} Standard, +1 Rouse`;

@@ -76,7 +76,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - Full undo/redo history with autosave
   - IndexedDB persistence for reliability
 
-- 🛈 **Comprehensive Rules Reference**
+- 🛈 **Rules Reference**
   - Contextual info buttons throughout the interface
   - Detailed rules text for Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and more
   - Integrated Humanity ladder with detailed effects
@@ -88,7 +88,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - Easy character switching with dropdown selector
   - Character management modal for organizing your roster
   - Each character maintains separate XP, settings, and data
-  - Seamless character switching with state preservation
+  - Smooth character switching with state preservation
 
 - 🎯 **Advanced Game Mechanics**
   - Blood Surge mechanic with automatic dice-pool handling
@@ -102,7 +102,7 @@ Clone the repository and open `index.html`, or visit the [live version](https://
   - Toggle logging on/off via settings
   - Automatic environment detection (development vs production)
   - Persistent logging preferences
-  - Comprehensive error tracking and debugging support
+  - Error tracking with log/warn/error/info/debug levels
 
 ---
 
@@ -144,25 +144,18 @@ All styling lives in `scss/` and is compiled to `css/` using [`sass`](https://sa
 | Script | Purpose |
 | -------------- | ----------------------------------------- |
 | `npm run sass` | Watch `scss/` and re-compile on changes |
-| `npm run sass:build` | One-off, minified production build |
+| `npm run sass:build` | One-off, minified production build (prefer this when committing `css/`; no source maps) |
 
 For detailed technical documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
 
 ### Logging System
 
-The Ledger includes a comprehensive logging system for development and debugging:
+The Ledger includes a logging system for development and debugging:
 
-- **Toggle Control**: Enable/disable logging via Settings → General → "Enable console logging"
-- **Environment Detection**: Automatically defaults to enabled in development, disabled in production
-- **Persistent Settings**: Logging preference is saved and restored between sessions
-- **Comprehensive Coverage**: All major operations are logged with appropriate levels (log, warn, error, info, debug)
-- **Testing**: Use `test-logger.html` to test the logging system functionality
-
-The logging system uses the `js/core/utils/logger.js` module and provides:
-- Timestamped log messages with consistent formatting
-- Support for all console methods (log, warn, error, info, debug, group, table, time)
-- Automatic environment detection based on hostname
-- localStorage persistence for user preferences
+- Toggle via Settings → General → "Enable console logging"
+- Defaults on for localhost-style hosts, off otherwise
+- Preference stored in localStorage
+- Module: `js/core/utils/logger.js` (`window.logger` for classic scripts)
 
 ### Project Structure
 
@@ -182,7 +175,7 @@ Feel free to raise issues or open pull requests – contributions are welcome!
 ```text
 Ledger/
 ├── assets/           # images, fonts, icons
-├── css/              # compiled CSS (git-ignored in dev)
+├── css/              # compiled CSS (tracked for GitHub Pages; do not commit *.css.map)
 ├── scss/             # source SCSS files
 │   ├── base/         # typography, utilities
 │   ├── components/   # reusable UI components

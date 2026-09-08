@@ -1,54 +1,3 @@
-/**
- * @fileoverview Specialty Manager for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Manages skill specialties. Provides functionality for adding, removing, and displaying
- *             skill specialties with a modal-based interface and integration with the dice overlay system.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires Bootstrap - Used for UI components, modals, and styling
- * @requires window.modalManager - For displaying specialty management modals
- * 
- * @namespace SpecialtyManager
- * @description Main namespace for managing skill specialties
- * 
- * @property {Array} SKILL_NAMES - Array of official VtM 5th Edition skill names
- * @property {string|null} currentSkill - Currently selected skill for editing
- * @property {Object|null} modalInstance - Current modal instance
- * 
- * @function init - Initializes the specialty manager and sets up event listeners
- * @function findStatRow - Locates a stat row by label text (case-insensitive)
- * @function capitalise - Capitalizes the first letter of each word in a string
- * @function injectModal - Injects the specialty management modal (placeholder)
- * @function getSpecialties - Retrieves specialties for a given skill
- * @function setSpecialties - Sets specialties for a given skill
- * @function updateSpecialtiesRow - Updates the display of specialties for a skill
- * @function refreshModalList - Refreshes the specialty list in the modal
- * @function openModal - Opens the specialty management modal for a skill
- * @function addSpecialty - Adds a new specialty to the current skill
- * @function removeSpecialty - Removes a specialty from the current skill
- * 
- * @typedef {Array<string>} SkillNames
- * @description Array of official VtM 5th Edition skill names including:
- * Physical: athletics, brawl, craft, drive, firearms, larceny, melee, stealth, survival
- * Social: animal ken, etiquette, insight, intimidation, leadership, performance, persuasion, streetwise, subterfuge
- * Mental: academics, awareness, finance, investigation, medicine, occult, politics, science, technology
- * 
- * @example
- * // Get specialties for a skill
- * const specialties = getSpecialties('Athletics');
- * 
- * // Add a new specialty
- * addSpecialty('Swimming');
- * 
- * // Remove a specialty
- * removeSpecialty('Swimming');
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 // js/specialty-manager.js
 // Adds UI for managing Skill Specialties and integrates with dice overlay
 
@@ -88,7 +37,6 @@
       row.className = 'specialties-row d-flex flex-wrap align-items-center ms-3 mt-1';
       row.dataset.skill = name;
 
-      // Add "+" button
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'btn btn-sm theme-btn-outline-secondary specialty-add-btn me-2 specialty-add-btn';
@@ -158,7 +106,6 @@
     const container = document.querySelector(`.specialties-row[data-skill="${skill}"]`);
     if(!container) return;
 
-    // Remove existing badge elements
     container.querySelectorAll('.specialty-badge').forEach(el=>el.remove());
 
     const specs = getSpecialties(skill);
@@ -207,7 +154,6 @@
     }, (element, instance) => {
       modalInstance = instance;
       
-      // Add event handler for Add button
       element.querySelector('#addSpecialtyBtn').addEventListener('click', () => {
         const input = element.querySelector('#newSpecialtyInput');
         const val = input.value.trim();

@@ -1,81 +1,4 @@
 /**
- * @fileoverview Character Manager for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Manages multiple characters in the application. Provides functionality for creating,
- *             loading, saving, switching, and deleting characters. Handles URL parameter support
- *             for loading specific characters and manages the UI for character selection.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires database-manager.js - Handles all database operations for character persistence
- * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
- * @requires jQuery - Used for DOM manipulation and event handling
- * @requires Bootstrap - Used for UI components and modals
- * @requires window.loadCharacterData - Function to load character data into the UI
- * @requires window.gatherCharacterData - Function to collect character data from the UI
- * @requires window.LockManager - Manages the lock state of the character sheet
- * @requires logger.js - Provides logging functionality
- * 
- * @class CharacterManager
- * @classdesc Main class for managing multiple characters in the application
- * 
- * @property {number|null} currentCharacterId - ID of the currently active character
- * @property {Array} characters - Array of all available characters
- * @property {boolean} isInitialized - Boolean indicating if the manager is initialized
- * 
- * @method constructor - Initializes the character manager with empty state
- * @method init - Initializes the character manager, loads characters, and sets up UI
- * @method loadCharacters - Loads all characters from the database
- * @method setCurrentCharacter - Sets the current character based on URL parameters or database
- * @method getCurrentCharacter - Retrieves the current character data from database
- * @method saveCurrentCharacter - Saves the current character data
- * @method createNewCharacter - Creates a new character with default or provided data
- * @method switchCharacter - Switches to a different character
- * @method deleteCharacter - Deletes a character from the database
- * @method initUI - Initializes the character management UI elements
- * @method updateCharacterList - Updates the character list display
- * @method updateCurrentCharacterDisplay - Updates the current character display
- * @method clearCurrentSheet - Clears the current character sheet
- * @method setCharacterName - Sets the name of the current character
- * @method showNewCharacterModal - Shows the modal for creating a new character
- * @method showCharacterManagementModal - Shows the character management modal
- * @method populateCharacterManagementList - Populates the character management list
- * @method confirmDeleteCharacter - Confirms character deletion
- * @method showDeleteConfirmationModal - Shows deletion confirmation modal
- * @method refreshCharacterManagementModal - Refreshes the character management modal
- * 
- * @typedef {Object} Character
- * @property {number} id - Unique identifier for the character
- * @property {string} name - Character name
- * @property {string} createdAt - ISO timestamp of creation
- * @property {string} updatedAt - ISO timestamp of last update
- * @property {Object} [attributes] - Character attributes data
- * @property {Object} [skills] - Character skills data
- * @property {Object} [disciplines] - Character disciplines data
- * @property {Object} [merits] - Character merits data
- * @property {Object} [flaws] - Character flaws data
- * @property {Object} [backgrounds] - Character backgrounds data
- * @property {Object} [backgroundFlaws] - Character background flaws data
- * @property {Object} [coterieMerits] - Character coterie merits data
- * @property {Object} [coterieFlaws] - Character coterie flaws data
- * @property {Array} [loresheets] - Character loresheets data
- * @property {Array} [convictions] - Character convictions data
- * @property {boolean} [locked] - Whether the character sheet is locked
- * @property {string} [theme] - Character theme preference
- * @property {string} [discordWebhook] - Discord webhook URL for the character
- * 
- * @example
- * const characterManager = new CharacterManager();
- * await characterManager.init();
- * await characterManager.createNewCharacter({ name: 'New Character' });
- * await characterManager.switchCharacter(characterId);
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
-/**
  * Character Manager for Ledger
  * Handles multiple character management and UI
  */
@@ -98,19 +21,16 @@ class CharacterManager {
         if (this.isInitialized) return;
 
         try {
-            // Initialize database
             await databaseManager.init();
             
             // Load all characters
             await this.loadCharacters();
             
-            // Set current character
             await this.setCurrentCharacter();
             
             this.isInitialized = true;
             logger.log('CharacterManager initialized');
             
-            // Initialize UI
             this.initUI();
             
         } catch (err) {
@@ -145,13 +65,11 @@ class CharacterManager {
                 // Convert to number if it's a string
                 const characterId = parseInt(characterIdFromUrl);
                 if (!isNaN(characterId)) {
-                    // Check if the character exists
                     const character = await databaseManager.getCharacter(characterId);
                     if (character) {
                         this.currentCharacterId = characterId;
                         logger.log('Loading character from URL parameter:', characterId);
                         
-                        // Set as active character in database
                         await databaseManager.setActiveCharacterId(characterId);
                         
                         // Initialize lock state from URL parameter if present
@@ -214,10 +132,8 @@ class CharacterManager {
             const savedId = await databaseManager.saveActiveCharacter(characterData);
             this.currentCharacterId = savedId;
             
-            // Update the characters list
             await this.loadCharacters();
             
-            // Update UI
             this.updateCharacterList();
             
             return savedId;
@@ -241,7 +157,6 @@ class CharacterManager {
             
             const characterId = await databaseManager.saveCharacter(newCharacter);
             
-            // Set as current character
             await databaseManager.setActiveCharacterId(characterId);
             this.currentCharacterId = characterId;
             
@@ -272,7 +187,6 @@ class CharacterManager {
                 await databaseManager.saveCharacter(currentData, this.currentCharacterId);
             }
             
-            // Set new active character
             await databaseManager.setActiveCharacterId(characterId);
             this.currentCharacterId = characterId;
             
@@ -284,7 +198,6 @@ class CharacterManager {
                 logger.log('CharacterManager: loadCharacterData function not available');
             }
             
-            // Update UI
             this.updateCharacterList();
             this.updateCurrentCharacterDisplay();
             
@@ -312,7 +225,6 @@ class CharacterManager {
             
             logger.log('Attempting to delete character with ID:', id);
             
-            // Check if character exists before deleting
             const character = await databaseManager.getCharacter(id);
             if (!character) {
                 throw new Error('Character not found');
@@ -336,7 +248,6 @@ class CharacterManager {
                 }
             }
             
-            // Update UI
             this.updateCharacterList();
             this.updateCurrentCharacterDisplay();
             
@@ -358,7 +269,6 @@ class CharacterManager {
         // Character management UI is now handled by the dashboard
         // No need to create control bar UI elements
         
-        // Update displays
         this.updateCharacterList();
         this.updateCurrentCharacterDisplay();
     }
@@ -375,7 +285,6 @@ class CharacterManager {
         // Clear existing options
         selector.innerHTML = '';
         
-        // Add characters
         this.characters.forEach(character => {
             const option = document.createElement('option');
             option.value = character.id;
@@ -552,7 +461,6 @@ class CharacterManager {
             size: 'default',
             centered: true
         }, (element, instance) => {
-            // Handle create button click
             element.querySelector('#createCharacterBtn').addEventListener('click', async () => {
                 const name = element.querySelector('#characterNameInput').value.trim();
                 if (!name) {
@@ -678,7 +586,6 @@ class CharacterManager {
     }
 }
 
-// Create and export a singleton instance
 const characterManager = new CharacterManager();
 
 // Expose globally for non-module scripts

@@ -1,6 +1,5 @@
 /**
- * Logger utility for The Ledger
- * Provides configurable console logging with the ability to enable/disable logging
+ * Configurable console logger (enable/disable via localStorage).
  */
 class Logger {
     constructor() {
@@ -8,9 +7,7 @@ class Logger {
         this.prefix = '[The Ledger]';
     }
 
-    /**
-     * Get the current logging state from localStorage or default to true for development
-     */
+    /** Read logging preference; default on in development, off in production. */
     getLoggingState() {
         try {
             const saved = localStorage.getItem('ledger_logging_enabled');
@@ -25,9 +22,7 @@ class Logger {
         }
     }
 
-    /**
-     * Check if we're in production environment
-     */
+    /** True when hostname looks like a production host. */
     isProduction() {
         return window.location.hostname !== 'localhost' && 
                window.location.hostname !== '127.0.0.1' &&
@@ -35,10 +30,7 @@ class Logger {
                !window.location.hostname.includes('test');
     }
 
-    /**
-     * Enable or disable logging
-     * @param {boolean} enabled - Whether to enable logging
-     */
+    /** Persist enable/disable preference. */
     setLoggingEnabled(enabled) {
         this.enabled = enabled;
         try {
@@ -48,27 +40,18 @@ class Logger {
         }
     }
 
-    /**
-     * Toggle logging state
-     */
+    /** Flip logging on/off; returns new state. */
     toggleLogging() {
         this.setLoggingEnabled(!this.enabled);
         return this.enabled;
     }
 
-    /**
-     * Get current logging state
-     */
+    /** Whether logging is currently enabled. */
     isLoggingEnabled() {
         return this.enabled;
     }
 
-    /**
-     * Log a message if logging is enabled
-     * @param {string} level - Log level (log, warn, error, info, debug)
-     * @param {string} message - Message to log
-     * @param {...any} args - Additional arguments to log
-     */
+    /** Emit to console[level] when enabled. */
     _log(level, message, ...args) {
         if (!this.enabled) return;
         
@@ -82,46 +65,27 @@ class Logger {
         }
     }
 
-    /**
-     * Log a standard message
-     */
     log(message, ...args) {
         this._log('log', message, ...args);
     }
 
-    /**
-     * Log a warning message
-     */
     warn(message, ...args) {
         this._log('warn', message, ...args);
     }
 
-    /**
-     * Log an error message
-     */
     error(message, ...args) {
         this._log('error', message, ...args);
     }
 
-    /**
-     * Log an info message
-     */
     info(message, ...args) {
         this._log('info', message, ...args);
     }
 
-    /**
-     * Log a debug message
-     */
     debug(message, ...args) {
         this._log('debug', message, ...args);
     }
 
-    /**
-     * Log a group of related messages
-     * @param {string} label - Group label
-     * @param {Function} callback - Function containing the grouped logs
-     */
+    /** Run callback inside console.group when enabled. */
     group(label, callback) {
         if (!this.enabled) return;
         
@@ -132,11 +96,7 @@ class Logger {
         console.groupEnd();
     }
 
-    /**
-     * Log a group of related messages (collapsed)
-     * @param {string} label - Group label
-     * @param {Function} callback - Function containing the grouped logs
-     */
+    /** Run callback inside console.groupCollapsed when enabled. */
     groupCollapsed(label, callback) {
         if (!this.enabled) return;
         
@@ -147,11 +107,7 @@ class Logger {
         console.groupEnd();
     }
 
-    /**
-     * Log a table
-     * @param {any} data - Data to display as a table
-     * @param {string[]} columns - Optional columns to display
-     */
+    /** console.table when enabled. */
     table(data, columns) {
         if (!this.enabled) return;
         
@@ -162,30 +118,25 @@ class Logger {
         }
     }
 
-    /**
-     * Log the current time
-     * @param {string} label - Optional label for the time measurement
-     */
+    /** Start a console.time measurement when enabled. */
     time(label = 'default') {
         if (!this.enabled) return;
         console.time(`${this.prefix} ${label}`);
     }
 
-    /**
-     * End a time measurement
-     * @param {string} label - Label for the time measurement
-     */
+    /** End a console.time measurement when enabled. */
     timeEnd(label = 'default') {
         if (!this.enabled) return;
         console.timeEnd(`${this.prefix} ${label}`);
     }
 }
 
-// Create a singleton instance
 const logger = new Logger();
 
-// Export the logger instance
+if (typeof window !== 'undefined') {
+    window.logger = logger;
+}
+
 export default logger;
 
-// Also export the Logger class for testing or custom instances
-export { Logger }; 
+export { Logger };

@@ -30,18 +30,18 @@ This documentation is aimed at developers who want to understand, contribute to,
 
 ## System Overview
 
-The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser using IndexedDB for robust character management and persistence, with JSON export/import capabilities; there is *no* server component.
+The Ledger is a **purely client-side, single-page application** built with vanilla JavaScript, jQuery, Bootstrap 5 and SCSS.  All data is stored in-browser using IndexedDB for character management and persistence, with JSON export/import capabilities; there is *no* server component.
 
 Key design goals:
 
 * **Offline-first** – must run from a local `index.html` without a network connection.
-* **Multiple character support** – manage multiple characters with seamless switching via a dashboard interface.
-* **Robust data persistence** – IndexedDB provides reliable storage with automatic backups.
+* **Multiple character support** – manage multiple characters with smooth switching via a dashboard interface.
+* **Reliable data persistence** – IndexedDB storage with automatic backups.
 * **Minimal build pipeline** – only SCSS compilation is required for development.
 * **Source-of-truth data** – rules data is imported from the community-maintained [VTM Wiki](https://vtm.paradoxwikis.com/VTM_Wiki).
 * **Modular JS** – each logical sheet section has a dedicated manager module.
 * **Game-accurate dice** – optional 3-D dice overlay using Three.js & Cannon.js.
-* **Theme-aware** – comprehensive theming system with clan-specific color schemes.
+* **Theme-aware** – clan-specific color schemes and theming.
 * **Accessible** – ARIA attributes, keyboard navigation, and screen reader support.
 * **Discord integration** – optional webhook integration for sharing dice rolls and character updates.
 
@@ -52,7 +52,7 @@ Key design goals:
 ```text
 ├── index.html                # Main HTML entry (dashboard interface)
 ├── character-sheet.html      # Character sheet interface
-├── css/                      # Compiled CSS (ignored in VCS)
+├── css/                      # Compiled CSS (tracked for GitHub Pages; omit *.css.map)
 ├── scss/                     # Source stylesheets (Sass)
 │   ├── _variables.scss      # Design tokens & theme variables
 │   ├── _mixins.scss         # Reusable SCSS mixins
@@ -151,7 +151,7 @@ Key design goals:
 | DOM & events           | Vanilla JS + jQuery 3.x | Simpler cross-browser DOM edits |
 | Layout & components    | Bootstrap 5     | Grid, utilities, basic components |
 | Styling                | SCSS            | Variables & nesting; compiled via `sass` |
-| Data persistence       | IndexedDB       | Robust character storage & settings |
+| Data persistence       | IndexedDB       | Character storage & settings |
 | 3-D engine             | Three.js r73    | WebGL rendering of dice |
 | Physics                | Cannon.js 0.6.2 | Rigid-body simulation for dice |
 | Dice face generator    | TealDice (fork) | Converts canvas textures into mesh materials |
@@ -194,8 +194,8 @@ flowchart TD
 • **character-sheet.html** contains semantic markup for every sheet cell. Manager modules enhance these nodes at runtime.
 • **Dashboard** provides character grid, creation interface, and management tools.
 • **Control Bar** emits custom events (`save`, `load`, `roll`) caught by the appropriate modules.
-• **Character Manager** handles multiple character support with seamless switching.
-• **Database Manager** provides IndexedDB operations for robust data persistence.
+• **Character Manager** handles multiple character support with smooth switching.
+• **Database Manager** provides IndexedDB operations for reliable data persistence.
 • **BackupManager** serialises the DOM-derived character model into JSON and vice-versa.
 • **DiceOverlay** is lazily loaded; if disabled, none of the large 3-D libs are downloaded.
 • **Discord Integration** provides optional webhook functionality for sharing dice rolls.
@@ -240,7 +240,7 @@ Key features:
 * Character selector dropdown
 * New character creation
 * Character management modal
-* Seamless character switching
+* Smooth character switching
 * Automatic data persistence
 
 ### `manager-utils.js`
@@ -280,7 +280,7 @@ Key features:
 * Settings persistence
 
 ### `info-buttons.js`
-Provides context-sensitive information display for game mechanics and rules. Replaces the older tooltip system with a more comprehensive reference system.
+Provides context-sensitive information display for game mechanics and rules. Replaces the older tooltip system with a fuller rules reference.
 
 ---
 
@@ -369,8 +369,8 @@ window.diceBox.roll('7v/3h'); // 7 regular, 3 hunger
 Command | Description
 --------|------------
 `npm install` | installs `sass` (dart-sass)
-`npm run sass` | watches `scss/` → `css/`
-`npm run sass:build` | one-off compressed build
+`npm run sass` | watches `scss/` → `css/` (emits source maps; do not commit `*.css.map`)
+`npm run sass:build` | one-off compressed build without source maps (prefer when committing `css/`)
 
 There is **no bundler** – scripts are loaded via `<script type="module">` or classic `<script>` tags with `defer`.
 
@@ -382,7 +382,7 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 * **Modules:** keep each manager self-contained; expose a default class with `init()`.
 * **DOM selectors:** always query via ids/classes defined in HTML; avoid brittle text-based selectors.
 * **Data persistence:** use IndexedDB exclusively through the database manager.
-* **Toast notifications:** use the unified `ToastManager` from `manager-utils.js`.
+* **Toast notifications:** use `ToastManager` from `toast-manager.js` (also re-exported via `manager-utils.js`).
 
 ---
 
@@ -431,7 +431,7 @@ There is **no bundler** – scripts are loaded via `<script type="module">` or c
 - Character selector dropdown
 - New character creation modal
 - Character management interface
-- Seamless character switching
+- Smooth character switching
 - Automatic data persistence
 
 ### Form Controls

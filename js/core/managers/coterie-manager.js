@@ -1,74 +1,3 @@
-/**
- * @fileoverview Coterie Merit and Flaw Manager for Vampire: The Masquerade Character Sheet
- * @version 1.3.1
- * @description Manages coterie merits and flaws. Provides functionality for selecting, displaying,
- *             and manipulating coterie-level traits including domain traits, domain flaws, and
- *             clan merits with dot-based leveling system.
- * 
- * @author The Ledger Development Team
- * @license MIT
- * 
- * @requires backgrounds-coterie.js - Contains all coterie background data and categories
- * @requires manager-utils.js - Provides utility functions for trait management (TraitManagerUtils)
- * @requires jQuery - Used for DOM manipulation and event handling
- * @requires Bootstrap - Used for UI components and tooltips
- * 
- * @class CoterieManager
- * @classdesc Main class for managing coterie merits and flaws
- * 
- * @property {Map} selectedCoterieMerits - Map of meritKey -> { category: string, level: number, instances: Array }
- * @property {Map} selectedCoterieFlaws - Map of flawKey -> { category: string, level: number, instances: Array }
- * @property {Array} availableCategories - Array of available coterie category objects
- * 
- * @method constructor - Initializes the manager with empty collections and available categories
- * @method init - Sets up the UI, binds events, and initializes tooltips
- * @method getAvailableCategories - Builds the list of available coterie categories
- * @method renderCoterieMeritManager - Creates the HTML structure for coterie merit selection interface
- * @method renderCoterieFlawManager - Creates the HTML structure for coterie flaw selection interface
- * @method getCategoryOptions - Generates HTML options for coterie categories dropdown
- * @method categoryHasFlaws - Checks if a category contains flaws
- * @method getTraitOptions - Generates HTML options for traits within a category
- * @method getSelectedTraitsHtml - Creates HTML representation of selected traits
- * @method getTraitData - Retrieves trait data from the appropriate category
- * @method renderTraitControls - Renders dot controls for traits
- * @method bindEvents - Sets up event listeners for user interactions
- * @method updateTraitOptions - Updates trait dropdown options when category changes
- * @method clearTraitOptions - Clears trait dropdown options
- * @method addTrait - Adds a new trait to the selected collection
- * @method removeTrait - Removes a trait from the selected collection
- * @method handleDotClick - Handles clicks on dot controls to change trait levels
- * @method updateTraitInstanceLevel - Updates the level of a trait instance
- * @method updateTraitDisplay - Updates the visual display of a trait
- * @method updateDisplay - Refreshes the entire display
- * @method initializeTooltips - Sets up Bootstrap tooltips
- * @method getSelectedCoterieMerits - Returns the map of selected coterie merits
- * @method getSelectedCoterieFlaws - Returns the map of selected coterie flaws
- * @method getCoterieMeritLevel - Gets the total level of a specific coterie merit
- * @method getCoterieFlawLevel - Gets the total level of a specific coterie flaw
- * @method getTotalCoterieMeritPoints - Calculates total coterie merit points spent
- * @method getTotalCoterieFlawPoints - Calculates total coterie flaw points gained
- * @method loadCoterieMeritsAndFlaws - Loads saved coterie data
- * @method exportCoterieMeritsAndFlaws - Exports current coterie data for saving
- * 
- * @typedef {Object} CoterieCategory
- * @property {string} key - Category key (e.g., 'domain.chasse', 'domain.flaws', 'clanMerits')
- * @property {string} name - Display name for the category
- * @property {string} description - Description of the category
- * 
- * @typedef {Object} CoterieTraitData
- * @property {string} category - Category the trait belongs to
- * @property {number} level - Current level of the trait
- * @property {Array} instances - Array of trait instances for repeatable traits
- * 
- * @example
- * const coterieManager = new CoterieManager();
- * coterieManager.addTrait('coterieMerit', 'allies', 'domain.chasse');
- * coterieManager.getCoterieMeritLevel('allies'); // Returns total level
- * 
- * @since 1.0.0
- * @updated 1.3.1
- */
-
 // Coterie Merit and Flaw Manager
 import { coterieBackgrounds } from '../../data/vampire/backgrounds-coterie.js';
 import { TraitManagerUtils } from './manager-utils.js';
@@ -81,6 +10,12 @@ class CoterieManager {
         this.init();
     }
 
+    // Clear-sheet (character-manager / control-bar) assigns selectedMerits/selectedFlaws
+    get selectedMerits() { return this.selectedCoterieMerits; }
+    set selectedMerits(map) { this.selectedCoterieMerits = map; }
+    get selectedFlaws() { return this.selectedCoterieFlaws; }
+    set selectedFlaws(map) { this.selectedCoterieFlaws = map; }
+
     init() {
         this.renderCoterieMeritManager();
         this.renderCoterieFlawManager();
@@ -91,7 +26,6 @@ class CoterieManager {
     getAvailableCategories() {
         const categories = [];
                
-        // Add domain subcategories
         if (coterieBackgrounds.domain && coterieBackgrounds.domain.traits) {
             Object.entries(coterieBackgrounds.domain.traits).forEach(([traitKey, traitData]) => {
                 categories.push({
@@ -102,7 +36,6 @@ class CoterieManager {
             });
         }
         
-        // Add domain flaws category
         if (coterieBackgrounds.domain && coterieBackgrounds.domain.flaws) {
             categories.push({
                 key: 'domain.flaws',
@@ -111,7 +44,6 @@ class CoterieManager {
             });
         }
         
-        // Add clan merits category (merits only)
         if (coterieBackgrounds.clanMerits) {
             categories.push({
                 key: 'clanMerits',
@@ -292,7 +224,11 @@ class CoterieManager {
                             </div>
                             <div class="${type}-controls d-flex align-items-center gap-2">
                                 ${this.renderTraitControls(trait, instance, traitKey, instanceIndex, type, dotsInfo)}
-                                <button class="btn theme-btn-primary btn-sm remove-trait-btn" data-trait-type="${type}" data-trait-key="${traitKey}" data-instance="${instanceIndex}">
+                                <button class="btn theme-btn-primary btn-sm remove-trait-btn"
+                                        data-manager="coterie"
+                                        data-trait-type="${type}"
+                                        data-trait-key="${traitKey}"
+                                        data-instance="${instanceIndex}">
                                     <i class="bi bi-dash-circle"></i>
                                 </button>
                             </div>
@@ -348,7 +284,6 @@ class CoterieManager {
             maxDots = 1;
         }
         
-        // Create tooltip text based on trait type
         let tooltipText = '';
         let traitTypeClass = '';
         
@@ -370,14 +305,15 @@ class CoterieManager {
         }
         
         return `
-            <div class="dots" 
-                 data-value="${instance.level}" 
+            <div class="dots"
+                 data-value="${instance.level}"
                  data-trait-key="${traitKey}"
-                 data-trait-type-class="${traitTypeClass}"
                  data-trait-category="${type}"
-                 data-instance="${instanceIndex}" 
-                 data-bs-toggle="tooltip" 
-                 data-bs-placement="top" 
+                 data-instance="${instanceIndex}"
+                 data-trait-type-class="${traitTypeClass}"
+                 data-manager="coterie"
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
                  title="${tooltipText}">
                 ${TraitManagerUtils.createDots(instance.level, maxDots)}
             </div>
@@ -409,7 +345,6 @@ class CoterieManager {
             $(addBtnId).prop('disabled', !traitKey);
         });
 
-        // Add trait events
         $(document).on('click', '#addCoterieMeritBtn, #addCoterieFlawBtn', (e) => {
             e.preventDefault();
             const $btn = $(e.currentTarget);
@@ -426,23 +361,24 @@ class CoterieManager {
             }
         });
 
-        // Remove trait events
-        $(document).on('click', '.remove-trait-btn', (e) => {
+        $(document).on('click', '.coterie-merits-container .remove-trait-btn, .coterie-flaws-container .remove-trait-btn', (e) => {
             e.preventDefault();
             const $btn = $(e.currentTarget);
+            if ($btn.data('manager') !== 'coterie') return;
             const type = $btn.data('trait-type');
             const traitKey = $btn.data('trait-key');
             const instanceIndex = $btn.data('instance');
-            
-            if (traitKey && type && (type === 'coterieMerit' || type === 'coterieFlaw')) {
+
+            if (traitKey && (type === 'coterieMerit' || type === 'coterieFlaw')) {
                 this.removeTrait(type, traitKey, instanceIndex);
             }
         });
 
-        // Dot click events for variable traits
         $(document).on('click', '.coterie-merits-container .dot, .coterie-flaws-container .dot', (e) => {
             e.preventDefault();
-            this.handleDotClick($(e.currentTarget));
+            const $dot = $(e.currentTarget);
+            if ($dot.parent().data('manager') !== 'coterie') return;
+            this.handleDotClick($dot);
         });
     }
 
@@ -498,7 +434,6 @@ class CoterieManager {
             traitData.instances.push({ level: initialLevel });
             TraitManagerUtils.showFeedback(`Added another ${displayName}`, 'success');
         } else if (!selectedTraits.has(traitKey)) {
-            // Add new trait
             selectedTraits.set(traitKey, {
                 category: categoryKey,
                 level: initialLevel,
@@ -542,16 +477,14 @@ class CoterieManager {
 
     handleDotClick($dot) {
         const $dotsContainer = $dot.parent();
-        const currentValue = parseInt($dotsContainer.data('value') || '0');
-        const clickedValue = parseInt($dot.data('value'));
-        const traitType = $dotsContainer.data('trait-type-class');
-        
-        // Determine trait type, key, and instance
+        const currentValue = parseInt($dotsContainer.data('value') || '0', 10);
+        const clickedValue = parseInt($dot.data('value'), 10);
+        const traitTypeClass = $dotsContainer.data('trait-type-class');
         const traitKey = $dotsContainer.data('trait-key');
         const type = $dotsContainer.data('trait-category');
-        const instanceIndex = parseInt($dotsContainer.data('instance') || '0');
-        
-        if (!traitKey) return;
+        const instanceIndex = parseInt($dotsContainer.data('instance') || '0', 10);
+
+        if (!traitKey || (type !== 'coterieMerit' && type !== 'coterieFlaw')) return;
 
         const selectedTraits = type === 'coterieMerit' ? this.selectedCoterieMerits : this.selectedCoterieFlaws;
         const traitData = selectedTraits.get(traitKey);
@@ -559,49 +492,27 @@ class CoterieManager {
 
         const trait = this.getTraitData(traitData.category, traitKey, type);
         if (!trait) return;
-        
+
         const dotsInfo = TraitManagerUtils.parseDotsNotation(trait.dots);
+        const newValue = TraitManagerUtils.computeNewDotValue(
+            dotsInfo,
+            traitTypeClass,
+            currentValue,
+            clickedValue
+        );
+        if (newValue === null || newValue === currentValue) return;
 
-        let newValue;
-        
-        if (traitType === 'fixed' || traitType === 'varies') {
-            // Fixed traits or "varies" traits can't be changed via dots
-            return;
-        } else if (traitType === 'or') {
-            // For "or" traits, only allow specific values
-            if (dotsInfo.orValues.includes(clickedValue)) {
-                newValue = clickedValue;
-            } else {
-                return; // Invalid value for "or" trait
-            }
-        } else {
-            // For range and repeatable traits, standard dot logic
-            if (clickedValue === currentValue) {
-                // Clicking current level reduces by 1 (but not below minimum)
-                newValue = Math.max(currentValue - 1, dotsInfo.min);
-            } else if (clickedValue < currentValue) {
-                // Clicking lower dot sets to that level
-                newValue = Math.max(clickedValue, dotsInfo.min);
-            } else {
-                // Clicking higher dot sets to that level
-                newValue = Math.min(clickedValue, dotsInfo.max);
-            }
+        const instance = traitData.instances[instanceIndex];
+        if (instance) {
+            instance.level = newValue;
+            traitData.level = newValue;
         }
 
-        if (newValue !== currentValue) {
-            // Update the instance level
-            const instance = traitData.instances[instanceIndex];
-            if (instance) {
-                instance.level = newValue;
-                traitData.level = newValue; // Keep level in sync for single instances
-            }
-            
-            this.updateTraitDisplay(type, traitKey, instanceIndex);
-            
-            const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
-            const instanceSuffix = traitData.instances.length > 1 ? ` #${instanceIndex + 1}` : '';
-            TraitManagerUtils.showFeedback(`${displayName}${instanceSuffix} level set to ${newValue}`, 'info');
-        }
+        this.updateTraitDisplay(type, traitKey, instanceIndex);
+
+        const displayName = trait.name || TraitManagerUtils.camelToTitle(traitKey);
+        const instanceSuffix = traitData.instances.length > 1 ? ` #${instanceIndex + 1}` : '';
+        TraitManagerUtils.showFeedback(`${displayName}${instanceSuffix} level set to ${newValue}`, 'info');
     }
 
     updateTraitDisplay(type, traitKey, instanceIndex = null) {
@@ -610,7 +521,6 @@ class CoterieManager {
         if (!traitData) return;
 
         if (instanceIndex !== null) {
-            // Update specific instance
             const instance = traitData.instances[instanceIndex];
             if (!instance) return;
 
@@ -618,7 +528,6 @@ class CoterieManager {
             TraitManagerUtils.refreshDots($dots, instance.level);
             $dots.attr('data-value', instance.level);
         } else {
-            // Update all instances
             traitData.instances.forEach((instance, idx) => {
                 const $dots = $(`.dots[data-trait-key="${traitKey}"][data-trait-category="${type}"][data-instance="${idx}"]`);
                 TraitManagerUtils.refreshDots($dots, instance.level);
@@ -632,7 +541,6 @@ class CoterieManager {
         this.renderCoterieFlawManager();
         this.initializeTooltips();
         
-        // Update trait options to reflect current selections
         const $meritCategorySelect = $('#coterieMeritCategorySelect');
         const $flawCategorySelect = $('#coterieFlawCategorySelect');
         
