@@ -1,5 +1,7 @@
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
+import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
+import { humanity } from "../../data/vampire/humanity.js";
 import logger from '../utils/logger.js';
 
 /**
@@ -189,6 +191,213 @@ function initRollButton() {
     });
 }
 
+function isInfoModeActive() {
+    if (typeof window.isInfoMode === 'function') {
+        return window.isInfoMode();
+    }
+    return document.body.classList.contains('info-mode');
+}
+
+function findStatValue(labelText) {
+    const row = Array.from(document.querySelectorAll('.stat')).find((statRow) => {
+        const lbl = statRow.querySelector('.stat-label');
+        return lbl && lbl.textContent.trim().toLowerCase() === labelText.toLowerCase();
+    });
+    if (!row) return 0;
+    const dots = row.querySelector('.dots');
+    if (!dots) return 0;
+    const val = parseInt(dots.dataset.value, 10);
+    if (!Number.isNaN(val)) return val;
+    return dots.querySelectorAll('.dot.filled').length;
+}
+
+function getHealthSuperficial() {
+    const container = document.querySelector('.track-container[data-type="health"]');
+    if (!container) return 0;
+    return container.querySelectorAll('.track-box.superficial').length;
+}
+
+function showCheckInfoModal(title, content, onRoll) {
+    if (!window.modalManager) return;
+
+    const footer = onRoll
+        ? `<button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button type="button" class="btn theme-btn-primary" id="checkInfoRollBtn">Roll</button>`
+        : `<button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>`;
+
+    window.modalManager.showCustom({
+        title,
+        content,
+        footer,
+        size: 'default',
+        centered: true,
+        scrollable: true
+    }, (element, instance) => {
+        const rollBtn = element.querySelector('#checkInfoRollBtn');
+        if (rollBtn && onRoll) {
+            rollBtn.addEventListener('click', () => {
+                instance.hide();
+                onRoll();
+            });
+        }
+    });
+}
+
+function performRouseCheck() {
+    if (window.quickRoll) {
+        window.quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
+    }
+}
+
+function performRemorseCheck() {
+    if (window.computeRemorseDice && window.quickRoll) {
+        const dice = window.computeRemorseDice();
+        window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: dice, frenzy: 0 });
+    }
+}
+
+function performFrenzyCheck() {
+    if (window.computeFrenzyDice && window.quickRoll) {
+        const dice = window.computeFrenzyDice();
+        window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: 0, frenzy: dice });
+    }
+}
+
+function performMend() {
+    if (window.mendHealth) {
+        window.mendHealth();
+    }
+}
+
+function showRouseInfo() {
+    const hunger = findStatValue('Hunger');
+    const content = `
+        <p>A Rouse Check stirs the Blood. Roll <strong>1 die</strong>.</p>
+        <ul>
+            <li><strong>6-10:</strong> success. Hunger stays the same.</li>
+            <li><strong>1-5:</strong> failure. Hunger increases by 1.</li>
+        </ul>
+        <hr>
+        <h6>This character</h6>
+        <p class="mb-1">Current Hunger: <strong>${hunger} / 5</strong></p>
+        <p class="mb-0">You will roll <strong>1 Rouse die</strong>.</p>
+    `;
+    showCheckInfoModal('Rouse Check', content, performRouseCheck);
+}
+
+function showRemorseInfo() {
+    const breakdown = typeof window.getRemorseBreakdown === 'function'
+        ? window.getRemorseBreakdown()
+        : { humanity: 0, stains: 0, totalBoxes: 10, emptySpaces: 0, dice: window.computeRemorseDice?.() || 1, usedMinimum: true };
+
+    const rules = humanity?.track?.remorse?.description
+        || 'When Stains remain at the end of a session, roll a Remorse test. The pool is the empty spaces between Humanity and Stains (minimum 1 die). Any success keeps Humanity; failure drops Humanity by 1. Then all Stains are cleared.';
+
+    const emptyLine = breakdown.usedMinimum
+        ? `Empty spaces: <strong>0</strong> (the pool cannot drop below 1)`
+        : `Empty spaces: ${breakdown.totalBoxes} - ${breakdown.humanity} Humanity - ${breakdown.stains} Stains = <strong>${breakdown.emptySpaces}</strong>`;
+
+    const content = `
+        <p>${rules}</p>
+        <hr>
+        <h6>This character</h6>
+        <p class="mb-1">Humanity: <strong>${breakdown.humanity}</strong></p>
+        <p class="mb-1">Stains: <strong>${breakdown.stains}</strong></p>
+        <p class="mb-1">${emptyLine}</p>
+        <p class="mb-0">You will roll <strong>${breakdown.dice} Remorse ${breakdown.dice === 1 ? 'die' : 'dice'}</strong>.</p>
+        ${breakdown.stains === 0 ? '<p class="small mt-2 mb-0">No Stains are marked. Remorse is normally tested only when Stains remain at the end of the session.</p>' : ''}
+        <hr>
+        <h6>Outcome</h6>
+        <ul class="mb-0">
+            <li>Any success (6+): keep current Humanity</li>
+            <li>No successes: Humanity drops by 1</li>
+            <li>All Stains are then cleared</li>
+        </ul>
+    `;
+    showCheckInfoModal('Remorse Check', content, performRemorseCheck);
+}
+
+function showFrenzyInfo() {
+    const breakdown = typeof window.getFrenzyBreakdown === 'function'
+        ? window.getFrenzyBreakdown()
+        : { willpower: 0, humanity: 0, humanityBonus: 0, dice: window.computeFrenzyDice?.() || 1, usedMinimum: false };
+
+    const sumLine = breakdown.usedMinimum
+        ? `${breakdown.willpower} + ${breakdown.humanityBonus} = 0, raised to the minimum of 1`
+        : `${breakdown.willpower} Willpower + ${breakdown.humanityBonus} = <strong>${breakdown.dice}</strong>`;
+
+    const content = `
+        <p>To resist frenzy, roll current (undamaged) Willpower plus one-third of Humanity, rounded down. The Storyteller sets Difficulty from the trigger: Hunger, Fury, or Terror.</p>
+        <hr>
+        <h6>This character</h6>
+        <p class="mb-1">Willpower (undamaged boxes): <strong>${breakdown.willpower}</strong></p>
+        <p class="mb-1">Humanity: <strong>${breakdown.humanity}</strong></p>
+        <p class="mb-1">Humanity bonus: floor(${breakdown.humanity} / 3) = <strong>${breakdown.humanityBonus}</strong></p>
+        <p class="mb-1">${sumLine}</p>
+        <p class="mb-0">You will roll <strong>${breakdown.dice} Frenzy ${breakdown.dice === 1 ? 'die' : 'dice'}</strong>.</p>
+        <hr>
+        <h6>Outcome</h6>
+        <ul class="mb-0">
+            <li>Meet or beat the Storyteller's Difficulty to keep control</li>
+            <li>Failure: the Beast takes over for that Hunger, Fury, or Terror frenzy</li>
+        </ul>
+        <p class="small mt-2 mb-0">Clan bane modifiers (such as Brujah Fury Frenzy) are not applied automatically.</p>
+    `;
+    showCheckInfoModal('Frenzy Check', content, performFrenzyCheck);
+}
+
+function showMendInfo() {
+    const bpVal = findStatValue('Blood Potency');
+    const healAmt = (typeof bpData?.getHealingAmount === 'function') ? (bpData.getHealingAmount(bpVal) || 1) : 1;
+    const superficial = getHealthSuperficial();
+    const wouldHeal = Math.min(healAmt, superficial);
+
+    const content = `
+        <p>Mending removes Superficial Health damage equal to your Blood Potency chart, then requires a Rouse Check.</p>
+        <hr>
+        <h6>This character</h6>
+        <p class="mb-1">Blood Potency: <strong>${bpVal}</strong></p>
+        <p class="mb-1">Mend amount: <strong>${healAmt}</strong> Superficial</p>
+        <p class="mb-1">Current Superficial damage: <strong>${superficial}</strong></p>
+        <p class="mb-0">This Mend would heal <strong>${wouldHeal}</strong> Superficial, then roll 1 Rouse die.</p>
+    `;
+    showCheckInfoModal('Mend', content, performMend);
+}
+
+function showWPRerollInfo() {
+    const content = `
+        <p>After a roll, you may spend Willpower to reroll up to 3 regular (non-Hunger) dice.</p>
+        <ul>
+            <li>Take 1 Superficial Willpower damage. If no undamaged boxes remain, convert a Superficial box to Aggravated.</li>
+            <li>You cannot reroll Hunger dice, or any roll that used Blood Surge.</li>
+            <li>Tracker tests (Rouse, Remorse, Frenzy) cannot be rerolled this way.</li>
+        </ul>
+        <p class="mb-0">Turn Info Mode off, select up to 3 standard dice from the last roll, then click this button again.</p>
+    `;
+    showCheckInfoModal('Willpower Reroll', content);
+}
+
+function getDiceSymbolsGuideHtml() {
+    return `
+        <div class="dice-symbols-guide">
+            <p>Each die is a d10. A result of 6 or higher is a success. Two 10s together are a critical worth 4 successes.</p>
+            <div class="mb-3">
+                <strong>●</strong> - Success (6-9): +1
+            </div>
+            <div class="mb-3">
+                <strong>✪</strong> - 10. A pair of these is a Critical Success (+4). A leftover 10 still counts as +1.
+            </div>
+            <div class="mb-3">
+                <strong style="color: #dc3545;">⚠</strong> - Hunger die showing 1. If the roll has no successes, this is a Bestial Failure.
+            </div>
+            <div class="mb-3">
+                <strong style="color: #dc3545;">✪</strong> - Hunger die showing 10. If the roll also scores a critical, this becomes a Messy Critical.
+            </div>
+            <p class="small mb-0">Rouse, Remorse, and Frenzy dice only care about success or failure. Hunger symbols do not apply to those checks.</p>
+        </div>
+    `;
+}
+
 /**
  * Initialize Rouse button
  */
@@ -197,10 +406,11 @@ function initRouseButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger rouse check
-        if (window.quickRoll) {
-            window.quickRoll({ standard: 0, hunger: 0, rouse: 1, remorse: 0, frenzy: 0 });
+        if (isInfoModeActive()) {
+            showRouseInfo();
+            return;
         }
+        performRouseCheck();
     });
 }
 
@@ -212,11 +422,11 @@ function initRemorseButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger remorse check
-        if (window.computeRemorseDice && window.quickRoll) {
-            const dice = window.computeRemorseDice();
-            window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: dice, frenzy: 0 });
+        if (isInfoModeActive()) {
+            showRemorseInfo();
+            return;
         }
+        performRemorseCheck();
     });
 }
 
@@ -228,11 +438,11 @@ function initFrenzyButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger frenzy check
-        if (window.computeFrenzyDice && window.quickRoll) {
-            const dice = window.computeFrenzyDice();
-            window.quickRoll({ standard: 0, hunger: 0, rouse: 0, remorse: 0, frenzy: dice });
+        if (isInfoModeActive()) {
+            showFrenzyInfo();
+            return;
         }
+        performFrenzyCheck();
     });
 }
 
@@ -244,10 +454,11 @@ function initMendButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger mend functionality
-        if (window.mendHealth) {
-            window.mendHealth();
+        if (isInfoModeActive()) {
+            showMendInfo();
+            return;
         }
+        performMend();
     });
 }
 
@@ -259,7 +470,10 @@ function initWPRerollButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger willpower reroll
+        if (isInfoModeActive()) {
+            showWPRerollInfo();
+            return;
+        }
         if (window.handleWPRerollClick) {
             window.handleWPRerollClick();
         }
@@ -630,17 +844,15 @@ function initInfoModeButton() {
     
     btn.addEventListener('click', () => {
         infoModeEnabled = !infoModeEnabled;
+        btn.classList.toggle('active', infoModeEnabled);
+        btn.setAttribute('aria-pressed', String(infoModeEnabled));
         
         if (infoModeEnabled) {
-            btn.classList.remove('theme-btn-outline-secondary');
-            btn.classList.add('theme-btn-secondary');
             document.body.classList.add('info-mode');
             if (window.setTooltipEnabled) {
                 window.setTooltipEnabled(true);
             }
         } else {
-            btn.classList.remove('theme-btn-secondary');
-            btn.classList.add('theme-btn-outline-secondary');
             document.body.classList.remove('info-mode');
             if (window.disableAllTooltips) {
                 window.disableAllTooltips();
@@ -657,48 +869,16 @@ function initHelpButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Show dice symbols guide
+        if (typeof window.showDiceSymbolsModal === 'function') {
+            window.showDiceSymbolsModal();
+            return;
+        }
         if (window.modalManager) {
-            window.modalManager.showModal('Dice Symbols Guide', `
-                <div class="dice-symbols-guide">
-                    <h5>Dice Pool Symbols</h5>
-                    <div class="symbol-list">
-                        <div class="symbol-item">
-                            <span class="dot">•</span> = 1 die
-                        </div>
-                        <div class="symbol-item">
-                            <span class="dot">••</span> = 2 dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="dot">•••</span> = 3 dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="dot">••••</span> = 4 dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="dot">•••••</span> = 5 dice
-                        </div>
-                    </div>
-                    <h5>Hunger Dice</h5>
-                    <div class="symbol-list">
-                        <div class="symbol-item">
-                            <span class="hunger-dot">🩸</span> = 1 hunger die
-                        </div>
-                        <div class="symbol-item">
-                            <span class="hunger-dot">🩸🩸</span> = 2 hunger dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="hunger-dot">🩸🩸🩸</span> = 3 hunger dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="hunger-dot">🩸🩸🩸🩸</span> = 4 hunger dice
-                        </div>
-                        <div class="symbol-item">
-                            <span class="hunger-dot">🩸🩸🩸🩸🩸</span> = 5 hunger dice
-                        </div>
-                    </div>
-                </div>
-            `, 'Close');
+            window.modalManager.info('Dice Symbols', getDiceSymbolsGuideHtml(), {
+                size: 'default',
+                centered: true,
+                scrollable: true
+            });
         }
     });
 }

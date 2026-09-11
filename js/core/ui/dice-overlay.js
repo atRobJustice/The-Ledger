@@ -803,6 +803,7 @@ let bonusMsg = null;
 
   // Utility to know if Info Mode is currently active
   function isInfoMode() {
+    if (document.body.classList.contains("info-mode")) return true;
     const el = document.getElementById("toggleInfoMode");
     return !!(el && el.checked);
   }
@@ -823,6 +824,27 @@ let bonusMsg = null;
 
   // Helper alias
   const disableAllTooltips = () => setTooltipEnabled(false);
+
+  function getDiceSymbolsGuideHtml() {
+    return `
+      <div class="dice-symbols-guide">
+        <p>Each die is a d10. A result of 6 or higher is a success. Two 10s together are a critical worth 4 successes.</p>
+        <div class="mb-3">
+          <strong>●</strong> - Success (6-9): +1
+        </div>
+        <div class="mb-3">
+          <strong>✪</strong> - 10. A pair of these is a Critical Success (+4). A leftover 10 still counts as +1.
+        </div>
+        <div class="mb-3">
+          <strong style="color: #dc3545;">⚠</strong> - Hunger die showing 1. If the roll has no successes, this is a Bestial Failure.
+        </div>
+        <div class="mb-3">
+          <strong style="color: #dc3545;">✪</strong> - Hunger die showing 10. If the roll also scores a critical, this becomes a Messy Critical.
+        </div>
+        <p class="small mb-0">Rouse, Remorse, and Frenzy dice only care about success or failure. Hunger symbols do not apply to those checks.</p>
+      </div>
+    `;
+  }
 
   // --------------------------------------------------
   //  Sheet mutation helpers (Hunger, Humanity, etc.)
@@ -881,14 +903,21 @@ let bonusMsg = null;
   // --------------------------------------------------
   //  Quick-roll helper functions
   // --------------------------------------------------
-  function computeRemorseDice() {
+  function getRemorseBreakdown() {
     const container = document.querySelector('.track-container[data-type="humanity"]');
-    if (!container) return 1;
-    const filled = container.querySelectorAll('.track-box.filled').length;
-    const stained = container.querySelectorAll('.track-box.stained').length;
+    if (!container) {
+      return { humanity: 0, stains: 0, totalBoxes: 10, emptySpaces: 10, dice: 1, usedMinimum: true };
+    }
+    const humanity = container.querySelectorAll('.track-box.filled').length;
+    const stains = container.querySelectorAll('.track-box.stained').length;
     const totalBoxes = container.querySelectorAll('.track-box').length || 10;
-    const spaces = Math.max(0, totalBoxes - filled - stained);
-    return spaces === 0 ? 1 : spaces;
+    const emptySpaces = Math.max(0, totalBoxes - humanity - stains);
+    const usedMinimum = emptySpaces === 0;
+    return { humanity, stains, totalBoxes, emptySpaces, dice: usedMinimum ? 1 : emptySpaces, usedMinimum };
+  }
+
+  function computeRemorseDice() {
+    return getRemorseBreakdown().dice;
   }
 
   function getTrackCurrent(container, includeStained = false) {
@@ -908,14 +937,39 @@ let bonusMsg = null;
     return total - damaged;
   }
 
-  function computeFrenzyDice() {
+  function getFrenzyBreakdown() {
     const wpContainer = document.querySelector('.track-container[data-type="willpower"]');
     const humanityContainer = document.querySelector('.track-container[data-type="humanity"]');
-    const unspentWP = getTrackCurrent(wpContainer);
-    const humanityVal = getTrackCurrent(humanityContainer, true);
-    const frenzyDice = unspentWP + Math.floor(humanityVal / 3);
-    return Math.max(1, frenzyDice);
+    const willpower = getTrackCurrent(wpContainer);
+    const humanity = getTrackCurrent(humanityContainer, true);
+    const humanityBonus = Math.floor(humanity / 3);
+    const raw = willpower + humanityBonus;
+    return {
+      willpower,
+      humanity,
+      humanityBonus,
+      dice: Math.max(1, raw),
+      usedMinimum: raw < 1
+    };
   }
+
+  function computeFrenzyDice() {
+    return getFrenzyBreakdown().dice;
+  }
+
+  window.computeRemorseDice = computeRemorseDice;
+  window.computeFrenzyDice = computeFrenzyDice;
+  window.getRemorseBreakdown = getRemorseBreakdown;
+  window.getFrenzyBreakdown = getFrenzyBreakdown;
+  window.isInfoMode = isInfoMode;
+  window.showDiceSymbolsModal = function() {
+    if (!window.modalManager) return;
+    return window.modalManager.info('Dice Symbols', getDiceSymbolsGuideHtml(), {
+      size: 'default',
+      centered: true,
+      scrollable: true
+    });
+  };
 
   // Helper: add N dice of specified type into dice_box
   function addDiceToBox(box, count, dieType='Standard') {
@@ -1103,6 +1157,9 @@ let bonusMsg = null;
     window.quickRoll = quickRoll;
     window.computeRemorseDice = computeRemorseDice;
     window.computeFrenzyDice = computeFrenzyDice;
+    window.getRemorseBreakdown = getRemorseBreakdown;
+    window.getFrenzyBreakdown = getFrenzyBreakdown;
+    window.isInfoMode = isInfoMode;
     window.isWPRerollAllowed = isWPRerollAllowed;
     window.handleWPRerollClick = handleWPRerollClick;
     window.clearOverlay = clearOverlay;
@@ -1167,32 +1224,12 @@ let bonusMsg = null;
     };
     
     window.showDiceSymbolsModal = function() {
-      const content = `
-        <div class="dice-symbols-guide">
-          <div class="mb-3">
-            <strong>● or ✪</strong> - Success (+1)
-          </div>
-          <div class="mb-3">
-            <strong>✪ + ✪</strong> - Critical Success (+4)
-          </div>
-          <div class="mb-3">
-            <strong style="color: #dc3545;">⚠</strong> - Bestial Failure (no successes)
-          </div>
-          <div class="mb-3">
-            <strong style="color: #dc3545;">✪</strong> <strong>+ ✪ or </strong><strong style="color: #dc3545;">✪</strong> - Messy Critical (+4)
-          </div>
-        </div>
-      `;
-
-      const { modalElement, modalInstance } = window.modalManager.showCustom({
-        title: 'Dice Symbols',
-        content,
-        footer: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>',
+      if (!window.modalManager) return;
+      return window.modalManager.info('Dice Symbols', getDiceSymbolsGuideHtml(), {
         size: 'default',
-        centered: true
+        centered: true,
+        scrollable: true
       });
-
-      return { modalElement, modalInstance };
     };
 
     // Add toast function if not already available
