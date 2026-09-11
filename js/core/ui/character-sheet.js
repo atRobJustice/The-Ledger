@@ -976,6 +976,7 @@ async function loadCharacter(characterData) {
 const btnDashboard = document.getElementById('btn-dashboard');
 if (btnDashboard) {
     btnDashboard.addEventListener('click', () => {
+        if (document.body.classList.contains('info-mode')) return;
         window.location.href = 'index.html';
     });
 }

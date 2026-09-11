@@ -1,5 +1,5 @@
 // Dashboard functionality
-import { convertProgenyToLedger } from '../utils/progeny-import.js';
+import { convertProgenyToLedger, toLedgerCharacter } from '../utils/progeny-import.js';
 import { LEDGER_PENDING_PROGENY_KEY } from '../utils/progeny-handoff.js';
 
 let databaseManager;
@@ -717,10 +717,10 @@ async function handleCharacterImport(event) {
     
     try {
         const text = await file.text();
-        const characterData = JSON.parse(text);
+        const parsed = JSON.parse(text);
+        const characterData = toLedgerCharacter(parsed);
         
-        // Validate that this looks like a character file
-        if (!characterData.name && !characterData.clan && !characterData.attributes) {
+        if (!characterData.name && !characterData.clan) {
             throw new Error('Invalid character file format');
         }
         
@@ -741,33 +741,24 @@ async function handleCharacterImport(event) {
         
     } catch (error) {
         log('error', 'Failed to import character:', error);
-        toastManager.error('Failed to import character. Please check the file format and try again.', 'Error');
+        toastManager.error(
+            error?.message || 'Failed to import character. Please check the file format and try again.',
+            'Error'
+        );
     }
     
     // Clear file input
     event.target.value = '';
 }
 
-// Import progeny character
+/** @deprecated Use importCharacter — auto-detects Ledger or Progeny JSON */
 function importProgenyCharacter() {
-    document.getElementById('progenyImportFile').click();
+    importCharacter();
 }
 
+/** @deprecated Use handleCharacterImport — auto-detects Ledger or Progeny JSON */
 async function handleProgenyImport(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    
-    try {
-        const text = await file.text();
-        const progenyData = JSON.parse(text);
-        await importProgenyData(progenyData);
-    } catch (error) {
-        log('error', 'Failed to import Progeny character:', error);
-        toastManager.error('Failed to import Progeny character. Please check the file format and try again.', 'Error');
-    }
-    
-    // Clear file input
-    event.target.value = '';
+    return handleCharacterImport(event);
 }
 
 // Initialize dashboard when page loads

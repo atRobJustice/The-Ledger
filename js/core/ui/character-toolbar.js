@@ -3,6 +3,7 @@ import { TraitManagerUtils } from '../managers/manager-utils.js';
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { humanity } from "../../data/vampire/humanity.js";
 import logger from '../utils/logger.js';
+import { toLedgerCharacter } from '../utils/character-format.js';
 
 /**
  * Initialize the character sheet toolbar
@@ -28,6 +29,7 @@ export function initCharacterToolbar() {
     initInfoModeButton();
     initHelpButton();
     initXPSpendButton();
+    initDashboardButton();
     
     initTooltips();
 }
@@ -80,22 +82,30 @@ function initSaveButton() {
     const btn = document.getElementById('btn-save');
     if (!btn) return;
     
-    btn.addEventListener('click', async () => {
-        try {
-            if (window.characterManager && window.gatherCharacterData) {
-                const characterData = window.gatherCharacterData();
-                await window.characterManager.saveCurrentCharacter(characterData);
-                if (window.toastManager) {
-                    window.toastManager.show('Character saved successfully!', 'success', 'Character Toolbar');
-                }
-            }
-        } catch (error) {
-            logger.error('Failed to save character:', error);
+    btn.addEventListener('click', () => {
+        if (isInfoModeActive()) {
+            showSaveInfo();
+            return;
+        }
+        performSave();
+    });
+}
+
+async function performSave() {
+    try {
+        if (window.characterManager && window.gatherCharacterData) {
+            const characterData = window.gatherCharacterData();
+            await window.characterManager.saveCurrentCharacter(characterData);
             if (window.toastManager) {
-                window.toastManager.show('Failed to save character', 'error', 'Character Toolbar');
+                window.toastManager.show('Character saved successfully!', 'success', 'Character Toolbar');
             }
         }
-    });
+    } catch (error) {
+        logger.error('Failed to save character:', error);
+        if (window.toastManager) {
+            window.toastManager.show('Failed to save character', 'error', 'Character Toolbar');
+        }
+    }
 }
 
 /**
@@ -105,32 +115,40 @@ function initExportButton() {
     const btn = document.getElementById('btn-export');
     if (!btn) return;
     
-    btn.addEventListener('click', async () => {
-        try {
-            if (window.gatherCharacterData) {
-                const character = window.gatherCharacterData();
-                if (character) {
-                    const blob = new Blob([JSON.stringify(character, null, 2)], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `${character.name || 'character'}-${new Date().toISOString().split('T')[0]}.json`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                    if (window.toastManager) {
-                        window.toastManager.show('Character exported successfully!', 'success', 'Character Toolbar');
-                    }
+    btn.addEventListener('click', () => {
+        if (isInfoModeActive()) {
+            showExportInfo();
+            return;
+        }
+        performExport();
+    });
+}
+
+async function performExport() {
+    try {
+        if (window.gatherCharacterData) {
+            const character = window.gatherCharacterData();
+            if (character) {
+                const blob = new Blob([JSON.stringify(character, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${character.name || 'character'}-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                if (window.toastManager) {
+                    window.toastManager.show('Character exported successfully!', 'success', 'Character Toolbar');
                 }
             }
-        } catch (error) {
-            logger.error('Failed to export character:', error);
-            if (window.toastManager) {
-                window.toastManager.show('Failed to export character', 'error', 'Character Toolbar');
-            }
         }
-    });
+    } catch (error) {
+        logger.error('Failed to export character:', error);
+        if (window.toastManager) {
+            window.toastManager.show('Failed to export character', 'error', 'Character Toolbar');
+        }
+    }
 }
 
 /**
@@ -147,6 +165,10 @@ function initImportButton() {
     document.body.appendChild(fileInput);
     
     btn.addEventListener('click', () => {
+        if (isInfoModeActive()) {
+            showImportInfo(() => fileInput.click());
+            return;
+        }
         fileInput.click();
     });
     
@@ -156,7 +178,7 @@ function initImportButton() {
         
         try {
             const text = await file.text();
-            const character = JSON.parse(text);
+            const character = toLedgerCharacter(JSON.parse(text));
             
             if (window.loadCharacterData) {
                 window.loadCharacterData(character);
@@ -167,7 +189,11 @@ function initImportButton() {
         } catch (error) {
             logger.error('Failed to import character:', error);
             if (window.toastManager) {
-                window.toastManager.show('Failed to import character', 'error', 'Character Toolbar');
+                window.toastManager.show(
+                    error?.message || 'Failed to import character',
+                    'error',
+                    'Character Toolbar'
+                );
             }
         }
         
@@ -184,11 +210,18 @@ function initRollButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger dice overlay
-        if (window.diceOverlay) {
-            window.diceOverlay.show();
+        if (isInfoModeActive()) {
+            showRollInfo();
+            return;
         }
+        performOpenRoll();
     });
+}
+
+function performOpenRoll() {
+    if (window.diceOverlay) {
+        window.diceOverlay.show();
+    }
 }
 
 function isInfoModeActive() {
@@ -217,12 +250,15 @@ function getHealthSuperficial() {
     return container.querySelectorAll('.track-box.superficial').length;
 }
 
-function showCheckInfoModal(title, content, onRoll) {
+function showToolbarInfoModal(title, content, onAction, options = {}) {
     if (!window.modalManager) return;
 
-    const footer = onRoll
+    const actionLabel = options.actionLabel || 'Continue';
+    const actionClass = options.actionClass || 'theme-btn-primary';
+
+    const footer = onAction
         ? `<button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>
-           <button type="button" class="btn theme-btn-primary" id="checkInfoRollBtn">Roll</button>`
+           <button type="button" class="btn ${actionClass}" id="toolbarInfoActionBtn">${actionLabel}</button>`
         : `<button type="button" class="btn theme-btn-secondary" data-bs-dismiss="modal">Close</button>`;
 
     window.modalManager.showCustom({
@@ -233,14 +269,18 @@ function showCheckInfoModal(title, content, onRoll) {
         centered: true,
         scrollable: true
     }, (element, instance) => {
-        const rollBtn = element.querySelector('#checkInfoRollBtn');
-        if (rollBtn && onRoll) {
-            rollBtn.addEventListener('click', () => {
+        const actionBtn = element.querySelector('#toolbarInfoActionBtn');
+        if (actionBtn && onAction) {
+            actionBtn.addEventListener('click', () => {
                 instance.hide();
-                onRoll();
+                onAction();
             });
         }
     });
+}
+
+function showCheckInfoModal(title, content, onRoll) {
+    showToolbarInfoModal(title, content, onRoll, { actionLabel: 'Roll' });
 }
 
 function performRouseCheck() {
@@ -377,6 +417,150 @@ function showWPRerollInfo() {
     showCheckInfoModal('Willpower Reroll', content);
 }
 
+function showSaveInfo() {
+    const content = `
+        <p>Save writes the current sheet into this browser's IndexedDB so it is waiting when you come back.</p>
+        <ul>
+            <li>The Ledger also persists many edits as you go. This button forces a full save now.</li>
+            <li>Nothing is sent to a server. The copy lives in this browser only.</li>
+            <li>Use Export if you want a JSON file you can back up or move to another device.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Save Character', content, performSave, { actionLabel: 'Save' });
+}
+
+function showExportInfo() {
+    const content = `
+        <p>Export downloads the current character as a JSON file.</p>
+        <ul>
+            <li>Use it for backups, sharing, or moving a character to another browser.</li>
+            <li>The file name uses the character name and today's date.</li>
+            <li>This does not remove the copy stored in this browser.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Export Character', content, performExport, { actionLabel: 'Export' });
+}
+
+function showImportInfo(chooseFile) {
+    const content = `
+        <p>Import loads a Ledger JSON file onto this sheet, replacing the current character data.</p>
+        <ul>
+            <li>Accepts Ledger exports. Progeny files are converted when possible.</li>
+            <li>The current sheet is overwritten. Export first if you want a backup.</li>
+            <li>Imported data stays in this browser until you save, export, or clear it.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Import Character', content, chooseFile, { actionLabel: 'Choose File' });
+}
+
+function showRollInfo() {
+    const content = `
+        <p>Opens the dice pool dialog for a custom roll.</p>
+        <ul>
+            <li>Standard and Hunger dice can be filled from selected traits on the sheet.</li>
+            <li>Difficulty is the number of successes the Storyteller asked for, not the number on the die. 6+ still counts as a success.</li>
+            <li>Rouse, Remorse, and Frenzy fields are for those tracker tests. They ignore Difficulty.</li>
+            <li>Blood Surge, specialties, and impairment notes appear here when they apply.</li>
+        </ul>
+        <p class="mb-0">Quick checks (Rouse, Remorse, Frenzy, Mend) have their own toolbar buttons.</p>
+    `;
+    showToolbarInfoModal('Roll Dice', content, performOpenRoll, { actionLabel: 'Open Roller' });
+}
+
+function showWipeInfo() {
+    const content = `
+        <p>Wipe Overlay removes the 3D dice result from the screen so you can see the sheet again.</p>
+        <ul>
+            <li>Character data is not changed.</li>
+            <li>Willpower reroll is no longer available for that roll once the overlay is gone.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Wipe Overlay', content, performWipe, { actionLabel: 'Wipe Overlay' });
+}
+
+function showClearInfo() {
+    const content = `
+        <p>Clear Sheet wipes every field on this character. This cannot be undone from the sheet.</p>
+        <ul>
+            <li>Name, traits, tracks, disciplines, and notes are emptied.</li>
+            <li>Export first if you might want this character back.</li>
+            <li>Other characters stored in this browser are not deleted.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Clear Sheet', content, executeClearSheet, {
+        actionLabel: 'Clear Sheet',
+        actionClass: 'theme-btn-danger'
+    });
+}
+
+function showLockInfo(updateLockButton) {
+    const locked = !!(window.LockManager && window.LockManager.isLocked());
+    if (locked) {
+        const content = `
+            <p>The sheet is in play mode. Core traits are frozen so they are not changed by accident during a session.</p>
+            <ul>
+                <li>Unlocking lets you edit Attributes, Skills, Disciplines, Merits, and similar fields by hand.</li>
+                <li>Hunger, Health, Willpower, and Humanity tracks stay usable while locked.</li>
+                <li>XP Spend Mode can still raise traits even while locked.</li>
+            </ul>
+            <p class="mb-0">Current state: <strong>Locked</strong></p>
+        `;
+        showToolbarInfoModal('Unlock Character', content, () => {
+            window.LockManager.unlock();
+            if (typeof updateLockButton === 'function') updateLockButton();
+        }, { actionLabel: 'Unlock Character' });
+        return;
+    }
+
+    const content = `
+        <p>Lock the sheet for play. Manual editing of core stats is disabled so a session click cannot rewrite the character.</p>
+        <ul>
+            <li>Attributes, Skills, Disciplines, Merits, Flaws, Backgrounds, and Loresheets stop taking direct edits.</li>
+            <li>Hunger, damage tracks, stains, and dice tools stay available.</li>
+            <li>XP Spend Mode still applies purchased increases.</li>
+        </ul>
+        <p class="mb-0">Current state: <strong>Unlocked</strong></p>
+    `;
+    showToolbarInfoModal('Lock Character', content, () => {
+        window.LockManager.lock();
+        if (typeof updateLockButton === 'function') updateLockButton();
+    }, { actionLabel: 'Lock Character', actionClass: 'theme-btn-danger' });
+}
+
+function showXPSpendInfo() {
+    const inSpendMode = document.getElementById('btn-xp-spend')?.classList.contains('active');
+    const content = `
+        <p>XP Spend Mode lets you raise traits on the sheet and see the experience cost before you confirm.</p>
+        <ul>
+            <li>Click dots or add traits as you normally would. Pending costs appear in the XP overlay.</li>
+            <li>Confirm applies every pending change and deducts Available XP.</li>
+            <li>Cancel leaves the sheet as it was and spends nothing.</li>
+            <li>You cannot confirm a batch that costs more XP than you have.</li>
+        </ul>
+        <p class="mb-0">Click the dollar button again to leave XP Spend Mode.</p>
+    `;
+    showToolbarInfoModal('Spend XP Mode', content, () => {
+        if (window.XPSpendManager && window.XPSpendManager.toggleXPSpendMode) {
+            window.XPSpendManager.toggleXPSpendMode();
+        }
+    }, { actionLabel: inSpendMode ? 'Exit XP Spend Mode' : 'Enter XP Spend Mode' });
+}
+
+function showDashboardInfo() {
+    const content = `
+        <p>Returns to the dashboard, where you can switch characters, create a new one, or open the guided creator.</p>
+        <ul>
+            <li>This sheet stays stored in this browser.</li>
+            <li>Use Save if you want to force a write before you leave.</li>
+        </ul>
+    `;
+    showToolbarInfoModal('Back to Dashboard', content, goToDashboard, { actionLabel: 'Go to Dashboard' });
+}
+
+function goToDashboard() {
+    window.location.href = 'index.html';
+}
+
 function getDiceSymbolsGuideHtml() {
     return `
         <div class="dice-symbols-guide">
@@ -507,14 +691,21 @@ function initWipeButton() {
     if (!btn) return;
     
     btn.addEventListener('click', () => {
-        // Trigger wipe functionality
-        if (window.clearOverlay) {
-            window.clearOverlay();
-            if (window.toastManager) {
-                window.toastManager.show('Overlay cleared', 'info', 'Character Toolbar');
-            }
+        if (isInfoModeActive()) {
+            showWipeInfo();
+            return;
         }
+        performWipe();
     });
+}
+
+function performWipe() {
+    if (window.clearOverlay) {
+        window.clearOverlay();
+        if (window.toastManager) {
+            window.toastManager.show('Overlay cleared', 'info', 'Character Toolbar');
+        }
+    }
 }
 
 /**
@@ -524,33 +715,45 @@ function initClearButton() {
     const btn = document.getElementById('btn-clear');
     if (!btn) return;
     
-    btn.addEventListener('click', async () => {
-        // Show confirmation dialog
-        if (confirm('Are you sure you want to clear the character sheet? This action cannot be undone.')) {
-            try {
-                if (window.characterManager) {
-                    await window.characterManager.clearCurrentSheet();
-                    if (window.toastManager) {
-                        window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
-                    }
-                } else if (window.performClearSheet) {
-                    window.performClearSheet();
-                    if (window.toastManager) {
-                        window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
-                    }
-                } else {
-                    if (window.toastManager) {
-                        window.toastManager.show('Clear sheet functionality not available', 'error', 'Character Toolbar');
-                    }
-                }
-            } catch (error) {
-                logger.error('Failed to clear character sheet:', error);
-                if (window.toastManager) {
-                    window.toastManager.show('Failed to clear character sheet', 'error', 'Character Toolbar');
-                }
+    btn.addEventListener('click', () => {
+        if (isInfoModeActive()) {
+            showClearInfo();
+            return;
+        }
+        performClearSheet();
+    });
+}
+
+async function executeClearSheet() {
+    try {
+        if (window.characterManager) {
+            await window.characterManager.clearCurrentSheet();
+            if (window.toastManager) {
+                window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
+            }
+        } else if (window.performClearSheet) {
+            window.performClearSheet();
+            if (window.toastManager) {
+                window.toastManager.show('Character sheet cleared', 'success', 'Character Toolbar');
+            }
+        } else {
+            if (window.toastManager) {
+                window.toastManager.show('Clear sheet functionality not available', 'error', 'Character Toolbar');
             }
         }
-    });
+    } catch (error) {
+        logger.error('Failed to clear character sheet:', error);
+        if (window.toastManager) {
+            window.toastManager.show('Failed to clear character sheet', 'error', 'Character Toolbar');
+        }
+    }
+}
+
+async function performClearSheet() {
+    if (!confirm('Are you sure you want to clear the character sheet? This action cannot be undone.')) {
+        return;
+    }
+    await executeClearSheet();
 }
 
 /**
@@ -578,8 +781,15 @@ function initLockButton() {
     }
     
     btn.addEventListener('click', () => {
+        if (isInfoModeActive()) {
+            showLockInfo(updateLockButton);
+            return;
+        }
+        promptLockToggle(updateLockButton);
+    });
+    
+    function promptLockToggle(updateLockButton) {
         if (window.LockManager.isLocked()) {
-            // Unlock flow with detailed modal
             const unlockContent = `
                 <p>Unlocking will allow manual edits to Traits and other sheet fields.</p>
                 <p>Are you sure you want to unlock?</p>
@@ -590,7 +800,7 @@ function initLockButton() {
                 <button type="button" class="btn theme-btn-primary" id="confirmUnlockBtn">Unlock Character</button>
             `;
             
-            const { modalElement, modalInstance } = window.modalManager.showCustom({
+            window.modalManager.showCustom({
                 title: 'Unlock Character for Editing',
                 content: unlockContent,
                 footer: unlockFooter,
@@ -607,7 +817,6 @@ function initLockButton() {
                 }
             });
         } else {
-            // Lock flow with detailed modal
             const lockContent = `
                 <p>Locking the character will disable manual editing of Attributes, Skills, Disciplines, Merits, and other core stats. XP spending will still apply automatically.</p>
                 <p>Are you sure you want to continue?</p>
@@ -618,7 +827,7 @@ function initLockButton() {
                 <button type="button" class="btn theme-btn-danger" id="confirmLockBtn">Lock Character</button>
             `;
             
-            const { modalElement, modalInstance } = window.modalManager.showCustom({
+            window.modalManager.showCustom({
                 title: 'Lock Character for Play',
                 content: lockContent,
                 footer: lockFooter,
@@ -635,7 +844,7 @@ function initLockButton() {
                 }
             });
         }
-    });
+    }
     
     updateLockButton();
     
@@ -923,8 +1132,10 @@ function initXPSpendButton() {
     xpButton.innerHTML = '<i class="bi bi-currency-dollar"></i>';
     
     xpButton.addEventListener('click', () => {
-        console.log('[Toolbar] XP Spend button clicked');
-        // Call the XP spend manager's toggle function if it exists
+        if (isInfoModeActive()) {
+            showXPSpendInfo();
+            return;
+        }
         if (window.XPSpendManager && window.XPSpendManager.toggleXPSpendMode) {
             window.XPSpendManager.toggleXPSpendMode();
         } else {
@@ -934,6 +1145,19 @@ function initXPSpendButton() {
     
     xpGroup.appendChild(xpButton);
     console.log('[Toolbar] XP Spend button added successfully');
+}
+
+function initDashboardButton() {
+    const btn = document.getElementById('btn-dashboard');
+    if (!btn) return;
+
+    btn.addEventListener('click', (event) => {
+        if (isInfoModeActive()) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            showDashboardInfo();
+        }
+    }, true);
 }
 
 /**

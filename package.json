@@ -5,7 +5,8 @@
   "scripts": {
     "sass": "sass --watch scss:css",
     "sass:build": "sass scss:css --style compressed --no-source-map",
-    "progeny:build": "node scripts/build-progeny.mjs"
+    "progeny:build": "node scripts/build-progeny.mjs",
+    "test:character-format": "node --test scripts/character-format.test.mjs"
   },
   "engines": {
     "node": ">=22"

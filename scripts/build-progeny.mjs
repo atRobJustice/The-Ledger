@@ -64,6 +64,14 @@ function applyOverlays(frontendDir) {
         path.join(overlayDir, "LedgerReturnLink.tsx"),
         path.join(frontendDir, "src", "components", "LedgerReturnLink.tsx")
     )
+    cpSync(
+        path.join(repoRoot, "js", "core", "utils", "character-format.js"),
+        path.join(frontendDir, "src", "utils", "characterFormat.js")
+    )
+    cpSync(
+        path.join(overlayDir, "LoadModal.tsx"),
+        path.join(frontendDir, "src", "components", "LoadModal.tsx")
+    )
 
     replaceOnce(
         path.join(frontendDir, "vite.config.ts"),
@@ -387,6 +395,76 @@ const LEDGER_PENDING_PROGENY_KEY = "ledger:pendingProgenyImport"`,
                         onClick={openExportModal}
                     />`,
         "Final open-in-ledger card"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Final.tsx"),
+        `                    <ActionCard
+                        icon={<IconBook size={20} />}
+                        label="Character Sheet"
+                        description="Use this character right away"
+                        onClick={handleCharacterSheet}
+                    />
+                    <ActionCard
+                        icon={<IconHelpHexagon size={20} />}
+                        label="Feature Guide"
+                        description="Learn what else you can do with Progeny"
+                        onClick={handleOpenFeatures}
+                    />
+                    {hasAnalyticsConsent ? (
+                        <ActionCard
+                            icon={<IconMessageCircle size={20} />}
+                            label="Feedback & support"
+                            description="Questions, complaints, bugs or ideas"
+                            onClick={handleOpenSupport}
+                        />
+                    ) : (
+                        <ActionCard
+                            icon={<IconCookie size={20} />}
+                            label="Cookie preferences"
+                            description="Enable analytics to use support chat"
+                            onClick={openCookiePreferences}
+                        />
+                    )}`,
+        `                    {!ledgerCreatorMode && (
+                        <>
+                            <ActionCard
+                                icon={<IconBook size={20} />}
+                                label="Character Sheet"
+                                description="Use this character right away"
+                                onClick={handleCharacterSheet}
+                            />
+                            <ActionCard
+                                icon={<IconHelpHexagon size={20} />}
+                                label="Feature Guide"
+                                description="Learn what else you can do with Progeny"
+                                onClick={handleOpenFeatures}
+                            />
+                            {hasAnalyticsConsent ? (
+                                <ActionCard
+                                    icon={<IconMessageCircle size={20} />}
+                                    label="Feedback & support"
+                                    description="Questions, complaints, bugs or ideas"
+                                    onClick={handleOpenSupport}
+                                />
+                            ) : (
+                                <ActionCard
+                                    icon={<IconCookie size={20} />}
+                                    label="Cookie preferences"
+                                    description="Enable analytics to use support chat"
+                                    onClick={openCookiePreferences}
+                                />
+                            )}
+                        </>
+                    )}`,
+        "Final hide dead cards"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Final.tsx"),
+        `{!authLoading && !isAuthenticated ? (`,
+        `{!ledgerCreatorMode && !authLoading && !isAuthenticated ? (`,
+        "Final hide create account"
     )
 
     writeFileSync(

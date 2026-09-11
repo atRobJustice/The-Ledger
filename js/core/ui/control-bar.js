@@ -1,7 +1,7 @@
 import { getDiscordWebhook, setDiscordWebhook, createWebhookModal } from "../../integrations/discord-integration.js";
 import { bloodPotency as bpData } from "../../data/vampire/blood_potency.js";
 import { TraitManagerUtils } from '../managers/manager-utils.js';
-import { convertProgenyToLedger } from '../utils/progeny-import.js';
+import { toLedgerCharacter } from '../utils/progeny-import.js';
 import logger from '../utils/logger.js';
 
 /**
@@ -131,7 +131,7 @@ export function initControlBar(deps) {
   const btnProgeny = document.createElement("button");
   btnProgeny.id = "importProgenyBtn";
   btnProgeny.className = "btn btn-secondary p-1 d-flex align-items-center justify-content-center control-bar-btn progeny-btn";
-  btnProgeny.setAttribute("title", "Import Progeny JSON");
+  btnProgeny.setAttribute("title", "Import character JSON (Ledger or Progeny)");
   btnProgeny.setAttribute("data-bs-toggle", "tooltip");
   btnProgeny.innerHTML = `<img src="assets/progeny-icon.svg" alt="Progeny" style="width:24px;height:24px;">`;
   bar.appendChild(btnProgeny);
@@ -150,17 +150,16 @@ export function initControlBar(deps) {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const progenyData = JSON.parse(e.target.result);
-        const ledgerData = convertProgenyToLedger(progenyData);
+        const ledgerData = toLedgerCharacter(JSON.parse(e.target.result));
         if (typeof window.loadCharacterData === "function") {
           window.loadCharacterData(ledgerData);
-          window.toastManager.show("Progeny character imported", "success", 'Control Bar');
+          window.toastManager.show("Character imported", "success", 'Control Bar');
         } else {
           window.toastManager.show('Import logic unavailable', 'danger', 'Control Bar');
         }
       } catch (err) {
         logger.error(err);
-        window.toastManager.show("Failed to import Progeny JSON", "danger");
+        window.toastManager.show(err?.message || "Failed to import character JSON", "danger");
       }
     };
     reader.readAsText(file);
@@ -654,7 +653,7 @@ export function initControlBar(deps) {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const data = JSON.parse(e.target.result);
+        const data = toLedgerCharacter(JSON.parse(e.target.result));
         if (typeof window.loadCharacterData === "function") {
           window.loadCharacterData(data);
           window.toastManager.show("Character imported successfully", "success");
@@ -663,7 +662,7 @@ export function initControlBar(deps) {
         }
       } catch (err) {
         logger.error(err);
-        window.toastManager.show("Failed to import character: invalid JSON", "danger");
+        window.toastManager.show(err?.message || "Failed to import character: invalid JSON", "danger");
       }
       // Clear the file input so it can be reused
       evt.target.value = '';

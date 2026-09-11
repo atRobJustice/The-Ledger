@@ -14,6 +14,13 @@
         };
     });
 
+    let toLedgerCharacter = (data) => data;
+    import('../utils/character-format.js').then(module => {
+        toLedgerCharacter = module.toLedgerCharacter;
+    }).catch(() => {
+        /* keep identity fallback */
+    });
+
     // Helper function for logging with fallback
     function log(level, message, ...args) {
         if (logger && logger[level]) {
@@ -70,13 +77,17 @@
             const reader = new FileReader();
             reader.onload = e => {
                 try{
-                    const data = JSON.parse(e.target.result);
+                    const data = toLedgerCharacter(JSON.parse(e.target.result));
                     loadCharacterData(data);
                     window.toastManager.show('Character imported successfully','success', 'Backup Manager');
                     autoSave();
                 } catch(err){
                     log('error', err);
-                    window.toastManager.show('Failed to import character: invalid JSON','danger', 'Backup Manager');
+                    window.toastManager.show(
+                        err?.message || 'Failed to import character: invalid JSON',
+                        'danger',
+                        'Backup Manager'
+                    );
                 }
             };
             reader.readAsText(file);

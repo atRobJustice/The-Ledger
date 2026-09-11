@@ -91,24 +91,11 @@
                                 <i class="bi bi-file-earmark-arrow-up"></i>
                             </div>
                             <div class="import-content">
-                                <h4 class="import-option-title">Import from The Ledger</h4>
+                                <h4 class="import-option-title">Import character (Ledger or Progeny)</h4>
                                 <p class="import-option-description">
-                                    Import a character that was previously exported from The Ledger
-                                </p>
-                            </div>
-                            <div class="import-arrow">
-                                <i class="bi bi-chevron-right"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="import-option" onclick="importProgenyCharacter()">
-                            <div class="import-icon progeny">
-                                <img src="assets/progeny-icon.svg" alt="Progeny" style="width: 24px; height: 24px;">
-                            </div>
-                            <div class="import-content">
-                                <h4 class="import-option-title">Import from Progeny</h4>
-                                <p class="import-option-description">
-                                    Import a Progeny JSON export (from the guided creator above or <a href="https://progeny.odin-matthias.de/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">official Progeny</a>)
+                                    Import a Ledger export or a Progeny JSON file (from the guided creator above or
+                                    <a href="https://progeny.odin-matthias.de/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">official Progeny</a>).
+                                    Format is detected automatically.
                                 </p>
                             </div>
                             <div class="import-arrow">
@@ -428,9 +415,8 @@
             </div>
         </div>
 
-        <!-- Hidden file inputs for import functionality -->
+        <!-- Hidden file input for import functionality (Ledger or Progeny JSON) -->
         <input type="file" id="characterImportFile" accept=".json" style="display: none;" onchange="handleCharacterImport(event)">
-        <input type="file" id="progenyImportFile" accept=".json" style="display: none;" onchange="handleProgenyImport(event)">
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
