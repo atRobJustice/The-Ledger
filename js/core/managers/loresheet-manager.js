@@ -2,11 +2,13 @@
 import { loresheets } from '../../data/vampire/loresheets.js';
 import { TraitManagerUtils } from './manager-utils.js';
 import logger from '../utils/logger.js';
+import { filterLoresheetCategories, initContentPack } from '../utils/content-pack.js';
 
 class LoresheetManager {
     constructor() {
         this.selectedLoresheets = new Map(); // loresheetKey -> { category: string, level: number, instances: Array }
-        this.availableCategories = Object.keys(loresheets.categories);
+        initContentPack();
+        this.availableCategories = filterLoresheetCategories(Object.keys(loresheets.categories));
         this.init();
     }
 

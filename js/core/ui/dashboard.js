@@ -1,6 +1,11 @@
 // Dashboard functionality
 import { convertProgenyToLedger, toLedgerCharacter } from '../utils/progeny-import.js';
 import { LEDGER_PENDING_PROGENY_KEY } from '../utils/progeny-handoff.js';
+import {
+    initContentPack,
+    renderContentPackBanner,
+    withContentPack,
+} from '../utils/content-pack.js';
 
 let databaseManager;
 let characters = [];
@@ -103,6 +108,10 @@ async function initDashboard() {
         logger = loggerModule.default;
         
         await databaseManager.init();
+
+        initContentPack();
+        renderContentPackBanner();
+        wireGuidedCreatorLink();
         
         // Load and apply saved theme
         await loadSavedTheme();
@@ -119,6 +128,16 @@ async function initDashboard() {
     } catch (error) {
         log('error', 'Failed to initialize dashboard:', error);
     }
+}
+
+/** Point the Guided Creator card at /progeny/ with the active content pack. */
+function wireGuidedCreatorLink() {
+    const card = document.querySelector('[data-guided-creator]');
+    if (!card) return;
+    const href = withContentPack('progeny/');
+    card.onclick = () => {
+        location.href = href;
+    };
 }
 
 // Load and apply saved theme

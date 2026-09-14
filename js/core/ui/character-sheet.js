@@ -16,6 +16,14 @@
 
 // Import logger
 import logger from '../utils/logger.js';
+import {
+    filterPredatorEntries,
+    initContentPack,
+    renderContentPackBanner,
+} from '../utils/content-pack.js';
+
+initContentPack();
+renderContentPackBanner();
 
 function createDots(value, maxDots = 5) {
     const $dotsContainer = $('<div>', { 
@@ -614,7 +622,9 @@ $(document).ready(function() {
             const module = await import('../../data/vampire/predator_types.js');
             const predatorTypes = module.predatorTypes;
             const $dropdown = $(dropdown);
-            const predatorEntries = Object.entries(predatorTypes.types).sort((a,b)=>a[1].name.localeCompare(b[1].name));
+            const predatorEntries = filterPredatorEntries(
+                Object.entries(predatorTypes.types).sort((a,b)=>a[1].name.localeCompare(b[1].name))
+            );
             predatorEntries.forEach(([key, type]) => {
                 $dropdown.append($('<option>', {
                     'value': key,

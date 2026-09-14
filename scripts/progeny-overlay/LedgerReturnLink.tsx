@@ -1,9 +1,11 @@
 import { Anchor, Text } from "@mantine/core"
+import { withContentPack } from "~/utils/contentPack"
 
 /** Same-origin link back to The Ledger dashboard after exporting JSON. */
 export default function LedgerReturnLink({ compact = false }: { compact?: boolean }) {
+    const href = withContentPack("/")
     return (
-        <Anchor href="/" underline="hover" c="grape.3">
+        <Anchor href={href} underline="hover" c="grape.3">
             <Text
                 component="span"
                 size={compact ? "xs" : "sm"}

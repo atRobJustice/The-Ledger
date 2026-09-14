@@ -65,6 +65,14 @@ function applyOverlays(frontendDir) {
         path.join(frontendDir, "src", "components", "LedgerReturnLink.tsx")
     )
     cpSync(
+        path.join(overlayDir, "ContentPackNotice.tsx"),
+        path.join(frontendDir, "src", "components", "ContentPackNotice.tsx")
+    )
+    cpSync(
+        path.join(overlayDir, "contentPack.ts"),
+        path.join(frontendDir, "src", "utils", "contentPack.ts")
+    )
+    cpSync(
         path.join(repoRoot, "js", "core", "utils", "character-format.js"),
         path.join(frontendDir, "src", "utils", "characterFormat.js")
     )
@@ -281,6 +289,7 @@ const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"`,
         'import { motion, useReducedMotion } from "framer-motion"',
         `import { motion, useReducedMotion } from "framer-motion"
 import LedgerReturnLink from "~/components/LedgerReturnLink"
+import { withContentPack } from "~/utils/contentPack"
 
 const ledgerCreatorMode = import.meta.env.VITE_LEDGER_CREATOR === "true"
 const LEDGER_PENDING_PROGENY_KEY = "ledger:pendingProgenyImport"`,
@@ -318,7 +327,7 @@ const LEDGER_PENDING_PROGENY_KEY = "ledger:pendingProgenyImport"`,
         try {
             updateHealthAndWillpowerAndBloodPotencyAndHumanity(character)
             sessionStorage.setItem(LEDGER_PENDING_PROGENY_KEY, JSON.stringify(character))
-            window.location.assign("/?progenyImport=1")
+            window.location.assign(withContentPack("/?progenyImport=1"))
         } catch (e) {
             console.error(e)
             setDownloadError(e as Error)
@@ -465,6 +474,180 @@ const LEDGER_PENDING_PROGENY_KEY = "ledger:pendingProgenyImport"`,
         `{!authLoading && !isAuthenticated ? (`,
         `{!ledgerCreatorMode && !authLoading && !isAuthenticated ? (`,
         "Final hide create account"
+    )
+
+    // --- Sanguine Frontier content pack filters (opt-in via ?pack=sanguine) ---
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "Generator.tsx"),
+        `import { adjustPickedMeritsAndFlawsForPredatorTypeChange } from "~/data/meritsAndFlawsResolution"
+import { updateHealthAndWillpowerAndBloodPotencyAndHumanity } from "./utils"`,
+        `import { adjustPickedMeritsAndFlawsForPredatorTypeChange } from "~/data/meritsAndFlawsResolution"
+import { updateHealthAndWillpowerAndBloodPotencyAndHumanity } from "./utils"
+import ContentPackNotice from "~/components/ContentPackNotice"
+import { initContentPack } from "~/utils/contentPack"
+
+initContentPack()`,
+        "Generator content pack import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "Generator.tsx"),
+        `            {/* 960px centered wrapper for steps that don't use their own full-width shell */}
+            <div
+                style={{
+                    maxWidth: 960,
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "calc(100% - clamp(1rem, 4vw, 3rem))",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: 0
+                }}
+            >`,
+        `            <div
+                style={{
+                    position: "absolute",
+                    top: 8,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 5,
+                    width: "min(640px, calc(100% - 2rem))",
+                    pointerEvents: "none"
+                }}
+            >
+                <ContentPackNotice />
+            </div>
+            {/* 960px centered wrapper for steps that don't use their own full-width shell */}
+            <div
+                style={{
+                    maxWidth: 960,
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "calc(100% - clamp(1rem, 4vw, 3rem))",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: 0
+                }}
+            >`,
+        "Generator content pack notice"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Loresheets.tsx"),
+        `import { essentialLoresheets, Loresheet, MeritOrFlaw } from "../../data/MeritsAndFlaws"`,
+        `import { essentialLoresheets, Loresheet, MeritOrFlaw } from "../../data/MeritsAndFlaws"
+import { isCoreLoresheetSource, isSanguinePack } from "~/utils/contentPack"`,
+        "Loresheets pack import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "Loresheets.tsx"),
+        `    const availableLoresheets: DisplayLoresheet[] = [
+        ...essentialLoresheets,
+        ...homebrewCollections.flatMap((collection) =>`,
+        `    const officialLoresheets = isSanguinePack()
+        ? essentialLoresheets.filter((sheet) => isCoreLoresheetSource(sheet.source))
+        : essentialLoresheets
+    const availableLoresheets: DisplayLoresheet[] = [
+        ...officialLoresheets,
+        ...homebrewCollections.flatMap((collection) =>`,
+        "Loresheets pack filter"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "PredatorTypePicker.tsx"),
+        `import { GeneratorStepHero } from "./sharedGeneratorUi"`,
+        `import { GeneratorStepHero } from "./sharedGeneratorUi"
+import { isAllowedPredatorName } from "~/utils/contentPack"`,
+        "PredatorTypePicker pack import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "PredatorTypePicker.tsx"),
+        `        predatorTypes: ["Bagger", "Blood Leech", "Farmer"]
+    }
+]
+
+const titleCase = (str: string) => str.replace(/\\b\\w/g, (c) => c.toUpperCase())`,
+        `        predatorTypes: ["Bagger", "Blood Leech", "Farmer"]
+    }
+]
+
+const PACK_CATEGORIES: CategoryMeta[] = CATEGORIES.map((meta) => ({
+    ...meta,
+    predatorTypes: meta.predatorTypes.filter((name) => isAllowedPredatorName(name))
+})).filter((meta) => meta.predatorTypes.length > 0)
+
+const titleCase = (str: string) => str.replace(/\\b\\w/g, (c) => c.toUpperCase())`,
+        "PredatorTypePicker pack categories"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "PredatorTypePicker.tsx"),
+        `            {CATEGORIES.map((meta) => (`,
+        `            {PACK_CATEGORIES.map((meta) => (`,
+        "PredatorTypePicker pack map"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "MeritsAndFlawsPicker.tsx"),
+        `import HomebrewBadge from "~/components/HomebrewBadge"`,
+        `import HomebrewBadge from "~/components/HomebrewBadge"
+import { isAllowedAdvancedMeritCategory } from "~/utils/contentPack"`,
+        "MeritsAndFlawsPicker pack import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "generator", "components", "MeritsAndFlawsPicker.tsx"),
+        `            ...(showAllMerits ? advancedMeritsAndFlaws : []),`,
+        `            ...(showAllMerits
+                ? advancedMeritsAndFlaws.filter((category) =>
+                      isAllowedAdvancedMeritCategory(category.title)
+                  )
+                : []),`,
+        "MeritsAndFlawsPicker pack filter"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "character_sheet", "components", "MeritFlawSelectModal.tsx"),
+        `} from "~/data/MeritsAndFlaws"`,
+        `} from "~/data/MeritsAndFlaws"
+import {
+    isAllowedAdvancedMeritCategory,
+    isCoreLoresheetSource,
+    isSanguinePack
+} from "~/utils/contentPack"`,
+        "MeritFlawSelectModal pack import"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "character_sheet", "components", "MeritFlawSelectModal.tsx"),
+        `        ...(showAdvancedMeritsAndFlaws ? advancedMeritsAndFlaws : []),`,
+        `        ...(showAdvancedMeritsAndFlaws
+            ? advancedMeritsAndFlaws.filter((category) =>
+                  isAllowedAdvancedMeritCategory(category.title)
+              )
+            : []),`,
+        "MeritFlawSelectModal merits filter"
+    )
+
+    replaceOnce(
+        path.join(frontendDir, "src", "character_sheet", "components", "MeritFlawSelectModal.tsx"),
+        `    const loresheetCatalog: DisplayLoresheet[] = [
+        ...essentialLoresheets,
+        ...homebrewCollections.flatMap((collection) =>`,
+        `    const officialLoresheets = isSanguinePack()
+        ? essentialLoresheets.filter((sheet) => isCoreLoresheetSource(sheet.source))
+        : essentialLoresheets
+    const loresheetCatalog: DisplayLoresheet[] = [
+        ...officialLoresheets,
+        ...homebrewCollections.flatMap((collection) =>`,
+        "MeritFlawSelectModal loresheet filter"
     )
 
     writeFileSync(
